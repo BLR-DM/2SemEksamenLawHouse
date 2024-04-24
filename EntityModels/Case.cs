@@ -18,11 +18,11 @@ namespace EntityModels
         public int CaseID { get; set; }
         public string Title { get; set; }
         public DateTime CreationDate { get; set; }
+        public float TotalPrice { get; set; }
         public int LawyerID { get; set; }
         public virtual Lawyer Lawyer { get; set; }
         public int ClientID { get; set; }
         public virtual Client Client { get; set; }
         public virtual ICollection<CaseService> CaseServices { get; set; }
-
     }
 }

@@ -21,7 +21,7 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=SKOV-PC;Database=LawHouseTest;Trusted_Connection=True;Encrypt=False;");
+            optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest;Trusted_Connection=True;Encrypt=False;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

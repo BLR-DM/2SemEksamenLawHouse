@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240424172653_Init")]
-    partial class Init
+    [Migration("20240424205041_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -345,13 +345,13 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.CaseService", b =>
                 {
                     b.HasOne("EntityModels.Case", "Case")
-                        .WithMany()
+                        .WithMany("CaseServices")
                         .HasForeignKey("CaseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityModels.Service", "Service")
-                        .WithMany()
+                        .WithMany("CaseServices")
                         .HasForeignKey("ServiceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,13 +375,13 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.ClientFormular", b =>
                 {
                     b.HasOne("EntityModels.Client", "Client")
-                        .WithMany()
+                        .WithMany("ClientFormulars")
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityModels.Formular", "Formular")
-                        .WithMany()
+                        .WithMany("ClientFormulars")
                         .HasForeignKey("FormularID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -416,13 +416,13 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.LawyerSpeciality", b =>
                 {
                     b.HasOne("EntityModels.Lawyer", "Lawyer")
-                        .WithMany()
+                        .WithMany("LawyerSpecialities")
                         .HasForeignKey("LawyerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityModels.Speciality", "Speciality")
-                        .WithMany()
+                        .WithMany("LawyerSpecialities")
                         .HasForeignKey("SpecialityID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -443,14 +443,28 @@ namespace DataAccess.Migrations
                     b.Navigation("PersonInfo");
                 });
 
+            modelBuilder.Entity("EntityModels.Case", b =>
+                {
+                    b.Navigation("CaseServices");
+                });
+
             modelBuilder.Entity("EntityModels.Client", b =>
                 {
                     b.Navigation("Cases");
+
+                    b.Navigation("ClientFormulars");
+                });
+
+            modelBuilder.Entity("EntityModels.Formular", b =>
+                {
+                    b.Navigation("ClientFormulars");
                 });
 
             modelBuilder.Entity("EntityModels.Lawyer", b =>
                 {
                     b.Navigation("Cases");
+
+                    b.Navigation("LawyerSpecialities");
                 });
 
             modelBuilder.Entity("EntityModels.PersonInfo", b =>
@@ -464,6 +478,16 @@ namespace DataAccess.Migrations
                     b.Navigation("Lawyers");
 
                     b.Navigation("Phones");
+                });
+
+            modelBuilder.Entity("EntityModels.Service", b =>
+                {
+                    b.Navigation("CaseServices");
+                });
+
+            modelBuilder.Entity("EntityModels.Speciality", b =>
+                {
+                    b.Navigation("LawyerSpecialities");
                 });
 #pragma warning restore 612, 618
         }

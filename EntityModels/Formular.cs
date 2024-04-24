@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,14 @@ namespace EntityModels
     {
         public Formular() 
         { 
-            this.Clients = new HashSet<Client>();
+            this.ClientFormulars = new HashSet<ClientFormular>();
         }
 
+        [Key]
         public int FormularID { get; set; }
         public string Name { get; set;}
         public string Description { get; set;}
         public float Price { get; set; }
-        public virtual ICollection<Client> Clients { get; set; }
+        public virtual ICollection<ClientFormular> ClientFormulars { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=SKOV-PC;Database=LawHouseTest;Trusted_Connection=True;Encrypt=False;");
+            optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest;Trusted_Connection=True;Encrypt=False;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,52 +39,50 @@ namespace DataAccess
                 .HasForeignKey(c => c.ClientID)
                 .OnDelete(DeleteBehavior.Restrict); // Ændrer kaskadesletning til NO ACTION for Clients
 
-
+            /////////
 
             modelBuilder.Entity<LawyerSpeciality>()
                 .HasKey(c => new { c.LawyerID, c.SpecialityID });
 
-            modelBuilder.Entity<Lawyer>()
-                .HasMany(l => l.Specialities)
-                .WithMany(s => s.Lawyers)
-                .UsingEntity<LawyerSpeciality>(
-                    j => j
-                        .HasOne(ls => ls.Speciality)
-                        .WithMany(),
-                    j => j
-                        .HasOne(ls => ls.Lawyer)
-                        .WithMany()
-                 );
+            modelBuilder.Entity<LawyerSpeciality>()
+                .HasOne(ls => ls.Lawyer)
+                .WithMany(l => l.LawyerSpecialities)
+                .HasForeignKey(ls => ls.LawyerID);
+
+            modelBuilder.Entity<LawyerSpeciality>()
+                .HasOne(ls => ls.Speciality)
+                .WithMany(s => s.LawyerSpecialities)
+                .HasForeignKey(ls => ls.SpecialityID);
+
+            /////////
 
             modelBuilder.Entity<ClientFormular>()
                 .HasKey(c => new { c.ClientID, c.FormularID });
 
-            modelBuilder.Entity<Client>()
-                .HasMany(l => l.Formulars)
-                .WithMany(s => s.Clients)
-                .UsingEntity<ClientFormular>(
-                    j => j
-                        .HasOne(ls => ls.Formular)
-                        .WithMany(),
-                    j => j
-                        .HasOne(ls => ls.Client)
-                        .WithMany()
-                 );
+            modelBuilder.Entity<ClientFormular>()
+                .HasOne(ls => ls.Client)
+                .WithMany(l => l.ClientFormulars)
+                .HasForeignKey(ls => ls.ClientID);
+
+            modelBuilder.Entity<ClientFormular>()
+                .HasOne(ls => ls.Formular)
+                .WithMany(s => s.ClientFormulars)
+                .HasForeignKey(ls => ls.FormularID);
+
+            /////////
 
             modelBuilder.Entity<CaseService>()
                 .HasKey(c => new { c.CaseID, c.ServiceID });
 
-            modelBuilder.Entity<Case>()
-                .HasMany(l => l.Services)
-                .WithMany(s => s.Cases)
-                .UsingEntity<CaseService>(
-                    j => j
-                        .HasOne(ls => ls.Service)
-                        .WithMany(),
-                    j => j
-                        .HasOne(ls => ls.Case)
-                        .WithMany()
-                 );
+            modelBuilder.Entity<CaseService>()
+                .HasOne(ls => ls.Case)
+                .WithMany(l => l.CaseServices)
+                .HasForeignKey(ls => ls.CaseID);
+
+            modelBuilder.Entity<CaseService>()
+                .HasOne(ls => ls.Service)
+                .WithMany(s => s.CaseServices)
+                .HasForeignKey(ls => ls.ServiceID);
         }
     }
 }

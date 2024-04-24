@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,13 @@ namespace EntityModels
     {
         public Speciality() 
         {
-            this.Lawyers = new HashSet<Lawyer>();
+            this.LawyerSpecialities = new HashSet<LawyerSpeciality>();
         }
 
+        [Key]
         public int SpecialityID { get; set; }
         public string SpecialityName { get; set;}
-        public virtual ICollection<Lawyer> Lawyers { get; set;}
+        public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set;}
 
     }
 }

@@ -21,7 +21,7 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest;Trusted_Connection=True;Encrypt=False;");
+            optionsBuilder.UseSqlServer("Server=mssql16.unoeuro.com;Database=lawhouseblr_dk_db_lawhouse;User Id=lawhouseblr_dk;Password=km5xFBGRe2pErnDcg6h3;Encrypt=False;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

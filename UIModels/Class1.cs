@@ -1,4 +1,4 @@
-﻿namespace DataAccess
+﻿namespace UIModels
 {
     public class Class1
     {

@@ -21,6 +21,7 @@ namespace EntityModels
         public int ClientID { get; set; }
         public virtual Client Client { get; set; }
         public virtual ICollection<Service> Services { get; set; }
+        public float TotalPrice { get; set; }
 
     }
 }

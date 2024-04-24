@@ -14,5 +14,6 @@ namespace EntityModels
         public virtual Service Service { get; set; }
         public float HoursWorkedOn { get; set; }
         public float KilometersDriven { get; set; }
+        public float TotalPrice { get; set; }
     }
 }

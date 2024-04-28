@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class Lawyer
+    public class Lawyer : Employee
     {
         public Lawyer() 
         { 
@@ -16,10 +16,21 @@ namespace EntityModels
 
         [Key]
         public int LawyerID { get; set; }
-        public DateTime HireDate { get; set; }
-        public int PersonInfoID { get; set; }
-        public virtual PersonInfo PersonInfo { get; set; }
+
+        //attributes
+        public LawyerTitle Title { get; set; }
+
+        //foriegn keys
+        public int UserID { get; set; }
+        public User User { get; set; }
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set; }
         public virtual ICollection<Case> Cases { get; set; }
+    }
+
+    public enum LawyerTitle
+    {
+        type1,
+        type2,
+        type3
     }
 }

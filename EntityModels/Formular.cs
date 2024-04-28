@@ -16,9 +16,13 @@ namespace EntityModels
 
         [Key]
         public int FormularID { get; set; }
+
+        //attributes
         public string Name { get; set;}
         public string Description { get; set;}
         public float Price { get; set; }
+
+        //foreign key
         public virtual ICollection<ClientFormular> ClientFormulars { get; set; }
     }
 }

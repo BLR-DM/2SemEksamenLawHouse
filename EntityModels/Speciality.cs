@@ -16,7 +16,12 @@ namespace EntityModels
 
         [Key]
         public int SpecialityID { get; set; }
+
+        //attributes
         public string SpecialityName { get; set;}
+
+
+        //foreign key
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set;}
 
     }

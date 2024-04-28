@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class Phone
+    public class Calculation
     {
         [Key]
-        public int PhoneID { get; set; }
+        public int CalculationID { get; set; }
 
         //attributes
-        public int PhoneNumber { get; set; }
+        public string Name { get; set; }
 
-        //foreign Key
-        public int ClientID { get; set; }
-        public Client Client { get; set; }
     }
 }

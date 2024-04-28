@@ -27,21 +27,6 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonInfos",
-                columns: table => new
-                {
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonInfos", x => x.PersonInfoID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
@@ -71,24 +56,32 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addresses",
+                name: "Subscriptions",
                 columns: table => new
                 {
-                    AddressID = table.Column<int>(type: "int", nullable: false)
+                    SubscriptionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AdressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostalCode = table.Column<int>(type: "int", nullable: false),
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressID);
-                    table.ForeignKey(
-                        name: "FK_Addresses_PersonInfos_PersonInfoID",
-                        column: x => x.PersonInfoID,
-                        principalTable: "PersonInfos",
-                        principalColumn: "PersonInfoID",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_Subscriptions", x => x.SubscriptionID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PassWord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserID);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,37 +90,23 @@ namespace DataAccess.Migrations
                 {
                     ClientID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostalCode = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
+                    ClientSub = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clients", x => x.ClientID);
                     table.ForeignKey(
-                        name: "FK_Clients_PersonInfos_PersonInfoID",
-                        column: x => x.PersonInfoID,
-                        principalTable: "PersonInfos",
-                        principalColumn: "PersonInfoID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Emails",
-                columns: table => new
-                {
-                    EmailID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Emails", x => x.EmailID);
-                    table.ForeignKey(
-                        name: "FK_Emails_PersonInfos_PersonInfoID",
-                        column: x => x.PersonInfoID,
-                        principalTable: "PersonInfos",
-                        principalColumn: "PersonInfoID",
+                        name: "FK_Clients_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -137,37 +116,50 @@ namespace DataAccess.Migrations
                 {
                     LawyerID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
+                    Title = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostalCode = table.Column<int>(type: "int", nullable: false),
+                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Lawyers", x => x.LawyerID);
                     table.ForeignKey(
-                        name: "FK_Lawyers_PersonInfos_PersonInfoID",
-                        column: x => x.PersonInfoID,
-                        principalTable: "PersonInfos",
-                        principalColumn: "PersonInfoID",
+                        name: "FK_Lawyers_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Phones",
+                name: "Secretaries",
                 columns: table => new
                 {
-                    PhoneID = table.Column<int>(type: "int", nullable: false)
+                    SecretaryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    PersonInfoID = table.Column<int>(type: "int", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostalCode = table.Column<int>(type: "int", nullable: false),
+                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Phones", x => x.PhoneID);
+                    table.PrimaryKey("PK_Secretaries", x => x.SecretaryID);
                     table.ForeignKey(
-                        name: "FK_Phones_PersonInfos_PersonInfoID",
-                        column: x => x.PersonInfoID,
-                        principalTable: "PersonInfos",
-                        principalColumn: "PersonInfoID",
+                        name: "FK_Secretaries_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -175,13 +167,15 @@ namespace DataAccess.Migrations
                 name: "ClientFormulars",
                 columns: table => new
                 {
+                    ClientFormularID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BuyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false),
-                    FormularID = table.Column<int>(type: "int", nullable: false),
-                    BuyDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FormularID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientFormulars", x => new { x.ClientID, x.FormularID });
+                    table.PrimaryKey("PK_ClientFormulars", x => x.ClientFormularID);
                     table.ForeignKey(
                         name: "FK_ClientFormulars_Clients_ClientID",
                         column: x => x.ClientID,
@@ -197,13 +191,66 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClientSubscriptions",
+                columns: table => new
+                {
+                    ClientSubscriptionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClientID = table.Column<int>(type: "int", nullable: false),
+                    SubscriptionID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClientSubscriptions", x => x.ClientSubscriptionID);
+                    table.ForeignKey(
+                        name: "FK_ClientSubscriptions_Clients_ClientID",
+                        column: x => x.ClientID,
+                        principalTable: "Clients",
+                        principalColumn: "ClientID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ClientSubscriptions_Subscriptions_SubscriptionID",
+                        column: x => x.SubscriptionID,
+                        principalTable: "Subscriptions",
+                        principalColumn: "SubscriptionID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Phones",
+                columns: table => new
+                {
+                    PhoneID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    ClientID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Phones", x => x.PhoneID);
+                    table.ForeignKey(
+                        name: "FK_Phones_Clients_ClientID",
+                        column: x => x.ClientID,
+                        principalTable: "Clients",
+                        principalColumn: "ClientID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cases",
                 columns: table => new
                 {
                     CaseID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CaseType = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstHours = table.Column<float>(type: "real", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalPrice = table.Column<float>(type: "real", nullable: false),
                     LawyerID = table.Column<int>(type: "int", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -252,19 +299,29 @@ namespace DataAccess.Migrations
                 name: "CaseServices",
                 columns: table => new
                 {
+                    CaseServiceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Units = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CaseID = table.Column<int>(type: "int", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
-                    HoursWorkedOn = table.Column<float>(type: "real", nullable: false),
-                    KilometersDriven = table.Column<float>(type: "real", nullable: false)
+                    LawyerID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CaseServices", x => new { x.CaseID, x.ServiceID });
+                    table.PrimaryKey("PK_CaseServices", x => x.CaseServiceID);
                     table.ForeignKey(
                         name: "FK_CaseServices_Cases_CaseID",
                         column: x => x.CaseID,
                         principalTable: "Cases",
                         principalColumn: "CaseID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CaseServices_Lawyers_LawyerID",
+                        column: x => x.LawyerID,
+                        principalTable: "Lawyers",
+                        principalColumn: "LawyerID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CaseServices_Services_ServiceID",
@@ -273,11 +330,6 @@ namespace DataAccess.Migrations
                         principalColumn: "ServiceID",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_PersonInfoID",
-                table: "Addresses",
-                column: "PersonInfoID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cases_ClientID",
@@ -290,9 +342,24 @@ namespace DataAccess.Migrations
                 column: "LawyerID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CaseServices_CaseID",
+                table: "CaseServices",
+                column: "CaseID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CaseServices_LawyerID",
+                table: "CaseServices",
+                column: "LawyerID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CaseServices_ServiceID",
                 table: "CaseServices",
                 column: "ServiceID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClientFormulars_ClientID",
+                table: "ClientFormulars",
+                column: "ClientID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientFormulars_FormularID",
@@ -300,19 +367,25 @@ namespace DataAccess.Migrations
                 column: "FormularID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clients_PersonInfoID",
+                name: "IX_Clients_UserID",
                 table: "Clients",
-                column: "PersonInfoID");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Emails_PersonInfoID",
-                table: "Emails",
-                column: "PersonInfoID");
+                name: "IX_ClientSubscriptions_ClientID",
+                table: "ClientSubscriptions",
+                column: "ClientID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lawyers_PersonInfoID",
+                name: "IX_ClientSubscriptions_SubscriptionID",
+                table: "ClientSubscriptions",
+                column: "SubscriptionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lawyers_UserID",
                 table: "Lawyers",
-                column: "PersonInfoID");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LawyerSpeciality_SpecialityID",
@@ -320,17 +393,19 @@ namespace DataAccess.Migrations
                 column: "SpecialityID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phones_PersonInfoID",
+                name: "IX_Phones_ClientID",
                 table: "Phones",
-                column: "PersonInfoID");
+                column: "ClientID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Secretaries_UserID",
+                table: "Secretaries",
+                column: "UserID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Addresses");
-
             migrationBuilder.DropTable(
                 name: "CaseServices");
 
@@ -338,13 +413,16 @@ namespace DataAccess.Migrations
                 name: "ClientFormulars");
 
             migrationBuilder.DropTable(
-                name: "Emails");
+                name: "ClientSubscriptions");
 
             migrationBuilder.DropTable(
                 name: "LawyerSpeciality");
 
             migrationBuilder.DropTable(
                 name: "Phones");
+
+            migrationBuilder.DropTable(
+                name: "Secretaries");
 
             migrationBuilder.DropTable(
                 name: "Cases");
@@ -356,6 +434,9 @@ namespace DataAccess.Migrations
                 name: "Formulars");
 
             migrationBuilder.DropTable(
+                name: "Subscriptions");
+
+            migrationBuilder.DropTable(
                 name: "Specialities");
 
             migrationBuilder.DropTable(
@@ -365,7 +446,7 @@ namespace DataAccess.Migrations
                 name: "Lawyers");
 
             migrationBuilder.DropTable(
-                name: "PersonInfos");
+                name: "Users");
         }
     }
 }

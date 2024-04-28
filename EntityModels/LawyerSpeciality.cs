@@ -9,9 +9,11 @@ namespace EntityModels
 {
     public class LawyerSpeciality
     {
+        //Composite key - Lawyer, Speciality
+
         public int LawyerID { get; set; }
-        public virtual Lawyer Lawyer { get; set; }
+        public Lawyer Lawyer { get; set; }
         public int SpecialityID { get; set; }
-        public virtual Speciality Speciality { get; set; }
+        public Speciality Speciality { get; set; }
     }
 }

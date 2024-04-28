@@ -16,10 +16,14 @@ namespace EntityModels
 
         [Key]
         public int ServiceID { get; set; }
+
+        //attributes
         public string Name { get; set; }
         public string Description { get; set; }
         public string PriceType { get; set; }
         public float Price { get; set; }
+
+        //foreign key
         public virtual ICollection<CaseService> CaseServices { get; set; }
 
     }

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class Email
+    public class Secretary : Employee
     {
         [Key]
-        public int EmailID { get; set; }
-        public string EmailAddress { get; set; }
-        public int PersonInfoID { get; set; }
-        public virtual PersonInfo PersonInfo { get; set; }
+        public int SecretaryID { get; set; }
+
+        //foreign key
+        public int UserID { get; set; }
+        public User User { get; set; }
     }
 }

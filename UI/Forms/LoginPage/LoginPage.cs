@@ -21,7 +21,7 @@ namespace UI.Forms.LoginPage
             InitializeComponent();
             Load += FormLoginPage_Load;            
             btnClose.Click += BtnClose_Click;
-            pBoxEye.Click += PBoxEye_Click;
+            pboxEye.Click += PBoxEye_Click;
         }
 
         private void FormLoginPage_Load(object? sender, EventArgs e)
@@ -41,15 +41,15 @@ namespace UI.Forms.LoginPage
 
         private void HideShowPassword()
         {
-            if (pBoxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
+            if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
             {
-                pBoxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
-                tBoxPassword.PasswordChar = '\0'; // Default password char
+                pboxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+                tboxPassword.PasswordChar = '\0'; // Default password char
             }
             else
             {
-                pBoxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
-                tBoxPassword.PasswordChar = '\u2022'; // Unicode for bullet point '•'
+                pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
+                tboxPassword.PasswordChar = '\u2022'; // Unicode for bullet point '•'
             }
         }
     }

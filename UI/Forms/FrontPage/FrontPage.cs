@@ -17,12 +17,6 @@ namespace UI.Forms.FrontPage
         {
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
-
-
-            // Close button prop
-            btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            btnClose.IconSize = 30;
-            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
         }
 
         private void BtnClose_Click(object? sender, EventArgs e)

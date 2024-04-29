@@ -36,11 +36,11 @@
             iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlTop = new Panel();
             btnClose = new FontAwesome.Sharp.IconButton();
-            pictureBox2 = new PictureBox();
+            pboxLogo = new PictureBox();
             pnlContent = new Panel();
             pnlLeft.SuspendLayout();
             pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             SuspendLayout();
             // 
             // pnlLeft
@@ -63,7 +63,7 @@
             iconButton1.Dock = DockStyle.Top;
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconButton1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
             iconButton1.IconColor = Color.Black;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -84,7 +84,7 @@
             btnEmployees.Dock = DockStyle.Top;
             btnEmployees.FlatAppearance.BorderSize = 0;
             btnEmployees.FlatStyle = FlatStyle.Flat;
-            btnEmployees.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
             btnEmployees.IconColor = Color.Black;
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -105,7 +105,7 @@
             iconButton4.Dock = DockStyle.Bottom;
             iconButton4.FlatAppearance.BorderSize = 0;
             iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconButton4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             iconButton4.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
             iconButton4.IconColor = Color.Black;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -126,7 +126,7 @@
             iconButton3.Dock = DockStyle.Top;
             iconButton3.FlatAppearance.BorderSize = 0;
             iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconButton3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             iconButton3.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
             iconButton3.IconColor = Color.Black;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -147,7 +147,7 @@
             iconButton2.Dock = DockStyle.Top;
             iconButton2.FlatAppearance.BorderSize = 0;
             iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconButton2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
             iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -166,7 +166,7 @@
             // 
             pnlTop.BackColor = SystemColors.GradientActiveCaption;
             pnlTop.Controls.Add(btnClose);
-            pnlTop.Controls.Add(pictureBox2);
+            pnlTop.Controls.Add(pboxLogo);
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
@@ -179,7 +179,7 @@
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClose.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             btnClose.IconColor = Color.Black;
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClose.IconSize = 30;
@@ -190,15 +190,15 @@
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // pboxLogo
             // 
-            pictureBox2.Image = Properties.Resources.lawhouseLogo;
-            pictureBox2.Location = new Point(3, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(216, 56);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            pboxLogo.Image = Properties.Resources.lawhouseLogo;
+            pboxLogo.Location = new Point(3, 3);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(216, 56);
+            pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pboxLogo.TabIndex = 2;
+            pboxLogo.TabStop = false;
             // 
             // pnlContent
             // 
@@ -223,7 +223,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             pnlLeft.ResumeLayout(false);
             pnlTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -231,7 +231,7 @@
         private Panel pnlLeft;
         private Panel pnlTop;
         private FontAwesome.Sharp.IconButton btnClose;
-        private PictureBox pictureBox2;
+        private PictureBox pboxLogo;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;

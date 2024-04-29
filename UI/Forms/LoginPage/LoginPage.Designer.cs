@@ -30,35 +30,35 @@ partial class LoginPage
     /// </summary>
     private void InitializeComponent()
     {
-        pBoxLogo = new PictureBox();
+        pboxLogo = new PictureBox();
         btnClose = new FontAwesome.Sharp.IconButton();
-        pBoxUser = new FontAwesome.Sharp.IconPictureBox();
+        pboxUser = new FontAwesome.Sharp.IconPictureBox();
         pnlLineUser = new Panel();
         lblUser = new Label();
-        pBoxPassword = new FontAwesome.Sharp.IconPictureBox();
+        pboxPassword = new FontAwesome.Sharp.IconPictureBox();
         lblPassword = new Label();
         pnlLinePassword = new Panel();
         lblLogin = new Label();
         btnLogin = new FontAwesome.Sharp.IconButton();
-        tBoxUser = new TextBox();
-        tBoxPassword = new TextBox();
-        pBoxEye = new FontAwesome.Sharp.IconPictureBox();
-        ((System.ComponentModel.ISupportInitialize)pBoxLogo).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxUser).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxPassword).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxEye).BeginInit();
+        tboxUser = new TextBox();
+        tboxPassword = new TextBox();
+        pboxEye = new FontAwesome.Sharp.IconPictureBox();
+        ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pboxPassword).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
         SuspendLayout();
         // 
-        // pBoxLogo
+        // pboxLogo
         // 
-        pBoxLogo.Anchor = AnchorStyles.Top;
-        pBoxLogo.Image = Properties.Resources.lawhouseLogo;
-        pBoxLogo.Location = new Point(139, 101);
-        pBoxLogo.Name = "pBoxLogo";
-        pBoxLogo.Size = new Size(266, 73);
-        pBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-        pBoxLogo.TabIndex = 0;
-        pBoxLogo.TabStop = false;
+        pboxLogo.Anchor = AnchorStyles.Top;
+        pboxLogo.Image = Properties.Resources.lawhouseLogo;
+        pboxLogo.Location = new Point(139, 101);
+        pboxLogo.Name = "pboxLogo";
+        pboxLogo.Size = new Size(266, 73);
+        pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+        pboxLogo.TabIndex = 0;
+        pboxLogo.TabStop = false;
         // 
         // btnClose
         // 
@@ -77,20 +77,20 @@ partial class LoginPage
         btnClose.TabStop = false;
         btnClose.UseVisualStyleBackColor = true;
         // 
-        // pBoxUser
+        // pboxUser
         // 
-        pBoxUser.BackColor = SystemColors.GradientInactiveCaption;
-        pBoxUser.ForeColor = Color.FromArgb(45, 93, 134);
-        pBoxUser.IconChar = FontAwesome.Sharp.IconChar.UserTie;
-        pBoxUser.IconColor = Color.FromArgb(45, 93, 134);
-        pBoxUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pBoxUser.IconSize = 48;
-        pBoxUser.Location = new Point(36, 347);
-        pBoxUser.Name = "pBoxUser";
-        pBoxUser.Size = new Size(48, 48);
-        pBoxUser.SizeMode = PictureBoxSizeMode.Zoom;
-        pBoxUser.TabIndex = 2;
-        pBoxUser.TabStop = false;
+        pboxUser.BackColor = SystemColors.GradientInactiveCaption;
+        pboxUser.ForeColor = Color.FromArgb(45, 93, 134);
+        pboxUser.IconChar = FontAwesome.Sharp.IconChar.UserTie;
+        pboxUser.IconColor = Color.FromArgb(45, 93, 134);
+        pboxUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+        pboxUser.IconSize = 48;
+        pboxUser.Location = new Point(36, 347);
+        pboxUser.Name = "pboxUser";
+        pboxUser.Size = new Size(48, 48);
+        pboxUser.SizeMode = PictureBoxSizeMode.Zoom;
+        pboxUser.TabIndex = 2;
+        pboxUser.TabStop = false;
         // 
         // pnlLineUser
         // 
@@ -113,20 +113,20 @@ partial class LoginPage
         lblUser.TabIndex = 4;
         lblUser.Text = "Username";
         // 
-        // pBoxPassword
+        // pboxPassword
         // 
-        pBoxPassword.BackColor = SystemColors.GradientInactiveCaption;
-        pBoxPassword.ForeColor = Color.FromArgb(45, 93, 134);
-        pBoxPassword.IconChar = FontAwesome.Sharp.IconChar.UnlockKeyhole;
-        pBoxPassword.IconColor = Color.FromArgb(45, 93, 134);
-        pBoxPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pBoxPassword.IconSize = 48;
-        pBoxPassword.Location = new Point(36, 484);
-        pBoxPassword.Name = "pBoxPassword";
-        pBoxPassword.Size = new Size(48, 48);
-        pBoxPassword.SizeMode = PictureBoxSizeMode.Zoom;
-        pBoxPassword.TabIndex = 2;
-        pBoxPassword.TabStop = false;
+        pboxPassword.BackColor = SystemColors.GradientInactiveCaption;
+        pboxPassword.ForeColor = Color.FromArgb(45, 93, 134);
+        pboxPassword.IconChar = FontAwesome.Sharp.IconChar.UnlockKeyhole;
+        pboxPassword.IconColor = Color.FromArgb(45, 93, 134);
+        pboxPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+        pboxPassword.IconSize = 48;
+        pboxPassword.Location = new Point(36, 484);
+        pboxPassword.Name = "pboxPassword";
+        pboxPassword.Size = new Size(48, 48);
+        pboxPassword.SizeMode = PictureBoxSizeMode.Zoom;
+        pboxPassword.TabIndex = 2;
+        pboxPassword.TabStop = false;
         // 
         // lblPassword
         // 
@@ -181,45 +181,45 @@ partial class LoginPage
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = false;
         // 
-        // tBoxUser
+        // tboxUser
         // 
-        tBoxUser.BackColor = SystemColors.GradientInactiveCaption;
-        tBoxUser.BorderStyle = BorderStyle.None;
-        tBoxUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tBoxUser.Location = new Point(97, 369);
-        tBoxUser.MaxLength = 50;
-        tBoxUser.Name = "tBoxUser";
-        tBoxUser.PlaceholderText = "Email address";
-        tBoxUser.Size = new Size(321, 20);
-        tBoxUser.TabIndex = 1;
+        tboxUser.BackColor = SystemColors.GradientInactiveCaption;
+        tboxUser.BorderStyle = BorderStyle.None;
+        tboxUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        tboxUser.Location = new Point(97, 369);
+        tboxUser.MaxLength = 50;
+        tboxUser.Name = "tboxUser";
+        tboxUser.PlaceholderText = "Email address";
+        tboxUser.Size = new Size(321, 20);
+        tboxUser.TabIndex = 1;
         // 
-        // tBoxPassword
+        // tboxPassword
         // 
-        tBoxPassword.BackColor = SystemColors.GradientInactiveCaption;
-        tBoxPassword.BorderStyle = BorderStyle.None;
-        tBoxPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tBoxPassword.Location = new Point(97, 507);
-        tBoxPassword.MaxLength = 50;
-        tBoxPassword.Name = "tBoxPassword";
-        tBoxPassword.PasswordChar = '•';
-        tBoxPassword.PlaceholderText = "Password";
-        tBoxPassword.Size = new Size(321, 20);
-        tBoxPassword.TabIndex = 2;
+        tboxPassword.BackColor = SystemColors.GradientInactiveCaption;
+        tboxPassword.BorderStyle = BorderStyle.None;
+        tboxPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        tboxPassword.Location = new Point(97, 507);
+        tboxPassword.MaxLength = 50;
+        tboxPassword.Name = "tboxPassword";
+        tboxPassword.PasswordChar = '•';
+        tboxPassword.PlaceholderText = "Password";
+        tboxPassword.Size = new Size(321, 20);
+        tboxPassword.TabIndex = 2;
         // 
-        // pBoxEye
+        // pboxEye
         // 
-        pBoxEye.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        pBoxEye.BackColor = SystemColors.GradientInactiveCaption;
-        pBoxEye.ForeColor = Color.FromArgb(45, 93, 134);
-        pBoxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
-        pBoxEye.IconColor = Color.FromArgb(45, 93, 134);
-        pBoxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pBoxEye.IconSize = 40;
-        pBoxEye.Location = new Point(467, 492);
-        pBoxEye.Name = "pBoxEye";
-        pBoxEye.Size = new Size(40, 40);
-        pBoxEye.TabIndex = 7;
-        pBoxEye.TabStop = false;
+        pboxEye.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        pboxEye.BackColor = SystemColors.GradientInactiveCaption;
+        pboxEye.ForeColor = Color.FromArgb(45, 93, 134);
+        pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
+        pboxEye.IconColor = Color.FromArgb(45, 93, 134);
+        pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
+        pboxEye.IconSize = 40;
+        pboxEye.Location = new Point(467, 492);
+        pboxEye.Name = "pboxEye";
+        pboxEye.Size = new Size(40, 40);
+        pboxEye.TabIndex = 7;
+        pboxEye.TabStop = false;
         // 
         // LoginPage
         // 
@@ -228,45 +228,45 @@ partial class LoginPage
         BackColor = SystemColors.GradientInactiveCaption;
         ClientSize = new Size(544, 805);
         ControlBox = false;
-        Controls.Add(pBoxEye);
-        Controls.Add(tBoxPassword);
-        Controls.Add(tBoxUser);
+        Controls.Add(pboxEye);
+        Controls.Add(tboxPassword);
+        Controls.Add(tboxUser);
         Controls.Add(btnLogin);
         Controls.Add(lblPassword);
         Controls.Add(lblLogin);
         Controls.Add(lblUser);
         Controls.Add(pnlLinePassword);
         Controls.Add(pnlLineUser);
-        Controls.Add(pBoxPassword);
-        Controls.Add(pBoxUser);
+        Controls.Add(pboxPassword);
+        Controls.Add(pboxUser);
         Controls.Add(btnClose);
-        Controls.Add(pBoxLogo);
+        Controls.Add(pboxLogo);
         MaximizeBox = false;
         MinimizeBox = false;
         Name = "LoginPage";
         SizeGripStyle = SizeGripStyle.Hide;
         StartPosition = FormStartPosition.CenterScreen;
-        ((System.ComponentModel.ISupportInitialize)pBoxLogo).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxUser).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxPassword).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pBoxEye).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pboxUser).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pboxPassword).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pboxEye).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
     #endregion
 
-    private PictureBox pBoxLogo;
+    private PictureBox pboxLogo;
     private FontAwesome.Sharp.IconButton btnClose;
-    private FontAwesome.Sharp.IconPictureBox pBoxUser;
+    private FontAwesome.Sharp.IconPictureBox pboxUser;
     private Panel pnlLineUser;
     private Label lblUser;
-    private FontAwesome.Sharp.IconPictureBox pBoxPassword;
+    private FontAwesome.Sharp.IconPictureBox pboxPassword;
     private Label lblPassword;
     private Panel pnlLinePassword;
     private Label lblLogin;
     private FontAwesome.Sharp.IconButton btnLogin;
-    private TextBox tBoxUser;
-    private TextBox tBoxPassword;
-    private FontAwesome.Sharp.IconPictureBox pBoxEye;
+    private TextBox tboxUser;
+    private TextBox tboxPassword;
+    private FontAwesome.Sharp.IconPictureBox pboxEye;
 }

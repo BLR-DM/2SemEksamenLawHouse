@@ -52,10 +52,10 @@ partial class LoginPage
         // pBoxLogo
         // 
         pBoxLogo.Anchor = AnchorStyles.Top;
-        pBoxLogo.Image = Properties.Resources.Logo;
-        pBoxLogo.Location = new Point(196, 50);
+        pBoxLogo.Image = Properties.Resources.lawhouseLogo;
+        pBoxLogo.Location = new Point(139, 101);
         pBoxLogo.Name = "pBoxLogo";
-        pBoxLogo.Size = new Size(152, 147);
+        pBoxLogo.Size = new Size(266, 73);
         pBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
         pBoxLogo.TabIndex = 0;
         pBoxLogo.TabStop = false;
@@ -66,7 +66,7 @@ partial class LoginPage
         btnClose.FlatAppearance.BorderSize = 0;
         btnClose.FlatStyle = FlatStyle.Flat;
         btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+        btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
         btnClose.IconColor = Color.Black;
         btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
         btnClose.IconSize = 30;
@@ -156,7 +156,7 @@ partial class LoginPage
         lblLogin.BackColor = SystemColors.GradientInactiveCaption;
         lblLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblLogin.ForeColor = Color.FromArgb(45, 93, 134);
-        lblLogin.Location = new Point(234, 220);
+        lblLogin.Location = new Point(234, 194);
         lblLogin.Name = "lblLogin";
         lblLogin.Size = new Size(76, 25);
         lblLogin.TabIndex = 4;
@@ -201,10 +201,10 @@ partial class LoginPage
         tBoxPassword.Location = new Point(97, 507);
         tBoxPassword.MaxLength = 50;
         tBoxPassword.Name = "tBoxPassword";
+        tBoxPassword.PasswordChar = '•';
         tBoxPassword.PlaceholderText = "Password";
         tBoxPassword.Size = new Size(321, 20);
         tBoxPassword.TabIndex = 2;
-        tBoxPassword.PasswordChar = '\u2022'; 
         // 
         // pBoxEye
         // 

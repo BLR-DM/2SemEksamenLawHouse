@@ -64,8 +64,9 @@
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            iconButton1.ForeColor = Color.FromArgb(45, 93, 134);
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton1.IconColor = Color.Black;
+            iconButton1.IconColor = Color.FromArgb(45, 93, 134);
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 40;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
@@ -85,8 +86,9 @@
             btnEmployees.FlatAppearance.BorderSize = 0;
             btnEmployees.FlatStyle = FlatStyle.Flat;
             btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmployees.ForeColor = Color.FromArgb(45, 93, 134);
             btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnEmployees.IconColor = Color.Black;
+            btnEmployees.IconColor = Color.FromArgb(45, 93, 134);
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
             btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
@@ -106,8 +108,9 @@
             iconButton4.FlatAppearance.BorderSize = 0;
             iconButton4.FlatStyle = FlatStyle.Flat;
             iconButton4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            iconButton4.ForeColor = Color.FromArgb(45, 93, 134);
             iconButton4.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton4.IconColor = Color.Black;
+            iconButton4.IconColor = Color.FromArgb(45, 93, 134);
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 40;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
@@ -127,8 +130,9 @@
             iconButton3.FlatAppearance.BorderSize = 0;
             iconButton3.FlatStyle = FlatStyle.Flat;
             iconButton3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            iconButton3.ForeColor = Color.FromArgb(45, 93, 134);
             iconButton3.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton3.IconColor = Color.Black;
+            iconButton3.IconColor = Color.FromArgb(45, 93, 134);
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 40;
             iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
@@ -148,8 +152,9 @@
             iconButton2.FlatAppearance.BorderSize = 0;
             iconButton2.FlatStyle = FlatStyle.Flat;
             iconButton2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            iconButton2.ForeColor = Color.FromArgb(45, 93, 134);
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton2.IconColor = Color.Black;
+            iconButton2.IconColor = Color.FromArgb(45, 93, 134);
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 40;
             iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
@@ -208,7 +213,7 @@
             pnlContent.Size = new Size(1129, 688);
             pnlContent.TabIndex = 2;
             // 
-            // FrontPage
+            // FrontPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -218,7 +223,7 @@
             Controls.Add(pnlLeft);
             Controls.Add(pnlTop);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "FrontPage";
+            Name = "FrontPageView";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             pnlLeft.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.FrontPage
 {
-    partial class FrontPage
+    partial class FrontPageView
     {
         /// <summary>
         /// Required designer variable.

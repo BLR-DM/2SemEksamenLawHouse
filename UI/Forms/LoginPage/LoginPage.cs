@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using UI.Forms.FrontPage;
 
 namespace UI.Forms.LoginPage
 {
@@ -18,28 +10,19 @@ namespace UI.Forms.LoginPage
         {
             rgbColorBlue = Color.FromArgb(45, 93, 134);
 
-            InitializeComponent();
-            Load += FormLoginPage_Load;            
+            InitializeComponent();    
             btnClose.Click += BtnClose_Click;
             pboxEye.Click += PBoxEye_Click;
+            btnLogin.Click += BtnLogin_Click;
         }
 
-        private void FormLoginPage_Load(object? sender, EventArgs e)
+        private void BtnLogin_Click(object? sender, EventArgs e)
         {
-
+            Hide();
+            new FrontPageView().Show();
         }
 
         private void PBoxEye_Click(object? sender, EventArgs e)
-        {
-            HideShowPassword();
-        }
-
-        private void BtnClose_Click(object? sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void HideShowPassword()
         {
             if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
             {
@@ -51,6 +34,11 @@ namespace UI.Forms.LoginPage
                 pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
                 tboxPassword.PasswordChar = '\u2022'; // Unicode for bullet point '•'
             }
+        }
+
+        private void BtnClose_Click(object? sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

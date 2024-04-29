@@ -66,7 +66,7 @@ partial class LoginPage
         btnClose.FlatAppearance.BorderSize = 0;
         btnClose.FlatStyle = FlatStyle.Flat;
         btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnClose.IconChar = FontAwesome.Sharp.IconChar.X;
+        btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
         btnClose.IconColor = Color.Black;
         btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
         btnClose.IconSize = 30;
@@ -204,13 +204,14 @@ partial class LoginPage
         tBoxPassword.PlaceholderText = "Password";
         tBoxPassword.Size = new Size(321, 20);
         tBoxPassword.TabIndex = 2;
+        tBoxPassword.PasswordChar = '\u2022'; 
         // 
         // pBoxEye
         // 
         pBoxEye.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         pBoxEye.BackColor = SystemColors.GradientInactiveCaption;
         pBoxEye.ForeColor = Color.FromArgb(45, 93, 134);
-        pBoxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+        pBoxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
         pBoxEye.IconColor = Color.FromArgb(45, 93, 134);
         pBoxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
         pBoxEye.IconSize = 40;

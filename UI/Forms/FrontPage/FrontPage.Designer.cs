@@ -37,6 +37,7 @@
             pnlTop = new Panel();
             btnClose = new FontAwesome.Sharp.IconButton();
             pictureBox2 = new PictureBox();
+            pnlContent = new Panel();
             pnlLeft.SuspendLayout();
             pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -51,9 +52,9 @@
             pnlLeft.Controls.Add(iconButton3);
             pnlLeft.Controls.Add(iconButton2);
             pnlLeft.Dock = DockStyle.Left;
-            pnlLeft.Location = new Point(0, 84);
+            pnlLeft.Location = new Point(0, 60);
             pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(219, 877);
+            pnlLeft.Size = new Size(219, 688);
             pnlLeft.TabIndex = 0;
             // 
             // iconButton1
@@ -110,7 +111,7 @@
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 40;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(0, 802);
+            iconButton4.Location = new Point(0, 613);
             iconButton4.Name = "iconButton4";
             iconButton4.Padding = new Padding(25, 0, 20, 0);
             iconButton4.Size = new Size(219, 75);
@@ -169,7 +170,7 @@
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(1584, 84);
+            pnlTop.Size = new Size(1348, 60);
             pnlTop.TabIndex = 1;
             // 
             // btnClose
@@ -182,9 +183,9 @@
             btnClose.IconColor = Color.Black;
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClose.IconSize = 30;
-            btnClose.Location = new Point(1539, 12);
+            btnClose.Location = new Point(1301, 12);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(33, 28);
+            btnClose.Size = new Size(35, 28);
             btnClose.TabIndex = 1;
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = true;
@@ -192,19 +193,28 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.lawhouseLogo;
-            pictureBox2.Location = new Point(3, 12);
+            pictureBox2.Location = new Point(3, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(216, 56);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
+            // pnlContent
+            // 
+            pnlContent.Dock = DockStyle.Fill;
+            pnlContent.Location = new Point(219, 60);
+            pnlContent.Name = "pnlContent";
+            pnlContent.Size = new Size(1129, 688);
+            pnlContent.TabIndex = 2;
+            // 
             // FrontPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1584, 961);
+            ClientSize = new Size(1348, 748);
             ControlBox = false;
+            Controls.Add(pnlContent);
             Controls.Add(pnlLeft);
             Controls.Add(pnlTop);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -227,5 +237,6 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Panel pnlContent;
     }
 }

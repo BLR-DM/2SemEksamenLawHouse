@@ -16,7 +16,7 @@ namespace EntityModels
         //attributes
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        public UserType Type { get; set; }
+        public UserType Type { get; set; } // ?
     }
 
     public enum UserType

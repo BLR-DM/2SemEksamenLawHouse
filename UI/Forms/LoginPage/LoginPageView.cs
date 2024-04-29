@@ -1,5 +1,6 @@
 ﻿using UI.Forms.CreateUserPage;
 using UI.Forms.FrontPage;
+using UIModels;
 
 namespace UI.Forms.LoginPage
 {

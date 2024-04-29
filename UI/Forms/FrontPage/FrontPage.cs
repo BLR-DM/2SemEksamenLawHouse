@@ -16,11 +16,18 @@ namespace UI.Forms.FrontPage
         public FrontPage()
         {
             InitializeComponent();
-            List<Employee> employees = new List<Employee>();
-
-            Lawyer lawyer1 = new Lawyer() { Title = LawyerTitle.type1,  }
+            btnClose.Click += BtnClose_Click;
 
 
+            // Close button prop
+            btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            btnClose.IconSize = 30;
+            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
+        }
+
+        private void BtnClose_Click(object? sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

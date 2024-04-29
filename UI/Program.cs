@@ -1,4 +1,5 @@
 using UI.Forms.FrontPage;
+using UI.Forms.LoginPage;
 namespace UI
 {
     internal static class Program

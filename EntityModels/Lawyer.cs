@@ -22,6 +22,8 @@ namespace EntityModels
 
         //foriegn keys
         public int UserID { get; set; }
+
+        //nav props
         public User User { get; set; }
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set; }
         public virtual ICollection<Case> Cases { get; set; }

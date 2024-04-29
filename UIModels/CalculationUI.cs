@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UIModels
+{
+    public class CalculationUI
+    {
+        public int CalculationID { get; set; }
+        public string Name { get; set; }
+    }
+}

@@ -22,7 +22,7 @@ namespace EntityModels
         public string Description { get; set;}
         public float Price { get; set; }
 
-        //foreign key
+        //foreign key (nav prop??)
         public virtual ICollection<ClientFormular> ClientFormulars { get; set; }
     }
 }

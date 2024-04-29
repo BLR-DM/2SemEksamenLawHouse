@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityModels
+namespace UIModels
 {
-    public class Subscription
+    public class SubscriptionUI
     {
-        [Key]
         public int SubscriptionID { get; set; }
         public string Title { get; set; }
         public float Price { get; set; }
-
-        //foreign key (nav prop???)
-
-        public virtual ICollection<ClientSubscription> ClientSubscriptions { get; set; }
     }
 }

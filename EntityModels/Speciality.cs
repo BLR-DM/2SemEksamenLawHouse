@@ -21,7 +21,7 @@ namespace EntityModels
         public string SpecialityName { get; set;}
 
 
-        //foreign key
+        //foreign key (nav prop??)
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set;}
 
     }

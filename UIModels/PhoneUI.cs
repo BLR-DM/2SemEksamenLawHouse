@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityModels
+namespace UIModels
 {
-    public class Phone
+    public class PhoneUI
     {
-        [Key]
         public int PhoneID { get; set; }
 
         //attributes
@@ -17,8 +15,5 @@ namespace EntityModels
 
         //foreign Key
         public int ClientID { get; set; }
-
-        //nav prop
-        public Client Client { get; set; }
     }
 }

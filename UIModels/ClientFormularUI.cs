@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityModels
+namespace UIModels
 {
-    public class ClientFormular
+    public class ClientFormularUI
     {
-        [Key]
         public int ClientFormularID { get; set; }
 
         //attributes
@@ -20,10 +17,5 @@ namespace EntityModels
         //foreign Keys
         public int ClientID { get; set; }
         public int FormularID { get; set; }
-
-        //nav prop
-        public Client Client { get; set; }
-        public Formular Formular { get; set; }
-
     }
 }

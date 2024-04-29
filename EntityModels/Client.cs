@@ -25,10 +25,11 @@ namespace EntityModels
 
         //foreign keys
         public int UserID { get; set; }
+
+        //nav prop
         public User User { get; set; }
         public virtual ICollection<ClientFormular> ClientFormulars { get; set; }
         public virtual ICollection<Case> Cases { get; set; }
-
         //0..1 Subscription
         public ClientSubscription ClientSubscription { get; set; }
 

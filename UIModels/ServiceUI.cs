@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityModels
+namespace UIModels
 {
-    public class Service
+    public class ServiceUI
     {
-        public Service() 
-        {
-            this.CaseServices = new HashSet<CaseService>();
-        }
-
-        [Key]
         public int ServiceID { get; set; }
 
         //attributes
@@ -22,9 +15,5 @@ namespace EntityModels
         public string Description { get; set; }
         public string PriceType { get; set; }
         public float Price { get; set; }
-
-        //foreign key (nav prop???)
-        public virtual ICollection<CaseService> CaseServices { get; set; }
-
     }
 }

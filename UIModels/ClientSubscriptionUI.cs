@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityModels
+namespace UIModels
 {
-    public class ClientSubscription
+    public class ClientSubscriptionUI
     {
-        [Key]
         public int ClientSubscriptionID { get; set; }
 
         //Attributes
@@ -19,9 +17,5 @@ namespace EntityModels
         //Foreign keys
         public int ClientID { get; set; }
         public int SubscriptionID { get; set; }
-
-        //nav prop
-        public Client Client { get; set; }
-        public Subscription Subscription { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace UI.Forms.LoginPage;
 
-partial class LoginPage
+partial class LoginPageView
 {
     /// <summary>
     ///  Required designer variable.
@@ -43,6 +43,9 @@ partial class LoginPage
         tboxUser = new TextBox();
         tboxPassword = new TextBox();
         pboxEye = new FontAwesome.Sharp.IconPictureBox();
+        lblCreateAccount = new Label();
+        lblRegister = new Label();
+        lblForgotPassword = new Label();
         ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxPassword).BeginInit();
@@ -166,6 +169,7 @@ partial class LoginPage
         // 
         btnLogin.Anchor = AnchorStyles.Bottom;
         btnLogin.BackColor = Color.FromArgb(45, 93, 134);
+        btnLogin.Cursor = Cursors.Hand;
         btnLogin.FlatAppearance.BorderSize = 0;
         btnLogin.FlatStyle = FlatStyle.Flat;
         btnLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
@@ -174,9 +178,9 @@ partial class LoginPage
         btnLogin.IconColor = Color.Black;
         btnLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
         btnLogin.IconSize = 70;
-        btnLogin.Location = new Point(196, 670);
+        btnLogin.Location = new Point(145, 634);
         btnLogin.Name = "btnLogin";
-        btnLogin.Size = new Size(152, 50);
+        btnLogin.Size = new Size(254, 50);
         btnLogin.TabIndex = 3;
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = false;
@@ -210,6 +214,7 @@ partial class LoginPage
         // 
         pboxEye.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         pboxEye.BackColor = SystemColors.GradientInactiveCaption;
+        pboxEye.Cursor = Cursors.Hand;
         pboxEye.ForeColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
         pboxEye.IconColor = Color.FromArgb(45, 93, 134);
@@ -221,7 +226,48 @@ partial class LoginPage
         pboxEye.TabIndex = 7;
         pboxEye.TabStop = false;
         // 
-        // LoginPage
+        // lblCreateAccount
+        // 
+        lblCreateAccount.Anchor = AnchorStyles.Bottom;
+        lblCreateAccount.AutoSize = true;
+        lblCreateAccount.BackColor = SystemColors.GradientInactiveCaption;
+        lblCreateAccount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+        lblCreateAccount.ForeColor = Color.FromArgb(45, 93, 134);
+        lblCreateAccount.Location = new Point(145, 699);
+        lblCreateAccount.Name = "lblCreateAccount";
+        lblCreateAccount.Size = new Size(176, 21);
+        lblCreateAccount.TabIndex = 4;
+        lblCreateAccount.Text = "Don't have an account?";
+        // 
+        // lblRegister
+        // 
+        lblRegister.Anchor = AnchorStyles.Bottom;
+        lblRegister.AutoSize = true;
+        lblRegister.BackColor = SystemColors.GradientInactiveCaption;
+        lblRegister.Cursor = Cursors.Hand;
+        lblRegister.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        lblRegister.ForeColor = Color.FromArgb(45, 93, 134);
+        lblRegister.Location = new Point(327, 699);
+        lblRegister.Name = "lblRegister";
+        lblRegister.Size = new Size(72, 21);
+        lblRegister.TabIndex = 4;
+        lblRegister.Text = "Register";
+        // 
+        // lblForgotPassword
+        // 
+        lblForgotPassword.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        lblForgotPassword.AutoSize = true;
+        lblForgotPassword.BackColor = SystemColors.GradientInactiveCaption;
+        lblForgotPassword.Cursor = Cursors.Hand;
+        lblForgotPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+        lblForgotPassword.ForeColor = Color.FromArgb(45, 93, 134);
+        lblForgotPassword.Location = new Point(366, 552);
+        lblForgotPassword.Name = "lblForgotPassword";
+        lblForgotPassword.Size = new Size(141, 21);
+        lblForgotPassword.TabIndex = 4;
+        lblForgotPassword.Text = "Forgot password?";
+        // 
+        // LoginPageView
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -232,6 +278,9 @@ partial class LoginPage
         Controls.Add(tboxPassword);
         Controls.Add(tboxUser);
         Controls.Add(btnLogin);
+        Controls.Add(lblRegister);
+        Controls.Add(lblForgotPassword);
+        Controls.Add(lblCreateAccount);
         Controls.Add(lblPassword);
         Controls.Add(lblLogin);
         Controls.Add(lblUser);
@@ -243,7 +292,7 @@ partial class LoginPage
         Controls.Add(pboxLogo);
         MaximizeBox = false;
         MinimizeBox = false;
-        Name = "LoginPage";
+        Name = "LoginPageView";
         SizeGripStyle = SizeGripStyle.Hide;
         StartPosition = FormStartPosition.CenterScreen;
         ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
@@ -269,4 +318,7 @@ partial class LoginPage
     private TextBox tboxUser;
     private TextBox tboxPassword;
     private FontAwesome.Sharp.IconPictureBox pboxEye;
+    private Label lblCreateAccount;
+    private Label lblRegister;
+    private Label lblForgotPassword;
 }

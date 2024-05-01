@@ -5,13 +5,15 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{265EEDE1-F1E6-4E98-A68D-56333D869E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{1F12FC88-1795-4991-B62C-3BBAD3FD02AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{1F12FC88-1795-4991-B62C-3BBAD3FD02AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{69250159-1764-433C-814D-0A8912C927EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{69250159-1764-433C-814D-0A8912C927EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityModels", "EntityModels\EntityModels.csproj", "{088E6B64-9140-4998-A97B-5A202FA21981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityModels", "EntityModels\EntityModels.csproj", "{088E6B64-9140-4998-A97B-5A202FA21981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIModels", "UIModels\UIModels.csproj", "{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIModels", "UIModels\UIModels.csproj", "{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{D71C3C35-DB3B-46FD-B0DA-9E08FF36E458}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71C3C35-DB3B-46FD-B0DA-9E08FF36E458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71C3C35-DB3B-46FD-B0DA-9E08FF36E458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71C3C35-DB3B-46FD-B0DA-9E08FF36E458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71C3C35-DB3B-46FD-B0DA-9E08FF36E458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

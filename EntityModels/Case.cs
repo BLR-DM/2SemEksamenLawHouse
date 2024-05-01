@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace EntityModels
 {
@@ -19,7 +20,7 @@ namespace EntityModels
 
         //attributes
         public string Title { get; set; }
-        public CaseType CaseType { get; set; }
+        public Enums.CaseType CaseType { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime EndDate { get; set; }
         public float EstHours { get; set; }
@@ -37,10 +38,4 @@ namespace EntityModels
         public virtual ICollection<CaseService> CaseServices { get; set; }
     }
 
-    public enum CaseType
-    {
-        test1,
-        test2,
-        test3
-    }
 }

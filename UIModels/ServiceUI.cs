@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace UIModels
 {
@@ -13,7 +14,7 @@ namespace UIModels
         //attributes
         public string Name { get; set; }
         public string Description { get; set; }
-        public string PriceType { get; set; }
+        public Enums.PriceType PriceType { get; set; }
         public float Price { get; set; }
     }
 }

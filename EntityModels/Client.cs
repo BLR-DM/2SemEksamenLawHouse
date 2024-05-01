@@ -28,6 +28,7 @@ namespace EntityModels
 
         //nav prop
         public User User { get; set; }
+        public virtual ICollection<Phone> Phones { get; set; }
         public virtual ICollection<ClientFormular> ClientFormulars { get; set; }
         public virtual ICollection<Case> Cases { get; set; }
         //0..1 Subscription

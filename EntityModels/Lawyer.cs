@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace EntityModels
 {
@@ -18,7 +19,7 @@ namespace EntityModels
         public int LawyerID { get; set; }
 
         //attributes
-        public LawyerTitle Title { get; set; }
+        public Enums.LawyerTitle Title { get; set; }
 
         //foriegn keys
         public int UserID { get; set; }
@@ -29,10 +30,4 @@ namespace EntityModels
         public virtual ICollection<Case> Cases { get; set; }
     }
 
-    public enum LawyerTitle
-    {
-        type1,
-        type2,
-        type3
-    }
 }

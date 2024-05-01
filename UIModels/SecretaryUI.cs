@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace UIModels
 {
-    public class SecretaryUI
+    public class SecretaryUI : Employee
     {
         public int SecretaryID { get; set; }
 

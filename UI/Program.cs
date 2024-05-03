@@ -21,14 +21,14 @@ namespace UI
 
             //Lawyer lawyer = new Lawyer()
             //{
-                FirstName = "Bilal",
-                LastName = "Kinali",
-                Email = "bilalkinali@gmail.com",
-                AddressLine = "Lumbyesvej 16",
-                PostalCode = 7000,
-                PhoneNumber = 88888888,
-                HireDate = DateTime.Now,
-                LawyerTitleID = 1,
+                //FirstName = "Bilal",
+                //LastName = "Kinali",
+                //Email = "bilalkinali@gmail.com",
+                //AddressLine = "Lumbyesvej 16",
+                //PostalCode = 7000,
+                //PhoneNumber = 88888888,
+                //HireDate = DateTime.Now,
+                //LawyerTitleID = 1,
 
             //    LoginDetails = new LoginDetails()
             //    {

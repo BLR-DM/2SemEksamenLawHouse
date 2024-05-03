@@ -16,17 +16,17 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
         
-        public async Task<bool> Create(Client client)
+        public void Create(Client client)
         {
             try
             {
-                await db.AddAsync(client);
-                return true;
+                db.Add(client);
+                db.SaveChanges();
             }
             catch (Exception)
             {
 
-                return false;
+                
             }
         }
     }

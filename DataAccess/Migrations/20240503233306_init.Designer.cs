@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240503180649_init")]
+    [Migration("20240503233306_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -45,7 +45,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<float>("EstHours")
+                    b.Property<float>("EstimatedHours")
                         .HasColumnType("real");
 
                     b.Property<int>("LawyerID")
@@ -275,9 +275,13 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -294,6 +298,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("PersonID");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("LoginDetailsID")
                         .IsUnique();
@@ -426,6 +433,10 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique()
+                        .HasFilter("[PhoneNumber] IS NOT NULL");
 
                     b.ToTable("Employees");
                 });

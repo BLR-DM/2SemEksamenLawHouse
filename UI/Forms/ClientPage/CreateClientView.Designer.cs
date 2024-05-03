@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.ClientPage
 {
-    partial class CreateClientPage
+    partial class CreateClientView
     {
         /// <summary>
         /// Required designer variable.

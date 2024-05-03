@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI.Forms.ClientPage
 {
-    public partial class CreateClientPage : Form
+    public partial class CreateClientView : Form
     {
-        public CreateClientPage()
+        public CreateClientView()
         {
             InitializeComponent();
 

@@ -115,9 +115,10 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AddressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostalCode = table.Column<int>(type: "int", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LoginDetailsID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -315,7 +316,7 @@ namespace DataAccess.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EstHours = table.Column<float>(type: "real", nullable: false),
+                    EstimatedHours = table.Column<float>(type: "real", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TotalPrice = table.Column<float>(type: "real", nullable: false),
                     CaseTypeID = table.Column<int>(type: "int", nullable: false),
@@ -457,6 +458,13 @@ namespace DataAccess.Migrations
                 column: "SubscriptionID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employees_PhoneNumber",
+                table: "Employees",
+                column: "PhoneNumber",
+                unique: true,
+                filter: "[PhoneNumber] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Lawyers_LawyerTitleID",
                 table: "Lawyers",
                 column: "LawyerTitleID");
@@ -465,6 +473,12 @@ namespace DataAccess.Migrations
                 name: "IX_LawyerSpeciality_SpecialityID",
                 table: "LawyerSpeciality",
                 column: "SpecialityID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Persons_Email",
+                table: "Persons",
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Persons_LoginDetailsID",

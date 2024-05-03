@@ -18,34 +18,29 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CreateClientView());
+            Application.Run(new LoginPageView());
 
 
-            ClientBl clientBl = new ClientBl();
+            //ClientBl clientBl = new ClientBl();
 
-            ClientUI clientUI = new ClientUI()
-            {
-                FirstName = "Lucas",
-                LastName = "MacQuarrie",
-                Email = "Maclucas07@hotmail.com",
-                AddressLine = "Korskaervej 16",
-                PostalCode = 7000,
-                City = "Fredericia",
-                ClientSub = 0,
-            };
-            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
-            {
-                UserName = clientUI.Email,
-                PassWord = "kode123",
-                CreationDate = DateTime.Now,
-            };
+            //ClientUI clientUI = new ClientUI()
+            //{
+            //    FirstName = "Lucas",
+            //    LastName = "MacQuarrie",
+            //    Email = "Maclucas07@hotmail.com",
+            //    AddressLine = "Korskaervej 16",
+            //    PostalCode = 7000,
+            //    City = "Fredericia",
+            //    ClientSub = 0,
+            //};
+            //LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            //{
+            //    UserName = clientUI.Email,
+            //    PassWord = "kode123",
+            //    CreationDate = DateTime.Now,
+            //};
 
-            Test();
-
-            async Task<bool> Test()
-            {
-                return await clientBl.CreateAsync(clientUI, loginDetailsUI);
-            }
+            //clientBl.Create(clientUI, loginDetailsUI);
 
 
 
@@ -53,15 +48,15 @@ namespace UI
 
             //Lawyer lawyer = new Lawyer()
             //{
-                //FirstName = "Bilal",
-                //LastName = "Kinali",
-                //Email = "bilalkinali@gmail.com",
-                //AddressLine = "Lumbyesvej 16",
-                //PostalCode = 7000,
-                //PhoneNumber = 88888888,
-                //HireDate = DateTime.Now,
-                //LawyerTitleID = 1,
-          
+            //FirstName = "Bilal",
+            //LastName = "Kinali",
+            //Email = "bilalkinali@gmail.com",
+            //AddressLine = "Lumbyesvej 16",
+            //PostalCode = 7000,
+            //PhoneNumber = 88888888,
+            //HireDate = DateTime.Now,
+            //LawyerTitleID = 1,
+
             //    LoginDetails = new LoginDetails()
             //    {
             //        UserName = "bilalkinali@gmail.com",

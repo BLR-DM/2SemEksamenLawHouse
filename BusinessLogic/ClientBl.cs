@@ -19,7 +19,7 @@ namespace BusinessLogic
             modelConverter = new ModelConverter();
         }
 
-        public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
+        public void Create(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
         {
             Client temp = modelConverter.ConvertFromClientUI(clientUI);
             LoginDetails tempL = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
@@ -27,7 +27,7 @@ namespace BusinessLogic
             temp.LoginDetails = tempL;
 
 
-            return await dbAccess.CreateAsync(temp);
+            dbAccess.Create(temp);
         }
     }
 }

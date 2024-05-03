@@ -101,7 +101,7 @@
             lblName.BackColor = SystemColors.GradientInactiveCaption;
             lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(33, 125);
+            lblName.Location = new Point(33, 120);
             lblName.Name = "lblName";
             lblName.Size = new Size(53, 21);
             lblName.TabIndex = 4;
@@ -112,7 +112,7 @@
             tboxFirstname.Anchor = AnchorStyles.Top;
             tboxFirstname.BackColor = Color.White;
             tboxFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxFirstname.Location = new Point(33, 150);
+            tboxFirstname.Location = new Point(33, 145);
             tboxFirstname.MaxLength = 50;
             tboxFirstname.Name = "tboxFirstname";
             tboxFirstname.Size = new Size(230, 27);
@@ -123,7 +123,7 @@
             tboxLastname.Anchor = AnchorStyles.Top;
             tboxLastname.BackColor = Color.White;
             tboxLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxLastname.Location = new Point(272, 150);
+            tboxLastname.Location = new Point(272, 145);
             tboxLastname.MaxLength = 50;
             tboxLastname.Name = "tboxLastname";
             tboxLastname.Size = new Size(230, 27);
@@ -136,7 +136,7 @@
             lblEmail.BackColor = SystemColors.GradientInactiveCaption;
             lblEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEmail.Location = new Point(33, 205);
+            lblEmail.Location = new Point(33, 200);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(48, 21);
             lblEmail.TabIndex = 4;
@@ -147,7 +147,7 @@
             tboxEmail.Anchor = AnchorStyles.Top;
             tboxEmail.BackColor = Color.White;
             tboxEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxEmail.Location = new Point(33, 230);
+            tboxEmail.Location = new Point(33, 225);
             tboxEmail.MaxLength = 50;
             tboxEmail.Name = "tboxEmail";
             tboxEmail.Size = new Size(230, 27);
@@ -160,7 +160,7 @@
             lblAddress.BackColor = SystemColors.GradientInactiveCaption;
             lblAddress.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblAddress.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddress.Location = new Point(33, 365);
+            lblAddress.Location = new Point(33, 360);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(70, 21);
             lblAddress.TabIndex = 4;
@@ -171,7 +171,7 @@
             tboxAddress.Anchor = AnchorStyles.Top;
             tboxAddress.BackColor = Color.White;
             tboxAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxAddress.Location = new Point(33, 390);
+            tboxAddress.Location = new Point(33, 385);
             tboxAddress.MaxLength = 50;
             tboxAddress.Name = "tboxAddress";
             tboxAddress.Size = new Size(470, 27);
@@ -184,7 +184,7 @@
             lblPostal.BackColor = SystemColors.GradientInactiveCaption;
             lblPostal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPostal.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPostal.Location = new Point(33, 445);
+            lblPostal.Location = new Point(33, 440);
             lblPostal.Name = "lblPostal";
             lblPostal.Size = new Size(94, 21);
             lblPostal.TabIndex = 4;
@@ -195,7 +195,7 @@
             txtPostal.Anchor = AnchorStyles.Top;
             txtPostal.BackColor = Color.White;
             txtPostal.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPostal.Location = new Point(33, 470);
+            txtPostal.Location = new Point(33, 465);
             txtPostal.MaxLength = 50;
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(94, 27);
@@ -208,7 +208,7 @@
             lblFirstname.BackColor = SystemColors.GradientInactiveCaption;
             lblFirstname.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFirstname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblFirstname.Location = new Point(33, 180);
+            lblFirstname.Location = new Point(33, 175);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(57, 13);
             lblFirstname.TabIndex = 4;
@@ -221,7 +221,7 @@
             lblLastname.BackColor = SystemColors.GradientInactiveCaption;
             lblLastname.Font = new Font("Segoe UI", 8.25F);
             lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLastname.Location = new Point(272, 180);
+            lblLastname.Location = new Point(272, 175);
             lblLastname.Name = "lblLastname";
             lblLastname.Size = new Size(55, 13);
             lblLastname.TabIndex = 4;
@@ -241,7 +241,7 @@
             tboxEmailConfirm.Anchor = AnchorStyles.Top;
             tboxEmailConfirm.BackColor = Color.White;
             tboxEmailConfirm.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxEmailConfirm.Location = new Point(273, 230);
+            tboxEmailConfirm.Location = new Point(273, 225);
             tboxEmailConfirm.MaxLength = 50;
             tboxEmailConfirm.Name = "tboxEmailConfirm";
             tboxEmailConfirm.Size = new Size(230, 27);
@@ -254,7 +254,7 @@
             lblConfirmEmail.BackColor = SystemColors.GradientInactiveCaption;
             lblConfirmEmail.Font = new Font("Segoe UI", 8.25F);
             lblConfirmEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblConfirmEmail.Location = new Point(272, 260);
+            lblConfirmEmail.Location = new Point(272, 255);
             lblConfirmEmail.Name = "lblConfirmEmail";
             lblConfirmEmail.Size = new Size(78, 13);
             lblConfirmEmail.TabIndex = 4;
@@ -267,7 +267,7 @@
             lblUsername.BackColor = SystemColors.GradientInactiveCaption;
             lblUsername.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUsername.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUsername.Location = new Point(33, 550);
+            lblUsername.Location = new Point(33, 539);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(83, 21);
             lblUsername.TabIndex = 4;
@@ -279,7 +279,7 @@
             txtUsername.BackColor = SystemColors.GradientActiveCaption;
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsername.Location = new Point(34, 574);
+            txtUsername.Location = new Point(34, 563);
             txtUsername.MaxLength = 50;
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
@@ -306,7 +306,7 @@
             lblPassword.BackColor = SystemColors.GradientInactiveCaption;
             lblPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPassword.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPassword.Location = new Point(34, 616);
+            lblPassword.Location = new Point(34, 605);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(79, 21);
             lblPassword.TabIndex = 4;
@@ -317,7 +317,7 @@
             txtPassword.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txtPassword.BackColor = Color.White;
             txtPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(34, 640);
+            txtPassword.Location = new Point(34, 629);
             txtPassword.MaxLength = 50;
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(229, 27);
@@ -328,7 +328,7 @@
             txtPasswordConfirm.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtPasswordConfirm.BackColor = Color.White;
             txtPasswordConfirm.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPasswordConfirm.Location = new Point(273, 640);
+            txtPasswordConfirm.Location = new Point(273, 629);
             txtPasswordConfirm.MaxLength = 50;
             txtPasswordConfirm.Name = "txtPasswordConfirm";
             txtPasswordConfirm.Size = new Size(186, 27);
@@ -341,7 +341,7 @@
             lblPhone.BackColor = SystemColors.GradientInactiveCaption;
             lblPhone.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPhone.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhone.Location = new Point(33, 285);
+            lblPhone.Location = new Point(33, 280);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(117, 21);
             lblPhone.TabIndex = 4;
@@ -352,7 +352,7 @@
             tboxPhoneMain.Anchor = AnchorStyles.Top;
             tboxPhoneMain.BackColor = Color.White;
             tboxPhoneMain.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxPhoneMain.Location = new Point(33, 310);
+            tboxPhoneMain.Location = new Point(33, 305);
             tboxPhoneMain.MaxLength = 50;
             tboxPhoneMain.Name = "tboxPhoneMain";
             tboxPhoneMain.Size = new Size(230, 27);
@@ -363,7 +363,7 @@
             tboxPhoneAlt.Anchor = AnchorStyles.Top;
             tboxPhoneAlt.BackColor = Color.White;
             tboxPhoneAlt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxPhoneAlt.Location = new Point(272, 310);
+            tboxPhoneAlt.Location = new Point(272, 305);
             tboxPhoneAlt.MaxLength = 50;
             tboxPhoneAlt.Name = "tboxPhoneAlt";
             tboxPhoneAlt.Size = new Size(230, 27);
@@ -376,7 +376,7 @@
             lblPhoneAlt.BackColor = SystemColors.GradientInactiveCaption;
             lblPhoneAlt.Font = new Font("Segoe UI", 8.25F);
             lblPhoneAlt.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhoneAlt.Location = new Point(272, 340);
+            lblPhoneAlt.Location = new Point(272, 335);
             lblPhoneAlt.Name = "lblPhoneAlt";
             lblPhoneAlt.Size = new Size(142, 13);
             lblPhoneAlt.TabIndex = 4;
@@ -389,7 +389,7 @@
             lblPhoneMain.BackColor = SystemColors.GradientInactiveCaption;
             lblPhoneMain.Font = new Font("Segoe UI", 8.25F);
             lblPhoneMain.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhoneMain.Location = new Point(33, 340);
+            lblPhoneMain.Location = new Point(33, 335);
             lblPhoneMain.Name = "lblPhoneMain";
             lblPhoneMain.Size = new Size(151, 13);
             lblPhoneMain.TabIndex = 4;
@@ -402,7 +402,7 @@
             lblEmailEnter.BackColor = SystemColors.GradientInactiveCaption;
             lblEmailEnter.Font = new Font("Segoe UI", 8.25F);
             lblEmailEnter.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEmailEnter.Location = new Point(33, 260);
+            lblEmailEnter.Location = new Point(33, 255);
             lblEmailEnter.Name = "lblEmailEnter";
             lblEmailEnter.Size = new Size(64, 13);
             lblEmailEnter.TabIndex = 4;
@@ -415,7 +415,7 @@
             lblCity.BackColor = SystemColors.GradientInactiveCaption;
             lblCity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCity.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCity.Location = new Point(272, 445);
+            lblCity.Location = new Point(272, 440);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(38, 21);
             lblCity.TabIndex = 4;
@@ -426,7 +426,7 @@
             txtCity.Anchor = AnchorStyles.Top;
             txtCity.BackColor = Color.White;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCity.Location = new Point(272, 470);
+            txtCity.Location = new Point(272, 465);
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(230, 27);
@@ -439,7 +439,7 @@
             pnlLine.BorderStyle = BorderStyle.FixedSingle;
             pnlLine.Controls.Add(pboxEye);
             pnlLine.Controls.Add(lblPasswordConfirm);
-            pnlLine.Location = new Point(12, 538);
+            pnlLine.Location = new Point(12, 527);
             pnlLine.Name = "pnlLine";
             pnlLine.Size = new Size(520, 162);
             pnlLine.TabIndex = 3;
@@ -457,7 +457,7 @@
             btnCreate.IconColor = Color.Black;
             btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreate.IconSize = 70;
-            btnCreate.Location = new Point(168, 728);
+            btnCreate.Location = new Point(168, 723);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(209, 50);
             btnCreate.TabIndex = 3;
@@ -471,7 +471,7 @@
             lblCancel.BackColor = SystemColors.GradientInactiveCaption;
             lblCancel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCancel.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCancel.Location = new Point(55, 744);
+            lblCancel.Location = new Point(55, 739);
             lblCancel.Name = "lblCancel";
             lblCancel.Size = new Size(58, 21);
             lblCancel.TabIndex = 4;

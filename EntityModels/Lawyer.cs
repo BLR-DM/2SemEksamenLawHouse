@@ -16,9 +16,11 @@ namespace EntityModels
         }
 
 
+        //foreign key
+        public int LawyerTitleID { get; set; }
 
-        //attributes
-        //public string Title { get; set; }
+        //nav props
+        public LawyerTitle LawyerTitle { get; set; }
 
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set; }
         public virtual ICollection<Case> Cases { get; set; }

@@ -293,7 +293,7 @@
             lblPasswordConfirm.BackColor = SystemColors.GradientInactiveCaption;
             lblPasswordConfirm.Font = new Font("Segoe UI", 8.25F);
             lblPasswordConfirm.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPasswordConfirm.Location = new Point(268, 131);
+            lblPasswordConfirm.Location = new Point(260, 131);
             lblPasswordConfirm.Name = "lblPasswordConfirm";
             lblPasswordConfirm.Size = new Size(101, 13);
             lblPasswordConfirm.TabIndex = 4;

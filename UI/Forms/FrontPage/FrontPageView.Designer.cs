@@ -30,15 +30,16 @@
         {
             gradiantPanel1 = new Toolbox.GradiantPanel();
             btnClose = new FontAwesome.Sharp.IconButton();
-            pictureBox1 = new PictureBox();
+            pboxLogo = new PictureBox();
             pnlLeft = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             iconButton4 = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
+            ContextPanel = new Panel();
             gradiantPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pnlLeft.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,11 +49,11 @@
             gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
             gradiantPanel1.BottomColor = Color.Empty;
             gradiantPanel1.Controls.Add(btnClose);
-            gradiantPanel1.Controls.Add(pictureBox1);
+            gradiantPanel1.Controls.Add(pboxLogo);
             gradiantPanel1.Dock = DockStyle.Top;
             gradiantPanel1.Location = new Point(0, 0);
             gradiantPanel1.Name = "gradiantPanel1";
-            gradiantPanel1.Size = new Size(1198, 56);
+            gradiantPanel1.Size = new Size(1198, 60);
             gradiantPanel1.TabIndex = 1;
             gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
             // 
@@ -74,16 +75,16 @@
             btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // pboxLogo
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.lawhouseLogo;
-            pictureBox1.Location = new Point(0, -14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 81);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            pboxLogo.BackColor = Color.Transparent;
+            pboxLogo.Image = Properties.Resources.lawhouseLogo;
+            pboxLogo.Location = new Point(0, -14);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(200, 81);
+            pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pboxLogo.TabIndex = 3;
+            pboxLogo.TabStop = false;
             // 
             // pnlLeft
             // 
@@ -94,9 +95,9 @@
             pnlLeft.Controls.Add(iconButton3);
             pnlLeft.Controls.Add(iconButton2);
             pnlLeft.Dock = DockStyle.Left;
-            pnlLeft.Location = new Point(0, 56);
+            pnlLeft.Location = new Point(0, 60);
             pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(200, 617);
+            pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
             // 
             // iconButton1
@@ -156,7 +157,7 @@
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 40;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(0, 542);
+            iconButton4.Location = new Point(0, 538);
             iconButton4.Name = "iconButton4";
             iconButton4.Padding = new Padding(25, 0, 20, 0);
             iconButton4.Size = new Size(200, 75);
@@ -209,12 +210,21 @@
             iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton2.UseVisualStyleBackColor = false;
             // 
+            // ContextPanel
+            // 
+            ContextPanel.Dock = DockStyle.Fill;
+            ContextPanel.Location = new Point(200, 60);
+            ContextPanel.Name = "ContextPanel";
+            ContextPanel.Size = new Size(998, 613);
+            ContextPanel.TabIndex = 3;
+            // 
             // FrontPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 673);
             ControlBox = false;
+            Controls.Add(ContextPanel);
             Controls.Add(pnlLeft);
             Controls.Add(gradiantPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -223,7 +233,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             TransparencyKey = Color.Transparent;
             gradiantPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             pnlLeft.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -231,7 +241,7 @@
         #endregion
 
         private Toolbox.GradiantPanel gradiantPanel1;
-        private PictureBox pictureBox1;
+        private PictureBox pboxLogo;
         private FontAwesome.Sharp.IconButton btnClose;
         private Panel pnlLeft;
         private FontAwesome.Sharp.IconButton iconButton1;
@@ -239,5 +249,6 @@
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private Panel ContextPanel;
     }
 }

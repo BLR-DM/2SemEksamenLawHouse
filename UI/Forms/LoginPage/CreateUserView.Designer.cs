@@ -31,18 +31,18 @@
             pboxEye = new FontAwesome.Sharp.IconPictureBox();
             lblCreate = new Label();
             lblName = new Label();
-            tboxFirstname = new TextBox();
-            tboxLastname = new TextBox();
+            txtFirstname = new TextBox();
+            txtLastname = new TextBox();
             lblEmail = new Label();
-            tboxEmail = new TextBox();
+            txtEmail = new TextBox();
             lblAddress = new Label();
-            tboxAddress = new TextBox();
+            txtAddress = new TextBox();
             lblPostal = new Label();
             txtPostal = new TextBox();
             lblFirstname = new Label();
             lblLastname = new Label();
             panel1 = new Panel();
-            tboxEmailConfirm = new TextBox();
+            txtEmailConfirm = new TextBox();
             lblConfirmEmail = new Label();
             lblUsername = new Label();
             txtUsername = new TextBox();
@@ -51,14 +51,15 @@
             txtPassword = new TextBox();
             txtPasswordConfirm = new TextBox();
             lblPhone = new Label();
-            tboxPhoneMain = new TextBox();
-            tboxPhoneAlt = new TextBox();
+            txtPhoneMain = new TextBox();
+            txtPhoneAlt = new TextBox();
             lblPhoneAlt = new Label();
             lblPhoneMain = new Label();
             lblEmailEnter = new Label();
             lblCity = new Label();
             txtCity = new TextBox();
             pnlLine = new Panel();
+            lblPasswordEnter = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
             lblCancel = new Label();
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
@@ -107,27 +108,27 @@
             lblName.TabIndex = 4;
             lblName.Text = "Name";
             // 
-            // tboxFirstname
+            // txtFirstname
             // 
-            tboxFirstname.Anchor = AnchorStyles.Top;
-            tboxFirstname.BackColor = Color.White;
-            tboxFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxFirstname.Location = new Point(33, 145);
-            tboxFirstname.MaxLength = 50;
-            tboxFirstname.Name = "tboxFirstname";
-            tboxFirstname.Size = new Size(230, 27);
-            tboxFirstname.TabIndex = 1;
+            txtFirstname.Anchor = AnchorStyles.Top;
+            txtFirstname.BackColor = Color.White;
+            txtFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFirstname.Location = new Point(33, 145);
+            txtFirstname.MaxLength = 50;
+            txtFirstname.Name = "txtFirstname";
+            txtFirstname.Size = new Size(230, 27);
+            txtFirstname.TabIndex = 1;
             // 
-            // tboxLastname
+            // txtLastname
             // 
-            tboxLastname.Anchor = AnchorStyles.Top;
-            tboxLastname.BackColor = Color.White;
-            tboxLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxLastname.Location = new Point(272, 145);
-            tboxLastname.MaxLength = 50;
-            tboxLastname.Name = "tboxLastname";
-            tboxLastname.Size = new Size(230, 27);
-            tboxLastname.TabIndex = 2;
+            txtLastname.Anchor = AnchorStyles.Top;
+            txtLastname.BackColor = Color.White;
+            txtLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLastname.Location = new Point(272, 145);
+            txtLastname.MaxLength = 50;
+            txtLastname.Name = "txtLastname";
+            txtLastname.Size = new Size(230, 27);
+            txtLastname.TabIndex = 2;
             // 
             // lblEmail
             // 
@@ -142,16 +143,16 @@
             lblEmail.TabIndex = 4;
             lblEmail.Text = "Email";
             // 
-            // tboxEmail
+            // txtEmail
             // 
-            tboxEmail.Anchor = AnchorStyles.Top;
-            tboxEmail.BackColor = Color.White;
-            tboxEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxEmail.Location = new Point(33, 225);
-            tboxEmail.MaxLength = 50;
-            tboxEmail.Name = "tboxEmail";
-            tboxEmail.Size = new Size(230, 27);
-            tboxEmail.TabIndex = 3;
+            txtEmail.Anchor = AnchorStyles.Top;
+            txtEmail.BackColor = Color.White;
+            txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.Location = new Point(33, 225);
+            txtEmail.MaxLength = 50;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(230, 27);
+            txtEmail.TabIndex = 3;
             // 
             // lblAddress
             // 
@@ -166,16 +167,16 @@
             lblAddress.TabIndex = 4;
             lblAddress.Text = "Address";
             // 
-            // tboxAddress
+            // txtAddress
             // 
-            tboxAddress.Anchor = AnchorStyles.Top;
-            tboxAddress.BackColor = Color.White;
-            tboxAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxAddress.Location = new Point(33, 385);
-            tboxAddress.MaxLength = 50;
-            tboxAddress.Name = "tboxAddress";
-            tboxAddress.Size = new Size(470, 27);
-            tboxAddress.TabIndex = 4;
+            txtAddress.Anchor = AnchorStyles.Top;
+            txtAddress.BackColor = Color.White;
+            txtAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddress.Location = new Point(33, 385);
+            txtAddress.MaxLength = 50;
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(470, 27);
+            txtAddress.TabIndex = 4;
             // 
             // lblPostal
             // 
@@ -236,16 +237,16 @@
             panel1.Size = new Size(520, 77);
             panel1.TabIndex = 8;
             // 
-            // tboxEmailConfirm
+            // txtEmailConfirm
             // 
-            tboxEmailConfirm.Anchor = AnchorStyles.Top;
-            tboxEmailConfirm.BackColor = Color.White;
-            tboxEmailConfirm.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxEmailConfirm.Location = new Point(273, 225);
-            tboxEmailConfirm.MaxLength = 50;
-            tboxEmailConfirm.Name = "tboxEmailConfirm";
-            tboxEmailConfirm.Size = new Size(230, 27);
-            tboxEmailConfirm.TabIndex = 3;
+            txtEmailConfirm.Anchor = AnchorStyles.Top;
+            txtEmailConfirm.BackColor = Color.White;
+            txtEmailConfirm.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmailConfirm.Location = new Point(273, 225);
+            txtEmailConfirm.MaxLength = 50;
+            txtEmailConfirm.Name = "txtEmailConfirm";
+            txtEmailConfirm.Size = new Size(230, 27);
+            txtEmailConfirm.TabIndex = 3;
             // 
             // lblConfirmEmail
             // 
@@ -320,6 +321,7 @@
             txtPassword.Location = new Point(34, 629);
             txtPassword.MaxLength = 50;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '•';
             txtPassword.Size = new Size(229, 27);
             txtPassword.TabIndex = 3;
             // 
@@ -331,6 +333,7 @@
             txtPasswordConfirm.Location = new Point(273, 629);
             txtPasswordConfirm.MaxLength = 50;
             txtPasswordConfirm.Name = "txtPasswordConfirm";
+            txtPasswordConfirm.PasswordChar = '•';
             txtPasswordConfirm.Size = new Size(186, 27);
             txtPasswordConfirm.TabIndex = 3;
             // 
@@ -347,27 +350,27 @@
             lblPhone.TabIndex = 4;
             lblPhone.Text = "Phone number";
             // 
-            // tboxPhoneMain
+            // txtPhoneMain
             // 
-            tboxPhoneMain.Anchor = AnchorStyles.Top;
-            tboxPhoneMain.BackColor = Color.White;
-            tboxPhoneMain.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxPhoneMain.Location = new Point(33, 305);
-            tboxPhoneMain.MaxLength = 50;
-            tboxPhoneMain.Name = "tboxPhoneMain";
-            tboxPhoneMain.Size = new Size(230, 27);
-            tboxPhoneMain.TabIndex = 3;
+            txtPhoneMain.Anchor = AnchorStyles.Top;
+            txtPhoneMain.BackColor = Color.White;
+            txtPhoneMain.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhoneMain.Location = new Point(33, 305);
+            txtPhoneMain.MaxLength = 50;
+            txtPhoneMain.Name = "txtPhoneMain";
+            txtPhoneMain.Size = new Size(230, 27);
+            txtPhoneMain.TabIndex = 3;
             // 
-            // tboxPhoneAlt
+            // txtPhoneAlt
             // 
-            tboxPhoneAlt.Anchor = AnchorStyles.Top;
-            tboxPhoneAlt.BackColor = Color.White;
-            tboxPhoneAlt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxPhoneAlt.Location = new Point(272, 305);
-            tboxPhoneAlt.MaxLength = 50;
-            tboxPhoneAlt.Name = "tboxPhoneAlt";
-            tboxPhoneAlt.Size = new Size(230, 27);
-            tboxPhoneAlt.TabIndex = 3;
+            txtPhoneAlt.Anchor = AnchorStyles.Top;
+            txtPhoneAlt.BackColor = Color.White;
+            txtPhoneAlt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhoneAlt.Location = new Point(272, 305);
+            txtPhoneAlt.MaxLength = 50;
+            txtPhoneAlt.Name = "txtPhoneAlt";
+            txtPhoneAlt.Size = new Size(230, 27);
+            txtPhoneAlt.TabIndex = 3;
             // 
             // lblPhoneAlt
             // 
@@ -438,11 +441,25 @@
             pnlLine.BackColor = Color.Transparent;
             pnlLine.BorderStyle = BorderStyle.FixedSingle;
             pnlLine.Controls.Add(pboxEye);
+            pnlLine.Controls.Add(lblPasswordEnter);
             pnlLine.Controls.Add(lblPasswordConfirm);
             pnlLine.Location = new Point(12, 527);
             pnlLine.Name = "pnlLine";
             pnlLine.Size = new Size(520, 162);
             pnlLine.TabIndex = 3;
+            // 
+            // lblPasswordEnter
+            // 
+            lblPasswordEnter.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblPasswordEnter.AutoSize = true;
+            lblPasswordEnter.BackColor = SystemColors.GradientInactiveCaption;
+            lblPasswordEnter.Font = new Font("Segoe UI", 8.25F);
+            lblPasswordEnter.ForeColor = Color.FromArgb(45, 93, 134);
+            lblPasswordEnter.Location = new Point(21, 131);
+            lblPasswordEnter.Name = "lblPasswordEnter";
+            lblPasswordEnter.Size = new Size(87, 13);
+            lblPasswordEnter.TabIndex = 4;
+            lblPasswordEnter.Text = "Enter password";
             // 
             // btnCreate
             // 
@@ -469,6 +486,7 @@
             lblCancel.Anchor = AnchorStyles.Bottom;
             lblCancel.AutoSize = true;
             lblCancel.BackColor = SystemColors.GradientInactiveCaption;
+            lblCancel.Cursor = Cursors.Hand;
             lblCancel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCancel.ForeColor = Color.FromArgb(45, 93, 134);
             lblCancel.Location = new Point(55, 739);
@@ -486,17 +504,17 @@
             ControlBox = false;
             Controls.Add(txtUsername);
             Controls.Add(btnCreate);
-            Controls.Add(tboxLastname);
+            Controls.Add(txtLastname);
             Controls.Add(txtCity);
             Controls.Add(txtPostal);
-            Controls.Add(tboxAddress);
+            Controls.Add(txtAddress);
             Controls.Add(txtPasswordConfirm);
-            Controls.Add(tboxPhoneAlt);
-            Controls.Add(tboxEmailConfirm);
+            Controls.Add(txtPhoneAlt);
+            Controls.Add(txtEmailConfirm);
             Controls.Add(txtPassword);
-            Controls.Add(tboxPhoneMain);
-            Controls.Add(tboxEmail);
-            Controls.Add(tboxFirstname);
+            Controls.Add(txtPhoneMain);
+            Controls.Add(txtEmail);
+            Controls.Add(txtFirstname);
             Controls.Add(lblCity);
             Controls.Add(lblPostal);
             Controls.Add(lblAddress);
@@ -531,18 +549,18 @@
         private FontAwesome.Sharp.IconPictureBox pboxEye;
         private Label lblCreate;
         private Label lblName;
-        private TextBox tboxFirstname;
-        private TextBox tboxLastname;
+        private TextBox txtFirstname;
+        private TextBox txtLastname;
         private Label lblEmail;
-        private TextBox tboxEmail;
+        private TextBox txtEmail;
         private Label lblAddress;
-        private TextBox tboxAddress;
+        private TextBox txtAddress;
         private Label lblPostal;
         private TextBox txtPostal;
         private Label lblFirstname;
         private Label lblLastname;
         private Panel panel1;
-        private TextBox tboxEmailConfirm;
+        private TextBox txtEmailConfirm;
         private Label lblConfirmEmail;
         private Label lblUsername;
         private TextBox txtUsername;
@@ -551,8 +569,8 @@
         private TextBox txtPassword;
         private TextBox txtPasswordConfirm;
         private Label lblPhone;
-        private TextBox tboxPhoneMain;
-        private TextBox tboxPhoneAlt;
+        private TextBox txtPhoneMain;
+        private TextBox txtPhoneAlt;
         private Label lblPhoneAlt;
         private Label lblPhoneMain;
         private Label lblEmailEnter;
@@ -561,5 +579,6 @@
         private Panel pnlLine;
         private FontAwesome.Sharp.IconButton btnCreate;
         private Label lblCancel;
+        private Label lblPasswordEnter;
     }
 }

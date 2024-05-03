@@ -45,7 +45,7 @@
             // 
             // pnlLeft
             // 
-            pnlLeft.BackColor = SystemColors.GradientInactiveCaption;
+            pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
             pnlLeft.Controls.Add(iconButton1);
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(iconButton4);
@@ -59,14 +59,14 @@
             // 
             // iconButton1
             // 
-            iconButton1.BackColor = SystemColors.GradientInactiveCaption;
+            iconButton1.BackColor = Color.Transparent;
             iconButton1.Dock = DockStyle.Top;
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton1.ForeColor = Color.FromArgb(45, 93, 134);
+            iconButton1.ForeColor = Color.Black;
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton1.IconColor = Color.FromArgb(45, 93, 134);
+            iconButton1.IconColor = Color.Black;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 40;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
@@ -81,14 +81,14 @@
             // 
             // btnEmployees
             // 
-            btnEmployees.BackColor = SystemColors.GradientInactiveCaption;
+            btnEmployees.BackColor = Color.Transparent;
             btnEmployees.Dock = DockStyle.Top;
             btnEmployees.FlatAppearance.BorderSize = 0;
             btnEmployees.FlatStyle = FlatStyle.Flat;
             btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEmployees.ForeColor = Color.FromArgb(45, 93, 134);
+            btnEmployees.ForeColor = Color.Black;
             btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnEmployees.IconColor = Color.FromArgb(45, 93, 134);
+            btnEmployees.IconColor = Color.Black;
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
             btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
@@ -103,14 +103,14 @@
             // 
             // iconButton4
             // 
-            iconButton4.BackColor = SystemColors.GradientInactiveCaption;
+            iconButton4.BackColor = Color.Transparent;
             iconButton4.Dock = DockStyle.Bottom;
             iconButton4.FlatAppearance.BorderSize = 0;
             iconButton4.FlatStyle = FlatStyle.Flat;
             iconButton4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton4.ForeColor = Color.FromArgb(45, 93, 134);
+            iconButton4.ForeColor = Color.Black;
             iconButton4.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton4.IconColor = Color.FromArgb(45, 93, 134);
+            iconButton4.IconColor = Color.Black;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 40;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
@@ -125,14 +125,14 @@
             // 
             // iconButton3
             // 
-            iconButton3.BackColor = SystemColors.GradientInactiveCaption;
+            iconButton3.BackColor = Color.Transparent;
             iconButton3.Dock = DockStyle.Top;
             iconButton3.FlatAppearance.BorderSize = 0;
             iconButton3.FlatStyle = FlatStyle.Flat;
             iconButton3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton3.ForeColor = Color.FromArgb(45, 93, 134);
+            iconButton3.ForeColor = Color.Black;
             iconButton3.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton3.IconColor = Color.FromArgb(45, 93, 134);
+            iconButton3.IconColor = Color.Black;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 40;
             iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
@@ -147,14 +147,14 @@
             // 
             // iconButton2
             // 
-            iconButton2.BackColor = SystemColors.GradientInactiveCaption;
+            iconButton2.BackColor = Color.Transparent;
             iconButton2.Dock = DockStyle.Top;
             iconButton2.FlatAppearance.BorderSize = 0;
             iconButton2.FlatStyle = FlatStyle.Flat;
             iconButton2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton2.ForeColor = Color.FromArgb(45, 93, 134);
+            iconButton2.ForeColor = Color.Black;
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton2.IconColor = Color.FromArgb(45, 93, 134);
+            iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 40;
             iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
@@ -169,7 +169,7 @@
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = SystemColors.GradientActiveCaption;
+            pnlTop.BackColor = Color.FromArgb(94, 103, 131);
             pnlTop.Controls.Add(btnClose);
             pnlTop.Controls.Add(pboxLogo);
             pnlTop.Dock = DockStyle.Top;

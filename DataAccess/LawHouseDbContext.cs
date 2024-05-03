@@ -20,7 +20,10 @@ namespace DataAccess
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<LoginDetails> LoginDetails { get; set; }
-        public DbSet<Person> PersonDetails { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<CaseType> CaseTypes { get; set; }
+        public DbSet<LawyerTitle> LawyerTitles { get; set; }
+        public DbSet<ServicePriceType> ServicePriceTypes { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

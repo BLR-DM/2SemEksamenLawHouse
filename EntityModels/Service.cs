@@ -21,9 +21,12 @@ namespace EntityModels
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
-        // public Enums.PriceType PriceType { get; set; }
+
+        //foreign key
+        public int ServicePriceTypeID { get; set; }
 
         //foreign key (nav prop???)
+        public ServicePriceType ServicePriceType { get; set; }
         public virtual ICollection<CaseService> CaseServices { get; set; }
 
     }

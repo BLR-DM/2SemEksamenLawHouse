@@ -10,7 +10,6 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\EntityModels\EntityModels.csproj" />
     <ProjectReference Include="..\UIModels\UIModels.csproj" />
-    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

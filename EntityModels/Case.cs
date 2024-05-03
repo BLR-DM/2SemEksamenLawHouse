@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Utilities;
 
 namespace EntityModels
 {
@@ -20,7 +19,7 @@ namespace EntityModels
 
         //attributes
         public string Title { get; set; }
-        public Enums.CaseType CaseType { get; set; }
+        //public Enums.CaseType CaseType { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime EndDate { get; set; }
         public float EstHours { get; set; }

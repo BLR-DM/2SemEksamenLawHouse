@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityModels\EntityModels.csproj" />
-    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

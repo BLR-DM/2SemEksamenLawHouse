@@ -25,7 +25,7 @@ namespace BusinessLogic
             {
                 CaseID = caseE.CaseID, 
                 Title = caseE.Title, 
-                CaseType = caseE.CaseType,
+                //CaseType = caseE.CaseType,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
                 EstHours = caseE.EstHours,
@@ -60,17 +60,17 @@ namespace BusinessLogic
         {
             ClientUI clientUI = new ClientUI
             {
-                ClientID = clientE.ClientID,
+                //ClientID = clientE.ClientID,
                 FirstName = clientE.FirstName,
                 LastName = clientE.LastName,
                 Email = clientE.Email,
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
-                CreationDate = clientE.CreationDate,
+                //CreationDate = clientE.CreationDate,
                 ClientSub = clientE.ClientSub,
 
                 //foreign keys
-                UserID = clientE.UserID,
+                //UserID = clientE.UserID,
             };
             return clientUI;
         }
@@ -121,8 +121,8 @@ namespace BusinessLogic
         {
             LawyerUI lawyerUI = new LawyerUI
             {
-                LawyerID = lawyerE.LawyerID,
-                Title = lawyerE.Title,
+                //LawyerID = lawyerE.LawyerID,
+                //Title = lawyerE.Title,
                 FirstName = lawyerE.FirstName,
                 LastName = lawyerE.LastName,
                 PhoneNumber = lawyerE.PhoneNumber,
@@ -132,7 +132,7 @@ namespace BusinessLogic
                 HireDate = lawyerE.HireDate,
 
                 //foreign keys
-                UserID = lawyerE.UserID,
+                //UserID = lawyerE.UserID,
             };
             return lawyerUI;
         }
@@ -162,7 +162,7 @@ namespace BusinessLogic
         {
             SecretaryUI secretaryUI = new SecretaryUI
             {
-                SecretaryID = secretaryE.SecretaryID,
+                //SecretaryID = secretaryE.SecretaryID,
                 FirstName = secretaryE.FirstName,
                 LastName = secretaryE.LastName,
                 PhoneNumber = secretaryE.PhoneNumber,
@@ -172,7 +172,7 @@ namespace BusinessLogic
                 HireDate = secretaryE.HireDate,
 
                 //foreign Key
-                UserID = secretaryE.UserID,
+                //UserID = secretaryE.UserID,
             };
             return secretaryUI;
         }
@@ -183,7 +183,7 @@ namespace BusinessLogic
             {
                 ServiceID = serviceE.ServiceID,
                 Description = serviceE.Description,
-                PriceType = serviceE.PriceType,
+                //PriceType = serviceE.PriceType,
                 Price = serviceE.Price,
             };
             return serviceUI;
@@ -210,17 +210,17 @@ namespace BusinessLogic
             return subscriptionUI;
         }
 
-        public UserUI ConvertFromUserEntity(User userE)
-        {
-            UserUI userUI = new UserUI
-            {
-                UserID = userE.UserID,
-                UserName = userE.UserName,
-                PassWord = userE.PassWord,
-                Type = userE.Type,
-            };
-            return userUI;
-        }
+        //public UserUI ConvertFromUserEntity(User userE)
+        //{
+        //    UserUI userUI = new UserUI
+        //    {
+        //        UserID = userE.UserID,
+        //        UserName = userE.UserName,
+        //        PassWord = userE.PassWord,
+        //        //Type = userE.Type,
+        //    };
+        //    return userUI;
+        //}
 
 
 
@@ -244,7 +244,7 @@ namespace BusinessLogic
             {
                 CaseID = caseUI.CaseID,
                 Title = caseUI.Title,
-                CaseType = caseUI.CaseType,
+                //CaseType = caseUI.CaseType,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,
                 EstHours = caseUI.EstHours,
@@ -277,17 +277,17 @@ namespace BusinessLogic
         {
             Client clientE = new Client
             {
-                ClientID = clientUI.ClientID,
+                //ClientID = clientUI.ClientID,
                 FirstName = clientUI.FirstName,
                 LastName = clientUI.LastName,
                 Email = clientUI.Email,
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
-                CreationDate = clientUI.CreationDate,
+                //CreationDate = clientUI.CreationDate,
                 ClientSub = clientUI.ClientSub,
 
                 //foreign keys
-                UserID = clientUI.UserID,
+                //UserID = clientUI.UserID,
             };
             return clientE;
         }
@@ -338,8 +338,8 @@ namespace BusinessLogic
         {
             Lawyer lawyerE = new Lawyer
             {
-                LawyerID = lawyerUI.LawyerID,
-                Title = lawyerUI.Title,
+                //LawyerID = lawyerUI.LawyerID,
+                //Title = lawyerUI.Title,
 
                 //employee attributter
                 FirstName = lawyerUI.FirstName,
@@ -351,7 +351,7 @@ namespace BusinessLogic
                 HireDate = lawyerUI.HireDate,
 
                 //foreignKey
-                UserID = lawyerUI.UserID,
+                //UserID = lawyerUI.UserID,
             };
             return lawyerE;
         }
@@ -383,7 +383,7 @@ namespace BusinessLogic
         {
             Secretary secretaryE = new Secretary
             {
-                SecretaryID = secretaryUI.SecretaryID,
+                //SecretaryID = secretaryUI.SecretaryID,
 
                 //employee attributter
                 FirstName = secretaryUI.FirstName,
@@ -395,7 +395,7 @@ namespace BusinessLogic
                 HireDate = secretaryUI.HireDate,
 
                 //foreign key
-                UserID = secretaryUI.UserID,
+                //UserID = secretaryUI.UserID,
             };
             return secretaryE;
         }
@@ -407,7 +407,7 @@ namespace BusinessLogic
                 ServiceID = serviceUI.ServiceID,
                 Name = serviceUI.Name,
                 Description = serviceUI.Description,
-                PriceType = serviceUI.PriceType,
+                //PriceType = serviceUI.PriceType,
                 Price = serviceUI.Price,
             };
             return serviceE;
@@ -434,17 +434,17 @@ namespace BusinessLogic
             return subscriptionE;
         }
 
-        public User ConvertFromUserUI(UserUI userUI)
-        {
-            User userE = new User
-            {
-                UserID = userUI.UserID,
-                UserName = userUI.UserName,
-                PassWord = userUI.PassWord,
-                Type = userUI.Type,
-            };
-            return userE;
-        }
+        //public User ConvertFromUserUI(UserUI userUI)
+        //{
+        //    User userE = new User
+        //    {
+        //        UserID = userUI.UserID,
+        //        UserName = userUI.UserName,
+        //        PassWord = userUI.PassWord,
+        //        Type = userUI.Type,
+        //    };
+        //    return userE;
+        //}
         
 
 

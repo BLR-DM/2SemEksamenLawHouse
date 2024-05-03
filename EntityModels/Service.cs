@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Utilities;
 
 namespace EntityModels
 {
@@ -21,7 +20,7 @@ namespace EntityModels
         //attributes
         public string Name { get; set; }
         public string Description { get; set; }
-        public Enums.PriceType PriceType { get; set; }
+        // public Enums.PriceType PriceType { get; set; }
         public float Price { get; set; }
 
         //foreign key (nav prop???)

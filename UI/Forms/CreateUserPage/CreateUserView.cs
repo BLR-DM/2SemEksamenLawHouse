@@ -18,6 +18,13 @@ namespace UI.Forms.CreateUserPage
         {
             loginPage = login;
             InitializeComponent();
+
+            btnClose.Click += BtnClose_Click;
+        }
+
+        private void BtnClose_Click(object? sender, EventArgs e)
+        {
+            this.Close();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

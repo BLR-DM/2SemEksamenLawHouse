@@ -17,30 +17,30 @@ namespace UI
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginPageView());
 
-            LawyerBl bl = new LawyerBl();
+            //LawyerBl bl = new LawyerBl();
 
-            Lawyer lawyer = new Lawyer()
-            {
+            //Lawyer lawyer = new Lawyer()
+            //{
                 
-                FirstName = "Bilal",
-                LastName = "Kinali",
-                Email = "bilalkinali@gmail.com",
-                AddressLine = "Lumbyesvej 16",
-                PostalCode = 7000,
-                PhoneNumber = 88888888,
-                HireDate = DateTime.Now,
-                //Title = "Jurist",
+            //    FirstName = "Bilal",
+            //    LastName = "Kinali",
+            //    Email = "bilalkinali@gmail.com",
+            //    AddressLine = "Lumbyesvej 16",
+            //    PostalCode = 7000,
+            //    PhoneNumber = 88888888,
+            //    HireDate = DateTime.Now,
+            //    //Title = "Jurist",
 
-                LoginDetails = new LoginDetails()
-                {
-                    UserName = "bilalkinali@gmail.com",
-                    PassWord = "kode123",
-                    CreationDate = DateTime.Now,
+            //    LoginDetails = new LoginDetails()
+            //    {
+            //        UserName = "bilalkinali@gmail.com",
+            //        PassWord = "kode123",
+            //        CreationDate = DateTime.Now,
 
-                }
+            //    }
 
-            };
-            bool success = bl.CreateLawyer(lawyer);
+            //};
+            //bool success = bl.CreateLawyer(lawyer);
         }
     }
 }

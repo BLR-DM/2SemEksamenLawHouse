@@ -18,8 +18,8 @@ namespace DataAccess
         public bool CreateLawyer(Lawyer lawyer)
         {
             db.Lawyers.Add(lawyer);
-            db.SaveChanges();
-            return true;
+
+            return db.SaveChanges() > 0;
         }
     }
 }

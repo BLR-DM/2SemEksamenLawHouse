@@ -40,9 +40,14 @@
             pboxEye = new FontAwesome.Sharp.IconPictureBox();
             lblCreate = new Label();
             lblName = new Label();
-            lblLastname = new Label();
             tboxFirstname = new TextBox();
             tboxLastname = new TextBox();
+            lblEmail = new Label();
+            textBox1 = new TextBox();
+            lblAddress = new Label();
+            textBox2 = new TextBox();
+            lblPostal = new Label();
+            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pboxPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
@@ -195,49 +200,101 @@
             // 
             lblName.AutoSize = true;
             lblName.BackColor = SystemColors.GradientInactiveCaption;
-            lblName.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(31, 115);
+            lblName.Location = new Point(33, 131);
             lblName.Name = "lblName";
-            lblName.Size = new Size(64, 25);
+            lblName.Size = new Size(53, 21);
             lblName.TabIndex = 4;
             lblName.Text = "Name";
             // 
-            // lblLastname
-            // 
-            lblLastname.AutoSize = true;
-            lblLastname.BackColor = SystemColors.GradientInactiveCaption;
-            lblLastname.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLastname.Location = new Point(31, 164);
-            lblLastname.Name = "lblLastname";
-            lblLastname.Size = new Size(94, 25);
-            lblLastname.TabIndex = 4;
-            lblLastname.Text = "Lastname";
-            // 
             // tboxFirstname
             // 
-            tboxFirstname.BackColor = SystemColors.GradientActiveCaption;
-            tboxFirstname.BorderStyle = BorderStyle.None;
+            tboxFirstname.BackColor = Color.White;
             tboxFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxFirstname.Location = new Point(134, 119);
+            tboxFirstname.Location = new Point(33, 155);
             tboxFirstname.MaxLength = 50;
             tboxFirstname.Name = "tboxFirstname";
             tboxFirstname.PlaceholderText = "First";
-            tboxFirstname.Size = new Size(155, 20);
+            tboxFirstname.Size = new Size(200, 27);
             tboxFirstname.TabIndex = 1;
             // 
             // tboxLastname
             // 
-            tboxLastname.BackColor = SystemColors.GradientActiveCaption;
-            tboxLastname.BorderStyle = BorderStyle.None;
+            tboxLastname.BackColor = Color.White;
             tboxLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tboxLastname.Location = new Point(318, 120);
+            tboxLastname.Location = new Point(317, 155);
             tboxLastname.MaxLength = 50;
             tboxLastname.Name = "tboxLastname";
             tboxLastname.PlaceholderText = "Last";
-            tboxLastname.Size = new Size(155, 20);
-            tboxLastname.TabIndex = 1;
+            tboxLastname.Size = new Size(185, 27);
+            tboxLastname.TabIndex = 2;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.BackColor = SystemColors.GradientInactiveCaption;
+            lblEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblEmail.ForeColor = Color.FromArgb(45, 93, 134);
+            lblEmail.Location = new Point(33, 206);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(48, 21);
+            lblEmail.TabIndex = 4;
+            lblEmail.Text = "Email";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.White;
+            textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(33, 230);
+            textBox1.MaxLength = 50;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(470, 27);
+            textBox1.TabIndex = 3;
+            // 
+            // lblAddress
+            // 
+            lblAddress.AutoSize = true;
+            lblAddress.BackColor = SystemColors.GradientInactiveCaption;
+            lblAddress.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblAddress.ForeColor = Color.FromArgb(45, 93, 134);
+            lblAddress.Location = new Point(33, 281);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(70, 21);
+            lblAddress.TabIndex = 4;
+            lblAddress.Text = "Address";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.White;
+            textBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(33, 305);
+            textBox2.MaxLength = 50;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(470, 27);
+            textBox2.TabIndex = 4;
+            // 
+            // lblPostal
+            // 
+            lblPostal.AutoSize = true;
+            lblPostal.BackColor = SystemColors.GradientInactiveCaption;
+            lblPostal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblPostal.ForeColor = Color.FromArgb(45, 93, 134);
+            lblPostal.Location = new Point(33, 356);
+            lblPostal.Name = "lblPostal";
+            lblPostal.Size = new Size(94, 21);
+            lblPostal.TabIndex = 4;
+            lblPostal.Text = "Postal code";
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.White;
+            textBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.Location = new Point(33, 380);
+            textBox3.MaxLength = 50;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(94, 27);
+            textBox3.TabIndex = 5;
             // 
             // CreateUserView
             // 
@@ -251,13 +308,18 @@
             Controls.Add(tboxPassword);
             Controls.Add(pboxUser);
             Controls.Add(tboxLastname);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(tboxFirstname);
             Controls.Add(tboxUser);
             Controls.Add(pboxPassword);
             Controls.Add(pnlLineUser);
+            Controls.Add(lblPostal);
             Controls.Add(pnlLinePassword);
+            Controls.Add(lblAddress);
             Controls.Add(lblCreate);
-            Controls.Add(lblLastname);
+            Controls.Add(lblEmail);
             Controls.Add(lblName);
             Controls.Add(lblUser);
             Controls.Add(lblPassword);
@@ -287,8 +349,13 @@
         private FontAwesome.Sharp.IconPictureBox pboxEye;
         private Label lblCreate;
         private Label lblName;
-        private Label lblLastname;
         private TextBox tboxFirstname;
         private TextBox tboxLastname;
+        private Label lblEmail;
+        private TextBox textBox1;
+        private Label lblAddress;
+        private TextBox textBox2;
+        private Label lblPostal;
+        private TextBox textBox3;
     }
 }

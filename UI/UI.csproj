@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Forms\CreateClientPage\**" />
+    <EmbeddedResource Remove="Forms\CreateClientPage\**" />
+    <None Remove="Forms\CreateClientPage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -37,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\CreateClientPage\" />
+    <Folder Include="Forms\NewFolder1\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 using BusinessLogic;
 using EntityModels;
 using Microsoft.Identity.Client;
+using UI.Forms.CasePage;
 using UI.Forms.ClientPage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;

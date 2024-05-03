@@ -176,7 +176,7 @@
             txtAddress.MaxLength = 50;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(470, 27);
-            txtAddress.TabIndex = 4;
+            txtAddress.TabIndex = 7;
             // 
             // lblPostal
             // 
@@ -200,7 +200,7 @@
             txtPostal.MaxLength = 50;
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(94, 27);
-            txtPostal.TabIndex = 5;
+            txtPostal.TabIndex = 8;
             // 
             // lblFirstname
             // 
@@ -246,7 +246,7 @@
             txtEmailConfirm.MaxLength = 50;
             txtEmailConfirm.Name = "txtEmailConfirm";
             txtEmailConfirm.Size = new Size(230, 27);
-            txtEmailConfirm.TabIndex = 3;
+            txtEmailConfirm.TabIndex = 4;
             // 
             // lblConfirmEmail
             // 
@@ -285,7 +285,8 @@
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(231, 20);
-            txtUsername.TabIndex = 1;
+            txtUsername.TabIndex = 0;
+            txtUsername.TabStop = false;
             // 
             // lblPasswordConfirm
             // 
@@ -323,7 +324,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '•';
             txtPassword.Size = new Size(229, 27);
-            txtPassword.TabIndex = 3;
+            txtPassword.TabIndex = 10;
             // 
             // txtPasswordConfirm
             // 
@@ -335,7 +336,7 @@
             txtPasswordConfirm.Name = "txtPasswordConfirm";
             txtPasswordConfirm.PasswordChar = '•';
             txtPasswordConfirm.Size = new Size(186, 27);
-            txtPasswordConfirm.TabIndex = 3;
+            txtPasswordConfirm.TabIndex = 11;
             // 
             // lblPhone
             // 
@@ -359,7 +360,7 @@
             txtPhoneMain.MaxLength = 50;
             txtPhoneMain.Name = "txtPhoneMain";
             txtPhoneMain.Size = new Size(230, 27);
-            txtPhoneMain.TabIndex = 3;
+            txtPhoneMain.TabIndex = 5;
             // 
             // txtPhoneAlt
             // 
@@ -370,7 +371,7 @@
             txtPhoneAlt.MaxLength = 50;
             txtPhoneAlt.Name = "txtPhoneAlt";
             txtPhoneAlt.Size = new Size(230, 27);
-            txtPhoneAlt.TabIndex = 3;
+            txtPhoneAlt.TabIndex = 6;
             // 
             // lblPhoneAlt
             // 
@@ -433,7 +434,7 @@
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(230, 27);
-            txtCity.TabIndex = 5;
+            txtCity.TabIndex = 9;
             // 
             // pnlLine
             // 
@@ -477,7 +478,7 @@
             btnCreate.Location = new Point(168, 723);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(209, 50);
-            btnCreate.TabIndex = 3;
+            btnCreate.TabIndex = 12;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
             // 
@@ -492,7 +493,7 @@
             lblCancel.Location = new Point(55, 739);
             lblCancel.Name = "lblCancel";
             lblCancel.Size = new Size(58, 21);
-            lblCancel.TabIndex = 4;
+            lblCancel.TabIndex = 0;
             lblCancel.Text = "Cancel";
             // 
             // CreateUserView

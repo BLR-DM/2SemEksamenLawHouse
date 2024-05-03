@@ -75,7 +75,7 @@
             pboxEye.IconColor = Color.FromArgb(45, 93, 134);
             pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxEye.IconSize = 40;
-            pboxEye.Location = new Point(457, 96);
+            pboxEye.Location = new Point(454, 96);
             pboxEye.Name = "pboxEye";
             pboxEye.Size = new Size(40, 40);
             pboxEye.TabIndex = 7;
@@ -293,7 +293,7 @@
             lblPasswordConfirm.BackColor = SystemColors.GradientInactiveCaption;
             lblPasswordConfirm.Font = new Font("Segoe UI", 8.25F);
             lblPasswordConfirm.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPasswordConfirm.Location = new Point(264, 131);
+            lblPasswordConfirm.Location = new Point(268, 131);
             lblPasswordConfirm.Name = "lblPasswordConfirm";
             lblPasswordConfirm.Size = new Size(101, 13);
             lblPasswordConfirm.TabIndex = 4;
@@ -439,9 +439,9 @@
             pnlLine.BorderStyle = BorderStyle.FixedSingle;
             pnlLine.Controls.Add(pboxEye);
             pnlLine.Controls.Add(lblPasswordConfirm);
-            pnlLine.Location = new Point(16, 538);
+            pnlLine.Location = new Point(12, 538);
             pnlLine.Name = "pnlLine";
-            pnlLine.Size = new Size(516, 162);
+            pnlLine.Size = new Size(520, 162);
             pnlLine.TabIndex = 3;
             // 
             // btnCreate

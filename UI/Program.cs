@@ -1,5 +1,6 @@
 using BusinessLogic;
 using EntityModels;
+using UI.Forms.CasePage;
 using UI.Forms.ClientPage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;

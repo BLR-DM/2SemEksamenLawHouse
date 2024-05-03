@@ -20,7 +20,7 @@ namespace DataAccess
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<LoginDetails> LoginDetails { get; set; }
-        public DbSet<PersonDetails> PersonDetails { get; set; }
+        public DbSet<Person> PersonDetails { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,7 +47,7 @@ namespace DataAccess
                 .OnDelete(DeleteBehavior.Restrict); // Ændrer kaskadesletning til NO ACTION for Clients
 
 
-            modelBuilder.Entity<PersonDetails>().UseTptMappingStrategy();
+            modelBuilder.Entity<Person>().UseTptMappingStrategy();
             modelBuilder.Entity<Employee>().UseTptMappingStrategy();
 
             ////discriminator til usertype paa user tabel

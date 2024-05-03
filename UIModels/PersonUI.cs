@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Utilities
+namespace UIModels
 {
-    public abstract class Employee
+    public class PersonUI
     {
+        public virtual int PersonID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
         public string Email { get; set; }
         public string AddressLine { get; set; }
         public int PostalCode { get; set; }
-        public DateTime HireDate { get; set; }
+
+        //foreign key
+        public int LoginDetailsID { get; set; }
     }
 }

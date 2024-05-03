@@ -18,7 +18,7 @@ namespace EntityModels
 
 
         //attributes
-        public string Title { get; set; }
+        //public string Title { get; set; }
 
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set; }
         public virtual ICollection<Case> Cases { get; set; }

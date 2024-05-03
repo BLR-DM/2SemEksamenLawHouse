@@ -19,12 +19,13 @@ namespace EntityModels
 
         //attributes
         public string Title { get; set; }
-        //public Enums.CaseType CaseType { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime EndDate { get; set; }
         public float EstHours { get; set; }
         public string Status { get; set; }
         public float TotalPrice { get; set; }
+
+        //public Enums.CaseType CaseType { get; set; }
 
         //Foreign keys
         public int LawyerID { get; set; }

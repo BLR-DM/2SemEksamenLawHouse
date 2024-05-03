@@ -87,7 +87,7 @@ namespace DataAccess.Migrations
                 name: "PersonDetails",
                 columns: table => new
                 {
-                    PersonDetailsID = table.Column<int>(type: "int", nullable: false)
+                    PersonID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -98,7 +98,7 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonDetails", x => x.PersonDetailsID);
+                    table.PrimaryKey("PK_PersonDetails", x => x.PersonID);
                     table.ForeignKey(
                         name: "FK_PersonDetails_LoginDetails_LoginDetailsID",
                         column: x => x.LoginDetailsID,
@@ -111,17 +111,17 @@ namespace DataAccess.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    PersonDetailsID = table.Column<int>(type: "int", nullable: false),
+                    PersonID = table.Column<int>(type: "int", nullable: false),
                     ClientSub = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.PersonDetailsID);
+                    table.PrimaryKey("PK_Clients", x => x.PersonID);
                     table.ForeignKey(
-                        name: "FK_Clients_PersonDetails_PersonDetailsID",
-                        column: x => x.PersonDetailsID,
+                        name: "FK_Clients_PersonDetails_PersonID",
+                        column: x => x.PersonID,
                         principalTable: "PersonDetails",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -129,18 +129,18 @@ namespace DataAccess.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    PersonDetailsID = table.Column<int>(type: "int", nullable: false),
+                    PersonID = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.PersonDetailsID);
+                    table.PrimaryKey("PK_Employees", x => x.PersonID);
                     table.ForeignKey(
-                        name: "FK_Employees_PersonDetails_PersonDetailsID",
-                        column: x => x.PersonDetailsID,
+                        name: "FK_Employees_PersonDetails_PersonID",
+                        column: x => x.PersonID,
                         principalTable: "PersonDetails",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -161,7 +161,7 @@ namespace DataAccess.Migrations
                         name: "FK_ClientFormulars_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ClientFormulars_Formulars_FormularID",
@@ -189,7 +189,7 @@ namespace DataAccess.Migrations
                         name: "FK_ClientSubscriptions_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ClientSubscriptions_Subscriptions_SubscriptionID",
@@ -215,7 +215,7 @@ namespace DataAccess.Migrations
                         name: "FK_Phones_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -223,17 +223,16 @@ namespace DataAccess.Migrations
                 name: "Lawyers",
                 columns: table => new
                 {
-                    PersonDetailsID = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lawyers", x => x.PersonDetailsID);
+                    table.PrimaryKey("PK_Lawyers", x => x.PersonID);
                     table.ForeignKey(
-                        name: "FK_Lawyers_Employees_PersonDetailsID",
-                        column: x => x.PersonDetailsID,
+                        name: "FK_Lawyers_Employees_PersonID",
+                        column: x => x.PersonID,
                         principalTable: "Employees",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -241,16 +240,16 @@ namespace DataAccess.Migrations
                 name: "Secretaries",
                 columns: table => new
                 {
-                    PersonDetailsID = table.Column<int>(type: "int", nullable: false)
+                    PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Secretaries", x => x.PersonDetailsID);
+                    table.PrimaryKey("PK_Secretaries", x => x.PersonID);
                     table.ForeignKey(
-                        name: "FK_Secretaries_Employees_PersonDetailsID",
-                        column: x => x.PersonDetailsID,
+                        name: "FK_Secretaries_Employees_PersonID",
+                        column: x => x.PersonID,
                         principalTable: "Employees",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -276,13 +275,13 @@ namespace DataAccess.Migrations
                         name: "FK_Cases_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Cases_Lawyers_LawyerID",
                         column: x => x.LawyerID,
                         principalTable: "Lawyers",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -300,7 +299,7 @@ namespace DataAccess.Migrations
                         name: "FK_LawyerSpeciality_Lawyers_LawyerID",
                         column: x => x.LawyerID,
                         principalTable: "Lawyers",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LawyerSpeciality_Specialities_SpecialityID",
@@ -336,7 +335,7 @@ namespace DataAccess.Migrations
                         name: "FK_CaseServices_Lawyers_LawyerID",
                         column: x => x.LawyerID,
                         principalTable: "Lawyers",
-                        principalColumn: "PersonDetailsID",
+                        principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CaseServices_Services_ServiceID",

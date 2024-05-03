@@ -25,13 +25,14 @@ namespace EntityModels
         public string Status { get; set; }
         public float TotalPrice { get; set; }
 
-        //public Enums.CaseType CaseType { get; set; }
 
         //Foreign keys
+        public int CaseTypeID { get; set; }
         public int LawyerID { get; set; }
         public int ClientID { get; set; }
 
         //Nav Prop
+        public CaseType CaseType { get; set; }
         public Lawyer Lawyer { get; set; }
         public Client Client { get; set; }
 

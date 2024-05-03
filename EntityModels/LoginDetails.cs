@@ -16,12 +16,10 @@ namespace EntityModels
         //attributes
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        // public Enums.UserType Type { get; set; } // ?
-
         public DateTime CreationDate { get; set; }
 
         //nav prop
-        public PersonDetails PersonDetails { get; set; }
+        public Person PersonDetails { get; set; }
     }
 
 }

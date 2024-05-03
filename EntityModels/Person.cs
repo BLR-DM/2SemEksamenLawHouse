@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class PersonDetails
+    public class Person
     {
 
-        public virtual int PersonDetailsID { get; set; }
+        public virtual int PersonID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

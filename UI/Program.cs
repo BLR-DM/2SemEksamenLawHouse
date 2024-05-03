@@ -29,7 +29,7 @@ namespace UI
                 PostalCode = 7000,
                 PhoneNumber = 88888888,
                 HireDate = DateTime.Now,
-                Title = "Jurist",
+                //Title = "Jurist",
 
                 LoginDetails = new LoginDetails()
                 {

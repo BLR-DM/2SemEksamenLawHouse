@@ -221,13 +221,13 @@ namespace DataAccess.Migrations
                     b.ToTable("LoginDetails");
                 });
 
-            modelBuilder.Entity("EntityModels.PersonDetails", b =>
+            modelBuilder.Entity("EntityModels.Person", b =>
                 {
-                    b.Property<int>("PersonDetailsID")
+                    b.Property<int>("PersonID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonDetailsID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonID"));
 
                     b.Property<string>("AddressLine")
                         .IsRequired()
@@ -251,7 +251,7 @@ namespace DataAccess.Migrations
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
 
-                    b.HasKey("PersonDetailsID");
+                    b.HasKey("PersonID");
 
                     b.HasIndex("LoginDetailsID")
                         .IsUnique();
@@ -345,7 +345,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("EntityModels.Client", b =>
                 {
-                    b.HasBaseType("EntityModels.PersonDetails");
+                    b.HasBaseType("EntityModels.Person");
 
                     b.Property<int>("ClientSub")
                         .HasColumnType("int");
@@ -355,7 +355,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("EntityModels.Employee", b =>
                 {
-                    b.HasBaseType("EntityModels.PersonDetails");
+                    b.HasBaseType("EntityModels.Person");
 
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
@@ -369,10 +369,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.Lawyer", b =>
                 {
                     b.HasBaseType("EntityModels.Employee");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Lawyers");
                 });
@@ -487,11 +483,11 @@ namespace DataAccess.Migrations
                     b.Navigation("Speciality");
                 });
 
-            modelBuilder.Entity("EntityModels.PersonDetails", b =>
+            modelBuilder.Entity("EntityModels.Person", b =>
                 {
                     b.HasOne("EntityModels.LoginDetails", "LoginDetails")
                         .WithOne("PersonDetails")
-                        .HasForeignKey("EntityModels.PersonDetails", "LoginDetailsID")
+                        .HasForeignKey("EntityModels.Person", "LoginDetailsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -511,18 +507,18 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("EntityModels.Client", b =>
                 {
-                    b.HasOne("EntityModels.PersonDetails", null)
+                    b.HasOne("EntityModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("EntityModels.Client", "PersonDetailsID")
+                        .HasForeignKey("EntityModels.Client", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("EntityModels.Employee", b =>
                 {
-                    b.HasOne("EntityModels.PersonDetails", null)
+                    b.HasOne("EntityModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("EntityModels.Employee", "PersonDetailsID")
+                        .HasForeignKey("EntityModels.Employee", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -531,7 +527,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("EntityModels.Employee", null)
                         .WithOne()
-                        .HasForeignKey("EntityModels.Lawyer", "PersonDetailsID")
+                        .HasForeignKey("EntityModels.Lawyer", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -540,7 +536,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("EntityModels.Employee", null)
                         .WithOne()
-                        .HasForeignKey("EntityModels.Secretary", "PersonDetailsID")
+                        .HasForeignKey("EntityModels.Secretary", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class Employee : PersonDetails
+    public class Employee : Person
     {
-
-        [Column("Employee")] // <- Name of the primary Key column in the Database
-        public override int PersonDetailsID { get; set; }
-
         public int PhoneNumber { get; set; }
         public DateTime HireDate { get; set; }
     }

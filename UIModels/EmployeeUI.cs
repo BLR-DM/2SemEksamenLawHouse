@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace UIModels
 {
-    public class SecretaryUI : EmployeeUI
+    public class EmployeeUI : PersonUI
     {
-
+        public int PhoneNumber { get; set; }
+        public DateTime HireDate { get; set; }
     }
 }

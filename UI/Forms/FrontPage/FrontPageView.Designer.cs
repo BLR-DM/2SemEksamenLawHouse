@@ -52,7 +52,7 @@
             gradiantPanel1.Dock = DockStyle.Top;
             gradiantPanel1.Location = new Point(0, 0);
             gradiantPanel1.Name = "gradiantPanel1";
-            gradiantPanel1.Size = new Size(1348, 56);
+            gradiantPanel1.Size = new Size(1198, 56);
             gradiantPanel1.TabIndex = 1;
             gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
             // 
@@ -67,7 +67,7 @@
             btnClose.IconColor = Color.Black;
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClose.IconSize = 30;
-            btnClose.Location = new Point(1301, 12);
+            btnClose.Location = new Point(1151, 12);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(35, 28);
             btnClose.TabIndex = 3;
@@ -96,7 +96,7 @@
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 56);
             pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(200, 692);
+            pnlLeft.Size = new Size(200, 617);
             pnlLeft.TabIndex = 2;
             // 
             // iconButton1
@@ -156,7 +156,7 @@
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 40;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(0, 617);
+            iconButton4.Location = new Point(0, 542);
             iconButton4.Name = "iconButton4";
             iconButton4.Padding = new Padding(25, 0, 20, 0);
             iconButton4.Size = new Size(200, 75);
@@ -213,7 +213,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1348, 748);
+            ClientSize = new Size(1198, 673);
             ControlBox = false;
             Controls.Add(pnlLeft);
             Controls.Add(gradiantPanel1);

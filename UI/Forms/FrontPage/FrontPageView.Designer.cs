@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             gradiantPanel1 = new Toolbox.GradiantPanel();
-            gradiantPanel2 = new Toolbox.GradiantPanel();
             pictureBox1 = new PictureBox();
             btnClose = new FontAwesome.Sharp.IconButton();
             gradiantPanel1.SuspendLayout();
@@ -46,27 +45,15 @@
             gradiantPanel1.Dock = DockStyle.Top;
             gradiantPanel1.Location = new Point(0, 0);
             gradiantPanel1.Name = "gradiantPanel1";
-            gradiantPanel1.Size = new Size(1348, 61);
+            gradiantPanel1.Size = new Size(1348, 54);
             gradiantPanel1.TabIndex = 1;
-            gradiantPanel1.TopColor = Color.FromArgb(15, 30, 74);
-            // 
-            // gradiantPanel2
-            // 
-            gradiantPanel2.Angle = 110F;
-            gradiantPanel2.BackColor = Color.FromArgb(194, 205, 240);
-            gradiantPanel2.BottomColor = Color.Empty;
-            gradiantPanel2.Dock = DockStyle.Left;
-            gradiantPanel2.Location = new Point(0, 61);
-            gradiantPanel2.Name = "gradiantPanel2";
-            gradiantPanel2.Size = new Size(194, 687);
-            gradiantPanel2.TabIndex = 2;
-            gradiantPanel2.TopColor = Color.FromArgb(94, 103, 131);
+            gradiantPanel1.TopColor = Color.FromArgb(62, 82, 150);
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.lawhouseLogo;
-            pictureBox1.Location = new Point(0, -9);
+            pictureBox1.Location = new Point(0, -14);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(194, 81);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -75,16 +62,20 @@
             // 
             // btnClose
             // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClose.BackColor = Color.Transparent;
-            btnClose.ForeColor = SystemColors.ControlText;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             btnClose.IconColor = Color.Black;
-            btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClose.IconSize = 30;
-            btnClose.Location = new Point(1287, 12);
+            btnClose.Location = new Point(1301, 12);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(49, 39);
+            btnClose.Size = new Size(35, 28);
             btnClose.TabIndex = 3;
+            btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = false;
             // 
             // FrontPageView
@@ -93,7 +84,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 748);
             ControlBox = false;
-            Controls.Add(gradiantPanel2);
             Controls.Add(gradiantPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrontPageView";
@@ -108,7 +98,6 @@
         #endregion
 
         private Toolbox.GradiantPanel gradiantPanel1;
-        private Toolbox.GradiantPanel gradiantPanel2;
         private PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton btnClose;
     }

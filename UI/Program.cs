@@ -1,8 +1,10 @@
 using BusinessLogic;
 using EntityModels;
+using Microsoft.Identity.Client;
 using UI.Forms.ClientPage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;
+using UIModels;
 namespace UI
 {
     internal static class Program
@@ -16,7 +18,36 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CreateClientPage());
+            Application.Run(new CreateClientView());
+
+
+            ClientBl clientBl = new ClientBl();
+
+            ClientUI clientUI = new ClientUI()
+            {
+                FirstName = "Lucas",
+                LastName = "MacQuarrie",
+                Email = "Maclucas07@hotmail.com",
+                AddressLine = "Korskaervej 16",
+                PostalCode = 7000,
+                City = "Fredericia",
+                ClientSub = 0,
+            };
+            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            {
+                UserName = clientUI.Email,
+                PassWord = "kode123",
+                CreationDate = DateTime.Now,
+            };
+
+            Test();
+
+            async Task<bool> Test()
+            {
+                return await clientBl.CreateAsync(clientUI, loginDetailsUI);
+            }
+
+
 
             //LawyerBl bl = new LawyerBl();
 

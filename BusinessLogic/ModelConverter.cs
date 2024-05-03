@@ -28,7 +28,7 @@ namespace BusinessLogic
                 //CaseType = caseE.CaseType,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
-                EstHours = caseE.EstHours,
+                EstHours = caseE.EstimatedHours,
                 Status = caseE.Status,
                 TotalPrice = caseE.TotalPrice,
 
@@ -247,7 +247,7 @@ namespace BusinessLogic
                 //CaseType = caseUI.CaseType,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,
-                EstHours = caseUI.EstHours,
+                EstimatedHours = caseUI.EstHours,
                 Status = caseUI.Status,
                 TotalPrice = caseUI.TotalPrice,
                 LawyerID = caseUI.LawyerID,
@@ -277,19 +277,31 @@ namespace BusinessLogic
         {
             Client clientE = new Client
             {
-                //ClientID = clientUI.ClientID,
+                PersonID = clientUI.PersonID,
                 FirstName = clientUI.FirstName,
                 LastName = clientUI.LastName,
                 Email = clientUI.Email,
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
-                //CreationDate = clientUI.CreationDate,
+                City = clientUI.City,
                 ClientSub = clientUI.ClientSub,
 
                 //foreign keys
-                //UserID = clientUI.UserID,
+                LoginDetailsID = clientUI.LoginDetailsID,
             };
             return clientE;
+        }
+
+        public LoginDetails ConvertFromLoginDetailsUI(LoginDetailsUI loginDetailsUI)
+        {
+            LoginDetails loginDetailsE = new LoginDetails
+            {
+                LoginDetailsID = loginDetailsUI.LoginDetailsID,
+                UserName = loginDetailsUI.UserName,
+                PassWord = loginDetailsUI.PassWord,
+                CreationDate = loginDetailsUI.CreationDate,
+            };
+            return loginDetailsE;
         }
 
         public ClientFormular ConvertFromClientFormularUI(ClientFormularUI clientFormularUI)

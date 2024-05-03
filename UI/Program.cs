@@ -17,11 +17,10 @@ namespace UI
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginPageView());
 
-            LawyerBl bl = new LawyerBl();
+            //LawyerBl bl = new LawyerBl();
 
-            Lawyer lawyer = new Lawyer()
-            {
-                
+            //Lawyer lawyer = new Lawyer()
+            //{
                 FirstName = "Bilal",
                 LastName = "Kinali",
                 Email = "bilalkinali@gmail.com",
@@ -31,16 +30,16 @@ namespace UI
                 HireDate = DateTime.Now,
                 LawyerTitleID = 1,
 
-                LoginDetails = new LoginDetails()
-                {
-                    UserName = "bilalkinali@gmail.com",
-                    PassWord = "kode123",
-                    CreationDate = DateTime.Now,
+            //    LoginDetails = new LoginDetails()
+            //    {
+            //        UserName = "bilalkinali@gmail.com",
+            //        PassWord = "kode123",
+            //        CreationDate = DateTime.Now,
 
-                }
+            //    }
 
-            };
-            bool success = bl.CreateLawyer(lawyer);
+            //};
+            //bool success = bl.CreateLawyer(lawyer);
         }
     }
 }

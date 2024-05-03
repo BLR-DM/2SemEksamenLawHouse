@@ -1,6 +1,7 @@
 using BusinessLogic;
 using EntityModels;
 using UI.Forms.CasePage;
+using UI.Forms.ClientPage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;
 namespace UI
@@ -16,7 +17,7 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CreateCasePage());
+            Application.Run(new CreateClientPage());
 
             //LawyerBl bl = new LawyerBl();
 

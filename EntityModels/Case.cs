@@ -21,7 +21,7 @@ namespace EntityModels
         public string Title { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime EndDate { get; set; }
-        public float EstHours { get; set; }
+        public float EstimatedHours { get; set; }
         public string Status { get; set; }
         public float TotalPrice { get; set; }
 

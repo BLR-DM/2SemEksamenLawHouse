@@ -55,6 +55,7 @@
             textBox9 = new TextBox();
             lblPhoneAlt = new Label();
             lblPhoneMain = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
             SuspendLayout();
             // 
@@ -193,9 +194,9 @@
             lblFirstname.ForeColor = Color.FromArgb(45, 93, 134);
             lblFirstname.Location = new Point(33, 180);
             lblFirstname.Name = "lblFirstname";
-            lblFirstname.Size = new Size(29, 13);
+            lblFirstname.Size = new Size(57, 13);
             lblFirstname.TabIndex = 4;
-            lblFirstname.Text = "First";
+            lblFirstname.Text = "Firstname";
             // 
             // lblLastname
             // 
@@ -205,9 +206,9 @@
             lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
             lblLastname.Location = new Point(272, 180);
             lblLastname.Name = "lblLastname";
-            lblLastname.Size = new Size(27, 13);
+            lblLastname.Size = new Size(55, 13);
             lblLastname.TabIndex = 4;
-            lblLastname.Text = "Last";
+            lblLastname.Text = "Lastname";
             // 
             // panel1
             // 
@@ -348,9 +349,9 @@
             lblPhoneAlt.ForeColor = Color.FromArgb(45, 93, 134);
             lblPhoneAlt.Location = new Point(272, 340);
             lblPhoneAlt.Name = "lblPhoneAlt";
-            lblPhoneAlt.Size = new Size(99, 13);
+            lblPhoneAlt.Size = new Size(142, 13);
             lblPhoneAlt.TabIndex = 4;
-            lblPhoneAlt.Text = "Alternative phone";
+            lblPhoneAlt.Text = "Alternative phone number";
             // 
             // lblPhoneMain
             // 
@@ -360,9 +361,21 @@
             lblPhoneMain.ForeColor = Color.FromArgb(45, 93, 134);
             lblPhoneMain.Location = new Point(33, 340);
             lblPhoneMain.Name = "lblPhoneMain";
-            lblPhoneMain.Size = new Size(19, 13);
+            lblPhoneMain.Size = new Size(151, 13);
             lblPhoneMain.TabIndex = 4;
-            lblPhoneMain.Text = "sd";
+            lblPhoneMain.Text = "Enter 8-digit phone number";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.GradientInactiveCaption;
+            label2.Font = new Font("Segoe UI", 8.25F);
+            label2.ForeColor = Color.FromArgb(45, 93, 134);
+            label2.Location = new Point(33, 260);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 13);
+            label2.TabIndex = 4;
+            label2.Text = "Enter email";
             // 
             // CreateUserView
             // 
@@ -392,6 +405,7 @@
             Controls.Add(lblEmail);
             Controls.Add(lblPhoneMain);
             Controls.Add(lblPhoneAlt);
+            Controls.Add(label2);
             Controls.Add(lblConfirmEmail);
             Controls.Add(lblLastname);
             Controls.Add(lblUsername);
@@ -436,5 +450,6 @@
         private TextBox textBox9;
         private Label lblPhoneAlt;
         private Label lblPhoneMain;
+        private Label label2;
     }
 }

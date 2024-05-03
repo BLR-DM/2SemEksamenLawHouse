@@ -56,7 +56,7 @@ partial class LoginPageView
         // 
         pboxLogo.Anchor = AnchorStyles.Top;
         pboxLogo.Image = Properties.Resources.lawhouseLogo;
-        pboxLogo.Location = new Point(139, 101);
+        pboxLogo.Location = new Point(83, 83);
         pboxLogo.Name = "pboxLogo";
         pboxLogo.Size = new Size(266, 73);
         pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -73,7 +73,7 @@ partial class LoginPageView
         btnClose.IconColor = Color.Black;
         btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
         btnClose.IconSize = 30;
-        btnClose.Location = new Point(499, 12);
+        btnClose.Location = new Point(387, 12);
         btnClose.Name = "btnClose";
         btnClose.Size = new Size(33, 28);
         btnClose.TabIndex = 0;
@@ -88,7 +88,7 @@ partial class LoginPageView
         pboxUser.IconColor = Color.FromArgb(45, 93, 134);
         pboxUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
         pboxUser.IconSize = 48;
-        pboxUser.Location = new Point(36, 347);
+        pboxUser.Location = new Point(25, 279);
         pboxUser.Name = "pboxUser";
         pboxUser.Size = new Size(48, 48);
         pboxUser.SizeMode = PictureBoxSizeMode.Zoom;
@@ -99,9 +99,9 @@ partial class LoginPageView
         // 
         pnlLineUser.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         pnlLineUser.BackColor = Color.FromArgb(45, 93, 134);
-        pnlLineUser.Location = new Point(37, 398);
+        pnlLineUser.Location = new Point(26, 330);
         pnlLineUser.Name = "pnlLineUser";
-        pnlLineUser.Size = new Size(471, 3);
+        pnlLineUser.Size = new Size(359, 3);
         pnlLineUser.TabIndex = 3;
         // 
         // lblUser
@@ -110,7 +110,7 @@ partial class LoginPageView
         lblUser.BackColor = SystemColors.GradientInactiveCaption;
         lblUser.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblUser.ForeColor = Color.FromArgb(45, 93, 134);
-        lblUser.Location = new Point(90, 335);
+        lblUser.Location = new Point(79, 267);
         lblUser.Name = "lblUser";
         lblUser.Size = new Size(98, 25);
         lblUser.TabIndex = 4;
@@ -124,7 +124,7 @@ partial class LoginPageView
         pboxPassword.IconColor = Color.FromArgb(45, 93, 134);
         pboxPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
         pboxPassword.IconSize = 48;
-        pboxPassword.Location = new Point(36, 484);
+        pboxPassword.Location = new Point(25, 416);
         pboxPassword.Name = "pboxPassword";
         pboxPassword.Size = new Size(48, 48);
         pboxPassword.SizeMode = PictureBoxSizeMode.Zoom;
@@ -137,7 +137,7 @@ partial class LoginPageView
         lblPassword.BackColor = SystemColors.GradientInactiveCaption;
         lblPassword.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblPassword.ForeColor = Color.FromArgb(45, 93, 134);
-        lblPassword.Location = new Point(90, 472);
+        lblPassword.Location = new Point(79, 404);
         lblPassword.Name = "lblPassword";
         lblPassword.Size = new Size(91, 25);
         lblPassword.TabIndex = 4;
@@ -147,9 +147,9 @@ partial class LoginPageView
         // 
         pnlLinePassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         pnlLinePassword.BackColor = Color.FromArgb(45, 93, 134);
-        pnlLinePassword.Location = new Point(37, 535);
+        pnlLinePassword.Location = new Point(26, 467);
         pnlLinePassword.Name = "pnlLinePassword";
-        pnlLinePassword.Size = new Size(471, 3);
+        pnlLinePassword.Size = new Size(359, 3);
         pnlLinePassword.TabIndex = 3;
         // 
         // lblLogin
@@ -159,7 +159,7 @@ partial class LoginPageView
         lblLogin.BackColor = SystemColors.GradientInactiveCaption;
         lblLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblLogin.ForeColor = Color.FromArgb(45, 93, 134);
-        lblLogin.Location = new Point(234, 194);
+        lblLogin.Location = new Point(178, 176);
         lblLogin.Name = "lblLogin";
         lblLogin.Size = new Size(76, 25);
         lblLogin.TabIndex = 4;
@@ -178,7 +178,7 @@ partial class LoginPageView
         btnLogin.IconColor = Color.Black;
         btnLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
         btnLogin.IconSize = 70;
-        btnLogin.Location = new Point(145, 634);
+        btnLogin.Location = new Point(89, 565);
         btnLogin.Name = "btnLogin";
         btnLogin.Size = new Size(254, 50);
         btnLogin.TabIndex = 3;
@@ -190,7 +190,7 @@ partial class LoginPageView
         tboxUser.BackColor = SystemColors.GradientInactiveCaption;
         tboxUser.BorderStyle = BorderStyle.None;
         tboxUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tboxUser.Location = new Point(97, 369);
+        tboxUser.Location = new Point(86, 301);
         tboxUser.MaxLength = 50;
         tboxUser.Name = "tboxUser";
         tboxUser.PlaceholderText = "Email address";
@@ -202,7 +202,7 @@ partial class LoginPageView
         tboxPassword.BackColor = SystemColors.GradientInactiveCaption;
         tboxPassword.BorderStyle = BorderStyle.None;
         tboxPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tboxPassword.Location = new Point(97, 507);
+        tboxPassword.Location = new Point(86, 439);
         tboxPassword.MaxLength = 50;
         tboxPassword.Name = "tboxPassword";
         tboxPassword.PasswordChar = '•';
@@ -220,7 +220,7 @@ partial class LoginPageView
         pboxEye.IconColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
         pboxEye.IconSize = 40;
-        pboxEye.Location = new Point(467, 492);
+        pboxEye.Location = new Point(344, 424);
         pboxEye.Name = "pboxEye";
         pboxEye.Size = new Size(40, 40);
         pboxEye.TabIndex = 7;
@@ -233,7 +233,7 @@ partial class LoginPageView
         lblCreateAccount.BackColor = SystemColors.GradientInactiveCaption;
         lblCreateAccount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
         lblCreateAccount.ForeColor = Color.FromArgb(45, 93, 134);
-        lblCreateAccount.Location = new Point(145, 699);
+        lblCreateAccount.Location = new Point(89, 630);
         lblCreateAccount.Name = "lblCreateAccount";
         lblCreateAccount.Size = new Size(176, 21);
         lblCreateAccount.TabIndex = 4;
@@ -247,7 +247,7 @@ partial class LoginPageView
         lblRegister.Cursor = Cursors.Hand;
         lblRegister.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
         lblRegister.ForeColor = Color.FromArgb(45, 93, 134);
-        lblRegister.Location = new Point(327, 699);
+        lblRegister.Location = new Point(271, 630);
         lblRegister.Name = "lblRegister";
         lblRegister.Size = new Size(72, 21);
         lblRegister.TabIndex = 4;
@@ -261,7 +261,7 @@ partial class LoginPageView
         lblForgotPassword.Cursor = Cursors.Hand;
         lblForgotPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
         lblForgotPassword.ForeColor = Color.FromArgb(45, 93, 134);
-        lblForgotPassword.Location = new Point(366, 552);
+        lblForgotPassword.Location = new Point(243, 484);
         lblForgotPassword.Name = "lblForgotPassword";
         lblForgotPassword.Size = new Size(141, 21);
         lblForgotPassword.TabIndex = 4;
@@ -272,7 +272,7 @@ partial class LoginPageView
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = SystemColors.GradientInactiveCaption;
-        ClientSize = new Size(544, 805);
+        ClientSize = new Size(432, 706);
         ControlBox = false;
         Controls.Add(pboxEye);
         Controls.Add(tboxPassword);

@@ -1,5 +1,6 @@
 ﻿using EntityModels;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace DataAccess
 {
@@ -28,12 +29,19 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=mssql16.unoeuro.com;Database=lawhouseblr_dk_db_lawhouse;User Id=lawhouseblr_dk;Password=km5xFBGRe2pErnDcg6h3;Encrypt=False;");
-            optionsBuilder.UseSqlServer("Server=DESKTOP-ANPNVL3;DataBase=Dinfar;Trusted_Connection=true;Encrypt=False;");
-            //optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest2;Trusted_Connection=True;Encrypt=false;");
+            //optionsBuilder.UseSqlServer("Server=mssql16.unoeuro.com;Database=lawhouseblr_dk_db_lawhouse;User Id=lawhouseblr_dk;Password=km5xFBGRe2pErnDcg6h3;Encrypt=False;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
+            optionsBuilder.UseSqlServer("Server=DESKTOP-ANPNVL3;DataBase=Dinfar;Trusted_Connection=true;Encrypt=False;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking); ;
+            //optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest2;Trusted_Connection=True;Encrypt=false;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Person>()
+                        .HasIndex(u => u.Email)
+                        .IsUnique();
+            modelBuilder.Entity<Employee>()
+                        .HasIndex(u => u.PhoneNumber)
+                        .IsUnique();
 
             // Configure DeleteBehavior
             modelBuilder.Entity<Case>()

@@ -18,10 +18,10 @@ namespace BusinessLogic
             dbAccess = new ClientDbAccess();
             modelConverter = new ModelConverter();
         }
-        public async Task<bool> Create(Client client)
-        {
-            return await dbAccess.CreateAsync(client);
-        }
+        //public async Task<bool> Create(Client client)
+        //{
+        //    return await dbAccess.CreateAsync(client);
+        //}
 
         public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
         {

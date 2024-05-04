@@ -20,8 +20,8 @@ namespace DataAccess
         {
             try
             {
-                db.Add(client);
-                db.SaveChanges();
+                await db.AddAsync(client);
+                return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)
             {

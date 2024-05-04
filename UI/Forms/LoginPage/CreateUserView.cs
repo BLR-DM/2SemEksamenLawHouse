@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using EntityModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +16,12 @@ namespace UI.Forms.CreateUserPage
     public partial class CreateUserView : Form
     {
         LoginPageView loginPage;
+        ClientBL clientBL;
         public CreateUserView(LoginPageView login)
         {
             loginPage = login;
+            clientBL = new ClientBL();
+
             InitializeComponent();
 
             lblCancel.Click += LblCancel_Click;
@@ -25,6 +30,38 @@ namespace UI.Forms.CreateUserPage
             lblCancel.MouseLeave += LblCancel_MouseLeave;
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtEmailConfirm.TextChanged += TxtEmailConfirm_TextChanged;
+            btnCreate.Click += BtnCreate_Click;
+        }
+
+        private async void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            // Create UI
+            Client client = new Client()
+            {
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmailConfirm.Text,
+                Phones = new List<Phone>()
+                {
+                    new Phone() { PhoneNumber = int.Parse(txtPhoneMain.Text) }
+                },
+                AddressLine = txtAddress.Text,
+                PostalCode = int.Parse(txtPostal.Text),
+                City = txtCity.Text,
+                LoginDetails = new LoginDetails()
+                {
+                    Username = txtUsername.Text,
+                    Password = txtPasswordConfirm.Text,
+                    CreationDate = DateTime.Now,
+                }
+            };
+
+            bool result = await clientBL.Create(client);
+
+            if (result)
+                MessageBox.Show("CLIENT ADDED!");
+            else
+                MessageBox.Show("Failed!");
         }
 
         private void TxtEmailConfirm_TextChanged(object? sender, EventArgs e)

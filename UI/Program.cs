@@ -57,11 +57,11 @@ namespace UI
             //PhoneNumber = 88888888,
             //HireDate = DateTime.Now,
             //LawyerTitleID = 1,
-
+  
             //    LoginDetails = new LoginDetails()
             //    {
-            //        UserName = "bilalkinali@gmail.com",
-            //        PassWord = "kode123",
+            //        Username = "bilalkinali@gmail.com",
+            //        Password = "kode123",
             //        CreationDate = DateTime.Now,
 
             //    }

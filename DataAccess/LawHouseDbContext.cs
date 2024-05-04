@@ -30,8 +30,8 @@ namespace DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer("Server=mssql16.unoeuro.com;Database=lawhouseblr_dk_db_lawhouse;User Id=lawhouseblr_dk;Password=km5xFBGRe2pErnDcg6h3;Encrypt=False;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
-            optionsBuilder.UseSqlServer("Server=DESKTOP-ANPNVL3;DataBase=Dinfar;Trusted_Connection=true;Encrypt=False;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking); ;
-            //optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest2;Trusted_Connection=True;Encrypt=false;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
+            //optionsBuilder.UseSqlServer("Server=DESKTOP-ANPNVL3;DataBase=Dinfar;Trusted_Connection=true;Encrypt=False;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking); ;
+            optionsBuilder.UseSqlServer("Server=BILAL-KINALI;Database=LawHouseTest;Trusted_Connection=True;Encrypt=false;").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);;
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

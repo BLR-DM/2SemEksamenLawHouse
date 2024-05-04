@@ -16,7 +16,7 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
         
-        public async Task<bool> Create(Client client)
+        public void Create(Client client)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace DataAccess
             catch (Exception)
             {
 
-                return false;
+                
             }
         }
     }

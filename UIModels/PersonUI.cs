@@ -14,6 +14,7 @@ namespace UIModels
         public string Email { get; set; }
         public string AddressLine { get; set; }
         public int PostalCode { get; set; }
+        public string City { get; set; }
 
         //foreign key
         public int LoginDetailsID { get; set; }

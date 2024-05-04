@@ -277,19 +277,31 @@ namespace BusinessLogic
         {
             Client clientE = new Client
             {
-                //ClientID = clientUI.ClientID,
-                Firstname = clientUI.FirstName,
-                Lastname = clientUI.LastName,
+                PersonID = clientUI.PersonID,
+                FirstName = clientUI.FirstName,
+                LastName = clientUI.LastName,
                 Email = clientUI.Email,
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
-                //CreationDate = clientUI.CreationDate,
+                City = clientUI.City,
                 ClientSub = clientUI.ClientSub,
 
                 //foreign keys
-                //UserID = clientUI.UserID,
+                LoginDetailsID = clientUI.LoginDetailsID,
             };
             return clientE;
+        }
+
+        public LoginDetails ConvertFromLoginDetailsUI(LoginDetailsUI loginDetailsUI)
+        {
+            LoginDetails loginDetailsE = new LoginDetails
+            {
+                LoginDetailsID = loginDetailsUI.LoginDetailsID,
+                UserName = loginDetailsUI.UserName,
+                PassWord = loginDetailsUI.PassWord,
+                CreationDate = loginDetailsUI.CreationDate,
+            };
+            return loginDetailsE;
         }
 
         public ClientFormular ConvertFromClientFormularUI(ClientFormularUI clientFormularUI)

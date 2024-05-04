@@ -9,11 +9,11 @@ using EntityModels;
 
 namespace BusinessLogic
 {
-    public class ClientBl
+    public class ClientBL
     {
         ClientDbAccess dbAccess;
         ModelConverter modelConverter;
-        public ClientBl()
+        public ClientBL()
         {
             dbAccess = new ClientDbAccess();
             modelConverter = new ModelConverter();

@@ -25,10 +25,16 @@ namespace UI.Forms.ClientPage
             txtCity.TextChanged += TxtCity_TextChanged;
             txtPhone.TextChanged += TxtPhone_TextChanged;
             btnAddPhone.Click += BtnAddPhone_Click;
+            btnCreate.Click += BtnCreate_Click;
 
 
 
 
+        }
+
+        private async void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnAddPhone_Click(object? sender, EventArgs e)

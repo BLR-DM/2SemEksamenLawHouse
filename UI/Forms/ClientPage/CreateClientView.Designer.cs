@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             lblCreate = new Label();
-            btnLogin = new FontAwesome.Sharp.IconButton();
+            btnCreate = new FontAwesome.Sharp.IconButton();
             txtLastname = new TextBox();
             txtPostal = new TextBox();
             txtAddress = new TextBox();
@@ -94,25 +94,25 @@
             lblCreate.TabIndex = 5;
             lblCreate.Text = "CREATE CLIENT";
             // 
-            // btnLogin
+            // btnCreate
             // 
-            btnLogin.Anchor = AnchorStyles.Bottom;
-            btnLogin.BackColor = Color.FromArgb(45, 93, 134);
-            btnLogin.Cursor = Cursors.Hand;
-            btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnLogin.ForeColor = Color.White;
-            btnLogin.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnLogin.IconColor = Color.Black;
-            btnLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnLogin.IconSize = 70;
-            btnLogin.Location = new Point(599, 508);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(254, 50);
-            btnLogin.TabIndex = 11;
-            btnLogin.Text = "Create";
-            btnLogin.UseVisualStyleBackColor = false;
+            btnCreate.Anchor = AnchorStyles.Bottom;
+            btnCreate.BackColor = Color.FromArgb(45, 93, 134);
+            btnCreate.Cursor = Cursors.Hand;
+            btnCreate.FlatAppearance.BorderSize = 0;
+            btnCreate.FlatStyle = FlatStyle.Flat;
+            btnCreate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnCreate.ForeColor = Color.White;
+            btnCreate.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCreate.IconColor = Color.Black;
+            btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCreate.IconSize = 70;
+            btnCreate.Location = new Point(599, 508);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(254, 50);
+            btnCreate.TabIndex = 11;
+            btnCreate.Text = "Create";
+            btnCreate.UseVisualStyleBackColor = false;
             // 
             // txtLastname
             // 
@@ -532,7 +532,7 @@
             label5.TabIndex = 44;
             label5.Text = "Username:";
             // 
-            // CreateClientPage
+            // CreateClientView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -566,11 +566,11 @@
             Controls.Add(lblLastname);
             Controls.Add(lblFirstname);
             Controls.Add(lblName);
-            Controls.Add(btnLogin);
+            Controls.Add(btnCreate);
             Controls.Add(panel1);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "CreateClientPage";
+            Name = "CreateClientView";
             Text = "CreateClientPage";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -584,7 +584,7 @@
 
         private Panel panel1;
         private Label lblCreate;
-        private FontAwesome.Sharp.IconButton btnLogin;
+        private FontAwesome.Sharp.IconButton btnCreate;
         private TextBox txtLastname;
         private TextBox txtPostal;
         private TextBox txtAddress;

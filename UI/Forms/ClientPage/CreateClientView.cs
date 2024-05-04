@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIModels;
 
 namespace UI.Forms.ClientPage
 {
     public partial class CreateClientView : Form
     {
+        ClientBl clientBl;
+        List<PhoneUI> phoneUIList;
+        PhoneUI phoneUI;
         public CreateClientView()
         {
             InitializeComponent();
+            clientBl = new ClientBl();
+
+            phoneUIList = new List<PhoneUI>();
+
 
             //Events
             txtFirstname.TextChanged += TxtFirstname_TextChanged;
@@ -34,12 +43,45 @@ namespace UI.Forms.ClientPage
 
         private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            btnCreate.Enabled = false;
+
+            ClientUI clientUI = new ClientUI()
+            {
+                FirstName = txtFirstname.Text,
+                LastName = txtLastname.Text,
+                Email = txtEmail.Text,
+                AddressLine = txtAddress.Text,
+                PostalCode = Convert.ToInt32(txtPostal.Text),
+                City = txtCity.Text,
+                ClientSub = 0,
+            };
+
+            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            {
+                UserName = clientUI.Email,
+                PassWord = "0000",
+                CreationDate = DateTime.Now,
+            };
+            if(txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
+            {
+                loginDetailsUI.PassWord = txtPassword.Text;
+            }
+
+            bool success = await clientBl.CreateAsync(clientUI, loginDetailsUI, phoneUIList);
+
+            btnCreate.Enabled = true;
+
         }
 
         private void BtnAddPhone_Click(object? sender, EventArgs e)
         {
+            PhoneUI tempPhone = new PhoneUI()
+            {
+                PhoneNumber = Convert.ToInt32(txtPhone.Text),
+            };
+            phoneUIList.Add(tempPhone);
 
+            rtxtPhoneNumbers.Text = string.Join("\n", phoneUIList.Select(p => p.PhoneNumber));
         }
 
         private void TxtFirstname_TextChanged(object? sender, EventArgs e)
@@ -49,7 +91,7 @@ namespace UI.Forms.ClientPage
         private void TxtLastname_TextChanged(object? sender, EventArgs e)
         {
             lblNameView.Text = string.Join(" ", txtFirstname.Text, txtLastname.Text);
-            
+
         }
         private void txtEmail_TextChanged(object? sender, EventArgs e)
         {
@@ -69,8 +111,7 @@ namespace UI.Forms.ClientPage
         }
         private void TxtPhone_TextChanged(object? sender, EventArgs e)
         {
-
+            
         }
-
     }
 }

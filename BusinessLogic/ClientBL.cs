@@ -9,11 +9,11 @@ using EntityModels;
 
 namespace BusinessLogic
 {
-    public class ClientBL
+    public class ClientBl
     {
         ClientDbAccess dbAccess;
         ModelConverter modelConverter;
-        public ClientBL()
+        public ClientBl()
         {
             dbAccess = new ClientDbAccess();
             modelConverter = new ModelConverter();
@@ -23,15 +23,25 @@ namespace BusinessLogic
             return await dbAccess.CreateAsync(client);
         }
 
-        public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
+        public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI, List<PhoneUI> phoneUIs)
         {
-            Client temp = modelConverter.ConvertFromClientUI(clientUI);
+            Client tempC = modelConverter.ConvertFromClientUI(clientUI);
             LoginDetails tempL = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
 
-            temp.LoginDetails = tempL;
+            List<Phone> phoneList = new List<Phone>();
+
+            foreach(PhoneUI phoneUI in phoneUIs)
+            {
+                Phone tmp = modelConverter.ConvertFromPhoneUI(phoneUI);
+                phoneList.Add(tmp);
+                
+            }
+            
+            tempC.Phones = phoneList;
+            tempC.LoginDetails = tempL;
 
 
-            return await dbAccess.CreateAsync(temp);
+            return await dbAccess.CreateAsync(tempC);
         }
     }
 }

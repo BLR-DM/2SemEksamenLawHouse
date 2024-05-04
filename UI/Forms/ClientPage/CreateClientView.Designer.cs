@@ -58,7 +58,6 @@
             lblEmailView = new Label();
             lblNameView = new Label();
             lblUsernameView = new Label();
-            txtAltPhone = new TextBox();
             label7 = new Label();
             btnAddPhone = new FontAwesome.Sharp.IconButton();
             txtConfirmPassword = new TextBox();
@@ -424,27 +423,17 @@
             lblUsernameView.TabIndex = 35;
             lblUsernameView.Text = "test";
             // 
-            // txtAltPhone
-            // 
-            txtAltPhone.BackColor = Color.White;
-            txtAltPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtAltPhone.Location = new Point(259, 306);
-            txtAltPhone.MaxLength = 50;
-            txtAltPhone.Name = "txtAltPhone";
-            txtAltPhone.Size = new Size(166, 27);
-            txtAltPhone.TabIndex = 36;
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = SystemColors.GradientInactiveCaption;
             label7.Font = new Font("Segoe UI", 8.25F);
             label7.ForeColor = Color.FromArgb(45, 93, 134);
-            label7.Location = new Point(259, 336);
+            label7.Location = new Point(240, 336);
             label7.Name = "label7";
-            label7.Size = new Size(81, 13);
+            label7.Size = new Size(28, 13);
             label7.TabIndex = 37;
-            label7.Text = "Add Alt Phone";
+            label7.Text = "Add";
             // 
             // btnAddPhone
             // 
@@ -457,7 +446,7 @@
             btnAddPhone.IconColor = Color.Black;
             btnAddPhone.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAddPhone.IconSize = 25;
-            btnAddPhone.Location = new Point(431, 305);
+            btnAddPhone.Location = new Point(240, 305);
             btnAddPhone.Name = "btnAddPhone";
             btnAddPhone.Size = new Size(28, 28);
             btnAddPhone.TabIndex = 38;
@@ -546,7 +535,6 @@
             Controls.Add(lblConfirmPassword);
             Controls.Add(btnAddPhone);
             Controls.Add(lblUsernameView);
-            Controls.Add(txtAltPhone);
             Controls.Add(label7);
             Controls.Add(panel2);
             Controls.Add(txtCity);
@@ -608,7 +596,6 @@
         private Label lblEmailView;
         private Label lblNameView;
         private Label lblUsernameView;
-        private TextBox txtAltPhone;
         private Label label7;
         private RichTextBox rtxtPhoneNumbers;
         private FontAwesome.Sharp.IconButton btnAddPhone;

@@ -14,8 +14,8 @@ namespace EntityModels
         public int LoginDetailsID { get; set; }
 
         //attributes
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public DateTime CreationDate { get; set; }
 
         //nav prop

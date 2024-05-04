@@ -1,4 +1,5 @@
-﻿using EntityModels;
+﻿using BusinessLogic;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,12 @@ namespace UI.Forms.CreateUserPage
     public partial class CreateUserView : Form
     {
         LoginPageView loginPage;
+        ClientBL clientBL;
         public CreateUserView(LoginPageView login)
         {
             loginPage = login;
+            clientBL = new ClientBL();
+
             InitializeComponent();
 
             lblCancel.Click += LblCancel_Click;
@@ -29,14 +33,14 @@ namespace UI.Forms.CreateUserPage
             btnCreate.Click += BtnCreate_Click;
         }
 
-        private void BtnCreate_Click(object? sender, EventArgs e)
+        private async void BtnCreate_Click(object? sender, EventArgs e)
         {
             // Create UI
             Client client = new Client()
             {
-                FirstName = txtFirstname.Text,
-                LastName = txtLastname.Text,
-                Email = txtEmail.Text,
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmailConfirm.Text,
                 Phones = new List<Phone>()
                 {
                     new Phone() { PhoneNumber = int.Parse(txtPhoneMain.Text) }
@@ -46,10 +50,18 @@ namespace UI.Forms.CreateUserPage
                 City = txtCity.Text,
                 LoginDetails = new LoginDetails()
                 {
-                    UserName = txtUsername.Text,
-                    PassWord = txtPasswordConfirm.Text,
+                    Username = txtUsername.Text,
+                    Password = txtPasswordConfirm.Text,
+                    CreationDate = DateTime.Now,
                 }
             };
+
+            bool result = await clientBL.Create(client);
+
+            if (result)
+                MessageBox.Show("CLIENT ADDED!");
+            else
+                MessageBox.Show("Failed!");
         }
 
         private void TxtEmailConfirm_TextChanged(object? sender, EventArgs e)

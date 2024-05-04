@@ -16,14 +16,14 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CreateClientPage());
+            Application.Run(new LoginPageView());
 
             //LawyerBl bl = new LawyerBl();
 
             //Lawyer lawyer = new Lawyer()
             //{
-                //FirstName = "Bilal",
-                //LastName = "Kinali",
+                //Firstname = "Bilal",
+                //Lastname = "Kinali",
                 //Email = "bilalkinali@gmail.com",
                 //AddressLine = "Lumbyesvej 16",
                 //PostalCode = 7000,
@@ -33,8 +33,8 @@ namespace UI
           
             //    LoginDetails = new LoginDetails()
             //    {
-            //        UserName = "bilalkinali@gmail.com",
-            //        PassWord = "kode123",
+            //        Username = "bilalkinali@gmail.com",
+            //        Password = "kode123",
             //        CreationDate = DateTime.Now,
 
             //    }

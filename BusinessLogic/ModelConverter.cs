@@ -28,7 +28,7 @@ namespace BusinessLogic
                 //CaseType = caseE.CaseType,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
-                EstHours = caseE.EstHours,
+                EstHours = caseE.EstimatedHours,
                 Status = caseE.Status,
                 TotalPrice = caseE.TotalPrice,
 
@@ -61,8 +61,8 @@ namespace BusinessLogic
             ClientUI clientUI = new ClientUI
             {
                 //ClientID = clientE.ClientID,
-                FirstName = clientE.FirstName,
-                LastName = clientE.LastName,
+                FirstName = clientE.Firstname,
+                LastName = clientE.Lastname,
                 Email = clientE.Email,
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
@@ -123,8 +123,8 @@ namespace BusinessLogic
             {
                 //LawyerID = lawyerE.LawyerID,
                 //Title = lawyerE.Title,
-                FirstName = lawyerE.FirstName,
-                LastName = lawyerE.LastName,
+                FirstName = lawyerE.Firstname,
+                LastName = lawyerE.Lastname,
                 PhoneNumber = lawyerE.PhoneNumber,
                 Email = lawyerE.Email,
                 AddressLine = lawyerE.AddressLine,
@@ -163,8 +163,8 @@ namespace BusinessLogic
             SecretaryUI secretaryUI = new SecretaryUI
             {
                 //SecretaryID = secretaryE.SecretaryID,
-                FirstName = secretaryE.FirstName,
-                LastName = secretaryE.LastName,
+                FirstName = secretaryE.Firstname,
+                LastName = secretaryE.Lastname,
                 PhoneNumber = secretaryE.PhoneNumber,
                 Email = secretaryE.Email,
                 AddressLine = secretaryE.AddressLine,
@@ -215,8 +215,8 @@ namespace BusinessLogic
         //    UserUI userUI = new UserUI
         //    {
         //        UserID = userE.UserID,
-        //        UserName = userE.UserName,
-        //        PassWord = userE.PassWord,
+        //        Username = userE.Username,
+        //        Password = userE.Password,
         //        //Type = userE.Type,
         //    };
         //    return userUI;
@@ -247,7 +247,7 @@ namespace BusinessLogic
                 //CaseType = caseUI.CaseType,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,
-                EstHours = caseUI.EstHours,
+                EstimatedHours = caseUI.EstHours,
                 Status = caseUI.Status,
                 TotalPrice = caseUI.TotalPrice,
                 LawyerID = caseUI.LawyerID,
@@ -278,8 +278,8 @@ namespace BusinessLogic
             Client clientE = new Client
             {
                 //ClientID = clientUI.ClientID,
-                FirstName = clientUI.FirstName,
-                LastName = clientUI.LastName,
+                Firstname = clientUI.FirstName,
+                Lastname = clientUI.LastName,
                 Email = clientUI.Email,
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
@@ -342,8 +342,8 @@ namespace BusinessLogic
                 //Title = lawyerUI.Title,
 
                 //employee attributter
-                FirstName = lawyerUI.FirstName,
-                LastName = lawyerUI.LastName,
+                Firstname = lawyerUI.FirstName,
+                Lastname = lawyerUI.LastName,
                 PhoneNumber = lawyerUI.PhoneNumber,
                 Email = lawyerUI.Email,
                 AddressLine = lawyerUI.AddressLine,
@@ -386,8 +386,8 @@ namespace BusinessLogic
                 //SecretaryID = secretaryUI.SecretaryID,
 
                 //employee attributter
-                FirstName = secretaryUI.FirstName,
-                LastName = secretaryUI.LastName,
+                Firstname = secretaryUI.FirstName,
+                Lastname = secretaryUI.LastName,
                 PhoneNumber = secretaryUI.PhoneNumber,
                 Email = secretaryUI.Email,
                 AddressLine = secretaryUI.AddressLine,
@@ -439,8 +439,8 @@ namespace BusinessLogic
         //    User userE = new User
         //    {
         //        UserID = userUI.UserID,
-        //        UserName = userUI.UserName,
-        //        PassWord = userUI.PassWord,
+        //        Username = userUI.Username,
+        //        Password = userUI.Password,
         //        Type = userUI.Type,
         //    };
         //    return userE;

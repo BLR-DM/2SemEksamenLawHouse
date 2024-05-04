@@ -21,7 +21,7 @@ namespace DataAccess
             try
             {
                 await db.AddAsync(client);
-                return true;
+                return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)
             {

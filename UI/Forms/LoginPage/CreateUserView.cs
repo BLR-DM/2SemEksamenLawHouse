@@ -16,11 +16,11 @@ namespace UI.Forms.CreateUserPage
     public partial class CreateUserView : Form
     {
         LoginPageView loginPage;
-        ClientBl clientBL;
+        ClientBL clientBL;
         public CreateUserView(LoginPageView login)
         {
             loginPage = login;
-            clientBL = new ClientBl();
+            clientBL = new ClientBL();
 
             InitializeComponent();
 

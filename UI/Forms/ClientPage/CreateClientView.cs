@@ -14,13 +14,13 @@ namespace UI.Forms.ClientPage
 {
     public partial class CreateClientView : Form
     {
-        ClientBl clientBl;
+        ClientBL clientBl;
         List<PhoneUI> phoneUIList;
         PhoneUI phoneUI;
         public CreateClientView()
         {
             InitializeComponent();
-            clientBl = new ClientBl();
+            clientBl = new ClientBL();
 
             phoneUIList = new List<PhoneUI>();
 

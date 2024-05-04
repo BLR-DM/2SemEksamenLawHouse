@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,30 @@ namespace UI.Forms.CreateUserPage
             lblCancel.MouseLeave += LblCancel_MouseLeave;
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtEmailConfirm.TextChanged += TxtEmailConfirm_TextChanged;
+            btnCreate.Click += BtnCreate_Click;
+        }
+
+        private void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            // Create UI
+            Client client = new Client()
+            {
+                FirstName = txtFirstname.Text,
+                LastName = txtLastname.Text,
+                Email = txtEmail.Text,
+                Phones = new List<Phone>()
+                {
+                    new Phone() { PhoneNumber = int.Parse(txtPhoneMain.Text) }
+                },
+                AddressLine = txtAddress.Text,
+                PostalCode = int.Parse(txtPostal.Text),
+                City = txtCity.Text,
+                LoginDetails = new LoginDetails()
+                {
+                    UserName = txtUsername.Text,
+                    PassWord = txtPasswordConfirm.Text,
+                }
+            };
         }
 
         private void TxtEmailConfirm_TextChanged(object? sender, EventArgs e)

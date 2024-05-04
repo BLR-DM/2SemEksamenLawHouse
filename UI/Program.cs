@@ -26,8 +26,8 @@ namespace UI
 
             //ClientUI clientUI = new ClientUI()
             //{
-            //    FirstName = "Lucas",
-            //    LastName = "MacQuarrie",
+            //    Firstname = "Lucas",
+            //    Lastname = "MacQuarrie",
             //    Email = "Maclucas07@hotmail.com",
             //    AddressLine = "Korskaervej 16",
             //    PostalCode = 7000,
@@ -36,8 +36,8 @@ namespace UI
             //};
             //LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
             //{
-            //    UserName = clientUI.Email,
-            //    PassWord = "kode123",
+            //    Username = clientUI.Email,
+            //    Password = "kode123",
             //    CreationDate = DateTime.Now,
             //};
 
@@ -49,8 +49,8 @@ namespace UI
 
             //Lawyer lawyer = new Lawyer()
             //{
-            //FirstName = "Bilal",
-            //LastName = "Kinali",
+            //Firstname = "Bilal",
+            //Lastname = "Kinali",
             //Email = "bilalkinali@gmail.com",
             //AddressLine = "Lumbyesvej 16",
             //PostalCode = 7000,

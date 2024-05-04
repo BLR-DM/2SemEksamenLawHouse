@@ -1,5 +1,5 @@
 ﻿using BusinessLogic;
-using EntityModels;
+using UIModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,27 +36,28 @@ namespace UI.Forms.CreateUserPage
         private async void BtnCreate_Click(object? sender, EventArgs e)
         {
             // Create UI
-            Client client = new Client()
+            ClientUI client = new ClientUI()
             {
                 Firstname = txtFirstname.Text,
                 Lastname = txtLastname.Text,
                 Email = txtEmailConfirm.Text,
-                Phones = new List<Phone>()
+                Phones = new List<PhoneUI>()
                 {
-                    new Phone() { PhoneNumber = int.Parse(txtPhoneMain.Text) }
+                    new PhoneUI() { PhoneNumber = int.Parse(txtPhoneMain.Text) }
                 },
                 AddressLine = txtAddress.Text,
                 PostalCode = int.Parse(txtPostal.Text),
                 City = txtCity.Text,
-                LoginDetails = new LoginDetails()
-                {
-                    Username = txtUsername.Text,
-                    Password = txtPasswordConfirm.Text,
-                    CreationDate = DateTime.Now,
-                }
             };
 
-            bool result = await clientBL.Create(client);
+            LoginDetailsUI loginDetails = new LoginDetailsUI()
+            {
+                Username = txtUsername.Text,
+                Password = txtPasswordConfirm.Text,
+                CreationDate = DateTime.Now,
+            };
+
+            bool result = await clientBL.CreateAsync(client, loginDetails);
 
             if (result)
                 MessageBox.Show("CLIENT ADDED!");

@@ -61,8 +61,8 @@ namespace BusinessLogic
             ClientUI clientUI = new ClientUI
             {
                 //ClientID = clientE.ClientID,
-                FirstName = clientE.Firstname,
-                LastName = clientE.Lastname,
+                Firstname = clientE.Firstname,
+                Lastname = clientE.Lastname,
                 Email = clientE.Email,
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
@@ -123,8 +123,8 @@ namespace BusinessLogic
             {
                 //LawyerID = lawyerE.LawyerID,
                 //Title = lawyerE.Title,
-                FirstName = lawyerE.Firstname,
-                LastName = lawyerE.Lastname,
+                Firstname = lawyerE.Firstname,
+                Lastname = lawyerE.Lastname,
                 PhoneNumber = lawyerE.PhoneNumber,
                 Email = lawyerE.Email,
                 AddressLine = lawyerE.AddressLine,
@@ -163,8 +163,8 @@ namespace BusinessLogic
             SecretaryUI secretaryUI = new SecretaryUI
             {
                 //SecretaryID = secretaryE.SecretaryID,
-                FirstName = secretaryE.Firstname,
-                LastName = secretaryE.Lastname,
+                Firstname = secretaryE.Firstname,
+                Lastname = secretaryE.Lastname,
                 PhoneNumber = secretaryE.PhoneNumber,
                 Email = secretaryE.Email,
                 AddressLine = secretaryE.AddressLine,
@@ -278,9 +278,15 @@ namespace BusinessLogic
             Client clientE = new Client
             {
                 PersonID = clientUI.PersonID,
-                Firstname = clientUI.FirstName,
-                Lastname = clientUI.LastName,
+                Firstname = clientUI.Firstname,
+                Lastname = clientUI.Lastname,
                 Email = clientUI.Email,
+                Phones = clientUI.Phones.Select(p => new Phone
+                {
+                    PhoneID = p.PhoneID,
+                    PhoneNumber = p.PhoneNumber,
+                    // ClientID = p.ClientID, // ?
+                }).ToList(),
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
                 City = clientUI.City,
@@ -297,8 +303,8 @@ namespace BusinessLogic
             LoginDetails loginDetailsE = new LoginDetails
             {
                 LoginDetailsID = loginDetailsUI.LoginDetailsID,
-                Username = loginDetailsUI.UserName,
-                Password = loginDetailsUI.PassWord,
+                Username = loginDetailsUI.Username,
+                Password = loginDetailsUI.Password,
                 CreationDate = loginDetailsUI.CreationDate,
             };
             return loginDetailsE;
@@ -354,8 +360,8 @@ namespace BusinessLogic
                 //Title = lawyerUI.Title,
 
                 //employee attributter
-                Firstname = lawyerUI.FirstName,
-                Lastname = lawyerUI.LastName,
+                Firstname = lawyerUI.Firstname,
+                Lastname = lawyerUI.Lastname,
                 PhoneNumber = lawyerUI.PhoneNumber,
                 Email = lawyerUI.Email,
                 AddressLine = lawyerUI.AddressLine,
@@ -398,8 +404,8 @@ namespace BusinessLogic
                 //SecretaryID = secretaryUI.SecretaryID,
 
                 //employee attributter
-                Firstname = secretaryUI.FirstName,
-                Lastname = secretaryUI.LastName,
+                Firstname = secretaryUI.Firstname,
+                Lastname = secretaryUI.Lastname,
                 PhoneNumber = secretaryUI.PhoneNumber,
                 Email = secretaryUI.Email,
                 AddressLine = secretaryUI.AddressLine,

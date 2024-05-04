@@ -30,8 +30,8 @@
         {
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
-            checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -54,16 +54,6 @@
             panel1.Size = new Size(1219, 99);
             panel1.TabIndex = 1;
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(13, 17);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(83, 19);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // checkBox2
             // 
             checkBox2.AutoSize = true;
@@ -74,10 +64,21 @@
             checkBox2.Text = "checkBox2";
             checkBox2.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(13, 17);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(83, 19);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // CasePageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
             ClientSize = new Size(1243, 675);
             Controls.Add(panel1);
             Controls.Add(dataGridView1);

@@ -38,10 +38,13 @@ namespace DataAccess
         {
 
             modelBuilder.Entity<Person>()
-                        .HasIndex(u => u.Email)
+                        .HasIndex(p => p.Email)
                         .IsUnique();
             modelBuilder.Entity<Employee>()
-                        .HasIndex(u => u.PhoneNumber)
+                        .HasIndex(e => e.PhoneNumber)
+                        .IsUnique();
+            modelBuilder.Entity<Phone>()
+                        .HasIndex(p => p.PhoneNumber)
                         .IsUnique();
 
             // Configure DeleteBehavior

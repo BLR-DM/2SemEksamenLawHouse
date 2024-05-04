@@ -47,8 +47,8 @@ namespace UI.Forms.ClientPage
 
             ClientUI clientUI = new ClientUI()
             {
-                FirstName = txtFirstname.Text,
-                LastName = txtLastname.Text,
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
                 Email = txtEmail.Text,
                 AddressLine = txtAddress.Text,
                 PostalCode = Convert.ToInt32(txtPostal.Text),
@@ -58,13 +58,13 @@ namespace UI.Forms.ClientPage
 
             LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
             {
-                UserName = clientUI.Email,
-                PassWord = "0000",
+                Username = clientUI.Email,
+                Password = "0000",
                 CreationDate = DateTime.Now,
             };
             if(txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
             {
-                loginDetailsUI.PassWord = txtPassword.Text;
+                loginDetailsUI.Password = txtPassword.Text;
             }
 
             bool success = await clientBl.CreateAsync(clientUI, loginDetailsUI, phoneUIList);

@@ -20,10 +20,10 @@ namespace BusinessLogic
         }
         public async Task<bool> Create(Client client)
         {
-            return await dbAccess.Create(client);
+            return await dbAccess.CreateAsync(client);
         }
 
-        public void Create(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
+        public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI)
         {
             Client temp = modelConverter.ConvertFromClientUI(clientUI);
             LoginDetails tempL = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
@@ -31,7 +31,7 @@ namespace BusinessLogic
             temp.LoginDetails = tempL;
 
 
-            dbAccess.Create(temp);
+            return await dbAccess.CreateAsync(temp);
         }
     }
 }

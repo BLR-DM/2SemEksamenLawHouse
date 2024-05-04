@@ -14,13 +14,13 @@ namespace UI.Forms.ClientPage
 {
     public partial class CreateClientView : Form
     {
-        ClientBL clientBl;
+        ClientBL clientBL;
         List<PhoneUI> phoneUIList;
         PhoneUI phoneUI;
         public CreateClientView()
         {
             InitializeComponent();
-            clientBl = new ClientBL();
+            clientBL = new ClientBL();
 
             phoneUIList = new List<PhoneUI>();
 
@@ -67,7 +67,7 @@ namespace UI.Forms.ClientPage
                 loginDetailsUI.Password = txtPassword.Text;
             }
 
-            bool success = await clientBl.CreateAsync(clientUI, loginDetailsUI, phoneUIList);
+            bool success = await clientBL.CreateAsync(clientUI, loginDetailsUI, phoneUIList);
 
             btnCreate.Enabled = true;
 

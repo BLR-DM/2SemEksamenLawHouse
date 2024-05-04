@@ -22,7 +22,7 @@ namespace UI
             Application.Run(new LoginPageView());
 
 
-            //ClientBL clientBl = new ClientBL();
+            //ClientBL clientBL = new ClientBL();
 
             //ClientUI clientUI = new ClientUI()
             //{
@@ -41,7 +41,7 @@ namespace UI
             //    CreationDate = DateTime.Now,
             //};
 
-            //clientBl.Create(clientUI, loginDetailsUI);
+            //clientBL.Create(clientUI, loginDetailsUI);
 
 
 

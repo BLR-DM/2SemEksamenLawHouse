@@ -278,8 +278,8 @@ namespace BusinessLogic
             Client clientE = new Client
             {
                 PersonID = clientUI.PersonID,
-                FirstName = clientUI.FirstName,
-                LastName = clientUI.LastName,
+                Firstname = clientUI.FirstName,
+                Lastname = clientUI.LastName,
                 Email = clientUI.Email,
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
@@ -297,8 +297,8 @@ namespace BusinessLogic
             LoginDetails loginDetailsE = new LoginDetails
             {
                 LoginDetailsID = loginDetailsUI.LoginDetailsID,
-                UserName = loginDetailsUI.UserName,
-                PassWord = loginDetailsUI.PassWord,
+                Username = loginDetailsUI.UserName,
+                Password = loginDetailsUI.PassWord,
                 CreationDate = loginDetailsUI.CreationDate,
             };
             return loginDetailsE;

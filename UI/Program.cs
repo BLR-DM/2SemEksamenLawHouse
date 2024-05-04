@@ -22,7 +22,7 @@ namespace UI
             Application.Run(new LoginPageView());
 
 
-            //ClientBl clientBl = new ClientBl();
+            //ClientBL clientBl = new ClientBL();
 
             //ClientUI clientUI = new ClientUI()
             //{

@@ -45,7 +45,7 @@ namespace UI
 
 
 
-            //LawyerBl bl = new LawyerBl();
+            //LawyerBL bl = new LawyerBL();
 
             //Lawyer lawyer = new Lawyer()
             //{

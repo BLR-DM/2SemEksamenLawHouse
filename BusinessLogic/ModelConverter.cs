@@ -281,12 +281,6 @@ namespace BusinessLogic
                 Firstname = clientUI.Firstname,
                 Lastname = clientUI.Lastname,
                 Email = clientUI.Email,
-                Phones = clientUI.Phones.Select(p => new Phone
-                {
-                    PhoneID = p.PhoneID,
-                    PhoneNumber = p.PhoneNumber,
-                    // ClientID = p.ClientID, // ?
-                }).ToList(),
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
                 City = clientUI.City,
@@ -296,6 +290,19 @@ namespace BusinessLogic
                 LoginDetailsID = clientUI.LoginDetailsID,
             };
             return clientE;
+        }
+
+        public Phone ConvertFromPhoneUI(PhoneUI phoneUI)
+        {
+            Phone phoneE = new Phone
+            {
+                PhoneID = phoneUI.PhoneID,
+                PhoneNumber = phoneUI.PhoneNumber,
+
+                //foreign key
+                ClientID = phoneUI.ClientID,
+            };
+            return phoneE;
         }
 
         public LoginDetails ConvertFromLoginDetailsUI(LoginDetailsUI loginDetailsUI)
@@ -382,19 +389,6 @@ namespace BusinessLogic
                 SpecialityID = lawyerSpecialityUI.SpecialityID,
             };
             return lawyerSpecialityE;
-        }
-
-        public Phone ConvertFromPhoneUI(PhoneUI phoneUI)
-        {
-            Phone phoneE = new Phone
-            {
-                PhoneID = phoneUI.PhoneID,
-                PhoneNumber = phoneUI.PhoneNumber,
-
-                //foreign key
-                ClientID = phoneUI.ClientID,
-            };
-            return phoneE;
         }
 
         public Secretary ConvertFromSecretaryUI(SecretaryUI secretaryUI)

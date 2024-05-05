@@ -8,10 +8,10 @@ using EntityModels;
 
 namespace BusinessLogic
 {
-    public class LawyerBl
+    public class LawyerBL
     {
         LawyerDbAccess dbAccess;
-        public LawyerBl()
+        public LawyerBL()
         {
             dbAccess = new LawyerDbAccess();
         }

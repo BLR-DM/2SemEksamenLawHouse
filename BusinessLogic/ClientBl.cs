@@ -19,7 +19,24 @@ namespace BusinessLogic
             modelConverter = new ModelConverter();
         }
 
-        public async Task<bool> CreateAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI, List<PhoneUI> phoneUIs)
+        public async Task<List<ClientUI>> GetClientsAsync()
+        {
+            List<ClientUI> clientUIs = new List<ClientUI>();
+            foreach (Client c in await dbAccess.GetClientsAsync())
+            {
+                clientUIs.Add(modelConverter.ConvertFromClientEntity(c));
+            }
+            return clientUIs;
+        }
+
+        public async Task<ClientUI> GetClientAsync(int id)
+        {
+            Client client = await dbAccess.GetClientAsync(id);
+            ClientUI clientUI = modelConverter.ConvertFromClientEntity(client);
+            return clientUI;
+        }
+
+        public async Task<bool> CreateClientAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI, List<PhoneUI> phoneUIs)
         {
             Client tempC = modelConverter.ConvertFromClientUI(clientUI);
             LoginDetails tempL = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
@@ -37,15 +54,10 @@ namespace BusinessLogic
             tempC.LoginDetails = tempL;
 
 
-            return await dbAccess.CreateAsync(tempC);
+            return await dbAccess.CreateClientAsync(tempC);
         }
 
-        public async Task<ClientUI> GetClientAsync(int id)
-        {
-            Client client = await dbAccess.GetClientAsync(id);
-            ClientUI clientUI = modelConverter.ConvertFromClientEntity(client);
-            return clientUI;
-        }
+
 
     }
 }

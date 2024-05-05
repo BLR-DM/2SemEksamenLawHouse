@@ -26,7 +26,7 @@ namespace UI.Forms.FrontPage
             GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
-            btnClose.Click += BtnClose_Click;
+            //btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
         }
@@ -79,6 +79,11 @@ namespace UI.Forms.FrontPage
             pnlContext.Controls.Add(f);
             f.Show();
             pnlContext.Show();
+        }
+
+        private void gradiantPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

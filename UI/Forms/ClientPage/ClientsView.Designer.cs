@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtSearchPostal = new TextBox();
             lblSøgPris = new Label();
             ckboxNotSubscribed = new CheckBox();
             ckboxSubscribed = new CheckBox();
@@ -37,7 +38,6 @@
             dgvClients = new DataGridView();
             btnCreate = new FontAwesome.Sharp.IconButton();
             lblClientAmmount = new Label();
-            txtSearchPostal = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             SuspendLayout();
@@ -57,6 +57,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(948, 68);
             panel1.TabIndex = 8;
+            // 
+            // txtSearchPostal
+            // 
+            txtSearchPostal.BackColor = SystemColors.Control;
+            txtSearchPostal.Location = new Point(814, 24);
+            txtSearchPostal.Name = "txtSearchPostal";
+            txtSearchPostal.PlaceholderText = "Postalcode";
+            txtSearchPostal.Size = new Size(100, 23);
+            txtSearchPostal.TabIndex = 14;
             // 
             // lblSøgPris
             // 
@@ -89,6 +98,7 @@
             // 
             // txtSearchPhone
             // 
+            txtSearchPhone.BackColor = SystemColors.Control;
             txtSearchPhone.Location = new Point(71, 21);
             txtSearchPhone.Name = "txtSearchPhone";
             txtSearchPhone.PlaceholderText = "phonenumber";
@@ -142,14 +152,6 @@
             lblClientAmmount.Size = new Size(128, 25);
             lblClientAmmount.TabIndex = 13;
             lblClientAmmount.Text = "10.000 Clients";
-            // 
-            // txtSearchPostal
-            // 
-            txtSearchPostal.Location = new Point(814, 24);
-            txtSearchPostal.Name = "txtSearchPostal";
-            txtSearchPostal.PlaceholderText = "Postalcode";
-            txtSearchPostal.Size = new Size(100, 23);
-            txtSearchPostal.TabIndex = 14;
             // 
             // ClientsView
             // 

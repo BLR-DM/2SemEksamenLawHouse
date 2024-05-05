@@ -29,5 +29,10 @@ namespace BusinessLogic
         {
             return await dbAccess.CheckUsernameAndPasswordAsync(username, password);
         }
+
+        public async Task<string> RetrievePasswordAsync(string username)
+        {
+            return await dbAccess.RetrievePasswordAsync(username);
+        }
     }
 }

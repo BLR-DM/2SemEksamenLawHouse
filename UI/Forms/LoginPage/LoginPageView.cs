@@ -21,12 +21,17 @@ namespace UI.Forms.LoginPage
             pboxEye.Click += PBoxEye_Click;
             btnLogin.Click += BtnLogin_Click;
             lblRegister.Click += LblRegister_Click;
+            lblForgotPassword.Click += LblForgotPassword_Click;
+        }
+
+        private void LblForgotPassword_Click(object? sender, EventArgs e)
+        {
+            new ForgotPasswordView(loginBL).ShowDialog();
         }
 
         private void LblRegister_Click(object? sender, EventArgs e)
         {
-            new CreateUserView(this).Show();
-            Hide();
+            new CreateUserView().ShowDialog();
         }
 
         private async void BtnLogin_Click(object? sender, EventArgs e)

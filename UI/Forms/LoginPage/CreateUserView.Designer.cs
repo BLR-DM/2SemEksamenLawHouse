@@ -41,7 +41,7 @@
             txtPostal = new TextBox();
             lblFirstname = new Label();
             lblLastname = new Label();
-            panel1 = new Panel();
+            pnlTop = new Panel();
             txtEmailConfirm = new TextBox();
             lblConfirmEmail = new Label();
             lblUsername = new Label();
@@ -227,14 +227,14 @@
             lblLastname.TabIndex = 4;
             lblLastname.Text = "Lastname";
             // 
-            // panel1
+            // pnlTop
             // 
-            panel1.Anchor = AnchorStyles.Top;
-            panel1.BackColor = SystemColors.GradientActiveCaption;
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(520, 77);
-            panel1.TabIndex = 8;
+            pnlTop.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pnlTop.BackColor = SystemColors.GradientActiveCaption;
+            pnlTop.Location = new Point(12, 12);
+            pnlTop.Name = "pnlTop";
+            pnlTop.Size = new Size(520, 77);
+            pnlTop.TabIndex = 8;
             // 
             // txtEmailConfirm
             // 
@@ -483,7 +483,7 @@
             // 
             // lblCancel
             // 
-            lblCancel.Anchor = AnchorStyles.Bottom;
+            lblCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblCancel.AutoSize = true;
             lblCancel.BackColor = SystemColors.GradientInactiveCaption;
             lblCancel.Cursor = Cursors.Hand;
@@ -531,7 +531,7 @@
             Controls.Add(lblUsername);
             Controls.Add(lblFirstname);
             Controls.Add(lblName);
-            Controls.Add(panel1);
+            Controls.Add(pnlTop);
             Controls.Add(pnlLine);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -559,7 +559,7 @@
         private TextBox txtPostal;
         private Label lblFirstname;
         private Label lblLastname;
-        private Panel panel1;
+        private Panel pnlTop;
         private TextBox txtEmailConfirm;
         private Label lblConfirmEmail;
         private Label lblUsername;

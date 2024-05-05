@@ -37,7 +37,7 @@
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnClients = new FontAwesome.Sharp.IconButton();
             pnlContext = new Panel();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -95,7 +95,7 @@
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(iconButton3);
-            pnlLeft.Controls.Add(iconButton2);
+            pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
             pnlLeft.Name = "pnlLeft";
@@ -214,27 +214,27 @@
             iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton3.UseVisualStyleBackColor = false;
             // 
-            // iconButton2
+            // btnClients
             // 
-            iconButton2.BackColor = Color.Transparent;
-            iconButton2.Dock = DockStyle.Top;
-            iconButton2.FlatAppearance.BorderSize = 0;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton2.ForeColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 40;
-            iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton2.Location = new Point(0, 0);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Padding = new Padding(25, 0, 20, 0);
-            iconButton2.Size = new Size(200, 75);
-            iconButton2.TabIndex = 0;
-            iconButton2.Text = "Employees";
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnClients.BackColor = Color.Transparent;
+            btnClients.Dock = DockStyle.Top;
+            btnClients.FlatAppearance.BorderSize = 0;
+            btnClients.FlatStyle = FlatStyle.Flat;
+            btnClients.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClients.ForeColor = Color.Black;
+            btnClients.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnClients.IconColor = Color.Black;
+            btnClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnClients.IconSize = 40;
+            btnClients.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClients.Location = new Point(0, 0);
+            btnClients.Name = "btnClients";
+            btnClients.Padding = new Padding(25, 0, 20, 0);
+            btnClients.Size = new Size(200, 75);
+            btnClients.TabIndex = 0;
+            btnClients.Text = "Clients";
+            btnClients.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnClients.UseVisualStyleBackColor = false;
             // 
             // pnlContext
             // 
@@ -274,7 +274,7 @@
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnClients;
         private Panel pnlContext;
         private FontAwesome.Sharp.IconButton btnMyPageLawyer;
     }

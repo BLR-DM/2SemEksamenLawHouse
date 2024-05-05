@@ -28,6 +28,13 @@ namespace UI.Forms.FrontPage
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
+            btnClients.Click += BtnClients_Click;
+        }
+
+        private void BtnClients_Click(object? sender, EventArgs e)
+        {
+            ClientsView cv = new ClientsView();
+            PnlContextChange(cv);
         }
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)

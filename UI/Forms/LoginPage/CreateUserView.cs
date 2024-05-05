@@ -16,12 +16,10 @@ namespace UI.Forms.CreateUserPage
 {
     public partial class CreateUserView : Form
     {
-        LoginPageView loginPage;
         ClientBL clientBL;
         List<PhoneUI> phoneUIs;
-        public CreateUserView(LoginPageView login)
+        public CreateUserView()
         {
-            loginPage = login;
             clientBL = new ClientBL();
 
             InitializeComponent();
@@ -132,10 +130,6 @@ namespace UI.Forms.CreateUserPage
         private void LblCancel_Click(object? sender, EventArgs e)
         {
             this.Close();
-        }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            loginPage.Show();
         }
     }
 }

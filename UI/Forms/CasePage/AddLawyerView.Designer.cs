@@ -68,6 +68,7 @@
             Controls.Add(textBox1);
             Controls.Add(dgvLawyerView);
             Name = "AddLawyerView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AddLawyerView";
             ((System.ComponentModel.ISupportInitialize)dgvLawyerView).EndInit();
             ResumeLayout(false);

@@ -219,10 +219,9 @@ partial class LoginPageView
         pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
         pboxEye.IconColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pboxEye.IconSize = 40;
-        pboxEye.Location = new Point(344, 424);
+        pboxEye.Location = new Point(358, 434);
         pboxEye.Name = "pboxEye";
-        pboxEye.Size = new Size(40, 40);
+        pboxEye.Size = new Size(36, 32);
         pboxEye.TabIndex = 7;
         pboxEye.TabStop = false;
         // 

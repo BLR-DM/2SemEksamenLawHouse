@@ -75,10 +75,9 @@
             pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
             pboxEye.IconColor = Color.FromArgb(45, 93, 134);
             pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            pboxEye.IconSize = 40;
-            pboxEye.Location = new Point(454, 96);
+            pboxEye.Location = new Point(455, 101);
             pboxEye.Name = "pboxEye";
-            pboxEye.Size = new Size(40, 40);
+            pboxEye.Size = new Size(35, 32);
             pboxEye.TabIndex = 7;
             pboxEye.TabStop = false;
             // 

@@ -31,24 +31,27 @@ namespace UI.Forms.LoginPage
 
         private async void BtnLogin_Click(object? sender, EventArgs e)
         {
-            bool test = await loginBL.CheckUsernameAsync(txtUsername.Text);
+            btnLogin.Enabled = false;
+            bool userFound = await loginBL.CheckUsernameAsync(txtUsername.Text);
 
-            if (!test)
+            if (!userFound)
             {
                 MessageBox.Show("Username doesn't exist!");
+                btnLogin.Enabled = true;
                 return;
             }
 
-            int result = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
+            int userID = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
 
-            if (result == 0)
+            if (userID == 0)
             {
                 MessageBox.Show("Wrong password!");
+                btnLogin.Enabled = true;
                 return;
             }
             // if negativ = exception
 
-            new FrontPageView(result).Show();
+            new FrontPageView(userID).Show();
             Hide();
 
             

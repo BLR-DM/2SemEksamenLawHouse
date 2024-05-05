@@ -28,37 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            lblMyPage = new Label();
             dataGridView1 = new DataGridView();
             lblBeregninger = new Label();
             lblMustSubscribe = new Label();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.GradientActiveCaption;
-            panel1.Controls.Add(lblMyPage);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(958, 77);
-            panel1.TabIndex = 10;
-            // 
-            // lblMyPage
-            // 
-            lblMyPage.Anchor = AnchorStyles.Top;
-            lblMyPage.AutoSize = true;
-            lblMyPage.BackColor = SystemColors.GradientActiveCaption;
-            lblMyPage.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMyPage.ForeColor = Color.FromArgb(45, 93, 134);
-            lblMyPage.Location = new Point(435, 25);
-            lblMyPage.Name = "lblMyPage";
-            lblMyPage.Size = new Size(89, 25);
-            lblMyPage.TabIndex = 5;
-            lblMyPage.Text = "My Page";
             // 
             // dataGridView1
             // 
@@ -103,20 +77,14 @@
             Controls.Add(lblMustSubscribe);
             Controls.Add(lblBeregninger);
             Controls.Add(dataGridView1);
-            Controls.Add(panel1);
             Name = "MyPageView";
             Text = "MyPageView";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Label lblMyPage;
         private DataGridView dataGridView1;
         private Label lblBeregninger;
         private Label lblMustSubscribe;

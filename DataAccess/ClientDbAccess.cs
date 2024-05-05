@@ -32,7 +32,7 @@ namespace DataAccess
 
         public async Task<Client> GetClientAsync(int id)
         {
-            return await db.Clients.FirstOrDefaultAsync(c => c.PersonID == id);
+            return await db.Clients.Include(c => c.Phones).FirstOrDefaultAsync(c => c.PersonID == id);
         }
     }
 }

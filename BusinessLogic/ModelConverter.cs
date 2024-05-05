@@ -66,7 +66,9 @@ namespace BusinessLogic
                 Email = clientE.Email,
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
+                City = clientE.City,
                 ClientSub = clientE.ClientSub,
+                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0,
 
                 //foreign keys
                 LoginDetailsID = clientE.LoginDetailsID,

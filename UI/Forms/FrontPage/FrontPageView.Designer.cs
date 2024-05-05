@@ -28,64 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            gradiantPanel1 = new Toolbox.GradiantPanel();
-            btnClose = new FontAwesome.Sharp.IconButton();
-            pboxLogo = new PictureBox();
             pnlLeft = new Panel();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnClients = new FontAwesome.Sharp.IconButton();
+            gradiantPanel1 = new Toolbox.GradiantPanel();
+            btnClose = new FontAwesome.Sharp.IconButton();
+            pboxLogo = new PictureBox();
             pnlContext = new Panel();
+            pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
-            pnlLeft.SuspendLayout();
             SuspendLayout();
-            // 
-            // gradiantPanel1
-            // 
-            gradiantPanel1.Angle = 80F;
-            gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
-            gradiantPanel1.BottomColor = Color.Empty;
-            gradiantPanel1.Controls.Add(btnClose);
-            gradiantPanel1.Controls.Add(pboxLogo);
-            gradiantPanel1.Dock = DockStyle.Top;
-            gradiantPanel1.Location = new Point(0, 0);
-            gradiantPanel1.Name = "gradiantPanel1";
-            gradiantPanel1.Size = new Size(1198, 60);
-            gradiantPanel1.TabIndex = 1;
-            gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
-            // 
-            // btnClose
-            // 
-            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClose.BackColor = Color.Transparent;
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
-            btnClose.IconColor = Color.Black;
-            btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnClose.IconSize = 30;
-            btnClose.Location = new Point(1151, 12);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(35, 28);
-            btnClose.TabIndex = 3;
-            btnClose.TabStop = false;
-            btnClose.UseVisualStyleBackColor = false;
-            // 
-            // pboxLogo
-            // 
-            pboxLogo.BackColor = Color.Transparent;
-            pboxLogo.Image = Properties.Resources.lawhouseLogo;
-            pboxLogo.Location = new Point(0, -14);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(200, 81);
-            pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pboxLogo.TabIndex = 3;
-            pboxLogo.TabStop = false;
             // 
             // pnlLeft
             // 
@@ -95,7 +52,7 @@
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(iconButton3);
-            pnlLeft.Controls.Add(iconButton2);
+            pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
             pnlLeft.Name = "pnlLeft";
@@ -213,31 +170,74 @@
             iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton3.UseVisualStyleBackColor = false;
             // 
-            // iconButton2
+            // btnClients
             // 
-            iconButton2.BackColor = Color.Transparent;
-            iconButton2.Dock = DockStyle.Top;
-            iconButton2.FlatAppearance.BorderSize = 0;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton2.ForeColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 40;
-            iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton2.Location = new Point(0, 0);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Padding = new Padding(25, 0, 20, 0);
-            iconButton2.Size = new Size(200, 75);
-            iconButton2.TabIndex = 0;
-            iconButton2.Text = "Employees";
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnClients.BackColor = Color.Transparent;
+            btnClients.Dock = DockStyle.Top;
+            btnClients.FlatAppearance.BorderSize = 0;
+            btnClients.FlatStyle = FlatStyle.Flat;
+            btnClients.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClients.ForeColor = Color.Black;
+            btnClients.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnClients.IconColor = Color.Black;
+            btnClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnClients.IconSize = 40;
+            btnClients.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClients.Location = new Point(0, 0);
+            btnClients.Name = "btnClients";
+            btnClients.Padding = new Padding(25, 0, 20, 0);
+            btnClients.Size = new Size(200, 75);
+            btnClients.TabIndex = 0;
+            btnClients.Text = "Clients";
+            btnClients.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnClients.UseVisualStyleBackColor = false;
+            // 
+            // gradiantPanel1
+            // 
+            gradiantPanel1.Angle = 80F;
+            gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
+            gradiantPanel1.BottomColor = Color.Empty;
+            gradiantPanel1.Controls.Add(btnClose);
+            gradiantPanel1.Controls.Add(pboxLogo);
+            gradiantPanel1.Dock = DockStyle.Top;
+            gradiantPanel1.Location = new Point(0, 0);
+            gradiantPanel1.Name = "gradiantPanel1";
+            gradiantPanel1.Size = new Size(1198, 60);
+            gradiantPanel1.TabIndex = 2;
+            gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            btnClose.IconColor = Color.Black;
+            btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnClose.IconSize = 30;
+            btnClose.Location = new Point(1151, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(35, 28);
+            btnClose.TabIndex = 3;
+            btnClose.TabStop = false;
+            btnClose.UseVisualStyleBackColor = false;
+            // 
+            // pboxLogo
+            // 
+            pboxLogo.BackColor = Color.Transparent;
+            pboxLogo.Image = Properties.Resources.lawhouseLogo;
+            pboxLogo.Location = new Point(0, -14);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(200, 81);
+            pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pboxLogo.TabIndex = 3;
+            pboxLogo.TabStop = false;
             // 
             // pnlContext
             // 
-            pnlContext.Dock = DockStyle.Fill;
+            pnlContext.BackColor = SystemColors.ControlDark;
             pnlContext.Location = new Point(200, 60);
             pnlContext.Name = "pnlContext";
             pnlContext.Size = new Size(998, 613);
@@ -249,32 +249,31 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 673);
             ControlBox = false;
-            Controls.Add(pnlContext);
             Controls.Add(pnlLeft);
             Controls.Add(gradiantPanel1);
+            Controls.Add(pnlContext);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrontPageView";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
-            TransparencyKey = Color.Transparent;
+            pnlLeft.ResumeLayout(false);
             gradiantPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
-            pnlLeft.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Toolbox.GradiantPanel gradiantPanel1;
-        private PictureBox pboxLogo;
-        private FontAwesome.Sharp.IconButton btnClose;
         private Panel pnlLeft;
+        private FontAwesome.Sharp.IconButton btnMyPageLawyer;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnClients;
+        private Toolbox.GradiantPanel gradiantPanel1;
+        private FontAwesome.Sharp.IconButton btnClose;
+        private PictureBox pboxLogo;
         private Panel pnlContext;
-        private FontAwesome.Sharp.IconButton btnMyPageLawyer;
     }
 }

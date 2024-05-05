@@ -67,7 +67,7 @@ namespace UI.Forms.ClientPage
                 loginDetailsUI.Password = txtPassword.Text;
             }
 
-            bool success = await clientBL.CreateAsync(clientUI, loginDetailsUI, phoneUIList);
+            bool success = await clientBL.CreateClientAsync(clientUI, loginDetailsUI, phoneUIList);
 
             btnCreate.Enabled = true;
 
@@ -97,6 +97,7 @@ namespace UI.Forms.ClientPage
         private void txtEmail_TextChanged(object? sender, EventArgs e)
         {
             lblEmailView.Text = txtEmail.Text;
+            lblUsernameView.Text = txtEmail.Text;
         }
         private void TxtAddress_TextChanged(object? sender, EventArgs e)
         {

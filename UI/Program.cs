@@ -19,7 +19,7 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CreateCasePage());
+            Application.Run(new FrontPageView(1));
 
 
             //ClientBL clientBL = new ClientBL();

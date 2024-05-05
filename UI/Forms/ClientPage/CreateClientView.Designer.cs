@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            lblCreate = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
             txtLastname = new TextBox();
             txtPostal = new TextBox();
@@ -66,32 +64,8 @@
             lblConfirmPassword = new Label();
             lblOptional = new Label();
             label5 = new Label();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.GradientActiveCaption;
-            panel1.Controls.Add(lblCreate);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(958, 77);
-            panel1.TabIndex = 9;
-            // 
-            // lblCreate
-            // 
-            lblCreate.Anchor = AnchorStyles.Top;
-            lblCreate.AutoSize = true;
-            lblCreate.BackColor = SystemColors.GradientActiveCaption;
-            lblCreate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCreate.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCreate.Location = new Point(405, 23);
-            lblCreate.Name = "lblCreate";
-            lblCreate.Size = new Size(148, 25);
-            lblCreate.TabIndex = 5;
-            lblCreate.Text = "CREATE CLIENT";
             // 
             // btnCreate
             // 
@@ -117,7 +91,7 @@
             // 
             txtLastname.BackColor = Color.White;
             txtLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastname.Location = new Point(259, 155);
+            txtLastname.Location = new Point(259, 54);
             txtLastname.MaxLength = 50;
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(200, 27);
@@ -147,7 +121,7 @@
             // 
             txtPhone.BackColor = Color.White;
             txtPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPhone.Location = new Point(34, 306);
+            txtPhone.Location = new Point(34, 229);
             txtPhone.MaxLength = 50;
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(200, 27);
@@ -157,7 +131,7 @@
             // 
             txtEmail.BackColor = Color.White;
             txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmail.Location = new Point(34, 230);
+            txtEmail.Location = new Point(34, 143);
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(200, 27);
@@ -167,7 +141,7 @@
             // 
             txtFirstname.BackColor = Color.White;
             txtFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFirstname.Location = new Point(34, 155);
+            txtFirstname.Location = new Point(34, 54);
             txtFirstname.MaxLength = 50;
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(200, 27);
@@ -203,7 +177,7 @@
             lblPhone.BackColor = SystemColors.GradientInactiveCaption;
             lblPhone.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPhone.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhone.Location = new Point(34, 282);
+            lblPhone.Location = new Point(34, 205);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(117, 21);
             lblPhone.TabIndex = 24;
@@ -215,7 +189,7 @@
             lblEmail.BackColor = SystemColors.GradientInactiveCaption;
             lblEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEmail.Location = new Point(34, 206);
+            lblEmail.Location = new Point(34, 119);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(48, 21);
             lblEmail.TabIndex = 28;
@@ -227,7 +201,7 @@
             lblPhoneMain.BackColor = SystemColors.GradientInactiveCaption;
             lblPhoneMain.Font = new Font("Segoe UI", 8.25F);
             lblPhoneMain.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhoneMain.Location = new Point(34, 336);
+            lblPhoneMain.Location = new Point(34, 259);
             lblPhoneMain.Name = "lblPhoneMain";
             lblPhoneMain.Size = new Size(151, 13);
             lblPhoneMain.TabIndex = 22;
@@ -239,7 +213,7 @@
             label2.BackColor = SystemColors.GradientInactiveCaption;
             label2.Font = new Font("Segoe UI", 8.25F);
             label2.ForeColor = Color.FromArgb(45, 93, 134);
-            label2.Location = new Point(34, 260);
+            label2.Location = new Point(34, 173);
             label2.Name = "label2";
             label2.Size = new Size(64, 13);
             label2.TabIndex = 20;
@@ -251,7 +225,7 @@
             lblLastname.BackColor = SystemColors.GradientInactiveCaption;
             lblLastname.Font = new Font("Segoe UI", 8.25F);
             lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLastname.Location = new Point(259, 185);
+            lblLastname.Location = new Point(259, 84);
             lblLastname.Name = "lblLastname";
             lblLastname.Size = new Size(55, 13);
             lblLastname.TabIndex = 18;
@@ -263,7 +237,7 @@
             lblFirstname.BackColor = SystemColors.GradientInactiveCaption;
             lblFirstname.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFirstname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblFirstname.Location = new Point(34, 185);
+            lblFirstname.Location = new Point(34, 84);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(57, 13);
             lblFirstname.TabIndex = 25;
@@ -275,7 +249,7 @@
             lblName.BackColor = SystemColors.GradientInactiveCaption;
             lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(34, 131);
+            lblName.Location = new Point(34, 30);
             lblName.Name = "lblName";
             lblName.Size = new Size(53, 21);
             lblName.TabIndex = 29;
@@ -314,9 +288,9 @@
             panel2.Controls.Add(lblAddressView);
             panel2.Controls.Add(lblEmailView);
             panel2.Controls.Add(lblNameView);
-            panel2.Location = new Point(507, 131);
+            panel2.Location = new Point(507, 54);
             panel2.Name = "panel2";
-            panel2.Size = new Size(463, 246);
+            panel2.Size = new Size(463, 248);
             panel2.TabIndex = 33;
             // 
             // label4
@@ -417,7 +391,7 @@
             lblUsernameView.BackColor = SystemColors.GradientInactiveCaption;
             lblUsernameView.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUsernameView.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUsernameView.Location = new Point(617, 386);
+            lblUsernameView.Location = new Point(617, 382);
             lblUsernameView.Name = "lblUsernameView";
             lblUsernameView.Size = new Size(38, 21);
             lblUsernameView.TabIndex = 35;
@@ -429,7 +403,7 @@
             label7.BackColor = SystemColors.GradientInactiveCaption;
             label7.Font = new Font("Segoe UI", 8.25F);
             label7.ForeColor = Color.FromArgb(45, 93, 134);
-            label7.Location = new Point(240, 336);
+            label7.Location = new Point(240, 259);
             label7.Name = "label7";
             label7.Size = new Size(28, 13);
             label7.TabIndex = 37;
@@ -446,7 +420,7 @@
             btnAddPhone.IconColor = Color.Black;
             btnAddPhone.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAddPhone.IconSize = 25;
-            btnAddPhone.Location = new Point(240, 305);
+            btnAddPhone.Location = new Point(240, 228);
             btnAddPhone.Name = "btnAddPhone";
             btnAddPhone.Size = new Size(28, 28);
             btnAddPhone.TabIndex = 38;
@@ -515,7 +489,7 @@
             label5.BackColor = SystemColors.GradientInactiveCaption;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(45, 93, 134);
-            label5.Location = new Point(524, 386);
+            label5.Location = new Point(524, 382);
             label5.Name = "label5";
             label5.Size = new Size(87, 21);
             label5.TabIndex = 44;
@@ -555,13 +529,10 @@
             Controls.Add(lblFirstname);
             Controls.Add(lblName);
             Controls.Add(btnCreate);
-            Controls.Add(panel1);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "CreateClientView";
             Text = "CreateClientPage";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -569,9 +540,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
-        private Label lblCreate;
         private FontAwesome.Sharp.IconButton btnCreate;
         private TextBox txtLastname;
         private TextBox txtPostal;

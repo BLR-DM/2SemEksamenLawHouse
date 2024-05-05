@@ -68,7 +68,7 @@ namespace UI.Forms.CreateUserPage
                 phoneUIs.Add(phoneUIAlt);
             }
 
-            bool result = await clientBL.CreateAsync(client, loginDetails, phoneUIs);
+            bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
 
             if (result)
                 MessageBox.Show("CLIENT ADDED!");

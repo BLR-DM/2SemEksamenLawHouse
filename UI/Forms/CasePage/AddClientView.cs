@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace UI.Forms.CasePage
 {
-    public partial class CreateCasePage : Form
+    public partial class AddClientView : Form
     {
-        public CreateCasePage()
+        public AddClientView()
         {
             InitializeComponent();
-
-            btnAddClient.Click += BtnAddClient_Click;
         }
 
-        private void BtnAddClient_Click(object? sender, EventArgs e)
+        private void pnlTopBar_Paint(object sender, PaintEventArgs e)
         {
-            new AddClientView().ShowDialog();
+
         }
     }
 }

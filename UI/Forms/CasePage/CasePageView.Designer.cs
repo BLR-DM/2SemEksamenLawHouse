@@ -28,73 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            panel1 = new Panel();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel1.SuspendLayout();
+            dgvCaseList = new DataGridView();
+            panelTopBar = new Panel();
+            lblNumberOfCases = new Label();
+            ckboxOngoing = new CheckBox();
+            cboxFinsished = new CheckBox();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvCaseList).BeginInit();
+            panelTopBar.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvCaseList
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 153);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1219, 510);
-            dataGridView1.TabIndex = 0;
+            dgvCaseList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCaseList.Location = new Point(12, 157);
+            dgvCaseList.Name = "dgvCaseList";
+            dgvCaseList.Size = new Size(974, 444);
+            dgvCaseList.TabIndex = 0;
             // 
-            // panel1
+            // panelTopBar
             // 
-            panel1.BackColor = Color.DarkBlue;
-            panel1.Controls.Add(checkBox2);
-            panel1.Controls.Add(checkBox1);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1219, 99);
-            panel1.TabIndex = 1;
+            panelTopBar.Anchor = AnchorStyles.Top;
+            panelTopBar.BackColor = SystemColors.GradientActiveCaption;
+            panelTopBar.Controls.Add(comboBox2);
+            panelTopBar.Controls.Add(comboBox1);
+            panelTopBar.Controls.Add(cboxFinsished);
+            panelTopBar.Controls.Add(ckboxOngoing);
+            panelTopBar.Location = new Point(12, 12);
+            panelTopBar.Name = "panelTopBar";
+            panelTopBar.Size = new Size(974, 88);
+            panelTopBar.TabIndex = 9;
             // 
-            // checkBox2
+            // lblNumberOfCases
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(13, 54);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(83, 19);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "checkBox2";
-            checkBox2.UseVisualStyleBackColor = true;
+            lblNumberOfCases.AutoSize = true;
+            lblNumberOfCases.BackColor = SystemColors.GradientInactiveCaption;
+            lblNumberOfCases.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblNumberOfCases.ForeColor = Color.FromArgb(45, 93, 134);
+            lblNumberOfCases.Location = new Point(452, 115);
+            lblNumberOfCases.Name = "lblNumberOfCases";
+            lblNumberOfCases.Size = new Size(79, 21);
+            lblNumberOfCases.TabIndex = 21;
+            lblNumberOfCases.Text = "120 Cases";
             // 
-            // checkBox1
+            // ckboxOngoing
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(13, 17);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(83, 19);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
+            ckboxOngoing.AutoSize = true;
+            ckboxOngoing.Location = new Point(198, 13);
+            ckboxOngoing.Name = "ckboxOngoing";
+            ckboxOngoing.Size = new Size(76, 19);
+            ckboxOngoing.TabIndex = 0;
+            ckboxOngoing.Text = "On going";
+            ckboxOngoing.UseVisualStyleBackColor = true;
+            // 
+            // cboxFinsished
+            // 
+            cboxFinsished.AutoSize = true;
+            cboxFinsished.Location = new Point(198, 38);
+            cboxFinsished.Name = "cboxFinsished";
+            cboxFinsished.Size = new Size(70, 19);
+            cboxFinsished.TabIndex = 1;
+            cboxFinsished.Text = "Finished";
+            cboxFinsished.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(817, 34);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(142, 23);
+            comboBox1.TabIndex = 2;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(651, 34);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(148, 23);
+            comboBox2.TabIndex = 3;
             // 
             // CasePageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
-            ClientSize = new Size(1243, 675);
-            Controls.Add(panel1);
-            Controls.Add(dataGridView1);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(998, 613);
+            Controls.Add(lblNumberOfCases);
+            Controls.Add(panelTopBar);
+            Controls.Add(dgvCaseList);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "CasePageView";
             Text = "CasePageView";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCaseList).EndInit();
+            panelTopBar.ResumeLayout(false);
+            panelTopBar.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Panel panel1;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private DataGridView dgvCaseList;
+        private Panel panelTopBar;
+        private Label lblNumberOfCases;
+        private CheckBox ckboxOngoing;
+        private ComboBox comboBox2;
+        private ComboBox comboBox1;
+        private CheckBox cboxFinsished;
     }
 }

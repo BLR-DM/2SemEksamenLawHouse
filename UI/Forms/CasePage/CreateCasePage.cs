@@ -15,19 +15,33 @@ namespace UI.Forms.CasePage
     public partial class CreateCasePage : Form
     {
         CaseBl caseBL;
+        CaseTypeBl caseTypeBL;
+        List<CaseTypeUI> caseTypeUIList;
         public CreateCasePage()
         {
             InitializeComponent();
             caseBL = new CaseBl();
+            caseTypeBL = new CaseTypeBl();
 
             btnAddClient.Click += BtnAddClient_Click;
             btnAddLawyer.Click += BtnAddLawyer_Click;
             btnCreateCase.Click += BtnCreateCase_Click;
+
+            SetComboBox();
         }
 
         private async void BtnCreateCase_Click(object? sender, EventArgs e)
         {
             btnCreateCase.Enabled = false;
+
+            CaseTypeUI selectedCaseType = (CaseTypeUI)cboxCaseType.SelectedItem;
+
+            if (selectedCaseType == null)
+            {
+                MessageBox.Show("Please select a case type.");
+                btnCreateCase.Enabled = true; 
+                return;
+            }
 
             CaseUI caseUI = new CaseUI()
             {
@@ -37,12 +51,27 @@ namespace UI.Forms.CasePage
                 EstHours = int.Parse(txtEstimatedHours.Text),
                 Status = "On going",
                 TotalPrice = 0,
+                CaseTypeID = selectedCaseType.CaseTypeID,
 
                 LawyerID = 1,
                 ClientID = 1,
             };
 
             bool succes = await caseBL.CreateCase(caseUI);
+
+            btnCreateCase.Enabled = true;
+        }
+
+        public async void SetComboBox()
+        {
+            caseTypeUIList = await caseTypeBL.GetCaseTypeAsync();
+
+            cboxCaseType.DisplayMember = "Title";
+
+            foreach(CaseTypeUI caseTypeUI in caseTypeUIList)
+            {
+                cboxCaseType.Items.Add(caseTypeUI);
+            }
         }
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)

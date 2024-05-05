@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.CasePage
 {
-    partial class AddClientView
+    partial class AddLawyerView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvClientView = new DataGridView();
-            textBox1 = new TextBox();
+            dgvLawyerView = new DataGridView();
             lblSearch = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvClientView).BeginInit();
+            textBox1 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvLawyerView).BeginInit();
             SuspendLayout();
             // 
-            // dgvClientView
+            // dgvLawyerView
             // 
-            dgvClientView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientView.Location = new Point(12, 55);
-            dgvClientView.Name = "dgvClientView";
-            dgvClientView.Size = new Size(735, 332);
-            dgvClientView.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(63, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 1;
+            dgvLawyerView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLawyerView.Location = new Point(12, 55);
+            dgvLawyerView.Name = "dgvLawyerView";
+            dgvLawyerView.Size = new Size(735, 332);
+            dgvLawyerView.TabIndex = 1;
             // 
             // lblSearch
             // 
@@ -55,10 +48,17 @@
             lblSearch.Location = new Point(12, 29);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(45, 15);
-            lblSearch.TabIndex = 2;
+            lblSearch.TabIndex = 4;
             lblSearch.Text = "Search:";
             // 
-            // AddClientView
+            // textBox1
+            // 
+            textBox1.Location = new Point(63, 26);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(164, 23);
+            textBox1.TabIndex = 3;
+            // 
+            // AddLawyerView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -66,18 +66,18 @@
             ClientSize = new Size(759, 399);
             Controls.Add(lblSearch);
             Controls.Add(textBox1);
-            Controls.Add(dgvClientView);
-            Name = "AddClientView";
-            Text = "AddClientView";
-            ((System.ComponentModel.ISupportInitialize)dgvClientView).EndInit();
+            Controls.Add(dgvLawyerView);
+            Name = "AddLawyerView";
+            Text = "AddLawyerView";
+            ((System.ComponentModel.ISupportInitialize)dgvLawyerView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvClientView;
-        private TextBox textBox1;
+        private DataGridView dgvLawyerView;
         private Label lblSearch;
+        private TextBox textBox1;
     }
 }

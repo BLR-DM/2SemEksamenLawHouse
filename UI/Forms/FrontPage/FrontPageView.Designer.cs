@@ -104,8 +104,7 @@
             // 
             // btnMyPageLawyer
             // 
-            btnMyPageLawyer.AccessibleName = "Navigation button";
-            btnMyPageLawyer.AccessibleRole = AccessibleRole.MenuItem;
+            btnMyPageLawyer.AccessibleName = "";
             btnMyPageLawyer.BackColor = Color.Transparent;
             btnMyPageLawyer.Dock = DockStyle.Bottom;
             btnMyPageLawyer.FlatAppearance.BorderSize = 0;

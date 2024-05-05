@@ -16,20 +16,18 @@ namespace UI.Forms.CreateUserPage
 {
     public partial class CreateUserView : Form
     {
-        LoginPageView loginPage;
         ClientBL clientBL;
         List<PhoneUI> phoneUIs;
-        public CreateUserView(LoginPageView login)
+        public CreateUserView()
         {
-            loginPage = login;
             clientBL = new ClientBL();
 
             InitializeComponent();
 
             lblCancel.Click += LblCancel_Click;
-            pboxEye.Click += PboxEye_Click;
             lblCancel.MouseHover += LblCancel_MouseHover;
             lblCancel.MouseLeave += LblCancel_MouseLeave;
+            pboxEye.Click += PboxEye_Click;
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtEmailConfirm.TextChanged += TxtEmailConfirm_TextChanged;
             btnCreate.Click += BtnCreate_Click;
@@ -70,7 +68,7 @@ namespace UI.Forms.CreateUserPage
                 phoneUIs.Add(phoneUIAlt);
             }
 
-            bool result = await clientBL.CreateAsync(client, loginDetails, phoneUIs);
+            bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
 
             if (result)
                 MessageBox.Show("CLIENT ADDED!");
@@ -132,10 +130,6 @@ namespace UI.Forms.CreateUserPage
         private void LblCancel_Click(object? sender, EventArgs e)
         {
             this.Close();
-        }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            loginPage.Show();
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dgvClientView = new DataGridView();
-            textBox1 = new TextBox();
+            txtSearch = new TextBox();
             lblSearch = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientView).BeginInit();
             SuspendLayout();
@@ -42,17 +42,17 @@
             dgvClientView.Size = new Size(735, 332);
             dgvClientView.TabIndex = 0;
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(63, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 1;
+            txtSearch.Location = new Point(307, 26);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(164, 23);
+            txtSearch.TabIndex = 1;
             // 
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(12, 29);
+            lblSearch.Location = new Point(256, 29);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(45, 15);
             lblSearch.TabIndex = 2;
@@ -65,9 +65,10 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(759, 399);
             Controls.Add(lblSearch);
-            Controls.Add(textBox1);
+            Controls.Add(txtSearch);
             Controls.Add(dgvClientView);
             Name = "AddClientView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AddClientView";
             ((System.ComponentModel.ISupportInitialize)dgvClientView).EndInit();
             ResumeLayout(false);
@@ -77,7 +78,7 @@
         #endregion
 
         private DataGridView dgvClientView;
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private Label lblSearch;
     }
 }

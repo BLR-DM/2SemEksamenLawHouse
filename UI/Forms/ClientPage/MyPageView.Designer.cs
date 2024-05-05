@@ -33,6 +33,7 @@
             lblMustSubscribe = new Label();
             lblFirstname = new Label();
             lblSub = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -88,12 +89,20 @@
             lblSub.TabIndex = 13;
             lblSub.Text = "label1";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(276, 159);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 14;
+            // 
             // MyPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(textBox1);
             Controls.Add(lblSub);
             Controls.Add(lblFirstname);
             Controls.Add(lblMustSubscribe);
@@ -113,5 +122,6 @@
         private Label lblMustSubscribe;
         private Label lblFirstname;
         private Label lblSub;
+        private TextBox textBox1;
     }
 }

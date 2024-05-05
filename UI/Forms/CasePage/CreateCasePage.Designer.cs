@@ -32,7 +32,7 @@
             lblCaseInformation = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            cboxCaseType = new ComboBox();
             txtEstimatedHours = new TextBox();
             lblEstimatedHours = new Label();
             dtpEstimatedEndDate = new DateTimePicker();
@@ -82,7 +82,7 @@
             panel1.Controls.Add(lblCaseInformation);
             panel1.Controls.Add(iconButton1);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(cboxCaseType);
             panel1.Controls.Add(txtEstimatedHours);
             panel1.Controls.Add(lblEstimatedHours);
             panel1.Controls.Add(dtpEstimatedEndDate);
@@ -131,13 +131,13 @@
             label1.TabIndex = 17;
             label1.Text = "Casetype";
             // 
-            // comboBox1
+            // cboxCaseType
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(3, 202);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(230, 23);
-            comboBox1.TabIndex = 18;
+            cboxCaseType.FormattingEnabled = true;
+            cboxCaseType.Location = new Point(3, 202);
+            cboxCaseType.Name = "cboxCaseType";
+            cboxCaseType.Size = new Size(230, 23);
+            cboxCaseType.TabIndex = 18;
             // 
             // txtEstimatedHours
             // 
@@ -232,9 +232,9 @@
             panel2.Controls.Add(lblFirstname);
             panel2.Controls.Add(lblName);
             panel2.Controls.Add(lblClientInformation);
-            panel2.Location = new Point(494, 13);
+            panel2.Location = new Point(510, 13);
             panel2.Name = "panel2";
-            panel2.Size = new Size(476, 502);
+            panel2.Size = new Size(476, 541);
             panel2.TabIndex = 11;
             // 
             // txtClientPostalCode
@@ -314,7 +314,7 @@
             btnAddClient.IconColor = Color.Black;
             btnAddClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAddClient.IconSize = 30;
-            btnAddClient.Location = new Point(164, 32);
+            btnAddClient.Location = new Point(162, 43);
             btnAddClient.Name = "btnAddClient";
             btnAddClient.Size = new Size(135, 38);
             btnAddClient.TabIndex = 42;
@@ -456,9 +456,9 @@
             panel4.Controls.Add(label4);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(lblAddLawyer);
-            panel4.Location = new Point(13, 256);
+            panel4.Location = new Point(16, 268);
             panel4.Name = "panel4";
-            panel4.Size = new Size(476, 259);
+            panel4.Size = new Size(476, 286);
             panel4.TabIndex = 13;
             // 
             // btnAddLawyer
@@ -472,7 +472,7 @@
             btnAddLawyer.IconColor = Color.Black;
             btnAddLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAddLawyer.IconSize = 30;
-            btnAddLawyer.Location = new Point(165, 29);
+            btnAddLawyer.Location = new Point(162, 39);
             btnAddLawyer.Name = "btnAddLawyer";
             btnAddLawyer.Size = new Size(135, 38);
             btnAddLawyer.TabIndex = 49;
@@ -486,7 +486,7 @@
             txtLawyerPhone.BackColor = Color.White;
             txtLawyerPhone.Enabled = false;
             txtLawyerPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLawyerPhone.Location = new Point(3, 216);
+            txtLawyerPhone.Location = new Point(3, 244);
             txtLawyerPhone.MaxLength = 50;
             txtLawyerPhone.Name = "txtLawyerPhone";
             txtLawyerPhone.Size = new Size(230, 27);
@@ -498,7 +498,7 @@
             label7.BackColor = SystemColors.GradientInactiveCaption;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label7.ForeColor = Color.FromArgb(45, 93, 134);
-            label7.Location = new Point(3, 192);
+            label7.Location = new Point(3, 220);
             label7.Name = "label7";
             label7.Size = new Size(117, 21);
             label7.TabIndex = 48;
@@ -509,7 +509,7 @@
             txtLawyerEmail.BackColor = Color.White;
             txtLawyerEmail.Enabled = false;
             txtLawyerEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLawyerEmail.Location = new Point(3, 156);
+            txtLawyerEmail.Location = new Point(3, 184);
             txtLawyerEmail.MaxLength = 50;
             txtLawyerEmail.Name = "txtLawyerEmail";
             txtLawyerEmail.Size = new Size(230, 27);
@@ -521,7 +521,7 @@
             label6.BackColor = SystemColors.GradientInactiveCaption;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label6.ForeColor = Color.FromArgb(45, 93, 134);
-            label6.Location = new Point(3, 132);
+            label6.Location = new Point(3, 160);
             label6.Name = "label6";
             label6.Size = new Size(48, 21);
             label6.TabIndex = 46;
@@ -532,7 +532,7 @@
             txtLawyerLastName.BackColor = Color.White;
             txtLawyerLastName.Enabled = false;
             txtLawyerLastName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLawyerLastName.Location = new Point(242, 89);
+            txtLawyerLastName.Location = new Point(242, 117);
             txtLawyerLastName.MaxLength = 50;
             txtLawyerLastName.Name = "txtLawyerLastName";
             txtLawyerLastName.Size = new Size(230, 27);
@@ -543,7 +543,7 @@
             txtLawyerFirstName.BackColor = Color.White;
             txtLawyerFirstName.Enabled = false;
             txtLawyerFirstName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLawyerFirstName.Location = new Point(3, 89);
+            txtLawyerFirstName.Location = new Point(3, 117);
             txtLawyerFirstName.MaxLength = 50;
             txtLawyerFirstName.Name = "txtLawyerFirstName";
             txtLawyerFirstName.Size = new Size(230, 27);
@@ -555,7 +555,7 @@
             label3.BackColor = SystemColors.GradientInactiveCaption;
             label3.Font = new Font("Segoe UI", 8.25F);
             label3.ForeColor = Color.FromArgb(45, 93, 134);
-            label3.Location = new Point(242, 119);
+            label3.Location = new Point(242, 147);
             label3.Name = "label3";
             label3.Size = new Size(55, 13);
             label3.TabIndex = 42;
@@ -567,7 +567,7 @@
             label4.BackColor = SystemColors.GradientInactiveCaption;
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(45, 93, 134);
-            label4.Location = new Point(3, 119);
+            label4.Location = new Point(3, 147);
             label4.Name = "label4";
             label4.Size = new Size(57, 13);
             label4.TabIndex = 43;
@@ -579,7 +579,7 @@
             label5.BackColor = SystemColors.GradientInactiveCaption;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(45, 93, 134);
-            label5.Location = new Point(3, 65);
+            label5.Location = new Point(3, 93);
             label5.Name = "label5";
             label5.Size = new Size(53, 21);
             label5.TabIndex = 44;
@@ -591,7 +591,7 @@
             lblAddLawyer.BackColor = SystemColors.GradientInactiveCaption;
             lblAddLawyer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblAddLawyer.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddLawyer.Location = new Point(165, -1);
+            lblAddLawyer.Location = new Point(162, 0);
             lblAddLawyer.Name = "lblAddLawyer";
             lblAddLawyer.Size = new Size(151, 21);
             lblAddLawyer.TabIndex = 21;
@@ -599,7 +599,7 @@
             // 
             // btnCreateCase
             // 
-            btnCreateCase.Location = new Point(408, 521);
+            btnCreateCase.Location = new Point(418, 560);
             btnCreateCase.Name = "btnCreateCase";
             btnCreateCase.Size = new Size(166, 41);
             btnCreateCase.TabIndex = 14;
@@ -611,11 +611,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(982, 574);
+            ClientSize = new Size(998, 613);
             Controls.Add(btnCreateCase);
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "CreateCasePage";
             Text = "CreateCasePage";
             panel1.ResumeLayout(false);
@@ -637,7 +638,7 @@
         private TextBox txtEstimatedHours;
         private Label lblEstimatedHours;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox cboxCaseType;
         private Label lblCaseInformation;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panel2;

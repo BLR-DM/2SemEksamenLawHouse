@@ -35,8 +35,19 @@ namespace BusinessLogic
                 //foreign keys
                 LawyerID = caseE.LawyerID,
                 ClientID = caseE.ClientID,
+                CaseTypeID = caseE.CaseTypeID,
             };
             return caseUI;
+        }
+
+        public CaseTypeUI ConvertFromCaseTypeEntity(CaseType caseTypeE)
+        {
+            CaseTypeUI caseTypeUI = new CaseTypeUI
+            {
+                CaseTypeID = caseTypeE.CaseTypeID,
+                Title = caseTypeE.Title,
+            };
+            return caseTypeUI;
         }
 
         public CaseServiceUI ConvertFromCaseServiceEntity(CaseService caseServiceE)

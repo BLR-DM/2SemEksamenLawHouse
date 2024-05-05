@@ -22,12 +22,17 @@ namespace UI.Forms.ClientPage
             InitializeComponent();
             clientBL = new ClientBL();
             ClientsBS = new BindingSource();
+
+            Load += ClientsView_Load;            
+        }
+
+        private void ClientsView_Load(object? sender, EventArgs e)
+        {
             dgvClients.DataSource = ClientsBS;
 
             LoadClientsAsync();
         }
 
-        
         public async Task LoadClientsAsync()
         {
             clients = await clientBL.GetClientsAsync();

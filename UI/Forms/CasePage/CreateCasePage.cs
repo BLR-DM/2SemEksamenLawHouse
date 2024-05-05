@@ -14,14 +14,14 @@ namespace UI.Forms.CasePage
 {
     public partial class CreateCasePage : Form
     {
-        CaseBl caseBL;
-        CaseTypeBl caseTypeBL;
+        CaseBL caseBL;
+        CaseTypeBL caseTypeBL;
         List<CaseTypeUI> caseTypeUIList;
         public CreateCasePage()
         {
             InitializeComponent();
-            caseBL = new CaseBl();
-            caseTypeBL = new CaseTypeBl();
+            caseBL = new CaseBL();
+            caseTypeBL = new CaseTypeBL();
 
             btnAddClient.Click += BtnAddClient_Click;
             btnAddLawyer.Click += BtnAddLawyer_Click;

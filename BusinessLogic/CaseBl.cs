@@ -9,11 +9,11 @@ using UIModels;
 
 namespace BusinessLogic
 {
-    public class CaseBl
+    public class CaseBL
     {
         ModelConverter modelConverter;
         CaseDbAccess dbAccess;
-        public CaseBl() 
+        public CaseBL() 
         {
             modelConverter = new ModelConverter();
             dbAccess = new CaseDbAccess();

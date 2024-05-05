@@ -34,10 +34,11 @@
             pnlLeft = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            btnMyPageClient = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
-            ContextPanel = new Panel();
+            pnlContext = new Panel();
+            btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pnlLeft.SuspendLayout();
@@ -89,9 +90,10 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
+            pnlLeft.Controls.Add(btnMyPageLawyer);
             pnlLeft.Controls.Add(iconButton1);
             pnlLeft.Controls.Add(btnEmployees);
-            pnlLeft.Controls.Add(iconButton4);
+            pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(iconButton3);
             pnlLeft.Controls.Add(iconButton2);
             pnlLeft.Dock = DockStyle.Left;
@@ -144,27 +146,27 @@
             btnEmployees.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEmployees.UseVisualStyleBackColor = false;
             // 
-            // iconButton4
+            // btnMyPageClient
             // 
-            iconButton4.BackColor = Color.Transparent;
-            iconButton4.Dock = DockStyle.Bottom;
-            iconButton4.FlatAppearance.BorderSize = 0;
-            iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton4.ForeColor = Color.Black;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.IconSize = 40;
-            iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(0, 538);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Padding = new Padding(25, 0, 20, 0);
-            iconButton4.Size = new Size(200, 75);
-            iconButton4.TabIndex = 0;
-            iconButton4.Text = "Employees";
-            iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton4.UseVisualStyleBackColor = false;
+            btnMyPageClient.BackColor = Color.Transparent;
+            btnMyPageClient.Dock = DockStyle.Bottom;
+            btnMyPageClient.FlatAppearance.BorderSize = 0;
+            btnMyPageClient.FlatStyle = FlatStyle.Flat;
+            btnMyPageClient.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMyPageClient.ForeColor = Color.Black;
+            btnMyPageClient.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnMyPageClient.IconColor = Color.Black;
+            btnMyPageClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMyPageClient.IconSize = 40;
+            btnMyPageClient.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMyPageClient.Location = new Point(0, 538);
+            btnMyPageClient.Name = "btnMyPageClient";
+            btnMyPageClient.Padding = new Padding(25, 0, 20, 0);
+            btnMyPageClient.Size = new Size(200, 75);
+            btnMyPageClient.TabIndex = 0;
+            btnMyPageClient.Text = "My Page";
+            btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMyPageClient.UseVisualStyleBackColor = false;
             // 
             // iconButton3
             // 
@@ -210,13 +212,35 @@
             iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton2.UseVisualStyleBackColor = false;
             // 
-            // ContextPanel
+            // pnlContext
             // 
-            ContextPanel.Dock = DockStyle.Fill;
-            ContextPanel.Location = new Point(200, 60);
-            ContextPanel.Name = "ContextPanel";
-            ContextPanel.Size = new Size(998, 613);
-            ContextPanel.TabIndex = 3;
+            pnlContext.Dock = DockStyle.Fill;
+            pnlContext.Location = new Point(200, 60);
+            pnlContext.Name = "pnlContext";
+            pnlContext.Size = new Size(998, 613);
+            pnlContext.TabIndex = 3;
+            // 
+            // btnMyPageLawyer
+            // 
+            btnMyPageLawyer.BackColor = Color.Transparent;
+            btnMyPageLawyer.Dock = DockStyle.Bottom;
+            btnMyPageLawyer.FlatAppearance.BorderSize = 0;
+            btnMyPageLawyer.FlatStyle = FlatStyle.Flat;
+            btnMyPageLawyer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMyPageLawyer.ForeColor = Color.Black;
+            btnMyPageLawyer.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnMyPageLawyer.IconColor = Color.Black;
+            btnMyPageLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMyPageLawyer.IconSize = 40;
+            btnMyPageLawyer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMyPageLawyer.Location = new Point(0, 463);
+            btnMyPageLawyer.Name = "btnMyPageLawyer";
+            btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
+            btnMyPageLawyer.Size = new Size(200, 75);
+            btnMyPageLawyer.TabIndex = 1;
+            btnMyPageLawyer.Text = "My Page";
+            btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
             // FrontPageView
             // 
@@ -224,7 +248,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 673);
             ControlBox = false;
-            Controls.Add(ContextPanel);
+            Controls.Add(pnlContext);
             Controls.Add(pnlLeft);
             Controls.Add(gradiantPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -246,9 +270,10 @@
         private Panel pnlLeft;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnEmployees;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private Panel ContextPanel;
+        private Panel pnlContext;
+        private FontAwesome.Sharp.IconButton btnMyPageLawyer;
     }
 }

@@ -8,7 +8,7 @@ namespace UI.Forms.FrontPage
         Color rgbColorBlue;
         int loginDetailsID;
         PersonBL personBL;
-        PersonUI person;
+        PersonUI personUI;
 
         public FrontPageView(int id)
         {
@@ -17,7 +17,7 @@ namespace UI.Forms.FrontPage
             loginDetailsID = id;
             rgbColorBlue = Color.FromArgb(45, 93, 134);
 
-            person = GetPersonAsync(id);
+            GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
@@ -28,9 +28,22 @@ namespace UI.Forms.FrontPage
             Application.Exit();
         }
 
-        public async Task<PersonUI> GetPersonAsync(int id)
+        public async Task GetPersonAsync(int id)
         {
-            return await personBL.GetPersonAsync(id);
+            personUI = await personBL.GetPersonAsync(id);
+            SetFormType();
+        }
+
+        public void SetFormType()
+        {
+            if (personUI is ClientUI)
+            {
+                MessageBox.Show("person is a client");
+            }
+            if (personUI is LawyerUI)
+            {
+                MessageBox.Show("person is a lawyer");
+            }
         }
     }
 }

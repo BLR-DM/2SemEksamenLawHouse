@@ -60,17 +60,17 @@ namespace BusinessLogic
         {
             ClientUI clientUI = new ClientUI
             {
-                //ClientID = clientE.ClientID,
+                PersonID = clientE.PersonID,
                 Firstname = clientE.Firstname,
                 Lastname = clientE.Lastname,
                 Email = clientE.Email,
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
-                //CreationDate = clientE.CreationDate,
                 ClientSub = clientE.ClientSub,
 
                 //foreign keys
-                //UserID = clientE.UserID,
+                LoginDetailsID = clientE.LoginDetailsID,
+                
             };
             return clientUI;
         }
@@ -121,18 +121,20 @@ namespace BusinessLogic
         {
             LawyerUI lawyerUI = new LawyerUI
             {
-                //LawyerID = lawyerE.LawyerID,
-                //Title = lawyerE.Title,
+                PersonID = lawyerE.PersonID,
                 Firstname = lawyerE.Firstname,
                 Lastname = lawyerE.Lastname,
                 PhoneNumber = lawyerE.PhoneNumber,
                 Email = lawyerE.Email,
                 AddressLine = lawyerE.AddressLine,
                 PostalCode = lawyerE.PostalCode,
+                City = lawyerE.City,
                 HireDate = lawyerE.HireDate,
 
+
                 //foreign keys
-                //UserID = lawyerE.UserID,
+                LoginDetailsID = lawyerE.LoginDetailsID,
+                LawyerTitleID = lawyerE.LawyerTitleID,
             };
             return lawyerUI;
         }

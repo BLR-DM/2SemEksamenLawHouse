@@ -49,18 +49,19 @@ namespace UI
 
             //Lawyer lawyer = new Lawyer()
             //{
-            //Firstname = "Bilal",
-            //Lastname = "Kinali",
-            //Email = "bilalkinali@gmail.com",
-            //AddressLine = "Lumbyesvej 16",
-            //PostalCode = 7000,
-            //PhoneNumber = 88888888,
-            //HireDate = DateTime.Now,
-            //LawyerTitleID = 1,
-  
+            //    Firstname = "Bilal",
+            //    Lastname = "Kinali",
+            //    Email = "bilalkinali2@gmail.com",
+            //    AddressLine = "Lumbyesvej 16",
+            //    PostalCode = 7000,
+            //    City = "Fredericia",
+            //    PhoneNumber = 88888888,
+            //    HireDate = DateTime.Now,
+            //    LawyerTitleID = 1,
+
             //    LoginDetails = new LoginDetails()
             //    {
-            //        Username = "bilalkinali@gmail.com",
+            //        Username = "bilalkinali2@gmail.com",
             //        Password = "kode123",
             //        CreationDate = DateTime.Now,
 

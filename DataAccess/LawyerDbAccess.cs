@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntityModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
@@ -20,6 +21,11 @@ namespace DataAccess
             db.Lawyers.Add(lawyer);
 
             return db.SaveChanges() > 0;
+        }
+
+        public async Task<Lawyer> GetLawyerAsync(int id)
+        {
+            return await db.Lawyers.FirstOrDefaultAsync(c => c.PersonID == id);
         }
     }
 }

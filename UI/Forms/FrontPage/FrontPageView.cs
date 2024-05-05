@@ -1,26 +1,39 @@
 ﻿using BusinessLogic;
 using UIModels;
+using UI.Forms.ClientPage;
 
 namespace UI.Forms.FrontPage
 {
     public partial class FrontPageView : Form
     {
         Color rgbColorBlue;
-        int loginDetailsID;
         PersonBL personBL;
+        ClientBL clientBL;
+        LawyerBL lawyerBL;
         PersonUI currentUser;
+        ClientUI clientUI;
+        LawyerUI lawyerUI;
 
-        public FrontPageView(int id)
+
+        public FrontPageView(int loginDetailsID)
         {
             personBL = new PersonBL();
+            clientBL = new ClientBL();
+            lawyerBL = new LawyerBL();
 
-            loginDetailsID = id;
             rgbColorBlue = Color.FromArgb(45, 93, 134);
 
             GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
             btnClose.Click += BtnClose_Click;
+            btnMyPageClient.Click += BtnMyPageClient_Click;
+        }
+
+        private void BtnMyPageClient_Click(object? sender, EventArgs e)
+        {
+            MyPageView mpv = new MyPageView(clientUI);
+            PnlContextChange(mpv);
         }
 
         private void BtnClose_Click(object? sender, EventArgs e)
@@ -31,19 +44,34 @@ namespace UI.Forms.FrontPage
         public async Task GetPersonAsync(int id)
         {
             currentUser = await personBL.GetPersonAsync(id);
-            SetFormType();
+            await SetupForm();
         }
 
-        public void SetFormType()
+        public async Task SetupForm()
         {
             if (currentUser is ClientUI)
             {
+                clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
                 MessageBox.Show("person is a client");
+
             }
             if (currentUser is LawyerUI)
             {
+                lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
+                btnMyPageClient.Hide();
                 MessageBox.Show("person is a lawyer");
             }
+        }
+
+        public void PnlContextChange(Form f)
+        {
+            //clearer controls fra panelForm
+            pnlContext.Controls.Clear();
+            f.TopLevel = false;
+            //tilføj form som control til panelet
+            pnlContext.Controls.Add(f);
+            f.Show();
+            pnlContext.Show();
         }
     }
 }

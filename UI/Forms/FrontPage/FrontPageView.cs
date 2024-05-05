@@ -8,7 +8,7 @@ namespace UI.Forms.FrontPage
         Color rgbColorBlue;
         int loginDetailsID;
         PersonBL personBL;
-        PersonUI personUI;
+        PersonUI currentUser;
 
         public FrontPageView(int id)
         {
@@ -30,17 +30,17 @@ namespace UI.Forms.FrontPage
 
         public async Task GetPersonAsync(int id)
         {
-            personUI = await personBL.GetPersonAsync(id);
+            currentUser = await personBL.GetPersonAsync(id);
             SetFormType();
         }
 
         public void SetFormType()
         {
-            if (personUI is ClientUI)
+            if (currentUser is ClientUI)
             {
                 MessageBox.Show("person is a client");
             }
-            if (personUI is LawyerUI)
+            if (currentUser is LawyerUI)
             {
                 MessageBox.Show("person is a lawyer");
             }

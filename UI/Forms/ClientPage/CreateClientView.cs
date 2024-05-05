@@ -80,6 +80,7 @@ namespace UI.Forms.ClientPage
                 PhoneNumber = Convert.ToInt32(txtPhone.Text),
             };
             phoneUIList.Add(tempPhone);
+            txtPhone.Clear();
 
             rtxtPhoneNumbers.Text = string.Join("\n", phoneUIList.Select(p => p.PhoneNumber));
         }

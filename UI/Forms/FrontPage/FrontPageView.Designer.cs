@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            gradiantPanel1 = new Toolbox.GradiantPanel();
+            btnClose = new FontAwesome.Sharp.IconButton();
+            pboxLogo = new PictureBox();
             pnlLeft = new Panel();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
@@ -36,8 +39,53 @@
             iconButton3 = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             pnlContext = new Panel();
+            gradiantPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pnlLeft.SuspendLayout();
             SuspendLayout();
+            // 
+            // gradiantPanel1
+            // 
+            gradiantPanel1.Angle = 80F;
+            gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
+            gradiantPanel1.BottomColor = Color.Empty;
+            gradiantPanel1.Controls.Add(btnClose);
+            gradiantPanel1.Controls.Add(pboxLogo);
+            gradiantPanel1.Dock = DockStyle.Top;
+            gradiantPanel1.Location = new Point(0, 0);
+            gradiantPanel1.Name = "gradiantPanel1";
+            gradiantPanel1.Size = new Size(1198, 60);
+            gradiantPanel1.TabIndex = 1;
+            gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            btnClose.IconColor = Color.Black;
+            btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnClose.IconSize = 30;
+            btnClose.Location = new Point(1151, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(35, 28);
+            btnClose.TabIndex = 3;
+            btnClose.TabStop = false;
+            btnClose.UseVisualStyleBackColor = false;
+            // 
+            // pboxLogo
+            // 
+            pboxLogo.BackColor = Color.Transparent;
+            pboxLogo.Image = Properties.Resources.lawhouseLogo;
+            pboxLogo.Location = new Point(0, -14);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(200, 81);
+            pboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pboxLogo.TabIndex = 3;
+            pboxLogo.TabStop = false;
             // 
             // pnlLeft
             // 
@@ -49,9 +97,9 @@
             pnlLeft.Controls.Add(iconButton3);
             pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
-            pnlLeft.Location = new Point(0, 0);
+            pnlLeft.Location = new Point(0, 60);
             pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(200, 673);
+            pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
             // 
             // btnMyPageLawyer
@@ -69,7 +117,7 @@
             btnMyPageLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMyPageLawyer.IconSize = 40;
             btnMyPageLawyer.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMyPageLawyer.Location = new Point(0, 523);
+            btnMyPageLawyer.Location = new Point(0, 463);
             btnMyPageLawyer.Name = "btnMyPageLawyer";
             btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
             btnMyPageLawyer.Size = new Size(200, 75);
@@ -135,7 +183,7 @@
             btnMyPageClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMyPageClient.IconSize = 40;
             btnMyPageClient.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMyPageClient.Location = new Point(0, 598);
+            btnMyPageClient.Location = new Point(0, 538);
             btnMyPageClient.Name = "btnMyPageClient";
             btnMyPageClient.Padding = new Padding(25, 0, 20, 0);
             btnMyPageClient.Size = new Size(200, 75);
@@ -190,11 +238,10 @@
             // 
             // pnlContext
             // 
-            pnlContext.BackColor = SystemColors.ControlDark;
             pnlContext.Dock = DockStyle.Fill;
-            pnlContext.Location = new Point(200, 0);
+            pnlContext.Location = new Point(200, 60);
             pnlContext.Name = "pnlContext";
-            pnlContext.Size = new Size(998, 673);
+            pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
             // FrontPageView
@@ -205,23 +252,30 @@
             ControlBox = false;
             Controls.Add(pnlContext);
             Controls.Add(pnlLeft);
+            Controls.Add(gradiantPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrontPageView";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             TransparencyKey = Color.Transparent;
+            gradiantPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             pnlLeft.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Toolbox.GradiantPanel gradiantPanel1;
+        private PictureBox pboxLogo;
+        private FontAwesome.Sharp.IconButton btnClose;
         private Panel pnlLeft;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton btnClients;
-        private FontAwesome.Sharp.IconButton btnMyPageLawyer;
         private Panel pnlContext;
+        private FontAwesome.Sharp.IconButton btnMyPageLawyer;
     }
 }

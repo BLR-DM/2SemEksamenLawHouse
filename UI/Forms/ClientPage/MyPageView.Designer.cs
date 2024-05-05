@@ -91,7 +91,6 @@
             // 
             // textBox1
             // 
-            textBox1.BackColor = SystemColors.Control;
             textBox1.Location = new Point(276, 159);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);

@@ -26,7 +26,7 @@ namespace UI.Forms.FrontPage
             GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
-            btnClose.Click += BtnClose_Click;
+            //btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
         }

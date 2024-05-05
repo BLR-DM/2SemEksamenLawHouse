@@ -22,20 +22,24 @@ namespace DataAccess
 
         }
 
-        public async Task<Person> CheckUsernameAndPasswordAsync(string username, string password)
+        public async Task<int> CheckUsernameAndPasswordAsync(string username, string password)
         {
             //return await db.LoginDetails.AnyAsync(u => u.Username == username && u.Password == password);
 
             LoginDetails user = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
 
-            int id = user.LoginDetailsID;
+            if (user != null)
+            {
+                return user.LoginDetailsID; 
+            }
+            return 0;
 
-            Person person = await db.Persons.FirstOrDefaultAsync(p => p.LoginDetailsID == id);
+            //Person person = await db.Persons.FirstOrDefaultAsync(p => p.LoginDetailsID == id);
 
 
-            if (person is Client)
-                return await db.Clients.FirstOrDefaultAsync(c => c.PersonID == person.PersonID);
-            return person;
+            //if (person is Client)
+            //    return await db.Clients.FirstOrDefaultAsync(c => c.PersonID == person.PersonID);
+            //return person;
 
         }
 

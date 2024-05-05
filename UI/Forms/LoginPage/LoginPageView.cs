@@ -39,7 +39,18 @@ namespace UI.Forms.LoginPage
                 return;
             }
 
-            await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
+            int result = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
+
+            if (result == 0)
+            {
+                MessageBox.Show("Wrong password!");
+                return;
+            }
+            // if negativ = exception
+
+            new FrontPageView(result).Show();
+            Hide();
+
             
             //if (!isMatch)
             //{

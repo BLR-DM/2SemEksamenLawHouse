@@ -26,7 +26,7 @@ namespace UI.Forms.LoginPage
 
         private void LblForgotPassword_Click(object? sender, EventArgs e)
         {
-            new ForgotPasswordView().ShowDialog();
+            new ForgotPasswordView(loginBL).ShowDialog();
         }
 
         private void LblRegister_Click(object? sender, EventArgs e)

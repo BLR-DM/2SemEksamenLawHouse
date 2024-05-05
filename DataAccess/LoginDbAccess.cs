@@ -43,5 +43,15 @@ namespace DataAccess
 
         }
 
+        public async Task<string> RetrievePasswordAsync(string username)
+        {
+            LoginDetails tmp = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username);
+            if (tmp != null)
+            {
+                return tmp.Password;
+            }
+            return string.Empty;
+        }
+
     }
 }

@@ -25,9 +25,9 @@ namespace UI.Forms.CreateUserPage
             InitializeComponent();
 
             lblCancel.Click += LblCancel_Click;
-            pboxEye.Click += PboxEye_Click;
             lblCancel.MouseHover += LblCancel_MouseHover;
             lblCancel.MouseLeave += LblCancel_MouseLeave;
+            pboxEye.Click += PboxEye_Click;
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtEmailConfirm.TextChanged += TxtEmailConfirm_TextChanged;
             btnCreate.Click += BtnCreate_Click;

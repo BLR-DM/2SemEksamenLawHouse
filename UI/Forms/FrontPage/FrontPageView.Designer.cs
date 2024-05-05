@@ -32,13 +32,13 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlLeft = new Panel();
+            btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlContext = new Panel();
-            btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pnlLeft.SuspendLayout();
@@ -101,6 +101,30 @@
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
+            // 
+            // btnMyPageLawyer
+            // 
+            btnMyPageLawyer.AccessibleName = "Navigation button";
+            btnMyPageLawyer.AccessibleRole = AccessibleRole.MenuItem;
+            btnMyPageLawyer.BackColor = Color.Transparent;
+            btnMyPageLawyer.Dock = DockStyle.Bottom;
+            btnMyPageLawyer.FlatAppearance.BorderSize = 0;
+            btnMyPageLawyer.FlatStyle = FlatStyle.Flat;
+            btnMyPageLawyer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMyPageLawyer.ForeColor = Color.Black;
+            btnMyPageLawyer.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnMyPageLawyer.IconColor = Color.Black;
+            btnMyPageLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMyPageLawyer.IconSize = 40;
+            btnMyPageLawyer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMyPageLawyer.Location = new Point(0, 463);
+            btnMyPageLawyer.Name = "btnMyPageLawyer";
+            btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
+            btnMyPageLawyer.Size = new Size(200, 75);
+            btnMyPageLawyer.TabIndex = 1;
+            btnMyPageLawyer.Text = "My Page";
+            btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
             // iconButton1
             // 
@@ -219,28 +243,6 @@
             pnlContext.Name = "pnlContext";
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
-            // 
-            // btnMyPageLawyer
-            // 
-            btnMyPageLawyer.BackColor = Color.Transparent;
-            btnMyPageLawyer.Dock = DockStyle.Bottom;
-            btnMyPageLawyer.FlatAppearance.BorderSize = 0;
-            btnMyPageLawyer.FlatStyle = FlatStyle.Flat;
-            btnMyPageLawyer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMyPageLawyer.ForeColor = Color.Black;
-            btnMyPageLawyer.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnMyPageLawyer.IconColor = Color.Black;
-            btnMyPageLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMyPageLawyer.IconSize = 40;
-            btnMyPageLawyer.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMyPageLawyer.Location = new Point(0, 463);
-            btnMyPageLawyer.Name = "btnMyPageLawyer";
-            btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
-            btnMyPageLawyer.Size = new Size(200, 75);
-            btnMyPageLawyer.TabIndex = 1;
-            btnMyPageLawyer.Text = "My Page";
-            btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
             // FrontPageView
             // 

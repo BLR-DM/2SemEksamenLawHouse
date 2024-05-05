@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace DataAccess
             {
                 return false;                
             }
+        }
+
+        public async Task<Client> GetClientAsync(int id)
+        {
+            return await db.Clients.FirstOrDefaultAsync(c => c.PersonID == id);
         }
     }
 }

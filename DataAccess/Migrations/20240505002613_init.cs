@@ -492,6 +492,12 @@ namespace DataAccess.Migrations
                 column: "ClientID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Phones_PhoneNumber",
+                table: "Phones",
+                column: "PhoneNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Services_ServicePriceTypeID",
                 table: "Services",
                 column: "ServicePriceTypeID");

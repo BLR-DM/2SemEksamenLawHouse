@@ -39,5 +39,13 @@ namespace BusinessLogic
 
             return await dbAccess.CreateAsync(tempC);
         }
+
+        public async Task<ClientUI> GetClientAsync(int id)
+        {
+            Client client = await dbAccess.GetClientAsync(id);
+            ClientUI clientUI = modelConverter.ConvertFromClientEntity(client);
+            return clientUI;
+        }
+
     }
 }

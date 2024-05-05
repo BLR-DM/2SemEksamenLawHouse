@@ -19,7 +19,7 @@ namespace EntityModels
         public DateTime CreationDate { get; set; }
 
         //nav prop
-        public Person PersonDetails { get; set; }
+        public Person Person { get; set; }
     }
 
 }

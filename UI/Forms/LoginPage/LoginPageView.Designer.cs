@@ -40,8 +40,8 @@ partial class LoginPageView
         pnlLinePassword = new Panel();
         lblLogin = new Label();
         btnLogin = new FontAwesome.Sharp.IconButton();
-        tboxUser = new TextBox();
-        tboxPassword = new TextBox();
+        txtUsername = new TextBox();
+        txtPassword = new TextBox();
         pboxEye = new FontAwesome.Sharp.IconPictureBox();
         lblCreateAccount = new Label();
         lblRegister = new Label();
@@ -185,30 +185,30 @@ partial class LoginPageView
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = false;
         // 
-        // tboxUser
+        // txtUsername
         // 
-        tboxUser.BackColor = SystemColors.GradientInactiveCaption;
-        tboxUser.BorderStyle = BorderStyle.None;
-        tboxUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tboxUser.Location = new Point(86, 301);
-        tboxUser.MaxLength = 50;
-        tboxUser.Name = "tboxUser";
-        tboxUser.PlaceholderText = "Email address";
-        tboxUser.Size = new Size(321, 20);
-        tboxUser.TabIndex = 1;
+        txtUsername.BackColor = SystemColors.GradientInactiveCaption;
+        txtUsername.BorderStyle = BorderStyle.None;
+        txtUsername.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtUsername.Location = new Point(86, 301);
+        txtUsername.MaxLength = 50;
+        txtUsername.Name = "txtUsername";
+        txtUsername.PlaceholderText = "Email address";
+        txtUsername.Size = new Size(257, 20);
+        txtUsername.TabIndex = 1;
         // 
-        // tboxPassword
+        // txtPassword
         // 
-        tboxPassword.BackColor = SystemColors.GradientInactiveCaption;
-        tboxPassword.BorderStyle = BorderStyle.None;
-        tboxPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tboxPassword.Location = new Point(86, 439);
-        tboxPassword.MaxLength = 50;
-        tboxPassword.Name = "tboxPassword";
-        tboxPassword.PasswordChar = '•';
-        tboxPassword.PlaceholderText = "Password";
-        tboxPassword.Size = new Size(321, 20);
-        tboxPassword.TabIndex = 2;
+        txtPassword.BackColor = SystemColors.GradientInactiveCaption;
+        txtPassword.BorderStyle = BorderStyle.None;
+        txtPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtPassword.Location = new Point(86, 439);
+        txtPassword.MaxLength = 50;
+        txtPassword.Name = "txtPassword";
+        txtPassword.PasswordChar = '•';
+        txtPassword.PlaceholderText = "Password";
+        txtPassword.Size = new Size(257, 20);
+        txtPassword.TabIndex = 2;
         // 
         // pboxEye
         // 
@@ -275,8 +275,8 @@ partial class LoginPageView
         ClientSize = new Size(432, 706);
         ControlBox = false;
         Controls.Add(pboxEye);
-        Controls.Add(tboxPassword);
-        Controls.Add(tboxUser);
+        Controls.Add(txtPassword);
+        Controls.Add(txtUsername);
         Controls.Add(btnLogin);
         Controls.Add(lblRegister);
         Controls.Add(lblForgotPassword);
@@ -315,8 +315,8 @@ partial class LoginPageView
     private Panel pnlLinePassword;
     private Label lblLogin;
     private FontAwesome.Sharp.IconButton btnLogin;
-    private TextBox tboxUser;
-    private TextBox tboxPassword;
+    private TextBox txtUsername;
+    private TextBox txtPassword;
     private FontAwesome.Sharp.IconPictureBox pboxEye;
     private Label lblCreateAccount;
     private Label lblRegister;

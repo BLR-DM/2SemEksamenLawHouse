@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240504160808_init")]
+    [Migration("20240505002613_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -327,6 +327,9 @@ namespace DataAccess.Migrations
                     b.HasKey("PhoneID");
 
                     b.HasIndex("ClientID");
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique();
 
                     b.ToTable("Phones");
                 });

@@ -6,16 +6,9 @@ using System.Threading.Tasks;
 
 namespace UIModels
 {
-    public class LawyerUI : EmployeeUI
+    public class LawyerTitleUI
     {
-
-        //attributes
-        //public string Title { get; set; }
-
-        //foreign key
         public int LawyerTitleID { get; set; }
-
-        
+        public string Title { get; set; }
     }
-
 }

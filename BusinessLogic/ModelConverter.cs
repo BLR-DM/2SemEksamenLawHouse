@@ -198,6 +198,7 @@ namespace BusinessLogic
             ServiceUI serviceUI = new ServiceUI
             {
                 ServiceID = serviceE.ServiceID,
+                Name = serviceE.Name,
                 Description = serviceE.Description,
                 PriceType = serviceE.ServicePriceType.PriceType,
                 Price = serviceE.Price,

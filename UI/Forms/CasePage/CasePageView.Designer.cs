@@ -43,6 +43,10 @@
             // 
             // dgvCaseList
             // 
+            dgvCaseList.AllowUserToAddRows = false;
+            dgvCaseList.AllowUserToDeleteRows = false;
+            dgvCaseList.AllowUserToResizeColumns = false;
+            dgvCaseList.AllowUserToResizeRows = false;
             dgvCaseList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCaseList.Location = new Point(12, 157);
             dgvCaseList.Name = "dgvCaseList";

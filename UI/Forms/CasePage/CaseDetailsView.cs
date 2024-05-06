@@ -18,19 +18,23 @@ namespace UI.Forms.CasePage
         CaseUI selectedCase;
         LawyerUI selectedLawyer;
         List<ServiceUI> serviceList;
+        List<CaseServiceUI> caseServiceList;
 
         ClientBL clientBL;
         LawyerBL lawyerBL;
         ServiceBL serviceBL;
+        CaseServiceBL caseServiceBL;
         public CaseDetailsView(CaseUI selectedCase)
         {
             InitializeComponent();
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
             serviceBL = new ServiceBL();
+            caseServiceBL = new CaseServiceBL();
             this.selectedCase = selectedCase;
 
             SetData();
+            SetDgv();
         }
 
         public async Task SetData()
@@ -49,8 +53,29 @@ namespace UI.Forms.CasePage
             txtLawyerLastName.Text = selectedLawyer.Lastname;
             txtLawyerPhone.Text = selectedLawyer.PhoneNumber.ToString();
 
+           
+
+        }
+
+        public async Task SetDgv()
+        {
+            caseServiceList = await caseServiceBL.GetCaseServicesAsync();
             serviceList = await serviceBL.GetServicesAsync();
-            dgvServices.DataSource = serviceList;
+           
+            List<ServiceUI> filteredServices = new List<ServiceUI>();
+
+            foreach(ServiceUI serviceUI in serviceList)
+            {
+                if(caseServiceList.Any(cs => cs.ServiceID == serviceUI.ServiceID && cs.CaseID == selectedCase.CaseID))
+                {
+                    filteredServices.Add(serviceUI);
+                }
+            }
+
+            dgvServices.DataSource = filteredServices;
+
+            dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
     }

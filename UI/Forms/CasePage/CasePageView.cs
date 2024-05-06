@@ -36,7 +36,7 @@ namespace UI.Forms.CasePage
 
         private void DgvCaseList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex > 0)
+            if(e.RowIndex >= 0)
             {
                 CaseUI selectedCase = originalCaseList[e.RowIndex] as CaseUI;
                 CaseDetailsView detailsView = new CaseDetailsView(selectedCase);

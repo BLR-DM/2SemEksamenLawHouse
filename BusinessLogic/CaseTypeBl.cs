@@ -21,10 +21,9 @@ namespace BusinessLogic
 
         public async Task<List<CaseTypeUI>> GetCaseTypeAsync()
         {
-            List<CaseType> caseTypesE = await dbAccess.GetCaseTypeAsync();
             List<CaseTypeUI> result = new List<CaseTypeUI>();
 
-            foreach (CaseType caseType in caseTypesE)
+            foreach (CaseType caseType in await dbAccess.GetCaseTypeAsync())
             {
                 result.Add(modelConverter.ConvertFromCaseTypeEntity(caseType));
             }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             dgvLawyerView = new DataGridView();
-            textBox1 = new TextBox();
-            lblName = new Label();
-            comboBox1 = new ComboBox();
+            txtSearch = new TextBox();
+            lblSearch = new Label();
+            cboSpecialities = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvLawyerView).BeginInit();
             SuspendLayout();
             // 
@@ -43,32 +43,32 @@
             dgvLawyerView.Size = new Size(753, 332);
             dgvLawyerView.TabIndex = 1;
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(81, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 3;
+            txtSearch.Location = new Point(81, 26);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(164, 23);
+            txtSearch.TabIndex = 3;
             // 
-            // lblName
+            // lblSearch
             // 
-            lblName.AutoSize = true;
-            lblName.BackColor = SystemColors.GradientInactiveCaption;
-            lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(12, 24);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(63, 21);
-            lblName.TabIndex = 41;
-            lblName.Text = "Search:";
+            lblSearch.AutoSize = true;
+            lblSearch.BackColor = SystemColors.GradientInactiveCaption;
+            lblSearch.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblSearch.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSearch.Location = new Point(12, 24);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(63, 21);
+            lblSearch.TabIndex = 41;
+            lblSearch.Text = "Search:";
             // 
-            // comboBox1
+            // cboSpecialities
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(611, 26);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(154, 23);
-            comboBox1.TabIndex = 42;
+            cboSpecialities.FormattingEnabled = true;
+            cboSpecialities.Location = new Point(611, 26);
+            cboSpecialities.Name = "cboSpecialities";
+            cboSpecialities.Size = new Size(154, 23);
+            cboSpecialities.TabIndex = 42;
             // 
             // AddLawyerView
             // 
@@ -76,9 +76,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(777, 399);
-            Controls.Add(comboBox1);
-            Controls.Add(lblName);
-            Controls.Add(textBox1);
+            Controls.Add(cboSpecialities);
+            Controls.Add(lblSearch);
+            Controls.Add(txtSearch);
             Controls.Add(dgvLawyerView);
             Name = "AddLawyerView";
             StartPosition = FormStartPosition.CenterParent;
@@ -91,8 +91,8 @@
         #endregion
 
         private DataGridView dgvLawyerView;
-        private TextBox textBox1;
-        private Label lblName;
-        private ComboBox comboBox1;
+        private TextBox txtSearch;
+        private Label lblSearch;
+        private ComboBox cboSpecialities;
     }
 }

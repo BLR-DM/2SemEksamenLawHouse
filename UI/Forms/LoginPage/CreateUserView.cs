@@ -19,7 +19,6 @@ namespace UI.Forms.CreateUserPage
         ClientBL clientBL;
         List<PhoneUI> phoneUIs;
         PersonValidator pValidator;
-        Color rgbColorBlue;
         Color validFormat;
         Color invalidFormat;
         public CreateUserView()
@@ -27,7 +26,6 @@ namespace UI.Forms.CreateUserPage
             clientBL = new ClientBL();
             pValidator = new PersonValidator();
 
-            rgbColorBlue = Color.FromArgb(45, 93, 134);
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
 
@@ -80,12 +78,40 @@ namespace UI.Forms.CreateUserPage
 
         private void TxtPhoneAlt_Leave(object? sender, EventArgs e)
         {
-            txtPhoneAlt.ForeColor = pValidator.ValidPhone(txtPhoneAlt.Text) ? validFormat : invalidFormat;
+            if (pValidator.ValidPhone(txtPhoneAlt.Text))
+            {
+                if (txtPhoneAlt.Text == txtPhoneMain.Text)
+                {
+                    txtPhoneAlt.ForeColor = invalidFormat;
+                }
+                else
+                {
+                    txtPhoneAlt.ForeColor = validFormat;
+                }
+            }
+            else
+            {
+                txtPhoneAlt.ForeColor = invalidFormat;
+            }
         }
 
         private void TxtPhoneMain_Leave(object? sender, EventArgs e)
         {
-            txtPhoneMain.ForeColor = pValidator.ValidPhone(txtPhoneMain.Text) ? validFormat : invalidFormat;
+            if (pValidator.ValidPhone(txtPhoneMain.Text))
+            {
+                if (txtPhoneAlt.Text == txtPhoneMain.Text)
+                {
+                    txtPhoneMain.ForeColor = invalidFormat;
+                }
+                else
+                {
+                    txtPhoneMain.ForeColor = validFormat;
+                }
+            }
+            else
+            {
+                txtPhoneMain.ForeColor = invalidFormat;
+            }
         }
 
         private void TxtEmailConfirm_Leave(object? sender, EventArgs e)
@@ -108,6 +134,8 @@ namespace UI.Forms.CreateUserPage
             else
             {
                 txtEmailConfirm.ForeColor = invalidFormat;
+                txtEmailConfirm.ForeColor = txtEmail.ForeColor = invalidFormat;
+                txtUsername.Text = string.Empty;
             }
         }
 
@@ -129,6 +157,7 @@ namespace UI.Forms.CreateUserPage
             else
             {
                 txtEmail.ForeColor = invalidFormat;
+                txtUsername.Text = string.Empty;
             }
         }
 

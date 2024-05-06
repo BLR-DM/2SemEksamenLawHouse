@@ -30,7 +30,9 @@
         {
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
+            lblSuccess = new Label();
             btnDeletePhone = new FontAwesome.Sharp.IconButton();
+            btnUpdate = new FontAwesome.Sharp.IconButton();
             btnAddPhone = new FontAwesome.Sharp.IconButton();
             dgvPhoneNumbers = new DataGridView();
             label11 = new Label();
@@ -55,7 +57,6 @@
             dataGridView2 = new DataGridView();
             label8 = new Label();
             pictureBox1 = new PictureBox();
-            btnUpdate = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -75,7 +76,9 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lblSuccess);
             panel2.Controls.Add(btnDeletePhone);
+            panel2.Controls.Add(btnUpdate);
             panel2.Controls.Add(btnAddPhone);
             panel2.Controls.Add(dgvPhoneNumbers);
             panel2.Controls.Add(label11);
@@ -99,8 +102,18 @@
             panel2.ForeColor = SystemColors.ControlText;
             panel2.Location = new Point(27, 24);
             panel2.Name = "panel2";
-            panel2.Size = new Size(421, 534);
+            panel2.Size = new Size(421, 577);
             panel2.TabIndex = 34;
+            // 
+            // lblSuccess
+            // 
+            lblSuccess.AutoSize = true;
+            lblSuccess.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSuccess.Location = new Point(327, 539);
+            lblSuccess.Name = "lblSuccess";
+            lblSuccess.Size = new Size(44, 15);
+            lblSuccess.TabIndex = 53;
+            lblSuccess.Text = "label12";
             // 
             // btnDeletePhone
             // 
@@ -119,6 +132,26 @@
             btnDeletePhone.TabIndex = 52;
             btnDeletePhone.TabStop = false;
             btnDeletePhone.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Anchor = AnchorStyles.Bottom;
+            btnUpdate.BackColor = Color.FromArgb(45, 93, 134);
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnUpdate.IconColor = Color.Black;
+            btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdate.IconSize = 70;
+            btnUpdate.Location = new Point(118, 525);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(171, 37);
+            btnUpdate.TabIndex = 48;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
             // 
             // btnAddPhone
             // 
@@ -250,7 +283,6 @@
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(156, 23);
             txtFirstname.TabIndex = 44;
-
             // 
             // label6
             // 
@@ -376,26 +408,6 @@
             pictureBox1.TabIndex = 47;
             pictureBox1.TabStop = false;
             // 
-            // btnUpdate
-            // 
-            btnUpdate.Anchor = AnchorStyles.Bottom;
-            btnUpdate.BackColor = Color.FromArgb(45, 93, 134);
-            btnUpdate.Cursor = Cursors.Hand;
-            btnUpdate.FlatAppearance.BorderSize = 0;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnUpdate.ForeColor = Color.White;
-            btnUpdate.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnUpdate.IconColor = Color.Black;
-            btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnUpdate.IconSize = 70;
-            btnUpdate.Location = new Point(146, 564);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(171, 37);
-            btnUpdate.TabIndex = 48;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = false;
-            // 
             // iconButton1
             // 
             iconButton1.Anchor = AnchorStyles.Bottom;
@@ -409,7 +421,7 @@
             iconButton1.IconColor = Color.Black;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 70;
-            iconButton1.Location = new Point(652, 564);
+            iconButton1.Location = new Point(770, 564);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(171, 37);
             iconButton1.TabIndex = 49;
@@ -423,7 +435,6 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
             Controls.Add(iconButton1);
-            Controls.Add(btnUpdate);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
             Controls.Add(dataGridView2);
@@ -474,5 +485,6 @@
         private Label label10;
         private FontAwesome.Sharp.IconButton btnDeletePhone;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Label lblSuccess;
     }
 }

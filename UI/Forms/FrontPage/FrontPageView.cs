@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using UIModels;
 using UI.Forms.ClientPage;
+using UI.Forms.Self_Service;
 
 namespace UI.Forms.FrontPage
 {
@@ -29,6 +30,13 @@ namespace UI.Forms.FrontPage
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
+            btnFormulars.Click += BtnFormulars_Click;
+        }
+
+        private void BtnFormulars_Click(object? sender, EventArgs e)
+        {
+            FormularView fv = new FormularView();
+            PnlContextChange(fv);
         }
 
         private void BtnClients_Click(object? sender, EventArgs e)

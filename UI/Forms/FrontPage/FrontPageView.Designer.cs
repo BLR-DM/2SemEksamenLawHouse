@@ -33,7 +33,7 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
+            btnFormulars = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
             btnClose = new FontAwesome.Sharp.IconButton();
@@ -51,7 +51,7 @@
             pnlLeft.Controls.Add(iconButton1);
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
-            pnlLeft.Controls.Add(iconButton3);
+            pnlLeft.Controls.Add(btnFormulars);
             pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
@@ -148,27 +148,27 @@
             btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageClient.UseVisualStyleBackColor = false;
             // 
-            // iconButton3
+            // btnFormulars
             // 
-            iconButton3.BackColor = Color.Transparent;
-            iconButton3.Dock = DockStyle.Top;
-            iconButton3.FlatAppearance.BorderSize = 0;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton3.ForeColor = Color.Black;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 40;
-            iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton3.Location = new Point(0, 75);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Padding = new Padding(25, 0, 20, 0);
-            iconButton3.Size = new Size(200, 75);
-            iconButton3.TabIndex = 0;
-            iconButton3.Text = "Employees";
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            btnFormulars.BackColor = Color.Transparent;
+            btnFormulars.Dock = DockStyle.Top;
+            btnFormulars.FlatAppearance.BorderSize = 0;
+            btnFormulars.FlatStyle = FlatStyle.Flat;
+            btnFormulars.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFormulars.ForeColor = Color.Black;
+            btnFormulars.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnFormulars.IconColor = Color.Black;
+            btnFormulars.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnFormulars.IconSize = 40;
+            btnFormulars.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFormulars.Location = new Point(0, 75);
+            btnFormulars.Name = "btnFormulars";
+            btnFormulars.Padding = new Padding(25, 0, 20, 0);
+            btnFormulars.Size = new Size(200, 75);
+            btnFormulars.TabIndex = 0;
+            btnFormulars.Text = "Formulars";
+            btnFormulars.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnFormulars.UseVisualStyleBackColor = false;
             // 
             // btnClients
             // 
@@ -269,7 +269,7 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton btnFormulars;
         private FontAwesome.Sharp.IconButton btnClients;
         private Toolbox.GradiantPanel gradiantPanel1;
         private FontAwesome.Sharp.IconButton btnClose;

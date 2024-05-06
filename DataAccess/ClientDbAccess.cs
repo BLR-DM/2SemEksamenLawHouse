@@ -77,7 +77,9 @@ namespace DataAccess
             try
             {
                 db.Clients.Update(client);
-                return await db.SaveChangesAsync() > 0;
+                bool success = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return success;
             }
             catch (Exception)
             {
@@ -90,7 +92,9 @@ namespace DataAccess
             try
             {
                 db.Phones.RemoveRange(phones);
-                return await db.SaveChangesAsync() > 0;
+                bool success = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return success;
             }
             catch (Exception)
             {

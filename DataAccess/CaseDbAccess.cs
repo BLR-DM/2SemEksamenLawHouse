@@ -19,7 +19,7 @@ namespace DataAccess
         {
             try
             {
-                await db.AddAsync(caseE);
+                await db.Cases.AddAsync(caseE);
                 return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)

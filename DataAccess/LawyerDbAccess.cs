@@ -27,5 +27,20 @@ namespace DataAccess
         {
             return await db.Lawyers.FirstOrDefaultAsync(c => c.PersonID == id);
         }
+
+        public async Task<List<Lawyer>> GetLawyersAsync()
+        {
+            try
+            {
+                List<Lawyer> lawyers = db.Lawyers.Include(l => l.LawyerTitle).ToList();
+                return lawyers;
+            }
+            catch (Exception)
+            {
+                return new List<Lawyer>();
+            }
+        }
+
+
     }
 }

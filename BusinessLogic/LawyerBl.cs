@@ -29,5 +29,15 @@ namespace BusinessLogic
             LawyerUI lawyerUI = modelConverter.ConvertFromLawyerEntity(lawyer);
             return lawyerUI;
         }
+
+        public async Task<List<LawyerUI>> GetLawyersAsync()
+        {
+            List<LawyerUI> lawyerList = new List<LawyerUI>();
+            foreach(Lawyer lawyer in await dbAccess.GetLawyersAsync())
+            {
+               lawyerList.Add(modelConverter.ConvertFromLawyerEntity(lawyer));
+            }
+            return lawyerList;
+        }
     }
 }

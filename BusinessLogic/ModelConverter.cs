@@ -143,6 +143,7 @@ namespace BusinessLogic
                 PostalCode = lawyerE.PostalCode,
                 City = lawyerE.City,
                 HireDate = lawyerE.HireDate,
+                LawyerTitle = lawyerE.LawyerTitle.Title,
 
 
                 //foreign keys
@@ -259,12 +260,13 @@ namespace BusinessLogic
             {
                 CaseID = caseUI.CaseID,
                 Title = caseUI.Title,
-                //CaseType = caseUI.CaseType,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,
                 EstimatedHours = caseUI.EstHours,
                 Status = caseUI.Status,
                 TotalPrice = caseUI.TotalPrice,
+
+                CaseTypeID = caseUI.CaseTypeID,
                 LawyerID = caseUI.LawyerID,
                 ClientID = caseUI.ClientID,
             };

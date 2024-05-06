@@ -17,6 +17,8 @@ namespace UI.Forms.CasePage
         CaseBL caseBL;
         CaseTypeBL caseTypeBL;
         List<CaseTypeUI> caseTypeUIList;
+        ClientUI selectedClient;
+        LawyerUI selectedLawyer;
         public CreateCasePage()
         {
             InitializeComponent();
@@ -48,19 +50,28 @@ namespace UI.Forms.CasePage
                 Title = txtTitle.Text,
                 CreationDate = DateTime.Now,
                 EndDate = dtpEstimatedEndDate.Value,
-                EstHours = int.Parse(txtEstimatedHours.Text),
-                Status = "On going",
+                EstHours = float.Parse(txtEstimatedHours.Text),
+                Status = "Active",
                 TotalPrice = 0,
-                CaseTypeID = selectedCaseType.CaseTypeID,
 
-                LawyerID = 1,
-                ClientID = 1,
+                CaseTypeID = selectedCaseType.CaseTypeID,
+                LawyerID = selectedLawyer.PersonID,
+                ClientID = selectedClient.PersonID,
             };
 
             bool succes = await caseBL.CreateCase(caseUI);
+            if (succes)
+            {
+                MessageBox.Show("Case created");
+            }
+            else
+            {
+                MessageBox.Show("FEJL");
+            }
 
             btnCreateCase.Enabled = true;
         }
+
 
         public async void SetComboBox()
         {
@@ -76,12 +87,44 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
-            new AddLawyerView().ShowDialog();
+            AddLawyerView addLawyerView = new AddLawyerView();
+
+            addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
+
+            addLawyerView.ShowDialog();
+        }
+
+        private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
+        {
+            txtLawyerFirstName.Text = e.Firstname;
+            txtLawyerLastName.Text = e.Lastname;
+            txtLawyerEmail.Text = e.Email;
+            txtLawyerPhone.Text = e.PhoneNumber.ToString();
+
+            selectedLawyer = e;
         }
 
         private void BtnAddClient_Click(object? sender, EventArgs e)
         {
-            new AddClientView().ShowDialog();
+            AddClientView addClientView = new AddClientView();
+
+            addClientView.ClientSelected += AddClientView_ClientSelected;
+           
+            addClientView.ShowDialog();
+
+        }
+
+        private void AddClientView_ClientSelected(object? sender, ClientUI e)
+        {
+            txtClientFirstname.Text = e.Firstname;
+            txtClientLastName.Text = e.Lastname;
+            txtClientAddress.Text = e.AddressLine;
+            txtClientPhoneNumber1.Text = e.MainPhone.ToString();
+            txtClientPostalCode.Text = e.PostalCode.ToString();
+            txtClientEmail.Text = e.Email;
+
+            selectedClient = e;
+
         }
     }
 }

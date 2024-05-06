@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,12 @@ namespace UI.Forms.LoginPage
     public partial class ForgotPasswordView : Form
     {
         LoginBL loginBL;
+        PersonValidator personValidator;
+        bool validEmailFormat;
         public ForgotPasswordView(LoginBL loginBL)
         {
             this.loginBL = loginBL;
+            personValidator = new PersonValidator();
 
             InitializeComponent();
 
@@ -26,6 +30,26 @@ namespace UI.Forms.LoginPage
             lblCancel.MouseLeave += LblCancel_MouseLeave;
             lblCancel.Click += LblCancel_Click;
             btnRetrievePassword.Click += BtnRetrievePassword_Click;
+            txtEmail.TextChanged += TxtEmail_TextChanged;
+        }
+
+        private void TxtEmail_TextChanged(object? sender, EventArgs e)
+        {
+            if (txtEmail.Text.Length > 4)
+            {
+                validEmailFormat = personValidator.ValidEmail(txtEmail.Text);
+
+                if (validEmailFormat)
+                {
+                    btnRetrievePassword.Enabled = true;
+                    txtEmail.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btnRetrievePassword.Enabled = false;
+                    txtEmail.ForeColor = Color.OrangeRed;
+                }
+            }
         }
 
         private async void BtnRetrievePassword_Click(object? sender, EventArgs e)

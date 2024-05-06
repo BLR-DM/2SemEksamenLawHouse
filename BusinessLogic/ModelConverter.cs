@@ -199,7 +199,7 @@ namespace BusinessLogic
             {
                 ServiceID = serviceE.ServiceID,
                 Description = serviceE.Description,
-                //PriceType = serviceE.PriceType,
+                PriceType = serviceE.ServicePriceType.PriceType,
                 Price = serviceE.Price,
             };
             return serviceUI;

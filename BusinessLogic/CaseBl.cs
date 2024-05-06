@@ -24,5 +24,17 @@ namespace BusinessLogic
             Case temp = modelConverter.ConvertFromCaseUI(caseUI);
             return await dbAccess.CreateCase(temp);
         }
+
+        public async Task<List<CaseUI>> GetCasesAsync()
+        {
+            List<CaseUI> cases = new List<CaseUI>();
+
+            foreach(Case caseE in await dbAccess.GetCasesAsync())
+            {
+                cases.Add(modelConverter.ConvertFromCaseEntity(caseE));
+            }
+
+            return cases;
+        }
     }
 }

@@ -15,6 +15,6 @@ namespace UIModels
         public string Description { get; set; }
         public float Price { get; set; }
 
-        //public string PriceType { get; set; }
+        public string PriceType { get; set; }
     }
 }

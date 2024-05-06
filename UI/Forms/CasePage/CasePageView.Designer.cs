@@ -30,10 +30,12 @@
         {
             dgvCaseList = new DataGridView();
             panelTopBar = new Panel();
+            textBox1 = new TextBox();
+            lblSearch = new Label();
             cboLawyers = new ComboBox();
             cboCaseType = new ComboBox();
             cboxFinsished = new CheckBox();
-            ckboxOngoing = new CheckBox();
+            ckboxActive = new CheckBox();
             lblNumberOfCases = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCaseList).BeginInit();
             panelTopBar.SuspendLayout();
@@ -51,19 +53,37 @@
             // 
             panelTopBar.Anchor = AnchorStyles.Top;
             panelTopBar.BackColor = SystemColors.GradientActiveCaption;
+            panelTopBar.Controls.Add(textBox1);
+            panelTopBar.Controls.Add(lblSearch);
             panelTopBar.Controls.Add(cboLawyers);
             panelTopBar.Controls.Add(cboCaseType);
             panelTopBar.Controls.Add(cboxFinsished);
-            panelTopBar.Controls.Add(ckboxOngoing);
+            panelTopBar.Controls.Add(ckboxActive);
             panelTopBar.Location = new Point(12, 12);
             panelTopBar.Name = "panelTopBar";
-            panelTopBar.Size = new Size(974, 88);
+            panelTopBar.Size = new Size(974, 76);
             panelTopBar.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(78, 31);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(119, 23);
+            textBox1.TabIndex = 5;
+            // 
+            // lblSearch
+            // 
+            lblSearch.AutoSize = true;
+            lblSearch.Location = new Point(27, 34);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(45, 15);
+            lblSearch.TabIndex = 4;
+            lblSearch.Text = "Search:";
             // 
             // cboLawyers
             // 
             cboLawyers.FormattingEnabled = true;
-            cboLawyers.Location = new Point(651, 34);
+            cboLawyers.Location = new Point(629, 31);
             cboLawyers.Name = "cboLawyers";
             cboLawyers.Size = new Size(148, 23);
             cboLawyers.TabIndex = 3;
@@ -71,7 +91,7 @@
             // cboCaseType
             // 
             cboCaseType.FormattingEnabled = true;
-            cboCaseType.Location = new Point(817, 34);
+            cboCaseType.Location = new Point(810, 31);
             cboCaseType.Name = "cboCaseType";
             cboCaseType.Size = new Size(142, 23);
             cboCaseType.TabIndex = 2;
@@ -79,22 +99,22 @@
             // cboxFinsished
             // 
             cboxFinsished.AutoSize = true;
-            cboxFinsished.Location = new Point(158, 56);
+            cboxFinsished.Location = new Point(298, 33);
             cboxFinsished.Name = "cboxFinsished";
             cboxFinsished.Size = new Size(70, 19);
             cboxFinsished.TabIndex = 1;
             cboxFinsished.Text = "Finished";
             cboxFinsished.UseVisualStyleBackColor = true;
             // 
-            // ckboxOngoing
+            // ckboxActive
             // 
-            ckboxOngoing.AutoSize = true;
-            ckboxOngoing.Location = new Point(158, 21);
-            ckboxOngoing.Name = "ckboxOngoing";
-            ckboxOngoing.Size = new Size(76, 19);
-            ckboxOngoing.TabIndex = 0;
-            ckboxOngoing.Text = "On going";
-            ckboxOngoing.UseVisualStyleBackColor = true;
+            ckboxActive.AutoSize = true;
+            ckboxActive.Location = new Point(389, 33);
+            ckboxActive.Name = "ckboxActive";
+            ckboxActive.Size = new Size(59, 19);
+            ckboxActive.TabIndex = 0;
+            ckboxActive.Text = "Active";
+            ckboxActive.UseVisualStyleBackColor = true;
             // 
             // lblNumberOfCases
             // 
@@ -102,7 +122,7 @@
             lblNumberOfCases.BackColor = SystemColors.GradientInactiveCaption;
             lblNumberOfCases.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblNumberOfCases.ForeColor = Color.FromArgb(45, 93, 134);
-            lblNumberOfCases.Location = new Point(452, 115);
+            lblNumberOfCases.Location = new Point(460, 115);
             lblNumberOfCases.Name = "lblNumberOfCases";
             lblNumberOfCases.Size = new Size(79, 21);
             lblNumberOfCases.TabIndex = 21;
@@ -133,9 +153,11 @@
         private DataGridView dgvCaseList;
         private Panel panelTopBar;
         private Label lblNumberOfCases;
-        private CheckBox ckboxOngoing;
+        private CheckBox ckboxActive;
         private ComboBox cboLawyers;
         private ComboBox cboCaseType;
         private CheckBox cboxFinsished;
+        private TextBox textBox1;
+        private Label lblSearch;
     }
 }

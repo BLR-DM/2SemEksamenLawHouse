@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ttipPassword.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="iconPictureBox1.ToolTip" xml:space="preserve">
+    <value>Please create a password that meets the following criteria:
+- Length: 4 to 30 characters
+- Allowed characters:
+  - Letters (A-Z, a-z, Æ, Ø, Å, æ, ø, å)
+  - Numbers (0-9)
+  - Special characters: hyphen (-), exclamation mark (!), period (.)</value>
+  </data>
 </root>

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUserView));
             pboxEye = new FontAwesome.Sharp.IconPictureBox();
             lblCreate = new Label();
             lblName = new Label();
@@ -59,11 +61,14 @@
             lblCity = new Label();
             txtCity = new TextBox();
             pnlLine = new Panel();
+            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             lblPasswordEnter = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
             lblCancel = new Label();
+            ttipPassword = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
             pnlLine.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pboxEye
@@ -77,7 +82,8 @@
             pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxEye.Location = new Point(455, 101);
             pboxEye.Name = "pboxEye";
-            pboxEye.Size = new Size(35, 32);
+            pboxEye.Size = new Size(32, 32);
+            pboxEye.SizeMode = PictureBoxSizeMode.AutoSize;
             pboxEye.TabIndex = 7;
             pboxEye.TabStop = false;
             // 
@@ -440,6 +446,7 @@
             pnlLine.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlLine.BackColor = Color.Transparent;
             pnlLine.BorderStyle = BorderStyle.FixedSingle;
+            pnlLine.Controls.Add(iconPictureBox1);
             pnlLine.Controls.Add(pboxEye);
             pnlLine.Controls.Add(lblPasswordEnter);
             pnlLine.Controls.Add(lblPasswordConfirm);
@@ -447,6 +454,22 @@
             pnlLine.Name = "pnlLine";
             pnlLine.Size = new Size(520, 162);
             pnlLine.TabIndex = 3;
+            // 
+            // iconPictureBox1
+            // 
+            iconPictureBox1.BackColor = Color.Transparent;
+            iconPictureBox1.ForeColor = Color.FromArgb(45, 93, 134);
+            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.QuestionCircle;
+            iconPictureBox1.IconColor = Color.FromArgb(45, 93, 134);
+            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox1.IconSize = 25;
+            iconPictureBox1.Location = new Point(99, 77);
+            iconPictureBox1.Name = "iconPictureBox1";
+            iconPictureBox1.Size = new Size(25, 25);
+            iconPictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            iconPictureBox1.TabIndex = 8;
+            iconPictureBox1.TabStop = false;
+            ttipPassword.SetToolTip(iconPictureBox1, resources.GetString("iconPictureBox1.ToolTip"));
             // 
             // lblPasswordEnter
             // 
@@ -495,6 +518,11 @@
             lblCancel.TabIndex = 0;
             lblCancel.Text = "Cancel";
             // 
+            // ttipPassword
+            // 
+            ttipPassword.ToolTipIcon = ToolTipIcon.Info;
+            ttipPassword.ToolTipTitle = "Password";
+            // 
             // CreateUserView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -541,6 +569,7 @@
             ((System.ComponentModel.ISupportInitialize)pboxEye).EndInit();
             pnlLine.ResumeLayout(false);
             pnlLine.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -580,5 +609,7 @@
         private FontAwesome.Sharp.IconButton btnCreate;
         private Label lblCancel;
         private Label lblPasswordEnter;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private ToolTip ttipPassword;
     }
 }

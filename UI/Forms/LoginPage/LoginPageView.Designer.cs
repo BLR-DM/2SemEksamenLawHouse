@@ -101,7 +101,7 @@ partial class LoginPageView
         pnlLineUser.BackColor = Color.FromArgb(45, 93, 134);
         pnlLineUser.Location = new Point(26, 330);
         pnlLineUser.Name = "pnlLineUser";
-        pnlLineUser.Size = new Size(359, 3);
+        pnlLineUser.Size = new Size(374, 3);
         pnlLineUser.TabIndex = 3;
         // 
         // lblUser
@@ -147,9 +147,9 @@ partial class LoginPageView
         // 
         pnlLinePassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         pnlLinePassword.BackColor = Color.FromArgb(45, 93, 134);
-        pnlLinePassword.Location = new Point(26, 467);
+        pnlLinePassword.Location = new Point(26, 465);
         pnlLinePassword.Name = "pnlLinePassword";
-        pnlLinePassword.Size = new Size(359, 3);
+        pnlLinePassword.Size = new Size(374, 3);
         pnlLinePassword.TabIndex = 3;
         // 
         // lblLogin
@@ -219,9 +219,10 @@ partial class LoginPageView
         pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
         pboxEye.IconColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pboxEye.Location = new Point(358, 434);
+        pboxEye.Location = new Point(369, 434);
         pboxEye.Name = "pboxEye";
-        pboxEye.Size = new Size(36, 32);
+        pboxEye.Size = new Size(32, 32);
+        pboxEye.SizeMode = PictureBoxSizeMode.AutoSize;
         pboxEye.TabIndex = 7;
         pboxEye.TabStop = false;
         // 

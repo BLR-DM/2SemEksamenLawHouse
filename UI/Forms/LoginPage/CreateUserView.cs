@@ -46,14 +46,15 @@ namespace UI.Forms.CreateUserPage
             txtPhoneAlt.Leave += TxtPhoneAlt_Leave;
             txtAddress.TextChanged += TxtAddress_TextChanged;
             txtPostal.Leave += TxtPostal_Leave;
+            txtCity.TextChanged += TxtCity_TextChanged;
             txtPassword.TextChanged += TxtPassword_TextChanged;
             txtPasswordConfirm.TextChanged += TxtPasswordConfirm_TextChanged;
-            txtPassword.GotFocus += TxtPassword_GotFocus;
+
         }
 
-        private void TxtPassword_GotFocus(object? sender, EventArgs e)
+        private void TxtCity_TextChanged(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            txtCity.ForeColor = pValidator.ValidName(txtCity.Text) ? validFormat : invalidFormat;
         }
 
         private void TxtPasswordConfirm_TextChanged(object? sender, EventArgs e)

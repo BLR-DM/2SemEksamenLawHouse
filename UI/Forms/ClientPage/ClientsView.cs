@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.ClientPage
@@ -17,15 +18,30 @@ namespace UI.Forms.ClientPage
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
         ClientBL clientBL;
+        FrontPageView fpv;
         int count;
-        public ClientsView()
+        public ClientsView(FrontPageView fpv)
         {
             InitializeComponent();
             clientBL = new ClientBL();
+            this.fpv = fpv;
 
+            //Events
             Load += ClientsView_Load;
             txtSearchPhone.TextChanged += TxtSearchPhone_TextChanged;
             txtSearchPostal.TextChanged += TxtSearchPostal_TextChanged;
+            dgvClients.CellDoubleClick += DgvClients_CellDoubleClick;
+        }
+        
+        //doubleklik åbn ClientDetails
+        private void DgvClients_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
+                ClientDetails cd = new ClientDetails(selectedClient);
+                fpv.PnlContextChange(cd);
+            }
         }
 
         private void TxtSearchPostal_TextChanged(object? sender, EventArgs e)
@@ -38,6 +54,7 @@ namespace UI.Forms.ClientPage
             SortData();
         }
 
+        //sortere data
         private void SortData()
         {
             filteredClients = new List<ClientUI>(originalClientsList);
@@ -60,6 +77,7 @@ namespace UI.Forms.ClientPage
             lblClientAmmount.Text = count.ToString() + " Clients";
         }
 
+        //Henter data og sætter DGV data
         private async void ClientsView_Load(object? sender, EventArgs e)
         {
             originalClientsList = await clientBL.GetClientsAsync();
@@ -70,18 +88,9 @@ namespace UI.Forms.ClientPage
 
 
             DGVSetup();
-            //LoadClientsAsync();
         }
 
-        //public async Task LoadClientsAsync()
-        //{
-        //    clients = await clientBL.GetClientsAsync();
-        //    ClientsBS.DataSource = clients;
-        //    filteredClients = new List<ClientUI>(clients);
-
-        //    DGVSetup();
-
-        //}
+        //Datagridview setup
         private void DGVSetup()
         {
 

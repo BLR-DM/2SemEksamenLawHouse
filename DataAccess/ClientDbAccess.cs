@@ -32,6 +32,20 @@ namespace DataAccess
             }
         }
 
+        public async Task<List<Phone>> GetClientPhonesAsync(int id)
+        {
+            try
+            {
+                List<Phone> phones = db.Phones.Where(p => p.ClientID == id).ToList();
+                return phones;
+            }
+            catch (Exception)
+            {
+
+                return new List<Phone>();
+            }
+        }
+
         public async Task<Client> GetClientAsync(int id)
         {
             try
@@ -58,5 +72,31 @@ namespace DataAccess
             }
         }
 
+        public async Task<bool> UpdateClientAsync(Client client)
+        {
+            try
+            {
+                db.Clients.Update(client);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
+        {
+            try
+            {
+                db.Phones.RemoveRange(phones);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
     }
 }

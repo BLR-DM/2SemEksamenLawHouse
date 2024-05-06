@@ -3,6 +3,7 @@ using EntityModels;
 using Microsoft.Identity.Client;
 using UI.Forms.CasePage;
 using UI.Forms.ClientPage;
+using UI.Forms.CreateUserPage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;
 using UIModels;
@@ -19,7 +20,7 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginPageView());
+            Application.Run(new CreateUserView());
 
 
 

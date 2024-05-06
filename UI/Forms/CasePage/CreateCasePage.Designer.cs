@@ -44,7 +44,6 @@
             txtClientPostalCode = new TextBox();
             txtClientAddress = new TextBox();
             txtClientLastName = new TextBox();
-            txtClientPhoneNumber2 = new TextBox();
             txtClientPhoneNumber1 = new TextBox();
             txtClientEmail = new TextBox();
             btnAddClient = new FontAwesome.Sharp.IconButton();
@@ -53,7 +52,7 @@
             lblAddress = new Label();
             lblPhone = new Label();
             lblEmail = new Label();
-            lblPhoneAlt = new Label();
+            lblMainPhone = new Label();
             lblLastname = new Label();
             lblFirstname = new Label();
             lblName = new Label();
@@ -218,7 +217,6 @@
             panel2.Controls.Add(txtClientPostalCode);
             panel2.Controls.Add(txtClientAddress);
             panel2.Controls.Add(txtClientLastName);
-            panel2.Controls.Add(txtClientPhoneNumber2);
             panel2.Controls.Add(txtClientPhoneNumber1);
             panel2.Controls.Add(txtClientEmail);
             panel2.Controls.Add(btnAddClient);
@@ -227,7 +225,7 @@
             panel2.Controls.Add(lblAddress);
             panel2.Controls.Add(lblPhone);
             panel2.Controls.Add(lblEmail);
-            panel2.Controls.Add(lblPhoneAlt);
+            panel2.Controls.Add(lblMainPhone);
             panel2.Controls.Add(lblLastname);
             panel2.Controls.Add(lblFirstname);
             panel2.Controls.Add(lblName);
@@ -242,7 +240,7 @@
             txtClientPostalCode.BackColor = Color.White;
             txtClientPostalCode.Enabled = false;
             txtClientPostalCode.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientPostalCode.Location = new Point(3, 414);
+            txtClientPostalCode.Location = new Point(3, 426);
             txtClientPostalCode.MaxLength = 50;
             txtClientPostalCode.Name = "txtClientPostalCode";
             txtClientPostalCode.Size = new Size(104, 27);
@@ -253,7 +251,7 @@
             txtClientAddress.BackColor = Color.White;
             txtClientAddress.Enabled = false;
             txtClientAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientAddress.Location = new Point(3, 348);
+            txtClientAddress.Location = new Point(3, 360);
             txtClientAddress.MaxLength = 50;
             txtClientAddress.Name = "txtClientAddress";
             txtClientAddress.Size = new Size(445, 27);
@@ -264,22 +262,11 @@
             txtClientLastName.BackColor = Color.White;
             txtClientLastName.Enabled = false;
             txtClientLastName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientLastName.Location = new Point(239, 118);
+            txtClientLastName.Location = new Point(239, 135);
             txtClientLastName.MaxLength = 50;
             txtClientLastName.Name = "txtClientLastName";
             txtClientLastName.Size = new Size(230, 27);
             txtClientLastName.TabIndex = 46;
-            // 
-            // txtClientPhoneNumber2
-            // 
-            txtClientPhoneNumber2.BackColor = Color.White;
-            txtClientPhoneNumber2.Enabled = false;
-            txtClientPhoneNumber2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientPhoneNumber2.Location = new Point(239, 278);
-            txtClientPhoneNumber2.MaxLength = 50;
-            txtClientPhoneNumber2.Name = "txtClientPhoneNumber2";
-            txtClientPhoneNumber2.Size = new Size(230, 27);
-            txtClientPhoneNumber2.TabIndex = 45;
             // 
             // txtClientPhoneNumber1
             // 
@@ -328,7 +315,7 @@
             txtClientFirstname.BackColor = Color.White;
             txtClientFirstname.Enabled = false;
             txtClientFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientFirstname.Location = new Point(3, 118);
+            txtClientFirstname.Location = new Point(3, 135);
             txtClientFirstname.MaxLength = 50;
             txtClientFirstname.Name = "txtClientFirstname";
             txtClientFirstname.Size = new Size(230, 27);
@@ -340,7 +327,7 @@
             lblPostal.BackColor = SystemColors.GradientInactiveCaption;
             lblPostal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPostal.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPostal.Location = new Point(3, 390);
+            lblPostal.Location = new Point(3, 402);
             lblPostal.Name = "lblPostal";
             lblPostal.Size = new Size(94, 21);
             lblPostal.TabIndex = 36;
@@ -352,7 +339,7 @@
             lblAddress.BackColor = SystemColors.GradientInactiveCaption;
             lblAddress.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblAddress.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddress.Location = new Point(3, 324);
+            lblAddress.Location = new Point(3, 336);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(70, 21);
             lblAddress.TabIndex = 33;
@@ -382,17 +369,17 @@
             lblEmail.TabIndex = 38;
             lblEmail.Text = "Email";
             // 
-            // lblPhoneAlt
+            // lblMainPhone
             // 
-            lblPhoneAlt.AutoSize = true;
-            lblPhoneAlt.BackColor = SystemColors.GradientInactiveCaption;
-            lblPhoneAlt.Font = new Font("Segoe UI", 8.25F);
-            lblPhoneAlt.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhoneAlt.Location = new Point(242, 308);
-            lblPhoneAlt.Name = "lblPhoneAlt";
-            lblPhoneAlt.Size = new Size(142, 13);
-            lblPhoneAlt.TabIndex = 31;
-            lblPhoneAlt.Text = "Alternative phone number";
+            lblMainPhone.AutoSize = true;
+            lblMainPhone.BackColor = SystemColors.GradientInactiveCaption;
+            lblMainPhone.Font = new Font("Segoe UI", 8.25F);
+            lblMainPhone.ForeColor = Color.FromArgb(45, 93, 134);
+            lblMainPhone.Location = new Point(3, 308);
+            lblMainPhone.Name = "lblMainPhone";
+            lblMainPhone.Size = new Size(113, 13);
+            lblMainPhone.TabIndex = 31;
+            lblMainPhone.Text = "Main phone number";
             // 
             // lblLastname
             // 
@@ -400,7 +387,7 @@
             lblLastname.BackColor = SystemColors.GradientInactiveCaption;
             lblLastname.Font = new Font("Segoe UI", 8.25F);
             lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLastname.Location = new Point(242, 148);
+            lblLastname.Location = new Point(242, 165);
             lblLastname.Name = "lblLastname";
             lblLastname.Size = new Size(55, 13);
             lblLastname.TabIndex = 28;
@@ -412,7 +399,7 @@
             lblFirstname.BackColor = SystemColors.GradientInactiveCaption;
             lblFirstname.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFirstname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblFirstname.Location = new Point(3, 148);
+            lblFirstname.Location = new Point(3, 165);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(57, 13);
             lblFirstname.TabIndex = 35;
@@ -424,7 +411,7 @@
             lblName.BackColor = SystemColors.GradientInactiveCaption;
             lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(3, 94);
+            lblName.Location = new Point(3, 111);
             lblName.Name = "lblName";
             lblName.Size = new Size(53, 21);
             lblName.TabIndex = 39;
@@ -657,7 +644,7 @@
         private Label lblAddress;
         private Label lblPhone;
         private Label lblEmail;
-        private Label lblPhoneAlt;
+        private Label lblMainPhone;
         private Label label3;
         private Label lblConfirmEmail;
         private Label lblLastname;
@@ -668,7 +655,6 @@
         private Label label6;
         private Label label4;
         private Label label5;
-        private TextBox txtClientPhoneNumber2;
         private TextBox txtClientPhoneNumber1;
         private TextBox txtClientEmail;
         private TextBox txtClientAddress;

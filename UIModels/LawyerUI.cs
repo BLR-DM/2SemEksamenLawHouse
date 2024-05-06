@@ -10,11 +10,11 @@ namespace UIModels
     {
 
         //attributes
-        //public string Title { get; set; }
+        public string LawyerTitle { get; set; }
 
         //foreign key
         public int LawyerTitleID { get; set; }
-
+        
         
     }
 

@@ -30,41 +30,48 @@
         {
             dgvClientView = new DataGridView();
             txtSearch = new TextBox();
-            lblSearch = new Label();
+            lblName = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientView).BeginInit();
             SuspendLayout();
             // 
             // dgvClientView
             // 
+            dgvClientView.AllowUserToAddRows = false;
+            dgvClientView.AllowUserToDeleteRows = false;
             dgvClientView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientView.Location = new Point(12, 55);
+            dgvClientView.MultiSelect = false;
             dgvClientView.Name = "dgvClientView";
-            dgvClientView.Size = new Size(735, 332);
+            dgvClientView.Size = new Size(753, 332);
             dgvClientView.TabIndex = 0;
             // 
             // txtSearch
             // 
             txtSearch.Location = new Point(307, 26);
             txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Phonenumber";
             txtSearch.Size = new Size(164, 23);
             txtSearch.TabIndex = 1;
             // 
-            // lblSearch
+            // lblName
             // 
-            lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(256, 29);
-            lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(45, 15);
-            lblSearch.TabIndex = 2;
-            lblSearch.Text = "Search:";
+            lblName.AutoSize = true;
+            lblName.BackColor = SystemColors.GradientInactiveCaption;
+            lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblName.ForeColor = Color.FromArgb(45, 93, 134);
+            lblName.Location = new Point(238, 26);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(63, 21);
+            lblName.TabIndex = 40;
+            lblName.Text = "Search:";
             // 
             // AddClientView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(759, 399);
-            Controls.Add(lblSearch);
+            ClientSize = new Size(777, 399);
+            Controls.Add(lblName);
             Controls.Add(txtSearch);
             Controls.Add(dgvClientView);
             Name = "AddClientView";
@@ -79,6 +86,6 @@
 
         private DataGridView dgvClientView;
         private TextBox txtSearch;
-        private Label lblSearch;
+        private Label lblName;
     }
 }

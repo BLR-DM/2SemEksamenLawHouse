@@ -22,6 +22,7 @@ namespace UI
             Application.Run(new LoginPageView());
 
 
+
             //ClientBL clientBL = new ClientBL();
 
             //ClientUI clientUI = new ClientUI()

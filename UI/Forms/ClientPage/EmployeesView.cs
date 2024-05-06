@@ -28,7 +28,17 @@ namespace UI.Forms.ClientPage
 
         private void EmployeesView_Load(object? sender, EventArgs e)
         {
-            
+            GetLawyersAsync();
+
+            if (lawyerUIs.Count > 0)
+            {
+                MessageBox.Show($"Lawyers: {lawyerUIs.Count}");
+            }
+        }
+
+        private async Task GetLawyersAsync()
+        {
+            lawyerUIs = await lawyerBL.GetLawyersAsync();
         }
     }
 }

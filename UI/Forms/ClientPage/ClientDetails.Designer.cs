@@ -248,6 +248,7 @@
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(156, 23);
             txtFirstname.TabIndex = 44;
+
             // 
             // label6
             // 

@@ -30,11 +30,11 @@
         {
             dgvCaseList = new DataGridView();
             panelTopBar = new Panel();
-            lblNumberOfCases = new Label();
-            ckboxOngoing = new CheckBox();
+            cboLawyers = new ComboBox();
+            cboCaseType = new ComboBox();
             cboxFinsished = new CheckBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            ckboxOngoing = new CheckBox();
+            lblNumberOfCases = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCaseList).BeginInit();
             panelTopBar.SuspendLayout();
             SuspendLayout();
@@ -51,14 +51,50 @@
             // 
             panelTopBar.Anchor = AnchorStyles.Top;
             panelTopBar.BackColor = SystemColors.GradientActiveCaption;
-            panelTopBar.Controls.Add(comboBox2);
-            panelTopBar.Controls.Add(comboBox1);
+            panelTopBar.Controls.Add(cboLawyers);
+            panelTopBar.Controls.Add(cboCaseType);
             panelTopBar.Controls.Add(cboxFinsished);
             panelTopBar.Controls.Add(ckboxOngoing);
             panelTopBar.Location = new Point(12, 12);
             panelTopBar.Name = "panelTopBar";
             panelTopBar.Size = new Size(974, 88);
             panelTopBar.TabIndex = 9;
+            // 
+            // cboLawyers
+            // 
+            cboLawyers.FormattingEnabled = true;
+            cboLawyers.Location = new Point(651, 34);
+            cboLawyers.Name = "cboLawyers";
+            cboLawyers.Size = new Size(148, 23);
+            cboLawyers.TabIndex = 3;
+            // 
+            // cboCaseType
+            // 
+            cboCaseType.FormattingEnabled = true;
+            cboCaseType.Location = new Point(817, 34);
+            cboCaseType.Name = "cboCaseType";
+            cboCaseType.Size = new Size(142, 23);
+            cboCaseType.TabIndex = 2;
+            // 
+            // cboxFinsished
+            // 
+            cboxFinsished.AutoSize = true;
+            cboxFinsished.Location = new Point(158, 56);
+            cboxFinsished.Name = "cboxFinsished";
+            cboxFinsished.Size = new Size(70, 19);
+            cboxFinsished.TabIndex = 1;
+            cboxFinsished.Text = "Finished";
+            cboxFinsished.UseVisualStyleBackColor = true;
+            // 
+            // ckboxOngoing
+            // 
+            ckboxOngoing.AutoSize = true;
+            ckboxOngoing.Location = new Point(158, 21);
+            ckboxOngoing.Name = "ckboxOngoing";
+            ckboxOngoing.Size = new Size(76, 19);
+            ckboxOngoing.TabIndex = 0;
+            ckboxOngoing.Text = "On going";
+            ckboxOngoing.UseVisualStyleBackColor = true;
             // 
             // lblNumberOfCases
             // 
@@ -71,42 +107,6 @@
             lblNumberOfCases.Size = new Size(79, 21);
             lblNumberOfCases.TabIndex = 21;
             lblNumberOfCases.Text = "120 Cases";
-            // 
-            // ckboxOngoing
-            // 
-            ckboxOngoing.AutoSize = true;
-            ckboxOngoing.Location = new Point(198, 13);
-            ckboxOngoing.Name = "ckboxOngoing";
-            ckboxOngoing.Size = new Size(76, 19);
-            ckboxOngoing.TabIndex = 0;
-            ckboxOngoing.Text = "On going";
-            ckboxOngoing.UseVisualStyleBackColor = true;
-            // 
-            // cboxFinsished
-            // 
-            cboxFinsished.AutoSize = true;
-            cboxFinsished.Location = new Point(198, 38);
-            cboxFinsished.Name = "cboxFinsished";
-            cboxFinsished.Size = new Size(70, 19);
-            cboxFinsished.TabIndex = 1;
-            cboxFinsished.Text = "Finished";
-            cboxFinsished.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(817, 34);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 23);
-            comboBox1.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(651, 34);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(148, 23);
-            comboBox2.TabIndex = 3;
             // 
             // CasePageView
             // 
@@ -134,8 +134,8 @@
         private Panel panelTopBar;
         private Label lblNumberOfCases;
         private CheckBox ckboxOngoing;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox cboLawyers;
+        private ComboBox cboCaseType;
         private CheckBox cboxFinsished;
     }
 }

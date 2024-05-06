@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,20 @@ namespace DataAccess
             {
 
                 return false;
+            }
+        }
+
+        public async Task<List<Case>> GetCasesAsync()
+        {
+            try
+            {
+                List<Case> cases = await db.Cases.ToListAsync();
+                return cases;
+            }
+            catch (Exception)
+            {
+
+                return new List<Case>();
             }
         }
 

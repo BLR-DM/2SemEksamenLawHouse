@@ -25,7 +25,7 @@ namespace DataAccess
 
         public async Task<Lawyer> GetLawyerAsync(int id)
         {
-            return await db.Lawyers.FirstOrDefaultAsync(c => c.PersonID == id);
+            return await db.Lawyers.Include(l => l.LawyerTitle).FirstOrDefaultAsync(c => c.PersonID == id);
         }
 
         public async Task<List<Lawyer>> GetLawyersAsync()

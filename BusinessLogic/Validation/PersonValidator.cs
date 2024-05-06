@@ -1,5 +1,4 @@
-﻿using EntityModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,10 +14,11 @@ namespace BusinessLogic.Validation
         Regex vAddress;
         Regex vDigit;
         Regex vEmail;
+        Regex vPassword;
         public PersonValidator()
         {
             // Allows upper/lowercase + space (\s) + hyphen (-)
-            vName = new Regex("^[A-Za-zÆØÅæøå\\s-]+$");
+            vName = new Regex("^[A-Za-zÆØÅæøå-]+\\s?[A-Za-zÆØÅæøå-]+$");
             // Same as name + digits (0-9) + comma (,) + period (.)
             vAddress = new Regex("^[A-Za-zÆØÅæøå0-9\\s-,.]+$");
             // Allows digits
@@ -27,6 +27,7 @@ namespace BusinessLogic.Validation
             // Right of @ same with underscore
             // After a period min 2 letters
             vEmail = new Regex("^[A-Za-z0-9-_.]+@[A-Za-z0-9-.]+\\.[A-Za-z]{2,}$");
+            vPassword = new Regex("^[A-Za-zÆØÅæøå0-9-!.]{4,30}$");
         }
 
         public bool ValidName(string name)                      // Name     --*
@@ -43,7 +44,7 @@ namespace BusinessLogic.Validation
                 && vAddress.IsMatch(address);                   // Pattern
         }
 
-        public bool ValidPostCode(string post)                  // Postcode --*
+        public bool ValidPostalCode(string post)                  // Postcode --*
         {
             return !string.IsNullOrEmpty(post)
                 && post.Length == 4                             // Length
@@ -64,13 +65,19 @@ namespace BusinessLogic.Validation
                 && vDigit.IsMatch(phone);                       // Pattern
         }
 
+        public bool ValidPassword(string password)
+        {
+            return !string.IsNullOrEmpty(password)
+                && vPassword.IsMatch(password);
+        }
+
         //public bool ValidPerson(Person p)
         //{
         //    return ValidName(p.FirstName) &&
         //        ValidName(p.LastName) &&
         //        ValidAddress(p.Address) &&
         //        ValidName(p.City) &&
-        //        ValidPostCode(p.PostalCode.ToString()) &&
+        //        ValidPostalCode(p.PostalCode.ToString()) &&
         //        ValidEmail(p.Email) &&
         //        ValidPhone(p.Phone.ToString());
         //}

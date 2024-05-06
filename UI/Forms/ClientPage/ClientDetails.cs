@@ -44,7 +44,7 @@ namespace UI.Forms.ClientPage
 
                 phoneNumbers.Remove(selectedPhone);
                 deletedNumbers.Add(selectedPhone);
-                
+
                 SetPhoneDetails();
             }
         }
@@ -77,7 +77,7 @@ namespace UI.Forms.ClientPage
             };
 
             await clientBL.UpdateClientAsync(tempC, phoneNumbers);
-            if(deletedNumbers.Count > 0)
+            if (deletedNumbers.Count > 0)
             {
                 await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
             }
@@ -94,9 +94,9 @@ namespace UI.Forms.ClientPage
             txtAddress.Text = client.AddressLine;
             txtPostal.Text = client.PostalCode.ToString();
             lblCity.Text = client.City;
-            if(client.ClientSub == 0)       { lblSubscribed.Text = "No"; }
+            if (client.ClientSub == 0) { lblSubscribed.Text = "No"; }
             else if (client.ClientSub == 1) { lblSubscribed.Text = "Yes"; }
-            else                            { lblSubscribed.Text = "Undefined"; }
+            else { lblSubscribed.Text = "Undefined"; }
 
             await SetPhoneDetails();
         }
@@ -104,7 +104,7 @@ namespace UI.Forms.ClientPage
         private async Task SetPhoneDetails()
         {
             dgvPhoneNumbers.DataSource = null;
-            if(phoneNumbers == null)
+            if (phoneNumbers == null)
             {
                 phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
             }

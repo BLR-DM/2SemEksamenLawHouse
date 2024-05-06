@@ -56,6 +56,7 @@
             label8 = new Label();
             pictureBox1 = new PictureBox();
             btnUpdate = new FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
@@ -95,6 +96,7 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(lblPhoneNumbersView);
+            panel2.ForeColor = SystemColors.ControlText;
             panel2.Location = new Point(27, 24);
             panel2.Name = "panel2";
             panel2.Size = new Size(421, 534);
@@ -393,12 +395,33 @@
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
+            // iconButton1
+            // 
+            iconButton1.Anchor = AnchorStyles.Bottom;
+            iconButton1.BackColor = Color.IndianRed;
+            iconButton1.Cursor = Cursors.Hand;
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            iconButton1.ForeColor = Color.White;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 70;
+            iconButton1.Location = new Point(652, 564);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(171, 37);
+            iconButton1.TabIndex = 49;
+            iconButton1.Text = "Delete";
+            iconButton1.UseVisualStyleBackColor = false;
+            // 
             // ClientDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(iconButton1);
             Controls.Add(btnUpdate);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
@@ -449,5 +472,6 @@
         private TextBox txtAddPhone;
         private Label label10;
         private FontAwesome.Sharp.IconButton btnDeletePhone;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

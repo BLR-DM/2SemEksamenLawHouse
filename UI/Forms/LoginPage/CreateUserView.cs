@@ -21,6 +21,7 @@ namespace UI.Forms.CreateUserPage
         PersonValidator pValidator;
         Color validFormat;
         Color invalidFormat;
+        Color rgbColorBlue;
         public CreateUserView()
         {
             clientBL = new ClientBL();
@@ -28,6 +29,7 @@ namespace UI.Forms.CreateUserPage
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
+            rgbColorBlue = Color.FromArgb(45, 93, 134);
 
             InitializeComponent();
 
@@ -36,8 +38,9 @@ namespace UI.Forms.CreateUserPage
             lblCancel.MouseLeave += LblCancel_MouseLeave;
             pboxEye.Click += PboxEye_Click;
             btnCreate.Click += BtnCreate_Click;
+            pnlLoginInfo.Paint += PnlLoginInfo_Paint;
 
-            // Validerings events
+            // Validering events
             txtFirstname.TextChanged += TxtFirstname_TextChanged;
             txtLastname.TextChanged += TxtLastname_TextChanged;
             txtEmail.Leave += TxtEmail_Leave;
@@ -51,6 +54,88 @@ namespace UI.Forms.CreateUserPage
             txtPasswordConfirm.TextChanged += TxtPasswordConfirm_TextChanged;
 
         }
+
+        private void PnlLoginInfo_Paint(object? sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, pnlLoginInfo.ClientRectangle, rgbColorBlue, ButtonBorderStyle.Solid);
+        }
+
+        private async void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            // Opret Client UI
+            ClientUI client = new ClientUI()
+            {
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmailConfirm.Text.ToLower(),
+                AddressLine = txtAddress.Text,
+                PostalCode = int.Parse(txtPostal.Text),
+                City = txtCity.Text,
+            };
+
+            // Opret LoginDetails UI
+            LoginDetailsUI loginDetails = new LoginDetailsUI()
+            {
+                Username = txtUsername.Text.ToLower(),
+                Password = txtPasswordConfirm.Text,
+                CreationDate = DateTime.Now,
+            };
+
+            phoneUIs = new List<PhoneUI>();
+
+            // Opret Phone UI
+            PhoneUI phoneUI = new PhoneUI { PhoneNumber = int.Parse(txtPhoneMain.Text) };
+
+            phoneUIs.Add(phoneUI);
+
+            // Opret PhoneAlt UI
+            if (!string.IsNullOrWhiteSpace(txtPhoneAlt.Text))
+            {
+                PhoneUI phoneUIAlt = new PhoneUI { PhoneNumber = int.Parse(txtPhoneAlt.Text) };
+                phoneUIs.Add(phoneUIAlt);
+            }
+
+            bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
+
+            if (result)
+                MessageBox.Show("CLIENT ADDED!");
+            else
+                MessageBox.Show("Failed!");
+        }
+
+        private void LblCancel_MouseHover(object? sender, EventArgs e)
+        {
+            lblCancel.Font = new Font(lblCancel.Font, FontStyle.Underline);
+        }
+
+        private void LblCancel_MouseLeave(object? sender, EventArgs e)
+        {
+            lblCancel.Font = new Font(lblCancel.Font, FontStyle.Regular);
+        }
+
+        private void PboxEye_Click(object? sender, EventArgs e)
+        {
+            if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
+            {
+                pboxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+                txtPassword.PasswordChar = '\0';
+                txtPasswordConfirm.PasswordChar = '\0';
+            }
+            else
+            {
+                pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
+                txtPassword.PasswordChar = '\u2022';
+                txtPasswordConfirm.PasswordChar = '\u2022';
+            }
+        }
+        private void LblCancel_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        // Validering events
+
 
         private void TxtCity_TextChanged(object? sender, EventArgs e)
         {
@@ -170,80 +255,6 @@ namespace UI.Forms.CreateUserPage
         private void TxtFirstname_TextChanged(object? sender, EventArgs e)
         {
             txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
-        }
-
-        private async void BtnCreate_Click(object? sender, EventArgs e)
-        {
-            // Opret Client UI
-            ClientUI client = new ClientUI()
-            {
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                Email = txtEmailConfirm.Text,
-                AddressLine = txtAddress.Text,
-                PostalCode = int.Parse(txtPostal.Text),
-                City = txtCity.Text,
-            };
-
-            // Opret LoginDetails UI
-            LoginDetailsUI loginDetails = new LoginDetailsUI()
-            {
-                Username = txtUsername.Text,
-                Password = txtPasswordConfirm.Text,
-                CreationDate = DateTime.Now,
-            };
-
-            phoneUIs = new List<PhoneUI>();
-
-            // Opret Phone UI
-            PhoneUI phoneUI = new PhoneUI { PhoneNumber = int.Parse(txtPhoneMain.Text) };
-
-            phoneUIs.Add(phoneUI);
-
-            // Opret PhoneAlt UI
-            if (!string.IsNullOrWhiteSpace(txtPhoneAlt.Text))
-            {
-                PhoneUI phoneUIAlt = new PhoneUI { PhoneNumber = int.Parse(txtPhoneAlt.Text) };
-                phoneUIs.Add(phoneUIAlt);
-            }
-
-            bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
-
-            if (result)
-                MessageBox.Show("CLIENT ADDED!");
-            else
-                MessageBox.Show("Failed!");
-        }
-
-
-        private void LblCancel_MouseHover(object? sender, EventArgs e)
-        {
-            lblCancel.Font = new Font(lblCancel.Font, FontStyle.Underline);
-        }
-
-        private void LblCancel_MouseLeave(object? sender, EventArgs e)
-        {
-            lblCancel.Font = new Font(lblCancel.Font, FontStyle.Regular);
-        }
-
-        private void PboxEye_Click(object? sender, EventArgs e)
-        {
-            if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
-            {
-                pboxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
-                txtPassword.PasswordChar = '\0';
-                txtPasswordConfirm.PasswordChar = '\0';
-            }
-            else
-            {
-                pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
-                txtPassword.PasswordChar = '\u2022';
-                txtPasswordConfirm.PasswordChar = '\u2022';
-            }
-        }
-        private void LblCancel_Click(object? sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

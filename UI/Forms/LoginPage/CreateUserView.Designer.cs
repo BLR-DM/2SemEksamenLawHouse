@@ -60,14 +60,15 @@
             lblEmailEnter = new Label();
             lblCity = new Label();
             txtCity = new TextBox();
-            pnlLine = new Panel();
+            pnlLoginInfo = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            label1 = new Label();
             lblPasswordEnter = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
             lblCancel = new Label();
             ttipPassword = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
-            pnlLine.SuspendLayout();
+            pnlLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +81,7 @@
             pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
             pboxEye.IconColor = Color.FromArgb(45, 93, 134);
             pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            pboxEye.Location = new Point(455, 101);
+            pboxEye.Location = new Point(463, 106);
             pboxEye.Name = "pboxEye";
             pboxEye.Size = new Size(32, 32);
             pboxEye.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -273,7 +274,7 @@
             lblUsername.BackColor = SystemColors.GradientInactiveCaption;
             lblUsername.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUsername.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUsername.Location = new Point(33, 539);
+            lblUsername.Location = new Point(17, 11);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(83, 21);
             lblUsername.TabIndex = 4;
@@ -285,7 +286,7 @@
             txtUsername.BackColor = SystemColors.GradientActiveCaption;
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsername.Location = new Point(34, 563);
+            txtUsername.Location = new Point(16, 35);
             txtUsername.MaxLength = 50;
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
@@ -300,7 +301,7 @@
             lblPasswordConfirm.BackColor = SystemColors.GradientInactiveCaption;
             lblPasswordConfirm.Font = new Font("Segoe UI", 8.25F);
             lblPasswordConfirm.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPasswordConfirm.Location = new Point(260, 131);
+            lblPasswordConfirm.Location = new Point(255, 139);
             lblPasswordConfirm.Name = "lblPasswordConfirm";
             lblPasswordConfirm.Size = new Size(101, 13);
             lblPasswordConfirm.TabIndex = 4;
@@ -340,7 +341,7 @@
             txtPasswordConfirm.MaxLength = 50;
             txtPasswordConfirm.Name = "txtPasswordConfirm";
             txtPasswordConfirm.PasswordChar = '•';
-            txtPasswordConfirm.Size = new Size(186, 27);
+            txtPasswordConfirm.Size = new Size(200, 27);
             txtPasswordConfirm.TabIndex = 11;
             // 
             // lblPhone
@@ -441,19 +442,21 @@
             txtCity.Size = new Size(230, 27);
             txtCity.TabIndex = 9;
             // 
-            // pnlLine
+            // pnlLoginInfo
             // 
-            pnlLine.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlLine.BackColor = Color.Transparent;
-            pnlLine.BorderStyle = BorderStyle.FixedSingle;
-            pnlLine.Controls.Add(iconPictureBox1);
-            pnlLine.Controls.Add(pboxEye);
-            pnlLine.Controls.Add(lblPasswordEnter);
-            pnlLine.Controls.Add(lblPasswordConfirm);
-            pnlLine.Location = new Point(12, 527);
-            pnlLine.Name = "pnlLine";
-            pnlLine.Size = new Size(520, 162);
-            pnlLine.TabIndex = 3;
+            pnlLoginInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlLoginInfo.BackColor = Color.Transparent;
+            pnlLoginInfo.Controls.Add(txtUsername);
+            pnlLoginInfo.Controls.Add(iconPictureBox1);
+            pnlLoginInfo.Controls.Add(pboxEye);
+            pnlLoginInfo.Controls.Add(label1);
+            pnlLoginInfo.Controls.Add(lblPasswordEnter);
+            pnlLoginInfo.Controls.Add(lblPasswordConfirm);
+            pnlLoginInfo.Controls.Add(lblUsername);
+            pnlLoginInfo.Location = new Point(17, 521);
+            pnlLoginInfo.Name = "pnlLoginInfo";
+            pnlLoginInfo.Size = new Size(511, 168);
+            pnlLoginInfo.TabIndex = 3;
             // 
             // iconPictureBox1
             // 
@@ -463,13 +466,26 @@
             iconPictureBox1.IconColor = Color.FromArgb(45, 93, 134);
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 25;
-            iconPictureBox1.Location = new Point(99, 77);
+            iconPictureBox1.Location = new Point(222, 84);
             iconPictureBox1.Name = "iconPictureBox1";
             iconPictureBox1.Size = new Size(25, 25);
             iconPictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             iconPictureBox1.TabIndex = 8;
             iconPictureBox1.TabStop = false;
             ttipPassword.SetToolTip(iconPictureBox1, resources.GetString("iconPictureBox1.ToolTip"));
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.GradientInactiveCaption;
+            label1.Font = new Font("Segoe UI", 8.25F);
+            label1.ForeColor = Color.FromArgb(45, 93, 134);
+            label1.Location = new Point(16, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(146, 13);
+            label1.TabIndex = 4;
+            label1.Text = "Username is the valid email";
             // 
             // lblPasswordEnter
             // 
@@ -478,7 +494,7 @@
             lblPasswordEnter.BackColor = SystemColors.GradientInactiveCaption;
             lblPasswordEnter.Font = new Font("Segoe UI", 8.25F);
             lblPasswordEnter.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPasswordEnter.Location = new Point(21, 131);
+            lblPasswordEnter.Location = new Point(16, 139);
             lblPasswordEnter.Name = "lblPasswordEnter";
             lblPasswordEnter.Size = new Size(87, 13);
             lblPasswordEnter.TabIndex = 4;
@@ -530,7 +546,6 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(544, 805);
             ControlBox = false;
-            Controls.Add(txtUsername);
             Controls.Add(btnCreate);
             Controls.Add(txtLastname);
             Controls.Add(txtCity);
@@ -556,19 +571,18 @@
             Controls.Add(lblEmailEnter);
             Controls.Add(lblConfirmEmail);
             Controls.Add(lblLastname);
-            Controls.Add(lblUsername);
             Controls.Add(lblFirstname);
             Controls.Add(lblName);
             Controls.Add(pnlTop);
-            Controls.Add(pnlLine);
+            Controls.Add(pnlLoginInfo);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "CreateUserView";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pboxEye).EndInit();
-            pnlLine.ResumeLayout(false);
-            pnlLine.PerformLayout();
+            pnlLoginInfo.ResumeLayout(false);
+            pnlLoginInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -605,11 +619,12 @@
         private Label lblEmailEnter;
         private Label lblCity;
         private TextBox txtCity;
-        private Panel pnlLine;
+        private Panel pnlLoginInfo;
         private FontAwesome.Sharp.IconButton btnCreate;
         private Label lblCancel;
         private Label lblPasswordEnter;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private ToolTip ttipPassword;
+        private Label label1;
     }
 }

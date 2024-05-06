@@ -144,12 +144,41 @@ namespace UI.Forms.CreateUserPage
 
         private void TxtPasswordConfirm_TextChanged(object? sender, EventArgs e)
         {
-            txtPasswordConfirm.ForeColor = pValidator.ValidPassword(txtPasswordConfirm.Text) ? validFormat : invalidFormat;
+            ValidatePasswords();
         }
 
         private void TxtPassword_TextChanged(object? sender, EventArgs e)
         {
-            txtPassword.ForeColor = pValidator.ValidPassword(txtPassword.Text) ? validFormat : invalidFormat;
+            ValidatePasswords();
+        }
+        private void ValidatePasswords()
+        {
+            bool primaryPasswordValid = pValidator.ValidPassword(txtPassword.Text);
+            txtPassword.ForeColor = primaryPasswordValid ? validFormat : invalidFormat;
+
+            // Tjek om confirm password er indtastet og om primary password er korrekt format
+            if (!string.IsNullOrEmpty(txtPasswordConfirm.Text))
+            {
+                bool confirmationPasswordValid = pValidator.ValidPassword(txtPasswordConfirm.Text);
+                bool sameAsPrimary = txtPasswordConfirm.Text == txtPassword.Text;
+
+                // This begge koder er identiske og valide = validFormat ellers invalidFormat
+                if (confirmationPasswordValid && sameAsPrimary)
+                {
+                    txtPasswordConfirm.ForeColor = validFormat;
+                    txtPassword.ForeColor = validFormat;
+                }
+                else
+                {
+                    txtPasswordConfirm.ForeColor = invalidFormat;
+                    txtPassword.ForeColor = invalidFormat;
+                }
+            }
+            else
+            {
+                // Hvis ikke confirm password er indtastet, behold standard farve
+                txtPasswordConfirm.ForeColor = Color.Black;
+            }
         }
 
         private void TxtPostal_Leave(object? sender, EventArgs e)

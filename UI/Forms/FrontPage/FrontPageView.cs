@@ -33,7 +33,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnClients_Click(object? sender, EventArgs e)
         {
-            ClientsView cv = new ClientsView();
+            ClientsView cv = new ClientsView(this);
             PnlContextChange(cv);
         }
 

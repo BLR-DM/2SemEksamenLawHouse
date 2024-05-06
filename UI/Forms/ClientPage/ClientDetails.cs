@@ -19,5 +19,10 @@ namespace UI.Forms.ClientPage
             InitializeComponent();
             client = this.client;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

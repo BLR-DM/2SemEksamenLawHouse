@@ -16,10 +16,12 @@ namespace UI.Forms.ClientPage
         public MyPageView(ClientUI currentUser)
         {
             InitializeComponent();
-            lblFirstname.Text = currentUser.Firstname;
-            lblSub.Text = currentUser.ClientSub.ToString();
 
-            lblMustSubscribe.Text = "        Subscribe\n To use calculations";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

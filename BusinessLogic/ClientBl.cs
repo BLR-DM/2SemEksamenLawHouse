@@ -36,6 +36,17 @@ namespace BusinessLogic
             return clientUI;
         }
 
+        // Get Telefonnumre
+        public async Task<List<PhoneUI>> GetClientPhonesAsync(int id)
+        {
+            List<PhoneUI> phoneUIs = new List<PhoneUI>();
+            foreach (Phone phone in await dbAccess.GetClientPhonesAsync(id))
+            {
+                phoneUIs.Add(modelConverter.ConvertFromPhoneEntity(phone));
+            }
+            return phoneUIs;
+        }
+
         public async Task<bool> CreateClientAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI, List<PhoneUI> phoneUIs)
         {
             Client tempC = modelConverter.ConvertFromClientUI(clientUI);
@@ -57,6 +68,32 @@ namespace BusinessLogic
             return await dbAccess.CreateClientAsync(tempC);
         }
 
+        public async Task<bool> UpdateClientAsync(ClientUI clientUI, List<PhoneUI> phoneUIs)
+        {
+            Client tempC = modelConverter.ConvertFromClientUI(clientUI);
+            List<Phone> phoneList = new List<Phone>();
+
+            foreach (PhoneUI phoneUI in phoneUIs)
+            {
+                Phone tmp = modelConverter.ConvertFromPhoneUI(phoneUI);
+                phoneList.Add(tmp);
+
+            }
+
+            tempC.Phones = phoneList;
+
+            return await dbAccess.UpdateClientAsync(tempC);
+        }
+
+        public async Task<bool> DeletePhoneNumbersAsync(List<PhoneUI> phoneNumbersUI)
+        {
+            List<Phone> phoneNumbers = new List<Phone>();
+            foreach(PhoneUI phoneUI in phoneNumbersUI)
+            {
+                phoneNumbers.Add(modelConverter.ConvertFromPhoneUI(phoneUI));
+            }
+            return await dbAccess.DeleteClientPhoneNumbersAsync(phoneNumbers);
+        }
 
 
     }

@@ -30,28 +30,35 @@
         {
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
+            btnDeletePhone = new FontAwesome.Sharp.IconButton();
+            btnAddPhone = new FontAwesome.Sharp.IconButton();
+            dgvPhoneNumbers = new DataGridView();
+            label11 = new Label();
+            lblCity = new Label();
+            txtAddPhone = new TextBox();
+            label10 = new Label();
+            lblSubscribed = new Label();
+            txtPostal = new TextBox();
+            txtAddress = new TextBox();
+            txtEmail = new TextBox();
+            label9 = new Label();
+            txtLastname = new TextBox();
+            txtFirstname = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label2 = new Label();
             label4 = new Label();
             label3 = new Label();
             label1 = new Label();
-            rtxtPhoneNumbers = new RichTextBox();
             lblPhoneNumbersView = new Label();
             label7 = new Label();
             dataGridView2 = new DataGridView();
             label8 = new Label();
             pictureBox1 = new PictureBox();
-            txtFirstname = new TextBox();
-            txtLastname = new TextBox();
-            label9 = new Label();
-            txtEmail = new TextBox();
-            txtAddress = new TextBox();
-            txtPostal = new TextBox();
-            txtCity = new TextBox();
-            lblSubscribed = new Label();
+            btnUpdate = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -67,8 +74,14 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(btnDeletePhone);
+            panel2.Controls.Add(btnAddPhone);
+            panel2.Controls.Add(dgvPhoneNumbers);
+            panel2.Controls.Add(label11);
+            panel2.Controls.Add(lblCity);
+            panel2.Controls.Add(txtAddPhone);
+            panel2.Controls.Add(label10);
             panel2.Controls.Add(lblSubscribed);
-            panel2.Controls.Add(txtCity);
             panel2.Controls.Add(txtPostal);
             panel2.Controls.Add(txtAddress);
             panel2.Controls.Add(txtEmail);
@@ -81,12 +94,161 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(rtxtPhoneNumbers);
             panel2.Controls.Add(lblPhoneNumbersView);
             panel2.Location = new Point(27, 24);
             panel2.Name = "panel2";
             panel2.Size = new Size(421, 534);
             panel2.TabIndex = 34;
+            // 
+            // btnDeletePhone
+            // 
+            btnDeletePhone.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDeletePhone.BackColor = Color.Brown;
+            btnDeletePhone.BackgroundImageLayout = ImageLayout.Center;
+            btnDeletePhone.FlatAppearance.BorderSize = 0;
+            btnDeletePhone.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeletePhone.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            btnDeletePhone.IconColor = Color.Black;
+            btnDeletePhone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDeletePhone.IconSize = 20;
+            btnDeletePhone.Location = new Point(377, 412);
+            btnDeletePhone.Name = "btnDeletePhone";
+            btnDeletePhone.Size = new Size(30, 29);
+            btnDeletePhone.TabIndex = 52;
+            btnDeletePhone.TabStop = false;
+            btnDeletePhone.UseVisualStyleBackColor = false;
+            // 
+            // btnAddPhone
+            // 
+            btnAddPhone.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddPhone.BackgroundImageLayout = ImageLayout.Center;
+            btnAddPhone.FlatAppearance.BorderSize = 0;
+            btnAddPhone.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddPhone.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            btnAddPhone.IconColor = Color.Black;
+            btnAddPhone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAddPhone.IconSize = 25;
+            btnAddPhone.Location = new Point(143, 445);
+            btnAddPhone.Name = "btnAddPhone";
+            btnAddPhone.Size = new Size(30, 28);
+            btnAddPhone.TabIndex = 48;
+            btnAddPhone.TabStop = false;
+            btnAddPhone.UseVisualStyleBackColor = true;
+            // 
+            // dgvPhoneNumbers
+            // 
+            dgvPhoneNumbers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhoneNumbers.Location = new Point(213, 412);
+            dgvPhoneNumbers.Name = "dgvPhoneNumbers";
+            dgvPhoneNumbers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPhoneNumbers.Size = new Size(158, 77);
+            dgvPhoneNumbers.TabIndex = 51;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = SystemColors.GradientInactiveCaption;
+            label11.Font = new Font("Segoe UI", 8.25F);
+            label11.ForeColor = Color.FromArgb(45, 93, 134);
+            label11.Location = new Point(416, 370);
+            label11.Name = "label11";
+            label11.Size = new Size(28, 13);
+            label11.TabIndex = 47;
+            label11.Text = "Add";
+            // 
+            // lblCity
+            // 
+            lblCity.AutoSize = true;
+            lblCity.BackColor = SystemColors.GradientInactiveCaption;
+            lblCity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCity.ForeColor = Color.FromArgb(45, 93, 134);
+            lblCity.Location = new Point(118, 316);
+            lblCity.Name = "lblCity";
+            lblCity.Size = new Size(82, 21);
+            lblCity.TabIndex = 50;
+            lblCity.Text = "Fredericia";
+            // 
+            // txtAddPhone
+            // 
+            txtAddPhone.BackColor = Color.White;
+            txtAddPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddPhone.Location = new Point(11, 445);
+            txtAddPhone.MaxLength = 50;
+            txtAddPhone.Name = "txtAddPhone";
+            txtAddPhone.Size = new Size(126, 27);
+            txtAddPhone.TabIndex = 45;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = SystemColors.GradientInactiveCaption;
+            label10.Font = new Font("Segoe UI", 8.25F);
+            label10.ForeColor = Color.FromArgb(45, 93, 134);
+            label10.Location = new Point(11, 476);
+            label10.Name = "label10";
+            label10.Size = new Size(151, 13);
+            label10.TabIndex = 46;
+            label10.Text = "Enter 8-digit phone number";
+            // 
+            // lblSubscribed
+            // 
+            lblSubscribed.AutoSize = true;
+            lblSubscribed.BackColor = SystemColors.GradientInactiveCaption;
+            lblSubscribed.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblSubscribed.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSubscribed.Location = new Point(118, 365);
+            lblSubscribed.Name = "lblSubscribed";
+            lblSubscribed.Size = new Size(63, 21);
+            lblSubscribed.TabIndex = 48;
+            lblSubscribed.Text = "Yes/No";
+            // 
+            // txtPostal
+            // 
+            txtPostal.Location = new Point(118, 259);
+            txtPostal.Name = "txtPostal";
+            txtPostal.Size = new Size(63, 23);
+            txtPostal.TabIndex = 49;
+            // 
+            // txtAddress
+            // 
+            txtAddress.Location = new Point(118, 197);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(214, 23);
+            txtAddress.TabIndex = 48;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(118, 134);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(214, 23);
+            txtEmail.TabIndex = 47;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = SystemColors.GradientInactiveCaption;
+            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label9.ForeColor = Color.FromArgb(45, 93, 134);
+            label9.Location = new Point(24, 71);
+            label9.Name = "label9";
+            label9.Size = new Size(83, 21);
+            label9.TabIndex = 46;
+            label9.Text = "Lastname:";
+            // 
+            // txtLastname
+            // 
+            txtLastname.Location = new Point(118, 73);
+            txtLastname.Name = "txtLastname";
+            txtLastname.Size = new Size(156, 23);
+            txtLastname.TabIndex = 45;
+            // 
+            // txtFirstname
+            // 
+            txtFirstname.Location = new Point(118, 16);
+            txtFirstname.Name = "txtFirstname";
+            txtFirstname.Size = new Size(156, 23);
+            txtFirstname.TabIndex = 44;
+
             // 
             // label6
             // 
@@ -147,7 +309,6 @@
             label3.Size = new Size(52, 21);
             label3.TabIndex = 39;
             label3.Text = "Email:";
-            label3.Click += label3_Click;
             // 
             // label1
             // 
@@ -160,14 +321,6 @@
             label1.Size = new Size(85, 21);
             label1.TabIndex = 38;
             label1.Text = "Firstname:";
-            // 
-            // rtxtPhoneNumbers
-            // 
-            rtxtPhoneNumbers.Location = new Point(175, 414);
-            rtxtPhoneNumbers.Name = "rtxtPhoneNumbers";
-            rtxtPhoneNumbers.Size = new Size(183, 83);
-            rtxtPhoneNumbers.TabIndex = 35;
-            rtxtPhoneNumbers.Text = "";
             // 
             // lblPhoneNumbersView
             // 
@@ -221,71 +374,25 @@
             pictureBox1.TabIndex = 47;
             pictureBox1.TabStop = false;
             // 
-            // txtFirstname
+            // btnUpdate
             // 
-            txtFirstname.Location = new Point(118, 12);
-            txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(156, 23);
-            txtFirstname.TabIndex = 44;
-            // 
-            // txtLastname
-            // 
-            txtLastname.Location = new Point(118, 73);
-            txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(156, 23);
-            txtLastname.TabIndex = 45;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = SystemColors.GradientInactiveCaption;
-            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label9.ForeColor = Color.FromArgb(45, 93, 134);
-            label9.Location = new Point(24, 71);
-            label9.Name = "label9";
-            label9.Size = new Size(83, 21);
-            label9.TabIndex = 46;
-            label9.Text = "Lastname:";
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(118, 134);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(214, 23);
-            txtEmail.TabIndex = 47;
-            // 
-            // txtAddress
-            // 
-            txtAddress.Location = new Point(118, 197);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(156, 23);
-            txtAddress.TabIndex = 48;
-            // 
-            // txtPostal
-            // 
-            txtPostal.Location = new Point(118, 259);
-            txtPostal.Name = "txtPostal";
-            txtPostal.Size = new Size(156, 23);
-            txtPostal.TabIndex = 49;
-            // 
-            // txtCity
-            // 
-            txtCity.Location = new Point(118, 318);
-            txtCity.Name = "txtCity";
-            txtCity.Size = new Size(156, 23);
-            txtCity.TabIndex = 50;
-            // 
-            // lblSubscribed
-            // 
-            lblSubscribed.AutoSize = true;
-            lblSubscribed.BackColor = SystemColors.GradientInactiveCaption;
-            lblSubscribed.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblSubscribed.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSubscribed.Location = new Point(118, 365);
-            lblSubscribed.Name = "lblSubscribed";
-            lblSubscribed.Size = new Size(63, 21);
-            lblSubscribed.TabIndex = 48;
-            lblSubscribed.Text = "Yes/No";
+            btnUpdate.Anchor = AnchorStyles.Bottom;
+            btnUpdate.BackColor = Color.FromArgb(45, 93, 134);
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnUpdate.IconColor = Color.Black;
+            btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdate.IconSize = 70;
+            btnUpdate.Location = new Point(146, 564);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(171, 37);
+            btnUpdate.TabIndex = 48;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
             // 
             // ClientDetails
             // 
@@ -293,6 +400,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnUpdate);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
             Controls.Add(dataGridView2);
@@ -305,6 +413,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -320,7 +429,6 @@
         private Label label4;
         private Label label3;
         private Label label1;
-        private RichTextBox rtxtPhoneNumbers;
         private Label lblPhoneNumbersView;
         private Label label6;
         private Label label7;
@@ -330,10 +438,17 @@
         private TextBox txtLastname;
         private TextBox txtFirstname;
         private Label lblSubscribed;
-        private TextBox txtCity;
         private TextBox txtPostal;
         private TextBox txtAddress;
         private TextBox txtEmail;
         private Label label9;
+        private Label lblCity;
+        private FontAwesome.Sharp.IconButton btnUpdate;
+        private DataGridView dgvPhoneNumbers;
+        private FontAwesome.Sharp.IconButton btnAddPhone;
+        private Label label11;
+        private TextBox txtAddPhone;
+        private Label label10;
+        private FontAwesome.Sharp.IconButton btnDeletePhone;
     }
 }

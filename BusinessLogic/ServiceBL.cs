@@ -30,5 +30,17 @@ namespace BusinessLogic
 
             return services;
         }
+
+        public async Task<List<ServiceUI>> GetServicesForCaseAsync(int id)
+        {
+            List<ServiceUI> serviceForCaseUI = new List<ServiceUI>();
+
+            foreach(Service service in await dbAccess.GetServicesForCaseAsync(id))
+            {
+                serviceForCaseUI.Add(modelConverter.ConvertFromServiceEntity(service));
+            }
+
+            return serviceForCaseUI;
+        }
     }
 }

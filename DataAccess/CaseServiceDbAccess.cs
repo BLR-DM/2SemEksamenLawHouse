@@ -16,11 +16,14 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
-        public async Task<List<CaseService>> GetCaseServicesAsync()
+        public async Task<List<CaseService>> GetCaseServicesAsync(int id)
         {
             try
             {
-                List<CaseService> caseServices = await db.CaseServices.ToListAsync();
+                List<CaseService> caseServices = await db.CaseServices.Where(cs => cs.CaseID == id)
+                                                                      .Include(s => s.Service)
+                                                                        .ThenInclude(s => s.ServicePriceType)
+                                                                      .ToListAsync();
                 return caseServices;
             }
             catch (Exception)

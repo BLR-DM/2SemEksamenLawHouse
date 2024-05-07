@@ -34,8 +34,11 @@
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             btnForms = new FontAwesome.Sharp.IconButton();
+            btnLawyers = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
+            lblCurrentUserName = new Label();
+            lblCurrentUser = new Label();
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
@@ -52,6 +55,7 @@
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(btnForms);
+            pnlLeft.Controls.Add(btnLawyers);
             pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
@@ -95,7 +99,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 40;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(0, 225);
+            iconButton1.Location = new Point(0, 300);
             iconButton1.Name = "iconButton1";
             iconButton1.Padding = new Padding(25, 0, 20, 0);
             iconButton1.Size = new Size(200, 75);
@@ -117,7 +121,7 @@
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
             btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployees.Location = new Point(0, 150);
+            btnEmployees.Location = new Point(0, 225);
             btnEmployees.Name = "btnEmployees";
             btnEmployees.Padding = new Padding(25, 0, 20, 0);
             btnEmployees.Size = new Size(200, 75);
@@ -147,6 +151,28 @@
             btnMyPageClient.Text = "My Page";
             btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageClient.UseVisualStyleBackColor = false;
+            // 
+            // btnLawyers
+            // 
+            btnLawyers.BackColor = Color.Transparent;
+            btnLawyers.Dock = DockStyle.Top;
+            btnLawyers.FlatAppearance.BorderSize = 0;
+            btnLawyers.FlatStyle = FlatStyle.Flat;
+            btnLawyers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLawyers.ForeColor = Color.Black;
+            btnLawyers.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnLawyers.IconColor = Color.Black;
+            btnLawyers.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLawyers.IconSize = 40;
+            btnLawyers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLawyers.Location = new Point(0, 150);
+            btnLawyers.Name = "btnLawyers";
+            btnLawyers.Padding = new Padding(25, 0, 20, 0);
+            btnLawyers.Size = new Size(200, 75);
+            btnLawyers.TabIndex = 0;
+            btnLawyers.Text = "Lawyers";
+            btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLawyers.UseVisualStyleBackColor = false;
             // 
             // btnForms
             // 
@@ -197,6 +223,8 @@
             gradiantPanel1.Angle = 80F;
             gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
             gradiantPanel1.BottomColor = Color.Empty;
+            gradiantPanel1.Controls.Add(lblCurrentUserName);
+            gradiantPanel1.Controls.Add(lblCurrentUser);
             gradiantPanel1.Controls.Add(btnClose);
             gradiantPanel1.Controls.Add(pboxLogo);
             gradiantPanel1.Dock = DockStyle.Top;
@@ -205,6 +233,30 @@
             gradiantPanel1.Size = new Size(1198, 60);
             gradiantPanel1.TabIndex = 2;
             gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
+            // 
+            // lblCurrentUserName
+            // 
+            lblCurrentUserName.AutoSize = true;
+            lblCurrentUserName.BackColor = Color.Transparent;
+            lblCurrentUserName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCurrentUserName.ForeColor = Color.White;
+            lblCurrentUserName.Location = new Point(1092, 19);
+            lblCurrentUserName.Name = "lblCurrentUserName";
+            lblCurrentUserName.Size = new Size(53, 21);
+            lblCurrentUserName.TabIndex = 1;
+            lblCurrentUserName.Text = "Name";
+            // 
+            // lblCurrentUser
+            // 
+            lblCurrentUser.AutoSize = true;
+            lblCurrentUser.BackColor = Color.Transparent;
+            lblCurrentUser.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCurrentUser.ForeColor = Color.White;
+            lblCurrentUser.Location = new Point(206, 19);
+            lblCurrentUser.Name = "lblCurrentUser";
+            lblCurrentUser.Size = new Size(100, 21);
+            lblCurrentUser.TabIndex = 1;
+            lblCurrentUser.Text = "Current user";
             // 
             // btnClose
             // 
@@ -258,6 +310,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             pnlLeft.ResumeLayout(false);
             gradiantPanel1.ResumeLayout(false);
+            gradiantPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
@@ -270,10 +323,13 @@
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton btnForms;
+        private FontAwesome.Sharp.IconButton btnLawyers;
         private FontAwesome.Sharp.IconButton btnClients;
         private Toolbox.GradiantPanel gradiantPanel1;
         private FontAwesome.Sharp.IconButton btnClose;
         private PictureBox pboxLogo;
         private Panel pnlContext;
+        private Label lblCurrentUser;
+        private Label lblCurrentUserName;
     }
 }

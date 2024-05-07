@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.Self_Service
 {
-    partial class FormularView
+    partial class FormView
     {
         /// <summary>
         /// Required designer variable.
@@ -58,11 +58,11 @@
             label1.BackColor = SystemColors.GradientInactiveCaption;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(138, 44);
+            label1.Location = new Point(145, 44);
             label1.Name = "label1";
-            label1.Size = new Size(82, 21);
+            label1.Size = new Size(55, 21);
             label1.TabIndex = 41;
-            label1.Text = "Formulars";
+            label1.Text = "Forms";
             // 
             // label2
             // 
@@ -70,13 +70,13 @@
             label2.BackColor = SystemColors.GradientInactiveCaption;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(45, 93, 134);
-            label2.Location = new Point(706, 44);
+            label2.Location = new Point(714, 44);
             label2.Name = "label2";
-            label2.Size = new Size(138, 21);
+            label2.Size = new Size(111, 21);
             label2.TabIndex = 41;
-            label2.Text = "Bought formulars";
+            label2.Text = "Bought forms";
             // 
-            // FormularView
+            // FormView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -87,7 +87,7 @@
             Controls.Add(dataGridView2);
             Controls.Add(dgvFormular);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormularView";
+            Name = "FormView";
             Text = "FormularView";
             ((System.ComponentModel.ISupportInitialize)dgvFormular).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();

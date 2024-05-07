@@ -11,24 +11,24 @@ using EntityModels;
 
 namespace DataAccess
 {
-    public class FormularDbAccess
+    public class FormDbAccess
     {
         LawHouseDbContext db;
-        public FormularDbAccess()
+        public FormDbAccess()
         {
             db = new LawHouseDbContext();
         }
-        public async Task<List<Formular>> GetFormularsAsync()
+        public async Task<List<Form>> GetFormsAsync()
         {
             try
             {
-                List<Formular> formulars = db.Formulars.ToList();
-                return formulars;
+                List<Form> form = db.Forms.ToList();
+                return form;
             }
             catch (Exception)
             {
 
-                return new List<Formular>();
+                return new List<Form>();
             }
         }
     }

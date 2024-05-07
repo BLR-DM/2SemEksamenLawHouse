@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UIModels
 {
-    public class FormularUI
+    public class FormUI
     {
-        public int FormularID { get; set; }
+        public int FormID { get; set; }
 
         //attributes
         public string Name { get; set; }

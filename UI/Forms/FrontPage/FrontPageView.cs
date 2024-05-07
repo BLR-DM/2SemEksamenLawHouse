@@ -35,7 +35,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnFormulars_Click(object? sender, EventArgs e)
         {
-            FormularView fv = new FormularView();
+            FormView fv = new FormView();
             PnlContextChange(fv);
         }
 

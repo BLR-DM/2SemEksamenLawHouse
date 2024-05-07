@@ -12,14 +12,14 @@ using UIModels;
 
 namespace UI.Forms.Self_Service
 {
-    public partial class FormularView : Form
+    public partial class FormView : Form
     {
-        FormularBL formularBL;
-        List<FormularUI> formularUIs;
-        public FormularView()
+        FormBL formBL;
+        List<FormUI> formUIs;
+        public FormView()
         {
             InitializeComponent();
-            formularBL = new FormularBL();
+            formBL = new FormBL();
 
 
             SetDGVsAsync();
@@ -27,13 +27,13 @@ namespace UI.Forms.Self_Service
 
         private async void SetDGVsAsync()
         {
-            await SetDGVFormularAsync();
+            await SetDGVFormAsync();
         }
 
-        private async Task SetDGVFormularAsync()
+        private async Task SetDGVFormAsync()
         {
-            formularUIs = await formularBL.GetFormularsAsync();
-            dgvFormular.DataSource = formularUIs;
+            formUIs = await formBL.GetFormAsync();
+            dgvFormular.DataSource = formUIs;
             dgvFormular.Columns["FormularID"].Visible = false;
             dgvFormular.Columns["Description"].Visible = false;
             dgvFormular.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

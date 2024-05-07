@@ -124,13 +124,13 @@ namespace DataAccess.Migrations
                     b.ToTable("CaseTypes");
                 });
 
-            modelBuilder.Entity("EntityModels.ClientFormular", b =>
+            modelBuilder.Entity("EntityModels.ClientForm", b =>
                 {
-                    b.Property<int>("ClientFormularID")
+                    b.Property<int>("ClientFormID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientFormularID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientFormID"));
 
                     b.Property<DateTime>("BuyDate")
                         .HasColumnType("datetime2");
@@ -138,16 +138,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FormularID")
+                    b.Property<int>("FormID")
                         .HasColumnType("int");
 
-                    b.HasKey("ClientFormularID");
+                    b.HasKey("ClientFormID");
 
                     b.HasIndex("ClientID");
 
-                    b.HasIndex("FormularID");
+                    b.HasIndex("FormID");
 
-                    b.ToTable("ClientFormulars");
+                    b.ToTable("ClientForms");
                 });
 
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
@@ -180,13 +180,13 @@ namespace DataAccess.Migrations
                     b.ToTable("ClientSubscriptions");
                 });
 
-            modelBuilder.Entity("EntityModels.Formular", b =>
+            modelBuilder.Entity("EntityModels.Form", b =>
                 {
-                    b.Property<int>("FormularID")
+                    b.Property<int>("FormID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FormularID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FormID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -199,9 +199,9 @@ namespace DataAccess.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.HasKey("FormularID");
+                    b.HasKey("FormID");
 
-                    b.ToTable("Formulars");
+                    b.ToTable("Forms");
                 });
 
             modelBuilder.Entity("EntityModels.LawyerSpeciality", b =>
@@ -514,23 +514,23 @@ namespace DataAccess.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("EntityModels.ClientFormular", b =>
+            modelBuilder.Entity("EntityModels.ClientForm", b =>
                 {
                     b.HasOne("EntityModels.Client", "Client")
-                        .WithMany("ClientFormulars")
+                        .WithMany("ClientForms")
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityModels.Formular", "Formular")
-                        .WithMany("ClientFormulars")
-                        .HasForeignKey("FormularID")
+                    b.HasOne("EntityModels.Form", "Form")
+                        .WithMany("ClientForms")
+                        .HasForeignKey("FormID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Client");
 
-                    b.Navigation("Formular");
+                    b.Navigation("Form");
                 });
 
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
@@ -574,7 +574,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.Person", b =>
                 {
                     b.HasOne("EntityModels.LoginDetails", "LoginDetails")
-                        .WithOne("PersonDetails")
+                        .WithOne("Person")
                         .HasForeignKey("EntityModels.Person", "LoginDetailsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -658,9 +658,9 @@ namespace DataAccess.Migrations
                     b.Navigation("Cases");
                 });
 
-            modelBuilder.Entity("EntityModels.Formular", b =>
+            modelBuilder.Entity("EntityModels.Form", b =>
                 {
-                    b.Navigation("ClientFormulars");
+                    b.Navigation("ClientForms");
                 });
 
             modelBuilder.Entity("EntityModels.LawyerTitle", b =>
@@ -670,7 +670,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("EntityModels.LoginDetails", b =>
                 {
-                    b.Navigation("PersonDetails")
+                    b.Navigation("Person")
                         .IsRequired();
                 });
 
@@ -698,7 +698,7 @@ namespace DataAccess.Migrations
                 {
                     b.Navigation("Cases");
 
-                    b.Navigation("ClientFormulars");
+                    b.Navigation("ClientForms");
 
                     b.Navigation("ClientSubscription")
                         .IsRequired();

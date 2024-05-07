@@ -34,7 +34,7 @@ namespace UI.Forms.Self_Service
         {
             formUIs = await formBL.GetFormAsync();
             dgvFormular.DataSource = formUIs;
-            dgvFormular.Columns["FormularID"].Visible = false;
+            dgvFormular.Columns["FormID"].Visible = false;
             dgvFormular.Columns["Description"].Visible = false;
             dgvFormular.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFormular.RowHeadersVisible = false;

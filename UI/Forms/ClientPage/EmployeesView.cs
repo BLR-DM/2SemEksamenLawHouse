@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
+using UI.Toolbox;
 using UIModels;
 
 namespace UI.Forms.ClientPage
@@ -16,6 +17,7 @@ namespace UI.Forms.ClientPage
     {
         LawyerBL lawyerBL;
         List<LawyerUI> lawyerUIs;
+        List<LawyerUI> filteredData;
         public EmployeesView()
         {
             lawyerBL = new LawyerBL();
@@ -26,19 +28,64 @@ namespace UI.Forms.ClientPage
             Load += EmployeesView_Load;
         }
 
-        private void EmployeesView_Load(object? sender, EventArgs e)
+        private async void EmployeesView_Load(object? sender, EventArgs e)
         {
-            GetLawyersAsync();
-
-            if (lawyerUIs.Count > 0)
-            {
-                MessageBox.Show($"Lawyers: {lawyerUIs.Count}");
-            }
+            await GetLawyerUIsAsync();
+            FilterAndAssignData();
         }
 
-        private async Task GetLawyersAsync()
+        private async Task GetLawyerUIsAsync()
         {
             lawyerUIs = await lawyerBL.GetLawyersAsync();
+        }
+
+        private void FilterAndAssignData()
+        {
+            foreach (LawyerUI lawyer in lawyerUIs)
+            {
+                LawyerCard lawyerCard = new LawyerCard(lawyer);
+                flpnlLawyers.Controls.Add(lawyerCard);
+            }
+
+            dgv.DataSource = lawyerUIs;
+
+
+            //List<LawyerDisplay> filteredData = lawyerUIs.Select(lawyer => new LawyerDisplay 
+            //{
+            //    Firstname = lawyer.Firstname,
+            //    Lastname = lawyer.Lastname,
+            //    Title = lawyer.LawyerTitle,
+            //    City = lawyer.City,
+            //    PhoneNumber = lawyer.PhoneNumber
+
+            //}).ToList();
+
+
+
+            //foreach (LawyerDisplay l in filteredData) 
+            //{
+            //    lblName.Text = 
+            //        $"{l.Firstname} {l.Lastname}";
+            //    lblDetails.Text = 
+            //        $"{l.Title} \u2022 {l.City}\n" +
+            //        $"+45 {l.PhoneNumber}";
+            //}
+
+            //test = $"{filteredData[0].Firstname} {filteredData[0].Lastname}\n" +
+            //    $"{filteredData[0].Title}";
+
+            //lblName.Text = test; 
+
+
+        }
+
+        private class LawyerDisplay
+        {
+            public string Firstname { get; set; }
+            public string Lastname { get; set; }
+            public string Title { get; set; }
+            public string City { get; set; }
+            public int PhoneNumber { get; set; }
         }
     }
 }

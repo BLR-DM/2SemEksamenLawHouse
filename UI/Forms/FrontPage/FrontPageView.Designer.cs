@@ -99,7 +99,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 40;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(0, 225);
+            iconButton1.Location = new Point(0, 300);
             iconButton1.Name = "iconButton1";
             iconButton1.Padding = new Padding(25, 0, 20, 0);
             iconButton1.Size = new Size(200, 75);
@@ -121,7 +121,7 @@
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
             btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployees.Location = new Point(0, 150);
+            btnEmployees.Location = new Point(0, 225);
             btnEmployees.Name = "btnEmployees";
             btnEmployees.Padding = new Padding(25, 0, 20, 0);
             btnEmployees.Size = new Size(200, 75);
@@ -165,7 +165,7 @@
             btnLawyers.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnLawyers.IconSize = 40;
             btnLawyers.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLawyers.Location = new Point(0, 75);
+            btnLawyers.Location = new Point(0, 150);
             btnLawyers.Name = "btnLawyers";
             btnLawyers.Padding = new Padding(25, 0, 20, 0);
             btnLawyers.Size = new Size(200, 75);
@@ -173,6 +173,7 @@
             btnLawyers.Text = "Lawyers";
             btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLawyers.UseVisualStyleBackColor = false;
+            // 
             // btnFormulars
             // 
             btnFormulars.BackColor = Color.Transparent;

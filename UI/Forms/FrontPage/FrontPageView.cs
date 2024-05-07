@@ -2,6 +2,7 @@
 using UIModels;
 using UI.Forms.ClientPage;
 using UI.Forms.Self_Service;
+using UI.Forms.CasePage;
 
 namespace UI.Forms.FrontPage
 {
@@ -32,6 +33,13 @@ namespace UI.Forms.FrontPage
             btnClients.Click += BtnClients_Click;
             btnLawyers.Click += BtnLawyers_Click;
             btnForms.Click += BtnForms_Click;
+            btnCase.Click += BtnCase_Click;
+        }
+
+        private void BtnCase_Click(object? sender, EventArgs e)
+        {
+            CasePageView casePageView = new CasePageView();
+            PnlContextChange(casePageView);
         }
 
         private void BtnLawyers_Click(object? sender, EventArgs e)

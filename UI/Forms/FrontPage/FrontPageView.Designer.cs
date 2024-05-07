@@ -31,7 +31,7 @@
             pnlLeft = new Panel();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            btnEmployees = new FontAwesome.Sharp.IconButton();
+            btnCase = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             btnForms = new FontAwesome.Sharp.IconButton();
             btnLawyers = new FontAwesome.Sharp.IconButton();
@@ -52,7 +52,7 @@
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
             pnlLeft.Controls.Add(btnMyPageLawyer);
             pnlLeft.Controls.Add(iconButton1);
-            pnlLeft.Controls.Add(btnEmployees);
+            pnlLeft.Controls.Add(btnCase);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(btnForms);
             pnlLeft.Controls.Add(btnLawyers);
@@ -108,27 +108,27 @@
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
-            // btnEmployees
+            // btnCase
             // 
-            btnEmployees.BackColor = Color.Transparent;
-            btnEmployees.Dock = DockStyle.Top;
-            btnEmployees.FlatAppearance.BorderSize = 0;
-            btnEmployees.FlatStyle = FlatStyle.Flat;
-            btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEmployees.ForeColor = Color.Black;
-            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnEmployees.IconColor = Color.Black;
-            btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEmployees.IconSize = 40;
-            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployees.Location = new Point(0, 225);
-            btnEmployees.Name = "btnEmployees";
-            btnEmployees.Padding = new Padding(25, 0, 20, 0);
-            btnEmployees.Size = new Size(200, 75);
-            btnEmployees.TabIndex = 0;
-            btnEmployees.Text = "Employees";
-            btnEmployees.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEmployees.UseVisualStyleBackColor = false;
+            btnCase.BackColor = Color.Transparent;
+            btnCase.Dock = DockStyle.Top;
+            btnCase.FlatAppearance.BorderSize = 0;
+            btnCase.FlatStyle = FlatStyle.Flat;
+            btnCase.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCase.ForeColor = Color.Black;
+            btnCase.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnCase.IconColor = Color.Black;
+            btnCase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCase.IconSize = 40;
+            btnCase.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCase.Location = new Point(0, 225);
+            btnCase.Name = "btnCase";
+            btnCase.Padding = new Padding(25, 0, 20, 0);
+            btnCase.Size = new Size(200, 75);
+            btnCase.TabIndex = 0;
+            btnCase.Text = "Cases";
+            btnCase.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCase.UseVisualStyleBackColor = false;
             // 
             // btnMyPageClient
             // 
@@ -152,28 +152,6 @@
             btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageClient.UseVisualStyleBackColor = false;
             // 
-            // btnLawyers
-            // 
-            btnLawyers.BackColor = Color.Transparent;
-            btnLawyers.Dock = DockStyle.Top;
-            btnLawyers.FlatAppearance.BorderSize = 0;
-            btnLawyers.FlatStyle = FlatStyle.Flat;
-            btnLawyers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLawyers.ForeColor = Color.Black;
-            btnLawyers.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnLawyers.IconColor = Color.Black;
-            btnLawyers.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnLawyers.IconSize = 40;
-            btnLawyers.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLawyers.Location = new Point(0, 150);
-            btnLawyers.Name = "btnLawyers";
-            btnLawyers.Padding = new Padding(25, 0, 20, 0);
-            btnLawyers.Size = new Size(200, 75);
-            btnLawyers.TabIndex = 0;
-            btnLawyers.Text = "Lawyers";
-            btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnLawyers.UseVisualStyleBackColor = false;
-            // 
             // btnForms
             // 
             btnForms.BackColor = Color.Transparent;
@@ -187,7 +165,7 @@
             btnForms.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnForms.IconSize = 40;
             btnForms.ImageAlign = ContentAlignment.MiddleLeft;
-            btnForms.Location = new Point(0, 75);
+            btnForms.Location = new Point(0, 150);
             btnForms.Name = "btnForms";
             btnForms.Padding = new Padding(25, 0, 20, 0);
             btnForms.Size = new Size(200, 75);
@@ -195,6 +173,28 @@
             btnForms.Text = "Formulars";
             btnForms.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnForms.UseVisualStyleBackColor = false;
+            // 
+            // btnLawyers
+            // 
+            btnLawyers.BackColor = Color.Transparent;
+            btnLawyers.Dock = DockStyle.Top;
+            btnLawyers.FlatAppearance.BorderSize = 0;
+            btnLawyers.FlatStyle = FlatStyle.Flat;
+            btnLawyers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLawyers.ForeColor = Color.Black;
+            btnLawyers.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnLawyers.IconColor = Color.Black;
+            btnLawyers.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLawyers.IconSize = 40;
+            btnLawyers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLawyers.Location = new Point(0, 75);
+            btnLawyers.Name = "btnLawyers";
+            btnLawyers.Padding = new Padding(25, 0, 20, 0);
+            btnLawyers.Size = new Size(200, 75);
+            btnLawyers.TabIndex = 0;
+            btnLawyers.Text = "Lawyers";
+            btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLawyers.UseVisualStyleBackColor = false;
             // 
             // btnClients
             // 
@@ -320,7 +320,7 @@
         private Panel pnlLeft;
         private FontAwesome.Sharp.IconButton btnMyPageLawyer;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnEmployees;
+        private FontAwesome.Sharp.IconButton btnCase;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton btnForms;
         private FontAwesome.Sharp.IconButton btnLawyers;

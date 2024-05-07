@@ -363,7 +363,7 @@ namespace BusinessLogic
             return clientSubcriptionE;
         }
 
-        public Form ConvertFromFormularUI(FormUI formUI)
+        public Form ConvertFromFormUI(FormUI formUI)
         {
             Form formE = new Form
             {

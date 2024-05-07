@@ -30,12 +30,12 @@ namespace UI.Forms.FrontPage
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
-            btnFormulars.Click += BtnFormulars_Click;
+            btnForms.Click += BtnForms_Click;
         }
 
-        private void BtnFormulars_Click(object? sender, EventArgs e)
+        private void BtnForms_Click(object? sender, EventArgs e)
         {
-            FormView fv = new FormView();
+            FormView fv = new FormView(currentUser.PersonID);
             PnlContextChange(fv);
         }
 

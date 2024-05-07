@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvFormular = new DataGridView();
-            dataGridView2 = new DataGridView();
+            dgvForms = new DataGridView();
+            dgvBoughtForms = new DataGridView();
             label1 = new Label();
             label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvFormular).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvForms).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBoughtForms).BeginInit();
             SuspendLayout();
             // 
-            // dgvFormular
+            // dgvForms
             // 
-            dgvFormular.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFormular.Location = new Point(41, 77);
-            dgvFormular.Name = "dgvFormular";
-            dgvFormular.Size = new Size(290, 445);
-            dgvFormular.TabIndex = 0;
+            dgvForms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvForms.Location = new Point(41, 77);
+            dgvForms.Name = "dgvForms";
+            dgvForms.Size = new Size(290, 445);
+            dgvForms.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgvBoughtForms
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(630, 77);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(290, 445);
-            dataGridView2.TabIndex = 1;
+            dgvBoughtForms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBoughtForms.Location = new Point(625, 77);
+            dgvBoughtForms.Name = "dgvBoughtForms";
+            dgvBoughtForms.Size = new Size(290, 445);
+            dgvBoughtForms.TabIndex = 1;
             // 
             // label1
             // 
@@ -84,21 +84,21 @@
             ClientSize = new Size(998, 613);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(dataGridView2);
-            Controls.Add(dgvFormular);
+            Controls.Add(dgvBoughtForms);
+            Controls.Add(dgvForms);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormView";
             Text = "FormularView";
-            ((System.ComponentModel.ISupportInitialize)dgvFormular).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvForms).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBoughtForms).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvFormular;
-        private DataGridView dataGridView2;
+        private DataGridView dgvForms;
+        private DataGridView dgvBoughtForms;
         private Label label1;
         private Label label2;
     }

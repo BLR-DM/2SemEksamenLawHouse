@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.CasePage
@@ -17,15 +18,19 @@ namespace UI.Forms.CasePage
         CaseTypeBL caseTypeBL;
         LawyerBL lawyerBL;
         CaseBL caseBL;
+        FrontPageView f1;
+
+
         List<CaseTypeUI> caseTypeList;
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
-        public CasePageView()
+        public CasePageView(FrontPageView f1)
         {
             InitializeComponent();
             caseTypeBL = new CaseTypeBL();
             lawyerBL = new LawyerBL();
             caseBL = new CaseBL();
+            this.f1 = f1;
 
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
 
@@ -40,7 +45,7 @@ namespace UI.Forms.CasePage
             {
                 CaseUI selectedCase = originalCaseList[e.RowIndex] as CaseUI;
                 CaseDetailsView detailsView = new CaseDetailsView(selectedCase);
-                detailsView.ShowDialog();
+                f1.PnlContextChange(detailsView);
                 
 
             }

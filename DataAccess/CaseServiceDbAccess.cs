@@ -20,10 +20,11 @@ namespace DataAccess
         {
             try
             {
-                List<CaseService> caseServices = await db.CaseServices.Where(cs => cs.CaseID == id)
-                                                                      .Include(s => s.Service)
-                                                                        .ThenInclude(s => s.ServicePriceType)
-                                                                      .ToListAsync();
+                List<CaseService> caseServices = await db.CaseServices
+                            .Where(cs => cs.CaseID == id)
+                            .Include(s => s.Service)
+                                .ThenInclude(s => s.ServicePriceType)
+                            .ToListAsync();
                 return caseServices;
             }
             catch (Exception)

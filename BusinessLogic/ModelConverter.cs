@@ -59,6 +59,27 @@ namespace BusinessLogic
                 TotalPrice = caseServiceE.TotalPrice,
                 Date = caseServiceE.Date,
 
+
+                //foreign key
+                CaseID = caseServiceE.CaseID,
+                ServiceID = caseServiceE.ServiceID,
+                LawyerID = caseServiceE.LawyerID,
+            };
+            return caseServiceUI;
+        }
+
+        public CaseServiceUI ConvertFromCaseServiceAndServiceEntity(CaseService caseServiceE)
+        {
+            CaseServiceUI caseServiceUI = new CaseServiceUI
+            {
+                CaseServiceID = caseServiceE.CaseServiceID,
+                Units = caseServiceE.Units,
+                TotalPrice = caseServiceE.TotalPrice,
+                Date = caseServiceE.Date,
+                //
+                ServiceName = caseServiceE.Service.Name,
+                ServiceType = caseServiceE.Service.ServicePriceType.PriceType,
+
                 //foreign key
                 CaseID = caseServiceE.CaseID,
                 ServiceID = caseServiceE.ServiceID,

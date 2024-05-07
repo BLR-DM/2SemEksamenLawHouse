@@ -25,7 +25,7 @@ namespace BusinessLogic
 
             foreach(CaseService caseService in await dbAccess.GetCaseServicesAsync(id))
             {
-                caseServicesUI.Add(modelConverter.ConvertFromCaseServiceEntity(caseService));
+                caseServicesUI.Add(modelConverter.ConvertFromCaseServiceAndServiceEntity(caseService));
             }
 
             return caseServicesUI;

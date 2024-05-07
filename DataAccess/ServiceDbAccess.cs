@@ -29,5 +29,25 @@ namespace DataAccess
             }
         }
 
+        public async Task<List<Service>> GetServicesForCaseAsync(int caseID)
+        {
+            try
+            {
+                List<Service> servicesForCase = await db.CaseServices
+                        .Where(cs => cs.CaseID == caseID)
+                        .Include(cs => cs.Service)
+                            .ThenInclude(s => s.ServicePriceType)
+                        .Select(cs => cs.Service)
+                        .ToListAsync();
+
+                return servicesForCase;
+            }
+            catch (Exception)
+            {
+
+                return new List<Service>();
+            }
+        }
+
     }
 }

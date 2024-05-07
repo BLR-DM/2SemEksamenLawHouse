@@ -36,7 +36,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
         {
-            EmployeesView employeesView = new EmployeesView(this);
+            EmployeesView employeesView = new EmployeesView();
             PnlContextChange(employeesView);            
         }
 

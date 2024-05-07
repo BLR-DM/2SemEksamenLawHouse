@@ -9,10 +9,8 @@ namespace UI.Forms.ClientPage
     {
         LawyerBL lawyerBL;
         List<LawyerUI> lawyerUIs;
-        FrontPageView fp;
-        public EmployeesView(FrontPageView fp)
+        public EmployeesView()
         {
-            this.fp = fp;
             lawyerBL = new LawyerBL();
             lawyerUIs = new List<LawyerUI>();
 

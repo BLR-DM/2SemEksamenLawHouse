@@ -164,7 +164,7 @@
             label1.Name = "label1";
             label1.Size = new Size(57, 21);
             label1.TabIndex = 38;
-            label1.Text = "Name:";
+            label1.Text = "Firstname:";
             // 
             // rtxtPhoneNumbers
             // 

@@ -13,14 +13,17 @@ namespace UI.Toolbox
             SetDetails(lawyer);
 
         }
-        public string Name { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
 
         private void SetDetails(LawyerUI lawyer)
         {
             lblName.Text = $"{lawyer.Firstname} {lawyer.Lastname}";
             lblDetails.Text = $"{lawyer.LawyerTitle} • {lawyer.City}";
             lblPhoneNumber.Text = $"+45{lawyer.PhoneNumber}";
-            Name = lawyer.Firstname;
+
+            Firstname = lawyer.Firstname;
+            Lastname = lawyer.Lastname;
         }
     }
 }

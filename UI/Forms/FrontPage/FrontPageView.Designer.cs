@@ -244,7 +244,7 @@
             lblCurrentUserName.Name = "lblCurrentUserName";
             lblCurrentUserName.Size = new Size(53, 21);
             lblCurrentUserName.TabIndex = 1;
-            lblCurrentUserName.Text = "Name";
+            lblCurrentUserName.Text = "Firstname";
             // 
             // lblCurrentUser
             // 

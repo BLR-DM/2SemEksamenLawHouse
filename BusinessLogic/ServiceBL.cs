@@ -31,6 +31,13 @@ namespace BusinessLogic
             return services;
         }
 
+        public async Task<ServiceUI> GetServiceAsync(int id)
+        {
+            Service service = await dbAccess.GetServiceAsync(id);
+            ServiceUI serviceUI = modelConverter.ConvertFromServiceEntity(service);
+            return serviceUI;
+        }
+
         public async Task<List<ServiceUI>> GetServicesForCaseAsync(int id)
         {
             List<ServiceUI> serviceForCaseUI = new List<ServiceUI>();

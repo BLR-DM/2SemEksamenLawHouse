@@ -16,6 +16,11 @@ namespace UIModels
         public DateTime Date { get; set; }
 
 
+        //Kun i UI
+        public string? ServiceName { get; set; }
+        public string? ServiceType { get; set; }
+
+
         //Foreign Keys
         public int CaseID { get; set; }
         public int ServiceID { get; set; }

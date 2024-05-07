@@ -38,7 +38,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnCase_Click(object? sender, EventArgs e)
         {
-            CasePageView casePageView = new CasePageView();
+            CasePageView casePageView = new CasePageView(this);
             PnlContextChange(casePageView);
         }
 

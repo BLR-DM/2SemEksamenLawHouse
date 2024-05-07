@@ -31,10 +31,9 @@
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             lblName = new Label();
             lblDetails = new Label();
-            panel1 = new Panel();
             lblPhoneNumber = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // iconPictureBox1
@@ -73,39 +72,38 @@
             lblDetails.TabIndex = 1;
             lblDetails.Text = "Title . Location";
             // 
-            // panel1
-            // 
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(lblPhoneNumber);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(194, 240);
-            panel1.TabIndex = 2;
-            // 
             // lblPhoneNumber
             // 
             lblPhoneNumber.AutoSize = true;
             lblPhoneNumber.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPhoneNumber.Location = new Point(16, 208);
+            lblPhoneNumber.Location = new Point(17, 209);
             lblPhoneNumber.Name = "lblPhoneNumber";
-            lblPhoneNumber.Size = new Size(91, 17);
-            lblPhoneNumber.TabIndex = 1;
-            lblPhoneNumber.Text = "+45 12345678";
+            lblPhoneNumber.Size = new Size(87, 17);
+            lblPhoneNumber.TabIndex = 2;
+            lblPhoneNumber.Text = "+4512345678";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.BackgroundImageLayout = ImageLayout.None;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(194, 240);
+            panel1.TabIndex = 3;
             // 
             // LawyerCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(iconPictureBox1);
-            Controls.Add(lblDetails);
             Controls.Add(lblName);
+            Controls.Add(lblDetails);
+            Controls.Add(lblPhoneNumber);
             Controls.Add(panel1);
             Name = "LawyerCard";
             Size = new Size(194, 240);
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,7 +113,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Label lblName;
         private Label lblDetails;
-        private Panel panel1;
         private Label lblPhoneNumber;
+        private Panel panel1;
     }
 }

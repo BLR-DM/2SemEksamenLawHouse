@@ -34,6 +34,7 @@
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             btnLawyers = new FontAwesome.Sharp.IconButton();
+            btnFormulars = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
             lblCurrentUserName = new Label();
@@ -54,6 +55,7 @@
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(btnLawyers);
+            pnlLeft.Controls.Add(btnFormulars);
             pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
@@ -171,6 +173,27 @@
             btnLawyers.Text = "Lawyers";
             btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLawyers.UseVisualStyleBackColor = false;
+            // btnFormulars
+            // 
+            btnFormulars.BackColor = Color.Transparent;
+            btnFormulars.Dock = DockStyle.Top;
+            btnFormulars.FlatAppearance.BorderSize = 0;
+            btnFormulars.FlatStyle = FlatStyle.Flat;
+            btnFormulars.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFormulars.ForeColor = Color.Black;
+            btnFormulars.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnFormulars.IconColor = Color.Black;
+            btnFormulars.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnFormulars.IconSize = 40;
+            btnFormulars.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFormulars.Location = new Point(0, 75);
+            btnFormulars.Name = "btnFormulars";
+            btnFormulars.Padding = new Padding(25, 0, 20, 0);
+            btnFormulars.Size = new Size(200, 75);
+            btnFormulars.TabIndex = 0;
+            btnFormulars.Text = "Formulars";
+            btnFormulars.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnFormulars.UseVisualStyleBackColor = false;
             // 
             // btnClients
             // 
@@ -299,6 +322,7 @@
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton btnLawyers;
+        private FontAwesome.Sharp.IconButton btnFormulars;
         private FontAwesome.Sharp.IconButton btnClients;
         private Toolbox.GradiantPanel gradiantPanel1;
         private FontAwesome.Sharp.IconButton btnClose;

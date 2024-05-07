@@ -25,10 +25,10 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Formulars",
+                name: "Forms",
                 columns: table => new
                 {
-                    FormularID = table.Column<int>(type: "int", nullable: false)
+                    FormID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -36,7 +36,7 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Formulars", x => x.FormularID);
+                    table.PrimaryKey("PK_Forms", x => x.FormID);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,29 +192,29 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientFormulars",
+                name: "ClientForms",
                 columns: table => new
                 {
-                    ClientFormularID = table.Column<int>(type: "int", nullable: false)
+                    ClientFormID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false),
-                    FormularID = table.Column<int>(type: "int", nullable: false)
+                    FormID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientFormulars", x => x.ClientFormularID);
+                    table.PrimaryKey("PK_ClientForms", x => x.ClientFormID);
                     table.ForeignKey(
-                        name: "FK_ClientFormulars_Clients_ClientID",
+                        name: "FK_ClientForms_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
                         principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClientFormulars_Formulars_FormularID",
-                        column: x => x.FormularID,
-                        principalTable: "Formulars",
-                        principalColumn: "FormularID",
+                        name: "FK_ClientForms_Forms_FormID",
+                        column: x => x.FormID,
+                        principalTable: "Forms",
+                        principalColumn: "FormID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -437,14 +437,14 @@ namespace DataAccess.Migrations
                 column: "ServiceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientFormulars_ClientID",
-                table: "ClientFormulars",
+                name: "IX_ClientForms_ClientID",
+                table: "ClientForms",
                 column: "ClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientFormulars_FormularID",
-                table: "ClientFormulars",
-                column: "FormularID");
+                name: "IX_ClientForms_FormID",
+                table: "ClientForms",
+                column: "FormID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientSubscriptions_ClientID",
@@ -510,7 +510,7 @@ namespace DataAccess.Migrations
                 name: "CaseServices");
 
             migrationBuilder.DropTable(
-                name: "ClientFormulars");
+                name: "ClientForms");
 
             migrationBuilder.DropTable(
                 name: "ClientSubscriptions");
@@ -531,7 +531,7 @@ namespace DataAccess.Migrations
                 name: "Services");
 
             migrationBuilder.DropTable(
-                name: "Formulars");
+                name: "Forms");
 
             migrationBuilder.DropTable(
                 name: "Subscriptions");

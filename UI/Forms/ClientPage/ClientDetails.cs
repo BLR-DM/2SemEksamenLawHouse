@@ -62,6 +62,8 @@ namespace UI.Forms.ClientPage
 
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
         {
+            bool numberDeleted = true;
+            bool clientUpdated;
             btnUpdate.Enabled = false;
             ClientUI tempC = new ClientUI()
             {
@@ -76,18 +78,36 @@ namespace UI.Forms.ClientPage
                 LoginDetailsID = client.LoginDetailsID,
             };
 
-            await clientBL.UpdateClientAsync(tempC, phoneNumbers);
-            if (deletedNumbers.Count > 0)
+            clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
+            List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
+            if(newNumbers.Count > 0)
             {
-                await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
+                phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
             }
 
+            if (deletedNumbers.Count > 0)
+            {
+                numberDeleted = await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
+            }
+
+            if (clientUpdated && numberDeleted)
+            {
+                lblSuccess.ForeColor = Color.Green;
+                lblSuccess.Text = "Saved";
+            }
+            else
+            {
+                lblSuccess.ForeColor = Color.Red;
+                lblSuccess.Text = "Save Failed";
+            }
+            deletedNumbers = new List<PhoneUI>();
             btnUpdate.Enabled = true;
 
         }
 
         private async void SetDetails(ClientUI client)
         {
+
             txtFirstname.Text = client.Firstname;
             txtLastname.Text = client.Lastname;
             txtEmail.Text = client.Email;

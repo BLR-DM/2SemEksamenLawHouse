@@ -11,9 +11,9 @@ namespace DataAccess
         public DbSet<Case> Cases { get; set; }
         public DbSet<CaseService> CaseServices { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<ClientFormular> ClientFormulars { get; set; }
+        public DbSet<ClientForm> ClientForms { get; set; }
         public DbSet<ClientSubscription> ClientSubscriptions { get; set; }
-        public DbSet<Formular> Formulars { get; set; }
+        public DbSet<Form> Forms { get; set; }
         public DbSet<Lawyer> Lawyers { get; set; }
         public DbSet<LawyerSpeciality> LawyerSpeciality { get; set; }
         public DbSet<Phone> Phones { get; set; }

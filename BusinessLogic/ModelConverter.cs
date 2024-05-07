@@ -88,18 +88,18 @@ namespace BusinessLogic
             return clientUI;
         }
 
-        public ClientFormularUI ConvertFromClientFormularEntity(ClientFormular clientFormularE)
+        public ClientFormUI ConvertFromClientFormEntity(ClientForm clientFormE)
         {
-            ClientFormularUI clientFormularUI = new ClientFormularUI
+            ClientFormUI clientFormUI = new ClientFormUI
             {
-                ClientFormularID = clientFormularE.ClientFormularID,
-                BuyDate = clientFormularE.BuyDate,
+                ClientFormID = clientFormE.ClientFormID,
+                BuyDate = clientFormE.BuyDate,
 
                 //foreign keys
-                ClientID = clientFormularE.ClientID,
-                FormularID = clientFormularE.FormularID,
+                ClientID = clientFormE.ClientID,
+                FormID = clientFormE.FormID,
             };
-            return clientFormularUI;
+            return clientFormUI;
         }
 
         public ClientSubscriptionUI ConvertFromClientSubscriptionEntity(ClientSubscription clientSubscriptionE)
@@ -117,17 +117,17 @@ namespace BusinessLogic
             return clientSubscriptionUI;
         }
 
-        public FormularUI ConvertFromFormularEntity(Formular formularE)
+        public FormUI ConvertFromFormEntity(Form formE)
         {
-            FormularUI formularUI = new FormularUI
+            FormUI formUI = new FormUI
             {
-                FormularID = formularE.FormularID,
-                Name = formularE.Name,
-                Description = formularE.Description,
-                Price = formularE.Price,
+                FormID = formE.FormID,
+                Name = formE.Name,
+                Description = formE.Description,
+                Price = formE.Price,
 
             };
-            return formularUI;
+            return formUI;
         }
 
         public LawyerUI ConvertFromLawyerEntity(Lawyer lawyerE)
@@ -334,18 +334,18 @@ namespace BusinessLogic
             return loginDetailsE;
         }
 
-        public ClientFormular ConvertFromClientFormularUI(ClientFormularUI clientFormularUI)
+        public ClientForm ConvertFromClientFormUI(ClientFormUI clientFormUI)
         {
-            ClientFormular clientFormularE = new ClientFormular
+            ClientForm clientFormE = new ClientForm
             {
-                ClientFormularID = clientFormularUI.ClientFormularID,
-                BuyDate = clientFormularUI.BuyDate,
+                ClientFormID = clientFormUI.ClientFormID,
+                BuyDate = clientFormUI.BuyDate,
 
                 //foreign keys
-                ClientID = clientFormularUI.ClientID,
-                FormularID = clientFormularUI.FormularID,
+                ClientID = clientFormUI.ClientID,
+                FormID = clientFormUI.FormID,
             };
-            return clientFormularE;
+            return clientFormE;
         }
 
         public ClientSubscription ConvertFromClientSubscriptionUI(ClientSubscriptionUI clientSubscriptionUI)
@@ -363,17 +363,17 @@ namespace BusinessLogic
             return clientSubcriptionE;
         }
 
-        public Formular ConvertFromFormularUI(FormularUI formularUI)
+        public Form ConvertFromFormularUI(FormUI formUI)
         {
-            Formular formularE = new Formular
+            Form formE = new Form
             {
-                FormularID = formularUI.FormularID,
-                Name = formularUI.Name,
-                Description = formularUI.Description,
-                Price = formularUI.Price,
+                FormID = formUI.FormID,
+                Name = formUI.Name,
+                Description = formUI.Description,
+                Price = formUI.Price,
 
             };
-            return formularE;
+            return formE;
         }
         
         public Lawyer ConvertFromLawyerUI(LawyerUI lawyerUI)

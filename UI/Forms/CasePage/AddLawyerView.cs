@@ -14,7 +14,7 @@ using UIModels;
 
 namespace UI.Forms.CasePage
 {
-    public partial class AddLawyerView : Form
+    public partial class AddLawyerView : System.Windows.Forms.Form
     {
         LawyerBL lawyerBL;
         SpecialityBL specialityBL;

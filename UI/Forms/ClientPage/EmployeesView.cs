@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using UI.Forms.FrontPage;
 using UI.Toolbox;
 using UIModels;
 
@@ -8,8 +9,10 @@ namespace UI.Forms.ClientPage
     {
         LawyerBL lawyerBL;
         List<LawyerUI> lawyerUIs;
-        public EmployeesView()
+        FrontPageView fp;
+        public EmployeesView(FrontPageView fp)
         {
+            this.fp = fp;
             lawyerBL = new LawyerBL();
             lawyerUIs = new List<LawyerUI>();
 
@@ -59,7 +62,7 @@ namespace UI.Forms.ClientPage
             LawyerCard control = (LawyerCard)sender;
             if (control != null)
             {
-                MessageBox.Show(control.Name);
+                lblSelected.Text = control.Name;
             }
         }
 

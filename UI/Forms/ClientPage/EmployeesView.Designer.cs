@@ -28,51 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgv = new DataGridView();
-            lblName = new Label();
-            lblDetails = new Label();
             flpnlLawyers = new FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
+            lblSelected = new Label();
+            lblLawyers = new Label();
             SuspendLayout();
-            // 
-            // dgv
-            // 
-            dgv.AllowUserToAddRows = false;
-            dgv.AllowUserToDeleteRows = false;
-            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv.Location = new Point(24, 462);
-            dgv.Name = "dgv";
-            dgv.ReadOnly = true;
-            dgv.Size = new Size(949, 118);
-            dgv.TabIndex = 0;
-            // 
-            // lblName
-            // 
-            lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(24, 20);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(50, 21);
-            lblName.TabIndex = 1;
-            lblName.Text = "name";
-            // 
-            // lblDetails
-            // 
-            lblDetails.AutoSize = true;
-            lblDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDetails.Location = new Point(24, 41);
-            lblDetails.Name = "lblDetails";
-            lblDetails.Size = new Size(40, 17);
-            lblDetails.TabIndex = 1;
-            lblDetails.Text = "name";
             // 
             // flpnlLawyers
             // 
-            flpnlLawyers.Location = new Point(24, 78);
+            flpnlLawyers.Location = new Point(11, 61);
             flpnlLawyers.Name = "flpnlLawyers";
-            flpnlLawyers.Size = new Size(949, 366);
+            flpnlLawyers.Size = new Size(512, 540);
             flpnlLawyers.TabIndex = 2;
+            // 
+            // lblSelected
+            // 
+            lblSelected.AutoSize = true;
+            lblSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblSelected.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSelected.Location = new Point(792, 69);
+            lblSelected.Name = "lblSelected";
+            lblSelected.Size = new Size(116, 21);
+            lblSelected.TabIndex = 3;
+            lblSelected.Text = "Selected (test)";
+            // 
+            // lblLawyers
+            // 
+            lblLawyers.Anchor = AnchorStyles.Top;
+            lblLawyers.AutoSize = true;
+            lblLawyers.BackColor = SystemColors.GradientInactiveCaption;
+            lblLawyers.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLawyers.ForeColor = Color.FromArgb(45, 93, 134);
+            lblLawyers.Location = new Point(38, 26);
+            lblLawyers.Name = "lblLawyers";
+            lblLawyers.Size = new Size(83, 25);
+            lblLawyers.TabIndex = 4;
+            lblLawyers.Text = "Lawyers";
             // 
             // EmployeesView
             // 
@@ -80,23 +70,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblSelected);
             Controls.Add(flpnlLawyers);
-            Controls.Add(lblDetails);
-            Controls.Add(lblName);
-            Controls.Add(dgv);
+            Controls.Add(lblLawyers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesView";
             Text = "EmployeesView";
-            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dgv;
-        private Label lblName;
-        private Label lblDetails;
         private FlowLayoutPanel flpnlLawyers;
+        private Label lblSelected;
+        private Label lblLawyers;
     }
 }

@@ -34,6 +34,7 @@
             lblPhoneNumber = new Label();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // iconPictureBox1
@@ -44,7 +45,7 @@
             iconPictureBox1.IconColor = SystemColors.ControlText;
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 154;
-            iconPictureBox1.Location = new Point(20, 12);
+            iconPictureBox1.Location = new Point(29, 12);
             iconPictureBox1.Name = "iconPictureBox1";
             iconPictureBox1.Size = new Size(154, 154);
             iconPictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -56,7 +57,7 @@
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(17, 171);
+            lblName.Location = new Point(29, 169);
             lblName.Name = "lblName";
             lblName.Size = new Size(154, 21);
             lblName.TabIndex = 1;
@@ -66,7 +67,7 @@
             // 
             lblDetails.AutoSize = true;
             lblDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDetails.Location = new Point(17, 192);
+            lblDetails.Location = new Point(29, 190);
             lblDetails.Name = "lblDetails";
             lblDetails.Size = new Size(92, 17);
             lblDetails.TabIndex = 1;
@@ -76,7 +77,7 @@
             // 
             lblPhoneNumber.AutoSize = true;
             lblPhoneNumber.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPhoneNumber.Location = new Point(17, 209);
+            lblPhoneNumber.Location = new Point(29, 207);
             lblPhoneNumber.Name = "lblPhoneNumber";
             lblPhoneNumber.Size = new Size(87, 17);
             lblPhoneNumber.TabIndex = 2;
@@ -86,10 +87,13 @@
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImageLayout = ImageLayout.None;
+            panel1.Controls.Add(lblName);
+            panel1.Controls.Add(lblPhoneNumber);
+            panel1.Controls.Add(lblDetails);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(194, 240);
+            panel1.Size = new Size(212, 240);
             panel1.TabIndex = 3;
             // 
             // LawyerCard
@@ -97,13 +101,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(iconPictureBox1);
-            Controls.Add(lblName);
-            Controls.Add(lblDetails);
-            Controls.Add(lblPhoneNumber);
             Controls.Add(panel1);
             Name = "LawyerCard";
-            Size = new Size(194, 240);
+            Size = new Size(212, 240);
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

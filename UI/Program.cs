@@ -20,7 +20,33 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EmployeesView());
+
+            //LawyerBL bl = new LawyerBL();
+
+            //Lawyer lawyer = new Lawyer()
+            //{
+            //    Firstname = "Ramus",
+            //    Lastname = "Skov",
+            //    Email = "rasmus@skov.dk",
+            //    AddressLine = "Lumbyesvej 16",
+            //    PostalCode = 7000,
+            //    City = "Fredericia",
+            //    PhoneNumber = 22840883,
+            //    HireDate = DateTime.Now,
+            //    LawyerTitleID = 1,
+
+            //    LoginDetails = new LoginDetails()
+            //    {
+            //        Username = "rasmus@skov.dk",
+            //        Password = "skovesen",
+            //        CreationDate = DateTime.Now,
+
+            //    }
+
+            //};
+            //bool success = bl.CreateLawyer(lawyer);
+
+            Application.Run(new FrontPageView(1));
 
 
 
@@ -48,30 +74,7 @@ namespace UI
 
 
 
-            //LawyerBL bl = new LawyerBL();
-
-            //Lawyer lawyer = new Lawyer()
-            //{
-            //    Firstname = "Bilal",
-            //    Lastname = "Kinali",
-            //    Email = "bilalkinali2@gmail.com",
-            //    AddressLine = "Lumbyesvej 16",
-            //    PostalCode = 7000,
-            //    City = "Fredericia",
-            //    PhoneNumber = 88888888,
-            //    HireDate = DateTime.Now,
-            //    LawyerTitleID = 1,
-
-            //    LoginDetails = new LoginDetails()
-            //    {
-            //        Username = "bilalkinali2@gmail.com",
-            //        Password = "kode123",
-            //        CreationDate = DateTime.Now,
-
-            //    }
-
-            //};
-            //bool success = bl.CreateLawyer(lawyer);
+            
         }
     }
 }

@@ -29,6 +29,13 @@ namespace UI.Forms.FrontPage
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
+            btnLawyers.Click += BtnLawyers_Click;
+        }
+
+        private void BtnLawyers_Click(object? sender, EventArgs e)
+        {
+            EmployeesView employeesView = new EmployeesView(this);
+            PnlContextChange(employeesView);
         }
 
         private void BtnClients_Click(object? sender, EventArgs e)
@@ -51,6 +58,11 @@ namespace UI.Forms.FrontPage
         public async Task GetPersonAsync(int id)
         {
             currentUser = await personBL.GetPersonAsync(id);
+            if (currentUser != null)
+            {
+                lblCurrentUser.Text = currentUser.GetType().Name;
+                lblCurrentUserName.Text = currentUser.Firstname; 
+            }
             await SetupForm();
         }
 
@@ -59,14 +71,15 @@ namespace UI.Forms.FrontPage
             if (currentUser is ClientUI)
             {
                 clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
-                MessageBox.Show("person is a client");
+                //MessageBox.Show("person is a client");
 
             }
             if (currentUser is LawyerUI)
             {
                 lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
                 btnMyPageClient.Hide();
-                MessageBox.Show("person is a lawyer");
+                btnLawyers.Hide();
+                //MessageBox.Show("person is a lawyer");
             }
         }
 

@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             lblCaseInformation = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             cboxCaseType = new ComboBox();
             txtEstimatedHours = new TextBox();
@@ -79,7 +78,6 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblCaseInformation);
-            panel1.Controls.Add(iconButton1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(cboxCaseType);
             panel1.Controls.Add(txtEstimatedHours);
@@ -105,18 +103,6 @@
             lblCaseInformation.Size = new Size(134, 21);
             lblCaseInformation.TabIndex = 20;
             lblCaseInformation.Text = "Case information";
-            // 
-            // iconButton1
-            // 
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton1.IconSize = 20;
-            iconButton1.Location = new Point(239, 202);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(30, 23);
-            iconButton1.TabIndex = 19;
-            iconButton1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -627,7 +613,6 @@
         private Label label1;
         private ComboBox cboxCaseType;
         private Label lblCaseInformation;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panel2;
         private Label lblClientInformation;
         private Panel panel4;

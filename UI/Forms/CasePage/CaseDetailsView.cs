@@ -17,24 +17,27 @@ namespace UI.Forms.CasePage
         ClientUI selectedClient;
         CaseUI selectedCase;
         LawyerUI selectedLawyer;
+
         List<ServiceUI> serviceList;
-        List<CaseServiceUI> caseServiceList;
+        List<CaseTypeUI> caseTypeUIList;
 
         ClientBL clientBL;
         LawyerBL lawyerBL;
         ServiceBL serviceBL;
-        CaseServiceBL caseServiceBL;
+        CaseTypeBL caseTypeBL;
         public CaseDetailsView(CaseUI selectedCase)
         {
             InitializeComponent();
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
             serviceBL = new ServiceBL();
-            caseServiceBL = new CaseServiceBL();
+            caseTypeBL = new CaseTypeBL();
             this.selectedCase = selectedCase;
 
             SetData();
             SetDgv();
+            SetComboBox();
+
         }
 
         public async Task SetData()
@@ -53,29 +56,34 @@ namespace UI.Forms.CasePage
             txtLawyerLastName.Text = selectedLawyer.Lastname;
             txtLawyerPhone.Text = selectedLawyer.PhoneNumber.ToString();
 
-           
+            txtTitle.Text = selectedCase.Title;
+            dtpEstimatedEndDate.Value = selectedCase.EndDate;
+            txtEstimatedHours.Text = selectedCase.EstHours.ToString();
+
 
         }
 
         public async Task SetDgv()
         {
-            caseServiceList = await caseServiceBL.GetCaseServicesAsync();
-            serviceList = await serviceBL.GetServicesAsync();
-           
-            List<ServiceUI> filteredServices = new List<ServiceUI>();
+            serviceList = await serviceBL.GetServicesForCaseAsync(selectedCase.CaseID);
 
-            foreach(ServiceUI serviceUI in serviceList)
-            {
-                if(caseServiceList.Any(cs => cs.ServiceID == serviceUI.ServiceID && cs.CaseID == selectedCase.CaseID))
-                {
-                    filteredServices.Add(serviceUI);
-                }
-            }
+            dgvServices.DataSource = serviceList;
 
-            dgvServices.DataSource = filteredServices;
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        public async void SetComboBox()
+        {
+            caseTypeUIList = await caseTypeBL.GetCaseTypeAsync();
+
+            cboxCaseType.DisplayMember = "Title";
+
+            foreach (CaseTypeUI caseTypeUI in caseTypeUIList)
+            {
+                cboxCaseType.Items.Add(caseTypeUI);
+            }
         }
 
     }

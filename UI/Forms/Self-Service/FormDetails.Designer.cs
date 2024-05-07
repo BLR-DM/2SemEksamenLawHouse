@@ -30,8 +30,8 @@
         {
             btnBuy = new FontAwesome.Sharp.IconButton();
             lblTitle = new Label();
-            lblDescription = new Label();
             lblPrice = new Label();
+            txtDescription = new TextBox();
             SuspendLayout();
             // 
             // btnBuy
@@ -63,15 +63,6 @@
             lblTitle.TabIndex = 14;
             lblTitle.Text = "Title";
             // 
-            // lblDescription
-            // 
-            lblDescription.AutoSize = true;
-            lblDescription.Location = new Point(134, 135);
-            lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(67, 15);
-            lblDescription.TabIndex = 15;
-            lblDescription.Text = "Description";
-            // 
             // lblPrice
             // 
             lblPrice.AutoSize = true;
@@ -81,14 +72,25 @@
             lblPrice.TabIndex = 16;
             lblPrice.Text = "Price";
             // 
+            // txtDescription
+            // 
+            txtDescription.BackColor = SystemColors.GradientInactiveCaption;
+            txtDescription.BorderStyle = BorderStyle.None;
+            txtDescription.Location = new Point(82, 109);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.ReadOnly = true;
+            txtDescription.Size = new Size(170, 196);
+            txtDescription.TabIndex = 17;
+            // 
             // FormDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(334, 454);
+            Controls.Add(txtDescription);
             Controls.Add(lblPrice);
-            Controls.Add(lblDescription);
             Controls.Add(lblTitle);
             Controls.Add(btnBuy);
             Name = "FormDetails";
@@ -101,7 +103,7 @@
 
         private FontAwesome.Sharp.IconButton btnBuy;
         private Label lblTitle;
-        private Label lblDescription;
         private Label lblPrice;
+        private TextBox txtDescription;
     }
 }

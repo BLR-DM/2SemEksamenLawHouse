@@ -31,7 +31,7 @@ namespace UI.Forms.FrontPage
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
             btnLawyers.Click += BtnLawyers_Click;
-            btnFormulars.Click += BtnFormulars_Click;
+            btnForms.Click += BtnForms_Click;
         }
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
@@ -40,9 +40,9 @@ namespace UI.Forms.FrontPage
             PnlContextChange(employeesView);            
         }
 
-        private void BtnFormulars_Click(object? sender, EventArgs e)
+        private void BtnForms_Click(object? sender, EventArgs e)
         {
-            FormView fv = new FormView();
+            FormView fv = new FormView(currentUser.PersonID);
             PnlContextChange(fv);
         }
 

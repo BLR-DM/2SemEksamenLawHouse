@@ -33,8 +33,8 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
+            btnForms = new FontAwesome.Sharp.IconButton();
             btnLawyers = new FontAwesome.Sharp.IconButton();
-            btnFormulars = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
             lblCurrentUserName = new Label();
@@ -54,8 +54,8 @@
             pnlLeft.Controls.Add(iconButton1);
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnMyPageClient);
+            pnlLeft.Controls.Add(btnForms);
             pnlLeft.Controls.Add(btnLawyers);
-            pnlLeft.Controls.Add(btnFormulars);
             pnlLeft.Controls.Add(btnClients);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 60);
@@ -174,27 +174,27 @@
             btnLawyers.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLawyers.UseVisualStyleBackColor = false;
             // 
-            // btnFormulars
+            // btnForms
             // 
-            btnFormulars.BackColor = Color.Transparent;
-            btnFormulars.Dock = DockStyle.Top;
-            btnFormulars.FlatAppearance.BorderSize = 0;
-            btnFormulars.FlatStyle = FlatStyle.Flat;
-            btnFormulars.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnFormulars.ForeColor = Color.Black;
-            btnFormulars.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnFormulars.IconColor = Color.Black;
-            btnFormulars.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnFormulars.IconSize = 40;
-            btnFormulars.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFormulars.Location = new Point(0, 75);
-            btnFormulars.Name = "btnFormulars";
-            btnFormulars.Padding = new Padding(25, 0, 20, 0);
-            btnFormulars.Size = new Size(200, 75);
-            btnFormulars.TabIndex = 0;
-            btnFormulars.Text = "Formulars";
-            btnFormulars.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnFormulars.UseVisualStyleBackColor = false;
+            btnForms.BackColor = Color.Transparent;
+            btnForms.Dock = DockStyle.Top;
+            btnForms.FlatAppearance.BorderSize = 0;
+            btnForms.FlatStyle = FlatStyle.Flat;
+            btnForms.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnForms.ForeColor = Color.Black;
+            btnForms.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnForms.IconColor = Color.Black;
+            btnForms.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnForms.IconSize = 40;
+            btnForms.ImageAlign = ContentAlignment.MiddleLeft;
+            btnForms.Location = new Point(0, 75);
+            btnForms.Name = "btnForms";
+            btnForms.Padding = new Padding(25, 0, 20, 0);
+            btnForms.Size = new Size(200, 75);
+            btnForms.TabIndex = 0;
+            btnForms.Text = "Formulars";
+            btnForms.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnForms.UseVisualStyleBackColor = false;
             // 
             // btnClients
             // 
@@ -322,8 +322,8 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
+        private FontAwesome.Sharp.IconButton btnForms;
         private FontAwesome.Sharp.IconButton btnLawyers;
-        private FontAwesome.Sharp.IconButton btnFormulars;
         private FontAwesome.Sharp.IconButton btnClients;
         private Toolbox.GradiantPanel gradiantPanel1;
         private FontAwesome.Sharp.IconButton btnClose;

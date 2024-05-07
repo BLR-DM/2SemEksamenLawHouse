@@ -29,5 +29,15 @@ namespace BusinessLogic
 
             return formUIs;
         }
+
+        public async Task<List<FormUI>> GetBoughtFormsAsync(int clientID)
+        {
+            List<FormUI> boughtFormsUI = new List<FormUI>();
+            foreach(Form form in await dbAccess.GetBoughtFormsAsync(clientID))
+            {
+                boughtFormsUI.Add(modelConverter.ConvertFromFormEntity(form));
+            }
+            return boughtFormsUI;
+        }
     }
 }

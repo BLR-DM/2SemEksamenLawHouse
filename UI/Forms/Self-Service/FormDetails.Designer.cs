@@ -32,6 +32,7 @@
             lblTitle = new Label();
             lblPrice = new Label();
             txtDescription = new TextBox();
+            btnResendMail = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // btnBuy
@@ -82,6 +83,27 @@
             txtDescription.ReadOnly = true;
             txtDescription.Size = new Size(170, 196);
             txtDescription.TabIndex = 17;
+            txtDescription.TabStop = false;
+            // 
+            // btnResendMail
+            // 
+            btnResendMail.Anchor = AnchorStyles.Bottom;
+            btnResendMail.BackColor = Color.FromArgb(45, 93, 134);
+            btnResendMail.Cursor = Cursors.Hand;
+            btnResendMail.FlatAppearance.BorderSize = 0;
+            btnResendMail.FlatStyle = FlatStyle.Flat;
+            btnResendMail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnResendMail.ForeColor = Color.White;
+            btnResendMail.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnResendMail.IconColor = Color.Black;
+            btnResendMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnResendMail.IconSize = 70;
+            btnResendMail.Location = new Point(89, 389);
+            btnResendMail.Name = "btnResendMail";
+            btnResendMail.Size = new Size(156, 41);
+            btnResendMail.TabIndex = 18;
+            btnResendMail.Text = "Resend Mail";
+            btnResendMail.UseVisualStyleBackColor = false;
             // 
             // FormDetails
             // 
@@ -89,6 +111,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(334, 454);
+            Controls.Add(btnResendMail);
             Controls.Add(txtDescription);
             Controls.Add(lblPrice);
             Controls.Add(lblTitle);
@@ -105,5 +128,6 @@
         private Label lblTitle;
         private Label lblPrice;
         private TextBox txtDescription;
+        private FontAwesome.Sharp.IconButton btnResendMail;
     }
 }

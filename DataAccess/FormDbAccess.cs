@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using EntityModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
@@ -22,8 +23,22 @@ namespace DataAccess
         {
             try
             {
-                List<Form> form = db.Forms.ToList();
-                return form;
+                List<Form> forms = db.Forms.ToList();
+                return forms;
+            }
+            catch (Exception)
+            {
+
+                return new List<Form>();
+            }
+        }
+
+        public async Task<List<Form>> GetBoughtFormsAsync(int clientID)
+        {
+            try
+            {
+                List<Form> boughtForms = db.ClientForms.Where(c => c.ClientID == clientID).Include(cf => cf.Form).Select(cf => cf.Form).ToList();
+                return boughtForms;
             }
             catch (Exception)
             {

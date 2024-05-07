@@ -50,7 +50,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnForms_Click(object? sender, EventArgs e)
         {
-            FormView fv = new FormView(currentUser.PersonID);
+            FormView fv = new FormView(clientUI);
             PnlContextChange(fv);
         }
 

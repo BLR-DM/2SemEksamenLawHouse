@@ -17,16 +17,27 @@ namespace UI.Forms.Self_Service
     {
         FormBL formBL;
         List<FormUI> formUIs;
-        int clientID;
-        public FormView(int clientID)
+        List<FormUI> boughtForms;
+        ClientUI client;
+        public FormView(ClientUI client)
         {
             InitializeComponent();
-            this.clientID = clientID;
+            this.client = client;
             formBL = new FormBL();
 
             dgvForms.CellDoubleClick += DgvForms_CellDoubleClick;
-
+            dgvBoughtForms.CellDoubleClick += DgvBoughtForms_CellDoubleClick;
             SetDGVsAsync();
+        }
+
+        private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                FormUI selectedForm = boughtForms[e.RowIndex];
+                FormDetails fdBought = new FormDetails(selectedForm, client);
+                fdBought.ShowDialog();
+            }
         }
 
         private void DgvForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -34,7 +45,7 @@ namespace UI.Forms.Self_Service
             if (e.RowIndex >= 0)
             {
                 FormUI selectedForm = formUIs[e.RowIndex];
-                FormDetails fd = new FormDetails(selectedForm, clientID);
+                FormDetails fd = new FormDetails(this, selectedForm, client, boughtForms);
                 fd.ShowDialog();
             }
         }
@@ -42,6 +53,19 @@ namespace UI.Forms.Self_Service
         private async void SetDGVsAsync()
         {
             await SetDGVFormAsync();
+            await SetBoughtFormsDGVAsync();
+        }
+
+        public async Task SetBoughtFormsDGVAsync()
+        {
+            boughtForms = await formBL.GetBoughtFormsAsync(client.PersonID);
+            dgvBoughtForms.DataSource = boughtForms;
+            dgvBoughtForms.Columns["FormID"].Visible = false;
+            dgvBoughtForms.Columns["Description"].Visible = false;
+            dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBoughtForms.ReadOnly = true;
+            dgvBoughtForms.RowHeadersVisible = false;
+            dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private async Task SetDGVFormAsync()

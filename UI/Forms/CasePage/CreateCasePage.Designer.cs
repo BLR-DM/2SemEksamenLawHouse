@@ -401,7 +401,7 @@
             lblName.Name = "lblName";
             lblName.Size = new Size(53, 21);
             lblName.TabIndex = 39;
-            lblName.Text = "Name";
+            lblName.Text = "Firstname";
             // 
             // lblClientInformation
             // 
@@ -556,7 +556,7 @@
             label5.Name = "label5";
             label5.Size = new Size(53, 21);
             label5.TabIndex = 44;
-            label5.Text = "Name";
+            label5.Text = "Firstname";
             // 
             // lblAddLawyer
             // 

@@ -29,27 +29,20 @@
         private void InitializeComponent()
         {
             flpnlLawyers = new FlowLayoutPanel();
-            lblSelected = new Label();
             lblLawyers = new Label();
+            pnlDetails = new Panel();
+            panel2 = new Panel();
+            tboxSelected = new TextBox();
+            label1 = new Label();
+            pnlDetails.SuspendLayout();
             SuspendLayout();
             // 
             // flpnlLawyers
             // 
             flpnlLawyers.Location = new Point(11, 61);
             flpnlLawyers.Name = "flpnlLawyers";
-            flpnlLawyers.Size = new Size(512, 540);
+            flpnlLawyers.Size = new Size(683, 540);
             flpnlLawyers.TabIndex = 2;
-            // 
-            // lblSelected
-            // 
-            lblSelected.AutoSize = true;
-            lblSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblSelected.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSelected.Location = new Point(792, 69);
-            lblSelected.Name = "lblSelected";
-            lblSelected.Size = new Size(116, 21);
-            lblSelected.TabIndex = 3;
-            lblSelected.Text = "Selected (test)";
             // 
             // lblLawyers
             // 
@@ -64,25 +57,76 @@
             lblLawyers.TabIndex = 4;
             lblLawyers.Text = "Lawyers";
             // 
+            // pnlDetails
+            // 
+            pnlDetails.Controls.Add(panel2);
+            pnlDetails.Controls.Add(label1);
+            pnlDetails.Location = new Point(700, 54);
+            pnlDetails.Name = "pnlDetails";
+            pnlDetails.Size = new Size(286, 519);
+            pnlDetails.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(45, 93, 134);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(3, 519);
+            panel2.TabIndex = 0;
+            // 
+            // tboxSelected
+            // 
+            tboxSelected.BackColor = SystemColors.GradientInactiveCaption;
+            tboxSelected.BorderStyle = BorderStyle.None;
+            tboxSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            tboxSelected.ForeColor = Color.FromArgb(45, 93, 134);
+            tboxSelected.Location = new Point(700, 29);
+            tboxSelected.Name = "tboxSelected";
+            tboxSelected.ReadOnly = true;
+            tboxSelected.Size = new Size(286, 22);
+            tboxSelected.TabIndex = 0;
+            tboxSelected.TabStop = false;
+            tboxSelected.Text = "Selected name";
+            tboxSelected.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.GradientInactiveCaption;
+            label1.Font = new Font("Segoe UI", 46F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(45, 93, 134);
+            label1.Location = new Point(5, 199);
+            label1.Name = "label1";
+            label1.Size = new Size(278, 84);
+            label1.TabIndex = 4;
+            label1.Text = "DETAILS";
+            // 
             // EmployeesView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(lblSelected);
+            Controls.Add(tboxSelected);
             Controls.Add(flpnlLawyers);
             Controls.Add(lblLawyers);
+            Controls.Add(pnlDetails);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesView";
             Text = "EmployeesView";
+            pnlDetails.ResumeLayout(false);
+            pnlDetails.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private FlowLayoutPanel flpnlLawyers;
-        private Label lblSelected;
         private Label lblLawyers;
+        private Panel pnlDetails;
+        private Panel panel2;
+        private TextBox tboxSelected;
+        private Label label1;
     }
 }

@@ -112,7 +112,7 @@
             lblName.Name = "lblName";
             lblName.Size = new Size(53, 21);
             lblName.TabIndex = 4;
-            lblName.Text = "Name";
+            lblName.Text = "Firstname";
             // 
             // txtFirstname
             // 

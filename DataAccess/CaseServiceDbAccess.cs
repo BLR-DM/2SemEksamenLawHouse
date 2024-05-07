@@ -16,7 +16,7 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
-        public async Task<List<CaseService>> GetCaseServicesForCaseAsync(int id)
+        public async Task<List<CaseService>> GetCaseServicesAsync(int id)
         {
             try
             {

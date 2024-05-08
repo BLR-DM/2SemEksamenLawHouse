@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesView));
             flpnlLawyers = new FlowLayoutPanel();
             lblLawyers = new Label();
             pnlDetails = new Panel();
@@ -46,6 +47,7 @@
             lblSpecialities = new Label();
             tboxSelected = new TextBox();
             lblAllSpecialties = new Label();
+            panel1 = new Panel();
             pnlDetails.SuspendLayout();
             pnlDetailsPicture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxDetails).BeginInit();
@@ -74,6 +76,7 @@
             // 
             // pnlDetails
             // 
+            pnlDetails.BackgroundImage = (Image)resources.GetObject("pnlDetails.BackgroundImage");
             pnlDetails.Controls.Add(pnlDetailsPicture);
             pnlDetails.Controls.Add(lboxSpecialties);
             pnlDetails.Controls.Add(panel2);
@@ -94,7 +97,7 @@
             // pnlDetailsPicture
             // 
             pnlDetailsPicture.Controls.Add(pboxDetails);
-            pnlDetailsPicture.Location = new Point(15, 22);
+            pnlDetailsPicture.Location = new Point(15, 28);
             pnlDetailsPicture.Name = "pnlDetailsPicture";
             pnlDetailsPicture.Size = new Size(311, 218);
             pnlDetailsPicture.TabIndex = 5;
@@ -102,10 +105,11 @@
             // pboxDetails
             // 
             pboxDetails.BackColor = SystemColors.GradientInactiveCaption;
+            pboxDetails.BackgroundImage = (Image)resources.GetObject("pboxDetails.BackgroundImage");
             pboxDetails.Dock = DockStyle.Fill;
-            pboxDetails.ForeColor = SystemColors.ControlText;
-            pboxDetails.IconChar = FontAwesome.Sharp.IconChar.PersonCane;
-            pboxDetails.IconColor = SystemColors.ControlText;
+            pboxDetails.ForeColor = Color.SaddleBrown;
+            pboxDetails.IconChar = FontAwesome.Sharp.IconChar.Poo;
+            pboxDetails.IconColor = Color.SaddleBrown;
             pboxDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxDetails.IconSize = 218;
             pboxDetails.Location = new Point(0, 0);
@@ -143,7 +147,7 @@
             // 
             lblDetailsEmailValue.Anchor = AnchorStyles.Top;
             lblDetailsEmailValue.AutoSize = true;
-            lblDetailsEmailValue.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsEmailValue.BackColor = Color.Transparent;
             lblDetailsEmailValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsEmailValue.ForeColor = SystemColors.ControlText;
             lblDetailsEmailValue.Location = new Point(67, 349);
@@ -155,7 +159,7 @@
             // 
             lblDetailsEmail.Anchor = AnchorStyles.Top;
             lblDetailsEmail.AutoSize = true;
-            lblDetailsEmail.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsEmail.BackColor = Color.Transparent;
             lblDetailsEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsEmail.ForeColor = Color.FromArgb(45, 93, 134);
             lblDetailsEmail.Location = new Point(21, 348);
@@ -168,7 +172,7 @@
             // 
             lblDetailsPhoneValue.Anchor = AnchorStyles.Top;
             lblDetailsPhoneValue.AutoSize = true;
-            lblDetailsPhoneValue.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsPhoneValue.BackColor = Color.Transparent;
             lblDetailsPhoneValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsPhoneValue.ForeColor = SystemColors.ControlText;
             lblDetailsPhoneValue.Location = new Point(73, 319);
@@ -180,7 +184,7 @@
             // 
             lblDetailsPhone.Anchor = AnchorStyles.Top;
             lblDetailsPhone.AutoSize = true;
-            lblDetailsPhone.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsPhone.BackColor = Color.Transparent;
             lblDetailsPhone.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsPhone.ForeColor = Color.FromArgb(45, 93, 134);
             lblDetailsPhone.Location = new Point(21, 318);
@@ -193,7 +197,7 @@
             // 
             lblDetailsCityValue.Anchor = AnchorStyles.Top;
             lblDetailsCityValue.AutoSize = true;
-            lblDetailsCityValue.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsCityValue.BackColor = Color.Transparent;
             lblDetailsCityValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsCityValue.ForeColor = SystemColors.ControlText;
             lblDetailsCityValue.Location = new Point(57, 289);
@@ -205,7 +209,7 @@
             // 
             lblDetailsCity.Anchor = AnchorStyles.Top;
             lblDetailsCity.AutoSize = true;
-            lblDetailsCity.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsCity.BackColor = Color.Transparent;
             lblDetailsCity.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsCity.ForeColor = Color.FromArgb(45, 93, 134);
             lblDetailsCity.Location = new Point(21, 288);
@@ -218,7 +222,7 @@
             // 
             lblDetailsTitleValue.Anchor = AnchorStyles.Top;
             lblDetailsTitleValue.AutoSize = true;
-            lblDetailsTitleValue.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsTitleValue.BackColor = Color.Transparent;
             lblDetailsTitleValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsTitleValue.ForeColor = SystemColors.ControlText;
             lblDetailsTitleValue.Location = new Point(60, 259);
@@ -230,7 +234,7 @@
             // 
             lblDetailsTitle.Anchor = AnchorStyles.Top;
             lblDetailsTitle.AutoSize = true;
-            lblDetailsTitle.BackColor = SystemColors.GradientInactiveCaption;
+            lblDetailsTitle.BackColor = Color.Transparent;
             lblDetailsTitle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsTitle.ForeColor = Color.FromArgb(45, 93, 134);
             lblDetailsTitle.Location = new Point(21, 258);
@@ -243,7 +247,7 @@
             // 
             lblSpecialities.Anchor = AnchorStyles.Top;
             lblSpecialities.AutoSize = true;
-            lblSpecialities.BackColor = SystemColors.GradientInactiveCaption;
+            lblSpecialities.BackColor = Color.Transparent;
             lblSpecialities.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblSpecialities.ForeColor = Color.FromArgb(45, 93, 134);
             lblSpecialities.Location = new Point(21, 378);
@@ -258,7 +262,7 @@
             tboxSelected.BorderStyle = BorderStyle.None;
             tboxSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             tboxSelected.ForeColor = Color.FromArgb(45, 93, 134);
-            tboxSelected.Location = new Point(663, 45);
+            tboxSelected.Location = new Point(663, 48);
             tboxSelected.Name = "tboxSelected";
             tboxSelected.ReadOnly = true;
             tboxSelected.Size = new Size(331, 22);
@@ -280,6 +284,15 @@
             lblAllSpecialties.TabIndex = 4;
             lblAllSpecialties.Text = "Lawyers";
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(658, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(340, 613);
+            panel1.TabIndex = 6;
+            // 
             // EmployeesView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -291,6 +304,7 @@
             Controls.Add(lblAllSpecialties);
             Controls.Add(lblLawyers);
             Controls.Add(pnlDetails);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesView";
             Text = "EmployeesView";
@@ -321,5 +335,6 @@
         private Label lblDetailsCity;
         private Label lblDetailsTitleValue;
         private Label lblDetailsTitle;
+        private Panel panel1;
     }
 }

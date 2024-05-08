@@ -81,6 +81,8 @@ namespace UI.Forms.ClientPage
         {
             if (control != null)
             {
+                pboxDetails.IconColor = Color.Black;
+                pboxDetails.IconChar = control.LawyerID == 5 ? FontAwesome.Sharp.IconChar.PiedPiperAlt : FontAwesome.Sharp.IconChar.PersonMilitaryPointing;
                 tboxSelected.Text = string.Join(" ", control.Firstname, control.Lastname);
                 lblDetailsTitleValue.Text = control.Title;
                 lblDetailsCityValue.Text = control.City;

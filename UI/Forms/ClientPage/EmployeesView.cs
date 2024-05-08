@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Form = System.Windows.Forms.Form;
 
 namespace UI.Forms.ClientPage
 {
-    public partial class EmployeesView : Form
+    public partial class EmployeesView : System.Windows.Forms.Form
     {
         LawyerBL lawyerBL;
         SpecialityBL specialityBL;

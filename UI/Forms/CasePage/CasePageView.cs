@@ -33,10 +33,17 @@ namespace UI.Forms.CasePage
             this.f1 = f1;
 
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
+            btnCreateCase.Click += BtnCreateCase_Click;
 
             SetComboBox();
             SetDgv();
 
+        }
+
+        private void BtnCreateCase_Click(object? sender, EventArgs e)
+        {
+            CreateCasePage createCasePage = new CreateCasePage();
+            f1.PnlContextChange(createCasePage);
         }
 
         private void DgvCaseList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

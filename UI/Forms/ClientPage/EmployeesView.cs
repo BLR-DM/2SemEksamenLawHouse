@@ -7,11 +7,15 @@ namespace UI.Forms.ClientPage
     public partial class EmployeesView : Form
     {
         LawyerBL lawyerBL;
+        SpecialityBL specialityBL;
         List<LawyerUI> lawyerUIs;
+        List<LawyerSpecialityUI> lawyerSpecialityUIs;
         public EmployeesView()
         {
+            specialityBL = new SpecialityBL();
             lawyerBL = new LawyerBL();
             lawyerUIs = new List<LawyerUI>();
+            lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
 
             InitializeComponent();
 
@@ -21,12 +25,24 @@ namespace UI.Forms.ClientPage
         private async void EmployeesView_Load(object? sender, EventArgs e)
         {
             await GetLawyerUIsAsync();
+            await GetSpecialityUIsAsync();
             FilterAndDisplayLawyers();
+            if (lawyerSpecialityUIs.Count > 0)
+            {
+                lblSpecialties.Text = string.Join(", ", lawyerSpecialityUIs
+                    .Select(s => s.SpecialityName)
+                    .Distinct());
+            }
         }
 
         private async Task GetLawyerUIsAsync()
         {
             lawyerUIs = await lawyerBL.GetLawyersAsync();
+        }
+
+        private async Task GetSpecialityUIsAsync()
+        {
+            lawyerSpecialityUIs = await specialityBL.GetLawyerSpecialitiesAsync();
         }
 
         private void FilterAndDisplayLawyers()
@@ -42,6 +58,7 @@ namespace UI.Forms.ClientPage
                 {
                     control.Click += (sender, e) => LawyerCard_Click(lawyerCard, e);
                 }
+                lawyerCard.Margin = new Padding(23);
                 flpnlLawyers.Controls.Add(lawyerCard);
             }
         }
@@ -49,10 +66,12 @@ namespace UI.Forms.ClientPage
         private void LawyerCard_Click(object? sender, EventArgs e)
         {
             LawyerCard control = (LawyerCard)sender;
+            
 
             if (control != null)
             {
                 tboxSelected.Text = string.Join(" ", control.Firstname, control.Lastname);
+                lblSpeciality.Text = string.Join(", ", lawyerSpecialityUIs.Select(x => x.LawyerID == control.LawyerID));
             }
         }       
 

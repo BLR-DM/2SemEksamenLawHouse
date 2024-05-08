@@ -180,6 +180,9 @@ namespace BusinessLogic
             {
                 LawyerID = lawyerSpecialityE.LawyerID,
                 SpecialityID = lawyerSpecialityE.SpecialityID,
+
+                //
+                SpecialityName = lawyerSpecialityE.Speciality.SpecialityName
             };
             return lawyerSpecialityUI;
         }

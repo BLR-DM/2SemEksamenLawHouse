@@ -67,7 +67,7 @@ namespace UI.Forms.CasePage
 
         public async void SortData()
         {
-            lawyerSpecialityList = await specialityBL.GetLawyerSpecialities();
+            lawyerSpecialityList = await specialityBL.GetLawyerSpecialitiesAsync();
             List<LawyerUI> filteredLawyers = new List<LawyerUI>();
 
             SpecialityUI selectedSpeciality = (SpecialityUI)cboSpecialities.SelectedItem;

@@ -46,7 +46,7 @@
             pboxProfile.IconColor = SystemColors.ControlText;
             pboxProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxProfile.IconSize = 154;
-            pboxProfile.Location = new Point(29, 12);
+            pboxProfile.Location = new Point(3, 3);
             pboxProfile.Name = "pboxProfile";
             pboxProfile.Size = new Size(154, 154);
             pboxProfile.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -59,7 +59,7 @@
             lblName.Cursor = Cursors.Hand;
             lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
-            lblName.Location = new Point(29, 169);
+            lblName.Location = new Point(3, 160);
             lblName.Name = "lblName";
             lblName.Size = new Size(154, 21);
             lblName.TabIndex = 1;
@@ -70,7 +70,7 @@
             lblDetails.AutoSize = true;
             lblDetails.Cursor = Cursors.Hand;
             lblDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDetails.Location = new Point(29, 190);
+            lblDetails.Location = new Point(3, 181);
             lblDetails.Name = "lblDetails";
             lblDetails.Size = new Size(92, 17);
             lblDetails.TabIndex = 1;
@@ -81,7 +81,7 @@
             lblPhoneNumber.AutoSize = true;
             lblPhoneNumber.Cursor = Cursors.Hand;
             lblPhoneNumber.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPhoneNumber.Location = new Point(29, 207);
+            lblPhoneNumber.Location = new Point(3, 198);
             lblPhoneNumber.Name = "lblPhoneNumber";
             lblPhoneNumber.Size = new Size(87, 17);
             lblPhoneNumber.TabIndex = 2;
@@ -91,7 +91,7 @@
             // 
             pboxClick.BackColor = SystemColors.GradientInactiveCaption;
             pboxClick.Cursor = Cursors.Hand;
-            pboxClick.Location = new Point(29, 160);
+            pboxClick.Location = new Point(3, 151);
             pboxClick.Name = "pboxClick";
             pboxClick.Size = new Size(154, 64);
             pboxClick.TabIndex = 3;
@@ -106,8 +106,8 @@
             Controls.Add(pboxProfile);
             Controls.Add(lblDetails);
             Controls.Add(pboxClick);
-            Firstname = "LawyerCard";
-            Size = new Size(212, 240);
+            Name = "LawyerCard";
+            Size = new Size(160, 218);
             ((System.ComponentModel.ISupportInitialize)pboxProfile).EndInit();
             ((System.ComponentModel.ISupportInitialize)pboxClick).EndInit();
             ResumeLayout(false);

@@ -12,5 +12,8 @@ namespace UIModels
 
         public int LawyerID { get; set; }
         public int SpecialityID { get; set; }
+
+        // Kun i UI
+        public string? SpecialityName { get; set; }
     }
 }

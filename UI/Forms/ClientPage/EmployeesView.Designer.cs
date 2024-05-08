@@ -33,15 +33,17 @@
             pnlDetails = new Panel();
             panel2 = new Panel();
             tboxSelected = new TextBox();
-            label1 = new Label();
+            lblSpecialties = new Label();
+            lblSpeciality = new Label();
             pnlDetails.SuspendLayout();
             SuspendLayout();
             // 
             // flpnlLawyers
             // 
-            flpnlLawyers.Location = new Point(11, 61);
+            flpnlLawyers.AutoScroll = true;
+            flpnlLawyers.Location = new Point(11, 76);
             flpnlLawyers.Name = "flpnlLawyers";
-            flpnlLawyers.Size = new Size(683, 540);
+            flpnlLawyers.Size = new Size(641, 525);
             flpnlLawyers.TabIndex = 2;
             // 
             // lblLawyers
@@ -60,10 +62,10 @@
             // pnlDetails
             // 
             pnlDetails.Controls.Add(panel2);
-            pnlDetails.Controls.Add(label1);
-            pnlDetails.Location = new Point(700, 54);
+            pnlDetails.Controls.Add(lblSpeciality);
+            pnlDetails.Location = new Point(658, 54);
             pnlDetails.Name = "pnlDetails";
-            pnlDetails.Size = new Size(286, 519);
+            pnlDetails.Size = new Size(328, 519);
             pnlDetails.TabIndex = 5;
             // 
             // panel2
@@ -81,26 +83,40 @@
             tboxSelected.BorderStyle = BorderStyle.None;
             tboxSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             tboxSelected.ForeColor = Color.FromArgb(45, 93, 134);
-            tboxSelected.Location = new Point(700, 29);
+            tboxSelected.Location = new Point(663, 29);
             tboxSelected.Name = "tboxSelected";
             tboxSelected.ReadOnly = true;
-            tboxSelected.Size = new Size(286, 22);
+            tboxSelected.Size = new Size(323, 22);
             tboxSelected.TabIndex = 0;
             tboxSelected.TabStop = false;
             tboxSelected.Text = "Selected name";
             tboxSelected.TextAlign = HorizontalAlignment.Center;
             // 
-            // label1
+            // lblSpecialties
             // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.GradientInactiveCaption;
-            label1.Font = new Font("Segoe UI", 46F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(5, 199);
-            label1.Name = "label1";
-            label1.Size = new Size(278, 84);
-            label1.TabIndex = 4;
-            label1.Text = "DETAILS";
+            lblSpecialties.Anchor = AnchorStyles.Top;
+            lblSpecialties.AutoSize = true;
+            lblSpecialties.BackColor = SystemColors.GradientInactiveCaption;
+            lblSpecialties.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblSpecialties.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSpecialties.Location = new Point(38, 54);
+            lblSpecialties.Name = "lblSpecialties";
+            lblSpecialties.Size = new Size(59, 19);
+            lblSpecialties.TabIndex = 4;
+            lblSpecialties.Text = "Lawyers";
+            // 
+            // lblSpeciality
+            // 
+            lblSpeciality.Anchor = AnchorStyles.Top;
+            lblSpeciality.AutoSize = true;
+            lblSpeciality.BackColor = SystemColors.GradientInactiveCaption;
+            lblSpeciality.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSpeciality.Location = new Point(9, 217);
+            lblSpeciality.Name = "lblSpeciality";
+            lblSpeciality.Size = new Size(59, 19);
+            lblSpeciality.TabIndex = 4;
+            lblSpeciality.Text = "Lawyers";
             // 
             // EmployeesView
             // 
@@ -110,6 +126,7 @@
             ClientSize = new Size(998, 613);
             Controls.Add(tboxSelected);
             Controls.Add(flpnlLawyers);
+            Controls.Add(lblSpecialties);
             Controls.Add(lblLawyers);
             Controls.Add(pnlDetails);
             FormBorderStyle = FormBorderStyle.None;
@@ -127,6 +144,7 @@
         private Panel pnlDetails;
         private Panel panel2;
         private TextBox tboxSelected;
-        private Label label1;
+        private Label lblSpecialties;
+        private Label lblSpeciality;
     }
 }

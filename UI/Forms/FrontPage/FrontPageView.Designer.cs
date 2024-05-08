@@ -42,6 +42,7 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
+            btnAdminPage = new FontAwesome.Sharp.IconButton();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -50,6 +51,7 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
+            pnlLeft.Controls.Add(btnAdminPage);
             pnlLeft.Controls.Add(btnMyPageLawyer);
             pnlLeft.Controls.Add(iconButton1);
             pnlLeft.Controls.Add(btnCase);
@@ -82,7 +84,7 @@
             btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
             btnMyPageLawyer.Size = new Size(200, 75);
             btnMyPageLawyer.TabIndex = 1;
-            btnMyPageLawyer.Text = "My Page";
+            btnMyPageLawyer.Text = "My Page (Lawyer)";
             btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
@@ -148,7 +150,7 @@
             btnMyPageClient.Padding = new Padding(25, 0, 20, 0);
             btnMyPageClient.Size = new Size(200, 75);
             btnMyPageClient.TabIndex = 0;
-            btnMyPageClient.Text = "My Page";
+            btnMyPageClient.Text = "My Page (Client)";
             btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageClient.UseVisualStyleBackColor = false;
             // 
@@ -242,7 +244,7 @@
             lblCurrentUserName.ForeColor = Color.White;
             lblCurrentUserName.Location = new Point(1092, 19);
             lblCurrentUserName.Name = "lblCurrentUserName";
-            lblCurrentUserName.Size = new Size(53, 21);
+            lblCurrentUserName.Size = new Size(81, 21);
             lblCurrentUserName.TabIndex = 1;
             lblCurrentUserName.Text = "Firstname";
             // 
@@ -295,6 +297,29 @@
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
+            // btnAdminPage
+            // 
+            btnAdminPage.AccessibleName = "";
+            btnAdminPage.BackColor = Color.Transparent;
+            btnAdminPage.Dock = DockStyle.Bottom;
+            btnAdminPage.FlatAppearance.BorderSize = 0;
+            btnAdminPage.FlatStyle = FlatStyle.Flat;
+            btnAdminPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdminPage.ForeColor = Color.Black;
+            btnAdminPage.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnAdminPage.IconColor = Color.Black;
+            btnAdminPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAdminPage.IconSize = 40;
+            btnAdminPage.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdminPage.Location = new Point(0, 388);
+            btnAdminPage.Name = "btnAdminPage";
+            btnAdminPage.Padding = new Padding(25, 0, 20, 0);
+            btnAdminPage.Size = new Size(200, 75);
+            btnAdminPage.TabIndex = 2;
+            btnAdminPage.Text = "Admin Page";
+            btnAdminPage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAdminPage.UseVisualStyleBackColor = false;
+            // 
             // FrontPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -331,5 +356,6 @@
         private Panel pnlContext;
         private Label lblCurrentUser;
         private Label lblCurrentUserName;
+        private FontAwesome.Sharp.IconButton btnAdminPage;
     }
 }

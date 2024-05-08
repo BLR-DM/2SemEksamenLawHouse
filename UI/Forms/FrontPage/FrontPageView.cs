@@ -62,8 +62,8 @@ namespace UI.Forms.FrontPage
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
-            MyPageView mpv = new MyPageView(clientUI);
-            PnlContextChange(mpv);
+            ClientDetails cdMyPage = new ClientDetails(clientUI);
+            PnlContextChange(cdMyPage);
         }
 
         private void BtnClose_Click(object? sender, EventArgs e)

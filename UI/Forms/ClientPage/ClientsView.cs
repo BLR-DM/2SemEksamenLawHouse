@@ -31,8 +31,15 @@ namespace UI.Forms.ClientPage
             txtSearchPhone.TextChanged += TxtSearchPhone_TextChanged;
             txtSearchPostal.TextChanged += TxtSearchPostal_TextChanged;
             dgvClients.CellDoubleClick += DgvClients_CellDoubleClick;
+            btnCreate.Click += BtnCreate_Click;
         }
-        
+
+        private void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            CreateClientView cCV = new CreateClientView();
+            fpv.PnlContextChange(cCV);
+        }
+
         //doubleklik åbn ClientDetails
         private void DgvClients_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {

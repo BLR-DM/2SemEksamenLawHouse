@@ -54,15 +54,15 @@
             label1 = new Label();
             lblPhoneNumbersView = new Label();
             label7 = new Label();
-            dataGridView2 = new DataGridView();
+            dgvBoughtForms = new DataGridView();
             label8 = new Label();
-            pictureBox1 = new PictureBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            pboxProfile = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBoughtForms).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxProfile).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -380,13 +380,13 @@
             label7.TabIndex = 44;
             label7.Text = "Cases";
             // 
-            // dataGridView2
+            // dgvBoughtForms
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(493, 423);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(448, 135);
-            dataGridView2.TabIndex = 45;
+            dgvBoughtForms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBoughtForms.Location = new Point(493, 423);
+            dgvBoughtForms.Name = "dgvBoughtForms";
+            dgvBoughtForms.Size = new Size(448, 135);
+            dgvBoughtForms.TabIndex = 45;
             // 
             // label8
             // 
@@ -399,14 +399,6 @@
             label8.Size = new Size(82, 21);
             label8.TabIndex = 46;
             label8.Text = "Formulars";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(624, 53);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(199, 118);
-            pictureBox1.TabIndex = 47;
-            pictureBox1.TabStop = false;
             // 
             // iconButton1
             // 
@@ -428,16 +420,32 @@
             iconButton1.Text = "Delete";
             iconButton1.UseVisualStyleBackColor = false;
             // 
+            // pboxProfile
+            // 
+            pboxProfile.BackColor = SystemColors.GradientActiveCaption;
+            pboxProfile.Cursor = Cursors.Hand;
+            pboxProfile.ForeColor = SystemColors.ControlText;
+            pboxProfile.IconChar = FontAwesome.Sharp.IconChar.UserTie;
+            pboxProfile.IconColor = SystemColors.ControlText;
+            pboxProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            pboxProfile.IconSize = 154;
+            pboxProfile.Location = new Point(637, 24);
+            pboxProfile.Name = "pboxProfile";
+            pboxProfile.Size = new Size(154, 154);
+            pboxProfile.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxProfile.TabIndex = 51;
+            pboxProfile.TabStop = false;
+            // 
             // ClientDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(pboxProfile);
             Controls.Add(iconButton1);
-            Controls.Add(pictureBox1);
             Controls.Add(label8);
-            Controls.Add(dataGridView2);
+            Controls.Add(dgvBoughtForms);
             Controls.Add(label7);
             Controls.Add(panel2);
             Controls.Add(dataGridView1);
@@ -448,8 +456,8 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBoughtForms).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxProfile).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -466,9 +474,8 @@
         private Label lblPhoneNumbersView;
         private Label label6;
         private Label label7;
-        private DataGridView dataGridView2;
+        private DataGridView dgvBoughtForms;
         private Label label8;
-        private PictureBox pictureBox1;
         private TextBox txtLastname;
         private TextBox txtFirstname;
         private Label lblSubscribed;
@@ -486,5 +493,6 @@
         private FontAwesome.Sharp.IconButton btnDeletePhone;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Label lblSuccess;
+        private FontAwesome.Sharp.IconPictureBox pboxProfile;
     }
 }

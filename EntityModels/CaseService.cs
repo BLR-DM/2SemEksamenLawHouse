@@ -14,6 +14,7 @@ namespace EntityModels
         public int CaseServiceID { get; set; }
 
         //Attributes
+        public string Description { get; set; }
         public int Units { get; set; }
         public int TotalPrice { get; set; }
         public DateTime Date { get; set; }

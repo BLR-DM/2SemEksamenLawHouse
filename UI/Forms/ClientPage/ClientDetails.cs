@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,25 +19,45 @@ namespace UI.Forms.ClientPage
         ClientBL clientBL;
         FormBL formBL;
         ClientUI client;
+        Color validFormat;
+        Color invalidFormat;
+        PersonValidator pValidator;
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
         List<FormUI> boughtForms;
+
+        public int TxtAddPhone_TextChanged { get; }
+
         public ClientDetails(ClientUI client)
         {
             InitializeComponent();
             this.client = client;
             formBL = new FormBL();
             clientBL = new ClientBL();
+            pValidator = new PersonValidator();
+
             deletedNumbers = new List<PhoneUI>();
+
+            validFormat = Color.Black;
+            invalidFormat = Color.OrangeRed;
+
+            btnAddPhone.Enabled = false;
 
             //Events
             btnUpdate.Click += BtnUpdate_ClickAsync;
             btnAddPhone.Click += BtnAddPhone_Click;
             btnDeletePhone.Click += BtnDeletePhone_Click;
             dgvBoughtForms.CellDoubleClick += DgvBoughtForms_CellDoubleClick;
+            txtFirstname.TextChanged += TxtFirstname_TextChanged;
+            txtLastname.TextChanged += TxtLastname_TextChanged;
+            txtEmail.TextChanged += txtEmail_TextChanged;
+            txtAddress.TextChanged += TxtAddress_TextChanged;
+            txtPostal.TextChanged += TxtPostal_TextChanged;
+            txtAddPhone.TextChanged += txtAddPhone_TextChanged;
 
             SetDetails(client);
             SetBoughtFormsDGVAsync();
+
         }
 
         private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -96,7 +117,7 @@ namespace UI.Forms.ClientPage
 
             clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
             List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
-            if(newNumbers.Count > 0)
+            if (newNumbers.Count > 0)
             {
                 phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
             }
@@ -119,6 +140,57 @@ namespace UI.Forms.ClientPage
             deletedNumbers = new List<PhoneUI>();
             btnUpdate.Enabled = true;
 
+        }
+
+        private void btnUpdateEnabled()
+        {
+            btnUpdate.Enabled =
+                txtFirstname.ForeColor == validFormat &&
+                txtLastname.ForeColor == validFormat &&
+                txtEmail.ForeColor == validFormat &&
+                txtAddress.ForeColor == validFormat &&
+                txtPostal.ForeColor == validFormat
+                ? true : false;
+        }
+
+        private void TxtFirstname_TextChanged(object? sender, EventArgs e)
+        {
+            txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+        private void TxtLastname_TextChanged(object? sender, EventArgs e)
+        {
+            txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void txtEmail_TextChanged(object? sender, EventArgs e)
+        {
+            txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void TxtAddress_TextChanged(object? sender, EventArgs e)
+        {
+            txtAddress.ForeColor = pValidator.ValidAddress(txtAddress.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void TxtPostal_TextChanged(object? sender, EventArgs e)
+        {
+            txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void txtAddPhone_TextChanged(object? sender, EventArgs e)
+        {
+            txtAddPhone.ForeColor = pValidator.ValidPhone(txtAddPhone.Text) ? validFormat : invalidFormat;
+            if (txtAddPhone.ForeColor == validFormat)
+            {
+                btnAddPhone.Enabled = true;
+            }
+            else
+                btnAddPhone.Enabled = false;
         }
 
         private async void SetDetails(ClientUI client)
@@ -164,5 +236,6 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.RowHeadersVisible = false;
             dgvPhoneNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
     }
 }

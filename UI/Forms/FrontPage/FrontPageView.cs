@@ -56,13 +56,13 @@ namespace UI.Forms.FrontPage
 
         private void BtnClients_Click(object? sender, EventArgs e)
         {
-            ClientsView cv = new ClientsView(this);
+            ClientsView cv = new ClientsView(this, currentUser);
             PnlContextChange(cv);
         }
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
-            ClientDetails cdMyPage = new ClientDetails(clientUI);
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
             PnlContextChange(cdMyPage);
         }
 

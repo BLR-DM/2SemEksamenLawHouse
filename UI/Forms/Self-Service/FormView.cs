@@ -60,6 +60,8 @@ namespace UI.Forms.Self_Service
             {
                 MessageBox.Show($"Form has been bought and sent to: {client.Email}");
                 await GetBoughtFormsAsync();
+                SetDetails();
+
             }
             else
             {

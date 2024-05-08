@@ -37,6 +37,7 @@
             cboxFinsished = new CheckBox();
             ckboxActive = new CheckBox();
             lblNumberOfCases = new Label();
+            btnCreateCase = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvCaseList).BeginInit();
             panelTopBar.SuspendLayout();
             SuspendLayout();
@@ -50,6 +51,7 @@
             dgvCaseList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCaseList.Location = new Point(12, 157);
             dgvCaseList.Name = "dgvCaseList";
+            dgvCaseList.ReadOnly = true;
             dgvCaseList.Size = new Size(974, 444);
             dgvCaseList.TabIndex = 0;
             // 
@@ -132,6 +134,26 @@
             lblNumberOfCases.TabIndex = 21;
             lblNumberOfCases.Text = "120 Cases";
             // 
+            // btnCreateCase
+            // 
+            btnCreateCase.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCreateCase.BackColor = SystemColors.GradientActiveCaption;
+            btnCreateCase.FlatAppearance.BorderSize = 0;
+            btnCreateCase.FlatStyle = FlatStyle.Flat;
+            btnCreateCase.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreateCase.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
+            btnCreateCase.IconColor = Color.Black;
+            btnCreateCase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCreateCase.IconSize = 30;
+            btnCreateCase.Location = new Point(851, 107);
+            btnCreateCase.Name = "btnCreateCase";
+            btnCreateCase.Size = new Size(135, 38);
+            btnCreateCase.TabIndex = 50;
+            btnCreateCase.TabStop = false;
+            btnCreateCase.Text = "Create case";
+            btnCreateCase.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnCreateCase.UseVisualStyleBackColor = false;
+            // 
             // CasePageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -139,6 +161,7 @@
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnCreateCase);
             Controls.Add(lblNumberOfCases);
             Controls.Add(panelTopBar);
             Controls.Add(dgvCaseList);
@@ -163,5 +186,6 @@
         private CheckBox cboxFinsished;
         private TextBox textBox1;
         private Label lblSearch;
+        private FontAwesome.Sharp.IconButton btnCreateCase;
     }
 }

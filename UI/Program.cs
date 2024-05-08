@@ -21,6 +21,8 @@ namespace UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
+
+            //hej
             //LawyerBL bl = new LawyerBL();
 
             //Lawyer lawyer = new Lawyer()

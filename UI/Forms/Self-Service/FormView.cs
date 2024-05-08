@@ -58,7 +58,7 @@ namespace UI.Forms.Self_Service
             bool success = await clientFormBL.BuyForm(clientFormBought);
             if (success)
             {
-                MessageBox.Show("Form has been bought");
+                MessageBox.Show($"Form has been bought and sent to: {client.Email}");
                 await GetBoughtFormsAsync();
             }
             else

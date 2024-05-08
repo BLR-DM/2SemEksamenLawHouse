@@ -286,7 +286,7 @@
             // 
             // panel1
             // 
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImage = Properties.Resources.background;
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(658, 0);
             panel1.Name = "panel1";

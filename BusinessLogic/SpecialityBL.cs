@@ -31,7 +31,7 @@ namespace BusinessLogic
             return specialityUIs;
         }
 
-        public async Task<List<LawyerSpecialityUI>> GetLawyerSpecialities()
+        public async Task<List<LawyerSpecialityUI>> GetLawyerSpecialitiesAsync()
         {
             List<LawyerSpecialityUI> lawyerSpecialityList = new List<LawyerSpecialityUI>();
 

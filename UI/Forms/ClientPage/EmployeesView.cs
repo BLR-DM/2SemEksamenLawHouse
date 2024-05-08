@@ -1,6 +1,13 @@
 ﻿using BusinessLogic;
+using EntityModels;
 using UI.Toolbox;
 using UIModels;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Form = System.Windows.Forms.Form;
 
 namespace UI.Forms.ClientPage
 {
@@ -29,7 +36,7 @@ namespace UI.Forms.ClientPage
             FilterAndDisplayLawyers();
             if (lawyerSpecialityUIs.Count > 0)
             {
-                lblSpecialties.Text = string.Join(", ", lawyerSpecialityUIs
+                lblAllSpecialties.Text = string.Join(", ", lawyerSpecialityUIs
                     .Select(s => s.SpecialityName)
                     .Distinct());
             }
@@ -50,14 +57,13 @@ namespace UI.Forms.ClientPage
             foreach (LawyerUI lawyer in lawyerUIs)
             {
                 LawyerCard lawyerCard = new LawyerCard(lawyer);
-                
 
-                lawyerCard.Click += LawyerCard_Click;
-
+                // For hver child control i LawyerCard control, tilknyt klik event
                 foreach (Control control in lawyerCard.Controls)
                 {
                     control.Click += (sender, e) => LawyerCard_Click(lawyerCard, e);
                 }
+
                 lawyerCard.Margin = new Padding(23);
                 flpnlLawyers.Controls.Add(lawyerCard);
             }
@@ -65,15 +71,28 @@ namespace UI.Forms.ClientPage
 
         private void LawyerCard_Click(object? sender, EventArgs e)
         {
-            LawyerCard control = (LawyerCard)sender;
-            
-
+            if (sender is LawyerCard control)
+            {
+                DisplayDetails(control);
+            }
+        }   
+        
+        private void DisplayDetails(LawyerCard control)
+        {
             if (control != null)
             {
                 tboxSelected.Text = string.Join(" ", control.Firstname, control.Lastname);
-                lblSpeciality.Text = string.Join(", ", lawyerSpecialityUIs.Select(x => x.LawyerID == control.LawyerID));
+                lblDetailsTitleValue.Text = control.Title;
+                lblDetailsCityValue.Text = control.City;
+                lblDetailsPhoneValue.Text = "+45" + control.Phone.ToString();
+                lblDetailsEmailValue.Text = control.Email;
+
+                lboxSpecialties.DataSource = lawyerSpecialityUIs
+                    .Where(x => x.LawyerID == control.LawyerID)
+                    .Select(x => x.SpecialityName)
+                    .ToList();
             }
-        }       
+        }
 
     }
 }

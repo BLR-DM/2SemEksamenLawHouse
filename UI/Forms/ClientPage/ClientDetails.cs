@@ -103,9 +103,11 @@ namespace UI.Forms.ClientPage
 
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
         {
+            btnUpdate.Enabled = false;
+
             bool numberDeleted = true;
             bool clientUpdated;
-            btnUpdate.Enabled = false;
+            
             ClientUI tempC = new ClientUI()
             {
                 PersonID = client.PersonID,
@@ -147,10 +149,7 @@ namespace UI.Forms.ClientPage
 
 
             //Hvis update sker på "mypage" så henter den brugerens detaljer igen
-            if(currentUser is ClientUI)
-            {
-                fpv.GetPersonAsync(currentUser.PersonID);
-            }
+            if(currentUser is ClientUI) { fpv.GetPersonAsync(currentUser.PersonID); }
 
             btnUpdate.Enabled = true;
 

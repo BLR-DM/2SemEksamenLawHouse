@@ -54,14 +54,14 @@
             label1 = new Label();
             lblPhoneNumbersView = new Label();
             label7 = new Label();
-            dataGridView2 = new DataGridView();
+            dgvFormulars = new DataGridView();
             label8 = new Label();
             pictureBox1 = new PictureBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFormulars).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -380,13 +380,13 @@
             label7.TabIndex = 44;
             label7.Text = "Cases";
             // 
-            // dataGridView2
+            // dgvFormulars
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(493, 423);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(448, 135);
-            dataGridView2.TabIndex = 45;
+            dgvFormulars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFormulars.Location = new Point(493, 423);
+            dgvFormulars.Name = "dgvFormulars";
+            dgvFormulars.Size = new Size(448, 135);
+            dgvFormulars.TabIndex = 45;
             // 
             // label8
             // 
@@ -437,18 +437,18 @@
             Controls.Add(iconButton1);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
-            Controls.Add(dataGridView2);
+            Controls.Add(dgvFormulars);
             Controls.Add(label7);
             Controls.Add(panel2);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientDetails";
-            Text = "ClientDetails";
+            Text = "0";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFormulars).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -466,7 +466,7 @@
         private Label lblPhoneNumbersView;
         private Label label6;
         private Label label7;
-        private DataGridView dataGridView2;
+        private DataGridView dgvFormulars;
         private Label label8;
         private PictureBox pictureBox1;
         private TextBox txtLastname;

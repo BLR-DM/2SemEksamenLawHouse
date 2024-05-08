@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.CasePage
@@ -18,32 +17,21 @@ namespace UI.Forms.CasePage
         CaseTypeBL caseTypeBL;
         LawyerBL lawyerBL;
         CaseBL caseBL;
-        FrontPageView f1;
-
-
         List<CaseTypeUI> caseTypeList;
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
-        public CasePageView(FrontPageView f1)
+        public CasePageView()
         {
             InitializeComponent();
             caseTypeBL = new CaseTypeBL();
             lawyerBL = new LawyerBL();
             caseBL = new CaseBL();
-            this.f1 = f1;
 
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
-            btnCreateCase.Click += BtnCreateCase_Click;
 
             SetComboBox();
             SetDgv();
 
-        }
-
-        private void BtnCreateCase_Click(object? sender, EventArgs e)
-        {
-            CreateCasePage createCasePage = new CreateCasePage();
-            f1.PnlContextChange(createCasePage);
         }
 
         private void DgvCaseList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -52,7 +40,7 @@ namespace UI.Forms.CasePage
             {
                 CaseUI selectedCase = originalCaseList[e.RowIndex] as CaseUI;
                 CaseDetailsView detailsView = new CaseDetailsView(selectedCase);
-                f1.PnlContextChange(detailsView);
+                detailsView.ShowDialog();
                 
 
             }

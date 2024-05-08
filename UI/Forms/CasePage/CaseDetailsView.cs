@@ -18,13 +18,12 @@ namespace UI.Forms.CasePage
         CaseUI selectedCase;
         LawyerUI selectedLawyer;
 
-        List<CaseServiceUI> caseServiceList;
+        List<ServiceUI> serviceList;
         List<CaseTypeUI> caseTypeUIList;
 
         ClientBL clientBL;
         LawyerBL lawyerBL;
         ServiceBL serviceBL;
-        CaseServiceBL caseServiceBL;
         CaseTypeBL caseTypeBL;
         public CaseDetailsView(CaseUI selectedCase)
         {
@@ -32,35 +31,13 @@ namespace UI.Forms.CasePage
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
             serviceBL = new ServiceBL();
-            caseServiceBL = new CaseServiceBL();
             caseTypeBL = new CaseTypeBL();
             this.selectedCase = selectedCase;
-
-            dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
-            btnAddService.Click += BtnAddService_Click;
 
             SetData();
             SetDgv();
             SetComboBox();
 
-        }
-
-        private void BtnAddService_Click(object? sender, EventArgs e)
-        {
-            
-            AddServiceView addServiceView = new AddServiceView();
-            addServiceView.ShowDialog();
-        }
-
-        private void DgvServices_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
-        {
-            if(e.RowIndex >= 0)
-            {
-                CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
-                ServiceDetailsView serviceDetailsView = new ServiceDetailsView(selectedCaseService);
-                serviceDetailsView.ShowDialog();
-
-            }
         }
 
         public async Task SetData()
@@ -88,20 +65,10 @@ namespace UI.Forms.CasePage
 
         public async Task SetDgv()
         {
-            caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
+            serviceList = await serviceBL.GetServicesForCaseAsync(selectedCase.CaseID);
 
-            dgvServices.DataSource = caseServiceList;
+            dgvServices.DataSource = serviceList;
 
-            dgvServices.Columns["CaseServiceID"].Visible = false;
-            dgvServices.Columns["ServiceID"].Visible = false;
-            dgvServices.Columns["LawyerID"].Visible = false;
-            dgvServices.Columns["CaseID"].Visible = false;
-
-            dgvServices.Columns["ServiceName"].DisplayIndex = 0;
-            dgvServices.Columns["ServiceType"].DisplayIndex = 1;
-            dgvServices.Columns["Date"].DisplayIndex = 2;
-            dgvServices.Columns["TotalPrice"].DisplayIndex = 3;
-            dgvServices.Columns["Units"].DisplayIndex = 4;
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -117,8 +84,6 @@ namespace UI.Forms.CasePage
             {
                 cboxCaseType.Items.Add(caseTypeUI);
             }
-
-            cboxCaseType.SelectedIndex = selectedCase.CaseTypeID;
         }
 
     }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.Self_Service;
 using UIModels;
 
 namespace UI.Forms.ClientPage
@@ -15,13 +16,16 @@ namespace UI.Forms.ClientPage
     public partial class ClientDetails : Form
     {
         ClientBL clientBL;
+        FormBL formBL;
         ClientUI client;
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
+        List<FormUI> boughtForms;
         public ClientDetails(ClientUI client)
         {
             InitializeComponent();
             this.client = client;
+            formBL = new FormBL();
             clientBL = new ClientBL();
             deletedNumbers = new List<PhoneUI>();
 
@@ -29,8 +33,20 @@ namespace UI.Forms.ClientPage
             btnUpdate.Click += BtnUpdate_ClickAsync;
             btnAddPhone.Click += BtnAddPhone_Click;
             btnDeletePhone.Click += BtnDeletePhone_Click;
+            dgvBoughtForms.CellDoubleClick += DgvBoughtForms_CellDoubleClick;
 
             SetDetails(client);
+            SetBoughtFormsDGVAsync();
+        }
+
+        private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                FormUI selectedForm = boughtForms[e.RowIndex];
+                FormDetails fdBought = new FormDetails(selectedForm, client);
+                fdBought.ShowDialog();
+            }
         }
 
         private void BtnDeletePhone_Click(object? sender, EventArgs e)
@@ -119,6 +135,18 @@ namespace UI.Forms.ClientPage
             else { lblSubscribed.Text = "Undefined"; }
 
             await SetPhoneDetails();
+        }
+
+        public async Task SetBoughtFormsDGVAsync()
+        {
+            boughtForms = await formBL.GetBoughtFormsAsync(client.PersonID);
+            dgvBoughtForms.DataSource = boughtForms;
+            dgvBoughtForms.Columns["FormID"].Visible = false;
+            dgvBoughtForms.Columns["Description"].Visible = false;
+            dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBoughtForms.ReadOnly = true;
+            dgvBoughtForms.RowHeadersVisible = false;
+            dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private async Task SetPhoneDetails()

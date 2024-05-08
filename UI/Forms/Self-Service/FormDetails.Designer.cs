@@ -28,32 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBuy = new FontAwesome.Sharp.IconButton();
             lblTitle = new Label();
             lblPrice = new Label();
             txtDescription = new TextBox();
             btnResendMail = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
-            // 
-            // btnBuy
-            // 
-            btnBuy.Anchor = AnchorStyles.Bottom;
-            btnBuy.BackColor = Color.FromArgb(45, 93, 134);
-            btnBuy.Cursor = Cursors.Hand;
-            btnBuy.FlatAppearance.BorderSize = 0;
-            btnBuy.FlatStyle = FlatStyle.Flat;
-            btnBuy.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnBuy.ForeColor = Color.White;
-            btnBuy.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnBuy.IconColor = Color.Black;
-            btnBuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuy.IconSize = 70;
-            btnBuy.Location = new Point(89, 389);
-            btnBuy.Name = "btnBuy";
-            btnBuy.Size = new Size(156, 41);
-            btnBuy.TabIndex = 13;
-            btnBuy.Text = "Buy Form";
-            btnBuy.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
@@ -98,7 +77,7 @@
             btnResendMail.IconColor = Color.Black;
             btnResendMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnResendMail.IconSize = 70;
-            btnResendMail.Location = new Point(89, 389);
+            btnResendMail.Location = new Point(82, 381);
             btnResendMail.Name = "btnResendMail";
             btnResendMail.Size = new Size(156, 41);
             btnResendMail.TabIndex = 18;
@@ -115,7 +94,6 @@
             Controls.Add(txtDescription);
             Controls.Add(lblPrice);
             Controls.Add(lblTitle);
-            Controls.Add(btnBuy);
             Name = "FormDetails";
             Text = "Form Details";
             ResumeLayout(false);
@@ -123,8 +101,6 @@
         }
 
         #endregion
-
-        private FontAwesome.Sharp.IconButton btnBuy;
         private Label lblTitle;
         private Label lblPrice;
         private TextBox txtDescription;

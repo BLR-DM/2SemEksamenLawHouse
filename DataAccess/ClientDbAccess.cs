@@ -22,7 +22,7 @@ namespace DataAccess
         {
             try
             {
-                List<Client> clients = db.Clients.Include(c => c.Phones).ToList();
+                List<Client> clients = await db.Clients.Include(c => c.Phones).ToListAsync();
                 return clients;
             }
             catch (Exception)
@@ -36,7 +36,7 @@ namespace DataAccess
         {
             try
             {
-                List<Phone> phones = db.Phones.Where(p => p.ClientID == id).ToList();
+                List<Phone> phones = await db.Phones.Where(p => p.ClientID == id).ToListAsync();
                 return phones;
             }
             catch (Exception)

@@ -23,7 +23,7 @@ namespace DataAccess
         {
             try
             {
-                List<Form> forms = db.Forms.ToList();
+                List<Form> forms = await db.Forms.ToListAsync();
                 return forms;
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace DataAccess
         {
             try
             {
-                List<Form> boughtForms = db.ClientForms.Where(c => c.ClientID == clientID).Include(cf => cf.Form).Select(cf => cf.Form).ToList();
+                List<Form> boughtForms = await db.ClientForms.Where(c => c.ClientID == clientID).Include(cf => cf.Form).Select(cf => cf.Form).ToListAsync();
                 return boughtForms;
             }
             catch (Exception)

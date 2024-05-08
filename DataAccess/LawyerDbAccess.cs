@@ -32,7 +32,7 @@ namespace DataAccess
         {
             try
             {
-                List<Lawyer> lawyers = db.Lawyers.Include(l => l.LawyerTitle).ToList();
+                List<Lawyer> lawyers = await db.Lawyers.Include(l => l.LawyerTitle).ToListAsync();
                 return lawyers;
             }
             catch (Exception)

@@ -19,12 +19,14 @@ namespace UI.Forms.ClientPage
         List<ClientUI> filteredClients;
         ClientBL clientBL;
         FrontPageView fpv;
+        PersonUI currentUser;
         int count;
-        public ClientsView(FrontPageView fpv)
+        public ClientsView(FrontPageView fpv, PersonUI currentUser)
         {
             InitializeComponent();
             clientBL = new ClientBL();
             this.fpv = fpv;
+            this.currentUser = currentUser;
 
             //Events
             Load += ClientsView_Load;
@@ -46,7 +48,7 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails cd = new ClientDetails(selectedClient);
+                ClientDetails cd = new ClientDetails(fpv, currentUser, selectedClient);
                 fpv.PnlContextChange(cd);
             }
         }

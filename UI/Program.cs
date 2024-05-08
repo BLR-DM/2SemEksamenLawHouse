@@ -48,7 +48,7 @@ namespace UI
             //};
             //bool success = bl.CreateLawyer(lawyer);
 
-            Application.Run(new FrontPageView(1));
+            Application.Run(new FrontPageView(9));
 
 
 

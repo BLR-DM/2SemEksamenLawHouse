@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.FrontPage;
 using UI.Forms.Self_Service;
 using UIModels;
 
@@ -16,6 +17,8 @@ namespace UI.Forms.ClientPage
 {
     public partial class ClientDetails : Form
     {
+        FrontPageView fpv;
+        PersonUI currentUser;
         ClientBL clientBL;
         FormBL formBL;
         ClientUI client;
@@ -26,11 +29,12 @@ namespace UI.Forms.ClientPage
         List<PhoneUI> deletedNumbers;
         List<FormUI> boughtForms;
 
-        public int TxtAddPhone_TextChanged { get; }
 
-        public ClientDetails(ClientUI client)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
         {
             InitializeComponent();
+            this.fpv = fpv;
+            this.currentUser = currenUser;
             this.client = client;
             formBL = new FormBL();
             clientBL = new ClientBL();
@@ -99,9 +103,11 @@ namespace UI.Forms.ClientPage
 
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
         {
+            btnUpdate.Enabled = false;
+
             bool numberDeleted = true;
             bool clientUpdated;
-            btnUpdate.Enabled = false;
+            
             ClientUI tempC = new ClientUI()
             {
                 PersonID = client.PersonID,
@@ -116,6 +122,7 @@ namespace UI.Forms.ClientPage
             };
 
             clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
+
             List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
             if (newNumbers.Count > 0)
             {
@@ -130,6 +137,8 @@ namespace UI.Forms.ClientPage
             if (clientUpdated && numberDeleted)
             {
                 lblSuccess.ForeColor = Color.Green;
+                //resetter listen for deleted numbers
+                deletedNumbers = new List<PhoneUI>();
                 lblSuccess.Text = "Saved";
             }
             else
@@ -137,7 +146,11 @@ namespace UI.Forms.ClientPage
                 lblSuccess.ForeColor = Color.Red;
                 lblSuccess.Text = "Save Failed";
             }
-            deletedNumbers = new List<PhoneUI>();
+
+
+            //Hvis update sker på "mypage" så henter den brugerens detaljer igen
+            if(currentUser is ClientUI) { fpv.GetPersonAsync(currentUser.PersonID); }
+
             btnUpdate.Enabled = true;
 
         }

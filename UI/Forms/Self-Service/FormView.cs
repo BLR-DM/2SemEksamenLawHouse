@@ -48,6 +48,7 @@ namespace UI.Forms.Self_Service
 
         private async void BtnBuy_Click(object? sender, EventArgs e)
         {
+            btnBuy.Enabled = false;
 
             ClientFormUI clientFormBought = new ClientFormUI()
             {
@@ -60,11 +61,15 @@ namespace UI.Forms.Self_Service
             {
                 MessageBox.Show($"Form has been bought and sent to: {client.Email}");
                 await GetBoughtFormsAsync();
+                SetDetails();
+
             }
             else
             {
                 MessageBox.Show("ERROR! Form not bought");
             }
+
+            btnBuy.Enabled = true;
         }
 
         private void DgvForms_CellClick(object? sender, DataGridViewCellEventArgs e)

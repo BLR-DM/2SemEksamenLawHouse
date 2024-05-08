@@ -15,6 +15,27 @@ namespace UI.Forms.AdminPage
         public AdminPageView()
         {
             InitializeComponent();
+
+            btnCreateForm.Click += BtnCreateForm_Click;
+            btnUpdateForm.Click += BtnUpdateForm_Click;
+            btnDeleteForm.Click += BtnDeleteForm_Click;
+        }
+
+        private void BtnCreateForm_Click(object? sender, EventArgs e)
+        {
+            AdminCUDForm createForm = new AdminCUDForm();
+            createForm.ShowDialog();
+        }
+
+        private void BtnUpdateForm_Click(object? sender, EventArgs e)
+        {
+            AdminFormsView afv = new AdminFormsView();
+            afv.ShowDialog();
+        }
+        private void BtnDeleteForm_Click(object? sender, EventArgs e)
+        {
+            AdminFormsView afv = new AdminFormsView();
+            afv.ShowDialog();
         }
     }
 }

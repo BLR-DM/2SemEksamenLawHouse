@@ -39,5 +39,23 @@ namespace BusinessLogic
             }
             return boughtFormsUI;
         }
+
+        public async Task<bool> CreateFormAsync(FormUI formUI)
+        {
+            Form formToCreate = modelConverter.ConvertFromFormUI(formUI);
+            return await dbAccess.CreateFormAsync(formToCreate);
+        }
+
+        public async Task<bool> UpdateFormAsync(FormUI formUI)
+        {
+            Form formToUpdate = modelConverter.ConvertFromFormUI(formUI);
+            return await dbAccess.UpdateFormAsync(formToUpdate);
+        }
+
+        public async Task<bool> DeleteFormAsync(FormUI formUI)
+        {
+            Form formToDelete = modelConverter.ConvertFromFormUI(formUI);
+            return await dbAccess.DeleteFormAsync(formToDelete);
+        }
     }
 }

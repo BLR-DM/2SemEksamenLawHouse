@@ -91,8 +91,8 @@ namespace UI.Forms.Self_Service
 
         private void SetDetails()
         {
-            
-            if(dgvForms.SelectedRows.Count == 0)
+
+            if (dgvForms.SelectedRows.Count == 0)
             {
                 lblTitle.Visible = false;
                 lblTitlelbl.Visible = false;

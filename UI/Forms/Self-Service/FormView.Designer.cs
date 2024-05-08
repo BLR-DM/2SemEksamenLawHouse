@@ -88,10 +88,10 @@
             txtSelectForm.BorderStyle = BorderStyle.None;
             txtSelectForm.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtSelectForm.ForeColor = Color.FromArgb(45, 93, 134);
-            txtSelectForm.Location = new Point(74, 135);
+            txtSelectForm.Location = new Point(66, 130);
             txtSelectForm.Multiline = true;
             txtSelectForm.Name = "txtSelectForm";
-            txtSelectForm.Size = new Size(148, 149);
+            txtSelectForm.Size = new Size(183, 149);
             txtSelectForm.TabIndex = 46;
             txtSelectForm.Text = "Please Select a form \r\nto get further details, \r\nand purchase the form\r\n";
             // 
@@ -121,7 +121,7 @@
             lblPricelbl.BackColor = SystemColors.GradientInactiveCaption;
             lblPricelbl.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPricelbl.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPricelbl.Location = new Point(74, 323);
+            lblPricelbl.Location = new Point(57, 321);
             lblPricelbl.Name = "lblPricelbl";
             lblPricelbl.Size = new Size(50, 21);
             lblPricelbl.TabIndex = 44;
@@ -133,7 +133,7 @@
             lblDescriptionlbl.BackColor = SystemColors.GradientInactiveCaption;
             lblDescriptionlbl.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblDescriptionlbl.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDescriptionlbl.Location = new Point(74, 88);
+            lblDescriptionlbl.Location = new Point(57, 88);
             lblDescriptionlbl.Name = "lblDescriptionlbl";
             lblDescriptionlbl.Size = new Size(98, 21);
             lblDescriptionlbl.TabIndex = 43;
@@ -145,7 +145,7 @@
             lblTitlelbl.BackColor = SystemColors.GradientInactiveCaption;
             lblTitlelbl.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTitlelbl.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTitlelbl.Location = new Point(74, 18);
+            lblTitlelbl.Location = new Point(57, 18);
             lblTitlelbl.Name = "lblTitlelbl";
             lblTitlelbl.Size = new Size(46, 21);
             lblTitlelbl.TabIndex = 42;
@@ -174,7 +174,7 @@
             // lblPrice
             // 
             lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(135, 328);
+            lblPrice.Location = new Point(131, 327);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(33, 15);
             lblPrice.TabIndex = 19;
@@ -184,18 +184,18 @@
             // 
             txtDescription.BackColor = SystemColors.GradientInactiveCaption;
             txtDescription.BorderStyle = BorderStyle.None;
-            txtDescription.Location = new Point(74, 112);
+            txtDescription.Location = new Point(57, 112);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.ReadOnly = true;
-            txtDescription.Size = new Size(148, 196);
+            txtDescription.Size = new Size(183, 196);
             txtDescription.TabIndex = 18;
             txtDescription.TabStop = false;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Location = new Point(135, 24);
+            lblTitle.Location = new Point(118, 24);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(29, 15);
             lblTitle.TabIndex = 15;

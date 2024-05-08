@@ -46,5 +46,50 @@ namespace DataAccess
                 return new List<Form>();
             }
         }
+
+        public async Task<bool> CreateFormAsync(Form form)
+        {
+            try
+            {
+                await db.Forms.AddAsync(form);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
+        public async Task<bool> UpdateFormAsync(Form form)
+        {
+            try
+            {
+                db.Forms.Update(form);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
+        public async Task<bool> DeleteFormAsync(Form form)
+        {
+            try
+            {
+                db.Forms.Remove(form);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
     }
 }

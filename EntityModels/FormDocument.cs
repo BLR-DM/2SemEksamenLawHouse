@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class Form
+    public class FormDocument
     {
-        public Form() 
+        public FormDocument() 
         { 
-            this.ClientForms = new HashSet<ClientForm>();
+            this.ClientFormDocuments = new HashSet<ClientFormDocument>();
         }
 
         [Key]
-        public int FormID { get; set; }
+        public int FormDocumentID { get; set; }
 
         //attributes
         public string Name { get; set;}
@@ -23,6 +23,6 @@ namespace EntityModels
         public float Price { get; set; }
 
         //foreign key (nav prop??)
-        public virtual ICollection<ClientForm> ClientForms { get; set; }
+        public virtual ICollection<ClientFormDocument> ClientFormDocuments { get; set; }
     }
 }

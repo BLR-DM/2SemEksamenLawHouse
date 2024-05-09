@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UIModels
 {
-    public class ClientFormUI
+    public class ClientFormDocumentUI
     {
-        public int ClientFormID { get; set; }
+        public int ClientFormDocumentID { get; set; }
 
         //attributes
         public DateTime BuyDate { get; set; }
@@ -16,6 +16,6 @@ namespace UIModels
 
         //foreign Keys
         public int ClientID { get; set; }
-        public int FormID { get; set; }
+        public int FormDocumentID { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace DataAccess
 
         public async Task<List<LawyerSpeciality>> GetLawyerSpecialitiesAsync()
         {
-            return await db.LawyerSpeciality
+            return await db.LawyerSpecialities
                 .Include(x => x.Speciality)
                 .ToListAsync();
         }

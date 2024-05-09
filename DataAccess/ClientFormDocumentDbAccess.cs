@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ClientFormDbAccess
+    public class ClientFormDocumentDbAccess
     {
         LawHouseDbContext db;
-        public ClientFormDbAccess()
+        public ClientFormDocumentDbAccess()
         {
             db = new LawHouseDbContext();
         }
 
-        public async Task<bool> BuyForm(ClientForm clientForm)
+        public async Task<bool> BuyFormDocumentAsync(ClientFormDocument clientForm)
         {
             try
             {
-                await db.ClientForms.AddAsync(clientForm);
+                await db.ClientFormDocuments.AddAsync(clientForm);
                 return db.SaveChanges() > 0;
             }
             catch (Exception)

@@ -28,7 +28,7 @@ namespace BusinessLogic
                 //CaseType = caseE.CaseType,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
-                EstHours = caseE.EstimatedHours,
+                EstimatedHours = caseE.EstimatedHours,
                 Status = caseE.Status,
                 TotalPrice = caseE.TotalPrice,
 
@@ -101,26 +101,35 @@ namespace BusinessLogic
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
                 City = clientE.City,
-                ClientSub = clientE.ClientSub,
                 MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0,
 
                 //foreign keys
                 LoginDetailsID = clientE.LoginDetailsID,
                 
             };
+
+            if(clientE.ClientSubscription == null)
+            {
+                clientUI.ClientSub = false;
+            }
+            else
+            {
+                clientUI.ClientSub = true;
+            }
+
             return clientUI;
         }
 
-        public ClientFormUI ConvertFromClientFormEntity(ClientForm clientFormE)
+        public ClientFormDocumentUI ConvertFromClientFormEntity(ClientFormDocument clientFormE)
         {
-            ClientFormUI clientFormUI = new ClientFormUI
+            ClientFormDocumentUI clientFormUI = new ClientFormDocumentUI
             {
-                ClientFormID = clientFormE.ClientFormID,
+                ClientFormDocumentID = clientFormE.ClientFormDocumentID,
                 BuyDate = clientFormE.BuyDate,
 
                 //foreign keys
                 ClientID = clientFormE.ClientID,
-                FormID = clientFormE.FormID,
+                FormDocumentID = clientFormE.FormDocumentID,
             };
             return clientFormUI;
         }
@@ -140,11 +149,11 @@ namespace BusinessLogic
             return clientSubscriptionUI;
         }
 
-        public FormUI ConvertFromFormEntity(Form formE)
+        public FormDocumentUI ConvertFromFormEntity(FormDocument formE)
         {
-            FormUI formUI = new FormUI
+            FormDocumentUI formUI = new FormDocumentUI
             {
-                FormID = formE.FormID,
+                FormDocumentID = formE.FormDocumentID,
                 Name = formE.Name,
                 Description = formE.Description,
                 Price = formE.Price,
@@ -289,7 +298,7 @@ namespace BusinessLogic
                 Title = caseUI.Title,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,
-                EstimatedHours = caseUI.EstHours,
+                EstimatedHours = caseUI.EstimatedHours,
                 Status = caseUI.Status,
                 TotalPrice = caseUI.TotalPrice,
 
@@ -329,7 +338,7 @@ namespace BusinessLogic
                 AddressLine = clientUI.AddressLine,
                 PostalCode = clientUI.PostalCode,
                 City = clientUI.City,
-                ClientSub = clientUI.ClientSub,
+
 
                 //foreign keys
                 LoginDetailsID = clientUI.LoginDetailsID,
@@ -362,16 +371,16 @@ namespace BusinessLogic
             return loginDetailsE;
         }
 
-        public ClientForm ConvertFromClientFormUI(ClientFormUI clientFormUI)
+        public ClientFormDocument ConvertFromClientFormUI(ClientFormDocumentUI clientFormUI)
         {
-            ClientForm clientFormE = new ClientForm
+            ClientFormDocument clientFormE = new ClientFormDocument
             {
-                ClientFormID = clientFormUI.ClientFormID,
+                ClientFormDocumentID = clientFormUI.ClientFormDocumentID,
                 BuyDate = clientFormUI.BuyDate,
 
                 //foreign keys
                 ClientID = clientFormUI.ClientID,
-                FormID = clientFormUI.FormID,
+                FormDocumentID = clientFormUI.FormDocumentID,
             };
             return clientFormE;
         }
@@ -391,11 +400,11 @@ namespace BusinessLogic
             return clientSubcriptionE;
         }
 
-        public Form ConvertFromFormUI(FormUI formUI)
+        public FormDocument ConvertFromFormUI(FormDocumentUI formUI)
         {
-            Form formE = new Form
+            FormDocument formE = new FormDocument
             {
-                FormID = formUI.FormID,
+                FormDocumentID = formUI.FormDocumentID,
                 Name = formUI.Name,
                 Description = formUI.Description,
                 Price = formUI.Price,

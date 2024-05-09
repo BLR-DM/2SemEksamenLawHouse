@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace EntityModels
 {
-    public class ClientForm
+    public class ClientFormDocument
     {
         [Key]
-        public int ClientFormID { get; set; }
+        public int ClientFormDocumentID { get; set; }
 
         //attributes
         public DateTime BuyDate { get; set; }
@@ -19,11 +19,11 @@ namespace EntityModels
 
         //foreign Keys
         public int ClientID { get; set; }
-        public int FormID { get; set; }
+        public int FormDocumentID { get; set; }
 
         //nav prop
         public Client Client { get; set; }
-        public Form Form { get; set; }
+        public FormDocument FormDocument { get; set; }
 
     }
 }

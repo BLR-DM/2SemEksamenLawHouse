@@ -84,8 +84,8 @@ namespace UI.Forms.CasePage
             CaseServiceUI caseServiceUI = new CaseServiceUI()
             {
                 Description = txtServiceDescription.Text,
-                Units = int.Parse(txtUnits.Text),
-                TotalPrice = int.Parse(txtTotalPrice.Text),
+                Units = float.Parse(txtUnits.Text),
+                TotalPrice = float.Parse(txtTotalPrice.Text),
                 Date = DateTime.Now,
 
                 CaseID = selectedCase.CaseID,

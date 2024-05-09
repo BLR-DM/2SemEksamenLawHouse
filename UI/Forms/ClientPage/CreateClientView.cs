@@ -137,7 +137,7 @@ namespace UI.Forms.ClientPage
                 AddressLine = txtAddress.Text,
                 PostalCode = int.Parse(txtPostal.Text),
                 City = txtCity.Text,
-                ClientSub = 0,
+                ClientSub = false,
             };
 
             LoginDetailsUI loginDetailsUI = new LoginDetailsUI()

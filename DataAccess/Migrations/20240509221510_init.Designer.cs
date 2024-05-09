@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240509012434_changedTotalPriceToINTfortest")]
-    partial class changedTotalPriceToINTfortest
+    [Migration("20240509221510_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,10 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -59,8 +63,8 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
                     b.HasKey("CaseID");
 
@@ -91,17 +95,20 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("HoursWorked")
+                        .HasColumnType("real");
+
                     b.Property<int>("LawyerID")
                         .HasColumnType("int");
 
                     b.Property<int>("ServiceID")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
-                    b.Property<int>("Units")
-                        .HasColumnType("int");
+                    b.Property<float>("Units")
+                        .HasColumnType("real");
 
                     b.HasKey("CaseServiceID");
 
@@ -111,7 +118,12 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("ServiceID");
 
-                    b.ToTable("CaseServices");
+                    b.ToTable("CaseServices", t =>
+                        {
+                            t.HasTrigger("Trigger");
+                        });
+
+                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
                 });
 
             modelBuilder.Entity("EntityModels.CaseType", b =>
@@ -131,13 +143,13 @@ namespace DataAccess.Migrations
                     b.ToTable("CaseTypes");
                 });
 
-            modelBuilder.Entity("EntityModels.ClientForm", b =>
+            modelBuilder.Entity("EntityModels.ClientFormDocument", b =>
                 {
-                    b.Property<int>("ClientFormID")
+                    b.Property<int>("ClientFormDocumentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientFormID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientFormDocumentID"));
 
                     b.Property<DateTime>("BuyDate")
                         .HasColumnType("datetime2");
@@ -145,16 +157,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FormID")
+                    b.Property<int>("FormDocumentID")
                         .HasColumnType("int");
 
-                    b.HasKey("ClientFormID");
+                    b.HasKey("ClientFormDocumentID");
 
                     b.HasIndex("ClientID");
 
-                    b.HasIndex("FormID");
+                    b.HasIndex("FormDocumentID");
 
-                    b.ToTable("ClientForms");
+                    b.ToTable("ClientFormDocuments");
                 });
 
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
@@ -187,13 +199,13 @@ namespace DataAccess.Migrations
                     b.ToTable("ClientSubscriptions");
                 });
 
-            modelBuilder.Entity("EntityModels.Form", b =>
+            modelBuilder.Entity("EntityModels.FormDocument", b =>
                 {
-                    b.Property<int>("FormID")
+                    b.Property<int>("FormDocumentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FormID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FormDocumentID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -206,9 +218,9 @@ namespace DataAccess.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.HasKey("FormID");
+                    b.HasKey("FormDocumentID");
 
-                    b.ToTable("Forms");
+                    b.ToTable("FormDocuments");
                 });
 
             modelBuilder.Entity("EntityModels.LawyerSpeciality", b =>
@@ -223,7 +235,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("SpecialityID");
 
-                    b.ToTable("LawyerSpeciality");
+                    b.ToTable("LawyerSpecialities");
                 });
 
             modelBuilder.Entity("EntityModels.LawyerTitle", b =>
@@ -425,9 +437,6 @@ namespace DataAccess.Migrations
                 {
                     b.HasBaseType("EntityModels.Person");
 
-                    b.Property<int>("ClientSub")
-                        .HasColumnType("int");
-
                     b.ToTable("Clients");
                 });
 
@@ -438,8 +447,13 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("LawyerTitleID")
+                        .HasColumnType("int");
+
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
+
+                    b.HasIndex("LawyerTitleID");
 
                     b.HasIndex("PhoneNumber")
                         .IsUnique()
@@ -451,11 +465,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.Lawyer", b =>
                 {
                     b.HasBaseType("EntityModels.Employee");
-
-                    b.Property<int>("LawyerTitleID")
-                        .HasColumnType("int");
-
-                    b.HasIndex("LawyerTitleID");
 
                     b.ToTable("Lawyers");
                 });
@@ -521,7 +530,7 @@ namespace DataAccess.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("EntityModels.ClientForm", b =>
+            modelBuilder.Entity("EntityModels.ClientFormDocument", b =>
                 {
                     b.HasOne("EntityModels.Client", "Client")
                         .WithMany("ClientForms")
@@ -529,15 +538,15 @@ namespace DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityModels.Form", "Form")
-                        .WithMany("ClientForms")
-                        .HasForeignKey("FormID")
+                    b.HasOne("EntityModels.FormDocument", "FormDocument")
+                        .WithMany("ClientFormDocuments")
+                        .HasForeignKey("FormDocumentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Client");
 
-                    b.Navigation("Form");
+                    b.Navigation("FormDocument");
                 });
 
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
@@ -622,28 +631,28 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("EntityModels.Employee", b =>
                 {
+                    b.HasOne("EntityModels.LawyerTitle", "LawyerTitle")
+                        .WithMany("Employees")
+                        .HasForeignKey("LawyerTitleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EntityModels.Person", null)
                         .WithOne()
                         .HasForeignKey("EntityModels.Employee", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("LawyerTitle");
                 });
 
             modelBuilder.Entity("EntityModels.Lawyer", b =>
                 {
-                    b.HasOne("EntityModels.LawyerTitle", "LawyerTitle")
-                        .WithMany("Lawyers")
-                        .HasForeignKey("LawyerTitleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EntityModels.Employee", null)
                         .WithOne()
                         .HasForeignKey("EntityModels.Lawyer", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("LawyerTitle");
                 });
 
             modelBuilder.Entity("EntityModels.Secretary", b =>
@@ -665,14 +674,14 @@ namespace DataAccess.Migrations
                     b.Navigation("Cases");
                 });
 
-            modelBuilder.Entity("EntityModels.Form", b =>
+            modelBuilder.Entity("EntityModels.FormDocument", b =>
                 {
-                    b.Navigation("ClientForms");
+                    b.Navigation("ClientFormDocuments");
                 });
 
             modelBuilder.Entity("EntityModels.LawyerTitle", b =>
                 {
-                    b.Navigation("Lawyers");
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("EntityModels.LoginDetails", b =>

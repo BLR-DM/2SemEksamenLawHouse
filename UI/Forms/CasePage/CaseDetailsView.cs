@@ -100,7 +100,7 @@ namespace UI.Forms.CasePage
                 Title = txtTitle.Text,
                 CreationDate = selectedCase.CreationDate,
                 EndDate = dtpEstimatedEndDate.Value,
-                EstHours = int.Parse(txtEstimatedHours.Text),
+                EstimatedHours = float.Parse(txtEstimatedHours.Text),
                 Status = selectedCase.Status,
                 TotalPrice = selectedCase.TotalPrice,
 
@@ -155,7 +155,7 @@ namespace UI.Forms.CasePage
 
             txtTitle.Text = selectedCase.Title;
             dtpEstimatedEndDate.Value = selectedCase.EndDate;
-            txtEstimatedHours.Text = selectedCase.EstHours.ToString();
+            txtEstimatedHours.Text = selectedCase.EstimatedHours.ToString();
             txtTotalPrice.Text = selectedCase.TotalPrice.ToString();
 
 

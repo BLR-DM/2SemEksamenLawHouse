@@ -15,13 +15,6 @@ namespace EntityModels
             this.LawyerSpecialities = new HashSet<LawyerSpeciality>();
         }
 
-
-        //foreign key
-        public int LawyerTitleID { get; set; }
-
-        //nav props
-        public LawyerTitle LawyerTitle { get; set; }
-
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set; }
         public virtual ICollection<Case> Cases { get; set; }
     }

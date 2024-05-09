@@ -16,18 +16,18 @@ namespace UI.Forms.Self_Service
 {
     public partial class FormView : System.Windows.Forms.Form
     {
-        FormBL formBL;
-        ClientFormBL clientFormBL;
-        List<FormUI> formUIs;
-        List<FormUI> boughtForms;
+        FormDocumentBL formBL;
+        ClientFormDocumentBL clientFormBL;
+        List<FormDocumentUI> formUIs;
+        List<FormDocumentUI> boughtForms;
         ClientUI client;
-        FormUI selectedForm;
+        FormDocumentUI selectedForm;
         public FormView(ClientUI client)
         {
             InitializeComponent();
             this.client = client;
-            formBL = new FormBL();
-            clientFormBL = new ClientFormBL();
+            formBL = new FormDocumentBL();
+            clientFormBL = new ClientFormDocumentBL();
             btnBuy.Visible = false;
             dgvForms.CellClick += DgvForms_CellClick;
             btnBuy.Click += BtnBuy_Click;
@@ -43,20 +43,20 @@ namespace UI.Forms.Self_Service
 
         private async Task GetBoughtFormsAsync()
         {
-            boughtForms = await formBL.GetBoughtFormsAsync(client.PersonID);
+            boughtForms = await formBL.GetBoughtFormDocumentsAsync(client.PersonID);
         }
 
         private async void BtnBuy_Click(object? sender, EventArgs e)
         {
             btnBuy.Enabled = false;
 
-            ClientFormUI clientFormBought = new ClientFormUI()
+            ClientFormDocumentUI clientFormBought = new ClientFormDocumentUI()
             {
                 BuyDate = DateTime.Now,
                 ClientID = client.PersonID,
-                FormID = selectedForm.FormID,
+                FormDocumentID = selectedForm.FormDocumentID,
             };
-            bool success = await clientFormBL.BuyForm(clientFormBought);
+            bool success = await clientFormBL.BuyFormDocumentAsync(clientFormBought);
             if (success)
             {
                 MessageBox.Show($"Form has been bought and sent to: {client.Email}");
@@ -121,7 +121,7 @@ namespace UI.Forms.Self_Service
             txtDescription.Text = selectedForm.Description;
             lblPrice.Text = selectedForm.Price.ToString() + "$";
 
-            bool formIsBought = boughtForms.FirstOrDefault(f => f.FormID == selectedForm.FormID) != null ? true : false;
+            bool formIsBought = boughtForms.FirstOrDefault(f => f.FormDocumentID == selectedForm.FormDocumentID) != null ? true : false;
             if (formIsBought)
             {
                 btnBuy.Visible = false;
@@ -137,9 +137,9 @@ namespace UI.Forms.Self_Service
 
         private async Task SetDGVFormAsync()
         {
-            formUIs = await formBL.GetFormAsync();
+            formUIs = await formBL.GetFormDocumentAsync();
             dgvForms.DataSource = formUIs;
-            dgvForms.Columns["FormID"].Visible = false;
+            dgvForms.Columns["FormDocumentID"].Visible = false;
             dgvForms.Columns["Description"].Visible = false;
             dgvForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvForms.ReadOnly = true;

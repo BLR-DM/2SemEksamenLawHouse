@@ -25,10 +25,10 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Forms",
+                name: "FormDocuments",
                 columns: table => new
                 {
-                    FormID = table.Column<int>(type: "int", nullable: false)
+                    FormDocumentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -36,7 +36,7 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Forms", x => x.FormID);
+                    table.PrimaryKey("PK_FormDocuments", x => x.FormDocumentID);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,8 +158,7 @@ namespace DataAccess.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    PersonID = table.Column<int>(type: "int", nullable: false),
-                    ClientSub = table.Column<int>(type: "int", nullable: false)
+                    PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,11 +177,18 @@ namespace DataAccess.Migrations
                 {
                     PersonID = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LawyerTitleID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.PersonID);
+                    table.ForeignKey(
+                        name: "FK_Employees_LawyerTitles_LawyerTitleID",
+                        column: x => x.LawyerTitleID,
+                        principalTable: "LawyerTitles",
+                        principalColumn: "LawyerTitleID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Employees_Persons_PersonID",
                         column: x => x.PersonID,
@@ -192,29 +198,29 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientForms",
+                name: "ClientFormDocuments",
                 columns: table => new
                 {
-                    ClientFormID = table.Column<int>(type: "int", nullable: false)
+                    ClientFormDocumentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false),
-                    FormID = table.Column<int>(type: "int", nullable: false)
+                    FormDocumentID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientForms", x => x.ClientFormID);
+                    table.PrimaryKey("PK_ClientFormDocuments", x => x.ClientFormDocumentID);
                     table.ForeignKey(
-                        name: "FK_ClientForms_Clients_ClientID",
+                        name: "FK_ClientFormDocuments_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
                         principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClientForms_Forms_FormID",
-                        column: x => x.FormID,
-                        principalTable: "Forms",
-                        principalColumn: "FormID",
+                        name: "FK_ClientFormDocuments_FormDocuments_FormDocumentID",
+                        column: x => x.FormDocumentID,
+                        principalTable: "FormDocuments",
+                        principalColumn: "FormDocumentID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -270,8 +276,7 @@ namespace DataAccess.Migrations
                 name: "Lawyers",
                 columns: table => new
                 {
-                    PersonID = table.Column<int>(type: "int", nullable: false),
-                    LawyerTitleID = table.Column<int>(type: "int", nullable: false)
+                    PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -281,12 +286,6 @@ namespace DataAccess.Migrations
                         column: x => x.PersonID,
                         principalTable: "Employees",
                         principalColumn: "PersonID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Lawyers_LawyerTitles_LawyerTitleID",
-                        column: x => x.LawyerTitleID,
-                        principalTable: "LawyerTitles",
-                        principalColumn: "LawyerTitleID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -314,6 +313,7 @@ namespace DataAccess.Migrations
                     CaseID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EstimatedHours = table.Column<float>(type: "real", nullable: false),
@@ -347,7 +347,7 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LawyerSpeciality",
+                name: "LawyerSpecialities",
                 columns: table => new
                 {
                     LawyerID = table.Column<int>(type: "int", nullable: false),
@@ -355,15 +355,15 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LawyerSpeciality", x => new { x.LawyerID, x.SpecialityID });
+                    table.PrimaryKey("PK_LawyerSpecialities", x => new { x.LawyerID, x.SpecialityID });
                     table.ForeignKey(
-                        name: "FK_LawyerSpeciality_Lawyers_LawyerID",
+                        name: "FK_LawyerSpecialities_Lawyers_LawyerID",
                         column: x => x.LawyerID,
                         principalTable: "Lawyers",
                         principalColumn: "PersonID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LawyerSpeciality_Specialities_SpecialityID",
+                        name: "FK_LawyerSpecialities_Specialities_SpecialityID",
                         column: x => x.SpecialityID,
                         principalTable: "Specialities",
                         principalColumn: "SpecialityID",
@@ -376,8 +376,10 @@ namespace DataAccess.Migrations
                 {
                     CaseServiceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Units = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HoursWorked = table.Column<float>(type: "real", nullable: false),
+                    Units = table.Column<float>(type: "real", nullable: false),
+                    TotalPrice = table.Column<float>(type: "real", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CaseID = table.Column<int>(type: "int", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
@@ -437,14 +439,14 @@ namespace DataAccess.Migrations
                 column: "ServiceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientForms_ClientID",
-                table: "ClientForms",
+                name: "IX_ClientFormDocuments_ClientID",
+                table: "ClientFormDocuments",
                 column: "ClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientForms_FormID",
-                table: "ClientForms",
-                column: "FormID");
+                name: "IX_ClientFormDocuments_FormDocumentID",
+                table: "ClientFormDocuments",
+                column: "FormDocumentID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientSubscriptions_ClientID",
@@ -458,6 +460,11 @@ namespace DataAccess.Migrations
                 column: "SubscriptionID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employees_LawyerTitleID",
+                table: "Employees",
+                column: "LawyerTitleID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Employees_PhoneNumber",
                 table: "Employees",
                 column: "PhoneNumber",
@@ -465,13 +472,8 @@ namespace DataAccess.Migrations
                 filter: "[PhoneNumber] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lawyers_LawyerTitleID",
-                table: "Lawyers",
-                column: "LawyerTitleID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LawyerSpeciality_SpecialityID",
-                table: "LawyerSpeciality",
+                name: "IX_LawyerSpecialities_SpecialityID",
+                table: "LawyerSpecialities",
                 column: "SpecialityID");
 
             migrationBuilder.CreateIndex(
@@ -510,13 +512,13 @@ namespace DataAccess.Migrations
                 name: "CaseServices");
 
             migrationBuilder.DropTable(
-                name: "ClientForms");
+                name: "ClientFormDocuments");
 
             migrationBuilder.DropTable(
                 name: "ClientSubscriptions");
 
             migrationBuilder.DropTable(
-                name: "LawyerSpeciality");
+                name: "LawyerSpecialities");
 
             migrationBuilder.DropTable(
                 name: "Phones");
@@ -531,7 +533,7 @@ namespace DataAccess.Migrations
                 name: "Services");
 
             migrationBuilder.DropTable(
-                name: "Forms");
+                name: "FormDocuments");
 
             migrationBuilder.DropTable(
                 name: "Subscriptions");

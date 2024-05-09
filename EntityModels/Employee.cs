@@ -12,5 +12,11 @@ namespace EntityModels
     {
         public int PhoneNumber { get; set; }
         public DateTime HireDate { get; set; }
+
+        //foreign key
+        public int LawyerTitleID { get; set; }
+
+        //nav props
+        public LawyerTitle LawyerTitle { get; set; }
     }
 }

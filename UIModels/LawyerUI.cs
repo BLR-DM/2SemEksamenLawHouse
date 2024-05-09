@@ -8,12 +8,6 @@ namespace UIModels
 {
     public class LawyerUI : EmployeeUI
     {
-
-        //attributes
-        public string LawyerTitle { get; set; }
-
-        //foreign key
-        public int LawyerTitleID { get; set; }
         
         
     }

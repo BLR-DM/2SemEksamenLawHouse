@@ -49,7 +49,7 @@ namespace UI
             //};
             //bool success = bl.CreateLawyer(lawyer);
 
-            Application.Run(new EmployeesOverview());
+            Application.Run(new FrontPageView(9));
 
 
 

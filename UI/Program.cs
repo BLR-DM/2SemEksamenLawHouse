@@ -4,6 +4,7 @@ using Microsoft.Identity.Client;
 using UI.Forms.CasePage;
 using UI.Forms.ClientPage;
 using UI.Forms.CreateUserPage;
+using UI.Forms.EmployeePage;
 using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;
 using UIModels;
@@ -48,7 +49,7 @@ namespace UI
             //};
             //bool success = bl.CreateLawyer(lawyer);
 
-            Application.Run(new FrontPageView(9));
+            Application.Run(new EmployeesOverview());
 
 
 

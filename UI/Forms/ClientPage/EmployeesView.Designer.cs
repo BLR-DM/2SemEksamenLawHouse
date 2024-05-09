@@ -71,7 +71,7 @@
             lblLawyers.BackColor = SystemColors.GradientInactiveCaption;
             lblLawyers.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLawyers.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLawyers.Location = new Point(12, 9);
+            lblLawyers.Location = new Point(32, 15);
             lblLawyers.Name = "lblLawyers";
             lblLawyers.Size = new Size(83, 25);
             lblLawyers.TabIndex = 4;

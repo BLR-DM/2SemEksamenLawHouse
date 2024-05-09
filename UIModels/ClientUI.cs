@@ -12,7 +12,7 @@ namespace UIModels
 
         //attributes
         public int MainPhone { get; set; }
-        public int ClientSub { get; set; } // 1 = True, 0 = False
+        public bool ClientSub { get; set; }
 
     }
 }

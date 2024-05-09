@@ -12,46 +12,46 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public class FormDbAccess
+    public class FormDocumentDbAccess
     {
         LawHouseDbContext db;
-        public FormDbAccess()
+        public FormDocumentDbAccess()
         {
             db = new LawHouseDbContext();
         }
-        public async Task<List<Form>> GetFormsAsync()
+        public async Task<List<FormDocument>> GetFormDocumentsAsync()
         {
             try
             {
-                List<Form> forms = await db.Forms.ToListAsync();
+                List<FormDocument> forms = await db.FormDocuments.ToListAsync();
                 return forms;
             }
             catch (Exception)
             {
 
-                return new List<Form>();
+                return new List<FormDocument>();
             }
         }
 
-        public async Task<List<Form>> GetBoughtFormsAsync(int clientID)
+        public async Task<List<FormDocument>> GetBoughtFormDocumentsAsync(int clientID)
         {
             try
             {
-                List<Form> boughtForms = await db.ClientForms.Where(c => c.ClientID == clientID).Include(cf => cf.Form).Select(cf => cf.Form).ToListAsync();
+                List<FormDocument> boughtForms = await db.ClientFormDocuments.Where(c => c.ClientID == clientID).Include(cf => cf.FormDocument).Select(cf => cf.FormDocument).ToListAsync();
                 return boughtForms;
             }
             catch (Exception)
             {
 
-                return new List<Form>();
+                return new List<FormDocument>();
             }
         }
 
-        public async Task<bool> CreateFormAsync(Form form)
+        public async Task<bool> CreateFormDocumentAsync(FormDocument form)
         {
             try
             {
-                await db.Forms.AddAsync(form);
+                await db.FormDocuments.AddAsync(form);
                 return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)
@@ -62,11 +62,11 @@ namespace DataAccess
 
         }
 
-        public async Task<bool> UpdateFormAsync(Form form)
+        public async Task<bool> UpdateFormDocumentAsync(FormDocument form)
         {
             try
             {
-                db.Forms.Update(form);
+                db.FormDocuments.Update(form);
                 return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)
@@ -77,11 +77,11 @@ namespace DataAccess
 
         }
 
-        public async Task<bool> DeleteFormAsync(Form form)
+        public async Task<bool> DeleteFormDocumentAsync(FormDocument form)
         {
             try
             {
-                db.Forms.Remove(form);
+                db.FormDocuments.Remove(form);
                 return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)

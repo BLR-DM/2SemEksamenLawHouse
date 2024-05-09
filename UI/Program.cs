@@ -26,7 +26,7 @@ namespace UI
             //hej
             //LawyerBL bl = new LawyerBL();
 
-            //Lawyer lawyer = new Lawyer()
+            //Lawyer lawyer1 = new Lawyer()
             //{
             //    Firstname = "Ramus",
             //    Lastname = "Skov",
@@ -47,11 +47,7 @@ namespace UI
             //    }
 
             //};
-            //bool success = bl.CreateLawyer(lawyer);
-
-            Application.Run(new FrontPageView(9));
-
-
+            //bool success = bl.CreateLawyer(lawyer1);
 
 
             //ClientBL clientBL = new ClientBL();
@@ -99,7 +95,7 @@ namespace UI
             //    }
 
             //};
-            //bool success = bl.CreateLawyer(lawyer);
+            //bool success2 = bl.CreateLawyer(lawyer);
 
             //Lawyer lawyer2 = new Lawyer()
             //{
@@ -122,7 +118,9 @@ namespace UI
             //    }
 
             //};
-            //bool success = bl.CreateLawyer(lawyer2);
+            //bool success3 = bl.CreateLawyer(lawyer2);
+
+            Application.Run(new LoginPageView());
         }
     }
 }

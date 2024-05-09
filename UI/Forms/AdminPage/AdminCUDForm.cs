@@ -14,7 +14,7 @@ namespace UI.Forms.AdminPage
 {
     public partial class AdminCUDForm : Form
     {
-        FormBL formBL;
+        FormDocumentBL formBL;
         //
         //Create
         //
@@ -22,7 +22,7 @@ namespace UI.Forms.AdminPage
         {
             InitializeComponent();
 
-            formBL = new FormBL();
+            formBL = new FormDocumentBL();
 
 
             btnUpdate.Visible = false;
@@ -33,14 +33,14 @@ namespace UI.Forms.AdminPage
 
         private async void BtnCreateForm_Click(object? sender, EventArgs e)
         {
-            FormUI formToCreate = new FormUI()
+            FormDocumentUI formToCreate = new FormDocumentUI()
             {
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 Price = float.Parse(txtPrice.Text)
             };
 
-            bool isCreated = await formBL.CreateFormAsync(formToCreate);
+            bool isCreated = await formBL.CreateFormDocumentAsync(formToCreate);
 
             if (isCreated)
             {
@@ -61,12 +61,12 @@ namespace UI.Forms.AdminPage
         // Update og Delete
         //
 
-        FormUI form;
-        public AdminCUDForm(FormUI form)
+        FormDocumentUI form;
+        public AdminCUDForm(FormDocumentUI form)
         {
             InitializeComponent();
             this.form = form;
-            formBL = new FormBL();
+            formBL = new FormDocumentBL();
 
             btnCreateForm.Visible = false;
             btnUpdate.Click += BtnUpdate_Click;
@@ -81,15 +81,15 @@ namespace UI.Forms.AdminPage
 
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            FormUI formToUpdate = new FormUI()
+            FormDocumentUI formToUpdate = new FormDocumentUI()
             {
-                FormID = form.FormID,
+                FormDocumentID = form.FormDocumentID,
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 Price = float.Parse(txtPrice.Text)
             };
 
-            bool isUpdated = await formBL.UpdateFormAsync(formToUpdate);
+            bool isUpdated = await formBL.UpdateFormDocumentAsync(formToUpdate);
             if (isUpdated)
             {
                 MessageBox.Show("Form has been updated");
@@ -103,7 +103,7 @@ namespace UI.Forms.AdminPage
         }
         private async void BtnDelete_Click(object? sender, EventArgs e)
         {
-            bool isDeleted = await formBL.DeleteFormAsync(form);
+            bool isDeleted = await formBL.DeleteFormDocumentAsync(form);
             if (isDeleted)
             {
                 MessageBox.Show("Form has been deleted");

@@ -12,8 +12,9 @@ namespace UIModels
 
         //Attributes
         public string Description { get; set; }
-        public int Units { get; set; }
-        public int TotalPrice { get; set; }
+        public float HoursWorked { get; set; }
+        public float Units { get; set; }
+        public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
 

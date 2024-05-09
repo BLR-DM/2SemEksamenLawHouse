@@ -93,7 +93,7 @@ namespace UI.Forms.CasePage
                 Title = txtTitle.Text,
                 CreationDate = DateTime.Now,
                 EndDate = dtpEstimatedEndDate.Value,
-                EstHours = float.Parse(txtEstimatedHours.Text),
+                EstimatedHours = float.Parse(txtEstimatedHours.Text),
                 Status = "Active",
                 TotalPrice = 0,
 

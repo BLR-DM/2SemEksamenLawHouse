@@ -20,14 +20,14 @@ namespace UI.Forms.ClientPage
         FrontPageView fpv;
         PersonUI currentUser;
         ClientBL clientBL;
-        FormBL formBL;
+        FormDocumentBL formBL;
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
         PersonValidator pValidator;
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
-        List<FormUI> boughtForms;
+        List<FormDocumentUI> boughtForms;
 
 
         public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
@@ -36,7 +36,7 @@ namespace UI.Forms.ClientPage
             this.fpv = fpv;
             this.currentUser = currenUser;
             this.client = client;
-            formBL = new FormBL();
+            formBL = new FormDocumentBL();
             clientBL = new ClientBL();
             pValidator = new PersonValidator();
 
@@ -68,7 +68,7 @@ namespace UI.Forms.ClientPage
         {
             if (e.RowIndex >= 0)
             {
-                FormUI selectedForm = boughtForms[e.RowIndex];
+                FormDocumentUI selectedForm = boughtForms[e.RowIndex];
                 FormDetails fdBought = new FormDetails(selectedForm, client);
                 fdBought.ShowDialog();
             }
@@ -215,8 +215,8 @@ namespace UI.Forms.ClientPage
             txtAddress.Text = client.AddressLine;
             txtPostal.Text = client.PostalCode.ToString();
             lblCity.Text = client.City;
-            if (client.ClientSub == 0) { lblSubscribed.Text = "No"; }
-            else if (client.ClientSub == 1) { lblSubscribed.Text = "Yes"; }
+            if (client.ClientSub == false) { lblSubscribed.Text = "No"; }
+            else if (client.ClientSub == true) { lblSubscribed.Text = "Yes"; }
             else { lblSubscribed.Text = "Undefined"; }
 
             await SetPhoneDetails();
@@ -224,9 +224,9 @@ namespace UI.Forms.ClientPage
 
         public async Task SetBoughtFormsDGVAsync()
         {
-            boughtForms = await formBL.GetBoughtFormsAsync(client.PersonID);
+            boughtForms = await formBL.GetBoughtFormDocumentsAsync(client.PersonID);
             dgvBoughtForms.DataSource = boughtForms;
-            dgvBoughtForms.Columns["FormID"].Visible = false;
+            dgvBoughtForms.Columns["FormDocumentID"].Visible = false;
             dgvBoughtForms.Columns["Description"].Visible = false;
             dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBoughtForms.ReadOnly = true;

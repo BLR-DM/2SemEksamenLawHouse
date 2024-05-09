@@ -15,13 +15,13 @@ namespace UI.Forms.Self_Service
     public partial class FormDetails : Form
     {
         FormView fv;
-        FormUI form;
-        ClientFormBL clientFormBL;
-        List<FormUI> boughtForms;
+        FormDocumentUI form;
+        ClientFormDocumentBL clientFormBL;
+        List<FormDocumentUI> boughtForms;
         ClientUI client;
 
         //FORM DETAILS FOR Købte formularer
-        public FormDetails(FormUI form, ClientUI client)
+        public FormDetails(FormDocumentUI form, ClientUI client)
         {
             InitializeComponent();
             this.form = form;

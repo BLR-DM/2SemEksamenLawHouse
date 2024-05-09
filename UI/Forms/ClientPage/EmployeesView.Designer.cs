@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesView));
             flpnlLawyers = new FlowLayoutPanel();
             lblLawyers = new Label();
             pnlDetails = new Panel();
             pnlDetailsPicture = new Panel();
             pboxDetails = new FontAwesome.Sharp.IconPictureBox();
+            lblSelected = new Label();
             lboxSpecialties = new ListBox();
             panel2 = new Panel();
             lblDetailsEmailValue = new Label();
@@ -45,9 +45,12 @@
             lblDetailsTitleValue = new Label();
             lblDetailsTitle = new Label();
             lblSpecialities = new Label();
-            tboxSelected = new TextBox();
-            lblAllSpecialties = new Label();
-            panel1 = new Panel();
+            gradiantPanel1 = new Toolbox.GradiantPanel();
+            lblFilter = new Label();
+            cboxSpecialities = new ComboBox();
+            lblFilterSpeciality = new Label();
+            lblSort = new Label();
+            cboxSort = new ComboBox();
             pnlDetails.SuspendLayout();
             pnlDetailsPicture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxDetails).BeginInit();
@@ -68,7 +71,7 @@
             lblLawyers.BackColor = SystemColors.GradientInactiveCaption;
             lblLawyers.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLawyers.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLawyers.Location = new Point(38, 26);
+            lblLawyers.Location = new Point(12, 9);
             lblLawyers.Name = "lblLawyers";
             lblLawyers.Size = new Size(83, 25);
             lblLawyers.TabIndex = 4;
@@ -76,8 +79,10 @@
             // 
             // pnlDetails
             // 
-            pnlDetails.BackgroundImage = (Image)resources.GetObject("pnlDetails.BackgroundImage");
+            pnlDetails.BackColor = Color.Transparent;
+            pnlDetails.BackgroundImage = Properties.Resources.background;
             pnlDetails.Controls.Add(pnlDetailsPicture);
+            pnlDetails.Controls.Add(lblSelected);
             pnlDetails.Controls.Add(lboxSpecialties);
             pnlDetails.Controls.Add(panel2);
             pnlDetails.Controls.Add(lblDetailsEmailValue);
@@ -104,8 +109,8 @@
             // 
             // pboxDetails
             // 
-            pboxDetails.BackColor = SystemColors.GradientInactiveCaption;
-            pboxDetails.BackgroundImage = (Image)resources.GetObject("pboxDetails.BackgroundImage");
+            pboxDetails.BackColor = Color.Transparent;
+            pboxDetails.BackgroundImageLayout = ImageLayout.Center;
             pboxDetails.Dock = DockStyle.Fill;
             pboxDetails.ForeColor = Color.SaddleBrown;
             pboxDetails.IconChar = FontAwesome.Sharp.IconChar.Poo;
@@ -118,6 +123,19 @@
             pboxDetails.SizeMode = PictureBoxSizeMode.CenterImage;
             pboxDetails.TabIndex = 5;
             pboxDetails.TabStop = false;
+            // 
+            // lblSelected
+            // 
+            lblSelected.BackColor = Color.Transparent;
+            lblSelected.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblSelected.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSelected.Location = new Point(15, 4);
+            lblSelected.Name = "lblSelected";
+            lblSelected.RightToLeft = RightToLeft.No;
+            lblSelected.Size = new Size(311, 21);
+            lblSelected.TabIndex = 4;
+            lblSelected.Text = "Select an employee to see details";
+            lblSelected.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lboxSpecialties
             // 
@@ -256,57 +274,101 @@
             lblSpecialities.TabIndex = 4;
             lblSpecialities.Text = "Specialities:";
             // 
-            // tboxSelected
+            // gradiantPanel1
             // 
-            tboxSelected.BackColor = SystemColors.GradientInactiveCaption;
-            tboxSelected.BorderStyle = BorderStyle.None;
-            tboxSelected.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            tboxSelected.ForeColor = Color.FromArgb(45, 93, 134);
-            tboxSelected.Location = new Point(663, 48);
-            tboxSelected.Name = "tboxSelected";
-            tboxSelected.ReadOnly = true;
-            tboxSelected.Size = new Size(331, 22);
-            tboxSelected.TabIndex = 0;
-            tboxSelected.TabStop = false;
-            tboxSelected.Text = "Selected name";
-            tboxSelected.TextAlign = HorizontalAlignment.Center;
+            gradiantPanel1.Angle = 180F;
+            gradiantPanel1.BackColor = Color.Transparent;
+            gradiantPanel1.BackgroundImageLayout = ImageLayout.None;
+            gradiantPanel1.BottomColor = SystemColors.GradientInactiveCaption;
+            gradiantPanel1.Dock = DockStyle.Right;
+            gradiantPanel1.Location = new Point(658, 0);
+            gradiantPanel1.Name = "gradiantPanel1";
+            gradiantPanel1.Size = new Size(340, 613);
+            gradiantPanel1.TabIndex = 7;
+            gradiantPanel1.TopColor = Color.FromArgb(156, 193, 232);
             // 
-            // lblAllSpecialties
+            // lblFilter
             // 
-            lblAllSpecialties.Anchor = AnchorStyles.Top;
-            lblAllSpecialties.AutoSize = true;
-            lblAllSpecialties.BackColor = SystemColors.GradientInactiveCaption;
-            lblAllSpecialties.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblAllSpecialties.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAllSpecialties.Location = new Point(38, 54);
-            lblAllSpecialties.Name = "lblAllSpecialties";
-            lblAllSpecialties.Size = new Size(59, 19);
-            lblAllSpecialties.TabIndex = 4;
-            lblAllSpecialties.Text = "Lawyers";
+            lblFilter.Anchor = AnchorStyles.Top;
+            lblFilter.AutoSize = true;
+            lblFilter.BackColor = SystemColors.GradientInactiveCaption;
+            lblFilter.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblFilter.ForeColor = Color.FromArgb(45, 93, 134);
+            lblFilter.Location = new Point(36, 54);
+            lblFilter.Name = "lblFilter";
+            lblFilter.Size = new Size(45, 19);
+            lblFilter.TabIndex = 4;
+            lblFilter.Text = "Filter:";
             // 
-            // panel1
+            // cboxSpecialities
             // 
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(658, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(340, 613);
-            panel1.TabIndex = 6;
+            cboxSpecialities.BackColor = SystemColors.GradientInactiveCaption;
+            cboxSpecialities.Cursor = Cursors.Hand;
+            cboxSpecialities.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboxSpecialities.FlatStyle = FlatStyle.Flat;
+            cboxSpecialities.FormattingEnabled = true;
+            cboxSpecialities.Location = new Point(168, 53);
+            cboxSpecialities.Name = "cboxSpecialities";
+            cboxSpecialities.Size = new Size(203, 23);
+            cboxSpecialities.TabIndex = 8;
+            // 
+            // lblFilterSpeciality
+            // 
+            lblFilterSpeciality.Anchor = AnchorStyles.Top;
+            lblFilterSpeciality.AutoSize = true;
+            lblFilterSpeciality.BackColor = SystemColors.GradientInactiveCaption;
+            lblFilterSpeciality.Font = new Font("Segoe UI", 10F);
+            lblFilterSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
+            lblFilterSpeciality.Location = new Point(101, 54);
+            lblFilterSpeciality.Name = "lblFilterSpeciality";
+            lblFilterSpeciality.Size = new Size(65, 19);
+            lblFilterSpeciality.TabIndex = 4;
+            lblFilterSpeciality.Text = "Speciality";
+            // 
+            // lblSort
+            // 
+            lblSort.Anchor = AnchorStyles.Top;
+            lblSort.AutoSize = true;
+            lblSort.BackColor = SystemColors.GradientInactiveCaption;
+            lblSort.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblSort.ForeColor = Color.FromArgb(45, 93, 134);
+            lblSort.Location = new Point(418, 54);
+            lblSort.Name = "lblSort";
+            lblSort.Size = new Size(57, 19);
+            lblSort.TabIndex = 4;
+            lblSort.Text = "Sort by:";
+            // 
+            // cboxSort
+            // 
+            cboxSort.BackColor = SystemColors.GradientInactiveCaption;
+            cboxSort.Cursor = Cursors.Hand;
+            cboxSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboxSort.FlatStyle = FlatStyle.Flat;
+            cboxSort.FormattingEnabled = true;
+            cboxSort.Location = new Point(481, 53);
+            cboxSort.Name = "cboxSort";
+            cboxSort.Size = new Size(119, 23);
+            cboxSort.TabIndex = 8;
             // 
             // EmployeesView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(tboxSelected);
-            Controls.Add(flpnlLawyers);
-            Controls.Add(lblAllSpecialties);
-            Controls.Add(lblLawyers);
+            Controls.Add(cboxSort);
+            Controls.Add(cboxSpecialities);
             Controls.Add(pnlDetails);
-            Controls.Add(panel1);
+            Controls.Add(flpnlLawyers);
+            Controls.Add(lblFilterSpeciality);
+            Controls.Add(lblSort);
+            Controls.Add(lblFilter);
+            Controls.Add(lblLawyers);
+            Controls.Add(gradiantPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesView";
+            SizeGripStyle = SizeGripStyle.Hide;
             Text = "EmployeesView";
             pnlDetails.ResumeLayout(false);
             pnlDetails.PerformLayout();
@@ -321,8 +383,6 @@
         private Label lblLawyers;
         private Panel pnlDetails;
         private Panel panel2;
-        private TextBox tboxSelected;
-        private Label lblAllSpecialties;
         private ListBox lboxSpecialties;
         private Label lblSpecialities;
         private FontAwesome.Sharp.IconPictureBox pboxDetails;
@@ -335,6 +395,12 @@
         private Label lblDetailsCity;
         private Label lblDetailsTitleValue;
         private Label lblDetailsTitle;
-        private Panel panel1;
+        private Toolbox.GradiantPanel gradiantPanel1;
+        private Label lblSelected;
+        private Label lblFilter;
+        private ComboBox cboxSpecialities;
+        private Label lblFilterSpeciality;
+        private Label lblSort;
+        private ComboBox cboxSort;
     }
 }

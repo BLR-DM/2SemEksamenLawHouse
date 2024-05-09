@@ -32,6 +32,7 @@ namespace UI.Toolbox
             City = lawyer.City;
             Phone = lawyer.PhoneNumber;
             Email = lawyer.Email;
+            this.Tag = LawyerID;
 
             // Tilføj værdi til UI controls
             lblName.Text = $"{lawyer.Firstname} {lawyer.Lastname}";

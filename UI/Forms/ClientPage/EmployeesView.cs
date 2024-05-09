@@ -16,14 +16,14 @@ namespace UI.Forms.ClientPage
         SpecialityBL specialityBL;
         List<LawyerUI> lawyerUIs;
         List<LawyerSpecialityUI> lawyerSpecialityUIs;
-        readonly List<Control> OriginalLawyerControls;
+        readonly List<LawyerCard> OriginalLawyerControls;
         public EmployeesView()
         {
             specialityBL = new SpecialityBL();
             lawyerBL = new LawyerBL();
             lawyerUIs = new List<LawyerUI>();
             lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
-            OriginalLawyerControls = new List<Control>();
+            OriginalLawyerControls = new List<LawyerCard>();
 
             InitializeComponent();
 
@@ -32,6 +32,13 @@ namespace UI.Forms.ClientPage
             cboxSpecialities.SelectionChangeCommitted += CboxSpecialities_SelectionChangeCommitted;
             cboxSort.SelectionChangeCommitted += CboxSort_SelectionChangeCommitted;
             
+        }
+        private async void EmployeesView_Load(object? sender, EventArgs e)
+        {
+            await GetLawyerUIsAsync();
+            await GetSpecialityUIsAsync();
+            FillComboBoxes();
+            SetupPanelContent();
         }
 
         private void CboxSort_SelectionChangeCommitted(object? sender, EventArgs e)
@@ -51,7 +58,7 @@ namespace UI.Forms.ClientPage
 
         private void SortAndUpdateFlowLayoutPanel()
         {
-            List<Control> visibleControls = OriginalLawyerControls.Where(c => c.Visible).ToList();
+            List<LawyerCard> visibleControls = OriginalLawyerControls.Where(c => c.Visible).ToList();
 
             switch (cboxSort.SelectedItem.ToString())
             {
@@ -61,6 +68,9 @@ namespace UI.Forms.ClientPage
 
                 case "Name":
                     visibleControls = visibleControls.OrderBy(c => c.Name).ToList();
+                    break;
+                case "City":
+                    visibleControls = visibleControls.OrderBy(c => c.City).ToList();
                     break;
             }
 
@@ -91,12 +101,12 @@ namespace UI.Forms.ClientPage
                             .Where(x => x.SpecialityName == selectedSpeciality)
                             .Select(x => x.LawyerID).ToList();
 
-                    foreach (Control control in OriginalLawyerControls)
+                    foreach (LawyerCard lawyerControl in OriginalLawyerControls)
                     {
-                        if (matchingLawyerIDs.Contains((int)control.Tag))
-                            control.Show();
+                        if (matchingLawyerIDs.Contains(lawyerControl.LawyerID))
+                            lawyerControl.Show();
                         else
-                            control.Hide();
+                            lawyerControl.Hide();
                     }
                     break;
             }
@@ -105,16 +115,6 @@ namespace UI.Forms.ClientPage
             {
                 SortAndUpdateFlowLayoutPanel();
             }
-        }
-
-        private async void EmployeesView_Load(object? sender, EventArgs e)
-        {
-            await GetLawyerUIsAsync();
-            await GetSpecialityUIsAsync();
-
-            FilterAndDisplayLawyers();
-
-            FillComboBoxes();
         }
 
         private async Task GetLawyerUIsAsync()
@@ -131,6 +131,7 @@ namespace UI.Forms.ClientPage
         {
             if (lawyerSpecialityUIs.Count > 0)
             {
+                // Filtrering combobox
                 cboxSpecialities.Items.Insert(0, "");
 
                 // Distinct tilknyttede specialiteter
@@ -141,23 +142,23 @@ namespace UI.Forms.ClientPage
                     cboxSpecialities.Items.Add(s);
                 }
                 cboxSpecialities.SelectionStart = 0;
-            }
 
-            if (flpnlLawyers.Controls.Count > 0)
-            {
+
+                // Sorting combobox
                 cboxSort.Items.Insert(0, "");
                 cboxSort.Items.Add("Name");
+                cboxSort.Items.Add("City");
                 cboxSort.SelectionStart = 0;
             }
         }
 
-        private void FilterAndDisplayLawyers()
+        private void SetupPanelContent()
         {
             foreach (LawyerUI lawyer in lawyerUIs)
             {
                 LawyerCard lawyerCard = new LawyerCard(lawyer);
 
-                // For hver child control i LawyerCard control, tilknyt klik event
+                // For hver child lawyerControl i LawyerCard lawyerControl, tilknyt klik event
                 foreach (Control control in lawyerCard.Controls)
                 {
                     control.Click += (sender, e) => LawyerCard_Click(lawyerCard, e);
@@ -167,7 +168,6 @@ namespace UI.Forms.ClientPage
                 flpnlLawyers.Controls.Add(lawyerCard);
                 OriginalLawyerControls.Add(lawyerCard);
             }
-            
         }
 
         private void LawyerCard_Click(object? sender, EventArgs e)

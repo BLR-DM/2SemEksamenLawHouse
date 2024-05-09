@@ -50,11 +50,15 @@ namespace UI.Forms.CasePage
         {
             if(e.RowIndex >= 0)
             {
-                CaseUI selectedCase = originalCaseList[e.RowIndex] as CaseUI;
-                CaseDetailsView detailsView = new CaseDetailsView(selectedCase);
-                f1.PnlContextChange(detailsView);
-                
-
+                DataGridViewRow selectedRow = dgvCaseList.Rows[e.RowIndex];
+                if (selectedRow.Cells["CaseID"] != null)
+                {
+                    if (int.TryParse(selectedRow.Cells["CaseID"].Value.ToString(), out int id))
+                    {
+                        CaseDetailsView detailsView = new CaseDetailsView(id);
+                        f1.PnlContextChange(detailsView);
+                    }
+                }
             }
         }
 

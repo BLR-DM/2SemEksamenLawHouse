@@ -19,6 +19,12 @@ namespace BusinessLogic
             dbAccess = new CaseServiceDbAccess();
         }
 
+        public async Task<bool> CreateCaseServiceAsync(CaseServiceUI caseServiceUI)
+        {
+            CaseService temp = modelConverter.ConvertFromCaseServiceUI(caseServiceUI);
+            return await dbAccess.CreateCaseServiceAsync(temp);
+        }
+
         public async Task<List<CaseServiceUI>> GetCaseServicesAsync(int id)
         {
             List<CaseServiceUI> caseServicesUI = new List<CaseServiceUI>();

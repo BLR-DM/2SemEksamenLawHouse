@@ -217,7 +217,7 @@
             txtTotalPrice.BackColor = Color.White;
             txtTotalPrice.Enabled = false;
             txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(233, 217);
+            txtTotalPrice.Location = new Point(341, 259);
             txtTotalPrice.MaxLength = 50;
             txtTotalPrice.Name = "txtTotalPrice";
             txtTotalPrice.Size = new Size(108, 27);
@@ -229,7 +229,7 @@
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(233, 193);
+            lblTotalPrice.Location = new Point(365, 230);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.Size = new Size(86, 21);
             lblTotalPrice.TabIndex = 58;
@@ -240,7 +240,7 @@
             txtUnits.BackColor = Color.White;
             txtUnits.Enabled = false;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(3, 217);
+            txtUnits.Location = new Point(383, 200);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -252,7 +252,7 @@
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(3, 193);
+            lblUnites.Location = new Point(402, 179);
             lblUnites.Name = "lblUnites";
             lblUnites.Size = new Size(47, 21);
             lblUnites.TabIndex = 56;
@@ -264,7 +264,7 @@
             lblPriceType.BackColor = SystemColors.GradientInactiveCaption;
             lblPriceType.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPriceType.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPriceType.Location = new Point(233, 139);
+            lblPriceType.Location = new Point(370, 71);
             lblPriceType.Name = "lblPriceType";
             lblPriceType.Size = new Size(79, 21);
             lblPriceType.TabIndex = 55;
@@ -275,7 +275,7 @@
             txtPriceType.BackColor = Color.White;
             txtPriceType.Enabled = false;
             txtPriceType.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPriceType.Location = new Point(233, 163);
+            txtPriceType.Location = new Point(359, 95);
             txtPriceType.MaxLength = 50;
             txtPriceType.Name = "txtPriceType";
             txtPriceType.Size = new Size(90, 27);
@@ -287,7 +287,7 @@
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(3, 139);
+            lblPrice.Location = new Point(403, 125);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(46, 21);
             lblPrice.TabIndex = 53;
@@ -298,7 +298,7 @@
             txtPrice.BackColor = Color.White;
             txtPrice.Enabled = false;
             txtPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.Location = new Point(3, 163);
+            txtPrice.Location = new Point(346, 149);
             txtPrice.MaxLength = 50;
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(103, 27);
@@ -311,8 +311,9 @@
             txtServiceDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtServiceDescription.Location = new Point(3, 109);
             txtServiceDescription.MaxLength = 50;
+            txtServiceDescription.Multiline = true;
             txtServiceDescription.Name = "txtServiceDescription";
-            txtServiceDescription.Size = new Size(224, 27);
+            txtServiceDescription.Size = new Size(224, 135);
             txtServiceDescription.TabIndex = 51;
             // 
             // lblServiceDescription
@@ -371,6 +372,7 @@
             Controls.Add(panel1);
             Controls.Add(panel4);
             Name = "ServiceDetailsView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "ServiceDetailsView";
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

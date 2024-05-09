@@ -101,7 +101,7 @@
             // 
             txtUnits.BackColor = Color.White;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(383, 133);
+            txtUnits.Location = new Point(384, 133);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -109,18 +109,21 @@
             // 
             // lblUnites
             // 
-            lblUnites.AutoSize = true;
+            lblUnites.Anchor = AnchorStyles.Right;
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(403, 109);
+            lblUnites.Location = new Point(354, 111);
             lblUnites.Name = "lblUnites";
-            lblUnites.Size = new Size(47, 21);
+            lblUnites.RightToLeft = RightToLeft.No;
+            lblUnites.Size = new Size(100, 21);
             lblUnites.TabIndex = 63;
             lblUnites.Text = "Units";
+            lblUnites.TextAlign = ContentAlignment.TopRight;
             // 
             // cboServices
             // 
+            cboServices.DropDownStyle = ComboBoxStyle.DropDownList;
             cboServices.FormattingEnabled = true;
             cboServices.Location = new Point(3, 59);
             cboServices.Name = "cboServices";
@@ -133,7 +136,7 @@
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(403, 167);
+            lblPrice.Location = new Point(404, 173);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(46, 21);
             lblPrice.TabIndex = 53;

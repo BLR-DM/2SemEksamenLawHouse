@@ -68,6 +68,9 @@
             panel3 = new Panel();
             dgvServices = new DataGridView();
             lblServices = new Label();
+            btnUpdateCase = new Button();
+            txtTotalPrice = new TextBox();
+            lblTotalPrice = new Label();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -177,7 +180,7 @@
             label5.ForeColor = Color.FromArgb(45, 93, 134);
             label5.Location = new Point(3, 22);
             label5.Name = "label5";
-            label5.Size = new Size(53, 21);
+            label5.Size = new Size(81, 21);
             label5.TabIndex = 44;
             label5.Text = "Firstname";
             // 
@@ -374,7 +377,7 @@
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
             lblName.Location = new Point(3, 28);
             lblName.Name = "lblName";
-            lblName.Size = new Size(53, 21);
+            lblName.Size = new Size(81, 21);
             lblName.TabIndex = 39;
             lblName.Text = "Firstname";
             // 
@@ -393,6 +396,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblTotalPrice);
+            panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblCaseInformation);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(cboxCaseType);
@@ -547,12 +552,45 @@
             lblServices.TabIndex = 21;
             lblServices.Text = "Services";
             // 
+            // btnUpdateCase
+            // 
+            btnUpdateCase.Location = new Point(428, 560);
+            btnUpdateCase.Name = "btnUpdateCase";
+            btnUpdateCase.Size = new Size(143, 41);
+            btnUpdateCase.TabIndex = 20;
+            btnUpdateCase.Text = "Update Case information";
+            btnUpdateCase.UseVisualStyleBackColor = true;
+            // 
+            // txtTotalPrice
+            // 
+            txtTotalPrice.BackColor = Color.White;
+            txtTotalPrice.Enabled = false;
+            txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTotalPrice.Location = new Point(299, 202);
+            txtTotalPrice.MaxLength = 50;
+            txtTotalPrice.Name = "txtTotalPrice";
+            txtTotalPrice.Size = new Size(167, 27);
+            txtTotalPrice.TabIndex = 21;
+            // 
+            // lblTotalPrice
+            // 
+            lblTotalPrice.AutoSize = true;
+            lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
+            lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
+            lblTotalPrice.Location = new Point(299, 178);
+            lblTotalPrice.Name = "lblTotalPrice";
+            lblTotalPrice.Size = new Size(86, 21);
+            lblTotalPrice.TabIndex = 22;
+            lblTotalPrice.Text = "Total price";
+            // 
             // CaseDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnUpdateCase);
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel2);
@@ -614,5 +652,8 @@
         private Panel panel3;
         private Label lblServices;
         private DataGridView dgvServices;
+        private Button btnUpdateCase;
+        private Label lblTotalPrice;
+        private TextBox txtTotalPrice;
     }
 }

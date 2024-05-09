@@ -25,6 +25,11 @@ namespace BusinessLogic
             return await dbAccess.CreateCase(temp);
         }
 
+        public async Task<CaseUI> GetCaseAsync(int id)
+        {
+            return modelConverter.ConvertFromCaseEntity(await dbAccess.GetCaseAsync(id));
+        }
+
         public async Task<List<CaseUI>> GetCasesAsync()
         {
             List<CaseUI> cases = new List<CaseUI>();
@@ -35,6 +40,12 @@ namespace BusinessLogic
             }
 
             return cases;
+        }
+
+        public async Task<bool> UpdateCaseSync(CaseUI caseUI)
+        {
+            Case temp = modelConverter.ConvertFromCaseUI(caseUI);
+            return await dbAccess.UpdateCaseAsync(temp);
         }
     }
 }

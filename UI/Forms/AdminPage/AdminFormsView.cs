@@ -15,7 +15,7 @@ namespace UI.Forms.AdminPage
 {
     public partial class AdminFormsView : Form
     {
-        List<FormDocumentUI> formUIs;
+        List<FormDocumentUI> formDocumentUIs;
         FormDocumentBL formBL;
         public AdminFormsView()
         {
@@ -30,7 +30,7 @@ namespace UI.Forms.AdminPage
         {
             if (e.RowIndex >= 0)
             {
-                FormDocumentUI selectedForm = formUIs[e.RowIndex];
+                FormDocumentUI selectedForm = formDocumentUIs[e.RowIndex] as FormDocumentUI;
                 AdminCUDForm aCUDform = new AdminCUDForm(selectedForm);
                 aCUDform.ShowDialog();
                 this.Close();
@@ -40,8 +40,8 @@ namespace UI.Forms.AdminPage
 
         private async void SetDgvFormAsync()
         {
-            formUIs = await formBL.GetFormDocumentAsync();
-            dgvForms.DataSource = formUIs;
+            formDocumentUIs = await formBL.GetFormDocumentAsync();
+            dgvForms.DataSource = formDocumentUIs;
             dgvForms.Columns["FormDocumentID"].Visible = false;
             dgvForms.Columns["Description"].Visible = false;
             dgvForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

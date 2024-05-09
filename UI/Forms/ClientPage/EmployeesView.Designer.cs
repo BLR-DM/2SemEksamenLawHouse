@@ -112,9 +112,9 @@
             pboxDetails.BackColor = Color.Transparent;
             pboxDetails.BackgroundImageLayout = ImageLayout.Center;
             pboxDetails.Dock = DockStyle.Fill;
-            pboxDetails.ForeColor = Color.SaddleBrown;
-            pboxDetails.IconChar = FontAwesome.Sharp.IconChar.Poo;
-            pboxDetails.IconColor = Color.SaddleBrown;
+            pboxDetails.ForeColor = SystemColors.ActiveCaptionText;
+            pboxDetails.IconChar = FontAwesome.Sharp.IconChar.BlackTie;
+            pboxDetails.IconColor = SystemColors.ActiveCaptionText;
             pboxDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxDetails.IconSize = 218;
             pboxDetails.Location = new Point(0, 0);

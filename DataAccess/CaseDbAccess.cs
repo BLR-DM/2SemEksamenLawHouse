@@ -30,6 +30,19 @@ namespace DataAccess
             }
         }
 
+        public async Task<Case> GetCaseAsync(int id)
+        {
+            try
+            {
+                return await db.Cases.FirstOrDefaultAsync(c => c.CaseID == id);
+            }
+            catch (Exception)
+            {
+
+                return new Case();
+            }
+        }
+
         public async Task<List<Case>> GetCasesAsync()
         {
             try
@@ -41,6 +54,21 @@ namespace DataAccess
             {
 
                 return new List<Case>();
+            }
+        }
+
+        public async Task<bool> UpdateCaseAsync(Case caseE)
+        {
+            try
+            {
+                db.Cases.Update(caseE);
+                bool succes = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return succes;  
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -23,7 +23,7 @@ namespace EntityModels
         public DateTime EndDate { get; set; }
         public float EstimatedHours { get; set; }
         public string Status { get; set; }
-        public float TotalPrice { get; set; }
+        public int TotalPrice { get; set; }
 
 
         //Foreign keys

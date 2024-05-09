@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,17 +20,66 @@ namespace UI.Forms.CasePage
         List<CaseTypeUI> caseTypeUIList;
         ClientUI selectedClient;
         LawyerUI selectedLawyer;
+        CaseValidator cValidator;
+
+        Color validFormat;
+        Color invalidFormat;
+
+        bool isEstimatedEndDateValid;
         public CreateCasePage()
         {
             InitializeComponent();
             caseBL = new CaseBL();
             caseTypeBL = new CaseTypeBL();
+            cValidator = new CaseValidator();
 
             btnAddClient.Click += BtnAddClient_Click;
             btnAddLawyer.Click += BtnAddLawyer_Click;
             btnCreateCase.Click += BtnCreateCase_Click;
+            txtTitle.TextChanged += TxtTitle_TextChanged;
+            txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
+            cboxCaseType.SelectedIndexChanged += CboxCaseType_SelectedIndexChanged;
+            dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
 
+            validFormat = Color.Black;
+            invalidFormat = Color.OrangeRed;
+
+            btnCreateCase.Enabled = false;
             SetComboBox();
+        }
+
+        private void DtpEstimatedEndDate_ValueChanged(object? sender, EventArgs e)
+        {
+            isEstimatedEndDateValid = cValidator.ValidEndDate(dtpEstimatedEndDate.Value);
+            btnCreateEnablid();
+        }
+
+        private void CboxCaseType_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            btnCreateEnablid();
+        }
+
+        private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
+        {
+            txtEstimatedHours.ForeColor = cValidator.ValidEstimatedHours(txtEstimatedHours.Text) ? validFormat : invalidFormat;
+            btnCreateEnablid();
+        }
+
+        private void TxtTitle_TextChanged(object? sender, EventArgs e)
+        {
+            txtTitle.ForeColor = cValidator.ValidTitle(txtTitle.Text) ? validFormat : invalidFormat;
+            btnCreateEnablid();
+        }
+
+
+        public bool btnCreateEnablid()
+        {
+            return btnCreateCase.Enabled =
+                txtTitle.ForeColor == validFormat &&
+                cboxCaseType.SelectedItem != null &&
+                txtEstimatedHours.ForeColor == validFormat &&
+                isEstimatedEndDateValid;
+
         }
 
         private async void BtnCreateCase_Click(object? sender, EventArgs e)
@@ -37,13 +87,6 @@ namespace UI.Forms.CasePage
             btnCreateCase.Enabled = false;
 
             CaseTypeUI selectedCaseType = (CaseTypeUI)cboxCaseType.SelectedItem;
-
-            if (selectedCaseType == null)
-            {
-                MessageBox.Show("Please select a case type.");
-                btnCreateCase.Enabled = true; 
-                return;
-            }
 
             CaseUI caseUI = new CaseUI()
             {

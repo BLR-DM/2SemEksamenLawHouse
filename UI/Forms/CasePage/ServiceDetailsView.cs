@@ -49,10 +49,10 @@ namespace UI.Forms.CasePage
             selectedService = await serviceBL.GetServiceAsync(selectedCaseService.ServiceID);
 
             txtServiceName.Text = selectedService.Name;
-            txtServiceDescription.Text = selectedService.Description;
             txtPrice.Text = selectedService.Price.ToString();
             txtPriceType.Text = selectedService.PriceType;
 
+            txtServiceDescription.Text = selectedCaseService.Description;
             txtUnits.Text = selectedCaseService.Units.ToString();
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
             txtDate.Text = selectedCaseService.Date.ToString();

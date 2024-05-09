@@ -11,6 +11,7 @@ namespace UIModels
         public int CaseServiceID { get; set; }
 
         //Attributes
+        public string Description { get; set; }
         public int Units { get; set; }
         public int TotalPrice { get; set; }
         public DateTime Date { get; set; }
@@ -18,7 +19,7 @@ namespace UIModels
 
         //Kun i UI
         public string? ServiceName { get; set; }
-        public string? ServiceType { get; set; }
+        public string? PriceType { get; set; }
 
 
         //Foreign Keys

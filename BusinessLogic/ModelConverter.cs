@@ -55,6 +55,7 @@ namespace BusinessLogic
             CaseServiceUI caseServiceUI = new CaseServiceUI
             {
                 CaseServiceID = caseServiceE.CaseServiceID,
+                Description = caseServiceE.Description,
                 Units = caseServiceE.Units,
                 TotalPrice = caseServiceE.TotalPrice,
                 Date = caseServiceE.Date,
@@ -73,12 +74,13 @@ namespace BusinessLogic
             CaseServiceUI caseServiceUI = new CaseServiceUI
             {
                 CaseServiceID = caseServiceE.CaseServiceID,
+                Description= caseServiceE.Description,
                 Units = caseServiceE.Units,
                 TotalPrice = caseServiceE.TotalPrice,
                 Date = caseServiceE.Date,
                 //
                 ServiceName = caseServiceE.Service.Name,
-                ServiceType = caseServiceE.Service.ServicePriceType.PriceType,
+                PriceType = caseServiceE.Service.ServicePriceType.PriceType,
 
                 //foreign key
                 CaseID = caseServiceE.CaseID,
@@ -303,6 +305,7 @@ namespace BusinessLogic
             CaseService caseServiceE = new CaseService
             {
                 CaseServiceID = CaseServiceUI.CaseServiceID,
+                Description = CaseServiceUI.Description,
                 Units = CaseServiceUI.Units,
                 TotalPrice = CaseServiceUI.TotalPrice,
                 Date = CaseServiceUI.Date,

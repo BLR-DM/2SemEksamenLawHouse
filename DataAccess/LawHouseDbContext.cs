@@ -87,6 +87,8 @@ namespace DataAccess
                 .WithMany(s => s.LawyerSpecialities)
                 .HasForeignKey(ls => ls.SpecialityID);
 
+
+            modelBuilder.Entity<CaseService>().ToTable(cs => cs.HasTrigger("Trigger"));
             //////////
             
             //modelBuilder.Entity<ClientFormular>()

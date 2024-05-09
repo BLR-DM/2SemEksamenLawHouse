@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,40 +16,125 @@ namespace UI.Forms.CasePage
     public partial class CaseDetailsView : Form
     {
         ClientUI selectedClient;
-        CaseUI selectedCase;
+        int selectedCaseID;
         LawyerUI selectedLawyer;
+        CaseUI selectedCase;
 
         List<CaseServiceUI> caseServiceList;
         List<CaseTypeUI> caseTypeUIList;
 
+        Color validFormat;
+        Color invalidFormat;
+
         ClientBL clientBL;
         LawyerBL lawyerBL;
+        CaseBL caseBL;
         ServiceBL serviceBL;
         CaseServiceBL caseServiceBL;
         CaseTypeBL caseTypeBL;
-        public CaseDetailsView(CaseUI selectedCase)
+        CaseValidator cValidator;
+
+        bool isEstimatedEndDateValid;
+        public CaseDetailsView(int selectedCaseID)
         {
             InitializeComponent();
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
+            caseBL = new CaseBL();
             serviceBL = new ServiceBL();
             caseServiceBL = new CaseServiceBL();
             caseTypeBL = new CaseTypeBL();
-            this.selectedCase = selectedCase;
+            cValidator = new CaseValidator();
+            this.selectedCaseID = selectedCaseID;
+
+            validFormat = Color.Black;
+            invalidFormat = Color.OrangeRed;
 
             dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
             btnAddService.Click += BtnAddService_Click;
+            btnUpdateCase.Click += BtnUpdateCase_Click;
+            txtTitle.TextChanged += TxtTitle_TextChanged;
+            dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
+            txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
 
-            SetData();
+            btnUpdateCase.Enabled = false;
+
+            InitializeData();
+
+        }
+
+        public async void InitializeData()
+        {
+            await SetCaseData();
             SetDgv();
             SetComboBox();
+            SetClientData();
+            SetLawyerData();
+        }
+
+        private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
+        {
+            txtEstimatedHours.ForeColor = cValidator.ValidEstimatedHours(txtEstimatedHours.Text) ? validFormat : invalidFormat;
+            BtnUpdateEnabled();
+        }
+
+        private void DtpEstimatedEndDate_ValueChanged(object? sender, EventArgs e)
+        {
+            isEstimatedEndDateValid = cValidator.ValidEndDate(dtpEstimatedEndDate.Value);
+            BtnUpdateEnabled();
+        }
+
+        private void TxtTitle_TextChanged(object? sender, EventArgs e)
+        {
+            txtTitle.ForeColor = cValidator.ValidTitle(txtTitle.Text) ? validFormat : invalidFormat;
+            BtnUpdateEnabled();
+        }
+
+        private async void BtnUpdateCase_Click(object? sender, EventArgs e)
+        {
+            btnUpdateCase.Enabled = false;
+
+            CaseUI caseUpdate = new CaseUI()
+            {
+                CaseID = selectedCase.CaseID,
+                Title = txtTitle.Text,
+                CreationDate = selectedCase.CreationDate,
+                EndDate = dtpEstimatedEndDate.Value,
+                EstHours = int.Parse(txtEstimatedHours.Text),
+                Status = selectedCase.Status,
+                TotalPrice = selectedCase.TotalPrice,
+
+                CaseTypeID = selectedCase.CaseTypeID,
+                LawyerID = selectedCase.LawyerID,
+                ClientID = selectedCase.ClientID,
+            };
+
+            bool succes = await caseBL.UpdateCaseSync(caseUpdate);
+            if(succes)
+            {
+                MessageBox.Show("Case updated");
+            }
+            else
+            {
+                MessageBox.Show("Update failed");
+            }
+            btnUpdateCase.Enabled = true;
+
+        }
+
+        public bool BtnUpdateEnabled()
+        {
+            return btnUpdateCase.Enabled =
+                txtTitle.ForeColor == validFormat &&
+                txtEstimatedHours.ForeColor == validFormat &&
+                isEstimatedEndDateValid;
 
         }
 
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
             
-            AddServiceView addServiceView = new AddServiceView();
+            AddServiceView addServiceView = new AddServiceView(selectedCase, this);
             addServiceView.ShowDialog();
         }
 
@@ -63,31 +149,41 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetData()
+        public async Task SetCaseData()
+        {
+            selectedCase = await caseBL.GetCaseAsync(selectedCaseID);
+
+            txtTitle.Text = selectedCase.Title;
+            dtpEstimatedEndDate.Value = selectedCase.EndDate;
+            txtEstimatedHours.Text = selectedCase.EstHours.ToString();
+            txtTotalPrice.Text = selectedCase.TotalPrice.ToString();
+
+
+        }
+
+        public async Task SetClientData()
         {
             selectedClient = await clientBL.GetClientAsync(selectedCase.ClientID);
-
             txtClientFirstname.Text = selectedClient.Firstname;
             txtClientLastName.Text = selectedClient.Lastname;
             txtClientEmail.Text = selectedClient.Email;
             txtClientAddress.Text = selectedClient.AddressLine;
             txtClientPhoneNumber1.Text = selectedClient.MainPhone.ToString();
             txtClientPostalCode.Text = selectedClient.PostalCode.ToString();
+        }
 
+        public async Task SetLawyerData()
+        {
             selectedLawyer = await lawyerBL.GetLawyerAsync(selectedCase.LawyerID);
             txtLawyerFirstName.Text = selectedLawyer.Firstname;
             txtLawyerLastName.Text = selectedLawyer.Lastname;
             txtLawyerPhone.Text = selectedLawyer.PhoneNumber.ToString();
-
-            txtTitle.Text = selectedCase.Title;
-            dtpEstimatedEndDate.Value = selectedCase.EndDate;
-            txtEstimatedHours.Text = selectedCase.EstHours.ToString();
-
-
         }
+
 
         public async Task SetDgv()
         {
+
             caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
 
             dgvServices.DataSource = caseServiceList;
@@ -96,12 +192,14 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["ServiceID"].Visible = false;
             dgvServices.Columns["LawyerID"].Visible = false;
             dgvServices.Columns["CaseID"].Visible = false;
+            dgvServices.Columns["Description"].Visible = false;
+
 
             dgvServices.Columns["ServiceName"].DisplayIndex = 0;
-            dgvServices.Columns["ServiceType"].DisplayIndex = 1;
-            dgvServices.Columns["Date"].DisplayIndex = 2;
-            dgvServices.Columns["TotalPrice"].DisplayIndex = 3;
-            dgvServices.Columns["Units"].DisplayIndex = 4;
+            dgvServices.Columns["TotalPrice"].DisplayIndex = 1;
+            dgvServices.Columns["Units"].DisplayIndex = 2;
+            dgvServices.Columns["PriceType"].DisplayIndex = 3;
+            dgvServices.Columns["Date"].DisplayIndex = 4;
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

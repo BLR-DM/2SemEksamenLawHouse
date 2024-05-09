@@ -16,7 +16,7 @@ namespace UIModels
         public DateTime EndDate { get; set; }
         public float EstHours { get; set; }
         public string Status { get; set; }
-        public float TotalPrice { get; set; }
+        public int TotalPrice { get; set; }
 
         //public string CaseType { get; set; }
 

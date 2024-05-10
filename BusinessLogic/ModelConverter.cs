@@ -134,6 +134,24 @@ namespace BusinessLogic
             return clientFormUI;
         }
 
+        public EmployeeUI ConvertFromEmployeeEntity(Employee employeeE)
+        {
+            EmployeeUI employeeUI = new EmployeeUI
+            {
+                PersonID = employeeE.PersonID,
+                Firstname = employeeE.Firstname,
+                Lastname = employeeE.Lastname,
+                PhoneNumber = employeeE.PhoneNumber,
+                Email = employeeE.Email,
+                AddressLine = employeeE.AddressLine,
+                PostalCode = employeeE.PostalCode,
+                City = employeeE.City,
+                HireDate = employeeE.HireDate,
+                LawyerTitle = employeeE.LawyerTitle.Title
+            };
+            return employeeUI;
+        }
+
         public ClientSubscriptionUI ConvertFromClientSubscriptionEntity(ClientSubscription clientSubscriptionE)
         {
             ClientSubscriptionUI clientSubscriptionUI = new ClientSubscriptionUI
@@ -250,6 +268,7 @@ namespace BusinessLogic
             };
             return specialityUI;
         }
+
 
         public SubscriptionUI ConvertFromSubscriptionEntity(Subscription subscriptionE)
         {

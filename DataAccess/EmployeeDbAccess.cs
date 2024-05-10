@@ -11,17 +11,25 @@ namespace DataAccess
     public class EmployeeDbAccess
     {
         LawHouseDbContext db;
-        List<Employee> e;
+        List<Employee> employees;
         public EmployeeDbAccess()
         {
-            e = new List<Employee>();
+            employees = new List<Employee>();
             db = new LawHouseDbContext();
         }
 
-        public async Task GetEmployeesAsync()
+        public async Task<List<Employee>> GetEmployeesAsync()
         {
-            e = await db.Employees
+            return await db.Employees
+                .Include(t => t.LawyerTitle)
                 .ToListAsync();
+        }
+
+        public async Task<Employee> GetEmployeeAsync(int id)
+        {
+            return await db.Employees
+                .Include(t => t.LawyerTitle)
+                .SingleOrDefaultAsync(e => e.PersonID == id);
         }
     }
 }

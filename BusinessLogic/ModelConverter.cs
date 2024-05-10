@@ -26,6 +26,7 @@ namespace BusinessLogic
                 CaseID = caseE.CaseID, 
                 Title = caseE.Title, 
                 //CaseType = caseE.CaseType,
+                Description = caseE.Description,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
                 EstimatedHours = caseE.EstimatedHours,
@@ -295,6 +296,7 @@ namespace BusinessLogic
             Case caseE = new Case
             {
                 CaseID = caseUI.CaseID,
+                Description = caseUI.Description,
                 Title = caseUI.Title,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtDescription = new TextBox();
+            lblDescription = new Label();
             lblCaseInformation = new Label();
             label1 = new Label();
             cboxCaseType = new ComboBox();
@@ -77,6 +79,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(txtDescription);
+            panel1.Controls.Add(lblDescription);
             panel1.Controls.Add(lblCaseInformation);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(cboxCaseType);
@@ -92,13 +96,36 @@
             panel1.Size = new Size(476, 238);
             panel1.TabIndex = 10;
             // 
+            // txtDescription
+            // 
+            txtDescription.BackColor = Color.White;
+            txtDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDescription.Location = new Point(273, 44);
+            txtDescription.MaxLength = 300;
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(198, 181);
+            txtDescription.TabIndex = 22;
+            // 
+            // lblDescription
+            // 
+            lblDescription.AutoSize = true;
+            lblDescription.BackColor = SystemColors.GradientInactiveCaption;
+            lblDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblDescription.ForeColor = Color.FromArgb(45, 93, 134);
+            lblDescription.Location = new Point(273, 20);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(94, 21);
+            lblDescription.TabIndex = 21;
+            lblDescription.Text = "Description";
+            // 
             // lblCaseInformation
             // 
             lblCaseInformation.AutoSize = true;
             lblCaseInformation.BackColor = SystemColors.GradientInactiveCaption;
             lblCaseInformation.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCaseInformation.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCaseInformation.Location = new Point(163, 0);
+            lblCaseInformation.Location = new Point(166, -4);
             lblCaseInformation.Name = "lblCaseInformation";
             lblCaseInformation.Size = new Size(134, 21);
             lblCaseInformation.TabIndex = 20;
@@ -399,7 +426,7 @@
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
             lblName.Location = new Point(3, 111);
             lblName.Name = "lblName";
-            lblName.Size = new Size(53, 21);
+            lblName.Size = new Size(81, 21);
             lblName.TabIndex = 39;
             lblName.Text = "Firstname";
             // 
@@ -554,7 +581,7 @@
             label5.ForeColor = Color.FromArgb(45, 93, 134);
             label5.Location = new Point(3, 93);
             label5.Name = "label5";
-            label5.Size = new Size(53, 21);
+            label5.Size = new Size(81, 21);
             label5.TabIndex = 44;
             label5.Text = "Firstname";
             // 
@@ -647,5 +674,7 @@
         private TextBox txtClientPostalCode;
         private FontAwesome.Sharp.IconButton btnAddLawyer;
         private Button btnCreateCase;
+        private Label lblDescription;
+        private TextBox txtDescription;
     }
 }

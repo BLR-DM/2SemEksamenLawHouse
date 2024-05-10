@@ -40,12 +40,19 @@ namespace UI.Forms.CasePage
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
             cboxCaseType.SelectedIndexChanged += CboxCaseType_SelectedIndexChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
+            txtDescription.TextChanged += TxtDescription_TextChanged;
+
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
 
             btnCreateCase.Enabled = false;
             SetComboBox();
+        }
+
+        private void TxtDescription_TextChanged(object? sender, EventArgs e)
+        {
+            txtDescription.ForeColor = cValidator.ValidDescription(txtDescription.Text) ? validFormat : invalidFormat;
         }
 
         private void DtpEstimatedEndDate_ValueChanged(object? sender, EventArgs e)
@@ -78,8 +85,10 @@ namespace UI.Forms.CasePage
                 txtTitle.ForeColor == validFormat &&
                 cboxCaseType.SelectedItem != null &&
                 txtEstimatedHours.ForeColor == validFormat &&
-                isEstimatedEndDateValid;
-
+                isEstimatedEndDateValid &&
+                txtDescription.ForeColor == validFormat &&
+                selectedClient != null &&
+                selectedLawyer != null;
         }
 
         private async void BtnCreateCase_Click(object? sender, EventArgs e)
@@ -91,6 +100,7 @@ namespace UI.Forms.CasePage
             CaseUI caseUI = new CaseUI()
             {
                 Title = txtTitle.Text,
+                Description = txtDescription.Text,
                 CreationDate = DateTime.Now,
                 EndDate = dtpEstimatedEndDate.Value,
                 EstimatedHours = float.Parse(txtEstimatedHours.Text),
@@ -145,6 +155,7 @@ namespace UI.Forms.CasePage
             txtLawyerPhone.Text = e.PhoneNumber.ToString();
 
             selectedLawyer = e;
+            btnCreateEnablid();
         }
 
         private void BtnAddClient_Click(object? sender, EventArgs e)
@@ -167,7 +178,7 @@ namespace UI.Forms.CasePage
             txtClientEmail.Text = e.Email;
 
             selectedClient = e;
-
+            btnCreateEnablid();
         }
     }
 }

@@ -56,6 +56,7 @@ namespace UI.Forms.CasePage
             txtTitle.TextChanged += TxtTitle_TextChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
+           
 
             btnUpdateCase.Enabled = false;
 

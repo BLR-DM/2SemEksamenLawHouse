@@ -21,18 +21,16 @@ namespace BusinessLogic
 
         public async Task<List<EmployeeUI>> GetEmployeesAsync()
         {
-            List<Employee> employees = await dbAccess.GetEmployeesAsync();
-
-            List<EmployeeUI> employeeUIs = new List<EmployeeUI>();
-
-            if (employees.Count > 0)
+            try
             {
-                foreach (Employee employee in employees)
-                {
-                    employeeUIs.Add(modelConverter.ConvertFromEmployeeEntity(employee));
-                }
+                List<Employee> employees = await dbAccess.GetEmployeesAsync();
+
+                return employees.Select(modelConverter.ConvertFromEmployeeEntity).ToList();
             }
-            return employeeUIs;
+            catch (Exception)
+            {
+                return new List<EmployeeUI>();
+            }
         }
 
         public async Task<EmployeeUI> GetEmployeeAsync(int id)

@@ -24,7 +24,7 @@ namespace UIModels
         public int LawyerID { get; set; }
         public int ClientID { get; set; }
 
-        //public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
+        public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
     }
 
 }

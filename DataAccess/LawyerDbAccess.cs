@@ -52,8 +52,11 @@ namespace DataAccess
                 List<Lawyer> lawyers = await db.Lawyers
                     .Include(l => l.LawyerTitle)
                     .Include(c => c.Cases)
+                        .ThenInclude(cs => cs.CaseServices)
                     .ToListAsync();
                 return lawyers;
+
+                
             }
             catch (Exception)
             {

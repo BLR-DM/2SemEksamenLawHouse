@@ -18,14 +18,13 @@ namespace UI.Forms.ClientPage
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
         ClientBL clientBL;
-        FrontPageView fpv;
+        FrontPageView frontPageView;
         PersonUI currentUser;
-        int count;
         public ClientsView(FrontPageView fpv, PersonUI currentUser)
         {
             InitializeComponent();
             clientBL = new ClientBL();
-            this.fpv = fpv;
+            this.frontPageView = fpv;
             this.currentUser = currentUser;
 
             //Events
@@ -34,12 +33,18 @@ namespace UI.Forms.ClientPage
             txtSearchPostal.TextChanged += TxtSearchPostal_TextChanged;
             dgvClients.CellDoubleClick += DgvClients_CellDoubleClick;
             btnCreate.Click += BtnCreate_Click;
+            dgvClients.DataSourceChanged += DgvClients_DataSourceChanged;
+        }
+
+        private void DgvClients_DataSourceChanged(object? sender, EventArgs e)
+        {
+            lblClientAmmount.Text = $"{dgvClients.RowCount} Clients";
         }
 
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
-            CreateClientView cCV = new CreateClientView();
-            fpv.PnlContextChange(cCV);
+            CreateClientView createClientsView = new CreateClientView();
+            frontPageView.PnlContextChange(createClientsView);
         }
 
         //doubleklik åbn ClientDetails
@@ -48,23 +53,23 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails cd = new ClientDetails(fpv, currentUser, selectedClient);
-                fpv.PnlContextChange(cd);
+                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient);
+                frontPageView.PnlContextChange(clientDetails);
             }
         }
 
         private void TxtSearchPostal_TextChanged(object? sender, EventArgs e)
         {
-            SortData();
+            SortDgvData();
         }
 
         private void TxtSearchPhone_TextChanged(object? sender, EventArgs e)
         {
-            SortData();
+            SortDgvData();
         }
 
         //sortere data
-        private void SortData()
+        private void SortDgvData()
         {
             filteredClients = new List<ClientUI>(originalClientsList);
 
@@ -81,9 +86,6 @@ namespace UI.Forms.ClientPage
             }
 
             dgvClients.DataSource = filteredClients;
-
-            count = filteredClients.Count;
-            lblClientAmmount.Text = count.ToString() + " Clients";
         }
 
         //Henter data og sætter DGV data
@@ -91,9 +93,6 @@ namespace UI.Forms.ClientPage
         {
             originalClientsList = await clientBL.GetClientsAsync();
             filteredClients = new List<ClientUI>(originalClientsList);
-            dgvClients.DataSource = filteredClients;
-            count = filteredClients.Count;
-            lblClientAmmount.Text = count.ToString() + " Clients";
 
 
             DGVSetup();
@@ -102,7 +101,7 @@ namespace UI.Forms.ClientPage
         //Datagridview setup
         private void DGVSetup()
         {
-
+            dgvClients.DataSource = filteredClients;
 
             dgvClients.Columns["PersonID"].DisplayIndex = 0;
             dgvClients.Columns["Firstname"].DisplayIndex = 1;

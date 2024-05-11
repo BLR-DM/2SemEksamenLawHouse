@@ -109,7 +109,8 @@ namespace BusinessLogic
                 
             };
 
-            ClientSubscription subscription = clientE.clientSubscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
+            ClientSubscription? subscription = clientE.ClientSubscriptions
+                .FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
 
             if(subscription != null)
             {

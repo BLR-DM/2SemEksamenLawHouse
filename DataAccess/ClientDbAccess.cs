@@ -22,7 +22,10 @@ namespace DataAccess
         {
             try
             {
-                List<Client> clients = await db.Clients.Include(c => c.Phones).ToListAsync();
+                List<Client> clients = await db.Clients
+                    .Include(c => c.ClientSubscriptions)
+                    .Include(c => c.Phones)
+                    .ToListAsync();
                 return clients;
             }
             catch (Exception)
@@ -51,7 +54,7 @@ namespace DataAccess
             try
             {
                 return await db.Clients
-                    .Include(c => c.clientSubscriptions)
+                    .Include(c => c.ClientSubscriptions)
                     .Include(c => c.Phones)
                     .FirstOrDefaultAsync(c => c.PersonID == id);
 

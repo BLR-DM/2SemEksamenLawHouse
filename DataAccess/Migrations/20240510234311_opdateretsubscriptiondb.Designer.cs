@@ -554,7 +554,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
                 {
                     b.HasOne("EntityModels.Client", "Client")
-                        .WithMany("clientSubscriptions")
+                        .WithMany("ClientSubscriptions")
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -720,7 +720,7 @@ namespace DataAccess.Migrations
 
                     b.Navigation("Phones");
 
-                    b.Navigation("clientSubscriptions");
+                    b.Navigation("ClientSubscriptions");
                 });
 
             modelBuilder.Entity("EntityModels.Lawyer", b =>

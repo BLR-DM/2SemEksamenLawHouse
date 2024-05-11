@@ -17,7 +17,7 @@ namespace UI.Forms.ClientPage
 {
     public partial class ClientDetails : Form
     {
-        FrontPageView fpv;
+        FrontPageView frontPageView;
         PersonUI currentUser;
         ClientBL clientBL;
         FormDocumentBL formBL;
@@ -33,7 +33,7 @@ namespace UI.Forms.ClientPage
         public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
         {
             InitializeComponent();
-            this.fpv = fpv;
+            this.frontPageView = fpv;
             this.currentUser = currenUser;
             this.client = client;
             formBL = new FormDocumentBL();
@@ -69,14 +69,13 @@ namespace UI.Forms.ClientPage
             if (e.RowIndex >= 0)
             {
                 FormDocumentUI selectedForm = boughtForms[e.RowIndex];
-                FormDetails fdBought = new FormDetails(selectedForm, client);
-                fdBought.ShowDialog();
+                FormDetails formDetails = new FormDetails(selectedForm, client);
+                formDetails.ShowDialog();
             }
         }
 
         private void BtnDeletePhone_Click(object? sender, EventArgs e)
         {
-
             //sletter det valgte telefonummer og tilføjer til deletedphones
             if (dgvPhoneNumbers.SelectedRows.Count > 0)
             {
@@ -149,7 +148,7 @@ namespace UI.Forms.ClientPage
 
 
             //Hvis update sker på "mypage" så henter den brugerens detaljer igen
-            if(currentUser is ClientUI) { fpv.GetPersonAsync(currentUser.PersonID); }
+            if(currentUser is ClientUI) { frontPageView.GetPersonAsync(currentUser.PersonID); }
 
             btnUpdate.Enabled = true;
 
@@ -208,7 +207,6 @@ namespace UI.Forms.ClientPage
 
         private async void SetDetails(ClientUI client)
         {
-
             txtFirstname.Text = client.Firstname;
             txtLastname.Text = client.Lastname;
             txtEmail.Text = client.Email;

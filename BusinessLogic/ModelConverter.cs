@@ -101,7 +101,7 @@ namespace BusinessLogic
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
                 City = clientE.City,
-                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0,
+                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0, // remove?
 
                 //foreign keys
                 LoginDetailsID = clientE.LoginDetailsID,
@@ -195,11 +195,19 @@ namespace BusinessLogic
                 HireDate = lawyerE.HireDate,
                 LawyerTitle = lawyerE.LawyerTitle.Title,
 
-
                 //foreign keys
                 LoginDetailsID = lawyerE.LoginDetailsID,
                 LawyerTitleID = lawyerE.LawyerTitleID,
             };
+            return lawyerUI;
+        }
+
+        public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
+        {
+            LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
+            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
+            lawyerUI.ActiveCaseCount = lawyerUI.Cases.Count(c => c.Status == "Active");
+
             return lawyerUI;
         }
 

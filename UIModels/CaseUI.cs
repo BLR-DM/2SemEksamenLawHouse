@@ -19,13 +19,12 @@ namespace UIModels
         public string Status { get; set; }
         public float TotalPrice { get; set; }
 
-        //public string CaseType { get; set; }
-
         //foreign keys
         public int CaseTypeID { get; set; }
         public int LawyerID { get; set; }
         public int ClientID { get; set; }
 
+        //public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
     }
 
 }

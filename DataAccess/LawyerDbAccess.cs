@@ -25,14 +25,34 @@ namespace DataAccess
 
         public async Task<Lawyer> GetLawyerAsync(int id)
         {
-            return await db.Lawyers.Include(l => l.LawyerTitle).FirstOrDefaultAsync(c => c.PersonID == id);
+            return await db.Lawyers
+                .Include(l => l.LawyerTitle)
+                .SingleOrDefaultAsync(c => c.PersonID == id);
         }
 
         public async Task<List<Lawyer>> GetLawyersAsync()
         {
             try
             {
-                List<Lawyer> lawyers = await db.Lawyers.Include(l => l.LawyerTitle).ToListAsync();
+                List<Lawyer> lawyers = await db.Lawyers
+                    .Include(l => l.LawyerTitle)
+                    .ToListAsync();
+                return lawyers;
+            }
+            catch (Exception)
+            {
+                return new List<Lawyer>();
+            }
+        }
+
+        public async Task<List<Lawyer>> GetLawyersWithCollectionsAsync()
+        {
+            try
+            {
+                List<Lawyer> lawyers = await db.Lawyers
+                    .Include(l => l.LawyerTitle)
+                    .Include(c => c.Cases)
+                    .ToListAsync();
                 return lawyers;
             }
             catch (Exception)

@@ -26,7 +26,8 @@ namespace DataAccess
         {
             //return await db.LoginDetails.AnyAsync(u => u.Username == username && u.Password == password);
 
-            LoginDetails user = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+            LoginDetails user = await db.LoginDetails
+                .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
 
             if (user != null)
             {

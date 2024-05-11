@@ -50,7 +50,7 @@ namespace UI.Forms.CasePage
 
             txtServiceName.Text = selectedService.Name;
             txtPrice.Text = selectedService.Price.ToString();
-            txtPriceType.Text = selectedService.PriceType;
+            txtHoursWorked.Text = selectedService.PriceType;
 
             txtServiceDescription.Text = selectedCaseService.Description;
             txtUnits.Text = selectedCaseService.Units.ToString();

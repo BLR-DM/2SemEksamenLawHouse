@@ -26,6 +26,7 @@ namespace BusinessLogic
                 CaseID = caseE.CaseID, 
                 Title = caseE.Title, 
                 //CaseType = caseE.CaseType,
+                Description = caseE.Description,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
                 EstimatedHours = caseE.EstimatedHours,
@@ -108,13 +109,15 @@ namespace BusinessLogic
                 
             };
 
-            if(clientE.ClientSubscription == null)
+            ClientSubscription subscription = clientE.clientSubscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
+
+            if(subscription != null)
             {
-                clientUI.ClientSub = false;
+                clientUI.ClientSub = true;
             }
             else
             {
-                clientUI.ClientSub = true;
+                clientUI.ClientSub = false;
             }
 
             return clientUI;
@@ -322,6 +325,7 @@ namespace BusinessLogic
             Case caseE = new Case
             {
                 CaseID = caseUI.CaseID,
+                Description = caseUI.Description,
                 Title = caseUI.Title,
                 CreationDate = caseUI.CreationDate,
                 EndDate = caseUI.EndDate,

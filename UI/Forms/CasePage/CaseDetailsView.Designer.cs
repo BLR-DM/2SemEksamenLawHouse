@@ -55,6 +55,8 @@
             lblName = new Label();
             lblClientInformation = new Label();
             panel1 = new Panel();
+            lblTotalPrice = new Label();
+            txtTotalPrice = new TextBox();
             lblCaseInformation = new Label();
             label1 = new Label();
             cboxCaseType = new ComboBox();
@@ -69,8 +71,9 @@
             dgvServices = new DataGridView();
             lblServices = new Label();
             btnUpdateCase = new Button();
-            txtTotalPrice = new TextBox();
-            lblTotalPrice = new Label();
+            lblDescription = new Label();
+            textBox1 = new TextBox();
+            btnCloseCase = new Button();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -396,6 +399,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(lblDescription);
             panel1.Controls.Add(lblTotalPrice);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblCaseInformation);
@@ -412,6 +417,29 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(480, 238);
             panel1.TabIndex = 15;
+            // 
+            // lblTotalPrice
+            // 
+            lblTotalPrice.AutoSize = true;
+            lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
+            lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
+            lblTotalPrice.Location = new Point(271, 178);
+            lblTotalPrice.Name = "lblTotalPrice";
+            lblTotalPrice.Size = new Size(86, 21);
+            lblTotalPrice.TabIndex = 22;
+            lblTotalPrice.Text = "Total price";
+            // 
+            // txtTotalPrice
+            // 
+            txtTotalPrice.BackColor = Color.White;
+            txtTotalPrice.Enabled = false;
+            txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTotalPrice.Location = new Point(271, 202);
+            txtTotalPrice.MaxLength = 50;
+            txtTotalPrice.Name = "txtTotalPrice";
+            txtTotalPrice.Size = new Size(167, 27);
+            txtTotalPrice.TabIndex = 21;
             // 
             // lblCaseInformation
             // 
@@ -561,28 +589,38 @@
             btnUpdateCase.Text = "Update Case information";
             btnUpdateCase.UseVisualStyleBackColor = true;
             // 
-            // txtTotalPrice
+            // lblDescription
             // 
-            txtTotalPrice.BackColor = Color.White;
-            txtTotalPrice.Enabled = false;
-            txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(299, 202);
-            txtTotalPrice.MaxLength = 50;
-            txtTotalPrice.Name = "txtTotalPrice";
-            txtTotalPrice.Size = new Size(167, 27);
-            txtTotalPrice.TabIndex = 21;
+            lblDescription.AutoSize = true;
+            lblDescription.BackColor = SystemColors.GradientInactiveCaption;
+            lblDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblDescription.ForeColor = Color.FromArgb(45, 93, 134);
+            lblDescription.Location = new Point(271, 29);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(94, 21);
+            lblDescription.TabIndex = 23;
+            lblDescription.Text = "Description";
             // 
-            // lblTotalPrice
+            // textBox1
             // 
-            lblTotalPrice.AutoSize = true;
-            lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
-            lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(299, 178);
-            lblTotalPrice.Name = "lblTotalPrice";
-            lblTotalPrice.Size = new Size(86, 21);
-            lblTotalPrice.TabIndex = 22;
-            lblTotalPrice.Text = "Total price";
+            textBox1.BackColor = Color.White;
+            textBox1.Enabled = false;
+            textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(271, 53);
+            textBox1.MaxLength = 300;
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(195, 122);
+            textBox1.TabIndex = 24;
+            // 
+            // btnCloseCase
+            // 
+            btnCloseCase.Location = new Point(870, 560);
+            btnCloseCase.Name = "btnCloseCase";
+            btnCloseCase.Size = new Size(116, 41);
+            btnCloseCase.TabIndex = 21;
+            btnCloseCase.Text = "Close case";
+            btnCloseCase.UseVisualStyleBackColor = true;
             // 
             // CaseDetailsView
             // 
@@ -590,6 +628,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnCloseCase);
             Controls.Add(btnUpdateCase);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -655,5 +694,8 @@
         private Button btnUpdateCase;
         private Label lblTotalPrice;
         private TextBox txtTotalPrice;
+        private TextBox textBox1;
+        private Label lblDescription;
+        private Button btnCloseCase;
     }
 }

@@ -50,7 +50,11 @@ namespace DataAccess
         {
             try
             {
-                return await db.Clients.Include(c => c.Phones).FirstOrDefaultAsync(c => c.PersonID == id);
+                return await db.Clients
+                    .Include(c => c.clientSubscriptions)
+                    .Include(c => c.Phones)
+                    .FirstOrDefaultAsync(c => c.PersonID == id);
+
             }
             catch (Exception)
             {

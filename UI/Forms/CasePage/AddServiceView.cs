@@ -73,7 +73,8 @@ namespace UI.Forms.CasePage
             btnAddService.Enabled =
                 txtUnits.ForeColor == validFormat &&
                 txtServiceDescription.ForeColor == validFormat &&
-                cboServices.SelectedItem != null;
+                cboServices.SelectedItem != null &&
+                selectedLawyer != null;
         }
         
 
@@ -125,6 +126,7 @@ namespace UI.Forms.CasePage
             txtLawyerPhone.Text = e.PhoneNumber.ToString();
 
             selectedLawyer = e;
+            btnCreateEnablid();
         }
 
         private void TxtUnits_TextChanged(object? sender, EventArgs e)
@@ -164,14 +166,23 @@ namespace UI.Forms.CasePage
                 txtUnits.Visible = false;
                 txtUnits.Text = "1";
 
+                lblHoursWorked.Visible = true;
+                txtHoursWorked.Visible = true;
+
+                txtHoursWorked.Enabled = true;
                 txtUnits.Enabled = true;
                 txtServiceDescription.Enabled = true;
             }
             else if(selectedService.PriceType == "Hourly")
             {
+                lblHoursWorked.Visible = false;
+                txtHoursWorked.Visible = false;
+                txtHoursWorked.Text = txtUnits.Text;
+
                 lblUnites.Visible = true;
                 lblUnites.Text = "Hours";
                 txtUnits.Visible = true;
+
 
                 txtUnits.Enabled = true;
                 txtServiceDescription.Enabled = true;
@@ -184,6 +195,10 @@ namespace UI.Forms.CasePage
 
                 txtUnits.Enabled = true;
                 txtServiceDescription.Enabled = true;
+
+                txtHoursWorked.Enabled = true;
+                lblHoursWorked.Visible = true;
+                txtHoursWorked.Visible = true;
             }
             else
             {

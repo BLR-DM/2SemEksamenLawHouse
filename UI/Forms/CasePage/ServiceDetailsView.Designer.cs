@@ -44,8 +44,8 @@
             lblTotalPrice = new Label();
             txtUnits = new TextBox();
             lblUnites = new Label();
-            lblPriceType = new Label();
-            txtPriceType = new TextBox();
+            lblHoursWorked = new Label();
+            txtHoursWorked = new TextBox();
             lblPrice = new Label();
             txtPrice = new TextBox();
             txtServiceDescription = new TextBox();
@@ -175,8 +175,8 @@
             panel1.Controls.Add(lblTotalPrice);
             panel1.Controls.Add(txtUnits);
             panel1.Controls.Add(lblUnites);
-            panel1.Controls.Add(lblPriceType);
-            panel1.Controls.Add(txtPriceType);
+            panel1.Controls.Add(lblHoursWorked);
+            panel1.Controls.Add(txtHoursWorked);
             panel1.Controls.Add(lblPrice);
             panel1.Controls.Add(txtPrice);
             panel1.Controls.Add(txtServiceDescription);
@@ -258,28 +258,28 @@
             lblUnites.TabIndex = 56;
             lblUnites.Text = "Units";
             // 
-            // lblPriceType
+            // lblHoursWorked
             // 
-            lblPriceType.AutoSize = true;
-            lblPriceType.BackColor = SystemColors.GradientInactiveCaption;
-            lblPriceType.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblPriceType.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPriceType.Location = new Point(370, 71);
-            lblPriceType.Name = "lblPriceType";
-            lblPriceType.Size = new Size(79, 21);
-            lblPriceType.TabIndex = 55;
-            lblPriceType.Text = "Pricetype";
+            lblHoursWorked.AutoSize = true;
+            lblHoursWorked.BackColor = SystemColors.GradientInactiveCaption;
+            lblHoursWorked.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblHoursWorked.ForeColor = Color.FromArgb(45, 93, 134);
+            lblHoursWorked.Location = new Point(370, 71);
+            lblHoursWorked.Name = "lblHoursWorked";
+            lblHoursWorked.Size = new Size(79, 21);
+            lblHoursWorked.TabIndex = 55;
+            lblHoursWorked.Text = "Pricetype";
             // 
-            // txtPriceType
+            // txtHoursWorked
             // 
-            txtPriceType.BackColor = Color.White;
-            txtPriceType.Enabled = false;
-            txtPriceType.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPriceType.Location = new Point(359, 95);
-            txtPriceType.MaxLength = 50;
-            txtPriceType.Name = "txtPriceType";
-            txtPriceType.Size = new Size(90, 27);
-            txtPriceType.TabIndex = 54;
+            txtHoursWorked.BackColor = Color.White;
+            txtHoursWorked.Enabled = false;
+            txtHoursWorked.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtHoursWorked.Location = new Point(359, 95);
+            txtHoursWorked.MaxLength = 50;
+            txtHoursWorked.Name = "txtHoursWorked";
+            txtHoursWorked.Size = new Size(90, 27);
+            txtHoursWorked.TabIndex = 54;
             // 
             // lblPrice
             // 
@@ -396,8 +396,8 @@
         private TextBox txtServiceName;
         private Label lblServiceName;
         private Label lblServiceInformation;
-        private Label lblPriceType;
-        private TextBox txtPriceType;
+        private Label lblHoursWorked;
+        private TextBox txtHoursWorked;
         private Label lblPrice;
         private TextBox txtPrice;
         private TextBox txtServiceDescription;

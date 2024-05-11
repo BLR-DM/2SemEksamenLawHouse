@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblHoursWorked = new Label();
+            txtHoursWorked = new TextBox();
             txtTotalPrice = new TextBox();
             lblTotalPrice = new Label();
             txtUnits = new TextBox();
@@ -58,6 +60,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblHoursWorked);
+            panel1.Controls.Add(txtHoursWorked);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblTotalPrice);
             panel1.Controls.Add(txtUnits);
@@ -73,6 +77,32 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(455, 297);
             panel1.TabIndex = 20;
+            // 
+            // lblHoursWorked
+            // 
+            lblHoursWorked.Anchor = AnchorStyles.Right;
+            lblHoursWorked.AutoSize = true;
+            lblHoursWorked.BackColor = SystemColors.GradientInactiveCaption;
+            lblHoursWorked.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblHoursWorked.ForeColor = Color.FromArgb(45, 93, 134);
+            lblHoursWorked.Location = new Point(341, 62);
+            lblHoursWorked.Name = "lblHoursWorked";
+            lblHoursWorked.RightToLeft = RightToLeft.No;
+            lblHoursWorked.Size = new Size(113, 21);
+            lblHoursWorked.TabIndex = 68;
+            lblHoursWorked.Text = "Hours worked";
+            lblHoursWorked.TextAlign = ContentAlignment.TopRight;
+            // 
+            // txtHoursWorked
+            // 
+            txtHoursWorked.BackColor = Color.White;
+            txtHoursWorked.Enabled = false;
+            txtHoursWorked.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtHoursWorked.Location = new Point(384, 86);
+            txtHoursWorked.MaxLength = 50;
+            txtHoursWorked.Name = "txtHoursWorked";
+            txtHoursWorked.Size = new Size(66, 27);
+            txtHoursWorked.TabIndex = 67;
             // 
             // txtTotalPrice
             // 
@@ -101,7 +131,7 @@
             // 
             txtUnits.BackColor = Color.White;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(384, 133);
+            txtUnits.Location = new Point(384, 142);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -113,7 +143,7 @@
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(354, 111);
+            lblUnites.Location = new Point(354, 116);
             lblUnites.Name = "lblUnites";
             lblUnites.RightToLeft = RightToLeft.No;
             lblUnites.Size = new Size(100, 21);
@@ -127,7 +157,7 @@
             cboServices.FormattingEnabled = true;
             cboServices.Location = new Point(3, 59);
             cboServices.Name = "cboServices";
-            cboServices.Size = new Size(224, 23);
+            cboServices.Size = new Size(241, 23);
             cboServices.TabIndex = 62;
             // 
             // lblPrice
@@ -147,10 +177,10 @@
             txtPrice.BackColor = Color.White;
             txtPrice.Enabled = false;
             txtPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.Location = new Point(346, 197);
+            txtPrice.Location = new Point(341, 197);
             txtPrice.MaxLength = 50;
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(103, 27);
+            txtPrice.Size = new Size(108, 27);
             txtPrice.TabIndex = 52;
             // 
             // txtServiceDescription
@@ -161,7 +191,7 @@
             txtServiceDescription.MaxLength = 300;
             txtServiceDescription.Multiline = true;
             txtServiceDescription.Name = "txtServiceDescription";
-            txtServiceDescription.Size = new Size(224, 169);
+            txtServiceDescription.Size = new Size(241, 169);
             txtServiceDescription.TabIndex = 51;
             // 
             // lblServiceDescription
@@ -383,5 +413,7 @@
         private Label lblLawyerInformaion;
         private Button btnAddService;
         private FontAwesome.Sharp.IconButton btnAddLawyer;
+        private Label lblHoursWorked;
+        private TextBox txtHoursWorked;
     }
 }

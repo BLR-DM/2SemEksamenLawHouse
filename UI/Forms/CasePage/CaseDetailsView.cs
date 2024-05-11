@@ -53,6 +53,7 @@ namespace UI.Forms.CasePage
             dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
             btnAddService.Click += BtnAddService_Click;
             btnUpdateCase.Click += BtnUpdateCase_Click;
+            btnCloseCase.Click += BtnCloseCase_Click;
             txtTitle.TextChanged += TxtTitle_TextChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
@@ -64,7 +65,26 @@ namespace UI.Forms.CasePage
 
         }
 
-        public async void InitializeData()
+        private async void BtnCloseCase_Click(object? sender, EventArgs e)
+        {
+            btnCloseCase.Enabled = false;
+
+            selectedCase.Status = "Finished";
+
+            bool succes = await caseBL.UpdateCaseSync(selectedCase);
+
+            if(succes)
+            {
+                MessageBox.Show("Jeow");
+            }
+            else
+            {
+                MessageBox.Show("niks");
+            }
+
+        }
+
+        public async Task InitializeData()
         {
             await SetCaseData();
             SetDgv();
@@ -99,6 +119,7 @@ namespace UI.Forms.CasePage
             {
                 CaseID = selectedCase.CaseID,
                 Title = txtTitle.Text,
+                Description = txtDescription.Text,
                 CreationDate = selectedCase.CreationDate,
                 EndDate = dtpEstimatedEndDate.Value,
                 EstimatedHours = float.Parse(txtEstimatedHours.Text),
@@ -158,6 +179,7 @@ namespace UI.Forms.CasePage
             dtpEstimatedEndDate.Value = selectedCase.EndDate;
             txtEstimatedHours.Text = selectedCase.EstimatedHours.ToString();
             txtTotalPrice.Text = selectedCase.TotalPrice.ToString();
+            txtDescription.Text = selectedCase.Description;
 
 
         }
@@ -206,7 +228,7 @@ namespace UI.Forms.CasePage
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        public async void SetComboBox()
+        public async Task SetComboBox()
         {
             caseTypeUIList = await caseTypeBL.GetCaseTypeAsync();
 

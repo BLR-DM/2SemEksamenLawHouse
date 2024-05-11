@@ -43,6 +43,7 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
+            btnEmployees = new FontAwesome.Sharp.IconButton();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -51,6 +52,7 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
+            pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnAdminPage);
             pnlLeft.Controls.Add(btnMyPageLawyer);
             pnlLeft.Controls.Add(btnCalculations);
@@ -320,6 +322,28 @@
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
+            // btnEmployees
+            // 
+            btnEmployees.BackColor = Color.Transparent;
+            btnEmployees.Dock = DockStyle.Top;
+            btnEmployees.FlatAppearance.BorderSize = 0;
+            btnEmployees.FlatStyle = FlatStyle.Flat;
+            btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmployees.ForeColor = Color.Black;
+            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnEmployees.IconColor = Color.Black;
+            btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEmployees.IconSize = 40;
+            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmployees.Location = new Point(0, 375);
+            btnEmployees.Name = "btnEmployees";
+            btnEmployees.Padding = new Padding(25, 0, 20, 0);
+            btnEmployees.Size = new Size(200, 75);
+            btnEmployees.TabIndex = 3;
+            btnEmployees.Text = "Employees";
+            btnEmployees.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEmployees.UseVisualStyleBackColor = false;
+            // 
             // FrontPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -357,5 +381,6 @@
         private Label lblCurrentUser;
         private Label lblCurrentUserName;
         private FontAwesome.Sharp.IconButton btnAdminPage;
+        private FontAwesome.Sharp.IconButton btnEmployees;
     }
 }

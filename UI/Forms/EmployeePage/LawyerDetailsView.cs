@@ -21,12 +21,12 @@ namespace UI.Forms.EmployeePage
             InitializeComponent();
 
             Load += LawyerDetailsView_Load;
+
+
         }
 
         private void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
-            MessageBox.Show(lawyer.Firstname);
-
             dgv.DataSource = lawyer.Cases;
         }
     }

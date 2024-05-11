@@ -213,13 +213,13 @@ partial class LoginPageView
         // pboxEye
         // 
         pboxEye.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        pboxEye.BackColor = SystemColors.GradientInactiveCaption;
+        pboxEye.BackColor = Color.Transparent;
         pboxEye.Cursor = Cursors.Hand;
         pboxEye.ForeColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
         pboxEye.IconColor = Color.FromArgb(45, 93, 134);
         pboxEye.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        pboxEye.Location = new Point(369, 434);
+        pboxEye.Location = new Point(369, 433);
         pboxEye.Name = "pboxEye";
         pboxEye.Size = new Size(32, 32);
         pboxEye.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -261,7 +261,7 @@ partial class LoginPageView
         lblForgotPassword.Cursor = Cursors.Hand;
         lblForgotPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
         lblForgotPassword.ForeColor = Color.FromArgb(45, 93, 134);
-        lblForgotPassword.Location = new Point(243, 484);
+        lblForgotPassword.Location = new Point(259, 483);
         lblForgotPassword.Name = "lblForgotPassword";
         lblForgotPassword.Size = new Size(141, 21);
         lblForgotPassword.TabIndex = 4;

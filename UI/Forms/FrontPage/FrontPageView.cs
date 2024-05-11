@@ -4,6 +4,7 @@ using UI.Forms.ClientPage;
 using UI.Forms.Self_Service;
 using UI.Forms.CasePage;
 using UI.Forms.AdminPage;
+using UI.Forms.EmployeePage;
 
 namespace UI.Forms.FrontPage
 {
@@ -36,6 +37,13 @@ namespace UI.Forms.FrontPage
             btnForms.Click += BtnForms_Click;
             btnCase.Click += BtnCase_Click;
             btnAdminPage.Click += BtnAdminPage_Click;
+            btnEmployees.Click += BtnEmployees_Click;
+        }
+
+        private void BtnEmployees_Click(object? sender, EventArgs e)
+        {
+            EmployeesOverview employeesOverview = new EmployeesOverview();
+            PnlContextChange(employeesOverview);
         }
 
         private void BtnAdminPage_Click(object? sender, EventArgs e)
@@ -96,6 +104,7 @@ namespace UI.Forms.FrontPage
             {
                 clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
                 btnAdminPage.Hide();
+                btnEmployees.Hide();
                 if(clientUI.ClientSub == false)
                 {
                     btnCalculations.Hide();

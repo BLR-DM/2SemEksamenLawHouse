@@ -41,6 +41,13 @@ namespace BusinessLogic
             return caseUI;
         }
 
+        public CaseUI ConvertFromCaseEntityWithCollections(Case caseE)
+        {
+            CaseUI caseUI = ConvertFromCaseEntity(caseE);
+            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceEntity).ToList();
+            return caseUI;
+        }
+
         public CaseTypeUI ConvertFromCaseTypeEntity(CaseType caseTypeE)
         {
             CaseTypeUI caseTypeUI = new CaseTypeUI
@@ -209,8 +216,8 @@ namespace BusinessLogic
         public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
         {
             LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
-            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
-            lawyerUI.ActiveCaseCount = lawyerUI.Cases.Count(c => c.Status == "Active");
+            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntityWithCollections).ToList();
+            //lawyerUI.OpenCases = lawyerUI.Cases.Count(c => c.Status == "Active");
 
             return lawyerUI;
         }

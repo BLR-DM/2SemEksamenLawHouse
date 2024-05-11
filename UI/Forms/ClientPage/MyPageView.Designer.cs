@@ -40,6 +40,7 @@
             label1 = new Label();
             rtxtPhoneNumbers = new RichTextBox();
             lblPhoneNumbersView = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -162,7 +163,7 @@
             label1.ForeColor = Color.FromArgb(45, 93, 134);
             label1.Location = new Point(16, 11);
             label1.Name = "label1";
-            label1.Size = new Size(57, 21);
+            label1.Size = new Size(85, 21);
             label1.TabIndex = 38;
             label1.Text = "Firstname:";
             // 
@@ -186,12 +187,22 @@
             lblPhoneNumbersView.TabIndex = 34;
             lblPhoneNumbersView.Text = "Phone Numbers:";
             // 
+            // button1
+            // 
+            button1.Location = new Point(56, 551);
+            button1.Name = "button1";
+            button1.Size = new Size(126, 43);
+            button1.TabIndex = 36;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // MyPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(button1);
             Controls.Add(panel2);
             Controls.Add(lblMustSubscribe);
             Controls.Add(lblBeregninger);
@@ -219,5 +230,6 @@
         private Label label1;
         private RichTextBox rtxtPhoneNumbers;
         private Label lblPhoneNumbersView;
+        private Button button1;
     }
 }

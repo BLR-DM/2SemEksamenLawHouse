@@ -95,6 +95,11 @@ namespace UI.Forms.FrontPage
             if (currentUser is ClientUI)
             {
                 clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
+                btnAdminPage.Hide();
+                if(clientUI.ClientSub == false)
+                {
+                    btnCalculations.Hide();
+                }
                 //MessageBox.Show("person is a client");
 
             }

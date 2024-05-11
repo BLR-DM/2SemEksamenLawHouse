@@ -109,13 +109,15 @@ namespace BusinessLogic
                 
             };
 
-            if(clientE.ClientSubscription == null)
+            ClientSubscription subscription = clientE.clientSubscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
+
+            if(subscription != null)
             {
-                clientUI.ClientSub = false;
+                clientUI.ClientSub = true;
             }
             else
             {
-                clientUI.ClientSub = true;
+                clientUI.ClientSub = false;
             }
 
             return clientUI;
@@ -185,6 +187,7 @@ namespace BusinessLogic
             };
             return lawyerUI;
         }
+
 
         public LawyerSpecialityUI ConvertFromLawyerSpecialityEntity(LawyerSpeciality lawyerSpecialityE)
         {

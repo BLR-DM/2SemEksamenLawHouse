@@ -51,9 +51,9 @@ namespace DataAccess
             try
             {
                 return await db.Clients
-                    .Where(c => c.PersonID == id)
+                    .Include(c => c.clientSubscriptions)
                     .Include(c => c.Phones)
-                    .FirstOrDefaultAsync();
+                    .FirstOrDefaultAsync(c => c.PersonID == id);
 
             }
             catch (Exception)

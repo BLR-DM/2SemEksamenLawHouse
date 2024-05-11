@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             pnlLeft = new Panel();
+            btnAdminPage = new FontAwesome.Sharp.IconButton();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            btnCalculations = new FontAwesome.Sharp.IconButton();
             btnCase = new FontAwesome.Sharp.IconButton();
             btnMyPageClient = new FontAwesome.Sharp.IconButton();
             btnForms = new FontAwesome.Sharp.IconButton();
@@ -42,7 +43,6 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
-            btnAdminPage = new FontAwesome.Sharp.IconButton();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -53,7 +53,7 @@
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
             pnlLeft.Controls.Add(btnAdminPage);
             pnlLeft.Controls.Add(btnMyPageLawyer);
-            pnlLeft.Controls.Add(iconButton1);
+            pnlLeft.Controls.Add(btnCalculations);
             pnlLeft.Controls.Add(btnCase);
             pnlLeft.Controls.Add(btnMyPageClient);
             pnlLeft.Controls.Add(btnForms);
@@ -64,6 +64,29 @@
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
+            // 
+            // btnAdminPage
+            // 
+            btnAdminPage.AccessibleName = "";
+            btnAdminPage.BackColor = Color.Transparent;
+            btnAdminPage.Dock = DockStyle.Bottom;
+            btnAdminPage.FlatAppearance.BorderSize = 0;
+            btnAdminPage.FlatStyle = FlatStyle.Flat;
+            btnAdminPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdminPage.ForeColor = Color.Black;
+            btnAdminPage.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnAdminPage.IconColor = Color.Black;
+            btnAdminPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAdminPage.IconSize = 40;
+            btnAdminPage.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdminPage.Location = new Point(0, 388);
+            btnAdminPage.Name = "btnAdminPage";
+            btnAdminPage.Padding = new Padding(25, 0, 20, 0);
+            btnAdminPage.Size = new Size(200, 75);
+            btnAdminPage.TabIndex = 2;
+            btnAdminPage.Text = "Admin Page";
+            btnAdminPage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAdminPage.UseVisualStyleBackColor = false;
             // 
             // btnMyPageLawyer
             // 
@@ -88,27 +111,27 @@
             btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
-            // iconButton1
+            // btnCalculations
             // 
-            iconButton1.BackColor = Color.Transparent;
-            iconButton1.Dock = DockStyle.Top;
-            iconButton1.FlatAppearance.BorderSize = 0;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            iconButton1.ForeColor = Color.Black;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 40;
-            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(0, 300);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Padding = new Padding(25, 0, 20, 0);
-            iconButton1.Size = new Size(200, 75);
-            iconButton1.TabIndex = 0;
-            iconButton1.Text = "Employees";
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            btnCalculations.BackColor = Color.Transparent;
+            btnCalculations.Dock = DockStyle.Top;
+            btnCalculations.FlatAppearance.BorderSize = 0;
+            btnCalculations.FlatStyle = FlatStyle.Flat;
+            btnCalculations.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCalculations.ForeColor = Color.Black;
+            btnCalculations.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnCalculations.IconColor = Color.Black;
+            btnCalculations.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCalculations.IconSize = 40;
+            btnCalculations.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCalculations.Location = new Point(0, 300);
+            btnCalculations.Name = "btnCalculations";
+            btnCalculations.Padding = new Padding(25, 0, 20, 0);
+            btnCalculations.Size = new Size(200, 75);
+            btnCalculations.TabIndex = 0;
+            btnCalculations.Text = "Calculations";
+            btnCalculations.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCalculations.UseVisualStyleBackColor = false;
             // 
             // btnCase
             // 
@@ -297,29 +320,6 @@
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
-            // btnAdminPage
-            // 
-            btnAdminPage.AccessibleName = "";
-            btnAdminPage.BackColor = Color.Transparent;
-            btnAdminPage.Dock = DockStyle.Bottom;
-            btnAdminPage.FlatAppearance.BorderSize = 0;
-            btnAdminPage.FlatStyle = FlatStyle.Flat;
-            btnAdminPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdminPage.ForeColor = Color.Black;
-            btnAdminPage.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnAdminPage.IconColor = Color.Black;
-            btnAdminPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAdminPage.IconSize = 40;
-            btnAdminPage.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdminPage.Location = new Point(0, 388);
-            btnAdminPage.Name = "btnAdminPage";
-            btnAdminPage.Padding = new Padding(25, 0, 20, 0);
-            btnAdminPage.Size = new Size(200, 75);
-            btnAdminPage.TabIndex = 2;
-            btnAdminPage.Text = "Admin Page";
-            btnAdminPage.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAdminPage.UseVisualStyleBackColor = false;
-            // 
             // FrontPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -344,7 +344,7 @@
 
         private Panel pnlLeft;
         private FontAwesome.Sharp.IconButton btnMyPageLawyer;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnCalculations;
         private FontAwesome.Sharp.IconButton btnCase;
         private FontAwesome.Sharp.IconButton btnMyPageClient;
         private FontAwesome.Sharp.IconButton btnForms;

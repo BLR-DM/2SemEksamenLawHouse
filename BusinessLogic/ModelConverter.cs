@@ -102,7 +102,7 @@ namespace BusinessLogic
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
                 City = clientE.City,
-                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0,
+                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0, // remove?
 
                 //foreign keys
                 LoginDetailsID = clientE.LoginDetailsID,
@@ -135,6 +135,24 @@ namespace BusinessLogic
                 FormDocumentID = clientFormE.FormDocumentID,
             };
             return clientFormUI;
+        }
+
+        public EmployeeUI ConvertFromEmployeeEntity(Employee employeeE)
+        {
+            EmployeeUI employeeUI = new EmployeeUI
+            {
+                PersonID = employeeE.PersonID,
+                Firstname = employeeE.Firstname,
+                Lastname = employeeE.Lastname,
+                PhoneNumber = employeeE.PhoneNumber,
+                Email = employeeE.Email,
+                AddressLine = employeeE.AddressLine,
+                PostalCode = employeeE.PostalCode,
+                City = employeeE.City,
+                HireDate = employeeE.HireDate,
+                LawyerTitle = employeeE.LawyerTitle.Title
+            };
+            return employeeUI;
         }
 
         public ClientSubscriptionUI ConvertFromClientSubscriptionEntity(ClientSubscription clientSubscriptionE)
@@ -180,7 +198,6 @@ namespace BusinessLogic
                 HireDate = lawyerE.HireDate,
                 LawyerTitle = lawyerE.LawyerTitle.Title,
 
-
                 //foreign keys
                 LoginDetailsID = lawyerE.LoginDetailsID,
                 LawyerTitleID = lawyerE.LawyerTitleID,
@@ -188,6 +205,14 @@ namespace BusinessLogic
             return lawyerUI;
         }
 
+        public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
+        {
+            LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
+            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
+            lawyerUI.ActiveCaseCount = lawyerUI.Cases.Count(c => c.Status == "Active");
+
+            return lawyerUI;
+        }
 
         public LawyerSpecialityUI ConvertFromLawyerSpecialityEntity(LawyerSpeciality lawyerSpecialityE)
         {
@@ -254,6 +279,7 @@ namespace BusinessLogic
             };
             return specialityUI;
         }
+
 
         public SubscriptionUI ConvertFromSubscriptionEntity(Subscription subscriptionE)
         {

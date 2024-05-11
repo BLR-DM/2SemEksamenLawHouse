@@ -8,8 +8,8 @@ namespace UIModels
 {
     public class LawyerUI : EmployeeUI
     {
-        
-        
-    }
+        public int? ActiveCaseCount { get; set; }
 
+        public virtual ICollection<CaseUI> Cases { get; set; }
+    }
 }

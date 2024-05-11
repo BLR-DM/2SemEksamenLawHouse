@@ -25,19 +25,43 @@ namespace BusinessLogic
         }
         public async Task<LawyerUI> GetLawyerAsync(int id)
         {
-            Lawyer lawyer = await dbAccess.GetLawyerAsync(id);
-            LawyerUI lawyerUI = modelConverter.ConvertFromLawyerEntity(lawyer);
-            return lawyerUI;
+            try
+            {
+                Lawyer lawyer = await dbAccess.GetLawyerAsync(id);
+                return modelConverter.ConvertFromLawyerEntity(lawyer);
+            }
+            catch (Exception)
+            {
+                return new LawyerUI();
+            }
         }
 
         public async Task<List<LawyerUI>> GetLawyersAsync()
         {
-            List<LawyerUI> lawyerList = new List<LawyerUI>();
-            foreach(Lawyer lawyer in await dbAccess.GetLawyersAsync())
+            try
             {
-               lawyerList.Add(modelConverter.ConvertFromLawyerEntity(lawyer));
+                List<Lawyer> lawyers = await dbAccess.GetLawyersAsync();
+
+                return lawyers.Select(modelConverter.ConvertFromLawyerEntity).ToList();
             }
-            return lawyerList;
+            catch (Exception)
+            {
+                return new List<LawyerUI>();
+            }
+        }
+
+        public async Task<List<LawyerUI>> GetLawyersWithCollectionsAsync()
+        {
+            try
+            {
+                List<Lawyer> lawyers = await dbAccess.GetLawyersWithCollectionsAsync();
+
+                return lawyers.Select(modelConverter.ConvertFromLawyerEntityWithCollections).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<LawyerUI>();
+            }
         }
     }
 }

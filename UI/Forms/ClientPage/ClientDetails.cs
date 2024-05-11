@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Forms.FrontPage;
 using UI.Forms.Self_Service;
+using UI.Forms.SubscriptionPage;
 using UIModels;
 
 namespace UI.Forms.ClientPage

@@ -25,6 +25,8 @@ namespace UI.Forms.SubscriptionPage
             btnBuySubscriptionThreeMonth.Click += BtnBuySubscriptionThreeMonth_Click;
             btnBuySubscribtionSixMonths.Click += BtnBuySubscribtionSixMonths_ClickAsync;
             btnBuySubscription12Months.Click += BtnBuySubscription12Months_Click;
+
+            CheckSubscriptionStatus();
         }
 
         private async void BtnBuySubscriptionThreeMonth_Click(object? sender, EventArgs e)
@@ -41,6 +43,15 @@ namespace UI.Forms.SubscriptionPage
         {
             await CreateSubscription(6);
         }
+
+        private void CheckSubscriptionStatus()
+        {
+            if (client.ClientSub)
+            {
+                MessageBox.Show("Din far");
+            }
+        }
+
 
         public async Task CreateSubscription(int subLength)
         {

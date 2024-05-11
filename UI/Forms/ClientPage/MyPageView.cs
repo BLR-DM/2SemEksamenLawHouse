@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.SubscriptionPage;
 using UIModels;
 
 namespace UI.Forms.ClientPage
@@ -19,9 +20,5 @@ namespace UI.Forms.ClientPage
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

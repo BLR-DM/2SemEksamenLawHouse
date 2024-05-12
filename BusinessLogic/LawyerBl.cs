@@ -36,6 +36,20 @@ namespace BusinessLogic
             }
         }
 
+        public async Task<LawyerUI> GetLawyerWithCollectionsAsync(int id)
+        {
+            try
+            {
+                Lawyer lawyer = await dbAccess.GetLawyerWithCollectionsAsync(id);
+                return modelConverter.ConvertFromLawyerEntityWithCollections(lawyer);
+            }
+            catch (Exception)
+            {
+                return new LawyerUI();
+            }
+        }
+
+
         public async Task<List<LawyerUI>> GetLawyersAsync()
         {
             try

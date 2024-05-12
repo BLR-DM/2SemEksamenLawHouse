@@ -30,6 +30,23 @@ namespace DataAccess
                 .SingleOrDefaultAsync(c => c.PersonID == id);
         }
 
+        public async Task<Lawyer> GetLawyerWithCollectionsAsync(int id)
+        {
+            try
+            {
+                return await db.Lawyers
+                        .Include(l => l.LawyerTitle)
+                        .Include(c => c.Cases)
+                                .ThenInclude(cs => cs.CaseServices)
+                            .Include(l => l.CaseServices)
+                        .SingleOrDefaultAsync(c => c.PersonID == id);
+            }
+            catch (Exception)
+            {
+                return new Lawyer();
+            }
+        }
+
         public async Task<List<Lawyer>> GetLawyersAsync()
         {
             try

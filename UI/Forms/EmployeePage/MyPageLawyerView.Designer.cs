@@ -28,57 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblFullname = new Label();
-            lblLawyerTitle = new Label();
-            lblCity = new Label();
-            lblPhone = new Label();
-            lblEmail = new Label();
+            dgvCases = new DataGridView();
+            dgvServices = new DataGridView();
+            chboxShowAll = new CheckBox();
+            lblWorkOn = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
             // 
-            // lblFullname
+            // dgvCases
             // 
-            lblFullname.AutoSize = true;
-            lblFullname.Location = new Point(33, 43);
-            lblFullname.Name = "lblFullname";
-            lblFullname.Size = new Size(56, 15);
-            lblFullname.TabIndex = 0;
-            lblFullname.Text = "Fullname";
+            dgvCases.AllowUserToAddRows = false;
+            dgvCases.AllowUserToDeleteRows = false;
+            dgvCases.AllowUserToResizeColumns = false;
+            dgvCases.AllowUserToResizeRows = false;
+            dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCases.Location = new Point(12, 12);
+            dgvCases.Name = "dgvCases";
+            dgvCases.ReadOnly = true;
+            dgvCases.Size = new Size(974, 277);
+            dgvCases.TabIndex = 1;
             // 
-            // lblLawyerTitle
+            // dgvServices
             // 
-            lblLawyerTitle.AutoSize = true;
-            lblLawyerTitle.Location = new Point(33, 69);
-            lblLawyerTitle.Name = "lblLawyerTitle";
-            lblLawyerTitle.Size = new Size(66, 15);
-            lblLawyerTitle.TabIndex = 0;
-            lblLawyerTitle.Text = "LawyerTitle";
+            dgvServices.AllowUserToAddRows = false;
+            dgvServices.AllowUserToDeleteRows = false;
+            dgvServices.AllowUserToResizeColumns = false;
+            dgvServices.AllowUserToResizeRows = false;
+            dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvServices.Location = new Point(12, 310);
+            dgvServices.Name = "dgvServices";
+            dgvServices.ReadOnly = true;
+            dgvServices.Size = new Size(974, 291);
+            dgvServices.TabIndex = 1;
             // 
-            // lblCity
+            // chboxShowAll
             // 
-            lblCity.AutoSize = true;
-            lblCity.Location = new Point(33, 98);
-            lblCity.Name = "lblCity";
-            lblCity.Size = new Size(28, 15);
-            lblCity.TabIndex = 0;
-            lblCity.Text = "City";
+            chboxShowAll.AutoSize = true;
+            chboxShowAll.Location = new Point(93, 291);
+            chboxShowAll.Name = "chboxShowAll";
+            chboxShowAll.Size = new Size(72, 19);
+            chboxShowAll.TabIndex = 2;
+            chboxShowAll.Text = "Show All";
+            chboxShowAll.UseVisualStyleBackColor = true;
             // 
-            // lblPhone
+            // lblWorkOn
             // 
-            lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(33, 126);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(41, 15);
-            lblPhone.TabIndex = 0;
-            lblPhone.Text = "Phone";
-            // 
-            // lblEmail
-            // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(33, 158);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(36, 15);
-            lblEmail.TabIndex = 0;
-            lblEmail.Text = "Email";
+            lblWorkOn.AutoSize = true;
+            lblWorkOn.Location = new Point(12, 292);
+            lblWorkOn.Name = "lblWorkOn";
+            lblWorkOn.Size = new Size(75, 15);
+            lblWorkOn.TabIndex = 0;
+            lblWorkOn.Text = "Assignments";
             // 
             // MyPageLawyerView
             // 
@@ -86,24 +87,23 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(lblEmail);
-            Controls.Add(lblPhone);
-            Controls.Add(lblCity);
-            Controls.Add(lblLawyerTitle);
-            Controls.Add(lblFullname);
+            Controls.Add(chboxShowAll);
+            Controls.Add(dgvServices);
+            Controls.Add(lblWorkOn);
+            Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MyPageLawyerView";
             Text = "MyPageLawyerView";
+            ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label lblFullname;
-        private Label lblLawyerTitle;
-        private Label lblCity;
-        private Label lblPhone;
-        private Label lblEmail;
+        private DataGridView dgvCases;
+        private DataGridView dgvServices;
+        private CheckBox chboxShowAll;
+        private Label lblWorkOn;
     }
 }

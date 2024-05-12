@@ -43,7 +43,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)
         {
-            MyPageLawyerView myPageLawyer = new MyPageLawyerView(lawyerUI);
+            MyPageLawyerView myPageLawyer = new MyPageLawyerView(lawyerUI.PersonID);
             PnlContextChange(myPageLawyer);
         }
 

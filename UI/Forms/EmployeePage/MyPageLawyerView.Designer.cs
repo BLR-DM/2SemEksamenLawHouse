@@ -31,7 +31,7 @@
             dgvCases = new DataGridView();
             dgvServices = new DataGridView();
             chboxShowAll = new CheckBox();
-            lblWorkOn = new Label();
+            lblTask = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -72,14 +72,14 @@
             chboxShowAll.Text = "Show All";
             chboxShowAll.UseVisualStyleBackColor = true;
             // 
-            // lblWorkOn
+            // lblTask
             // 
-            lblWorkOn.AutoSize = true;
-            lblWorkOn.Location = new Point(12, 292);
-            lblWorkOn.Name = "lblWorkOn";
-            lblWorkOn.Size = new Size(75, 15);
-            lblWorkOn.TabIndex = 0;
-            lblWorkOn.Text = "Assignments";
+            lblTask.AutoSize = true;
+            lblTask.Location = new Point(12, 292);
+            lblTask.Name = "lblTask";
+            lblTask.Size = new Size(34, 15);
+            lblTask.TabIndex = 0;
+            lblTask.Text = "Tasks";
             // 
             // MyPageLawyerView
             // 
@@ -89,7 +89,7 @@
             ClientSize = new Size(998, 613);
             Controls.Add(chboxShowAll);
             Controls.Add(dgvServices);
-            Controls.Add(lblWorkOn);
+            Controls.Add(lblTask);
             Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MyPageLawyerView";
@@ -104,6 +104,6 @@
         private DataGridView dgvCases;
         private DataGridView dgvServices;
         private CheckBox chboxShowAll;
-        private Label lblWorkOn;
+        private Label lblTask;
     }
 }

@@ -16,12 +16,16 @@ namespace UI.Forms.EmployeePage
     {
         LawyerBL lawyerBL;
         LawyerUI lawyer;
+        CaseServiceBL caseServiceBL;
+        List<CaseServiceUI> caseServices;
         int id;
         public MyPageLawyerView(int id)
         {
             this.id = id;
             lawyerBL = new LawyerBL();
             lawyer = new LawyerUI();
+            //caseServiceBL = new CaseServiceBL();
+            //caseServices = new List<CaseServiceUI>();
 
             InitializeComponent();
 
@@ -40,9 +44,15 @@ namespace UI.Forms.EmployeePage
             lawyer = await lawyerBL.GetLawyerWithCollectionsAsync(id);
         }
 
+        //private async Task GetCaseServices()
+        //{
+        //    caseServices = await caseServiceBL.GetCaseServicesForLawyerAsync(id);
+        //}
+
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
         {
             await GetLawyer();
+            //await GetCaseServices();
             if (lawyer != null)
             {
                 SetDgvData(chboxShowAll.Checked);
@@ -52,13 +62,23 @@ namespace UI.Forms.EmployeePage
         private void SetDgvData(bool check)
         {
             dgvCases.DataSource = lawyer.Cases;
+            //dgvServices.DataSource = caseServices;
             dgvServices.DataSource = lawyer.CaseServices;
 
             foreach (DataGridViewRow row in dgvServices.Rows)
             {
                 if (row.Cells["Status"].Value != null)
                 {
-                    row.Visible = check || (bool)row.Cells["Status"].Value;
+                    try
+                    {
+                        bool status = (bool)row.Cells["Status"].Value;
+                        dgvServices.CurrentCell = null;
+                        row.Visible = check || status;
+                    }
+                    catch (Exception)
+                    {
+                       
+                    }
                 }
             }
             

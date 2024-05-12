@@ -27,7 +27,12 @@ namespace UI.Forms.EmployeePage
 
         private void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
-            dgv.DataSource = lawyer.Cases;
+            dgvCases.DataSource = lawyer.Cases;
+            dgvServices.DataSource = lawyer.CaseServices;
+
+            // CareServicesDbAccess.CaseServices
+                //.Where(cs => cs.Lawyer.PersonID == id
+                //.ToList();
         }
     }
 }

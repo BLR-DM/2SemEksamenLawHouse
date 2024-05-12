@@ -38,6 +38,13 @@ namespace UI.Forms.FrontPage
             btnCase.Click += BtnCase_Click;
             btnAdminPage.Click += BtnAdminPage_Click;
             btnEmployees.Click += BtnEmployees_Click;
+            btnMyPageLawyer.Click += BtnMyPageLawyer_Click;
+        }
+
+        private void BtnMyPageLawyer_Click(object? sender, EventArgs e)
+        {
+            MyPageLawyerView myPageLawyer = new MyPageLawyerView(lawyerUI);
+            PnlContextChange(myPageLawyer);
         }
 
         private void BtnEmployees_Click(object? sender, EventArgs e)
@@ -105,6 +112,7 @@ namespace UI.Forms.FrontPage
                 clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
                 btnAdminPage.Hide();
                 btnEmployees.Hide();
+                btnMyPageLawyer.Hide();
                 if(clientUI.ClientSub == false)
                 {
                     btnCalculations.Hide();

@@ -12,5 +12,7 @@ namespace UIModels
         public int? ClosedCases => Cases?.Count(c => c.Status == "Finished");
 
         public virtual ICollection<CaseUI> Cases { get; set; }
+
+        public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
     }
 }

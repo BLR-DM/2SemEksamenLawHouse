@@ -232,6 +232,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaidPrice = table.Column<float>(type: "real", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false),
                     SubscriptionID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -376,11 +377,12 @@ namespace DataAccess.Migrations
                 {
                     CaseServiceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HoursWorked = table.Column<float>(type: "real", nullable: false),
                     Units = table.Column<float>(type: "real", nullable: false),
                     TotalPrice = table.Column<float>(type: "real", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CaseID = table.Column<int>(type: "int", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
                     LawyerID = table.Column<int>(type: "int", nullable: false)
@@ -451,8 +453,7 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ClientSubscriptions_ClientID",
                 table: "ClientSubscriptions",
-                column: "ClientID",
-                unique: true);
+                column: "ClientID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientSubscriptions_SubscriptionID",

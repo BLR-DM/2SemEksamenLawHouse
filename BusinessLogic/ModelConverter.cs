@@ -66,6 +66,8 @@ namespace BusinessLogic
                 Description = caseServiceE.Description,
                 Units = caseServiceE.Units,
                 TotalPrice = caseServiceE.TotalPrice,
+                Status = caseServiceE.Status,
+                StartDate = caseServiceE.StartDate,
                 Date = caseServiceE.Date,
 
 
@@ -85,6 +87,8 @@ namespace BusinessLogic
                 Description= caseServiceE.Description,
                 Units = caseServiceE.Units,
                 TotalPrice = caseServiceE.TotalPrice,
+                Status = caseServiceE.Status,
+                StartDate = caseServiceE.StartDate,
                 Date = caseServiceE.Date,
                 //
                 ServiceName = caseServiceE.Service.Name,
@@ -217,6 +221,7 @@ namespace BusinessLogic
         {
             LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
             lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntityWithCollections).ToList();
+            lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceEntity).ToList();
             //lawyerUI.OpenCases = lawyerUI.Cases.Count(c => c.Status == "Active");
 
             return lawyerUI;
@@ -356,7 +361,10 @@ namespace BusinessLogic
                 Description = CaseServiceUI.Description,
                 Units = CaseServiceUI.Units,
                 TotalPrice = CaseServiceUI.TotalPrice,
+                Status = CaseServiceUI.Status, // test
+                StartDate = CaseServiceUI.StartDate, // test
                 Date = CaseServiceUI.Date,
+                
 
                 //foreign keys
                 CaseID = CaseServiceUI.CaseID,

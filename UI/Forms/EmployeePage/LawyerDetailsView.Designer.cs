@@ -28,37 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgv = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
+            dgvCases = new DataGridView();
+            dgvServices = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
             // 
-            // dgv
+            // dgvCases
             // 
-            dgv.AllowUserToAddRows = false;
-            dgv.AllowUserToDeleteRows = false;
-            dgv.AllowUserToResizeColumns = false;
-            dgv.AllowUserToResizeRows = false;
-            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv.Location = new Point(35, 113);
-            dgv.Name = "dgv";
-            dgv.ReadOnly = true;
-            dgv.Size = new Size(709, 299);
-            dgv.TabIndex = 1;
+            dgvCases.AllowUserToAddRows = false;
+            dgvCases.AllowUserToDeleteRows = false;
+            dgvCases.AllowUserToResizeColumns = false;
+            dgvCases.AllowUserToResizeRows = false;
+            dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCases.Location = new Point(26, 51);
+            dgvCases.Name = "dgvCases";
+            dgvCases.ReadOnly = true;
+            dgvCases.Size = new Size(752, 266);
+            dgvCases.TabIndex = 1;
+            // 
+            // dgvServices
+            // 
+            dgvServices.AllowUserToAddRows = false;
+            dgvServices.AllowUserToDeleteRows = false;
+            dgvServices.AllowUserToResizeColumns = false;
+            dgvServices.AllowUserToResizeRows = false;
+            dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvServices.Location = new Point(26, 357);
+            dgvServices.Name = "dgvServices";
+            dgvServices.ReadOnly = true;
+            dgvServices.Size = new Size(752, 266);
+            dgvServices.TabIndex = 1;
             // 
             // LawyerDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dgv);
+            ClientSize = new Size(800, 666);
+            Controls.Add(dgvServices);
+            Controls.Add(dgvCases);
             Name = "LawyerDetailsView";
             Text = "LawyerDetailsView";
-            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dgv;
+        private DataGridView dgvCases;
+        private DataGridView dgvServices;
     }
 }

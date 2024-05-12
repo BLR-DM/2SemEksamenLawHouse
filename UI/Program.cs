@@ -120,7 +120,7 @@ namespace UI
             //};
             //bool success3 = bl.CreateLawyer(lawyer2);
 
-            Application.Run(new FrontPageView(3));
+            Application.Run(new FrontPageView(1));
         }
     }
 }

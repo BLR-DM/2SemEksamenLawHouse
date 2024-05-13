@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace UI.Forms.CasePage
         List<CaseTypeUI> caseTypeList;
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
+        List<CaseUI> filteredCases;
         public CasePageView(FrontPageView f1)
         {
             InitializeComponent();
@@ -34,10 +36,41 @@ namespace UI.Forms.CasePage
 
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
             btnCreateCase.Click += BtnCreateCase_Click;
+            txtTitle.TextChanged += TxtTitle_TextChanged;
+            ckboxFinsished.CheckedChanged += CkboxFinsished_CheckedChanged;
+            ckboxActive.CheckedChanged += CkboxActive_CheckedChanged;
+            cboLawyers.SelectionChangeCommitted += CboLawyers_SelectionChangeCommitted;
+            cboCaseType.SelectionChangeCommitted += CboCaseType_SelectionChangeCommitted;
 
-            SetComboBox();
+            SetLawyerComboBox();
+            SetCaseTypeComboBox();
             SetDgv();
 
+        }
+
+        private void CboCaseType_SelectionChangeCommitted(object? sender, EventArgs e)
+        {
+            SortDgv();
+        }
+
+        private void CboLawyers_SelectionChangeCommitted(object? sender, EventArgs e)
+        {
+            SortDgv();
+        }
+
+        private void CkboxActive_CheckedChanged(object? sender, EventArgs e)
+        {
+            SortDgv();
+        }
+
+        private void CkboxFinsished_CheckedChanged(object? sender, EventArgs e)
+        {
+            SortDgv();
+        }
+
+        private void TxtTitle_TextChanged(object? sender, EventArgs e)
+        {
+            SortDgv();
         }
 
         private void BtnCreateCase_Click(object? sender, EventArgs e)
@@ -62,25 +95,36 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetComboBox()
+        public async Task SetCaseTypeComboBox()
         {
             caseTypeList = await caseTypeBL.GetCaseTypeAsync();
 
             cboCaseType.DisplayMember = "Title";
 
-            foreach(CaseTypeUI caseTypeUI in caseTypeList)
+            cboCaseType.Items.Add(new CaseTypeUI { CaseTypeID = -1, Title = "Cases for all casetypes" });
+
+            foreach (CaseTypeUI caseTypeUI in caseTypeList)
             {
                 cboCaseType.Items.Add(caseTypeUI);
             }
+
+            cboCaseType.SelectedIndex = 0;
+        }
+        public async Task SetLawyerComboBox()
+        {
 
             lawyerList = await lawyerBL.GetLawyersAsync();
 
             cboLawyers.DisplayMember = "Firstname";
 
+            cboLawyers.Items.Add(new LawyerUI { PersonID = -1, Firstname = "Cases for all lawyers" });
+
             foreach(LawyerUI lawyerUI in lawyerList)
             {
                 cboLawyers.Items.Add(lawyerUI);
             }
+
+            cboLawyers.SelectedIndex = 0;
         }
 
 
@@ -97,6 +141,50 @@ namespace UI.Forms.CasePage
 
             dgvCaseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCaseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+
+        private void SortDgv()
+        {
+            filteredCases = new List<CaseUI>(originalCaseList);
+
+            if(!string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                filteredCases = filteredCases.Where(caseUI => caseUI.Title.StartsWith(txtTitle.Text)).ToList();
+            }
+
+            if(ckboxActive.Checked && ckboxFinsished.Checked)
+            {
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active" || caseUI.Status == "Finished").ToList();
+            }
+            else if(ckboxActive.Checked && !ckboxFinsished.Checked)
+            {
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active").ToList();
+            }
+            else if(!ckboxActive.Checked && ckboxFinsished.Checked)
+            {
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Finished").ToList();
+            }
+
+            if(cboCaseType.SelectedItem != null && cboCaseType.SelectedIndex != 0)
+            {
+                CaseTypeUI selectedCaseType = (CaseTypeUI)cboCaseType.SelectedItem;
+
+                filteredCases = filteredCases.Where(caseUI => caseUI.CaseTypeID == selectedCaseType.CaseTypeID).ToList();
+            }
+
+            if(cboLawyers.SelectedItem != null && cboLawyers.SelectedIndex != 0)
+            {
+                LawyerUI selectedLawyer = (LawyerUI)cboLawyers.SelectedItem;
+
+                filteredCases = filteredCases.Where(caseUI => caseUI.LawyerID == selectedLawyer.PersonID).ToList();
+            }
+
+            dgvCaseList.DataSource = filteredCases;
+            dgvCaseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            int count = filteredCases.Count;
+            lblNumberOfCases.Text = $"{count} Cases";
         }
     }
 }

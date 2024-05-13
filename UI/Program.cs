@@ -121,7 +121,7 @@ namespace UI
             //};
             //bool success3 = bl.CreateLawyerAsync(lawyer2);
 
-            Application.Run(new AdminCUDLawyer());
+            Application.Run(new LoginPageView());
         }
     }
 }

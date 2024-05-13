@@ -91,7 +91,6 @@ namespace UI.Forms.ClientPage
                         control.Show();
                     }
                     break;
-
                 default:
                     string selectedSpeciality = cboxSpecialities.SelectedItem.ToString();
 
@@ -119,7 +118,7 @@ namespace UI.Forms.ClientPage
 
         private async Task GetLawyerUIsAsync()
         {
-            lawyerUIs = await lawyerBL.GetLawyersAsync();
+            lawyerUIs = await lawyerBL.GetLawyersWithCollectionsAsync();
         }
 
         private async Task GetSpecialityUIsAsync()
@@ -172,36 +171,16 @@ namespace UI.Forms.ClientPage
 
         private void LawyerCard_Click(object? sender, EventArgs e)
         {
-            if (sender is LawyerCard control)
+            if (sender is LawyerCard lawyerCard)
             {
-                DisplayDetails(control);
-            }
-        }   
-        
-        private void DisplayDetails(LawyerCard control)
-        {
-            if (control != null)
-            {
-                pboxDetails.IconColor = Color.Black;
-                pboxDetails.IconChar = control.LawyerID == 5 ? FontAwesome.Sharp.IconChar.PiedPiperAlt : FontAwesome.Sharp.IconChar.PersonMilitaryPointing;
-
-                // Fulde navn
-                lblSelected.Text = string.Join(" ", control.Firstname, control.Lastname);
-
-                // Attributter
-                lblDetailsTitleValue.Text = control.Title;
-                lblDetailsCityValue.Text = control.City;
-                lblDetailsPhoneValue.Text = "+45" + control.Phone.ToString();
-                lblDetailsEmailValue.Text = control.Email;
-
-                // Specialer i listbox
-                lboxSpecialties.DataSource = lawyerSpecialityUIs
-                    .Where(x => x.LawyerID == control.LawyerID)
-                    .Select(x => x.SpecialityName)
-                    .ToList();
+                if (lawyerCard != null)
+                {
+                    pnlLawyerDetails.Controls.Clear();
+                    pnlLawyerDetails.Controls
+                        .Add(new LawyerCardDetails(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
+                }
             }
         }
-
 
     }
 }

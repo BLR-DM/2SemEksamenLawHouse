@@ -71,6 +71,7 @@ namespace DataAccess
                     .Include(c => c.Cases)
                         .ThenInclude(cs => cs.CaseServices)
                     .Include(l => l.CaseServices)
+                    .Include(l => l.LawyerSpecialities)
                     .ToListAsync();
                 return lawyers;
 

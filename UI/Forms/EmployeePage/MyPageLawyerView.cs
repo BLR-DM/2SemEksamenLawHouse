@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
 using BusinessLogic;
+using UI.Toolbox;
+using EntityModels;
 
 namespace UI.Forms.EmployeePage
 {
     public partial class MyPageLawyerView : Form
     {
         LawyerBL lawyerBL;
-        LawyerUI lawyer;
+        LawyerUI lawyerUI;
         CaseServiceBL caseServiceBL;
         List<CaseServiceUI> caseServices;
         int id;
@@ -23,7 +25,7 @@ namespace UI.Forms.EmployeePage
         {
             this.id = id;
             lawyerBL = new LawyerBL();
-            lawyer = new LawyerUI();
+            lawyerUI = new LawyerUI();
             //caseServiceBL = new CaseServiceBL();
             //caseServices = new List<CaseServiceUI>();
 
@@ -32,6 +34,12 @@ namespace UI.Forms.EmployeePage
             
             Load += MyPageLawyerView_Load;
             chboxShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
+            btnEditDetails.Click += BtnEditDetails_Click;
+        }
+
+        private void BtnEditDetails_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void ChboxClosed_CheckedChanged(object? sender, EventArgs e)
@@ -39,9 +47,9 @@ namespace UI.Forms.EmployeePage
             SetDgvData(chboxShowAll.Checked);
         }
 
-        private async Task GetLawyer()
+        private async Task<LawyerUI> GetLawyer()
         {
-            lawyer = await lawyerBL.GetLawyerWithCollectionsAsync(id);
+            return await lawyerBL.GetLawyerWithCollectionsAsync(id);
         }
 
         //private async Task GetCaseServices()
@@ -51,37 +59,30 @@ namespace UI.Forms.EmployeePage
 
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
         {
-            await GetLawyer();
+            lawyerUI = await GetLawyer();
             //await GetCaseServices();
-            if (lawyer != null)
+            if (lawyerUI != null)
             {
+                pnlLawyerDetails.Controls.Add(new LawyerCardDetails(lawyerUI));
                 SetDgvData(chboxShowAll.Checked);
             }
         }
 
         private void SetDgvData(bool check)
         {
-            dgvCases.DataSource = lawyer.Cases;
+            dgvCases.DataSource = lawyerUI.Cases;
             //dgvServices.DataSource = caseServices;
-            dgvServices.DataSource = lawyer.CaseServices;
+            dgvServices.DataSource = lawyerUI.CaseServices;
 
             foreach (DataGridViewRow row in dgvServices.Rows)
             {
                 if (row.Cells["Status"].Value != null)
                 {
-                    try
-                    {
-                        bool status = (bool)row.Cells["Status"].Value;
-                        dgvServices.CurrentCell = null;
-                        row.Visible = check || status;
-                    }
-                    catch (Exception)
-                    {
-                       
-                    }
+                    bool status = (bool)row.Cells["Status"].Value;
+                    dgvServices.CurrentCell = null;
+                    row.Visible = check || status;
                 }
             }
-            
         }
     }
 }

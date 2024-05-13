@@ -32,6 +32,8 @@
             dgvServices = new DataGridView();
             chboxShowAll = new CheckBox();
             lblTask = new Label();
+            btnEditDetails = new FontAwesome.Sharp.IconButton();
+            pnlLawyerDetails = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -43,10 +45,10 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(12, 12);
+            dgvCases.Location = new Point(324, 12);
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
-            dgvCases.Size = new Size(974, 277);
+            dgvCases.Size = new Size(662, 254);
             dgvCases.TabIndex = 1;
             // 
             // dgvServices
@@ -56,16 +58,16 @@
             dgvServices.AllowUserToResizeColumns = false;
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(12, 310);
+            dgvServices.Location = new Point(324, 311);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(974, 291);
+            dgvServices.Size = new Size(662, 291);
             dgvServices.TabIndex = 1;
             // 
             // chboxShowAll
             // 
             chboxShowAll.AutoSize = true;
-            chboxShowAll.Location = new Point(93, 291);
+            chboxShowAll.Location = new Point(366, 292);
             chboxShowAll.Name = "chboxShowAll";
             chboxShowAll.Size = new Size(72, 19);
             chboxShowAll.TabIndex = 2;
@@ -75,11 +77,30 @@
             // lblTask
             // 
             lblTask.AutoSize = true;
-            lblTask.Location = new Point(12, 292);
+            lblTask.Location = new Point(327, 293);
             lblTask.Name = "lblTask";
             lblTask.Size = new Size(34, 15);
             lblTask.TabIndex = 0;
             lblTask.Text = "Tasks";
+            // 
+            // btnEditDetails
+            // 
+            btnEditDetails.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEditDetails.IconColor = Color.Black;
+            btnEditDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditDetails.Location = new Point(123, 560);
+            btnEditDetails.Name = "btnEditDetails";
+            btnEditDetails.Size = new Size(75, 23);
+            btnEditDetails.TabIndex = 3;
+            btnEditDetails.Text = "Edit details";
+            btnEditDetails.UseVisualStyleBackColor = true;
+            // 
+            // pnlLawyerDetails
+            // 
+            pnlLawyerDetails.Location = new Point(5, 17);
+            pnlLawyerDetails.Name = "pnlLawyerDetails";
+            pnlLawyerDetails.Size = new Size(315, 523);
+            pnlLawyerDetails.TabIndex = 4;
             // 
             // MyPageLawyerView
             // 
@@ -87,6 +108,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(pnlLawyerDetails);
+            Controls.Add(btnEditDetails);
             Controls.Add(chboxShowAll);
             Controls.Add(dgvServices);
             Controls.Add(lblTask);
@@ -105,5 +128,7 @@
         private DataGridView dgvServices;
         private CheckBox chboxShowAll;
         private Label lblTask;
+        private FontAwesome.Sharp.IconButton btnEditDetails;
+        private Panel pnlLawyerDetails;
     }
 }

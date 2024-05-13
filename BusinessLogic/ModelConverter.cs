@@ -222,6 +222,7 @@ namespace BusinessLogic
             LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
             lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntityWithCollections).ToList();
             lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceEntity).ToList();
+            lawyerUI.LawyerSpecialities = lawyerE.LawyerSpecialities.Select(ConvertFromLawyerSpecialityEntity).ToList();
             //lawyerUI.OpenCases = lawyerUI.Cases.Count(c => c.Status == "Active");
 
             return lawyerUI;

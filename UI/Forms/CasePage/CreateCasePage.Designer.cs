@@ -477,7 +477,7 @@
             btnAddLawyer.Size = new Size(135, 38);
             btnAddLawyer.TabIndex = 49;
             btnAddLawyer.TabStop = false;
-            btnAddLawyer.Text = "Add lawyer";
+            btnAddLawyer.Text = "Add lawyerUI";
             btnAddLawyer.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnAddLawyer.UseVisualStyleBackColor = false;
             // 

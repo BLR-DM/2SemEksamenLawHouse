@@ -125,7 +125,7 @@ namespace UI.Forms.FrontPage
                 lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
                 btnMyPageClient.Hide();
                 btnLawyers.Hide();
-                //MessageBox.Show("person is a lawyer");
+                //MessageBox.Show("person is a lawyerUI");
             }
         }
 

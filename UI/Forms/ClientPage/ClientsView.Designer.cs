@@ -163,7 +163,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientsView";
-            Tag = "Clients";
+            Tag = "";
             Text = "ClientsView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

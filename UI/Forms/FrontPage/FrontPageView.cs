@@ -5,6 +5,7 @@ using UI.Forms.Self_Service;
 using UI.Forms.CasePage;
 using UI.Forms.AdminPage;
 using UI.Forms.EmployeePage;
+using EntityModels;
 
 namespace UI.Forms.FrontPage
 {
@@ -18,7 +19,6 @@ namespace UI.Forms.FrontPage
         ClientUI clientUI;
         LawyerUI lawyerUI;
 
-
         public FrontPageView(int loginDetailsID)
         {
             personBL = new PersonBL();
@@ -30,6 +30,9 @@ namespace UI.Forms.FrontPage
             GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
+            btnForms.Visible = btnEmployees.Visible = btnClients.Visible = btnAdminPage.Visible =
+            btnAdminPage.Visible = btnCalculations.Visible = btnCase.Visible = btnLawyers.Visible =
+            btnMyPageClient.Visible = btnMyPageLawyer.Visible = false;
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
@@ -42,6 +45,67 @@ namespace UI.Forms.FrontPage
             btnCalculations.Click += BtnCalculations_Click;
         }
 
+        public async Task GetPersonAsync(int id)
+        {
+            currentUser = await personBL.GetPersonAsync(id);
+
+            if (currentUser != null)
+            {
+                lblCurrentUser.Text = currentUser.GetType().Name;// slet
+                lblCurrentUserName.Text = currentUser.Firstname; // slet
+
+                if (currentUser is ClientUI)
+                {
+                    await SetupClientFormAsync();
+                }
+                if (currentUser is LawyerUI)
+                {
+                    await SetupLawyerFormAsync();
+                }
+            }
+        }
+
+        private async Task SetupClientFormAsync()
+        {
+            clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
+
+            // Knapper
+            btnMyPageClient.Visible = true;
+            btnLawyers.Visible = true;
+            btnForms.Visible = true;
+            
+            if (clientUI.ClientSub == true)
+            {
+                btnCalculations.Visible = true; // Vis med restrictions
+            }
+        }
+
+        private async Task SetupLawyerFormAsync()
+        {
+            lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
+
+            // Knapper
+            btnMyPageLawyer.Visible = true;
+            btnEmployees.Visible = true;
+            btnCase.Visible = true;
+            btnClients.Visible = true;
+            
+            if (lawyerUI.Admin)
+            {
+                btnAdminPage.Visible = true;
+            }
+        }
+
+        public void PnlContextChange(Form f)
+        {
+            //clearer controls fra panelForm
+            pnlContext.Controls.Clear();
+            f.TopLevel = false;
+            //tilføj form som control til panelet
+            pnlContext.Controls.Add(f);
+            f.Show();
+            pnlContext.Show();
+        }
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
             CalculationsView calculationsView = new CalculationsView();
@@ -75,7 +139,7 @@ namespace UI.Forms.FrontPage
         private void BtnLawyers_Click(object? sender, EventArgs e)
         {
             EmployeesView employeesView = new EmployeesView();
-            PnlContextChange(employeesView);            
+            PnlContextChange(employeesView);
         }
 
         private void BtnForms_Click(object? sender, EventArgs e)
@@ -99,52 +163,6 @@ namespace UI.Forms.FrontPage
         private void BtnClose_Click(object? sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        public async Task GetPersonAsync(int id)
-        {
-            currentUser = await personBL.GetPersonAsync(id);
-            if (currentUser != null)
-            {
-                lblCurrentUser.Text = currentUser.GetType().Name;
-                lblCurrentUserName.Text = currentUser.Firstname; 
-            }
-            await SetupForm();
-        }
-
-        public async Task SetupForm()
-        {
-            if (currentUser is ClientUI)
-            {
-                clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
-                btnAdminPage.Hide();
-                btnEmployees.Hide();
-                btnMyPageLawyer.Hide();
-                if(clientUI.ClientSub == false)
-                {
-                    btnCalculations.Hide();
-                }
-                //MessageBox.Show("person is a client");
-
-            }
-            if (currentUser is LawyerUI)
-            {
-                lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
-                btnMyPageClient.Hide();
-                btnLawyers.Hide();
-                //MessageBox.Show("person is a lawyerUI");
-            }
-        }
-
-        public void PnlContextChange(Form f)
-        {
-            //clearer controls fra panelForm
-            pnlContext.Controls.Clear();
-            f.TopLevel = false;
-            //tilføj form som control til panelet
-            pnlContext.Controls.Add(f);
-            f.Show();
-            pnlContext.Show();
         }
     }
 }

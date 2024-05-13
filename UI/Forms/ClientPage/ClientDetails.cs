@@ -149,7 +149,7 @@ namespace UI.Forms.ClientPage
 
 
             //Hvis update sker på "mypage" så henter den brugerens detaljer igen
-            if(currentUser is ClientUI) { frontPageView.GetPersonAsync(currentUser.PersonID); }
+            if(currentUser is ClientUI) { frontPageView.GetPersonAsync(currentUser.LoginDetailsID); }
 
             btnUpdate.Enabled = true;
 

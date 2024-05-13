@@ -59,12 +59,12 @@ namespace UI.Forms.EmployeePage
 
         private void DgvEmployees_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
+            if (e.RowIndex >= 0)
+            {
+                LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
 
-            //    new LawyerDetailsView(lawyer).ShowDialog();
-            //}
+                new LawyerDetailsView(lawyer).ShowDialog();
+            }
         }
 
         private async void EmployeesOverview_Load(object? sender, EventArgs e)

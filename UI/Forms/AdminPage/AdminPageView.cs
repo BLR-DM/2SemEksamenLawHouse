@@ -19,6 +19,12 @@ namespace UI.Forms.AdminPage
             btnCreateForm.Click += BtnCreateForm_Click;
             btnUpdateForm.Click += BtnUpdateForm_Click;
             btnDeleteForm.Click += BtnDeleteForm_Click;
+            btnCreateLawyer.Click += BtnCreateLawyer_Click;
+        }
+
+        private void BtnCreateLawyer_Click(object? sender, EventArgs e)
+        {
+            new AdminCUDLawyer().ShowDialog();
         }
 
         private void BtnCreateForm_Click(object? sender, EventArgs e)

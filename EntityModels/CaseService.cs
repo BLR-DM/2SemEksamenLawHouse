@@ -14,10 +14,12 @@ namespace EntityModels
         public int CaseServiceID { get; set; }
 
         //Attributes
+        public bool Status { get; set; }
         public string Description { get; set; }
         public float HoursWorked { get; set; }
         public float Units { get; set; }
         public float TotalPrice { get; set; }
+        public DateTime StartDate { get; set; }
         public DateTime Date { get; set; }
 
 

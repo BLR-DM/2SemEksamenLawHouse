@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240509221510_init")]
+    [Migration("20240512112620_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<float>("EstimatedHours")
@@ -103,6 +103,9 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("ServiceID")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
@@ -180,8 +183,11 @@ namespace DataAccess.Migrations
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<float>("PaidPrice")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -191,8 +197,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("ClientSubscriptionID");
 
-                    b.HasIndex("ClientID")
-                        .IsUnique();
+                    b.HasIndex("ClientID");
 
                     b.HasIndex("SubscriptionID");
 
@@ -552,8 +557,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("EntityModels.ClientSubscription", b =>
                 {
                     b.HasOne("EntityModels.Client", "Client")
-                        .WithOne("ClientSubscription")
-                        .HasForeignKey("EntityModels.ClientSubscription", "ClientID")
+                        .WithMany("ClientSubscriptions")
+                        .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -716,8 +721,7 @@ namespace DataAccess.Migrations
 
                     b.Navigation("ClientForms");
 
-                    b.Navigation("ClientSubscription")
-                        .IsRequired();
+                    b.Navigation("ClientSubscriptions");
 
                     b.Navigation("Phones");
                 });

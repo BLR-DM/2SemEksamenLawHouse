@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LawHouseDbContext))]
-    [Migration("20240510234311_opdateretsubscriptiondb")]
-    partial class opdateretsubscriptiondb
+    [Migration("20240512113230_addedAttributes")]
+    partial class addedAttributes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<float>("EstimatedHours")
@@ -88,12 +88,12 @@ namespace DataAccess.Migrations
                     b.Property<int>("CaseID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<float>("HoursWorked")
                         .HasColumnType("real");
@@ -103,6 +103,12 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("ServiceID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
@@ -180,7 +186,7 @@ namespace DataAccess.Migrations
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<float>("PaidPrice")
@@ -718,9 +724,9 @@ namespace DataAccess.Migrations
 
                     b.Navigation("ClientForms");
 
-                    b.Navigation("Phones");
-
                     b.Navigation("ClientSubscriptions");
+
+                    b.Navigation("Phones");
                 });
 
             modelBuilder.Entity("EntityModels.Lawyer", b =>

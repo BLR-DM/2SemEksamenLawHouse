@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.EmployeePage
 {
-    partial class LawyerDetailsView
+    partial class MyPageLawyerView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,10 @@
         {
             dgvCases = new DataGridView();
             dgvServices = new DataGridView();
+            chboxShowAll = new CheckBox();
+            lblTask = new Label();
+            btnEditDetails = new FontAwesome.Sharp.IconButton();
+            pnlLawyerDetails = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -41,10 +45,10 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(26, 51);
+            dgvCases.Location = new Point(324, 12);
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
-            dgvCases.Size = new Size(752, 266);
+            dgvCases.Size = new Size(662, 254);
             dgvCases.TabIndex = 1;
             // 
             // dgvServices
@@ -54,30 +58,77 @@
             dgvServices.AllowUserToResizeColumns = false;
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(26, 357);
+            dgvServices.Location = new Point(324, 311);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(752, 266);
+            dgvServices.Size = new Size(662, 291);
             dgvServices.TabIndex = 1;
             // 
-            // LawyerDetailsView
+            // chboxShowAll
+            // 
+            chboxShowAll.AutoSize = true;
+            chboxShowAll.Location = new Point(366, 292);
+            chboxShowAll.Name = "chboxShowAll";
+            chboxShowAll.Size = new Size(72, 19);
+            chboxShowAll.TabIndex = 2;
+            chboxShowAll.Text = "Show All";
+            chboxShowAll.UseVisualStyleBackColor = true;
+            // 
+            // lblTask
+            // 
+            lblTask.AutoSize = true;
+            lblTask.Location = new Point(327, 293);
+            lblTask.Name = "lblTask";
+            lblTask.Size = new Size(34, 15);
+            lblTask.TabIndex = 0;
+            lblTask.Text = "Tasks";
+            // 
+            // btnEditDetails
+            // 
+            btnEditDetails.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEditDetails.IconColor = Color.Black;
+            btnEditDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditDetails.Location = new Point(123, 560);
+            btnEditDetails.Name = "btnEditDetails";
+            btnEditDetails.Size = new Size(75, 23);
+            btnEditDetails.TabIndex = 3;
+            btnEditDetails.Text = "Edit details";
+            btnEditDetails.UseVisualStyleBackColor = true;
+            // 
+            // pnlLawyerDetails
+            // 
+            pnlLawyerDetails.Location = new Point(5, 17);
+            pnlLawyerDetails.Name = "pnlLawyerDetails";
+            pnlLawyerDetails.Size = new Size(315, 523);
+            pnlLawyerDetails.TabIndex = 4;
+            // 
+            // MyPageLawyerView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 666);
+            ClientSize = new Size(998, 613);
+            Controls.Add(pnlLawyerDetails);
+            Controls.Add(btnEditDetails);
+            Controls.Add(chboxShowAll);
             Controls.Add(dgvServices);
+            Controls.Add(lblTask);
             Controls.Add(dgvCases);
-            Name = "LawyerDetailsView";
-            Text = "LawyerDetailsView";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "MyPageLawyerView";
+            Text = "MyPageLawyerView";
             ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
         private DataGridView dgvCases;
         private DataGridView dgvServices;
+        private CheckBox chboxShowAll;
+        private Label lblTask;
+        private FontAwesome.Sharp.IconButton btnEditDetails;
+        private Panel pnlLawyerDetails;
     }
 }

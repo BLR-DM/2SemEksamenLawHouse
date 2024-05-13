@@ -74,7 +74,7 @@ namespace UI
 
             //LawyerBL bl = new LawyerBL();
 
-            //Lawyer lawyer = new Lawyer()
+            //Lawyer lawyerUI = new Lawyer()
             //{
             //    Firstname = "Bilal",
             //    Lastname = "Kinali",
@@ -95,13 +95,13 @@ namespace UI
             //    }
 
             //};
-            //bool success2 = bl.CreateLawyer(lawyer);
+            //bool success2 = bl.CreateLawyer(lawyerUI);
 
             //Lawyer lawyer2 = new Lawyer()
             //{
             //    Firstname = "Lawyer",
             //    Lastname = "lawyersen",
-            //    Email = "lawyer@gmail.com",
+            //    Email = "lawyerUI@gmail.com",
             //    AddressLine = "lawyervej 16",
             //    PostalCode = 7000,
             //    City = "Fredericia",
@@ -111,8 +111,8 @@ namespace UI
 
             //    LoginDetails = new LoginDetails()
             //    {
-            //        Username = "lawyer@gmail.com",
-            //        Password = "lawyer",
+            //        Username = "lawyerUI@gmail.com",
+            //        Password = "lawyerUI",
             //        CreationDate = DateTime.Now,
 
             //    }
@@ -120,7 +120,7 @@ namespace UI
             //};
             //bool success3 = bl.CreateLawyer(lawyer2);
 
-            Application.Run(new FrontPageView(3));
+            Application.Run(new FrontPageView(4));
         }
     }
 }

@@ -87,6 +87,8 @@ namespace UI.Forms.CasePage
                 Description = txtServiceDescription.Text,
                 Units = float.Parse(txtUnits.Text),
                 TotalPrice = float.Parse(txtTotalPrice.Text),
+                Status = true, // test
+                StartDate = DateTime.Now, // test
                 Date = DateTime.Now,
 
                 CaseID = selectedCase.CaseID,

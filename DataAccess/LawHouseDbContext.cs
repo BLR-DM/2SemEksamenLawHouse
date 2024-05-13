@@ -27,6 +27,7 @@ namespace DataAccess
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<LawyerTitle> LawyerTitles { get; set; }
         public DbSet<ServicePriceType> ServicePriceTypes { get; set; }
+        public DbSet<ServiceEntry> ServiceEntries { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -32,5 +32,6 @@ namespace EntityModels
         public Case Case { get; set; }
         public Service Service { get; set; }
         public Lawyer Lawyer { get; set; }
+        public ICollection<ServiceEntry> ServiceEntries { get; set; }
     }
 }

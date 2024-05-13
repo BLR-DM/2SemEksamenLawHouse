@@ -68,7 +68,7 @@ namespace BusinessLogic
                 TotalPrice = caseServiceE.TotalPrice,
                 Status = caseServiceE.Status,
                 StartDate = caseServiceE.StartDate,
-                Date = caseServiceE.EndDate,
+                EndDate = caseServiceE.EndDate,
 
 
                 //foreign key
@@ -89,7 +89,7 @@ namespace BusinessLogic
                 TotalPrice = caseServiceE.TotalPrice,
                 Status = caseServiceE.Status,
                 StartDate = caseServiceE.StartDate,
-                Date = caseServiceE.EndDate,
+                EndDate = caseServiceE.EndDate,
                 //
                 ServiceName = caseServiceE.Service.Name,
                 PriceType = caseServiceE.Service.ServicePriceType.PriceType,
@@ -374,7 +374,7 @@ namespace BusinessLogic
                 TotalPrice = CaseServiceUI.TotalPrice,
                 Status = CaseServiceUI.Status, // test
                 StartDate = CaseServiceUI.StartDate, // test
-                EndDate = CaseServiceUI.Date,
+                EndDate = CaseServiceUI.EndDate,
                 
 
                 //foreign keys

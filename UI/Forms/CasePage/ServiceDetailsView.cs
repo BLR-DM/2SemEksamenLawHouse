@@ -55,7 +55,7 @@ namespace UI.Forms.CasePage
             txtServiceDescription.Text = selectedCaseService.Description;
             txtUnits.Text = selectedCaseService.Units.ToString();
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
-            txtDate.Text = selectedCaseService.Date.ToString();
+            txtDate.Text = selectedCaseService.EndDate.ToString();
         }
     }
 }

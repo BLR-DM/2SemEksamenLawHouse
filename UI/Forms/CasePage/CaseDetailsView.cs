@@ -222,7 +222,7 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["TotalPrice"].DisplayIndex = 1;
             dgvServices.Columns["Units"].DisplayIndex = 2;
             dgvServices.Columns["PriceType"].DisplayIndex = 3;
-            dgvServices.Columns["EndDate"].DisplayIndex = 4;
+            dgvServices.Columns["StartDate"].DisplayIndex = 4;
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

@@ -38,8 +38,10 @@ namespace DataAccess
                 return await db.Lawyers
                         .Include(l => l.LawyerTitle)
                         .Include(c => c.Cases)
-                                .ThenInclude(cs => cs.CaseServices)
+                            .ThenInclude(cs => cs.CaseServices)
                         .Include(l => l.CaseServices)
+                        .Include(l => l.LawyerSpecialities)
+                            .ThenInclude(ls => ls.Speciality)
                         .SingleOrDefaultAsync(c => c.PersonID == id);
             }
             catch (Exception)
@@ -73,6 +75,7 @@ namespace DataAccess
                         .ThenInclude(cs => cs.CaseServices)
                     .Include(l => l.CaseServices)
                     .Include(l => l.LawyerSpecialities)
+                        .ThenInclude(ls => ls.Speciality)
                     .ToListAsync();
                 return lawyers;
 

@@ -98,7 +98,11 @@ namespace UI.Forms.CreateUserPage
             bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
 
             if (result)
+            {
                 MessageBox.Show("CLIENT ADDED!");
+                this.Close();
+            }
+                
             else
                 MessageBox.Show("Failed!");
         }

@@ -70,7 +70,6 @@ namespace UI.Forms.EmployeePage
         private async void EmployeesOverview_Load(object? sender, EventArgs e)
         {
             employeeUIs = await GetEmployeesAsync();
-            //lawyerUIs = await GetLawyersAsync();
             lawyerUIs = await GetLawyersWithCollectionsAsync();
 
             FillComboBoxes();

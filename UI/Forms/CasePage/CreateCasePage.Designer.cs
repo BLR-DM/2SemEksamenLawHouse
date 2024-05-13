@@ -200,7 +200,7 @@
             lblEstimatedEndDate.Name = "lblEstimatedEndDate";
             lblEstimatedEndDate.Size = new Size(151, 21);
             lblEstimatedEndDate.TabIndex = 13;
-            lblEstimatedEndDate.Text = "Estimated End Date";
+            lblEstimatedEndDate.Text = "Estimated End EndDate";
             // 
             // txtTitle
             // 
@@ -477,7 +477,7 @@
             btnAddLawyer.Size = new Size(135, 38);
             btnAddLawyer.TabIndex = 49;
             btnAddLawyer.TabStop = false;
-            btnAddLawyer.Text = "Add lawyerUI";
+            btnAddLawyer.Text = "Add lawyer";
             btnAddLawyer.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnAddLawyer.UseVisualStyleBackColor = false;
             // 

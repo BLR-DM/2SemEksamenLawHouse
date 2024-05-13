@@ -210,7 +210,7 @@
             lblDato.Name = "lblDato";
             lblDato.Size = new Size(44, 21);
             lblDato.TabIndex = 60;
-            lblDato.Text = "Date";
+            lblDato.Text = "EndDate";
             // 
             // txtTotalPrice
             // 

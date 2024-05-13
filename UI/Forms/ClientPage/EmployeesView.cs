@@ -35,7 +35,7 @@ namespace UI.Forms.ClientPage
         }
         private async void EmployeesView_Load(object? sender, EventArgs e)
         {
-            await GetLawyerUIsAsync();
+            await GetLawyersUIsAsync();
             await GetSpecialityUIsAsync();
             FillComboBoxes();
             SetupPanelContent();
@@ -116,7 +116,7 @@ namespace UI.Forms.ClientPage
             }
         }
 
-        private async Task GetLawyerUIsAsync()
+        private async Task GetLawyersUIsAsync()
         {
             lawyerUIs = await lawyerBL.GetLawyersWithCollectionsAsync();
         }

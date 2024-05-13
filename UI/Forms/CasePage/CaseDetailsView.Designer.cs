@@ -545,7 +545,7 @@
             lblEstimatedEndDate.Name = "lblEstimatedEndDate";
             lblEstimatedEndDate.Size = new Size(151, 21);
             lblEstimatedEndDate.TabIndex = 13;
-            lblEstimatedEndDate.Text = "Estimated End Date";
+            lblEstimatedEndDate.Text = "Estimated End EndDate";
             // 
             // txtTitle
             // 

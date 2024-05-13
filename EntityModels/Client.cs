@@ -13,7 +13,7 @@ namespace EntityModels
         public virtual ICollection<ClientFormDocument> ClientForms { get; set; }
         public virtual ICollection<Case> Cases { get; set; }
         
-        public ICollection<ClientSubscription>? ClientSubscriptions { get; set; }
+        public ICollection<ClientSubscription> ClientSubscriptions { get; set; }
 
     }
 }

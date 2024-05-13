@@ -8,6 +8,7 @@ namespace UIModels
 {
     public class LawyerUI : EmployeeUI
     {
+        public bool Admin { get; set; }
         public int? OpenCases => Cases?.Count(c => c.Status == "Active");
         public int? ClosedCases => Cases?.Count(c => c.Status == "Finished");
 

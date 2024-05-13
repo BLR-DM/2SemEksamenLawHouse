@@ -15,6 +15,13 @@ namespace UI.Forms.Self_Service
         public CalcLoanPaymentView()
         {
             InitializeComponent();
+
+            btnCalculate.Click += BtnCalculate_Click;
+        }
+
+        private void BtnCalculate_Click(object? sender, EventArgs e)
+        {
+            float loanSize = float.Parse(txtLoanAmmount.Text);
         }
     }
 }

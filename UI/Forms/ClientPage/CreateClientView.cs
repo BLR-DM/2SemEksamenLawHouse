@@ -175,6 +175,7 @@ namespace UI.Forms.ClientPage
             };
             phoneUIList.Add(tempPhone);
 
+
             isPhoneAdded = true;
             btnCreateEnabled();
 

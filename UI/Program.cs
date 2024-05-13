@@ -1,6 +1,7 @@
 using BusinessLogic;
 using EntityModels;
 using Microsoft.Identity.Client;
+using UI.Forms.AdminPage;
 using UI.Forms.CasePage;
 using UI.Forms.ClientPage;
 using UI.Forms.CreateUserPage;
@@ -47,7 +48,7 @@ namespace UI
             //    }
 
             //};
-            //bool success = bl.CreateLawyer(lawyer1);
+            //bool success = bl.CreateLawyerAsync(lawyer1);
 
 
             //ClientBL clientBL = new ClientBL();
@@ -95,7 +96,7 @@ namespace UI
             //    }
 
             //};
-            //bool success2 = bl.CreateLawyer(lawyerUI);
+            //bool success2 = bl.CreateLawyerAsync(lawyerUI);
 
             //Lawyer lawyer2 = new Lawyer()
             //{
@@ -118,9 +119,9 @@ namespace UI
             //    }
 
             //};
-            //bool success3 = bl.CreateLawyer(lawyer2);
+            //bool success3 = bl.CreateLawyerAsync(lawyer2);
 
-            Application.Run(new FrontPageView(3));
+            Application.Run(new AdminCUDLawyer());
         }
     }
 }

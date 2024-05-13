@@ -475,9 +475,6 @@ namespace BusinessLogic
         {
             Lawyer lawyerE = new Lawyer
             {
-                //LawyerID = lawyerUI.LawyerID,
-                //Title = lawyerUI.Title,
-
                 //employee attributter
                 Firstname = lawyerUI.Firstname,
                 Lastname = lawyerUI.Lastname,
@@ -485,10 +482,9 @@ namespace BusinessLogic
                 Email = lawyerUI.Email,
                 AddressLine = lawyerUI.AddressLine,
                 PostalCode = lawyerUI.PostalCode,
-                HireDate = lawyerUI.HireDate,
-
-                //foreignKey
-                //UserID = lawyerUI.UserID,
+                City = lawyerUI.City,
+                LawyerTitleID = lawyerUI.LawyerTitleID,
+                HireDate = lawyerUI.HireDate
             };
             return lawyerE;
         }

@@ -19,9 +19,16 @@ namespace BusinessLogic
             modelConverter = new ModelConverter();
         }
 
-        public bool CreateLawyer(Lawyer lawyer)
+        public async Task<bool> CreateLawyerAsync(LawyerUI lawyerUI, List<LawyerSpecialityUI> lawyerSpecialityUIs, LoginDetailsUI loginDetailsUI)
         {
-            return dbAccess.CreateLawyer(lawyer);
+            Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
+            List<LawyerSpeciality> lawyerSpecialities = lawyerSpecialityUIs.Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+            LoginDetails loginDetails = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
+
+            lawyer.LawyerSpecialities = lawyerSpecialities;
+            lawyer.LoginDetails = loginDetails;
+
+            return await dbAccess.CreateLawyerAsync(lawyer);
         }
         public async Task<LawyerUI> GetLawyerAsync(int id)
         {

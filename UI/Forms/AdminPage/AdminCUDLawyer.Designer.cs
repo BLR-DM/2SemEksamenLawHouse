@@ -57,10 +57,14 @@
             lblInvalidDate = new Label();
             btnToday = new Button();
             btnCreate = new FontAwesome.Sharp.IconButton();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            button1 = new Button();
-            button2 = new Button();
+            cboxTitles = new ComboBox();
+            cboxSpecialities = new ComboBox();
+            btnAddSpeciality = new Button();
+            lboxSpecialities = new ListBox();
+            btnRemoveSpeciality = new Button();
+            lblAddedSpecialities = new Label();
+            lblTitleSelect = new Label();
+            label1 = new Label();
             pnlLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -96,7 +100,7 @@
             txtFirstname.MaxLength = 50;
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(200, 27);
-            txtFirstname.TabIndex = 12;
+            txtFirstname.TabIndex = 1;
             // 
             // txtLastname
             // 
@@ -106,7 +110,7 @@
             txtLastname.MaxLength = 50;
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(200, 27);
-            txtLastname.TabIndex = 13;
+            txtLastname.TabIndex = 2;
             // 
             // lblName
             // 
@@ -152,7 +156,7 @@
             txtPhone.MaxLength = 50;
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(200, 27);
-            txtPhone.TabIndex = 16;
+            txtPhone.TabIndex = 3;
             // 
             // lblAddress
             // 
@@ -186,7 +190,7 @@
             txtAddress.MaxLength = 50;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(425, 27);
-            txtAddress.TabIndex = 27;
+            txtAddress.TabIndex = 4;
             // 
             // txtPostal
             // 
@@ -196,7 +200,7 @@
             txtPostal.MaxLength = 50;
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(94, 27);
-            txtPostal.TabIndex = 30;
+            txtPostal.TabIndex = 5;
             // 
             // lblCity
             // 
@@ -218,7 +222,7 @@
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(200, 27);
-            txtCity.TabIndex = 32;
+            txtCity.TabIndex = 6;
             // 
             // lblOptional
             // 
@@ -238,7 +242,7 @@
             lblHireDate.BackColor = SystemColors.GradientInactiveCaption;
             lblHireDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblHireDate.ForeColor = Color.FromArgb(45, 93, 134);
-            lblHireDate.Location = new Point(28, 527);
+            lblHireDate.Location = new Point(28, 549);
             lblHireDate.Name = "lblHireDate";
             lblHireDate.Size = new Size(78, 21);
             lblHireDate.TabIndex = 13;
@@ -262,7 +266,7 @@
             lblSpeciality.BackColor = SystemColors.GradientInactiveCaption;
             lblSpeciality.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSpeciality.Location = new Point(28, 457);
+            lblSpeciality.Location = new Point(28, 462);
             lblSpeciality.Name = "lblSpeciality";
             lblSpeciality.Size = new Size(92, 21);
             lblSpeciality.TabIndex = 29;
@@ -294,10 +298,10 @@
             // 
             // dtpHireDate
             // 
-            dtpHireDate.Location = new Point(28, 551);
+            dtpHireDate.Location = new Point(28, 573);
             dtpHireDate.Name = "dtpHireDate";
-            dtpHireDate.Size = new Size(230, 23);
-            dtpHireDate.TabIndex = 33;
+            dtpHireDate.Size = new Size(226, 23);
+            dtpHireDate.TabIndex = 10;
             // 
             // pnlLogin
             // 
@@ -306,7 +310,7 @@
             pnlLogin.Controls.Add(lblPassword);
             pnlLogin.Controls.Add(txtEmailLogin);
             pnlLogin.Controls.Add(lblEmailLogin);
-            pnlLogin.Location = new Point(12, 602);
+            pnlLogin.Location = new Point(12, 624);
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(459, 93);
             pnlLogin.TabIndex = 34;
@@ -320,7 +324,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.ReadOnly = true;
             txtPassword.Size = new Size(200, 27);
-            txtPassword.TabIndex = 31;
+            txtPassword.TabIndex = 0;
             // 
             // lblPassword
             // 
@@ -364,7 +368,7 @@
             lblInvalidDate.BackColor = SystemColors.GradientInactiveCaption;
             lblInvalidDate.Font = new Font("Segoe UI", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblInvalidDate.ForeColor = Color.OrangeRed;
-            lblInvalidDate.Location = new Point(29, 577);
+            lblInvalidDate.Location = new Point(29, 599);
             lblInvalidDate.Name = "lblInvalidDate";
             lblInvalidDate.Size = new Size(111, 13);
             lblInvalidDate.TabIndex = 22;
@@ -372,10 +376,10 @@
             // 
             // btnToday
             // 
-            btnToday.Location = new Point(276, 551);
+            btnToday.Location = new Point(270, 573);
             btnToday.Name = "btnToday";
             btnToday.Size = new Size(61, 23);
-            btnToday.TabIndex = 35;
+            btnToday.TabIndex = 0;
             btnToday.Text = "Today";
             btnToday.UseVisualStyleBackColor = true;
             // 
@@ -392,63 +396,116 @@
             btnCreate.IconColor = Color.Black;
             btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreate.IconSize = 70;
-            btnCreate.Location = new Point(152, 716);
+            btnCreate.Location = new Point(152, 742);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(179, 50);
-            btnCreate.TabIndex = 36;
+            btnCreate.TabIndex = 11;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // cboxTitles
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(29, 410);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(200, 23);
-            comboBox1.TabIndex = 37;
+            cboxTitles.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboxTitles.FormattingEnabled = true;
+            cboxTitles.Location = new Point(29, 410);
+            cboxTitles.Name = "cboxTitles";
+            cboxTitles.Size = new Size(200, 23);
+            cboxTitles.TabIndex = 7;
             // 
-            // comboBox2
+            // cboxSpecialities
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(29, 481);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(200, 23);
-            comboBox2.TabIndex = 37;
+            cboxSpecialities.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboxSpecialities.FormattingEnabled = true;
+            cboxSpecialities.Location = new Point(29, 486);
+            cboxSpecialities.Name = "cboxSpecialities";
+            cboxSpecialities.Size = new Size(200, 23);
+            cboxSpecialities.TabIndex = 8;
             // 
-            // button1
+            // btnAddSpeciality
             // 
-            button1.Location = new Point(247, 410);
-            button1.Name = "button1";
-            button1.Size = new Size(61, 23);
-            button1.TabIndex = 35;
-            button1.Text = "Today";
-            button1.UseVisualStyleBackColor = true;
+            btnAddSpeciality.Location = new Point(170, 512);
+            btnAddSpeciality.Name = "btnAddSpeciality";
+            btnAddSpeciality.Size = new Size(58, 23);
+            btnAddSpeciality.TabIndex = 9;
+            btnAddSpeciality.Text = "Add >>";
+            btnAddSpeciality.TextAlign = ContentAlignment.MiddleRight;
+            btnAddSpeciality.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // lboxSpecialities
             // 
-            button2.Location = new Point(247, 481);
-            button2.Name = "button2";
-            button2.Size = new Size(61, 23);
-            button2.TabIndex = 35;
-            button2.Text = "Today";
-            button2.UseVisualStyleBackColor = true;
+            lboxSpecialities.FormattingEnabled = true;
+            lboxSpecialities.ItemHeight = 15;
+            lboxSpecialities.Location = new Point(253, 460);
+            lboxSpecialities.Name = "lboxSpecialities";
+            lboxSpecialities.Size = new Size(201, 49);
+            lboxSpecialities.TabIndex = 0;
+            // 
+            // btnRemoveSpeciality
+            // 
+            btnRemoveSpeciality.Location = new Point(253, 512);
+            btnRemoveSpeciality.Name = "btnRemoveSpeciality";
+            btnRemoveSpeciality.Size = new Size(78, 23);
+            btnRemoveSpeciality.TabIndex = 0;
+            btnRemoveSpeciality.Text = "<< Remove";
+            btnRemoveSpeciality.TextAlign = ContentAlignment.MiddleLeft;
+            btnRemoveSpeciality.UseVisualStyleBackColor = true;
+            // 
+            // lblAddedSpecialities
+            // 
+            lblAddedSpecialities.AutoSize = true;
+            lblAddedSpecialities.BackColor = SystemColors.GradientInactiveCaption;
+            lblAddedSpecialities.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAddedSpecialities.ForeColor = Color.FromArgb(45, 93, 134);
+            lblAddedSpecialities.Location = new Point(253, 444);
+            lblAddedSpecialities.Name = "lblAddedSpecialities";
+            lblAddedSpecialities.Size = new Size(100, 13);
+            lblAddedSpecialities.TabIndex = 25;
+            lblAddedSpecialities.Text = "Added specialities";
+            // 
+            // lblTitleSelect
+            // 
+            lblTitleSelect.AutoSize = true;
+            lblTitleSelect.BackColor = SystemColors.GradientInactiveCaption;
+            lblTitleSelect.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitleSelect.ForeColor = Color.FromArgb(45, 93, 134);
+            lblTitleSelect.Location = new Point(29, 436);
+            lblTitleSelect.Name = "lblTitleSelect";
+            lblTitleSelect.Size = new Size(60, 13);
+            lblTitleSelect.TabIndex = 25;
+            lblTitleSelect.Text = "Select title";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.GradientInactiveCaption;
+            label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(45, 93, 134);
+            label1.Location = new Point(29, 512);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 13);
+            label1.TabIndex = 25;
+            label1.Text = "Add specialities";
             // 
             // AdminCUDLawyer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(483, 784);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            ClientSize = new Size(483, 815);
+            Controls.Add(lboxSpecialities);
+            Controls.Add(cboxSpecialities);
+            Controls.Add(cboxTitles);
             Controls.Add(btnCreate);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnRemoveSpeciality);
+            Controls.Add(btnAddSpeciality);
             Controls.Add(btnToday);
             Controls.Add(pnlLogin);
             Controls.Add(dtpHireDate);
             Controls.Add(txtFirstname);
             Controls.Add(txtEmail);
+            Controls.Add(label1);
+            Controls.Add(lblTitleSelect);
+            Controls.Add(lblAddedSpecialities);
             Controls.Add(lblFirstname);
             Controls.Add(lblEmail);
             Controls.Add(lblLastname);
@@ -508,9 +565,13 @@
         private Label lblInvalidDate;
         private Button btnToday;
         private FontAwesome.Sharp.IconButton btnCreate;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private Button button1;
-        private Button button2;
+        private ComboBox cboxTitles;
+        private ComboBox cboxSpecialities;
+        private Button btnAddSpeciality;
+        private ListBox lboxSpecialities;
+        private Button btnRemoveSpeciality;
+        private Label lblAddedSpecialities;
+        private Label lblTitleSelect;
+        private Label label1;
     }
 }

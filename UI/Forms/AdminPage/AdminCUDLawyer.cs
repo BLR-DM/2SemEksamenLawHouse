@@ -18,13 +18,24 @@ namespace UI.Forms.AdminPage
     {
         Color validFormat;
         Color invalidFormat;
+        LawyerBL lawyerBL;
         LawyerTitleBL lawyerTitleBL;
+        SpecialityBL specialityBL;
         PersonValidator pValidator;
+
+        List<LawyerTitleUI> lawyerTitles;
+        List<SpecialityUI> specialities;
+
+        List<LawyerSpecialityUI> lawyerSpecialityUIs;
         string emailDomain;
+
         public AdminCUDLawyer()
         {
+            lawyerBL = new LawyerBL();
             lawyerTitleBL = new LawyerTitleBL();
+            specialityBL = new SpecialityBL();
             pValidator = new PersonValidator();
+            lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -32,9 +43,6 @@ namespace UI.Forms.AdminPage
             emailDomain = "@lawhouse.com";
 
             InitializeComponent();
-            lblInvalidDate.Hide();
-            btnCreate.Enabled = false;
-            txtPassword.Text = "0000";
 
             Load += AdminCUDLawyer_Load;
 
@@ -47,17 +55,83 @@ namespace UI.Forms.AdminPage
             dtpHireDate.ValueChanged += DtpHireDate_ValueChanged;
             btnToday.Click += BtnToday_Click;
             btnCreate.Click += BtnCreate_Click;
+            cboxSpecialities.SelectionChangeCommitted += CboxSpecialities_SelectionChangeCommitted;
+            lboxSpecialities.SelectedIndexChanged += LboxSpecialities_SelectedIndexChanged;
+            btnAddSpeciality.Click += BtnAddSpeciality_Click;
+            btnRemoveSpeciality.Click += BtnRemoveSpeciality_Click;
+        }
+
+        private void LboxSpecialities_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            btnRemoveSpeciality.Enabled = true;
+        }
+
+        private void BtnRemoveSpeciality_Click(object? sender, EventArgs e)
+        {
+            if (lboxSpecialities.SelectedItem != null)
+            {
+                cboxSpecialities.Items.Add(lboxSpecialities.SelectedItem);
+                lboxSpecialities.Items.Remove(lboxSpecialities.SelectedItem);
+                if (lboxSpecialities.Items.Count > 0)
+                {
+                    lboxSpecialities.SelectedIndex = lboxSpecialities.SelectedIndex + 1;
+                }
+                else btnRemoveSpeciality.Enabled = false;
+            }
+            btnCreateEnabled();
+        }
+
+        private void BtnAddSpeciality_Click(object? sender, EventArgs e)
+        {
+            if (cboxSpecialities.SelectedItem != null)
+            {
+                lboxSpecialities.Items.Add(cboxSpecialities.SelectedItem);
+                cboxSpecialities.Items.Remove(cboxSpecialities.SelectedItem);
+                if (cboxSpecialities.Items.Count > 0)
+                {
+                    cboxSpecialities.SelectedIndex = cboxSpecialities.SelectedIndex + 1; 
+                }
+                else btnAddSpeciality.Enabled = false;
+            }
+            btnCreateEnabled();
+        }
+
+        private void CboxSpecialities_SelectionChangeCommitted(object? sender, EventArgs e)
+        {
+            btnAddSpeciality.Enabled = true;
         }
 
         private async void AdminCUDLawyer_Load(object? sender, EventArgs e)
         {
-            await FillComboBox();
+            lblInvalidDate.Hide();
+            btnCreate.Enabled = false;
+            btnAddSpeciality.Enabled = false;
+            btnRemoveSpeciality.Enabled = false;
+            txtPassword.Text = "0000";
+            
+
+            await FillTitleComboBox();
+            await FillSpecialityComboBox();
         }
 
-        private async Task FillComboBox()
+        private async Task FillTitleComboBox()
         {
-            List<LawyerTitleUI> lawyerTitleUIs = await lawyerTitleBL.GetLawyerTitles();
+            lawyerTitles = await lawyerTitleBL.GetLawyerTitles();
 
+            foreach (LawyerTitleUI title in lawyerTitles)
+            {
+                cboxTitles.Items.Add(title.Title);
+            }
+        }
+
+        private async Task FillSpecialityComboBox()
+        {
+            specialities = await specialityBL.GetSpecialitiesAsync();
+
+            foreach (SpecialityUI speciality in specialities)
+            {
+                cboxSpecialities.Items.Add(speciality.SpecialityName);
+            }
         }
 
         private void SetEmail()
@@ -85,9 +159,49 @@ namespace UI.Forms.AdminPage
             btnCreateEnabled();
         }
 
-        private void BtnCreate_Click(object? sender, EventArgs e)
+        private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            btnCreate.Enabled = false;
+
+            LawyerUI lawyerUI = new LawyerUI()
+            {
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                PhoneNumber = int.Parse(txtPhone.Text),
+                Email = txtEmailLogin.Text,
+                AddressLine = txtAddress.Text,
+                PostalCode = int.Parse(txtPostal.Text),
+                City = txtCity.Text,
+                LawyerTitleID = lawyerTitles.FirstOrDefault(x => x.Title == cboxTitles.SelectedItem).LawyerTitleID,
+                HireDate = dtpHireDate.Value
+            };
+
+            lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
+
+            foreach (string item in lboxSpecialities.Items)
+            {
+                LawyerSpecialityUI lawyerSpecialityUIs = new LawyerSpecialityUI()
+                {
+                    SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == item).SpecialityID,
+                };
+                this.lawyerSpecialityUIs.Add(lawyerSpecialityUIs);
+            }
+
+            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            {
+                Username = txtEmailLogin.Text,
+                Password = txtPassword.Text,
+                CreationDate = DateTime.Now,
+            };
+
+
+            bool test = await lawyerBL.CreateLawyerAsync(lawyerUI, lawyerSpecialityUIs, loginDetailsUI);
+            btnCreate.Enabled = true;
+
+            if (test)
+                MessageBox.Show("Lawyer Created!");
+            else
+                MessageBox.Show("Failed!");
         }
 
         private void BtnToday_Click(object? sender, EventArgs e)
@@ -148,6 +262,8 @@ namespace UI.Forms.AdminPage
                     txtAddress.ForeColor == validFormat &&
                     txtPostal.ForeColor == validFormat &&
                     txtCity.ForeColor == validFormat &&
+                    lboxSpecialities.Items.Count > 0 &&
+                    cboxTitles.Items.Count > 0 &&
                     lblInvalidDate.Visible == false;
         }
     }

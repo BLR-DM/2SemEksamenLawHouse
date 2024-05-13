@@ -16,11 +16,12 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
-        public bool CreateLawyer(Lawyer lawyer)
+        public async Task<bool> CreateLawyerAsync(Lawyer lawyer)
         {
-            db.Lawyers.Add(lawyer);
-
-            return db.SaveChanges() > 0;
+            await db.Lawyers.AddAsync(lawyer);
+            bool result = await db.SaveChangesAsync() > 0;
+            db.ChangeTracker.Clear();
+            return result;
         }
 
         public async Task<Lawyer> GetLawyerAsync(int id)

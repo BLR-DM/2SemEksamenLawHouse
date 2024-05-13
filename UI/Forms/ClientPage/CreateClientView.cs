@@ -55,7 +55,7 @@ namespace UI.Forms.ClientPage
             txtPassword.TextChanged += TxtPassword_TextChanged;
             txtConfirmPassword.TextChanged += TxtConfirmPassword_TextChanged;
 
-            btnCreateEnabled();
+            BtnCreateEnabled();
 
 
         }
@@ -63,13 +63,13 @@ namespace UI.Forms.ClientPage
         private void TxtConfirmPassword_TextChanged(object? sender, EventArgs e)
         {
             ValidatePasswords();
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
         private void TxtPassword_TextChanged(object? sender, EventArgs e)
         {
             ValidatePasswords();
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void ValidatePasswords()
         {
@@ -111,7 +111,7 @@ namespace UI.Forms.ClientPage
         }
 
 
-        private void btnCreateEnabled()
+        private void BtnCreateEnabled()
         {
             btnCreate.Enabled = 
                 txtFirstname.ForeColor == validFormat &&
@@ -176,7 +176,7 @@ namespace UI.Forms.ClientPage
             phoneUIList.Add(tempPhone);
 
             isPhoneAdded = true;
-            btnCreateEnabled();
+            BtnCreateEnabled();
 
             txtPhone.Clear();
             btnAddPhone.Enabled = false;
@@ -188,13 +188,13 @@ namespace UI.Forms.ClientPage
         {
             lblNameView.Text = string.Join(" ", txtFirstname.Text, txtLastname.Text);
             txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void TxtLastname_TextChanged(object? sender, EventArgs e)
         {
             lblNameView.Text = string.Join(" ", txtFirstname.Text, txtLastname.Text);
             txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
 
         }
         private void txtEmail_TextChanged(object? sender, EventArgs e)
@@ -202,25 +202,25 @@ namespace UI.Forms.ClientPage
             lblEmailView.Text = txtEmail.Text;
             lblUsernameView.Text = txtEmail.Text;
             txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void TxtAddress_TextChanged(object? sender, EventArgs e)
         {
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtAddress.ForeColor = pValidator.ValidAddress(txtAddress.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void TxtCity_TextChanged(object? sender, EventArgs e)
         {
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtCity.ForeColor = pValidator.ValidName(txtCity.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
         private void TxtPhone_TextChanged(object? sender, EventArgs e)
         {

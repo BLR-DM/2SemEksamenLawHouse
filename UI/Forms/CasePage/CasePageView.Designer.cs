@@ -30,11 +30,11 @@
         {
             dgvCaseList = new DataGridView();
             panelTopBar = new Panel();
-            textBox1 = new TextBox();
+            txtTitle = new TextBox();
             lblSearch = new Label();
             cboLawyers = new ComboBox();
             cboCaseType = new ComboBox();
-            cboxFinsished = new CheckBox();
+            ckboxFinsished = new CheckBox();
             ckboxActive = new CheckBox();
             lblNumberOfCases = new Label();
             btnCreateCase = new FontAwesome.Sharp.IconButton();
@@ -59,23 +59,23 @@
             // 
             panelTopBar.Anchor = AnchorStyles.Top;
             panelTopBar.BackColor = SystemColors.GradientActiveCaption;
-            panelTopBar.Controls.Add(textBox1);
+            panelTopBar.Controls.Add(txtTitle);
             panelTopBar.Controls.Add(lblSearch);
             panelTopBar.Controls.Add(cboLawyers);
             panelTopBar.Controls.Add(cboCaseType);
-            panelTopBar.Controls.Add(cboxFinsished);
+            panelTopBar.Controls.Add(ckboxFinsished);
             panelTopBar.Controls.Add(ckboxActive);
             panelTopBar.Location = new Point(12, 12);
             panelTopBar.Name = "panelTopBar";
             panelTopBar.Size = new Size(974, 76);
             panelTopBar.TabIndex = 9;
             // 
-            // textBox1
+            // txtTitle
             // 
-            textBox1.Location = new Point(78, 31);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(119, 23);
-            textBox1.TabIndex = 5;
+            txtTitle.Location = new Point(78, 31);
+            txtTitle.Name = "txtTitle";
+            txtTitle.Size = new Size(119, 23);
+            txtTitle.TabIndex = 5;
             // 
             // lblSearch
             // 
@@ -102,15 +102,15 @@
             cboCaseType.Size = new Size(142, 23);
             cboCaseType.TabIndex = 2;
             // 
-            // cboxFinsished
+            // ckboxFinsished
             // 
-            cboxFinsished.AutoSize = true;
-            cboxFinsished.Location = new Point(298, 33);
-            cboxFinsished.Name = "cboxFinsished";
-            cboxFinsished.Size = new Size(70, 19);
-            cboxFinsished.TabIndex = 1;
-            cboxFinsished.Text = "Finished";
-            cboxFinsished.UseVisualStyleBackColor = true;
+            ckboxFinsished.AutoSize = true;
+            ckboxFinsished.Location = new Point(298, 33);
+            ckboxFinsished.Name = "ckboxFinsished";
+            ckboxFinsished.Size = new Size(70, 19);
+            ckboxFinsished.TabIndex = 1;
+            ckboxFinsished.Text = "Finished";
+            ckboxFinsished.UseVisualStyleBackColor = true;
             // 
             // ckboxActive
             // 
@@ -183,8 +183,8 @@
         private CheckBox ckboxActive;
         private ComboBox cboLawyers;
         private ComboBox cboCaseType;
-        private CheckBox cboxFinsished;
-        private TextBox textBox1;
+        private CheckBox ckboxFinsished;
+        private TextBox txtTitle;
         private Label lblSearch;
         private FontAwesome.Sharp.IconButton btnCreateCase;
     }

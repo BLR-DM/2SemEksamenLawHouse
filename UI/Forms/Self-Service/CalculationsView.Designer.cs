@@ -28,7 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblCalcLoanPayment = new Label();
+            pnlCalc = new Panel();
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // lblCalcLoanPayment
+            // 
+            lblCalcLoanPayment.AutoSize = true;
+            lblCalcLoanPayment.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCalcLoanPayment.ForeColor = Color.FromArgb(45, 93, 134);
+            lblCalcLoanPayment.Location = new Point(40, 87);
+            lblCalcLoanPayment.Name = "lblCalcLoanPayment";
+            lblCalcLoanPayment.Size = new Size(212, 21);
+            lblCalcLoanPayment.TabIndex = 6;
+            lblCalcLoanPayment.Text = "- Calculate payment on loan";
+            // 
+            // pnlCalc
+            // 
+            pnlCalc.Location = new Point(450, 41);
+            pnlCalc.Name = "pnlCalc";
+            pnlCalc.Size = new Size(508, 530);
+            pnlCalc.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.Highlight;
+            panel1.Location = new Point(384, 56);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(3, 493);
+            panel1.TabIndex = 4;
             // 
             // CalculationsView
             // 
@@ -36,12 +65,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblCalcLoanPayment);
+            Controls.Add(pnlCalc);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CalculationsView";
             Text = "CalculationsView";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblCalcLoanPayment;
+        private Panel pnlCalc;
+        private Panel panel1;
     }
 }

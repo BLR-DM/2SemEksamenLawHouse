@@ -17,7 +17,7 @@ namespace UIModels
         public float Units { get; set; }
         public float TotalPrice { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? EndDate { get; set; }
 
 
         //Kun i UI

@@ -39,6 +39,13 @@ namespace UI.Forms.FrontPage
             btnAdminPage.Click += BtnAdminPage_Click;
             btnEmployees.Click += BtnEmployees_Click;
             btnMyPageLawyer.Click += BtnMyPageLawyer_Click;
+            btnCalculations.Click += BtnCalculations_Click;
+        }
+
+        private void BtnCalculations_Click(object? sender, EventArgs e)
+        {
+            CalculationsView calculationsView = new CalculationsView();
+            PnlContextChange(calculationsView);
         }
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)

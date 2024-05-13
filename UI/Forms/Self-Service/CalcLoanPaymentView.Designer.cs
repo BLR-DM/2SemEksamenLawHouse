@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label7 = new Label();
             lblPaymentPrYear = new Label();
+            lblAmountPrPayment = new Label();
             label6 = new Label();
             label5 = new Label();
             pnlTop = new Panel();
@@ -38,37 +38,37 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            txtAmmountOfYears = new TextBox();
+            txtAmountOfYears = new TextBox();
             txtPaymentsPrYear = new TextBox();
             txtAnnualInterestRate = new TextBox();
-            txtLoanAmmount = new TextBox();
+            txtLoanAmount = new TextBox();
             btnClear = new FontAwesome.Sharp.IconButton();
             btnCalculate = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             pnlTop.SuspendLayout();
             SuspendLayout();
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(269, 481);
-            label7.Name = "label7";
-            label7.Size = new Size(71, 17);
-            label7.TabIndex = 64;
-            label7.Text = "3650,63 kr.";
-            // 
             // lblPaymentPrYear
             // 
             lblPaymentPrYear.AutoSize = true;
             lblPaymentPrYear.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPaymentPrYear.ForeColor = SystemColors.ActiveCaptionText;
-            lblPaymentPrYear.Location = new Point(269, 445);
+            lblPaymentPrYear.Location = new Point(269, 481);
             lblPaymentPrYear.Name = "lblPaymentPrYear";
-            lblPaymentPrYear.Size = new Size(64, 17);
-            lblPaymentPrYear.TabIndex = 63;
-            lblPaymentPrYear.Text = "304,22 kr.";
+            lblPaymentPrYear.Size = new Size(71, 17);
+            lblPaymentPrYear.TabIndex = 64;
+            lblPaymentPrYear.Text = "3650,63 kr.";
+            // 
+            // lblAmountPrPayment
+            // 
+            lblAmountPrPayment.AutoSize = true;
+            lblAmountPrPayment.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAmountPrPayment.ForeColor = SystemColors.ActiveCaptionText;
+            lblAmountPrPayment.Location = new Point(269, 445);
+            lblAmountPrPayment.Name = "lblAmountPrPayment";
+            lblAmountPrPayment.Size = new Size(64, 17);
+            lblAmountPrPayment.TabIndex = 63;
+            lblAmountPrPayment.Text = "304,22 kr.";
             // 
             // label6
             // 
@@ -90,9 +90,9 @@
             label5.ForeColor = Color.FromArgb(45, 93, 134);
             label5.Location = new Point(77, 441);
             label5.Name = "label5";
-            label5.Size = new Size(175, 21);
+            label5.Size = new Size(161, 21);
             label5.TabIndex = 61;
-            label5.Text = "Ammount pr payment:";
+            label5.Text = "Amount pr payment:";
             // 
             // pnlTop
             // 
@@ -125,9 +125,9 @@
             label4.ForeColor = Color.FromArgb(45, 93, 134);
             label4.Location = new Point(103, 267);
             label4.Name = "label4";
-            label4.Size = new Size(149, 21);
+            label4.Size = new Size(135, 21);
             label4.TabIndex = 59;
-            label4.Text = "Ammount of years:";
+            label4.Text = "Amount of years:";
             // 
             // label3
             // 
@@ -161,16 +161,16 @@
             label1.ForeColor = Color.FromArgb(45, 93, 134);
             label1.Location = new Point(129, 92);
             label1.Name = "label1";
-            label1.Size = new Size(123, 21);
+            label1.Size = new Size(109, 21);
             label1.TabIndex = 56;
-            label1.Text = "Loan ammount:";
+            label1.Text = "Loan amount:";
             // 
-            // txtAmmountOfYears
+            // txtAmountOfYears
             // 
-            txtAmmountOfYears.Location = new Point(269, 269);
-            txtAmmountOfYears.Name = "txtAmmountOfYears";
-            txtAmmountOfYears.Size = new Size(100, 23);
-            txtAmmountOfYears.TabIndex = 55;
+            txtAmountOfYears.Location = new Point(269, 269);
+            txtAmountOfYears.Name = "txtAmountOfYears";
+            txtAmountOfYears.Size = new Size(100, 23);
+            txtAmountOfYears.TabIndex = 55;
             // 
             // txtPaymentsPrYear
             // 
@@ -186,12 +186,12 @@
             txtAnnualInterestRate.Size = new Size(100, 23);
             txtAnnualInterestRate.TabIndex = 53;
             // 
-            // txtLoanAmmount
+            // txtLoanAmount
             // 
-            txtLoanAmmount.Location = new Point(269, 92);
-            txtLoanAmmount.Name = "txtLoanAmmount";
-            txtLoanAmmount.Size = new Size(100, 23);
-            txtLoanAmmount.TabIndex = 52;
+            txtLoanAmount.Location = new Point(269, 92);
+            txtLoanAmount.Name = "txtLoanAmount";
+            txtLoanAmount.Size = new Size(100, 23);
+            txtLoanAmount.TabIndex = 52;
             // 
             // btnClear
             // 
@@ -247,8 +247,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
-            Controls.Add(label7);
             Controls.Add(lblPaymentPrYear);
+            Controls.Add(lblAmountPrPayment);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(pnlTop);
@@ -256,10 +256,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtAmmountOfYears);
+            Controls.Add(txtAmountOfYears);
             Controls.Add(txtPaymentsPrYear);
             Controls.Add(txtAnnualInterestRate);
-            Controls.Add(txtLoanAmmount);
+            Controls.Add(txtLoanAmount);
             Controls.Add(btnClear);
             Controls.Add(btnCalculate);
             Controls.Add(panel1);
@@ -274,8 +274,8 @@
 
         #endregion
 
-        private Label label7;
         private Label lblPaymentPrYear;
+        private Label lblAmountPrPayment;
         private Label label6;
         private Label label5;
         private Panel pnlTop;
@@ -284,10 +284,10 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox txtAmmountOfYears;
+        private TextBox txtAmountOfYears;
         private TextBox txtPaymentsPrYear;
         private TextBox txtAnnualInterestRate;
-        private TextBox txtLoanAmmount;
+        private TextBox txtLoanAmount;
         private FontAwesome.Sharp.IconButton btnClear;
         private FontAwesome.Sharp.IconButton btnCalculate;
         private Panel panel1;

@@ -45,7 +45,7 @@ namespace UI.Forms.ClientPage
         {
             // Fjern fokus fra valgte item
             lblFilterSpeciality.Focus();
-
+            
             SortAndUpdateFlowLayoutPanel();
         }
         private void CboxSpecialities_SelectionChangeCommitted(object? sender, EventArgs e)
@@ -134,20 +134,18 @@ namespace UI.Forms.ClientPage
                 cboxSpecialities.Items.Insert(0, "");
 
                 // Distinct tilknyttede specialiteter
-                foreach (string s in lawyerSpecialityUIs
-                                        .Select(s => s.SpecialityName)
-                                        .Distinct())
+                foreach (string s in lawyerSpecialityUIs.Select(s => s.SpecialityName).Distinct())
                 {
                     cboxSpecialities.Items.Add(s);
                 }
-                cboxSpecialities.SelectionStart = 0;
+                cboxSpecialities.SelectedIndex = 0;
 
 
                 // Sorting combobox
                 cboxSort.Items.Insert(0, "");
                 cboxSort.Items.Add("Name");
                 cboxSort.Items.Add("City");
-                cboxSort.SelectionStart = 0;
+                cboxSort.SelectedIndex = 0;
             }
         }
 

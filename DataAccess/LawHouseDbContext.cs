@@ -32,7 +32,7 @@ namespace DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //connstring fra App.Config
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Bilal"].ToString()).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Simply"].ToString()).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

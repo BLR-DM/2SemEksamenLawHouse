@@ -1,4 +1,7 @@
-﻿using BusinessLogic.Validation;
+﻿using BusinessLogic;
+using BusinessLogic.Validation;
+using UIModels;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +18,12 @@ namespace UI.Forms.AdminPage
     {
         Color validFormat;
         Color invalidFormat;
+        LawyerTitleBL lawyerTitleBL;
         PersonValidator pValidator;
         string emailDomain;
         public AdminCUDLawyer()
         {
+            lawyerTitleBL = new LawyerTitleBL();
             pValidator = new PersonValidator();
 
             validFormat = Color.Black;
@@ -31,16 +36,53 @@ namespace UI.Forms.AdminPage
             btnCreate.Enabled = false;
             txtPassword.Text = "0000";
 
+            Load += AdminCUDLawyer_Load;
+
             txtFirstname.TextChanged += TxtFirstname_TextChanged;
             txtLastname.TextChanged += TxtLastname_TextChanged;
             txtPhone.TextChanged += TxtPhone_TextChanged;
             txtAddress.TextChanged += TxtAddress_TextChanged;
             txtPostal.TextChanged += TxtPostal_TextChanged;
-            txtCity.TextChanged += TxtCity_TextChanged;
-            txtTitel.TextChanged += TxtTitel_TextChanged;
+            txtCity.TextChanged += TxtCity_TextChanged;            
             dtpHireDate.ValueChanged += DtpHireDate_ValueChanged;
             btnToday.Click += BtnToday_Click;
             btnCreate.Click += BtnCreate_Click;
+        }
+
+        private async void AdminCUDLawyer_Load(object? sender, EventArgs e)
+        {
+            await FillComboBox();
+        }
+
+        private async Task FillComboBox()
+        {
+            List<LawyerTitleUI> lawyerTitleUIs = await lawyerTitleBL.GetLawyerTitles();
+
+        }
+
+        private void SetEmail()
+        {
+            if (txtFirstname.ForeColor == validFormat &&
+                txtLastname.ForeColor == validFormat &&
+                txtPhone.ForeColor == validFormat)
+            {
+                string email =
+                    ($"{txtFirstname.Text.Substring(0, 2)}" +
+                    $"{txtLastname.Text.Substring(0, 2)}" +
+                    $"{txtPhone.Text.Substring(0, 4)}" +
+                    $"{emailDomain}").ToLower();
+
+                if (pValidator.ValidEmail(email))
+                {
+                    txtEmail.Text = email;
+                    txtEmailLogin.Text = txtEmail.Text;
+                }
+            }
+            else
+            {
+                txtEmail.Text = string.Empty;
+            }
+            btnCreateEnabled();
         }
 
         private void BtnCreate_Click(object? sender, EventArgs e)
@@ -59,12 +101,6 @@ namespace UI.Forms.AdminPage
                 lblInvalidDate.Show();
             else
                 lblInvalidDate.Hide();
-            btnCreateEnabled();
-        }
-
-        private void TxtTitel_TextChanged(object? sender, EventArgs e)
-        {
-            txtTitel.ForeColor = pValidator.ValidName(txtTitel.Text) ? validFormat : invalidFormat;
             btnCreateEnabled();
         }
 
@@ -102,31 +138,6 @@ namespace UI.Forms.AdminPage
         {
             txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
             SetEmail();
-        }
-
-        private void SetEmail()
-        {
-            if (txtFirstname.ForeColor == validFormat &&
-                txtLastname.ForeColor == validFormat &&
-                txtPhone.ForeColor == validFormat)
-            {
-                string email = 
-                    ($"{txtFirstname.Text.Substring(0,2)}" +
-                    $"{txtLastname.Text.Substring(0,2)}" +
-                    $"{txtPhone.Text.Substring(0,4)}" +
-                    $"{emailDomain}").ToLower();
-
-                if (pValidator.ValidEmail(email))
-                {
-                    txtEmail.Text = email;
-                    txtEmailLogin.Text = email;
-                }
-            }
-            else
-            {
-                txtEmail.Text = string.Empty;
-            }
-            btnCreateEnabled();
         }
 
         private void btnCreateEnabled()

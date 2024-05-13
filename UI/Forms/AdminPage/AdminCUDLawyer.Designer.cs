@@ -45,11 +45,7 @@
             lblOptional = new Label();
             lblHireDate = new Label();
             lblTitle = new Label();
-            txtTitel = new TextBox();
             lblSpeciality = new Label();
-            txtSpecialities = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
             lblEmail = new Label();
             txtEmail = new TextBox();
             dtpHireDate = new DateTimePicker();
@@ -61,6 +57,10 @@
             lblInvalidDate = new Label();
             btnToday = new Button();
             btnCreate = new FontAwesome.Sharp.IconButton();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            button1 = new Button();
+            button2 = new Button();
             pnlLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -160,7 +160,7 @@
             lblAddress.BackColor = SystemColors.GradientInactiveCaption;
             lblAddress.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblAddress.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddress.Location = new Point(28, 238);
+            lblAddress.Location = new Point(28, 241);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(70, 21);
             lblAddress.TabIndex = 23;
@@ -172,7 +172,7 @@
             lblPostal.BackColor = SystemColors.GradientInactiveCaption;
             lblPostal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPostal.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPostal.Location = new Point(28, 308);
+            lblPostal.Location = new Point(28, 311);
             lblPostal.Name = "lblPostal";
             lblPostal.Size = new Size(94, 21);
             lblPostal.TabIndex = 26;
@@ -182,7 +182,7 @@
             // 
             txtAddress.BackColor = Color.White;
             txtAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtAddress.Location = new Point(28, 262);
+            txtAddress.Location = new Point(28, 265);
             txtAddress.MaxLength = 50;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(425, 27);
@@ -192,7 +192,7 @@
             // 
             txtPostal.BackColor = Color.White;
             txtPostal.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPostal.Location = new Point(28, 333);
+            txtPostal.Location = new Point(28, 336);
             txtPostal.MaxLength = 50;
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(94, 27);
@@ -204,7 +204,7 @@
             lblCity.BackColor = SystemColors.GradientInactiveCaption;
             lblCity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCity.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCity.Location = new Point(253, 308);
+            lblCity.Location = new Point(253, 311);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(38, 21);
             lblCity.TabIndex = 31;
@@ -214,7 +214,7 @@
             // 
             txtCity.BackColor = Color.White;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCity.Location = new Point(253, 333);
+            txtCity.Location = new Point(253, 336);
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(200, 27);
@@ -250,21 +250,11 @@
             lblTitle.BackColor = SystemColors.GradientInactiveCaption;
             lblTitle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTitle.Location = new Point(28, 380);
+            lblTitle.Location = new Point(28, 386);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(42, 21);
             lblTitle.TabIndex = 29;
             lblTitle.Text = "Title";
-            // 
-            // txtTitel
-            // 
-            txtTitel.BackColor = Color.White;
-            txtTitel.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTitel.Location = new Point(28, 404);
-            txtTitel.MaxLength = 50;
-            txtTitel.Name = "txtTitel";
-            txtTitel.Size = new Size(200, 27);
-            txtTitel.TabIndex = 12;
             // 
             // lblSpeciality
             // 
@@ -272,45 +262,11 @@
             lblSpeciality.BackColor = SystemColors.GradientInactiveCaption;
             lblSpeciality.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSpeciality.Location = new Point(28, 451);
+            lblSpeciality.Location = new Point(28, 457);
             lblSpeciality.Name = "lblSpeciality";
             lblSpeciality.Size = new Size(92, 21);
             lblSpeciality.TabIndex = 29;
             lblSpeciality.Text = "Specialities";
-            // 
-            // txtSpecialities
-            // 
-            txtSpecialities.BackColor = Color.White;
-            txtSpecialities.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSpecialities.Location = new Point(28, 475);
-            txtSpecialities.MaxLength = 50;
-            txtSpecialities.Name = "txtSpecialities";
-            txtSpecialities.Size = new Size(200, 27);
-            txtSpecialities.TabIndex = 12;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.GradientInactiveCaption;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(45, 93, 134);
-            label4.Location = new Point(256, 406);
-            label4.Name = "label4";
-            label4.Size = new Size(186, 21);
-            label4.TabIndex = 29;
-            label4.Text = "<- select from list + add";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.GradientInactiveCaption;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(45, 93, 134);
-            label5.Location = new Point(256, 477);
-            label5.Name = "label5";
-            label5.Size = new Size(186, 21);
-            label5.TabIndex = 29;
-            label5.Text = "<- select from list + add";
             // 
             // lblEmail
             // 
@@ -331,6 +287,7 @@
             txtEmail.Location = new Point(28, 195);
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "auto-generated";
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(200, 27);
             txtEmail.TabIndex = 17;
@@ -349,16 +306,16 @@
             pnlLogin.Controls.Add(lblPassword);
             pnlLogin.Controls.Add(txtEmailLogin);
             pnlLogin.Controls.Add(lblEmailLogin);
-            pnlLogin.Location = new Point(12, 595);
+            pnlLogin.Location = new Point(12, 602);
             pnlLogin.Name = "pnlLogin";
-            pnlLogin.Size = new Size(459, 100);
+            pnlLogin.Size = new Size(459, 93);
             pnlLogin.TabIndex = 34;
             // 
             // txtPassword
             // 
             txtPassword.BackColor = Color.White;
             txtPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(241, 49);
+            txtPassword.Location = new Point(241, 43);
             txtPassword.MaxLength = 50;
             txtPassword.Name = "txtPassword";
             txtPassword.ReadOnly = true;
@@ -371,7 +328,7 @@
             lblPassword.BackColor = SystemColors.GradientInactiveCaption;
             lblPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPassword.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPassword.Location = new Point(241, 25);
+            lblPassword.Location = new Point(241, 19);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(79, 21);
             lblPassword.TabIndex = 32;
@@ -381,9 +338,10 @@
             // 
             txtEmailLogin.BackColor = Color.White;
             txtEmailLogin.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmailLogin.Location = new Point(16, 49);
+            txtEmailLogin.Location = new Point(16, 43);
             txtEmailLogin.MaxLength = 50;
             txtEmailLogin.Name = "txtEmailLogin";
+            txtEmailLogin.PlaceholderText = "auto-generated";
             txtEmailLogin.ReadOnly = true;
             txtEmailLogin.Size = new Size(200, 27);
             txtEmailLogin.TabIndex = 29;
@@ -394,7 +352,7 @@
             lblEmailLogin.BackColor = SystemColors.GradientInactiveCaption;
             lblEmailLogin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEmailLogin.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEmailLogin.Location = new Point(16, 25);
+            lblEmailLogin.Location = new Point(16, 19);
             lblEmailLogin.Name = "lblEmailLogin";
             lblEmailLogin.Size = new Size(48, 21);
             lblEmailLogin.TabIndex = 30;
@@ -406,7 +364,7 @@
             lblInvalidDate.BackColor = SystemColors.GradientInactiveCaption;
             lblInvalidDate.Font = new Font("Segoe UI", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblInvalidDate.ForeColor = Color.OrangeRed;
-            lblInvalidDate.Location = new Point(336, 556);
+            lblInvalidDate.Location = new Point(29, 577);
             lblInvalidDate.Name = "lblInvalidDate";
             lblInvalidDate.Size = new Size(111, 13);
             lblInvalidDate.TabIndex = 22;
@@ -414,7 +372,7 @@
             // 
             // btnToday
             // 
-            btnToday.Location = new Point(269, 551);
+            btnToday.Location = new Point(276, 551);
             btnToday.Name = "btnToday";
             btnToday.Size = new Size(61, 23);
             btnToday.TabIndex = 35;
@@ -441,18 +399,54 @@
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(29, 410);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(200, 23);
+            comboBox1.TabIndex = 37;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(29, 481);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(200, 23);
+            comboBox2.TabIndex = 37;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(247, 410);
+            button1.Name = "button1";
+            button1.Size = new Size(61, 23);
+            button1.TabIndex = 35;
+            button1.Text = "Today";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(247, 481);
+            button2.Name = "button2";
+            button2.Size = new Size(61, 23);
+            button2.TabIndex = 35;
+            button2.Text = "Today";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // AdminCUDLawyer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(483, 784);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(btnCreate);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(btnToday);
             Controls.Add(pnlLogin);
             Controls.Add(dtpHireDate);
-            Controls.Add(txtSpecialities);
-            Controls.Add(txtTitel);
             Controls.Add(txtFirstname);
             Controls.Add(txtEmail);
             Controls.Add(lblFirstname);
@@ -460,8 +454,6 @@
             Controls.Add(lblLastname);
             Controls.Add(txtLastname);
             Controls.Add(lblSpeciality);
-            Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(lblTitle);
             Controls.Add(lblName);
             Controls.Add(lblPhone);
@@ -476,6 +468,7 @@
             Controls.Add(txtAddress);
             Controls.Add(txtPostal);
             Name = "AdminCUDLawyer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminCUDLawyer";
             pnlLogin.ResumeLayout(false);
             pnlLogin.PerformLayout();
@@ -503,11 +496,7 @@
         private Label label2;
         private Label lblHireDate;
         private Label lblTitle;
-        private TextBox txtTitel;
         private Label lblSpeciality;
-        private TextBox txtSpecialities;
-        private Label label4;
-        private Label label5;
         private Label lblEmail;
         private TextBox txtEmail;
         private DateTimePicker dtpHireDate;
@@ -519,5 +508,9 @@
         private Label lblInvalidDate;
         private Button btnToday;
         private FontAwesome.Sharp.IconButton btnCreate;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private Button button1;
+        private Button button2;
     }
 }

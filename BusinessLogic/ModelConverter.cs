@@ -241,6 +241,16 @@ namespace BusinessLogic
             return lawyerSpecialityUI;
         }
 
+        public LawyerTitleUI ConvertFromLawyerTitleEntity(LawyerTitle lawyerTitleE)
+        {
+            LawyerTitleUI lawyerTitleUI = new LawyerTitleUI
+            {
+                LawyerTitleID = lawyerTitleE.LawyerTitleID,
+                Title = lawyerTitleE.Title
+            };
+            return lawyerTitleUI;
+        }
+
         public PhoneUI ConvertFromPhoneEntity(Phone phoneE)
         {
             PhoneUI phoneUI = new PhoneUI

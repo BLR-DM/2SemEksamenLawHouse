@@ -13,7 +13,6 @@ namespace UIModels
 
         public virtual ICollection<LawyerSpecialityUI> LawyerSpecialities { get; set; }
         public virtual ICollection<CaseUI> Cases { get; set; }
-
         public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
     }
 }

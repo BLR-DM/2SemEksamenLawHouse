@@ -38,7 +38,7 @@ namespace DataAccess
                         .Include(l => l.LawyerTitle)
                         .Include(c => c.Cases)
                                 .ThenInclude(cs => cs.CaseServices)
-                            .Include(l => l.CaseServices)
+                        .Include(l => l.CaseServices)
                         .SingleOrDefaultAsync(c => c.PersonID == id);
             }
             catch (Exception)

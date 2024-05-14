@@ -17,9 +17,11 @@ namespace UI.Forms.ClientPage
     public partial class CreateClientView : Form
     {
         ClientBL clientBL;
+        PersonValidator pValidator;
+
         Color validFormat;
         Color invalidFormat;
-        PersonValidator pValidator;
+
         List<PhoneUI> phoneUIList;
         PhoneUI phoneUI;
 
@@ -27,11 +29,11 @@ namespace UI.Forms.ClientPage
         bool isPhoneAdded;
         bool passwordIsValid;
 
-        public CreateClientView()
+        public CreateClientView(ClientBL clientBL, PersonValidator pValidator)
         {
             InitializeComponent();
-            clientBL = new ClientBL();
-            pValidator = new PersonValidator();
+            this.clientBL = clientBL;
+            this.pValidator = pValidator;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;

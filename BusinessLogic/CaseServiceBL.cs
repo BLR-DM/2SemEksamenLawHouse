@@ -42,6 +42,11 @@ namespace BusinessLogic
             List<CaseService> caseServices = await dbAccess.GetCaseServicesForLawyerAsync(id);
             return caseServices.Select(modelConverter.ConvertFromCaseServiceAndServiceEntity).ToList();
         }
+
+        public async Task<bool> UpdateCaseServicesAsync(CaseServiceUI caseServiceUI)
+        {
+            return await dbAccess.UpdateCaseServiceAsync(modelConverter.ConvertFromCaseServiceUI(caseServiceUI));
+        }
     }
 
 }

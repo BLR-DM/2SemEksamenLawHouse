@@ -74,14 +74,13 @@
             // lblHoursWorked
             // 
             lblHoursWorked.Anchor = AnchorStyles.Right;
-            lblHoursWorked.AutoSize = true;
             lblHoursWorked.BackColor = SystemColors.GradientInactiveCaption;
             lblHoursWorked.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblHoursWorked.ForeColor = Color.FromArgb(45, 93, 134);
-            lblHoursWorked.Location = new Point(331, 35);
+            lblHoursWorked.Location = new Point(324, 98);
             lblHoursWorked.Name = "lblHoursWorked";
             lblHoursWorked.RightToLeft = RightToLeft.No;
-            lblHoursWorked.Size = new Size(113, 21);
+            lblHoursWorked.Size = new Size(120, 21);
             lblHoursWorked.TabIndex = 68;
             lblHoursWorked.Text = "Hours worked";
             lblHoursWorked.TextAlign = ContentAlignment.TopRight;
@@ -90,7 +89,7 @@
             // 
             txtHoursWorked.BackColor = Color.White;
             txtHoursWorked.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtHoursWorked.Location = new Point(378, 59);
+            txtHoursWorked.Location = new Point(375, 122);
             txtHoursWorked.MaxLength = 50;
             txtHoursWorked.Name = "txtHoursWorked";
             txtHoursWorked.Size = new Size(66, 27);
@@ -109,21 +108,21 @@
             // 
             // lblTotalPrice
             // 
-            lblTotalPrice.AutoSize = true;
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(358, 227);
+            lblTotalPrice.Location = new Point(336, 227);
             lblTotalPrice.Name = "lblTotalPrice";
-            lblTotalPrice.Size = new Size(86, 21);
+            lblTotalPrice.Size = new Size(108, 21);
             lblTotalPrice.TabIndex = 65;
             lblTotalPrice.Text = "Total price";
+            lblTotalPrice.TextAlign = ContentAlignment.TopRight;
             // 
             // txtUnits
             // 
             txtUnits.BackColor = Color.White;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(378, 123);
+            txtUnits.Location = new Point(375, 68);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -135,7 +134,7 @@
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(344, 99);
+            lblUnites.Location = new Point(344, 44);
             lblUnites.Name = "lblUnites";
             lblUnites.RightToLeft = RightToLeft.No;
             lblUnites.Size = new Size(100, 21);
@@ -154,15 +153,16 @@
             // 
             // lblPrice
             // 
-            lblPrice.AutoSize = true;
+            lblPrice.Anchor = AnchorStyles.Right;
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(395, 162);
+            lblPrice.Location = new Point(336, 162);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(46, 21);
+            lblPrice.Size = new Size(108, 21);
             lblPrice.TabIndex = 53;
-            lblPrice.Text = "Price";
+            lblPrice.Text = "Price/km";
+            lblPrice.TextAlign = ContentAlignment.TopRight;
             // 
             // txtPrice
             // 

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,17 +16,25 @@ namespace UI.Forms.ClientPage
 {
     public partial class ClientsView : Form
     {
-        List<ClientUI> originalClientsList;
-        List<ClientUI> filteredClients;
-        ClientBL clientBL;
         FrontPageView frontPageView;
         PersonUI currentUser;
-        public ClientsView(FrontPageView fpv, PersonUI currentUser)
+        ClientBL clientBL;
+        FormDocumentBL formBL;
+
+        PersonValidator pValidator;
+
+        List<ClientUI> originalClientsList;
+        List<ClientUI> filteredClients;
+
+        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, PersonValidator pValidator)
         {
             InitializeComponent();
-            clientBL = new ClientBL();
+            
             this.frontPageView = fpv;
             this.currentUser = currentUser;
+            this.clientBL = clientBL;
+            this.formBL = formBL;
+            this.pValidator = pValidator;
 
             //Events
             Load += ClientsView_Load;
@@ -43,7 +52,7 @@ namespace UI.Forms.ClientPage
 
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
-            CreateClientView createClientsView = new CreateClientView();
+            CreateClientView createClientsView = new CreateClientView(clientBL, pValidator);
             frontPageView.PnlContextChange(createClientsView);
         }
 
@@ -53,7 +62,7 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient);
+                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, formBL, pValidator);
                 frontPageView.PnlContextChange(clientDetails);
             }
         }

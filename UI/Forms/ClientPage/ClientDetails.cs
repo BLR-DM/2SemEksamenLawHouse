@@ -20,25 +20,27 @@ namespace UI.Forms.ClientPage
     {
         FrontPageView frontPageView;
         PersonUI currentUser;
+        ClientUI client;
         ClientBL clientBL;
         FormDocumentBL formBL;
-        ClientUI client;
+        PersonValidator pValidator;
+
         Color validFormat;
         Color invalidFormat;
-        PersonValidator pValidator;
+
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
         List<FormDocumentUI> boughtForms;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, FormDocumentBL formBL, PersonValidator pValidator)
         {
             InitializeComponent();
             this.frontPageView = fpv;
             this.currentUser = currenUser;
             this.client = client;
-            formBL = new FormDocumentBL();
-            clientBL = new ClientBL();
-            pValidator = new PersonValidator();
+            this.clientBL = clientBL;
+            this.formBL = formBL;
+            this.pValidator = pValidator;
 
             deletedNumbers = new List<PhoneUI>();
 

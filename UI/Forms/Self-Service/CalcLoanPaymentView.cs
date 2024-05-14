@@ -14,13 +14,13 @@ namespace UI.Forms.Self_Service
 {
     public partial class CalcLoanPaymentView : Form
     {
-        OverallValidator validator;
+        OverallValidator oaValidator;
         Color validFormat;
         Color invalidFormat;
-        public CalcLoanPaymentView()
+        public CalcLoanPaymentView(OverallValidator oaValidator)
         {
             InitializeComponent();
-            validator = new OverallValidator();
+            this.oaValidator = oaValidator;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -37,25 +37,25 @@ namespace UI.Forms.Self_Service
 
         private void TxtAmountOfYears_TextChanged(object? sender, EventArgs e)
         {
-            txtAmountOfYears.ForeColor = validator.ValidDigit(txtAmountOfYears.Text) ? validFormat : invalidFormat;
+            txtAmountOfYears.ForeColor = oaValidator.ValidDigit(txtAmountOfYears.Text) ? validFormat : invalidFormat;
             BtnCalculateEnabled();
         }
 
         private void TxtPaymentsPrYear_TextChanged(object? sender, EventArgs e)
         {
-            txtPaymentsPrYear.ForeColor = validator.ValidDigit(txtPaymentsPrYear.Text) ? validFormat : invalidFormat;
+            txtPaymentsPrYear.ForeColor = oaValidator.ValidDigit(txtPaymentsPrYear.Text) ? validFormat : invalidFormat;
             BtnCalculateEnabled();
         }
 
         private void TxtAnnualInterestRate_TextChanged(object? sender, EventArgs e)
         {
-            txtAnnualInterestRate.ForeColor = validator.ValidDigit(txtAnnualInterestRate.Text) ? validFormat : invalidFormat;
+            txtAnnualInterestRate.ForeColor = oaValidator.ValidDigit(txtAnnualInterestRate.Text) ? validFormat : invalidFormat;
             BtnCalculateEnabled();
         }
 
         private void TxtLoanAmount_TextChanged(object? sender, EventArgs e)
         {
-            txtLoanAmount.ForeColor = validator.ValidDigit(txtLoanAmount.Text) ? validFormat : invalidFormat;
+            txtLoanAmount.ForeColor = oaValidator.ValidDigit(txtLoanAmount.Text) ? validFormat : invalidFormat;
             BtnCalculateEnabled();
         }
 

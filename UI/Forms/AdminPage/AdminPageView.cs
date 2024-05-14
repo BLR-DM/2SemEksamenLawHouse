@@ -24,7 +24,7 @@ namespace UI.Forms.AdminPage
 
         private void BtnCreateLawyer_Click(object? sender, EventArgs e)
         {
-            new AdminCUDLawyer().ShowDialog();
+            new AdminCreateLawyer().ShowDialog();
         }
 
         private void BtnCreateForm_Click(object? sender, EventArgs e)

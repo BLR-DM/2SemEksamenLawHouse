@@ -18,8 +18,8 @@ namespace UI.Forms.EmployeePage
     {
         LawyerBL lawyerBL;
         LawyerUI lawyerUI;
-        CaseServiceBL caseServiceBL;
-        List<CaseServiceUI> caseServices;
+        CaseServiceBL caseServiceBL; // ?
+        List<CaseServiceUI> caseServices; // ?
         int id;
         public MyPageLawyerView(int id)
         {
@@ -39,6 +39,16 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Click += BtnEditDetails_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
+        }
+
+        private async void MyPageLawyerView_Load(object? sender, EventArgs e)
+        {
+            lawyerUI = await GetLawyerAsync();
+            if (lawyerUI != null)
+            {
+                DisplayLawyer(lawyerUI);
+                SetDgvData(chboxShowAll.Checked);
+            }
         }
 
         private void PnlEdit_VisibleChanged(object? sender, EventArgs e)
@@ -77,23 +87,13 @@ namespace UI.Forms.EmployeePage
         //    caseServices = await caseServiceBL.GetCaseServicesForLawyerAsync(id);
         //}
 
-        private async void MyPageLawyerView_Load(object? sender, EventArgs e)
-        {
-            lawyerUI = await GetLawyer();
-            if (lawyerUI != null)
-            {
-                DisplayLawyer(lawyerUI);
-                SetDgvData(chboxShowAll.Checked);
-            }
-        }
-
         private void DisplayLawyer(LawyerUI lawyer)
         {
             pnlLawyerDetails.Controls.Clear();
             pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(lawyerUI));
         }
 
-        private async Task<LawyerUI> GetLawyer()
+        private async Task<LawyerUI> GetLawyerAsync()
         {
             return await lawyerBL.GetLawyerWithCollectionsAsync(id);
         }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI.Forms.AdminPage
 {
-    public partial class AdminCUDLawyer : Form
+    public partial class AdminCreateLawyer : Form
     {
         Color validFormat;
         Color invalidFormat;
@@ -28,7 +28,7 @@ namespace UI.Forms.AdminPage
         List<LawyerSpecialityUI> lawyerSpecialityUIs;
         string emailDomain;
 
-        public AdminCUDLawyer()
+        public AdminCreateLawyer()
         {
             lawyerBL = new LawyerBL();
             lawyerTitleBL = new LawyerTitleBL();

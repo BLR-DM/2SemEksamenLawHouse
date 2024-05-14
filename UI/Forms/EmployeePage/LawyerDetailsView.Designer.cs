@@ -41,7 +41,7 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(26, 51);
+            dgvCases.Location = new Point(303, 40);
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
             dgvCases.Size = new Size(752, 266);
@@ -54,7 +54,7 @@
             dgvServices.AllowUserToResizeColumns = false;
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(26, 357);
+            dgvServices.Location = new Point(303, 346);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
             dgvServices.Size = new Size(752, 266);
@@ -65,7 +65,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 666);
+            ClientSize = new Size(1067, 666);
             Controls.Add(dgvServices);
             Controls.Add(dgvCases);
             Name = "LawyerDetailsView";

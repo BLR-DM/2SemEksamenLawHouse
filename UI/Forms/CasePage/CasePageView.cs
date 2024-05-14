@@ -50,11 +50,13 @@ namespace UI.Forms.CasePage
 
         private void CboCaseType_SelectionChangeCommitted(object? sender, EventArgs e)
         {
+            lblNumberOfCases.Focus();
             SortDgv();
         }
 
         private void CboLawyers_SelectionChangeCommitted(object? sender, EventArgs e)
         {
+            lblNumberOfCases.Focus();
             SortDgv();
         }
 

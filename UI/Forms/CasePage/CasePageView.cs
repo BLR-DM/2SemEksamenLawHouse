@@ -52,12 +52,14 @@ namespace UI.Forms.CasePage
         {
             lblNumberOfCases.Focus();
             SortDgv();
+            dgvCaseList.CurrentCell = null;
         }
 
         private void CboLawyers_SelectionChangeCommitted(object? sender, EventArgs e)
         {
             lblNumberOfCases.Focus();
             SortDgv();
+            dgvCaseList.CurrentCell = null;
         }
 
         private void CkboxActive_CheckedChanged(object? sender, EventArgs e)

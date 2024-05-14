@@ -48,6 +48,7 @@ namespace UI.Forms.CasePage
             txtServiceDescription.TextChanged += TxtServiceDescription_TextChanged;
             txtUnits.TextChanged += TxtUnits_TextChanged1;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
+            txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -65,6 +66,12 @@ namespace UI.Forms.CasePage
             txtPrice.Visible = false;
             lblTotalPrice.Visible = false;
             txtTotalPrice.Visible = false;
+        }
+
+        private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
+        {
+            txtTotalPrice.ForeColor = cValidator.ValidUnits(txtTotalPrice.Text) ? validFormat : invalidFormat;
+            btnCreateEnabled();
         }
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
@@ -163,8 +170,8 @@ namespace UI.Forms.CasePage
                 MessageBox.Show("Du dum");
             }
 
-            caseDetailsView.SetDgv();
-            caseDetailsView.SetCaseData();
+            caseDetailsView.SetDgvAsync();
+            caseDetailsView.SetCaseDataAsync();
             this.Close();
 
         }

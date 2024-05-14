@@ -175,8 +175,9 @@
             lblDetailsTitleValue.ForeColor = SystemColors.ControlText;
             lblDetailsTitleValue.Location = new Point(47, 255);
             lblDetailsTitleValue.Name = "lblDetailsTitleValue";
-            lblDetailsTitleValue.Size = new Size(0, 17);
+            lblDetailsTitleValue.Size = new Size(66, 17);
             lblDetailsTitleValue.TabIndex = 4;
+            lblDetailsTitleValue.Text = "Some title";
             // 
             // lblDetailsCityValue
             // 
@@ -187,8 +188,9 @@
             lblDetailsCityValue.ForeColor = SystemColors.ControlText;
             lblDetailsCityValue.Location = new Point(44, 283);
             lblDetailsCityValue.Name = "lblDetailsCityValue";
-            lblDetailsCityValue.Size = new Size(0, 17);
+            lblDetailsCityValue.Size = new Size(64, 17);
             lblDetailsCityValue.TabIndex = 4;
+            lblDetailsCityValue.Text = "Some city";
             // 
             // lblDetailsPhoneValue
             // 
@@ -199,8 +201,9 @@
             lblDetailsPhoneValue.ForeColor = SystemColors.ControlText;
             lblDetailsPhoneValue.Location = new Point(60, 313);
             lblDetailsPhoneValue.Name = "lblDetailsPhoneValue";
-            lblDetailsPhoneValue.Size = new Size(0, 17);
+            lblDetailsPhoneValue.Size = new Size(82, 17);
             lblDetailsPhoneValue.TabIndex = 4;
+            lblDetailsPhoneValue.Text = "Some phone";
             // 
             // lblDetailsEmailValue
             // 
@@ -211,8 +214,9 @@
             lblDetailsEmailValue.ForeColor = SystemColors.ControlText;
             lblDetailsEmailValue.Location = new Point(54, 343);
             lblDetailsEmailValue.Name = "lblDetailsEmailValue";
-            lblDetailsEmailValue.Size = new Size(0, 17);
+            lblDetailsEmailValue.Size = new Size(76, 17);
             lblDetailsEmailValue.TabIndex = 4;
+            lblDetailsEmailValue.Text = "Some email";
             // 
             // LawyerCardDetails
             // 

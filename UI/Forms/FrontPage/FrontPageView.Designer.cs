@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlLeft = new Panel();
+            btnEmployees = new FontAwesome.Sharp.IconButton();
             btnAdminPage = new FontAwesome.Sharp.IconButton();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
             btnCalculations = new FontAwesome.Sharp.IconButton();
@@ -43,7 +44,7 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
-            btnEmployees = new FontAwesome.Sharp.IconButton();
+            lblCurrentPage = new Label();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -66,6 +67,28 @@
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
+            // 
+            // btnEmployees
+            // 
+            btnEmployees.BackColor = Color.Transparent;
+            btnEmployees.Dock = DockStyle.Top;
+            btnEmployees.FlatAppearance.BorderSize = 0;
+            btnEmployees.FlatStyle = FlatStyle.Flat;
+            btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmployees.ForeColor = Color.Black;
+            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnEmployees.IconColor = Color.Black;
+            btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEmployees.IconSize = 40;
+            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmployees.Location = new Point(0, 375);
+            btnEmployees.Name = "btnEmployees";
+            btnEmployees.Padding = new Padding(25, 0, 20, 0);
+            btnEmployees.Size = new Size(200, 75);
+            btnEmployees.TabIndex = 3;
+            btnEmployees.Text = "Employees";
+            btnEmployees.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEmployees.UseVisualStyleBackColor = false;
             // 
             // btnAdminPage
             // 
@@ -250,6 +273,7 @@
             gradiantPanel1.Angle = 80F;
             gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
             gradiantPanel1.BottomColor = Color.Empty;
+            gradiantPanel1.Controls.Add(lblCurrentPage);
             gradiantPanel1.Controls.Add(lblCurrentUserName);
             gradiantPanel1.Controls.Add(lblCurrentUser);
             gradiantPanel1.Controls.Add(btnClose);
@@ -267,7 +291,7 @@
             lblCurrentUserName.BackColor = Color.Transparent;
             lblCurrentUserName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCurrentUserName.ForeColor = Color.White;
-            lblCurrentUserName.Location = new Point(1092, 19);
+            lblCurrentUserName.Location = new Point(312, 19);
             lblCurrentUserName.Name = "lblCurrentUserName";
             lblCurrentUserName.Size = new Size(81, 21);
             lblCurrentUserName.TabIndex = 1;
@@ -322,27 +346,17 @@
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
-            // btnEmployees
+            // lblCurrentPage
             // 
-            btnEmployees.BackColor = Color.Transparent;
-            btnEmployees.Dock = DockStyle.Top;
-            btnEmployees.FlatAppearance.BorderSize = 0;
-            btnEmployees.FlatStyle = FlatStyle.Flat;
-            btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEmployees.ForeColor = Color.Black;
-            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnEmployees.IconColor = Color.Black;
-            btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEmployees.IconSize = 40;
-            btnEmployees.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployees.Location = new Point(0, 375);
-            btnEmployees.Name = "btnEmployees";
-            btnEmployees.Padding = new Padding(25, 0, 20, 0);
-            btnEmployees.Size = new Size(200, 75);
-            btnEmployees.TabIndex = 3;
-            btnEmployees.Text = "Employees";
-            btnEmployees.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEmployees.UseVisualStyleBackColor = false;
+            lblCurrentPage.BackColor = Color.Transparent;
+            lblCurrentPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCurrentPage.ForeColor = Color.White;
+            lblCurrentPage.Location = new Point(624, 19);
+            lblCurrentPage.Name = "lblCurrentPage";
+            lblCurrentPage.Size = new Size(150, 21);
+            lblCurrentPage.TabIndex = 1;
+            lblCurrentPage.Text = "CurrentPage";
+            lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrontPageView
             // 
@@ -382,5 +396,6 @@
         private Label lblCurrentUserName;
         private FontAwesome.Sharp.IconButton btnAdminPage;
         private FontAwesome.Sharp.IconButton btnEmployees;
+        private Label lblCurrentPage;
     }
 }

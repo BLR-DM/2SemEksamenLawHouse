@@ -51,8 +51,6 @@ namespace UI.Toolbox
             lboxSpecialities.SelectedIndexChanged += LboxSpecialities_SelectedIndexChanged;
             btnAddSpeciality.Click += BtnAddSpeciality_Click;
             btnRemoveSpeciality.Click += BtnRemoveSpeciality_Click;
-
-
         }
 
         private void BtnAddSpeciality_Click(object? sender, EventArgs e)
@@ -68,6 +66,7 @@ namespace UI.Toolbox
                 else btnAddSpeciality.Enabled = false;
             }
             btnUpdateEnabled();
+            UpdateLabelCount();
         }
 
         private void BtnRemoveSpeciality_Click(object? sender, EventArgs e)
@@ -83,6 +82,7 @@ namespace UI.Toolbox
                 else btnRemoveSpeciality.Enabled = false;
             }
             btnUpdateEnabled();
+            UpdateLabelCount();
         }
 
         private void BtnUpdate_Click(object? sender, EventArgs e)
@@ -102,11 +102,17 @@ namespace UI.Toolbox
                 txtAddress.Text = lawyerUI.AddressLine;
                 txtPostal.Text = lawyerUI.PostalCode.ToString();
                 txtCity.Text = lawyerUI.City;
+
                 FillSpecialityListBox();
                 FillTitleComboBox();
                 FillSpecialityComboBox();
-                
+                UpdateLabelCount();
             }            
+        }
+
+        private void UpdateLabelCount()
+        {
+            lblCount.Text = $"Count: {lboxSpecialities.Items.Count}";
         }
 
         private void FillSpecialityListBox()

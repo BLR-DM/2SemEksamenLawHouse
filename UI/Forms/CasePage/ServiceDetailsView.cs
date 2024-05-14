@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using UI.Toolbox;
 
 namespace UI.Forms.CasePage
 {
@@ -17,10 +18,11 @@ namespace UI.Forms.CasePage
         CaseServiceUI selectedCaseService;
         ServiceUI selectedService;
 
-        LawyerUI selectedLawyer;
+        List<ServiceEntryUI> serviceEntryUIs;
 
         LawyerBL lawyerBL;
         ServiceBL serviceBL;
+        ServiceEntryBL serviceEntryBL;
         public ServiceDetailsView(CaseServiceUI selectedCaseService)
         {
             InitializeComponent();
@@ -29,19 +31,35 @@ namespace UI.Forms.CasePage
 
             lawyerBL = new LawyerBL();
             serviceBL = new ServiceBL();
+            serviceEntryBL = new ServiceEntryBL();
 
-            SetLawyerInformation();
+            btnSubmit.Click += BtnSubmit_Click;
+
+            SetDgv();
             SetCaseInformation();
-
+            SetLawyerInformation();
         }
 
-        public async Task SetLawyerInformation()
+        private async void BtnSubmit_Click(object? sender, EventArgs e)
         {
-            selectedLawyer = await lawyerBL.GetLawyerAsync(selectedCaseService.LawyerID);
+            ServiceEntryUI serviceEntryUI = new ServiceEntryUI()
+            {
+                HoursWorked = float.Parse(txtHoursWorked.Text),
+                Date = DateTime.Now,
+                CaseServiceID = selectedCaseService.CaseServiceID,
+            };
 
-            txtLawyerFirstName.Text = selectedLawyer.Firstname;
-            txtLawyerLastName.Text = selectedLawyer.Lastname;
-            txtLawyerPhone.Text = selectedLawyer.PhoneNumber.ToString();
+            bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
+            SetDgv();
+            SetCaseInformation();
+            if(succes)
+            {
+                MessageBox.Show("Doner");
+            }
+            else
+            {
+                MessageBox.Show("Fejl");
+            }
         }
 
         public async Task SetCaseInformation()
@@ -50,12 +68,33 @@ namespace UI.Forms.CasePage
 
             txtServiceName.Text = selectedService.Name;
             txtPrice.Text = selectedService.Price.ToString();
-            txtHoursWorked.Text = selectedService.PriceType;
+            txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
 
             txtServiceDescription.Text = selectedCaseService.Description;
             txtUnits.Text = selectedCaseService.Units.ToString();
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
-            txtDate.Text = selectedCaseService.EndDate.ToString();
+
+        }
+
+        public async Task SetDgv()
+        {
+            serviceEntryUIs = await serviceEntryBL.GetServiceEntryUIAsync(selectedCaseService.CaseServiceID);
+
+            dgvServiceEntry.DataSource = serviceEntryUIs;
+            dgvServiceEntry.Columns["ServiceEntryID"].Visible = false;
+            dgvServiceEntry.Columns["CaseServiceID"].Visible = false;
+            dgvServiceEntry.Columns["CaseService"].Visible = false;
+
+            dgvServiceEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvServiceEntry.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+        }
+
+        public async Task SetLawyerInformation()
+        {
+            LawyerUI assignedLawyer = await lawyerBL.GetLawyerAsync(selectedCaseService.LawyerID);
+
+            pnlLawyerInformation.Controls.Add(new LawyerInformation(assignedLawyer));
         }
     }
 }

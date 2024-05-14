@@ -51,13 +51,13 @@
             // 
             // txtFirstname
             // 
-            txtFirstname.BackColor = SystemColors.GradientActiveCaption;
+            txtFirstname.BackColor = Color.White;
             txtFirstname.BorderStyle = BorderStyle.None;
-            txtFirstname.Enabled = false;
             txtFirstname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFirstname.Location = new Point(10, 65);
             txtFirstname.MaxLength = 50;
             txtFirstname.Name = "txtFirstname";
+            txtFirstname.ReadOnly = true;
             txtFirstname.Size = new Size(120, 20);
             txtFirstname.TabIndex = 58;
             // 
@@ -75,13 +75,13 @@
             // 
             // txtLastname
             // 
-            txtLastname.BackColor = SystemColors.GradientActiveCaption;
+            txtLastname.BackColor = Color.White;
             txtLastname.BorderStyle = BorderStyle.None;
-            txtLastname.Enabled = false;
             txtLastname.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLastname.Location = new Point(147, 65);
             txtLastname.MaxLength = 50;
             txtLastname.Name = "txtLastname";
+            txtLastname.ReadOnly = true;
             txtLastname.Size = new Size(120, 20);
             txtLastname.TabIndex = 58;
             // 
@@ -111,13 +111,13 @@
             // 
             // txtPhone
             // 
-            txtPhone.BackColor = SystemColors.GradientActiveCaption;
+            txtPhone.BackColor = Color.White;
             txtPhone.BorderStyle = BorderStyle.None;
-            txtPhone.Enabled = false;
             txtPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPhone.Location = new Point(10, 124);
             txtPhone.MaxLength = 50;
             txtPhone.Name = "txtPhone";
+            txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(120, 20);
             txtPhone.TabIndex = 58;
             // 

@@ -32,25 +32,44 @@ namespace UI.Forms.EmployeePage
             InitializeComponent();
 
             pnlEdit.Visible = false;
-            
+            btnCancel.Visible = false;
+
             Load += MyPageLawyerView_Load;
             chboxShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
             btnEditDetails.Click += BtnEditDetails_Click;
+            pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
+            btnCancel.Click += BtnCancel_Click;
+        }
+
+        private void PnlEdit_VisibleChanged(object? sender, EventArgs e)
+        {
+            if (!pnlEdit.Visible)
+            {
+                btnCancel.Visible = false;
+                btnEditDetails.Enabled = true;
+            }
+            else
+                btnCancel.Visible = true;
+        }
+
+        private void BtnCancel_Click(object? sender, EventArgs e)
+        {
+            pnlEdit.Visible = false;
         }
 
         private void BtnEditDetails_Click(object? sender, EventArgs e)
         {
+            btnEditDetails.Enabled = false;
+
             pnlEdit.Controls.Clear();
             pnlEdit.Controls.Add(new LawyerCardEdit(lawyerUI));
-            pnlEdit.Visible = true;
-            btnEditDetails.Enabled = false;
+            pnlEdit.Visible = true;            
         }
 
         private void ChboxClosed_CheckedChanged(object? sender, EventArgs e)
         {
             SetDgvData(chboxShowAll.Checked);
         }
-
 
 
         //private async Task GetCaseServices()

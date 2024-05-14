@@ -35,6 +35,7 @@
             btnEditDetails = new FontAwesome.Sharp.IconButton();
             pnlLawyerDetails = new Panel();
             pnlEdit = new Panel();
+            btnCancel = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -110,12 +111,31 @@
             pnlEdit.Size = new Size(323, 523);
             pnlEdit.TabIndex = 5;
             // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Transparent;
+            btnCancel.BackgroundImageLayout = ImageLayout.None;
+            btnCancel.Cursor = Cursors.Hand;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.ForeColor = Color.FromArgb(45, 93, 134);
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconColor = Color.Black;
+            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancel.Location = new Point(56, 563);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(58, 23);
+            btnCancel.TabIndex = 14;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            // 
             // MyPageLawyerView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnCancel);
             Controls.Add(pnlEdit);
             Controls.Add(pnlLawyerDetails);
             Controls.Add(btnEditDetails);
@@ -141,5 +161,6 @@
         private FontAwesome.Sharp.IconButton btnEditDetails;
         private Panel pnlLawyerDetails;
         private Panel pnlEdit;
+        private FontAwesome.Sharp.IconButton btnCancel;
     }
 }

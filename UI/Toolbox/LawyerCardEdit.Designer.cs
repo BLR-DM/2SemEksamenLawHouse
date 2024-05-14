@@ -50,6 +50,9 @@
             btnAddSpeciality = new Button();
             btnRemoveSpeciality = new Button();
             btnUpdate = new FontAwesome.Sharp.IconButton();
+            pboxDetails = new FontAwesome.Sharp.IconPictureBox();
+            lblCount = new Label();
+            ((System.ComponentModel.ISupportInitialize)pboxDetails).BeginInit();
             SuspendLayout();
             // 
             // lblSpecialities
@@ -285,10 +288,38 @@
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
+            // pboxDetails
+            // 
+            pboxDetails.BackColor = Color.Transparent;
+            pboxDetails.BackgroundImageLayout = ImageLayout.Center;
+            pboxDetails.ForeColor = SystemColors.ActiveCaptionText;
+            pboxDetails.IconChar = FontAwesome.Sharp.IconChar.BlackTie;
+            pboxDetails.IconColor = SystemColors.ActiveCaptionText;
+            pboxDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            pboxDetails.IconSize = 136;
+            pboxDetails.Location = new Point(92, 3);
+            pboxDetails.Name = "pboxDetails";
+            pboxDetails.Size = new Size(139, 136);
+            pboxDetails.SizeMode = PictureBoxSizeMode.CenterImage;
+            pboxDetails.TabIndex = 12;
+            pboxDetails.TabStop = false;
+            // 
+            // lblCount
+            // 
+            lblCount.ForeColor = Color.FromArgb(45, 93, 134);
+            lblCount.Location = new Point(234, 435);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(74, 23);
+            lblCount.TabIndex = 13;
+            lblCount.Text = "Count: 10";
+            lblCount.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // LawyerCardEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblCount);
+            Controls.Add(pboxDetails);
             Controls.Add(lboxSpecialities);
             Controls.Add(txtAddress);
             Controls.Add(cboxSpecialities);
@@ -313,6 +344,7 @@
             Controls.Add(lblDetailsEmail);
             Name = "LawyerCardEdit";
             Size = new Size(323, 523);
+            ((System.ComponentModel.ISupportInitialize)pboxDetails).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -341,5 +373,7 @@
         private Button btnAddSpeciality;
         private Button btnRemoveSpeciality;
         private FontAwesome.Sharp.IconButton btnUpdate;
+        private FontAwesome.Sharp.IconPictureBox pboxDetails;
+        private Label lblCount;
     }
 }

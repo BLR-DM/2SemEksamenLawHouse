@@ -22,106 +22,105 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-
-
-            //hej
-            //LawyerBL bl = new LawyerBL();
-
-            //Lawyer lawyer1 = new Lawyer()
-            //{
-            //    Firstname = "Ramus",
-            //    Lastname = "Skov",
-            //    Email = "rasmus@skov.dk",
-            //    AddressLine = "Lumbyesvej 16",
-            //    PostalCode = 7000,
-            //    City = "Fredericia",
-            //    PhoneNumber = 22840883,
-            //    HireDate = DateTime.Now,
-            //    LawyerTitleID = 1,
-
-            //    LoginDetails = new LoginDetails()
-            //    {
-            //        Username = "rasmus@skov.dk",
-            //        Password = "skovesen",
-            //        CreationDate = DateTime.Now,
-
-            //    }
-
-            //};
-            //bool success = bl.CreateLawyerAsync(lawyer1);
-
-
-            //ClientBL clientBL = new ClientBL();
-
-            //ClientUI clientUI = new ClientUI()
-            //{
-            //    Firstname = "Lucas",
-            //    Lastname = "MacQuarrie",
-            //    Email = "Maclucas07@hotmail.com",
-            //    AddressLine = "Korskaervej 16",
-            //    PostalCode = 7000,
-            //    City = "Fredericia",
-            //    ClientSub = 0,
-            //};
-            //LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
-            //{
-            //    Username = clientUI.Email,
-            //    Password = "kode123",
-            //    CreationDate = DateTime.Now,
-            //};
-
-            //clientBL.Create(clientUI, loginDetailsUI);
-
-
-            //LawyerBL bl = new LawyerBL();
-
-            //Lawyer lawyerUI = new Lawyer()
-            //{
-            //    Firstname = "Bilal",
-            //    Lastname = "Kinali",
-            //    Email = "bilalkinali2@gmail.com",
-            //    AddressLine = "Lumbyesvej 16",
-            //    PostalCode = 7000,
-            //    City = "Fredericia",
-            //    PhoneNumber = 88888888,
-            //    HireDate = DateTime.Now,
-            //    LawyerTitleID = 1,
-
-            //    LoginDetails = new LoginDetails()
-            //    {
-            //        Username = "bilalkinali2@gmail.com",
-            //        Password = "kode123",
-            //        CreationDate = DateTime.Now,
-
-            //    }
-
-            //};
-            //bool success2 = bl.CreateLawyerAsync(lawyerUI);
-
-            //Lawyer lawyer2 = new Lawyer()
-            //{
-            //    Firstname = "Lawyer",
-            //    Lastname = "lawyersen",
-            //    Email = "lawyerUI@gmail.com",
-            //    AddressLine = "lawyervej 16",
-            //    PostalCode = 7000,
-            //    City = "Fredericia",
-            //    PhoneNumber = 87654321,
-            //    HireDate = DateTime.Now,
-            //    LawyerTitleID = 1,
-
-            //    LoginDetails = new LoginDetails()
-            //    {
-            //        Username = "lawyerUI@gmail.com",
-            //        Password = "lawyerUI",
-            //        CreationDate = DateTime.Now,
-
-            //    }
-
-            //};
-            //bool success3 = bl.CreateLawyerAsync(lawyer2);
-
             Application.Run(new FrontPageView(6));
         }
     }
 }
+
+//hej
+//LawyerBL bl = new LawyerBL();
+
+//Lawyer lawyer1 = new Lawyer()
+//{
+//    Firstname = "Ramus",
+//    Lastname = "Skov",
+//    Email = "rasmus@skov.dk",
+//    AddressLine = "Lumbyesvej 16",
+//    PostalCode = 7000,
+//    City = "Fredericia",
+//    PhoneNumber = 22840883,
+//    HireDate = DateTime.Now,
+//    LawyerTitleID = 1,
+
+//    LoginDetails = new LoginDetails()
+//    {
+//        Username = "rasmus@skov.dk",
+//        Password = "skovesen",
+//        CreationDate = DateTime.Now,
+
+//    }
+
+//};
+//bool success = bl.CreateLawyerAsync(lawyer1);
+
+
+//ClientBL clientBL = new ClientBL();
+
+//ClientUI clientUI = new ClientUI()
+//{
+//    Firstname = "Lucas",
+//    Lastname = "MacQuarrie",
+//    Email = "Maclucas07@hotmail.com",
+//    AddressLine = "Korskaervej 16",
+//    PostalCode = 7000,
+//    City = "Fredericia",
+//    ClientSub = 0,
+//};
+//LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+//{
+//    Username = clientUI.Email,
+//    Password = "kode123",
+//    CreationDate = DateTime.Now,
+//};
+
+//clientBL.Create(clientUI, loginDetailsUI);
+
+
+//LawyerBL bl = new LawyerBL();
+
+//Lawyer lawyerUI = new Lawyer()
+//{
+//    Firstname = "Bilal",
+//    Lastname = "Kinali",
+//    Email = "bilalkinali2@gmail.com",
+//    AddressLine = "Lumbyesvej 16",
+//    PostalCode = 7000,
+//    City = "Fredericia",
+//    PhoneNumber = 88888888,
+//    HireDate = DateTime.Now,
+//    LawyerTitleID = 1,
+
+//    LoginDetails = new LoginDetails()
+//    {
+//        Username = "bilalkinali2@gmail.com",
+//        Password = "kode123",
+//        CreationDate = DateTime.Now,
+
+//    }
+
+//};
+//bool success2 = bl.CreateLawyerAsync(lawyerUI);
+
+//Lawyer lawyer2 = new Lawyer()
+//{
+//    Firstname = "Lawyer",
+//    Lastname = "lawyersen",
+//    Email = "lawyerUI@gmail.com",
+//    AddressLine = "lawyervej 16",
+//    PostalCode = 7000,
+//    City = "Fredericia",
+//    PhoneNumber = 87654321,
+//    HireDate = DateTime.Now,
+//    LawyerTitleID = 1,
+
+//    LoginDetails = new LoginDetails()
+//    {
+//        Username = "lawyerUI@gmail.com",
+//        Password = "lawyerUI",
+//        CreationDate = DateTime.Now,
+
+//    }
+
+//};
+//bool success3 = bl.CreateLawyerAsync(lawyer2);
+

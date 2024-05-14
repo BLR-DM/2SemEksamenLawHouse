@@ -78,9 +78,9 @@ namespace UI.Forms.EmployeePage
             {
                 if (row.Cells["Status"].Value != null)
                 {
-                    bool status = (bool)row.Cells["Status"].Value;
+                    string status = row.Cells["Status"].Value.ToString();
                     dgvServices.CurrentCell = null;
-                    row.Visible = check || status;
+                    row.Visible = check || status == "Active";
                 }
             }
         }

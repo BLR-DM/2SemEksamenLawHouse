@@ -29,18 +29,15 @@ namespace UI.Toolbox
                 pboxDetails.IconColor = Color.Black;
                 pboxDetails.IconChar = lawyerUI.PersonID == 5 ? FontAwesome.Sharp.IconChar.PiedPiperAlt : FontAwesome.Sharp.IconChar.PersonMilitaryPointing;
 
-                // Fulde navn
-                lblFullname.Text = string.Join(" ", lawyerUI.Firstname, lawyerUI.Lastname);
-                
                 // Attributter
+                lblFullname.Text = string.Join(" ", lawyerUI.Firstname, lawyerUI.Lastname);
                 lblDetailsTitleValue.Text = lawyerUI.LawyerTitle;
                 lblDetailsCityValue.Text = lawyerUI.City;
                 lblDetailsPhoneValue.Text = "+45" + lawyerUI.PhoneNumber.ToString();
                 lblDetailsEmailValue.Text = lawyerUI.Email;
 
                 // Specialer i listbox
-                List<LawyerSpecialityUI> test;
-                lboxSpecialties.DataSource = lawyerUI.LawyerSpecialities;
+                lboxSpecialties.DataSource = lawyerUI.LawyerSpecialities.Select(ls => ls.SpecialityName).ToList();
             }
         }
     }

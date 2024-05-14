@@ -30,6 +30,19 @@ namespace DataAccess
             
         }
 
+        public async Task<List<ClientSubscription>> GetClientSubscriptionsAsync(int clientID)
+        {
+            try
+            {
+                return await db.ClientSubscriptions.Where(cs => cs.ClientID == clientID).ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                return new List<ClientSubscription>();
+            }
+        } 
+
         public async Task<bool> CreateSubscriptionAsync(ClientSubscription subscription)
         {
             try

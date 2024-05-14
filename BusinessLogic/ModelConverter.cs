@@ -175,6 +175,7 @@ namespace BusinessLogic
                 ClientSubscriptionID = clientSubscriptionE.ClientSubscriptionID,
                 StartDate = clientSubscriptionE.StartDate,
                 EndDate = clientSubscriptionE.EndDate,
+                PaidPrice = clientSubscriptionE.PaidPrice,
 
                 //foreign keys
                 ClientID = clientSubscriptionE.ClientID,

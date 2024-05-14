@@ -111,9 +111,8 @@
             lblSuccess.ForeColor = Color.FromArgb(45, 93, 134);
             lblSuccess.Location = new Point(327, 539);
             lblSuccess.Name = "lblSuccess";
-            lblSuccess.Size = new Size(44, 15);
+            lblSuccess.Size = new Size(0, 15);
             lblSuccess.TabIndex = 53;
-            lblSuccess.Text = "label12";
             // 
             // btnDeletePhone
             // 

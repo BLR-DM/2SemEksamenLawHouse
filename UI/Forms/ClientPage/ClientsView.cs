@@ -20,13 +20,14 @@ namespace UI.Forms.ClientPage
         PersonUI currentUser;
         ClientBL clientBL;
         FormDocumentBL formBL;
+        SubscriptionBL subscriptionBL;
 
         PersonValidator pValidator;
 
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
 
-        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, PersonValidator pValidator)
+        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator)
         {
             InitializeComponent();
             
@@ -35,6 +36,7 @@ namespace UI.Forms.ClientPage
             this.clientBL = clientBL;
             this.formBL = formBL;
             this.pValidator = pValidator;
+            this.subscriptionBL = subscriptionBL;
 
             //Events
             Load += ClientsView_Load;
@@ -62,7 +64,7 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, formBL, pValidator);
+                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, formBL, subscriptionBL, pValidator);
                 frontPageView.PnlContextChange(clientDetails);
             }
         }

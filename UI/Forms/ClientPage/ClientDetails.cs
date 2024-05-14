@@ -23,6 +23,7 @@ namespace UI.Forms.ClientPage
         ClientUI client;
         ClientBL clientBL;
         FormDocumentBL formBL;
+        SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
 
         Color validFormat;
@@ -31,8 +32,9 @@ namespace UI.Forms.ClientPage
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
         List<FormDocumentUI> boughtForms;
+        List<ClientSubscriptionUI> subscriptions;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, FormDocumentBL formBL, PersonValidator pValidator)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator)
         {
             InitializeComponent();
             this.frontPageView = fpv;
@@ -40,9 +42,11 @@ namespace UI.Forms.ClientPage
             this.client = client;
             this.clientBL = clientBL;
             this.formBL = formBL;
+            this.subscriptionBL = subscriptionBL;
             this.pValidator = pValidator;
 
             deletedNumbers = new List<PhoneUI>();
+            subscriptions = new List<ClientSubscriptionUI>();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -61,9 +65,30 @@ namespace UI.Forms.ClientPage
             txtPostal.TextChanged += TxtPostal_TextChanged;
             txtAddPhone.TextChanged += txtAddPhone_TextChanged;
 
-            SetDetails(client);
-            SetBoughtFormsDGVAsync();
+            Load += ClientDetails_Load;
 
+        }
+
+        private async void ClientDetails_Load(object? sender, EventArgs e)
+        {
+            SetDetails(client);
+            await GetClientSubscriptionsAsync();
+            await SetBoughtFormsDGVAsync();
+        }
+
+
+        private async Task GetClientSubscriptionsAsync()
+        {
+            subscriptions = await subscriptionBL.GetClientSubscriptionsAsync(client.PersonID);
+            ClientSubscriptionUI? activeSubscription = subscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
+
+            if(activeSubscription != null)
+            {
+                TimeSpan timeTillExpiration = activeSubscription.EndDate - DateTime.Now;
+                int daysUntilExpiration = (int)timeTillExpiration.TotalDays;
+                lblSubscribed.Text = lblSubscribed.Text + $" - Expires in: {daysUntilExpiration} Days";
+            }
+            
         }
 
         private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -76,7 +101,7 @@ namespace UI.Forms.ClientPage
             }
         }
 
-        private void BtnDeletePhone_Click(object? sender, EventArgs e)
+        private async void BtnDeletePhone_Click(object? sender, EventArgs e)
         {
             //sletter det valgte telefonummer og tilføjer til deletedphones
             if (dgvPhoneNumbers.SelectedRows.Count > 0)
@@ -87,11 +112,11 @@ namespace UI.Forms.ClientPage
                 phoneNumbers.Remove(selectedPhone);
                 deletedNumbers.Add(selectedPhone);
 
-                SetPhoneDetails();
+                await SetPhoneDetailsAsync();
             }
         }
 
-        private void BtnAddPhone_Click(object? sender, EventArgs e)
+        private async void BtnAddPhone_Click(object? sender, EventArgs e)
         {
             PhoneUI tempP = new PhoneUI()
             {
@@ -99,7 +124,7 @@ namespace UI.Forms.ClientPage
             };
             phoneNumbers.Add(tempP);
             txtAddPhone.Clear();
-            SetPhoneDetails();
+            await SetPhoneDetailsAsync();
         }
 
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
@@ -191,7 +216,7 @@ namespace UI.Forms.ClientPage
             else if (client.IsSubscribed == true) { lblSubscribed.Text = "Yes"; }
             else { lblSubscribed.Text = "Undefined"; }
 
-            await SetPhoneDetails();
+            await SetPhoneDetailsAsync();
         }
 
         public async Task SetBoughtFormsDGVAsync()
@@ -206,7 +231,7 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private async Task SetPhoneDetails()
+        private async Task SetPhoneDetailsAsync()
         {
             dgvPhoneNumbers.DataSource = null;
             if (phoneNumbers == null)

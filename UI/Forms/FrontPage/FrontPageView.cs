@@ -25,6 +25,7 @@ namespace UI.Forms.FrontPage
         ClientBL clientBL;
         LawyerBL lawyerBL;
         FormDocumentBL formBL;
+        SubscriptionBL subscriptionBL;
 
         PersonValidator pValidator;
         OverallValidator oaValidator;
@@ -35,6 +36,7 @@ namespace UI.Forms.FrontPage
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
             formBL = new FormDocumentBL();
+            subscriptionBL = new SubscriptionBL();
             pValidator = new PersonValidator();
             oaValidator = new OverallValidator();
 
@@ -98,8 +100,9 @@ namespace UI.Forms.FrontPage
             btnSubscribe.Visible = true;
 
             //set mypage
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, pValidator);
-            if (pnlContext.Controls[0] != cdMyPage)
+            ClientDetails cdMyPage;
+                cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, subscriptionBL, pValidator); 
+            if (pnlContext.Controls[0].GetType() != typeof(ClientDetails))
             {
                 PnlContextChange(cdMyPage);
             }
@@ -190,14 +193,14 @@ namespace UI.Forms.FrontPage
         private void BtnClients_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, pValidator);
+            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, subscriptionBL, pValidator);
             PnlContextChange(cv);
         }
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, pValidator);
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, subscriptionBL, pValidator);
             PnlContextChange(cdMyPage);
         }
 

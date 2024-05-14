@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace DataAccess
         public SubscriptionDbAccess()
         {
              db = new LawHouseDbContext();
+        }
+
+        public async Task<Subscription> GetSubscriptionAsync(int id)
+        {
+            try
+            {
+                return await db.Subscriptions.FirstOrDefaultAsync(s => s.SubscriptionID == id);
+            }
+            catch (Exception)
+            {
+
+                return new Subscription();
+            }
+            
         }
 
         public async Task<bool> CreateSubscriptionAsync(ClientSubscription subscription)

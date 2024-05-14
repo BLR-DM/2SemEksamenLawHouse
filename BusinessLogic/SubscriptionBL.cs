@@ -20,6 +20,14 @@ namespace BusinessLogic
             dbAccess = new SubscriptionDbAccess();
         }
 
+        public async Task<SubscriptionUI> GetSubscriptionAsync(int id)
+        {
+            Subscription subcription = await dbAccess.GetSubscriptionAsync(id);
+            SubscriptionUI subscriptionUI = modelConverter.ConvertFromSubscriptionEntity(subcription);
+            return subscriptionUI;
+            
+        }
+
         public async Task<bool> CreateSubscriptionAsync(ClientSubscriptionUI subscriptionUI)
         {
             ClientSubscription clientSubscription = modelConverter.ConvertFromClientSubscriptionUI(subscriptionUI);

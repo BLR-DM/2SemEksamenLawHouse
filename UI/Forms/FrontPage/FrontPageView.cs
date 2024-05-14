@@ -6,6 +6,7 @@ using UI.Forms.CasePage;
 using UI.Forms.AdminPage;
 using UI.Forms.EmployeePage;
 using EntityModels;
+using UI.Forms.SubscriptionPage;
 
 namespace UI.Forms.FrontPage
 {
@@ -35,7 +36,7 @@ namespace UI.Forms.FrontPage
 
             btnForms.Visible = btnEmployees.Visible = btnClients.Visible = btnAdminPage.Visible =
             btnAdminPage.Visible = btnCalculations.Visible = btnCase.Visible = btnLawyers.Visible =
-            btnMyPageClient.Visible = btnMyPageLawyer.Visible = false;
+            btnMyPageClient.Visible = btnMyPageLawyer.Visible = btnSubscribe.Visible = false;
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
@@ -46,11 +47,16 @@ namespace UI.Forms.FrontPage
             btnEmployees.Click += BtnEmployees_Click;
             btnMyPageLawyer.Click += BtnMyPageLawyer_Click;
             btnCalculations.Click += BtnCalculations_Click;
+            btnSubscribe.Click += BtnSubscribe_Click;
         }
 
         public async Task GetPersonAsync(int id)
         {
-            currentUser = await personBL.GetPersonAsync(id);
+
+            if (currentUser == null)
+            {
+                currentUser = await personBL.GetPersonAsync(id); 
+            }
 
             if (currentUser != null)
             {
@@ -76,8 +82,14 @@ namespace UI.Forms.FrontPage
             btnMyPageClient.Visible = true;
             btnLawyers.Visible = true;
             btnForms.Visible = true;
-            
-            if (clientUI.ClientSub == true)
+            btnSubscribe.Visible = true;
+
+            //set mypage
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
+            PnlContextChange(cdMyPage);
+
+
+            if (clientUI.IsSubscribed == true)
             {
                 btnCalculations.Visible = true; // Vis med restrictions
             }
@@ -171,6 +183,13 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
             PnlContextChange(cdMyPage);
+        }
+
+        private void BtnSubscribe_Click(object? sender, EventArgs e)
+        {
+            lblCurrentPage.Text = (sender as Button).Text;
+            SubscriptionView subscriptionView = new SubscriptionView(this, clientUI);
+            PnlContextChange(subscriptionView);
         }
 
         private void BtnClose_Click(object? sender, EventArgs e)

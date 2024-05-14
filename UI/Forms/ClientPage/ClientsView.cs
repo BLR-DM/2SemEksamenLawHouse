@@ -111,7 +111,7 @@ namespace UI.Forms.ClientPage
             dgvClients.Columns["AddressLine"].DisplayIndex = 5;
             dgvClients.Columns["PostalCode"].DisplayIndex = 6;
             dgvClients.Columns["City"].DisplayIndex = 7;
-            dgvClients.Columns["ClientSub"].DisplayIndex = 8;
+            dgvClients.Columns["IsSubscribed"].DisplayIndex = 8;
             dgvClients.Columns["LoginDetailsID"].DisplayIndex = 9;
 
             //dgvClients.Columns["LoginDetailsID"].Visible = false;

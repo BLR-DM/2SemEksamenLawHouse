@@ -39,12 +39,13 @@
             btnLawyers = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
+            lblCurrentPage = new Label();
             lblCurrentUserName = new Label();
             lblCurrentUser = new Label();
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
-            lblCurrentPage = new Label();
+            btnSubscribe = new FontAwesome.Sharp.IconButton();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -53,6 +54,7 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(194, 205, 240);
+            pnlLeft.Controls.Add(btnSubscribe);
             pnlLeft.Controls.Add(btnEmployees);
             pnlLeft.Controls.Add(btnAdminPage);
             pnlLeft.Controls.Add(btnMyPageLawyer);
@@ -285,6 +287,18 @@
             gradiantPanel1.TabIndex = 2;
             gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
             // 
+            // lblCurrentPage
+            // 
+            lblCurrentPage.BackColor = Color.Transparent;
+            lblCurrentPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCurrentPage.ForeColor = Color.White;
+            lblCurrentPage.Location = new Point(624, 19);
+            lblCurrentPage.Name = "lblCurrentPage";
+            lblCurrentPage.Size = new Size(150, 21);
+            lblCurrentPage.TabIndex = 1;
+            lblCurrentPage.Text = "CurrentPage";
+            lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // lblCurrentUserName
             // 
             lblCurrentUserName.AutoSize = true;
@@ -346,17 +360,27 @@
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
             // 
-            // lblCurrentPage
+            // btnSubscribe
             // 
-            lblCurrentPage.BackColor = Color.Transparent;
-            lblCurrentPage.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblCurrentPage.ForeColor = Color.White;
-            lblCurrentPage.Location = new Point(624, 19);
-            lblCurrentPage.Name = "lblCurrentPage";
-            lblCurrentPage.Size = new Size(150, 21);
-            lblCurrentPage.TabIndex = 1;
-            lblCurrentPage.Text = "CurrentPage";
-            lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
+            btnSubscribe.BackColor = Color.Transparent;
+            btnSubscribe.Dock = DockStyle.Top;
+            btnSubscribe.FlatAppearance.BorderSize = 0;
+            btnSubscribe.FlatStyle = FlatStyle.Flat;
+            btnSubscribe.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSubscribe.ForeColor = Color.Black;
+            btnSubscribe.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnSubscribe.IconColor = Color.Black;
+            btnSubscribe.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSubscribe.IconSize = 40;
+            btnSubscribe.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSubscribe.Location = new Point(0, 450);
+            btnSubscribe.Name = "btnSubscribe";
+            btnSubscribe.Padding = new Padding(25, 0, 20, 0);
+            btnSubscribe.Size = new Size(200, 75);
+            btnSubscribe.TabIndex = 4;
+            btnSubscribe.Text = "Subscribe";
+            btnSubscribe.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSubscribe.UseVisualStyleBackColor = false;
             // 
             // FrontPageView
             // 
@@ -397,5 +421,6 @@
         private FontAwesome.Sharp.IconButton btnAdminPage;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private Label lblCurrentPage;
+        private FontAwesome.Sharp.IconButton btnSubscribe;
     }
 }

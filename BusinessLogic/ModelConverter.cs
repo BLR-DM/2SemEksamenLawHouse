@@ -125,11 +125,11 @@ namespace BusinessLogic
 
             if(subscription != null)
             {
-                clientUI.ClientSub = true;
+                clientUI.IsSubscribed = true;
             }
             else
             {
-                clientUI.ClientSub = false;
+                clientUI.IsSubscribed = false;
             }
 
             return clientUI;
@@ -462,6 +462,7 @@ namespace BusinessLogic
                 ClientSubscriptionID = clientSubscriptionUI.ClientSubscriptionID,
                 StartDate = clientSubscriptionUI.StartDate,
                 EndDate = clientSubscriptionUI.EndDate,
+                PaidPrice = clientSubscriptionUI.PaidPrice,
 
                 //foriegn keys
                 ClientID = clientSubscriptionUI.ClientID,

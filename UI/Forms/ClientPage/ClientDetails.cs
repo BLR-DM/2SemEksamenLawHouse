@@ -30,7 +30,6 @@ namespace UI.Forms.ClientPage
         List<PhoneUI> deletedNumbers;
         List<FormDocumentUI> boughtForms;
 
-
         public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
         {
             InitializeComponent();
@@ -117,7 +116,7 @@ namespace UI.Forms.ClientPage
                 AddressLine = txtAddress.Text,
                 PostalCode = int.Parse(txtPostal.Text),
                 City = lblCity.Text,
-                ClientSub = client.ClientSub,
+                IsSubscribed = client.IsSubscribed,
                 LoginDetailsID = client.LoginDetailsID,
             };
 
@@ -166,34 +165,6 @@ namespace UI.Forms.ClientPage
                 ? true : false;
         }
 
-        private void TxtFirstname_TextChanged(object? sender, EventArgs e)
-        {
-            txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
-        private void TxtLastname_TextChanged(object? sender, EventArgs e)
-        {
-            txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
-
-        private void txtEmail_TextChanged(object? sender, EventArgs e)
-        {
-            txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
-
-        private void TxtAddress_TextChanged(object? sender, EventArgs e)
-        {
-            txtAddress.ForeColor = pValidator.ValidAddress(txtAddress.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
-
-        private void TxtPostal_TextChanged(object? sender, EventArgs e)
-        {
-            txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
 
         private void txtAddPhone_TextChanged(object? sender, EventArgs e)
         {
@@ -214,8 +185,8 @@ namespace UI.Forms.ClientPage
             txtAddress.Text = client.AddressLine;
             txtPostal.Text = client.PostalCode.ToString();
             lblCity.Text = client.City;
-            if (client.ClientSub == false) { lblSubscribed.Text = "No"; }
-            else if (client.ClientSub == true) { lblSubscribed.Text = "Yes"; }
+            if (client.IsSubscribed == false) { lblSubscribed.Text = "No"; }
+            else if (client.IsSubscribed == true) { lblSubscribed.Text = "Yes"; }
             else { lblSubscribed.Text = "Undefined"; }
 
             await SetPhoneDetails();
@@ -247,6 +218,35 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.ColumnHeadersVisible = false;
             dgvPhoneNumbers.RowHeadersVisible = false;
             dgvPhoneNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void TxtFirstname_TextChanged(object? sender, EventArgs e)
+        {
+            txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+        private void TxtLastname_TextChanged(object? sender, EventArgs e)
+        {
+            txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void txtEmail_TextChanged(object? sender, EventArgs e)
+        {
+            txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void TxtAddress_TextChanged(object? sender, EventArgs e)
+        {
+            txtAddress.ForeColor = pValidator.ValidAddress(txtAddress.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
+        }
+
+        private void TxtPostal_TextChanged(object? sender, EventArgs e)
+        {
+            txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            btnUpdateEnabled();
         }
 
     }

@@ -86,6 +86,7 @@ namespace BusinessLogic
                 CaseServiceID = caseServiceE.CaseServiceID,
                 Description= caseServiceE.Description,
                 Units = caseServiceE.Units,
+                HoursWorked = caseServiceE.HoursWorked,
                 TotalPrice = caseServiceE.TotalPrice,
                 Status = caseServiceE.Status,
                 StartDate = caseServiceE.StartDate,
@@ -381,12 +382,14 @@ namespace BusinessLogic
             CaseService caseServiceE = new CaseService
             {
                 CaseServiceID = CaseServiceUI.CaseServiceID,
+                Status = CaseServiceUI.Status,
                 Description = CaseServiceUI.Description,
+                HoursWorked = CaseServiceUI.HoursWorked,
                 Units = CaseServiceUI.Units,
                 TotalPrice = CaseServiceUI.TotalPrice,
-                Status = CaseServiceUI.Status, // test
                 StartDate = CaseServiceUI.StartDate, // test
                 EndDate = CaseServiceUI.EndDate,
+
                 
 
                 //foreign keys

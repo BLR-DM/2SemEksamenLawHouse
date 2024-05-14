@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
 using UI.Toolbox;
+using DataAccess.Migrations;
 
 namespace UI.Forms.CasePage
 {
@@ -46,6 +47,7 @@ namespace UI.Forms.CasePage
             btnAddService.Click += BtnAddService_Click;
             txtServiceDescription.TextChanged += TxtServiceDescription_TextChanged;
             txtUnits.TextChanged += TxtUnits_TextChanged1;
+            txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -65,6 +67,12 @@ namespace UI.Forms.CasePage
             txtTotalPrice.Visible = false;
         }
 
+        private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
+        {
+            txtHoursWorked.ForeColor = cValidator.ValidUnits(txtHoursWorked.Text) ? validFormat : invalidFormat;
+            btnCreateEnabled();
+        }
+
         private void TxtUnits_TextChanged1(object? sender, EventArgs e)
         {
             txtUnits.ForeColor = cValidator.ValidUnits(txtUnits.Text) ? validFormat : invalidFormat;
@@ -79,31 +87,71 @@ namespace UI.Forms.CasePage
 
         public void btnCreateEnabled()
         {
-            btnAddService.Enabled =
-                txtUnits.ForeColor == validFormat &&
-                txtServiceDescription.ForeColor == validFormat &&
-                cboServices.SelectedItem != null &&
-                selectedLawyer != null;
+            ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
+            if (selectedService.PriceType == "Kilometer")
+            {
+                btnAddService.Enabled =
+                                txtUnits.ForeColor == validFormat &&
+                                txtServiceDescription.ForeColor == validFormat &&
+                                cboServices.SelectedItem != null &&
+                                selectedLawyer != null &&
+                                txtHoursWorked.ForeColor == validFormat;
+            }
+            else if(selectedService.PriceType == "Fixed")
+            {
+                btnAddService.Enabled =
+                                txtTotalPrice.ForeColor == validFormat &&
+                                txtServiceDescription.ForeColor == validFormat &&
+                                cboServices.SelectedItem != null &&
+                                selectedLawyer != null;
+            }
+            else if (selectedService.PriceType == "Hourly")
+            {
+                btnAddService.Enabled = 
+                                txtServiceDescription.ForeColor == validFormat &&
+                                cboServices.SelectedItem != null &&
+                                selectedLawyer != null;
+            }
         }
-        
+
 
         private async void BtnAddService_Click(object? sender, EventArgs e)
         {
+            ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
             btnAddService.Enabled = false;
 
             CaseServiceUI caseServiceUI = new CaseServiceUI()
             {
                 Description = txtServiceDescription.Text,
-                Units = float.Parse(txtUnits.Text),
-                TotalPrice = float.Parse(txtTotalPrice.Text),
                 Status = "Active", // test
                 StartDate = DateTime.Now, // test
-                EndDate = null,
 
                 CaseID = selectedCase.CaseID,
                 ServiceID = selectedService.ServiceID,
                 LawyerID = selectedLawyer.PersonID,
             };
+
+            if(selectedService.PriceType == "Kilometer")
+            {
+                caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
+                caseServiceUI.HoursWorked = float.Parse(txtHoursWorked.Text);
+                caseServiceUI.EndDate = DateTime.Now;
+                caseServiceUI.Units = float.Parse(txtUnits.Text);
+            }
+            else if(selectedService.PriceType == "Fixed")
+            {
+                caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
+                caseServiceUI.HoursWorked = 0;
+                caseServiceUI.EndDate = null;
+                caseServiceUI.Units = 1;
+            }
+            else if(selectedService.PriceType == "Hourly")
+            {
+                caseServiceUI.TotalPrice = 0;
+                caseServiceUI.HoursWorked = 0;
+                caseServiceUI.EndDate = null;
+                caseServiceUI.Units = 0;
+            }
 
             bool succes = await caseServiceBL.CreateCaseServiceAsync(caseServiceUI);
             if (succes)
@@ -133,6 +181,7 @@ namespace UI.Forms.CasePage
         private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
         {
             pnlLawyerInformation.Controls.Clear();
+            pnlLawyerInformation.Controls.Add(btnAddLawyer);
             pnlLawyerInformation.Controls.Add(new LawyerInformation(e));
             selectedLawyer = e;
             btnCreateEnabled();
@@ -169,34 +218,7 @@ namespace UI.Forms.CasePage
                 txtTotalPrice.Text = totalPrice.ToString();
             }
 
-            if (selectedService.PriceType == "Fixed")
-            {
-                lblUnites.Visible = false;
-                txtUnits.Visible = false;
-                txtUnits.Text = "1";
-
-                lblHoursWorked.Visible = true;
-                txtHoursWorked.Visible = true;
-
-                txtHoursWorked.Enabled = true;
-                txtUnits.Enabled = true;
-                txtServiceDescription.Enabled = true;
-            }
-            else if(selectedService.PriceType == "Hourly")
-            {
-                lblHoursWorked.Visible = false;
-                txtHoursWorked.Visible = false;
-                txtHoursWorked.Text = txtUnits.Text;
-
-                lblUnites.Visible = true;
-                lblUnites.Text = "Hours";
-                txtUnits.Visible = true;
-
-
-                txtUnits.Enabled = true;
-                txtServiceDescription.Enabled = true;
-            }
-            else if(selectedService.PriceType == "Kilometer")
+            if (selectedService.PriceType == "Kilometer")
             {
                 lblUnites.Visible = true;
                 txtUnits.Visible = true;
@@ -212,10 +234,36 @@ namespace UI.Forms.CasePage
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
-            else
+            else if(selectedService.PriceType == "Fixed")
             {
-                txtUnits.Enabled = false;
-                txtServiceDescription.Enabled = false;
+                lblPrice.Text = "Listed price";
+                lblPrice.Visible = true;
+                txtPrice.Visible = true;
+
+                lblTotalPrice.Text = "Agreed price";
+                lblTotalPrice.Visible = true;
+                txtTotalPrice.Visible = true;
+                txtTotalPrice.Enabled = true;
+
+
+                txtServiceDescription.Size = new System.Drawing.Size(287, 169);
+            }
+            else if (selectedService.PriceType == "Hourly")
+            {
+                lblUnites.Visible = false;
+                txtUnits.Visible = false;
+
+                lblPrice.Visible = false;
+                txtPrice.Visible = false;
+
+                lblTotalPrice.Visible = false;
+                txtTotalPrice.Visible = false;
+
+                lblHoursWorked.Visible = false;
+                txtHoursWorked.Visible = false;
+
+                txtServiceDescription.Size = new System.Drawing.Size(429, 169);
+
             }
 
 

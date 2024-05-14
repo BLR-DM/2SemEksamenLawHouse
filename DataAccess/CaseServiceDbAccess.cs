@@ -67,6 +67,21 @@ namespace DataAccess
             }
         }
 
+        public async Task<bool> UpdateCaseServiceAsync(CaseService caseService)
+        {
+            try
+            {
+                db.CaseServices.Update(caseService);
+                bool succes = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return succes;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
 
     }

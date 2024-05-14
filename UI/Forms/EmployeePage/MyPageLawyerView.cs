@@ -47,10 +47,7 @@ namespace UI.Forms.EmployeePage
             SetDgvData(chboxShowAll.Checked);
         }
 
-        private async Task<LawyerUI> GetLawyer()
-        {
-            return await lawyerBL.GetLawyerWithCollectionsAsync(id);
-        }
+
 
         //private async Task GetCaseServices()
         //{
@@ -60,12 +57,22 @@ namespace UI.Forms.EmployeePage
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
         {
             lawyerUI = await GetLawyer();
-            //await GetCaseServices();
             if (lawyerUI != null)
             {
-                pnlLawyerDetails.Controls.Add(new LawyerCardDetails(lawyerUI));
+                DisplayLawyer(lawyerUI);
                 SetDgvData(chboxShowAll.Checked);
             }
+        }
+
+        private void DisplayLawyer(LawyerUI lawyer)
+        {
+            pnlLawyerDetails.Controls.Clear();
+            pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(lawyerUI));
+        }
+
+        private async Task<LawyerUI> GetLawyer()
+        {
+            return await lawyerBL.GetLawyerWithCollectionsAsync(id);
         }
 
         private void SetDgvData(bool check)

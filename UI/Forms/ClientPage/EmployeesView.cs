@@ -175,7 +175,7 @@ namespace UI.Forms.ClientPage
                 {
                     pnlLawyerDetails.Controls.Clear();
                     pnlLawyerDetails.Controls
-                        .Add(new LawyerCardDetails(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
+                        .Add(new EmployeeCardDisplay(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
                 }
             }
         }

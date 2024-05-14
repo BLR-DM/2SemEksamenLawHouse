@@ -1,6 +1,6 @@
 ﻿namespace UI.Toolbox
 {
-    partial class LawyerCardDetails
+    partial class EmployeeCardDisplay
     {
         /// <summary> 
         /// Required designer variable.

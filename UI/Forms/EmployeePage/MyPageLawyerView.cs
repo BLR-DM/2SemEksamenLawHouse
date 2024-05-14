@@ -31,6 +31,7 @@ namespace UI.Forms.EmployeePage
 
             InitializeComponent();
 
+            pnlEdit.Visible = false;
             
             Load += MyPageLawyerView_Load;
             chboxShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
@@ -39,7 +40,10 @@ namespace UI.Forms.EmployeePage
 
         private void BtnEditDetails_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            pnlEdit.Controls.Clear();
+            pnlEdit.Controls.Add(new LawyerCardEdit(lawyerUI));
+            pnlEdit.Visible = true;
+            btnEditDetails.Enabled = false;
         }
 
         private void ChboxClosed_CheckedChanged(object? sender, EventArgs e)

@@ -36,7 +36,6 @@
             lboxSpecialties = new ListBox();
             lblFullname = new Label();
             pboxDetails = new FontAwesome.Sharp.IconPictureBox();
-            label1 = new Label();
             lblDetailsTitleValue = new Label();
             lblDetailsCityValue = new Label();
             lblDetailsPhoneValue = new Label();
@@ -64,7 +63,7 @@
             lblDetailsTitle.BackColor = Color.Transparent;
             lblDetailsTitle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsTitle.Location = new Point(5, 253);
+            lblDetailsTitle.Location = new Point(51, 267);
             lblDetailsTitle.Name = "lblDetailsTitle";
             lblDetailsTitle.Size = new Size(42, 19);
             lblDetailsTitle.TabIndex = 4;
@@ -77,7 +76,7 @@
             lblDetailsCity.BackColor = Color.Transparent;
             lblDetailsCity.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsCity.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsCity.Location = new Point(5, 281);
+            lblDetailsCity.Location = new Point(55, 293);
             lblDetailsCity.Name = "lblDetailsCity";
             lblDetailsCity.Size = new Size(39, 19);
             lblDetailsCity.TabIndex = 4;
@@ -90,7 +89,7 @@
             lblDetailsPhone.BackColor = Color.Transparent;
             lblDetailsPhone.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsPhone.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsPhone.Location = new Point(5, 311);
+            lblDetailsPhone.Location = new Point(39, 319);
             lblDetailsPhone.Name = "lblDetailsPhone";
             lblDetailsPhone.Size = new Size(55, 19);
             lblDetailsPhone.TabIndex = 4;
@@ -103,7 +102,7 @@
             lblDetailsEmail.BackColor = Color.Transparent;
             lblDetailsEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsEmail.Location = new Point(5, 341);
+            lblDetailsEmail.Location = new Point(45, 345);
             lblDetailsEmail.Name = "lblDetailsEmail";
             lblDetailsEmail.Size = new Size(49, 19);
             lblDetailsEmail.TabIndex = 4;
@@ -117,10 +116,10 @@
             lboxSpecialties.ForeColor = SystemColors.ControlText;
             lboxSpecialties.FormattingEnabled = true;
             lboxSpecialties.ItemHeight = 17;
-            lboxSpecialties.Location = new Point(11, 392);
+            lboxSpecialties.Location = new Point(99, 374);
             lboxSpecialties.Name = "lboxSpecialties";
             lboxSpecialties.SelectionMode = SelectionMode.None;
-            lboxSpecialties.Size = new Size(299, 119);
+            lboxSpecialties.Size = new Size(211, 136);
             lboxSpecialties.Sorted = true;
             lboxSpecialties.TabIndex = 1;
             // 
@@ -146,25 +145,12 @@
             pboxDetails.IconColor = SystemColors.ActiveCaptionText;
             pboxDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
             pboxDetails.IconSize = 218;
-            pboxDetails.Location = new Point(6, 25);
+            pboxDetails.Location = new Point(6, 37);
             pboxDetails.Name = "pboxDetails";
             pboxDetails.Size = new Size(311, 218);
             pboxDetails.SizeMode = PictureBoxSizeMode.CenterImage;
             pboxDetails.TabIndex = 5;
             pboxDetails.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(8, 254);
-            label1.Name = "label1";
-            label1.Size = new Size(42, 19);
-            label1.TabIndex = 4;
-            label1.Text = "Title:";
             // 
             // lblDetailsTitleValue
             // 
@@ -173,7 +159,7 @@
             lblDetailsTitleValue.BackColor = Color.Transparent;
             lblDetailsTitleValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsTitleValue.ForeColor = SystemColors.ControlText;
-            lblDetailsTitleValue.Location = new Point(47, 255);
+            lblDetailsTitleValue.Location = new Point(100, 268);
             lblDetailsTitleValue.Name = "lblDetailsTitleValue";
             lblDetailsTitleValue.Size = new Size(66, 17);
             lblDetailsTitleValue.TabIndex = 4;
@@ -186,7 +172,7 @@
             lblDetailsCityValue.BackColor = Color.Transparent;
             lblDetailsCityValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsCityValue.ForeColor = SystemColors.ControlText;
-            lblDetailsCityValue.Location = new Point(44, 283);
+            lblDetailsCityValue.Location = new Point(100, 294);
             lblDetailsCityValue.Name = "lblDetailsCityValue";
             lblDetailsCityValue.Size = new Size(64, 17);
             lblDetailsCityValue.TabIndex = 4;
@@ -199,7 +185,7 @@
             lblDetailsPhoneValue.BackColor = Color.Transparent;
             lblDetailsPhoneValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsPhoneValue.ForeColor = SystemColors.ControlText;
-            lblDetailsPhoneValue.Location = new Point(60, 313);
+            lblDetailsPhoneValue.Location = new Point(100, 320);
             lblDetailsPhoneValue.Name = "lblDetailsPhoneValue";
             lblDetailsPhoneValue.Size = new Size(82, 17);
             lblDetailsPhoneValue.TabIndex = 4;
@@ -212,13 +198,13 @@
             lblDetailsEmailValue.BackColor = Color.Transparent;
             lblDetailsEmailValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsEmailValue.ForeColor = SystemColors.ControlText;
-            lblDetailsEmailValue.Location = new Point(54, 343);
+            lblDetailsEmailValue.Location = new Point(100, 346);
             lblDetailsEmailValue.Name = "lblDetailsEmailValue";
             lblDetailsEmailValue.Size = new Size(76, 17);
             lblDetailsEmailValue.TabIndex = 4;
             lblDetailsEmailValue.Text = "Some email";
             // 
-            // LawyerCardDetails
+            // EmployeeCardDisplay
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -233,9 +219,8 @@
             Controls.Add(lblDetailsPhone);
             Controls.Add(lblDetailsCityValue);
             Controls.Add(lblDetailsEmail);
-            Controls.Add(label1);
             Controls.Add(lblDetailsTitleValue);
-            Name = "LawyerCardDetails";
+            Name = "EmployeeCardDisplay";
             Size = new Size(323, 523);
             ((System.ComponentModel.ISupportInitialize)pboxDetails).EndInit();
             ResumeLayout(false);
@@ -252,7 +237,6 @@
         private ListBox lboxSpecialties;
         private Label lblFullname;
         private FontAwesome.Sharp.IconPictureBox pboxDetails;
-        private Label label1;
         private Label lblDetailsTitleValue;
         private Label lblDetailsCityValue;
         private Label lblDetailsPhoneValue;

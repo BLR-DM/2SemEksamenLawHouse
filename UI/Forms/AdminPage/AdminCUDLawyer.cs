@@ -1,7 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
 using UIModels;
-using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -240,30 +239,34 @@ namespace UI.Forms.AdminPage
         {
             txtPhone.ForeColor = pValidator.ValidPhone(txtPhone.Text) ? validFormat : invalidFormat;
             SetEmail();
+            btnCreateEnabled();
         }
 
         private void TxtLastname_TextChanged(object? sender, EventArgs e)
         {
             txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
             SetEmail();
+            btnCreateEnabled();
         }
 
         private void TxtFirstname_TextChanged(object? sender, EventArgs e)
         {
             txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
             SetEmail();
+            btnCreateEnabled();
         }
 
         private void btnCreateEnabled()
         {
             btnCreate.Enabled =
-                    txtFirstname.ForeColor == validFormat &&
-                    txtLastname.ForeColor == validFormat &&
-                    txtAddress.ForeColor == validFormat &&
-                    txtPostal.ForeColor == validFormat &&
-                    txtCity.ForeColor == validFormat &&
+                    txtFirstname.ForeColor != invalidFormat &&
+                    txtLastname.ForeColor != invalidFormat &&
+                    txtAddress.ForeColor != invalidFormat &&
+                    txtPostal.ForeColor != invalidFormat &&
+                    txtPhone.ForeColor != invalidFormat &&
+                    txtCity.ForeColor != invalidFormat &&
                     lboxSpecialities.Items.Count > 0 &&
-                    cboxTitles.Items.Count > 0 &&
+                    cboxTitles.SelectedItem != null &&
                     lblInvalidDate.Visible == false;
         }
     }

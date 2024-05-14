@@ -228,6 +228,18 @@ namespace BusinessLogic
             return lawyerUI;
         }
 
+        public ServiceEntryUI ConvertFromServiceEntryEntity(ServiceEntry lawyerE)
+        {
+            ServiceEntryUI serviceEntryUI = new ServiceEntryUI()
+            {
+                ServiceEntryID = lawyerE.ServiceEntryID,
+                HoursWorked = lawyerE.HoursWorked,
+                Date = lawyerE.Date,
+                CaseServiceID = lawyerE.CaseServiceID,
+            };
+            return serviceEntryUI;
+        }
+
         public LawyerSpecialityUI ConvertFromLawyerSpecialityEntity(LawyerSpeciality lawyerSpecialityE)
         {
             LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI
@@ -531,6 +543,18 @@ namespace BusinessLogic
                 Price = serviceUI.Price,
             };
             return serviceE;
+        }
+
+        public ServiceEntry ConvertFromServiceEntryUI(ServiceEntryUI serviceEntryUI)
+        {
+            ServiceEntry serviceEntryE = new ServiceEntry
+            {
+                ServiceEntryID = serviceEntryUI.ServiceEntryID,
+                Date = serviceEntryUI.Date,
+                HoursWorked = serviceEntryUI.HoursWorked,
+                CaseServiceID = serviceEntryUI.CaseServiceID,
+            };
+            return serviceEntryE;
         }
 
         public Speciality ConvertFromSpecialityUI(SpecialityUI specialityUI)

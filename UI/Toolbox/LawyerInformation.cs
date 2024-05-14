@@ -28,5 +28,15 @@ namespace UI.Toolbox
             txtLastname.Text = lawyer.Lastname;
             txtPhone.Text = lawyer.PhoneNumber.ToString();
         }
+
+        public LawyerInformation()
+        {
+            InitializeComponent();
+
+            txtFirstname.Text = string.Empty;
+            txtLastname.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+        }
+
     }
 }

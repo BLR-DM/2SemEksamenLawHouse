@@ -47,14 +47,14 @@
             // 
             // txtName
             // 
-            txtName.BackColor = SystemColors.GradientActiveCaption;
+            txtName.BackColor = Color.White;
             txtName.BorderStyle = BorderStyle.None;
-            txtName.Enabled = false;
             txtName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtName.Location = new Point(6, 65);
             txtName.MaxLength = 50;
             txtName.Name = "txtName";
-            txtName.Size = new Size(152, 20);
+            txtName.ReadOnly = true;
+            txtName.Size = new Size(179, 20);
             txtName.TabIndex = 49;
             // 
             // lblPostal
@@ -131,49 +131,49 @@
             // 
             // txtEmail
             // 
-            txtEmail.BackColor = SystemColors.GradientActiveCaption;
+            txtEmail.BackColor = Color.White;
             txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Enabled = false;
             txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.Location = new Point(6, 119);
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(152, 20);
+            txtEmail.ReadOnly = true;
+            txtEmail.Size = new Size(257, 20);
             txtEmail.TabIndex = 49;
             // 
             // txtPhone
             // 
-            txtPhone.BackColor = SystemColors.GradientActiveCaption;
+            txtPhone.BackColor = Color.White;
             txtPhone.BorderStyle = BorderStyle.None;
-            txtPhone.Enabled = false;
             txtPhone.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPhone.Location = new Point(6, 174);
             txtPhone.MaxLength = 50;
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(152, 20);
+            txtPhone.ReadOnly = true;
+            txtPhone.Size = new Size(94, 20);
             txtPhone.TabIndex = 49;
             // 
             // txtAddress
             // 
-            txtAddress.BackColor = SystemColors.GradientActiveCaption;
+            txtAddress.BackColor = Color.White;
             txtAddress.BorderStyle = BorderStyle.None;
-            txtAddress.Enabled = false;
             txtAddress.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAddress.Location = new Point(6, 230);
             txtAddress.MaxLength = 50;
             txtAddress.Name = "txtAddress";
+            txtAddress.ReadOnly = true;
             txtAddress.Size = new Size(260, 20);
             txtAddress.TabIndex = 49;
             // 
             // txtPostal
             // 
-            txtPostal.BackColor = SystemColors.GradientActiveCaption;
+            txtPostal.BackColor = Color.White;
             txtPostal.BorderStyle = BorderStyle.None;
-            txtPostal.Enabled = false;
             txtPostal.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPostal.Location = new Point(6, 290);
             txtPostal.MaxLength = 4;
             txtPostal.Name = "txtPostal";
+            txtPostal.ReadOnly = true;
             txtPostal.Size = new Size(94, 20);
             txtPostal.TabIndex = 49;
             // 
@@ -191,26 +191,26 @@
             // 
             // txtCity
             // 
-            txtCity.BackColor = SystemColors.GradientActiveCaption;
+            txtCity.BackColor = Color.White;
             txtCity.BorderStyle = BorderStyle.None;
-            txtCity.Enabled = false;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.Location = new Point(119, 290);
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
+            txtCity.ReadOnly = true;
             txtCity.Size = new Size(147, 20);
             txtCity.TabIndex = 49;
             // 
             // txtClientID
             // 
-            txtClientID.BackColor = SystemColors.GradientActiveCaption;
+            txtClientID.BackColor = Color.White;
             txtClientID.BorderStyle = BorderStyle.None;
-            txtClientID.Enabled = false;
             txtClientID.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtClientID.Location = new Point(177, 65);
+            txtClientID.Location = new Point(191, 65);
             txtClientID.MaxLength = 50;
             txtClientID.Name = "txtClientID";
-            txtClientID.Size = new Size(89, 20);
+            txtClientID.ReadOnly = true;
+            txtClientID.Size = new Size(75, 20);
             txtClientID.TabIndex = 49;
             txtClientID.TextAlign = HorizontalAlignment.Right;
             // 

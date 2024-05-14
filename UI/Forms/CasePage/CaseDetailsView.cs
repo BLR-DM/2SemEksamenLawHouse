@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using UI.Toolbox;
 
 namespace UI.Forms.CasePage
 {
@@ -57,7 +58,7 @@ namespace UI.Forms.CasePage
             txtTitle.TextChanged += TxtTitle_TextChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
-           
+
 
             btnUpdateCase.Enabled = false;
 
@@ -73,7 +74,7 @@ namespace UI.Forms.CasePage
 
             bool succes = await caseBL.UpdateCaseSync(selectedCase);
 
-            if(succes)
+            if (succes)
             {
                 MessageBox.Show("Jeow");
             }
@@ -132,7 +133,7 @@ namespace UI.Forms.CasePage
             };
 
             bool succes = await caseBL.UpdateCaseSync(caseUpdate);
-            if(succes)
+            if (succes)
             {
                 MessageBox.Show("Case updated");
             }
@@ -155,14 +156,14 @@ namespace UI.Forms.CasePage
 
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
-            
+
             AddServiceView addServiceView = new AddServiceView(selectedCase, this);
             addServiceView.ShowDialog();
         }
 
         private void DgvServices_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
                 ServiceDetailsView serviceDetailsView = new ServiceDetailsView(selectedCaseService);
@@ -187,22 +188,14 @@ namespace UI.Forms.CasePage
         public async Task SetClientData()
         {
             selectedClient = await clientBL.GetClientAsync(selectedCase.ClientID);
-            txtClientFirstname.Text = selectedClient.Firstname;
-            txtClientLastName.Text = selectedClient.Lastname;
-            txtClientEmail.Text = selectedClient.Email;
-            txtClientAddress.Text = selectedClient.AddressLine;
-            txtClientPhoneNumber1.Text = selectedClient.MainPhone.ToString();
-            txtClientPostalCode.Text = selectedClient.PostalCode.ToString();
+            pnlClientInformation.Controls.Add(new ClientInformation(selectedClient));
         }
 
         public async Task SetLawyerData()
         {
             selectedLawyer = await lawyerBL.GetLawyerAsync(selectedCase.LawyerID);
-            txtLawyerFirstName.Text = selectedLawyer.Firstname;
-            txtLawyerLastName.Text = selectedLawyer.Lastname;
-            txtLawyerPhone.Text = selectedLawyer.PhoneNumber.ToString();
+            pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedLawyer));
         }
-
 
         public async Task SetDgv()
         {
@@ -239,8 +232,9 @@ namespace UI.Forms.CasePage
                 cboxCaseType.Items.Add(caseTypeUI);
             }
 
-            cboxCaseType.SelectedIndex = selectedCase.CaseTypeID;
+            cboxCaseType.SelectedItem = caseTypeUIList.Where(ct => ct.CaseTypeID == selectedCase.CaseTypeID).FirstOrDefault();
         }
 
     }
+
 }

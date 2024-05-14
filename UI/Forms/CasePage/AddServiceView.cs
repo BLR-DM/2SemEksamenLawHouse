@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using UI.Toolbox;
 
 namespace UI.Forms.CasePage
 {
@@ -51,24 +52,32 @@ namespace UI.Forms.CasePage
 
             SetComboBox();
 
-            txtUnits.Enabled = false;
-            txtServiceDescription.Enabled = false;
-            btnAddService.Enabled = false;
+
+            pnlLawyerInformation.Controls.Add(new LawyerInformation());
+
+            lblUnites.Visible = false;
+            txtUnits.Visible = false;
+            lblHoursWorked.Visible = false;
+            txtHoursWorked.Visible = false;
+            lblPrice.Visible = false;
+            txtPrice.Visible = false;
+            lblTotalPrice.Visible = false;
+            txtTotalPrice.Visible = false;
         }
 
         private void TxtUnits_TextChanged1(object? sender, EventArgs e)
         {
             txtUnits.ForeColor = cValidator.ValidUnits(txtUnits.Text) ? validFormat : invalidFormat;
-            btnCreateEnablid();
+            btnCreateEnabled();
         }
 
         private void TxtServiceDescription_TextChanged(object? sender, EventArgs e)
         {
             txtServiceDescription.ForeColor = cValidator.ValidDescription(txtServiceDescription.Text) ? validFormat : invalidFormat;
-            btnCreateEnablid();
+            btnCreateEnabled();
         }
 
-        public void btnCreateEnablid()
+        public void btnCreateEnabled()
         {
             btnAddService.Enabled =
                 txtUnits.ForeColor == validFormat &&
@@ -89,7 +98,7 @@ namespace UI.Forms.CasePage
                 TotalPrice = float.Parse(txtTotalPrice.Text),
                 Status = "Active", // test
                 StartDate = DateTime.Now, // test
-                EndDate = DateTime.Now,
+                EndDate = null,
 
                 CaseID = selectedCase.CaseID,
                 ServiceID = selectedService.ServiceID,
@@ -123,12 +132,10 @@ namespace UI.Forms.CasePage
 
         private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
         {
-            txtLawyerFirstName.Text = e.Firstname;
-            txtLawyerLastName.Text = e.Lastname;
-            txtLawyerPhone.Text = e.PhoneNumber.ToString();
-
+            pnlLawyerInformation.Controls.Clear();
+            pnlLawyerInformation.Controls.Add(new LawyerInformation(e));
             selectedLawyer = e;
-            btnCreateEnablid();
+            btnCreateEnabled();
         }
 
         private void TxtUnits_TextChanged(object? sender, EventArgs e)
@@ -153,7 +160,7 @@ namespace UI.Forms.CasePage
         private void CboServices_SelectedIndexChanged(object? sender, EventArgs e)
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
-            btnCreateEnablid();
+            btnCreateEnabled();
 
             if (int.TryParse(txtUnits.Text, out int units))
             {
@@ -192,15 +199,18 @@ namespace UI.Forms.CasePage
             else if(selectedService.PriceType == "Kilometer")
             {
                 lblUnites.Visible = true;
-                lblUnites.Text = "Kilometers";
                 txtUnits.Visible = true;
 
-                txtUnits.Enabled = true;
-                txtServiceDescription.Enabled = true;
+                lblPrice.Visible = true;
+                txtPrice.Visible = true;
 
-                txtHoursWorked.Enabled = true;
+                lblTotalPrice.Visible = true;
+                txtTotalPrice.Visible = true;
+
                 lblHoursWorked.Visible = true;
                 txtHoursWorked.Visible = true;
+
+                txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
             else
             {

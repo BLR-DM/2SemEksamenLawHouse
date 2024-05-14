@@ -45,10 +45,10 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(324, 12);
+            dgvCases.Location = new Point(313, 12);
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
-            dgvCases.Size = new Size(662, 254);
+            dgvCases.Size = new Size(673, 254);
             dgvCases.TabIndex = 1;
             // 
             // dgvServices
@@ -58,16 +58,16 @@
             dgvServices.AllowUserToResizeColumns = false;
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(324, 311);
+            dgvServices.Location = new Point(313, 311);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(662, 291);
+            dgvServices.Size = new Size(673, 291);
             dgvServices.TabIndex = 1;
             // 
             // chboxShowAll
             // 
             chboxShowAll.AutoSize = true;
-            chboxShowAll.Location = new Point(366, 292);
+            chboxShowAll.Location = new Point(352, 292);
             chboxShowAll.Name = "chboxShowAll";
             chboxShowAll.Size = new Size(72, 19);
             chboxShowAll.TabIndex = 2;
@@ -77,7 +77,7 @@
             // lblTask
             // 
             lblTask.AutoSize = true;
-            lblTask.Location = new Point(327, 293);
+            lblTask.Location = new Point(313, 293);
             lblTask.Name = "lblTask";
             lblTask.Size = new Size(34, 15);
             lblTask.TabIndex = 0;
@@ -97,9 +97,9 @@
             // 
             // pnlLawyerDetails
             // 
-            pnlLawyerDetails.Location = new Point(5, 17);
+            pnlLawyerDetails.Location = new Point(12, 63);
             pnlLawyerDetails.Name = "pnlLawyerDetails";
-            pnlLawyerDetails.Size = new Size(315, 523);
+            pnlLawyerDetails.Size = new Size(295, 451);
             pnlLawyerDetails.TabIndex = 4;
             // 
             // MyPageLawyerView
@@ -116,6 +116,7 @@
             Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MyPageLawyerView";
+            Tag = "My page";
             Text = "MyPageLawyerView";
             ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();

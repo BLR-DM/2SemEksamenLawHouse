@@ -104,7 +104,7 @@ namespace UI.Forms.FrontPage
             btnEmployees.Visible = true;
             btnCase.Visible = true;
             btnClients.Visible = true;
-            btnAdminPage.Visible = true;
+            btnAdminPage.Visible = true; // test
             
             if (lawyerUI.Admin)
             {

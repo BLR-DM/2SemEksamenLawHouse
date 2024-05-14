@@ -45,7 +45,6 @@ namespace UI.Toolbox
             txtAddress.TextChanged += TxtAddress_TextChanged;
             txtPostal.TextChanged += TxtPostal_TextChanged;
             txtCity.TextChanged += TxtCity_TextChanged;
-            txtEmail.TextChanged += TxtEmail_TextChanged;
             btnUpdate.Click += BtnUpdate_Click;
             cboxSpecialities.SelectionChangeCommitted += CboxSpecialities_SelectionChangeCommitted;
             lboxSpecialities.SelectedIndexChanged += LboxSpecialities_SelectedIndexChanged;
@@ -178,11 +177,6 @@ namespace UI.Toolbox
             txtPhone.ForeColor = pValidator.ValidPhone(txtPhone.Text) ? validFormat : invalidFormat;
             btnUpdateEnabled();
         }
-        private void TxtEmail_TextChanged(object? sender, EventArgs e)
-        {
-            txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
-            btnUpdateEnabled();
-        }
 
         private void TxtLastname_TextChanged(object? sender, EventArgs e)
         {
@@ -204,7 +198,6 @@ namespace UI.Toolbox
                     txtAddress.ForeColor != invalidFormat &&
                     txtPostal.ForeColor != invalidFormat &&
                     txtPhone.ForeColor != invalidFormat &&
-                    txtEmail.ForeColor != invalidFormat &&
                     txtCity.ForeColor != invalidFormat &&
                     lboxSpecialities.Items.Count > 0 &&
                     cboxTitles.SelectedItem != null;

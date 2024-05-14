@@ -136,6 +136,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.Enabled = false;
             txtEmail.Location = new Point(130, 261);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(178, 23);

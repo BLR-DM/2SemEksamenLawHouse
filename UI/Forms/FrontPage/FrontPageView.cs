@@ -27,6 +27,7 @@ namespace UI.Forms.FrontPage
         FormDocumentBL formBL;
 
         PersonValidator pValidator;
+        OverallValidator oaValidator;
 
         public FrontPageView(int loginDetailsID)
         {
@@ -35,6 +36,7 @@ namespace UI.Forms.FrontPage
             lawyerBL = new LawyerBL();
             formBL = new FormDocumentBL();
             pValidator = new PersonValidator();
+            oaValidator = new OverallValidator();
 
 
             rgbColorBlue = Color.FromArgb(45, 93, 134);
@@ -139,7 +141,7 @@ namespace UI.Forms.FrontPage
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CalculationsView calculationsView = new CalculationsView();
+            CalculationsView calculationsView = new CalculationsView(oaValidator);
             PnlContextChange(calculationsView);
         }
 

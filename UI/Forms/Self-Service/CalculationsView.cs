@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace UI.Forms.Self_Service
 {
     public partial class CalculationsView : Form
     {
-        public CalculationsView()
+        OverallValidator oaValidator;
+        public CalculationsView(OverallValidator oaValidator)
         {
             InitializeComponent();
+
+            this.oaValidator = oaValidator;
 
             lblCalcLoanPayment.MouseHover += LblCalcLoanPayment_MouseHover;
             lblCalcLoanPayment.MouseLeave += LblCalcLoanPayment_MouseLeave;
@@ -23,7 +27,7 @@ namespace UI.Forms.Self_Service
 
         private void LblCalcLoanPayment_Click(object? sender, EventArgs e)
         {
-            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView();
+            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(oaValidator);
             PnlCalcChange(calcLoanPaymentView);
         }
 

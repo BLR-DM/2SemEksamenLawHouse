@@ -125,22 +125,21 @@
             txtPostal.Location = new Point(130, 321);
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(56, 23);
-            txtPostal.TabIndex = 10;
+            txtPostal.TabIndex = 7;
             // 
             // txtPhone
             // 
             txtPhone.Location = new Point(130, 232);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(100, 23);
-            txtPhone.TabIndex = 10;
+            txtPhone.TabIndex = 4;
             // 
             // txtEmail
             // 
-            txtEmail.Enabled = false;
             txtEmail.Location = new Point(130, 261);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(178, 23);
-            txtEmail.TabIndex = 10;
+            txtEmail.TabIndex = 5;
             // 
             // lblFirstname
             // 
@@ -160,7 +159,7 @@
             txtFirstname.Location = new Point(130, 145);
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(100, 23);
-            txtFirstname.TabIndex = 10;
+            txtFirstname.TabIndex = 1;
             // 
             // lblLastname
             // 
@@ -180,7 +179,7 @@
             txtLastname.Location = new Point(130, 174);
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(100, 23);
-            txtLastname.TabIndex = 10;
+            txtLastname.TabIndex = 2;
             // 
             // lblAddress
             // 
@@ -200,7 +199,7 @@
             txtAddress.Location = new Point(130, 290);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(179, 23);
-            txtAddress.TabIndex = 10;
+            txtAddress.TabIndex = 6;
             // 
             // lblCity
             // 
@@ -220,7 +219,7 @@
             txtCity.Location = new Point(130, 350);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(100, 23);
-            txtCity.TabIndex = 10;
+            txtCity.TabIndex = 8;
             // 
             // cboxTitles
             // 
@@ -229,7 +228,7 @@
             cboxTitles.Location = new Point(130, 203);
             cboxTitles.Name = "cboxTitles";
             cboxTitles.Size = new Size(178, 23);
-            cboxTitles.TabIndex = 7;
+            cboxTitles.TabIndex = 3;
             // 
             // cboxSpecialities
             // 
@@ -238,7 +237,8 @@
             cboxSpecialities.Location = new Point(13, 406);
             cboxSpecialities.Name = "cboxSpecialities";
             cboxSpecialities.Size = new Size(111, 23);
-            cboxSpecialities.TabIndex = 8;
+            cboxSpecialities.Sorted = true;
+            cboxSpecialities.TabIndex = 9;
             // 
             // lboxSpecialities
             // 
@@ -247,14 +247,15 @@
             lboxSpecialities.Location = new Point(130, 381);
             lboxSpecialities.Name = "lboxSpecialities";
             lboxSpecialities.Size = new Size(179, 49);
-            lboxSpecialities.TabIndex = 0;
+            lboxSpecialities.Sorted = true;
+            lboxSpecialities.TabIndex = 11;
             // 
             // btnAddSpeciality
             // 
             btnAddSpeciality.Location = new Point(66, 435);
             btnAddSpeciality.Name = "btnAddSpeciality";
             btnAddSpeciality.Size = new Size(58, 23);
-            btnAddSpeciality.TabIndex = 9;
+            btnAddSpeciality.TabIndex = 10;
             btnAddSpeciality.Text = "Add >>";
             btnAddSpeciality.TextAlign = ContentAlignment.MiddleRight;
             btnAddSpeciality.UseVisualStyleBackColor = true;
@@ -285,7 +286,7 @@
             btnUpdate.Location = new Point(86, 477);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(150, 33);
-            btnUpdate.TabIndex = 11;
+            btnUpdate.TabIndex = 12;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 

@@ -37,7 +37,7 @@ namespace UI.Toolbox
 
             InitializeComponent();
 
-            DisplayInformationLawyer(lawyerUI);
+            DisplayInformationLawyer();
 
             txtFirstname.TextChanged += TxtFirstname_TextChanged;
             txtLastname.TextChanged += TxtLastname_TextChanged;
@@ -89,7 +89,7 @@ namespace UI.Toolbox
             throw new NotImplementedException();
         }
 
-        private void DisplayInformationLawyer(LawyerUI lawyerUI)
+        private void DisplayInformationLawyer()
         {
             if (lawyerUI != null)
             {
@@ -106,6 +106,16 @@ namespace UI.Toolbox
                 FillTitleComboBox();
                 FillSpecialityComboBox();
                 UpdateLabelCount();
+
+                if (!lawyerUI.Admin)
+                {
+                    txtEmail.Enabled = false;
+                    btnAddSpeciality.Visible = false;
+                    btnRemoveSpeciality.Visible = false;
+                    cboxTitles.Enabled = false;
+                    lboxSpecialities.Enabled = false;
+                    cboxSpecialities.Enabled = false;
+                }
             }            
         }
 

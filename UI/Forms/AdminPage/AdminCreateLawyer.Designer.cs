@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.AdminPage
 {
-    partial class AdminCUDLawyer
+    partial class AdminCreateLawyer
     {
         /// <summary>
         /// Required designer variable.

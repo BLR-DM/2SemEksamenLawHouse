@@ -21,7 +21,7 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> employeeUIs;
         List<LawyerUI> lawyerUIs;
 
-        public EmployeesOverview()
+        public EmployeesOverview(int userID)
         {
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
@@ -59,11 +59,32 @@ namespace UI.Forms.EmployeePage
 
         private void DgvEmployees_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            switch (cboxShow.SelectedItem)
             {
-                LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
+                case "Employees":
+                    if (e.RowIndex >= 0)
+                    {
+                        //EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
 
-                new LawyerDetailsView(lawyer).ShowDialog();
+                        //new LawyerDetailsView(employee.PersonID, false).ShowDialog();
+                    }
+                    break;
+                case "  Lawyers":
+                    if (e.RowIndex >= 0)
+                    {
+                        LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
+
+                        new LawyerDetailsView(lawyer.PersonID, false).ShowDialog();
+                    }
+                    break;
+                case "  Secretaries":
+                    if (e.RowIndex >= 0)
+                    {
+                        //SecretaryUI secretary = dgvEmployees.Rows[e.RowIndex].DataBoundItem as SecretaryUI;
+
+                        //new LawyerDetailsView(secretary.PersonID, false).ShowDialog();
+                    }
+                    break;
             }
         }
 

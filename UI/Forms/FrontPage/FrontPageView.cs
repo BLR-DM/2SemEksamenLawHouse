@@ -153,14 +153,14 @@ namespace UI.Forms.FrontPage
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            MyPageLawyerView myPageLawyer = new MyPageLawyerView(lawyerUI.PersonID);
+            LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI.PersonID, true);
             PnlContextChange(myPageLawyer);
         }
 
         private void BtnEmployees_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            EmployeesOverview employeesOverview = new EmployeesOverview();
+            EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID);
             PnlContextChange(employeesOverview);
         }
 

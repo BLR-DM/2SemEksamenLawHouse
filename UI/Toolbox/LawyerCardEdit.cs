@@ -21,6 +21,7 @@ namespace UI.Toolbox
 
         LawyerUI lawyerUI;
         LawyerTitleBL lawyerTitleBL;
+        LawyerBL lawyerBL;
         SpecialityBL specialityBL;
         PersonValidator pValidator;
         List<LawyerTitleUI> lawyerTitles;
@@ -28,6 +29,7 @@ namespace UI.Toolbox
         public LawyerCardEdit(LawyerUI lawyerUI)
         {
             this.lawyerUI = lawyerUI;
+            lawyerBL = new LawyerBL();
             lawyerTitleBL = new LawyerTitleBL();
             specialityBL = new SpecialityBL();
             pValidator = new PersonValidator();
@@ -84,9 +86,43 @@ namespace UI.Toolbox
             UpdateLabelCount();
         }
 
-        private void BtnUpdate_Click(object? sender, EventArgs e)
+        private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            btnUpdate.Enabled = false;
+
+            lawyerUI.Firstname = txtFirstname.Text;
+            lawyerUI.Lastname = txtLastname.Text;
+            lawyerUI.PhoneNumber = int.Parse(txtPhone.Text);
+            lawyerUI.Email = txtEmail.Text;
+            lawyerUI.AddressLine = txtAddress.Text;
+            lawyerUI.PostalCode = int.Parse(txtPostal.Text);
+            lawyerUI.City = txtCity.Text;
+            
+            lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
+
+            // if admin
+            if (lboxSpecialities.Items.Count < 0)
+            {
+                lawyerUI.LawyerSpecialities.Clear();
+                foreach (LawyerSpecialityUI lawyerSpecialityUI in lboxSpecialities.Items)
+                {
+                    lawyerUI.LawyerSpecialities.Add(lawyerSpecialityUI);
+                } 
+            }
+
+            bool result = await UpdateLawyerAsync(lawyerUI);
+            btnUpdate.Enabled = true;
+
+            if (result)
+                MessageBox.Show("Updated!");
+            else
+                MessageBox.Show("Failed!");
+            
+        }
+
+        private async Task<bool> UpdateLawyerAsync(LawyerUI lawyer)
+        {
+            return await lawyerBL.UpdateLawyerAsync(lawyer);
         }
 
         private void DisplayInformationLawyer()

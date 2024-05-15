@@ -87,6 +87,21 @@ namespace DataAccess
             }
         }
 
+        public async Task<bool> UpdateLawyerAsync(Lawyer lawyer)
+        {
+            try
+            {
+                db.Lawyers.Update(lawyer);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
     }
 }

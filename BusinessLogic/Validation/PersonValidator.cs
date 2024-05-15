@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using UIModels;
 
 namespace BusinessLogic.Validation
 {
@@ -71,15 +72,15 @@ namespace BusinessLogic.Validation
                 && vPassword.IsMatch(password);
         }
 
-        //public bool ValidPerson(Person p)
-        //{
-        //    return ValidName(p.FirstName) &&
-        //        ValidName(p.LastName) &&
-        //        ValidAddress(p.Address) &&
-        //        ValidName(p.City) &&
-        //        ValidPostalCode(p.PostalCode.ToString()) &&
-        //        ValidEmail(p.Email) &&
-        //        ValidPhone(p.Phone.ToString());
-        //}
+        public bool ValidPerson(EmployeeUI person)
+        {
+            return ValidName(person.Firstname) &&
+                ValidName(person.Lastname) &&
+                ValidAddress(person.AddressLine) &&
+                ValidName(person.City) &&
+                ValidPostalCode(person.PostalCode.ToString()) &&
+                ValidEmail(person.Email) &&
+                ValidPhone(person.PhoneNumber.ToString());
+        }
     }
 }

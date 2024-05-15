@@ -84,5 +84,21 @@ namespace BusinessLogic
                 return new List<LawyerUI>();
             }
         }
+
+        public async Task<bool> UpdateLawyerAsync(LawyerUI lawyerUI)
+        {
+            try
+            {
+                Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
+                lawyer.LawyerSpecialities = lawyerUI.LawyerSpecialities.Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+                lawyer.Cases = lawyerUI.Cases.Select(modelConverter.ConvertFromCaseUI).ToList();
+                lawyer.CaseServices = lawyerUI.CaseServices.Select(modelConverter.ConvertFromCaseServiceUI).ToList();
+                return await dbAccess.UpdateLawyerAsync(lawyer);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

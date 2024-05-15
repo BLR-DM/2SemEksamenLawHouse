@@ -42,7 +42,7 @@
             lblServiceInformation = new Label();
             txtServiceName = new TextBox();
             lblServiceName = new Label();
-            panel2 = new Panel();
+            pnlTasks = new Panel();
             lblTasks = new Label();
             txtHoursWorked = new TextBox();
             lblHoursWorked = new Label();
@@ -50,7 +50,7 @@
             dgvServiceEntry = new DataGridView();
             pnlLawyerInformation = new Panel();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            pnlTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).BeginInit();
             SuspendLayout();
             // 
@@ -226,18 +226,18 @@
             lblServiceName.TabIndex = 45;
             lblServiceName.Text = "Name";
             // 
-            // panel2
+            // pnlTasks
             // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(lblTasks);
-            panel2.Controls.Add(txtHoursWorked);
-            panel2.Controls.Add(lblHoursWorked);
-            panel2.Controls.Add(btnSubmit);
-            panel2.Controls.Add(dgvServiceEntry);
-            panel2.Location = new Point(12, 323);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(280, 233);
-            panel2.TabIndex = 20;
+            pnlTasks.BorderStyle = BorderStyle.FixedSingle;
+            pnlTasks.Controls.Add(lblTasks);
+            pnlTasks.Controls.Add(txtHoursWorked);
+            pnlTasks.Controls.Add(lblHoursWorked);
+            pnlTasks.Controls.Add(btnSubmit);
+            pnlTasks.Controls.Add(dgvServiceEntry);
+            pnlTasks.Location = new Point(12, 323);
+            pnlTasks.Name = "pnlTasks";
+            pnlTasks.Size = new Size(280, 233);
+            pnlTasks.TabIndex = 20;
             // 
             // lblTasks
             // 
@@ -308,15 +308,15 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(584, 573);
             Controls.Add(pnlLawyerInformation);
-            Controls.Add(panel2);
+            Controls.Add(pnlTasks);
             Controls.Add(panel1);
             Name = "ServiceDetailsView";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ServiceDetailsView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pnlTasks.ResumeLayout(false);
+            pnlTasks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).EndInit();
             ResumeLayout(false);
         }
@@ -336,7 +336,7 @@
         private Label lblTotalPrice;
         private TextBox txtUnits;
         private Label lblUnites;
-        private Panel panel2;
+        private Panel pnlTasks;
         private DataGridView dgvServiceEntry;
         private TextBox txtHoursWorked;
         private Label lblHoursWorked;

@@ -98,11 +98,11 @@ namespace UI.Forms.CasePage
 
         public async Task InitializeData()
         {
-            await SetCaseData();
-            SetDgv();
+            await SetCaseDataAsync();
+            SetDgvAsync();
             SetComboBox();
-            SetClientData();
-            SetLawyerData();
+            SetClientDataAsync();
+            SetLawyerDataAsync();
         }
 
         private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
@@ -176,27 +176,33 @@ namespace UI.Forms.CasePage
         {
             if (e.RowIndex >= 0)
             {
-                CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
-
                 ServiceDetailsView serviceDetailsView;
 
-
-                
-                if (isClient)
+                DataGridViewRow selectedRow = dgvServices.Rows[e.RowIndex];
+                if (selectedRow.Cells["PriceType"].Value.ToString() == "Hourly" || selectedRow.Cells["PriceType"].Value.ToString() == "Fixed")
                 {
-                    serviceDetailsView = new ServiceDetailsView(selectedCaseService, true);
+                    CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
+                    
+                    ServiceDetailsView serviceDetailsView;
+                    if (isClient)
+                    {
+                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true);
+                    }
+                    else
+                    {
+                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false);
+                    }
+                    serviceDetailsView.ShowDialog();
                 }
                 else
                 {
-                    serviceDetailsView = new ServiceDetailsView(selectedCaseService, false);
+                    MessageBox.Show("Cannot add hours to this service");
                 }
-
-                serviceDetailsView.ShowDialog();
 
             }
         }
 
-        public async Task SetCaseData()
+        public async Task SetCaseDataAsync()
         {
             selectedCase = await caseBL.GetCaseAsync(selectedCaseID);
 
@@ -209,19 +215,19 @@ namespace UI.Forms.CasePage
 
         }
 
-        public async Task SetClientData()
+        public async Task SetClientDataAsync()
         {
             selectedClient = await clientBL.GetClientAsync(selectedCase.ClientID);
             pnlClientInformation.Controls.Add(new ClientInformation(selectedClient));
         }
 
-        public async Task SetLawyerData()
+        public async Task SetLawyerDataAsync()
         {
             selectedLawyer = await lawyerBL.GetLawyerAsync(selectedCase.LawyerID);
             pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedLawyer));
         }
 
-        public async Task SetDgv()
+        public async Task SetDgvAsync()
         {
 
             caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);

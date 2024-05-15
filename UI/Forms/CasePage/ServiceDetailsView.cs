@@ -17,6 +17,7 @@ namespace UI.Forms.CasePage
     {
         CaseServiceUI selectedCaseService;
         ServiceUI selectedService;
+        CaseDetailsView caseDetailsView;
 
         List<ServiceEntryUI> serviceEntryUIs;
 
@@ -24,11 +25,13 @@ namespace UI.Forms.CasePage
         ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
         CaseServiceBL caseServiceBL;
-        public ServiceDetailsView(CaseServiceUI selectedCaseService, bool isClient)
+        
+        public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient)
         {
             InitializeComponent();
 
             this.selectedCaseService = selectedCaseService;
+            this.caseDetailsView = caseDetailsView;
 
             lawyerBL = new LawyerBL();
             serviceBL = new ServiceBL();
@@ -36,6 +39,8 @@ namespace UI.Forms.CasePage
             caseServiceBL = new CaseServiceBL();
 
             btnSubmit.Click += BtnSubmit_Click;
+            
+
 
             SetDgvAsync();
             SetCaseInformationAsync();
@@ -49,6 +54,13 @@ namespace UI.Forms.CasePage
                 txtHoursWorked.Visible = false;
                 lblHoursWorked.Visible = false;
             }
+        }
+
+        protected async override void OnClosing(CancelEventArgs e)
+        {
+            await caseDetailsView.SetDgvAsync();
+            await caseDetailsView.SetCaseDataAsync();
+            base.OnClosing(e);
         }
 
         private async void BtnSubmit_Click(object? sender, EventArgs e)
@@ -70,6 +82,7 @@ namespace UI.Forms.CasePage
             bool succes1 = await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService);
             await SetDgvAsync();
             await SetCaseInformationAsync();
+
             if(succes && succes1)
             {
                 MessageBox.Show("Doner");

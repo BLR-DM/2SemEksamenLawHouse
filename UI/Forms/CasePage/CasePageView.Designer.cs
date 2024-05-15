@@ -145,7 +145,7 @@
             btnCreateCase.IconColor = Color.Black;
             btnCreateCase.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateCase.IconSize = 30;
-            btnCreateCase.Location = new Point(851, 107);
+            btnCreateCase.Location = new Point(12, 105);
             btnCreateCase.Name = "btnCreateCase";
             btnCreateCase.Size = new Size(135, 38);
             btnCreateCase.TabIndex = 50;

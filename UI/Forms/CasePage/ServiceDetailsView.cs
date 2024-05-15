@@ -24,7 +24,7 @@ namespace UI.Forms.CasePage
         ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
         CaseServiceBL caseServiceBL;
-        public ServiceDetailsView(CaseServiceUI selectedCaseService)
+        public ServiceDetailsView(CaseServiceUI selectedCaseService, bool isClient)
         {
             InitializeComponent();
 
@@ -40,6 +40,15 @@ namespace UI.Forms.CasePage
             SetDgvAsync();
             SetCaseInformationAsync();
             SetLawyerInformationAsync();
+
+
+            //fjerner knapper hvis bruger er client
+            if (isClient)
+            {
+                btnSubmit.Visible = false;
+                txtHoursWorked.Visible = false;
+                lblHoursWorked.Visible = false;
+            }
         }
 
         private async void BtnSubmit_Click(object? sender, EventArgs e)

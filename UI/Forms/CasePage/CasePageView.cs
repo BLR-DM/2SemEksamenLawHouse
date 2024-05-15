@@ -90,7 +90,7 @@ namespace UI.Forms.CasePage
                 {
                     if (int.TryParse(selectedRow.Cells["CaseID"].Value.ToString(), out int id))
                     {
-                        CaseDetailsView detailsView = new CaseDetailsView(id);
+                        CaseDetailsView detailsView = new CaseDetailsView(id, false);
                         f1.PnlContextChange(detailsView);
                     }
                 }

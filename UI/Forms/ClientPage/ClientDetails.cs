@@ -58,6 +58,8 @@ namespace UI.Forms.ClientPage
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
 
+            txtEmail.Enabled = false;
+
             btnAddPhone.Enabled = false;
 
             //Events

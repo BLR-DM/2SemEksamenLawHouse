@@ -8,17 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIModels;
 
 namespace UI.Forms.Self_Service
 {
     public partial class CalculationsView : Form
     {
         OverallValidator oaValidator;
-        public CalculationsView(OverallValidator oaValidator)
+        ClientUI client;
+        public CalculationsView(OverallValidator oaValidator, ClientUI client)
         {
             InitializeComponent();
 
             this.oaValidator = oaValidator;
+            this.client = client;
 
             lblCalcLoanPayment.MouseHover += LblCalcLoanPayment_MouseHover;
             lblCalcLoanPayment.MouseLeave += LblCalcLoanPayment_MouseLeave;
@@ -27,7 +30,7 @@ namespace UI.Forms.Self_Service
 
         private void LblCalcLoanPayment_Click(object? sender, EventArgs e)
         {
-            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(oaValidator);
+            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(oaValidator, client);
             PnlCalcChange(calcLoanPaymentView);
         }
 

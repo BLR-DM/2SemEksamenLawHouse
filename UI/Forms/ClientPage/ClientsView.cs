@@ -1,4 +1,5 @@
-﻿using BusinessLogic;
+﻿
+using BusinessLogic;
 using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,18 @@ namespace UI.Forms.ClientPage
             dgvClients.CellDoubleClick += DgvClients_CellDoubleClick;
             btnCreate.Click += BtnCreate_Click;
             dgvClients.DataSourceChanged += DgvClients_DataSourceChanged;
+            ckboxSubscribed.CheckedChanged += CkboxSubscribed_CheckedChanged;
+            ckboxNotSubscribed.CheckedChanged += CkboxNotSubscribed_CheckedChanged;
+        }
+
+        private void CkboxNotSubscribed_CheckedChanged(object? sender, EventArgs e)
+        {
+            SortDgvData();
+        }
+
+        private void CkboxSubscribed_CheckedChanged(object? sender, EventArgs e)
+        {
+            SortDgvData();
         }
 
         private void DgvClients_DataSourceChanged(object? sender, EventArgs e)
@@ -100,6 +113,20 @@ namespace UI.Forms.ClientPage
                 filteredClients = filteredClients.Where(client => client.PostalCode.ToString().StartsWith(postalcode.ToString())).ToList();
                 dgvClients.DataSource = filteredClients;
             }
+
+            if (ckboxNotSubscribed.Checked && ckboxSubscribed.Checked)
+            {
+                filteredClients = filteredClients.Where(client => client.IsSubscribed || client.IsSubscribed == false).ToList();
+            } 
+            else if (ckboxSubscribed.Checked)
+            {
+                filteredClients = filteredClients.Where(client => client.IsSubscribed).ToList();
+            }
+            else if (ckboxNotSubscribed.Checked)
+            {
+                filteredClients = filteredClients.Where(client => client.IsSubscribed == false).ToList();
+            }
+            
 
             dgvClients.DataSource = filteredClients;
         }

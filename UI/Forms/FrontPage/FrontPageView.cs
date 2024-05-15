@@ -103,6 +103,7 @@ namespace UI.Forms.FrontPage
             btnLawyers.Visible = true;
             btnForms.Visible = true;
             btnSubscribe.Visible = true;
+            btnCalculations.Visible = true;
 
             //set mypage
             ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL); 
@@ -111,11 +112,7 @@ namespace UI.Forms.FrontPage
                 PnlContextChange(cdMyPage);
             }
 
-
-            if (clientUI.IsSubscribed == true)
-            {
-                btnCalculations.Visible = true; // Vis med restrictions
-            }
+           
         }
 
         private async Task SetupLawyerFormAsync()
@@ -148,8 +145,9 @@ namespace UI.Forms.FrontPage
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CalculationsView calculationsView = new CalculationsView(oaValidator);
+            CalculationsView calculationsView = new CalculationsView(oaValidator, clientUI);
             PnlContextChange(calculationsView);
+            
         }
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)

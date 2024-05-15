@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using UIModels;
 using UI.Toolbox;
 using DataAccess.Migrations;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UI.Forms.CasePage
 {
@@ -71,28 +72,28 @@ namespace UI.Forms.CasePage
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
         {
             txtTotalPrice.ForeColor = cValidator.ValidUnits(txtTotalPrice.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
         {
             txtHoursWorked.ForeColor = cValidator.ValidUnits(txtHoursWorked.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
         private void TxtUnits_TextChanged1(object? sender, EventArgs e)
         {
             txtUnits.ForeColor = cValidator.ValidUnits(txtUnits.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
         private void TxtServiceDescription_TextChanged(object? sender, EventArgs e)
         {
             txtServiceDescription.ForeColor = cValidator.ValidDescription(txtServiceDescription.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
-        public void btnCreateEnabled()
+        public void BtnCreateEnabled()
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
             if (selectedService.PriceType == "Kilometer")
@@ -130,7 +131,6 @@ namespace UI.Forms.CasePage
             CaseServiceUI caseServiceUI = new CaseServiceUI()
             {
                 Description = txtServiceDescription.Text,
-                Status = "Active", // test
                 StartDate = DateTime.Now, // test
 
                 CaseID = selectedCase.CaseID,
@@ -140,6 +140,7 @@ namespace UI.Forms.CasePage
 
             if(selectedService.PriceType == "Kilometer")
             {
+                caseServiceUI.Status = "Closed";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = float.Parse(txtHoursWorked.Text);
                 caseServiceUI.EndDate = DateTime.Now;
@@ -147,6 +148,7 @@ namespace UI.Forms.CasePage
             }
             else if(selectedService.PriceType == "Fixed")
             {
+                caseServiceUI.Status = "Active";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;
@@ -154,6 +156,7 @@ namespace UI.Forms.CasePage
             }
             else if(selectedService.PriceType == "Hourly")
             {
+                caseServiceUI.Status = "Active";
                 caseServiceUI.TotalPrice = 0;
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;
@@ -191,7 +194,7 @@ namespace UI.Forms.CasePage
             pnlLawyerInformation.Controls.Add(btnAddLawyer);
             pnlLawyerInformation.Controls.Add(new LawyerInformation(e));
             selectedLawyer = e;
-            btnCreateEnabled();
+            BtnCreateEnabled();
         }
 
         private void TxtUnits_TextChanged(object? sender, EventArgs e)
@@ -216,7 +219,7 @@ namespace UI.Forms.CasePage
         private void CboServices_SelectedIndexChanged(object? sender, EventArgs e)
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
-            btnCreateEnabled();
+            BtnCreateEnabled();
 
             if (int.TryParse(txtUnits.Text, out int units))
             {

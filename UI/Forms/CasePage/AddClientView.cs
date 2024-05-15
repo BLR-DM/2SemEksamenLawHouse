@@ -76,11 +76,11 @@ namespace UI.Forms.CasePage
             dgvClientView.Columns["AddressLine"].DisplayIndex = 5;
             dgvClientView.Columns["PostalCode"].DisplayIndex = 6;
             dgvClientView.Columns["City"].DisplayIndex = 7;
-            dgvClientView.Columns["ClientSub"].DisplayIndex = 8;
+            dgvClientView.Columns["IsSubscribed"].DisplayIndex = 8;
             dgvClientView.Columns["LoginDetailsID"].DisplayIndex = 9;
 
             dgvClientView.Columns["PersonID"].Visible = false;
-            dgvClientView.Columns["ClientSub"].Visible = false;
+            dgvClientView.Columns["IsSubscribed"].Visible = false;
             dgvClientView.Columns["LoginDetailsID"].Visible = false;
 
             dgvClientView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

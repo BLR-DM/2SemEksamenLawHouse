@@ -57,7 +57,7 @@ namespace UI.Forms.CasePage
             dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
             btnAddService.Click += BtnAddService_Click;
             btnUpdateCase.Click += BtnUpdateCase_Click;
-            btnCloseCase.Click += BtnCloseCase_Click;
+            btnUpdateCaseStatus.Click += BtnCloseCase_Click;
             txtTitle.TextChanged += TxtTitle_TextChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
@@ -72,37 +72,58 @@ namespace UI.Forms.CasePage
             {
                 btnAddService.Visible = false;
                 btnUpdateCase.Visible = false;
-                btnCloseCase.Visible = false;
+                btnUpdateCaseStatus.Visible = false;
             }
+
+        }
+
+
+        public void BtnCloseEnabled()
+        {
+            if(caseServiceList.Count == 0)
+            {
+                btnUpdateCaseStatus.Enabled = false;
+                return;
+            }
+            
+            foreach(CaseServiceUI caseServiceUI in caseServiceList)
+            {
+                if(caseServiceUI.Status == "Active")
+                {
+                    btnUpdateCaseStatus.Enabled = false;
+                    return;
+                }
+            }
+            btnUpdateCaseStatus.Enabled = true;
 
         }
 
         private async void BtnCloseCase_Click(object? sender, EventArgs e)
         {
-            btnCloseCase.Enabled = false;
-
-            selectedCase.Status = "Finished";
-
-            bool succes = await caseBL.UpdateCaseSync(selectedCase);
-
-            if (succes)
+            btnUpdateCaseStatus.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show("Do you wanna close this case", "Close case", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Jeow");
+                selectedCase.Status = "Finished";
+                if (await caseBL.UpdateCaseSync(selectedCase))
+                {
+                    MessageBox.Show("Case closed");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to close the case");
+                    btnUpdateCaseStatus.Enabled = true;
+                }
             }
-            else
-            {
-                MessageBox.Show("niks");
-            }
-
         }
 
         public async Task InitializeData()
         {
             await SetCaseDataAsync();
-            SetDgvAsync();
-            SetComboBox();
-            SetClientDataAsync();
-            SetLawyerDataAsync();
+            await SetDgvAsync();
+            await SetComboBox();
+            await SetClientDataAsync();
+            await SetLawyerDataAsync();
         }
 
         private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
@@ -179,7 +200,7 @@ namespace UI.Forms.CasePage
                 ServiceDetailsView serviceDetailsView;
 
                 DataGridViewRow selectedRow = dgvServices.Rows[e.RowIndex];
-                if (selectedRow.Cells["PriceType"].Value.ToString() == "Hourly" || selectedRow.Cells["PriceType"].Value.ToString() == "Fixed")
+                if (selectedRow.Cells["PriceType"].Value.ToString() != null)
                 {
                     CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
                     
@@ -193,10 +214,6 @@ namespace UI.Forms.CasePage
                     }
                     serviceDetailsView.ShowDialog();
                 }
-                else
-                {
-                    MessageBox.Show("Cannot add hours to this service");
-                }
 
             }
         }
@@ -205,13 +222,16 @@ namespace UI.Forms.CasePage
         {
             selectedCase = await caseBL.GetCaseAsync(selectedCaseID);
 
-            txtTitle.Text = selectedCase.Title;
-            dtpEstimatedEndDate.Value = selectedCase.EndDate;
-            txtEstimatedHours.Text = selectedCase.EstimatedHours.ToString();
-            txtTotalPrice.Text = selectedCase.TotalPrice.ToString();
-            txtDescription.Text = selectedCase.Description;
-
-
+            if(selectedCase != null)
+            {
+                txtTitle.Text = selectedCase.Title;
+                dtpEstimatedEndDate.Value = selectedCase.EndDate;
+                txtEstimatedHours.Text = selectedCase.EstimatedHours.ToString();
+                txtTotalPrice.Text = selectedCase.TotalPrice.ToString();
+                txtDescription.Text = selectedCase.Description;
+                lblStatus.Text = selectedCase.Status;
+                txtCaseID.Text = selectedCase.CaseID.ToString();
+            }
         }
 
         public async Task SetClientDataAsync()
@@ -231,6 +251,8 @@ namespace UI.Forms.CasePage
 
             caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
 
+            BtnCloseEnabled();
+
             dgvServices.DataSource = caseServiceList;
 
             dgvServices.Columns["CaseServiceID"].Visible = false;
@@ -245,6 +267,9 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["Units"].DisplayIndex = 2;
             dgvServices.Columns["PriceType"].DisplayIndex = 3;
             dgvServices.Columns["StartDate"].DisplayIndex = 4;
+            dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

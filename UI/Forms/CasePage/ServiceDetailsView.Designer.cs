@@ -49,6 +49,7 @@
             btnSubmit = new Button();
             dgvServiceEntry = new DataGridView();
             pnlLawyerInformation = new Panel();
+            btnClose = new Button();
             panel1.SuspendLayout();
             pnlTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).BeginInit();
@@ -298,8 +299,17 @@
             pnlLawyerInformation.BorderStyle = BorderStyle.FixedSingle;
             pnlLawyerInformation.Location = new Point(298, 324);
             pnlLawyerInformation.Name = "pnlLawyerInformation";
-            pnlLawyerInformation.Size = new Size(281, 232);
+            pnlLawyerInformation.Size = new Size(281, 175);
             pnlLawyerInformation.TabIndex = 21;
+            // 
+            // btnClose
+            // 
+            btnClose.Location = new Point(399, 517);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(85, 31);
+            btnClose.TabIndex = 22;
+            btnClose.Text = "Close service";
+            btnClose.UseVisualStyleBackColor = true;
             // 
             // ServiceDetailsView
             // 
@@ -307,6 +317,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(584, 573);
+            Controls.Add(btnClose);
             Controls.Add(pnlLawyerInformation);
             Controls.Add(pnlTasks);
             Controls.Add(panel1);
@@ -343,5 +354,6 @@
         private Button btnSubmit;
         private Label lblTasks;
         private Panel pnlLawyerInformation;
+        private Button btnClose;
     }
 }

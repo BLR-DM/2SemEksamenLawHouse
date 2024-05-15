@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
 using UI.Toolbox;
+using BusinessLogic.Validation;
+using EntityModels;
 
 namespace UI.Forms.CasePage
 {
@@ -21,10 +23,15 @@ namespace UI.Forms.CasePage
 
         List<ServiceEntryUI> serviceEntryUIs;
 
+        Color validFormat;
+        Color invalidFormat;
+
         LawyerBL lawyerBL;
         ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
         CaseServiceBL caseServiceBL;
+
+        CaseValidator caseValidator;
         
         public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient)
         {
@@ -37,11 +44,18 @@ namespace UI.Forms.CasePage
             serviceBL = new ServiceBL();
             serviceEntryBL = new ServiceEntryBL();
             caseServiceBL = new CaseServiceBL();
+            caseValidator = new CaseValidator();
+
+            validFormat = Color.Black;
+            invalidFormat = Color.OrangeRed;
 
             btnSubmit.Click += BtnSubmit_Click;
-            
+            btnClose.Click += BtnClose_Click;
+            txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
 
+            btnSubmit.Enabled = false;
 
+            CheckStatus();
             SetDgvAsync();
             SetCaseInformationAsync();
             SetLawyerInformationAsync();
@@ -54,8 +68,59 @@ namespace UI.Forms.CasePage
                 txtHoursWorked.Visible = false;
                 lblHoursWorked.Visible = false;
             }
+
+            if(selectedCaseService.PriceType == "Kilometer")
+            {
+                pnlTasks.Enabled = false;
+                btnClose.Enabled = false;
+            }
         }
 
+        public void CheckStatus()
+        {
+            if(selectedCaseService.Status == "Closed")
+            {
+                txtHoursWorked.Enabled = false;
+                btnClose .Enabled = false;
+                btnSubmit .Enabled = false;
+            }
+        }
+
+        private async void BtnClose_Click(object? sender, EventArgs e)
+        {
+            btnClose.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show("Do you wanna close this service", "Close service", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                selectedCaseService.Status = "Closed";
+                selectedCaseService.EndDate = DateTime.Now;
+                if (await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService))
+                {
+                    MessageBox.Show("Service closed");
+                    txtHoursWorked.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("fejl");
+                    btnClose.Enabled = true;
+                }
+
+            }
+            else
+                btnClose.Enabled = true;
+        }
+
+        private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
+        {
+            txtHoursWorked.ForeColor = caseValidator.ValidEstimatedHours(txtHoursWorked.Text) ? validFormat : invalidFormat;
+            BtnSubmitEnabled();
+        }
+
+        public void BtnSubmitEnabled()
+        {
+            btnSubmit.Enabled =
+                txtHoursWorked.ForeColor == validFormat;
+        }
         protected async override void OnClosing(CancelEventArgs e)
         {
             await caseDetailsView.SetDgvAsync();
@@ -65,6 +130,7 @@ namespace UI.Forms.CasePage
 
         private async void BtnSubmit_Click(object? sender, EventArgs e)
         {
+            btnSubmit.Enabled = false;
             ServiceEntryUI serviceEntryUI = new ServiceEntryUI()
             {
                 HoursWorked = float.Parse(txtHoursWorked.Text),
@@ -72,10 +138,19 @@ namespace UI.Forms.CasePage
                 CaseServiceID = selectedCaseService.CaseServiceID,
             };
 
+            if(selectedCaseService.PriceType == "Hourly")
+            {
+                selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
+                selectedCaseService.Units = selectedCaseService.HoursWorked;
+                selectedCaseService.TotalPrice = selectedCaseService.Units * selectedService.Price;
+            }
+            else if(selectedCaseService.PriceType == "Fixed")
+            {
+                selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
+                selectedCaseService.Units = 1;
+                selectedCaseService.TotalPrice = selectedCaseService.TotalPrice;
+            }
             
-            selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
-            selectedCaseService.Units = selectedCaseService.HoursWorked;
-            selectedCaseService.TotalPrice = selectedCaseService.Units * selectedService.Price;
             
 
             bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
@@ -91,6 +166,7 @@ namespace UI.Forms.CasePage
             {
                 MessageBox.Show("Fejl");
             }
+            btnSubmit.Enabled = true;
         }
 
         public async Task SetCaseInformationAsync()
@@ -102,7 +178,14 @@ namespace UI.Forms.CasePage
             txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
 
             txtServiceDescription.Text = selectedCaseService.Description;
-            txtUnits.Text = txtTotalHours.Text;
+            if (selectedCaseService.PriceType == "Hourly")
+            {
+                txtUnits.Text = txtTotalHours.Text;
+            }
+            else if (selectedCaseService.PriceType == "Fixed")
+            {
+                txtUnits.Text = "1";
+            }
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
 
         }

@@ -88,6 +88,12 @@ namespace UI.Forms.CasePage
 
         private async void BtnClose_Click(object? sender, EventArgs e)
         {
+            if(serviceEntryUIs.Count == 0)
+            {
+                MessageBox.Show("Must add entrys to close this service");
+                return;
+            }
+            
             btnClose.Enabled = false;
             DialogResult dialogResult = MessageBox.Show("Do you wanna close this service", "Close service", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
@@ -175,16 +181,26 @@ namespace UI.Forms.CasePage
 
             txtServiceName.Text = selectedService.Name;
             txtPrice.Text = selectedService.Price.ToString();
-            txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
 
             txtServiceDescription.Text = selectedCaseService.Description;
+
+
             if (selectedCaseService.PriceType == "Hourly")
             {
+                txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
                 txtUnits.Text = txtTotalHours.Text;
             }
             else if (selectedCaseService.PriceType == "Fixed")
             {
                 txtUnits.Text = "1";
+                txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
+            }
+            else if (selectedCaseService.PriceType == "Kilometer")
+            {
+                lblUnites.Text = "Kilometer";
+                lblPrice.Text = "Price/km";
+                txtTotalHours.Text = selectedCaseService.HoursWorked.ToString();
+                txtUnits.Text = selectedCaseService.Units.ToString();
             }
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
 

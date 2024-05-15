@@ -99,16 +99,16 @@
             // 
             // pnlLawyerDetails
             // 
-            pnlLawyerDetails.Location = new Point(12, 57);
+            pnlLawyerDetails.Location = new Point(15, 12);
             pnlLawyerDetails.Name = "pnlLawyerDetails";
-            pnlLawyerDetails.Size = new Size(283, 451);
+            pnlLawyerDetails.Size = new Size(283, 545);
             pnlLawyerDetails.TabIndex = 4;
             // 
             // pnlEdit
             // 
-            pnlEdit.Location = new Point(2, 34);
+            pnlEdit.Location = new Point(2, 15);
             pnlEdit.Name = "pnlEdit";
-            pnlEdit.Size = new Size(323, 523);
+            pnlEdit.Size = new Size(323, 539);
             pnlEdit.TabIndex = 5;
             // 
             // btnCancel
@@ -130,7 +130,7 @@
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             // 
-            // MyPageLawyerView
+            // LawyerDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -145,7 +145,7 @@
             Controls.Add(lblTask);
             Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "MyPageLawyerView";
+            Name = "LawyerDetailsView";
             Tag = "My page";
             Text = "MyPageLawyerView";
             ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();

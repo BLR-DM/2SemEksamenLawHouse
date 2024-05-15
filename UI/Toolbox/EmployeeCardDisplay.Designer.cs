@@ -33,13 +33,13 @@
             lblDetailsCity = new Label();
             lblDetailsPhone = new Label();
             lblDetailsEmail = new Label();
-            lboxSpecialties = new ListBox();
             lblFullname = new Label();
             pboxDetails = new FontAwesome.Sharp.IconPictureBox();
             lblDetailsTitleValue = new Label();
             lblDetailsCityValue = new Label();
             lblDetailsPhoneValue = new Label();
             lblDetailsEmailValue = new Label();
+            lboxSpecialties = new ListBox();
             ((System.ComponentModel.ISupportInitialize)pboxDetails).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             lblSpecialities.BackColor = Color.Transparent;
             lblSpecialities.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblSpecialities.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSpecialities.Location = new Point(5, 371);
+            lblSpecialities.Location = new Point(6, 368);
             lblSpecialities.Name = "lblSpecialities";
             lblSpecialities.Size = new Size(88, 19);
             lblSpecialities.TabIndex = 4;
@@ -63,7 +63,7 @@
             lblDetailsTitle.BackColor = Color.Transparent;
             lblDetailsTitle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsTitle.Location = new Point(51, 267);
+            lblDetailsTitle.Location = new Point(51, 265);
             lblDetailsTitle.Name = "lblDetailsTitle";
             lblDetailsTitle.Size = new Size(42, 19);
             lblDetailsTitle.TabIndex = 4;
@@ -76,7 +76,7 @@
             lblDetailsCity.BackColor = Color.Transparent;
             lblDetailsCity.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsCity.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsCity.Location = new Point(55, 293);
+            lblDetailsCity.Location = new Point(55, 291);
             lblDetailsCity.Name = "lblDetailsCity";
             lblDetailsCity.Size = new Size(39, 19);
             lblDetailsCity.TabIndex = 4;
@@ -89,7 +89,7 @@
             lblDetailsPhone.BackColor = Color.Transparent;
             lblDetailsPhone.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsPhone.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsPhone.Location = new Point(39, 319);
+            lblDetailsPhone.Location = new Point(39, 317);
             lblDetailsPhone.Name = "lblDetailsPhone";
             lblDetailsPhone.Size = new Size(55, 19);
             lblDetailsPhone.TabIndex = 4;
@@ -102,26 +102,11 @@
             lblDetailsEmail.BackColor = Color.Transparent;
             lblDetailsEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsEmail.Location = new Point(45, 345);
+            lblDetailsEmail.Location = new Point(45, 343);
             lblDetailsEmail.Name = "lblDetailsEmail";
             lblDetailsEmail.Size = new Size(49, 19);
             lblDetailsEmail.TabIndex = 4;
             lblDetailsEmail.Text = "Email:";
-            // 
-            // lboxSpecialties
-            // 
-            lboxSpecialties.BackColor = SystemColors.GradientInactiveCaption;
-            lboxSpecialties.BorderStyle = BorderStyle.None;
-            lboxSpecialties.Font = new Font("Segoe UI", 9.75F);
-            lboxSpecialties.ForeColor = SystemColors.ControlText;
-            lboxSpecialties.FormattingEnabled = true;
-            lboxSpecialties.ItemHeight = 17;
-            lboxSpecialties.Location = new Point(99, 374);
-            lboxSpecialties.Name = "lboxSpecialties";
-            lboxSpecialties.SelectionMode = SelectionMode.None;
-            lboxSpecialties.Size = new Size(211, 136);
-            lboxSpecialties.Sorted = true;
-            lboxSpecialties.TabIndex = 1;
             // 
             // lblFullname
             // 
@@ -159,7 +144,7 @@
             lblDetailsTitleValue.BackColor = Color.Transparent;
             lblDetailsTitleValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsTitleValue.ForeColor = SystemColors.ControlText;
-            lblDetailsTitleValue.Location = new Point(100, 268);
+            lblDetailsTitleValue.Location = new Point(100, 266);
             lblDetailsTitleValue.Name = "lblDetailsTitleValue";
             lblDetailsTitleValue.Size = new Size(66, 17);
             lblDetailsTitleValue.TabIndex = 4;
@@ -172,7 +157,7 @@
             lblDetailsCityValue.BackColor = Color.Transparent;
             lblDetailsCityValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsCityValue.ForeColor = SystemColors.ControlText;
-            lblDetailsCityValue.Location = new Point(100, 294);
+            lblDetailsCityValue.Location = new Point(100, 292);
             lblDetailsCityValue.Name = "lblDetailsCityValue";
             lblDetailsCityValue.Size = new Size(64, 17);
             lblDetailsCityValue.TabIndex = 4;
@@ -185,7 +170,7 @@
             lblDetailsPhoneValue.BackColor = Color.Transparent;
             lblDetailsPhoneValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsPhoneValue.ForeColor = SystemColors.ControlText;
-            lblDetailsPhoneValue.Location = new Point(100, 320);
+            lblDetailsPhoneValue.Location = new Point(100, 318);
             lblDetailsPhoneValue.Name = "lblDetailsPhoneValue";
             lblDetailsPhoneValue.Size = new Size(82, 17);
             lblDetailsPhoneValue.TabIndex = 4;
@@ -198,11 +183,25 @@
             lblDetailsEmailValue.BackColor = Color.Transparent;
             lblDetailsEmailValue.Font = new Font("Segoe UI", 9.75F);
             lblDetailsEmailValue.ForeColor = SystemColors.ControlText;
-            lblDetailsEmailValue.Location = new Point(100, 346);
+            lblDetailsEmailValue.Location = new Point(100, 344);
             lblDetailsEmailValue.Name = "lblDetailsEmailValue";
             lblDetailsEmailValue.Size = new Size(76, 17);
             lblDetailsEmailValue.TabIndex = 4;
             lblDetailsEmailValue.Text = "Some email";
+            // 
+            // lboxSpecialties
+            // 
+            lboxSpecialties.BackColor = SystemColors.GradientInactiveCaption;
+            lboxSpecialties.BorderStyle = BorderStyle.None;
+            lboxSpecialties.Font = new Font("Segoe UI", 9.75F);
+            lboxSpecialties.FormattingEnabled = true;
+            lboxSpecialties.ItemHeight = 17;
+            lboxSpecialties.Location = new Point(100, 368);
+            lboxSpecialties.Name = "lboxSpecialties";
+            lboxSpecialties.SelectionMode = SelectionMode.None;
+            lboxSpecialties.Size = new Size(204, 153);
+            lboxSpecialties.Sorted = true;
+            lboxSpecialties.TabIndex = 11;
             // 
             // EmployeeCardDisplay
             // 
@@ -210,8 +209,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pboxDetails);
             Controls.Add(lblFullname);
-            Controls.Add(lblSpecialities);
             Controls.Add(lboxSpecialties);
+            Controls.Add(lblSpecialities);
             Controls.Add(lblDetailsEmailValue);
             Controls.Add(lblDetailsTitle);
             Controls.Add(lblDetailsPhoneValue);
@@ -234,12 +233,12 @@
         private Label lblDetailsCity;
         private Label lblDetailsPhone;
         private Label lblDetailsEmail;
-        private ListBox lboxSpecialties;
         private Label lblFullname;
         private FontAwesome.Sharp.IconPictureBox pboxDetails;
         private Label lblDetailsTitleValue;
         private Label lblDetailsCityValue;
         private Label lblDetailsPhoneValue;
         private Label lblDetailsEmailValue;
+        private ListBox lboxSpecialties;
     }
 }

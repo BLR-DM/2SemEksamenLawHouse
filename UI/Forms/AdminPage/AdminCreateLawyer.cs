@@ -179,11 +179,11 @@ namespace UI.Forms.AdminPage
 
             foreach (string item in lboxSpecialities.Items)
             {
-                LawyerSpecialityUI lawyerSpecialityUIs = new LawyerSpecialityUI()
+                LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
                 {
                     SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == item).SpecialityID,
                 };
-                this.lawyerSpecialityUIs.Add(lawyerSpecialityUIs);
+                this.lawyerSpecialityUIs.Add(lawyerSpecialityUI);
             }
 
             LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
@@ -260,15 +260,15 @@ namespace UI.Forms.AdminPage
         private void UpdateCreateButtonState()
         {
             btnCreate.Enabled =
-                    txtFirstname.ForeColor != invalidFormat &&
-                    txtLastname.ForeColor != invalidFormat &&
-                    txtAddress.ForeColor != invalidFormat &&
-                    txtPostal.ForeColor != invalidFormat &&
-                    txtPhone.ForeColor != invalidFormat &&
-                    txtCity.ForeColor != invalidFormat &&
-                    lboxSpecialities.Items.Count > 0 &&
-                    cboxTitles.SelectedItem != null &&
-                    lblInvalidDate.Visible == false;
+                txtFirstname.ForeColor == validFormat &&
+                txtLastname.ForeColor == validFormat &&
+                txtAddress.ForeColor == validFormat &&
+                txtPostal.ForeColor == validFormat &&
+                txtPhone.ForeColor == validFormat &&
+                txtCity.ForeColor == validFormat &&
+                lboxSpecialities.Items.Count > 0 &&
+                cboxTitles.SelectedItem != null &&
+                lblInvalidDate.Visible == false;
         }
     }
 }

@@ -202,6 +202,7 @@ namespace BusinessLogic
             LawyerUI lawyerUI = new LawyerUI
             {
                 PersonID = lawyerE.PersonID,
+                Admin = lawyerE.Admin,
                 Firstname = lawyerE.Firstname,
                 Lastname = lawyerE.Lastname,
                 PhoneNumber = lawyerE.PhoneNumber,
@@ -572,6 +573,7 @@ namespace BusinessLogic
         {
             Speciality specialityE = new Speciality
             {
+                
                 SpecialityID = specialityUI.SpecialityID,
                 SpecialityName = specialityUI.SpecialityName,
             };

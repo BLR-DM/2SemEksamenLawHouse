@@ -11,18 +11,20 @@ namespace UI.Forms.EmployeePage
         CaseServiceBL caseServiceBL;
         List<CaseServiceUI> caseServices;
         int lawyerID;
-        public LawyerDetailsView(int lawyerID, bool isMyPage)
+        bool isMyPage;
+        LawyerUI currentUser;
+        public LawyerDetailsView(int lawyerID, bool isMyPage, LawyerUI currentUser)
         {
             this.lawyerID = lawyerID;
-            
+            this.isMyPage = isMyPage;
+            this.currentUser = currentUser;
+
             lawyerBL = new LawyerBL();
             lawyerUI = new LawyerUI();
             //caseServiceBL = new CaseServiceBL();
             //caseServices = new List<CaseServiceUI>();
 
             InitializeComponent();
-
-            CheckUser(isMyPage);
 
             pnlEdit.Visible = false;
             btnCancel.Visible = false;
@@ -32,15 +34,22 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Click += BtnEditDetails_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
+
+            CheckUser(lawyerUI, currentUser);
         }
 
-        private void CheckUser(bool myPage)
+        private void CheckUser(LawyerUI lawyer, EmployeeUI emp)
         {
-            if (!myPage)
+            if (lawyerID != emp.PersonID || !isMyPage)
             {
                 btnEditDetails.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 StartPosition = FormStartPosition.CenterScreen;
+
+                if (currentUser.Admin)
+                {
+                    btnEditDetails.Visible = true;
+                }
             }
         }
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
@@ -74,7 +83,7 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Enabled = false;
 
             pnlEdit.Controls.Clear();
-            pnlEdit.Controls.Add(new LawyerCardEdit(lawyerUI));
+            pnlEdit.Controls.Add(new LawyerCardEdit(lawyerUI, currentUser.Admin));
             pnlEdit.Visible = true;            
         }
 

@@ -97,6 +97,36 @@ namespace DataAccess
             }
         }
 
+        public async Task<bool> UpdateLawyerSpecialitiesAsync(List<LawyerSpeciality> lawyerSpecialities)
+        {
+            try
+            {
+                db.LawyerSpecialities.AddRangeAsync(lawyerSpecialities);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteLawyerSpecialitiesAsync(List<LawyerSpeciality> lawyerSpecialities)
+        {
+            try
+            {
+                db.LawyerSpecialities.RemoveRange(lawyerSpecialities);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
     }
 }

@@ -17,7 +17,8 @@ namespace BusinessLogic
         public async Task<bool> CreateLawyerAsync(LawyerUI lawyerUI, List<LawyerSpecialityUI> lawyerSpecialityUIs, LoginDetailsUI loginDetailsUI)
         {
             Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
-            List<LawyerSpeciality> lawyerSpecialities = lawyerSpecialityUIs.Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+            List<LawyerSpeciality> lawyerSpecialities = lawyerSpecialityUIs
+                .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
             LoginDetails loginDetails = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
 
             lawyer.LawyerSpecialities = lawyerSpecialities;
@@ -85,15 +86,28 @@ namespace BusinessLogic
             try
             {
                 Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
-                lawyer.LawyerSpecialities = lawyerUI.LawyerSpecialities.Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
-                lawyer.Cases = lawyerUI.Cases.Select(modelConverter.ConvertFromCaseUI).ToList();
-                lawyer.CaseServices = lawyerUI.CaseServices.Select(modelConverter.ConvertFromCaseServiceUI).ToList();
+                //lawyer.Cases = lawyerUI.Cases.Select(modelConverter.ConvertFromCaseUI).ToList();
+                //lawyer.CaseServices = lawyerUI.CaseServices.Select(modelConverter.ConvertFromCaseServiceUI).ToList();
                 return await dbAccess.UpdateLawyerAsync(lawyer);
             }
             catch (Exception)
             {
                 return false;
             }
+        }
+
+        public async Task<bool> UpdateLawyerSpecialitiesAsync(List<LawyerSpecialityUI> updatedLawyerSpecialities)
+        {
+            List<LawyerSpeciality> lawyerSpecialities = updatedLawyerSpecialities
+                .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+            return await dbAccess.UpdateLawyerSpecialitiesAsync(lawyerSpecialities);
+        }
+
+        public async Task<bool> DeleteLawyerSpecialitiesAsync(List<LawyerSpecialityUI> deletedLawyerSpecialities)
+        {
+            List<LawyerSpeciality> lawyerSpecialities = deletedLawyerSpecialities
+                .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+            return await dbAccess.DeleteLawyerSpecialitiesAsync(lawyerSpecialities);
         }
     }
 }

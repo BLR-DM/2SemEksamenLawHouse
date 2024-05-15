@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
+using EntityModels;
 using System.Data;
 using UIModels;
 
@@ -17,9 +18,15 @@ namespace UI.Toolbox
         PersonValidator pValidator;
         List<LawyerTitleUI> lawyerTitles;
         List<SpecialityUI> specialities;
-        public LawyerCardEdit(LawyerUI lawyerUI)
+        List<LawyerSpecialityUI> updatedLawyerSpecialities;
+        List<LawyerSpecialityUI> deletedLawyerSpecialities;
+
+        bool isAdmin;
+        public LawyerCardEdit(LawyerUI lawyerUI, bool isAdmin)
         {
+            this.isAdmin = isAdmin;
             this.lawyerUI = lawyerUI;
+
             lawyerBL = new LawyerBL();
             lawyerTitleBL = new LawyerTitleBL();
             specialityBL = new SpecialityBL();
@@ -27,6 +34,9 @@ namespace UI.Toolbox
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
+
+            deletedLawyerSpecialities = new List<LawyerSpecialityUI>();
+            updatedLawyerSpecialities = new List<LawyerSpecialityUI>();
 
             InitializeComponent();
 
@@ -92,16 +102,38 @@ namespace UI.Toolbox
             lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
 
             // if admin
-            if (lboxSpecialities.Items.Count < 0)
+            if (isAdmin)
             {
-                lawyerUI.LawyerSpecialities.Clear();
-                foreach (LawyerSpecialityUI lawyerSpecialityUI in lboxSpecialities.Items)
+                foreach (string lawyerSpeciality in lboxSpecialities.Items)
                 {
-                    lawyerUI.LawyerSpecialities.Add(lawyerSpecialityUI);
-                } 
+                    LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
+                    {
+                        LawyerID = lawyerUI.PersonID,
+                        SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == lawyerSpeciality).SpecialityID
+                    };
+                    updatedLawyerSpecialities.Add(lawyerSpecialityUI);
+                }
+
+                deletedLawyerSpecialities = lawyerUI.LawyerSpecialities
+                    .Where(x => !updatedLawyerSpecialities
+                    .Any(ls => ls.SpecialityID == x.SpecialityID)).ToList();
+
+                bool deleted = await lawyerBL.DeleteLawyerSpecialitiesAsync(lawyerUI.LawyerSpecialities as List<LawyerSpecialityUI>);
+                if (!deleted)
+                {
+                    MessageBox.Show("Failed to delete lawyer specialities!");
+                    return;
+                }
+
+                bool added = await lawyerBL.UpdateLawyerSpecialitiesAsync(updatedLawyerSpecialities);
+                if (!added)
+                {
+                    MessageBox.Show("Failed to add lawyer specialities!");
+                    return;
+                }
             }
 
-            bool result = await UpdateLawyerAsync(lawyerUI);
+            bool result = await lawyerBL.UpdateLawyerAsync(lawyerUI);
             btnUpdate.Enabled = true;
 
             if (result)
@@ -109,11 +141,6 @@ namespace UI.Toolbox
             else
                 MessageBox.Show("Failed!");
             
-        }
-
-        private async Task<bool> UpdateLawyerAsync(LawyerUI lawyer)
-        {
-            return await lawyerBL.UpdateLawyerAsync(lawyer);
         }
 
         private void DisplayInformationLawyer()
@@ -134,7 +161,7 @@ namespace UI.Toolbox
                 FillSpecialityComboBox();
                 UpdateLabelCount();
 
-                if (!lawyerUI.Admin)
+                if (!isAdmin)
                 {
                     txtEmail.Enabled = false;
                     btnAddSpeciality.Visible = false;

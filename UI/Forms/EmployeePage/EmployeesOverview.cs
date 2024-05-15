@@ -21,8 +21,12 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> employeeUIs;
         List<LawyerUI> lawyerUIs;
 
-        public EmployeesOverview(int userID)
+        LawyerUI currentUser;
+
+        public EmployeesOverview(int userID, LawyerUI currentUser)
         {
+            this.currentUser = currentUser;
+
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
 
@@ -74,7 +78,7 @@ namespace UI.Forms.EmployeePage
                     {
                         LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
 
-                        new LawyerDetailsView(lawyer.PersonID, false).ShowDialog();
+                        new LawyerDetailsView(lawyer.PersonID, false, currentUser).ShowDialog();
                     }
                     break;
                 case "  Secretaries":

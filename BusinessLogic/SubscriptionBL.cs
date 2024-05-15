@@ -34,5 +34,17 @@ namespace BusinessLogic
             return await dbAccess.CreateSubscriptionAsync(clientSubscription);
         }
 
+        public async Task<List<ClientSubscriptionUI>> GetClientSubscriptionsAsync(int clientID)
+        {
+            List<ClientSubscription> clientSubscriptions = await dbAccess.GetClientSubscriptionsAsync(clientID);
+            List<ClientSubscriptionUI> clientSubscriptionUIs = new List<ClientSubscriptionUI>();
+            foreach (ClientSubscription clientSubscription in clientSubscriptions)
+            {
+                clientSubscriptionUIs.Add(modelConverter.ConvertFromClientSubscriptionEntity(clientSubscription));
+            }
+            return clientSubscriptionUIs;
+        }
+
+
     }
 }

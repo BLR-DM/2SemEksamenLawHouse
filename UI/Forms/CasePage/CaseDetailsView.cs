@@ -35,8 +35,10 @@ namespace UI.Forms.CasePage
         CaseTypeBL caseTypeBL;
         CaseValidator cValidator;
 
+        bool isClient;
+
         bool isEstimatedEndDateValid;
-        public CaseDetailsView(int selectedCaseID)
+        public CaseDetailsView(int selectedCaseID, bool isClient)
         {
             InitializeComponent();
             clientBL = new ClientBL();
@@ -47,6 +49,7 @@ namespace UI.Forms.CasePage
             caseTypeBL = new CaseTypeBL();
             cValidator = new CaseValidator();
             this.selectedCaseID = selectedCaseID;
+            this.isClient = isClient;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -63,6 +66,14 @@ namespace UI.Forms.CasePage
             btnUpdateCase.Enabled = false;
 
             InitializeData();
+
+            //fjerner knapper hvis brugeren er client
+            if (isClient)
+            {
+                btnAddService.Visible = false;
+                btnUpdateCase.Visible = false;
+                btnCloseCase.Visible = false;
+            }
 
         }
 
@@ -165,21 +176,28 @@ namespace UI.Forms.CasePage
         {
             if (e.RowIndex >= 0)
             {
+                ServiceDetailsView serviceDetailsView;
+
                 DataGridViewRow selectedRow = dgvServices.Rows[e.RowIndex];
                 if (selectedRow.Cells["PriceType"].Value.ToString() == "Hourly" || selectedRow.Cells["PriceType"].Value.ToString() == "Fixed")
                 {
                     CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
-
-
-                    ServiceDetailsView serviceDetailsView = new ServiceDetailsView(this, selectedCaseService);
+                    
+                    ServiceDetailsView serviceDetailsView;
+                    if (isClient)
+                    {
+                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true);
+                    }
+                    else
+                    {
+                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false);
+                    }
                     serviceDetailsView.ShowDialog();
                 }
                 else
                 {
                     MessageBox.Show("Cannot add hours to this service");
-
                 }
-
 
             }
         }

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dgvCases = new DataGridView();
             panel2 = new Panel();
+            btnSubscriptionDetails = new Button();
             lblSuccess = new Label();
             btnDeletePhone = new FontAwesome.Sharp.IconButton();
             btnUpdate = new FontAwesome.Sharp.IconButton();
@@ -58,24 +59,25 @@
             label8 = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             pboxProfile = new FontAwesome.Sharp.IconPictureBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBoughtForms).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pboxProfile).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvCases
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(493, 232);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(448, 136);
-            dataGridView1.TabIndex = 0;
+            dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCases.Location = new Point(493, 232);
+            dgvCases.Name = "dgvCases";
+            dgvCases.Size = new Size(448, 136);
+            dgvCases.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(btnSubscriptionDetails);
             panel2.Controls.Add(lblSuccess);
             panel2.Controls.Add(btnDeletePhone);
             panel2.Controls.Add(btnUpdate);
@@ -105,15 +107,23 @@
             panel2.Size = new Size(421, 577);
             panel2.TabIndex = 34;
             // 
+            // btnSubscriptionDetails
+            // 
+            btnSubscriptionDetails.Location = new Point(377, 366);
+            btnSubscriptionDetails.Name = "btnSubscriptionDetails";
+            btnSubscriptionDetails.Size = new Size(30, 23);
+            btnSubscriptionDetails.TabIndex = 54;
+            btnSubscriptionDetails.Text = "...";
+            btnSubscriptionDetails.UseVisualStyleBackColor = true;
+            // 
             // lblSuccess
             // 
             lblSuccess.AutoSize = true;
             lblSuccess.ForeColor = Color.FromArgb(45, 93, 134);
             lblSuccess.Location = new Point(327, 539);
             lblSuccess.Name = "lblSuccess";
-            lblSuccess.Size = new Size(44, 15);
+            lblSuccess.Size = new Size(0, 15);
             lblSuccess.TabIndex = 53;
-            lblSuccess.Text = "label12";
             // 
             // btnDeletePhone
             // 
@@ -448,11 +458,11 @@
             Controls.Add(dgvBoughtForms);
             Controls.Add(label7);
             Controls.Add(panel2);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientDetails";
             Text = "ClientDetails";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).EndInit();
@@ -464,7 +474,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvCases;
         private Panel panel2;
         private Label label5;
         private Label label2;
@@ -494,5 +504,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private Label lblSuccess;
         private FontAwesome.Sharp.IconPictureBox pboxProfile;
+        private Button btnSubscriptionDetails;
     }
 }

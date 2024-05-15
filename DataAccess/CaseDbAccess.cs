@@ -57,6 +57,19 @@ namespace DataAccess
             }
         }
 
+        public async Task<List<Case>> GetCasesAsync(int ClientID)
+        {
+            try
+            {
+                return await db.Cases.Where(c => c.ClientID == ClientID).ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                return new List<Case>();
+            }
+        }
+
         public async Task<bool> UpdateCaseAsync(Case caseE)
         {
             try

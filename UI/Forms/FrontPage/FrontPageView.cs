@@ -24,7 +24,9 @@ namespace UI.Forms.FrontPage
         PersonBL personBL;
         ClientBL clientBL;
         LawyerBL lawyerBL;
+        CaseBL caseBL;
         FormDocumentBL formBL;
+        SubscriptionBL subscriptionBL;
 
         PersonValidator pValidator;
         OverallValidator oaValidator;
@@ -34,16 +36,19 @@ namespace UI.Forms.FrontPage
             personBL = new PersonBL();
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
+            caseBL = new CaseBL();
             formBL = new FormDocumentBL();
+            subscriptionBL = new SubscriptionBL();
             pValidator = new PersonValidator();
             oaValidator = new OverallValidator();
 
-
+            
             rgbColorBlue = Color.FromArgb(45, 93, 134);
 
             GetPersonAsync(loginDetailsID);
 
             InitializeComponent();
+            pnlContext.Controls.Clear();
 
             lblCurrentPage.Text = string.Empty;
 
@@ -98,8 +103,8 @@ namespace UI.Forms.FrontPage
             btnSubscribe.Visible = true;
 
             //set mypage
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, pValidator);
-            if (pnlContext.Controls[0] != cdMyPage)
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator); 
+            if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(ClientDetails))
             {
                 PnlContextChange(cdMyPage);
             }
@@ -190,14 +195,14 @@ namespace UI.Forms.FrontPage
         private void BtnClients_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, pValidator);
+            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, caseBL, subscriptionBL, pValidator);
             PnlContextChange(cv);
         }
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, formBL, pValidator);
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator);
             PnlContextChange(cdMyPage);
         }
 

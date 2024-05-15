@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.CasePage;
 using UI.Forms.FrontPage;
 using UI.Forms.Self_Service;
 using UI.Forms.SubscriptionPage;
@@ -22,7 +23,9 @@ namespace UI.Forms.ClientPage
         PersonUI currentUser;
         ClientUI client;
         ClientBL clientBL;
+        CaseBL caseBL;
         FormDocumentBL formBL;
+        SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
 
         Color validFormat;
@@ -31,8 +34,10 @@ namespace UI.Forms.ClientPage
         List<PhoneUI> phoneNumbers;
         List<PhoneUI> deletedNumbers;
         List<FormDocumentUI> boughtForms;
+        List<ClientSubscriptionUI> subscriptions;
+        List<CaseUI> cases;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, FormDocumentBL formBL, PersonValidator pValidator)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator)
         {
             InitializeComponent();
             this.frontPageView = fpv;
@@ -40,9 +45,13 @@ namespace UI.Forms.ClientPage
             this.client = client;
             this.clientBL = clientBL;
             this.formBL = formBL;
+            this.subscriptionBL = subscriptionBL;
             this.pValidator = pValidator;
+            this.caseBL = caseBL;
 
             deletedNumbers = new List<PhoneUI>();
+            subscriptions = new List<ClientSubscriptionUI>();
+            cases = new List<CaseUI>();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -60,23 +69,44 @@ namespace UI.Forms.ClientPage
             txtAddress.TextChanged += TxtAddress_TextChanged;
             txtPostal.TextChanged += TxtPostal_TextChanged;
             txtAddPhone.TextChanged += txtAddPhone_TextChanged;
+            btnSubscriptionDetails.Click += BtnSubscriptionDetails_Click;
+            dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
 
-            SetDetails(client);
-            SetBoughtFormsDGVAsync();
+            Load += ClientDetails_Load;
 
         }
 
-        private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        private void BtnSubscriptionDetails_Click(object? sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                FormDocumentUI selectedForm = boughtForms[e.RowIndex];
-                FormDetails formDetails = new FormDetails(selectedForm, client);
-                formDetails.ShowDialog();
-            }
+            SubscriptionDetailsView subscriptionDetailsView = new SubscriptionDetailsView(client, subscriptions);
+            subscriptionDetailsView.ShowDialog();
         }
 
-        private void BtnDeletePhone_Click(object? sender, EventArgs e)
+        private async void ClientDetails_Load(object? sender, EventArgs e)
+        {
+            SetDetails(client);
+            await GetClientSubscriptionsAsync();
+            await SetBoughtFormsDGVAsync();
+            await SetCasesDGVAsync();
+        }
+
+
+        private async Task GetClientSubscriptionsAsync()
+        {
+            subscriptions = await subscriptionBL.GetClientSubscriptionsAsync(client.PersonID);
+            ClientSubscriptionUI? activeSubscription = subscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
+
+            if(activeSubscription != null)
+            {
+                TimeSpan timeTillExpiration = activeSubscription.EndDate - DateTime.Now;
+                int daysUntilExpiration = (int)timeTillExpiration.TotalDays;
+                lblSubscribed.Text = lblSubscribed.Text + $" - Expires in: {daysUntilExpiration} Days";
+            }
+            
+        }
+
+
+        private async void BtnDeletePhone_Click(object? sender, EventArgs e)
         {
             //sletter det valgte telefonummer og tilføjer til deletedphones
             if (dgvPhoneNumbers.SelectedRows.Count > 0)
@@ -87,11 +117,11 @@ namespace UI.Forms.ClientPage
                 phoneNumbers.Remove(selectedPhone);
                 deletedNumbers.Add(selectedPhone);
 
-                SetPhoneDetails();
+                await SetPhoneDetailsAsync();
             }
         }
 
-        private void BtnAddPhone_Click(object? sender, EventArgs e)
+        private async void BtnAddPhone_Click(object? sender, EventArgs e)
         {
             PhoneUI tempP = new PhoneUI()
             {
@@ -99,7 +129,7 @@ namespace UI.Forms.ClientPage
             };
             phoneNumbers.Add(tempP);
             txtAddPhone.Clear();
-            SetPhoneDetails();
+            await SetPhoneDetailsAsync();
         }
 
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
@@ -191,7 +221,7 @@ namespace UI.Forms.ClientPage
             else if (client.IsSubscribed == true) { lblSubscribed.Text = "Yes"; }
             else { lblSubscribed.Text = "Undefined"; }
 
-            await SetPhoneDetails();
+            await SetPhoneDetailsAsync();
         }
 
         public async Task SetBoughtFormsDGVAsync()
@@ -205,8 +235,54 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.RowHeadersVisible = false;
             dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                FormDocumentUI selectedForm = boughtForms[e.RowIndex];
+                FormDetails formDetails = new FormDetails(selectedForm, client);
+                formDetails.ShowDialog();
+            }
+        }
 
-        private async Task SetPhoneDetails()
+        public async Task SetCasesDGVAsync()
+        {
+            cases = await caseBL.GetCasesAsync(client.PersonID);
+            dgvCases.DataSource = cases;
+            dgvCases.Columns[2].Visible = false;
+            dgvCases.Columns[3].Visible = false;
+            dgvCases.Columns[4].Visible = false;
+            dgvCases.Columns[8].Visible = false;
+            dgvCases.Columns[9].Visible = false;
+            dgvCases.Columns[10].Visible = false;
+            dgvCases.Columns[11].Visible = false;
+            dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCases.ReadOnly = true;
+            dgvCases.RowHeadersVisible = false;
+            dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+        }
+
+        private void DgvCases_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                CaseDetailsView caseDetailsView;
+                CaseUI selectedCase = cases[e.RowIndex];
+                if(currentUser is ClientUI)
+                {
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true);
+                }
+                else
+                {
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false);
+                }
+                frontPageView.PnlContextChange(caseDetailsView);
+            }
+        }
+
+
+        private async Task SetPhoneDetailsAsync()
         {
             dgvPhoneNumbers.DataSource = null;
             if (phoneNumbers == null)

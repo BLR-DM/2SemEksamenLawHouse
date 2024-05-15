@@ -32,6 +32,10 @@
             pnlLawyerInformation = new Panel();
             pnlClientInformation = new Panel();
             panel1 = new Panel();
+            lblStatus = new Label();
+            lblStatusHeadline = new Label();
+            txtCaseID = new TextBox();
+            lblCaseID = new Label();
             txtDescription = new TextBox();
             lblDescription = new Label();
             lblTotalPrice = new Label();
@@ -50,7 +54,7 @@
             dgvServices = new DataGridView();
             lblServices = new Label();
             btnUpdateCase = new Button();
-            btnCloseCase = new Button();
+            btnUpdateCaseStatus = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
@@ -58,7 +62,7 @@
             // 
             // btnAddService
             // 
-            btnAddService.Location = new Point(271, 303);
+            btnAddService.Location = new Point(271, 277);
             btnAddService.Name = "btnAddService";
             btnAddService.Size = new Size(131, 35);
             btnAddService.TabIndex = 18;
@@ -84,6 +88,10 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblStatus);
+            panel1.Controls.Add(lblStatusHeadline);
+            panel1.Controls.Add(txtCaseID);
+            panel1.Controls.Add(lblCaseID);
             panel1.Controls.Add(txtDescription);
             panel1.Controls.Add(lblDescription);
             panel1.Controls.Add(lblTotalPrice);
@@ -100,8 +108,55 @@
             panel1.Controls.Add(lblTitle);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(687, 238);
+            panel1.Size = new Size(687, 266);
             panel1.TabIndex = 15;
+            // 
+            // lblStatus
+            // 
+            lblStatus.BackColor = SystemColors.GradientInactiveCaption;
+            lblStatus.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.Black;
+            lblStatus.Location = new Point(145, 24);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(86, 21);
+            lblStatus.TabIndex = 28;
+            lblStatus.Text = "Total price";
+            lblStatus.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblStatusHeadline
+            // 
+            lblStatusHeadline.AutoSize = true;
+            lblStatusHeadline.BackColor = SystemColors.GradientInactiveCaption;
+            lblStatusHeadline.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblStatusHeadline.ForeColor = Color.FromArgb(45, 93, 134);
+            lblStatusHeadline.Location = new Point(142, 0);
+            lblStatusHeadline.Name = "lblStatusHeadline";
+            lblStatusHeadline.Size = new Size(91, 21);
+            lblStatusHeadline.TabIndex = 27;
+            lblStatusHeadline.Text = "Case status";
+            // 
+            // txtCaseID
+            // 
+            txtCaseID.BackColor = Color.White;
+            txtCaseID.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCaseID.Location = new Point(3, 24);
+            txtCaseID.MaxLength = 50;
+            txtCaseID.Name = "txtCaseID";
+            txtCaseID.ReadOnly = true;
+            txtCaseID.Size = new Size(110, 27);
+            txtCaseID.TabIndex = 26;
+            // 
+            // lblCaseID
+            // 
+            lblCaseID.AutoSize = true;
+            lblCaseID.BackColor = SystemColors.GradientInactiveCaption;
+            lblCaseID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCaseID.ForeColor = Color.FromArgb(45, 93, 134);
+            lblCaseID.Location = new Point(3, 0);
+            lblCaseID.Name = "lblCaseID";
+            lblCaseID.Size = new Size(101, 21);
+            lblCaseID.TabIndex = 25;
+            lblCaseID.Text = "Casenumber";
             // 
             // txtDescription
             // 
@@ -111,7 +166,7 @@
             txtDescription.MaxLength = 300;
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(411, 131);
+            txtDescription.Size = new Size(411, 161);
             txtDescription.TabIndex = 24;
             // 
             // lblDescription
@@ -132,7 +187,7 @@
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(515, 178);
+            lblTotalPrice.Location = new Point(515, 210);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.Size = new Size(86, 21);
             lblTotalPrice.TabIndex = 22;
@@ -143,7 +198,7 @@
             txtTotalPrice.BackColor = Color.White;
             txtTotalPrice.Enabled = false;
             txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(515, 202);
+            txtTotalPrice.Location = new Point(515, 234);
             txtTotalPrice.MaxLength = 50;
             txtTotalPrice.Name = "txtTotalPrice";
             txtTotalPrice.Size = new Size(167, 27);
@@ -167,7 +222,7 @@
             label1.BackColor = SystemColors.GradientInactiveCaption;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(3, 74);
+            label1.Location = new Point(3, 104);
             label1.Name = "label1";
             label1.Size = new Size(77, 21);
             label1.TabIndex = 17;
@@ -175,20 +230,21 @@
             // 
             // cboxCaseType
             // 
+            cboxCaseType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxCaseType.FormattingEnabled = true;
-            cboxCaseType.Location = new Point(3, 98);
+            cboxCaseType.Location = new Point(3, 128);
             cboxCaseType.Name = "cboxCaseType";
-            cboxCaseType.Size = new Size(230, 23);
+            cboxCaseType.Size = new Size(178, 23);
             cboxCaseType.TabIndex = 18;
             // 
             // txtEstimatedHours
             // 
             txtEstimatedHours.BackColor = Color.White;
             txtEstimatedHours.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEstimatedHours.Location = new Point(3, 148);
+            txtEstimatedHours.Location = new Point(3, 178);
             txtEstimatedHours.MaxLength = 50;
             txtEstimatedHours.Name = "txtEstimatedHours";
-            txtEstimatedHours.Size = new Size(230, 27);
+            txtEstimatedHours.Size = new Size(110, 27);
             txtEstimatedHours.TabIndex = 17;
             // 
             // lblEstimatedHours
@@ -197,7 +253,7 @@
             lblEstimatedHours.BackColor = SystemColors.GradientInactiveCaption;
             lblEstimatedHours.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEstimatedHours.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEstimatedHours.Location = new Point(3, 124);
+            lblEstimatedHours.Location = new Point(3, 154);
             lblEstimatedHours.Name = "lblEstimatedHours";
             lblEstimatedHours.Size = new Size(130, 21);
             lblEstimatedHours.TabIndex = 16;
@@ -205,9 +261,9 @@
             // 
             // dtpEstimatedEndDate
             // 
-            dtpEstimatedEndDate.Location = new Point(3, 199);
+            dtpEstimatedEndDate.Location = new Point(3, 238);
             dtpEstimatedEndDate.Name = "dtpEstimatedEndDate";
-            dtpEstimatedEndDate.Size = new Size(230, 23);
+            dtpEstimatedEndDate.Size = new Size(178, 23);
             dtpEstimatedEndDate.TabIndex = 15;
             // 
             // txtEstimatedEndDate
@@ -226,7 +282,7 @@
             lblEstimatedEndDate.BackColor = SystemColors.GradientInactiveCaption;
             lblEstimatedEndDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEstimatedEndDate.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEstimatedEndDate.Location = new Point(3, 178);
+            lblEstimatedEndDate.Location = new Point(3, 214);
             lblEstimatedEndDate.Name = "lblEstimatedEndDate";
             lblEstimatedEndDate.Size = new Size(178, 21);
             lblEstimatedEndDate.TabIndex = 13;
@@ -236,7 +292,7 @@
             // 
             txtTitle.BackColor = Color.White;
             txtTitle.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTitle.Location = new Point(3, 44);
+            txtTitle.Location = new Point(3, 74);
             txtTitle.MaxLength = 50;
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(230, 27);
@@ -248,7 +304,7 @@
             lblTitle.BackColor = SystemColors.GradientInactiveCaption;
             lblTitle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTitle.Location = new Point(3, 20);
+            lblTitle.Location = new Point(3, 50);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(42, 21);
             lblTitle.TabIndex = 11;
@@ -260,9 +316,9 @@
             panel3.Controls.Add(dgvServices);
             panel3.Controls.Add(btnAddService);
             panel3.Controls.Add(lblServices);
-            panel3.Location = new Point(12, 256);
+            panel3.Location = new Point(12, 284);
             panel3.Name = "panel3";
-            panel3.Size = new Size(687, 345);
+            panel3.Size = new Size(687, 317);
             panel3.TabIndex = 19;
             // 
             // dgvServices
@@ -270,10 +326,10 @@
             dgvServices.AllowUserToAddRows = false;
             dgvServices.AllowUserToDeleteRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(3, 34);
+            dgvServices.Location = new Point(3, 24);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(679, 263);
+            dgvServices.Size = new Size(679, 247);
             dgvServices.TabIndex = 22;
             // 
             // lblServices
@@ -297,14 +353,14 @@
             btnUpdateCase.Text = "Update Case information";
             btnUpdateCase.UseVisualStyleBackColor = true;
             // 
-            // btnCloseCase
+            // btnUpdateCaseStatus
             // 
-            btnCloseCase.Location = new Point(870, 560);
-            btnCloseCase.Name = "btnCloseCase";
-            btnCloseCase.Size = new Size(116, 41);
-            btnCloseCase.TabIndex = 21;
-            btnCloseCase.Text = "Close case";
-            btnCloseCase.UseVisualStyleBackColor = true;
+            btnUpdateCaseStatus.Location = new Point(870, 560);
+            btnUpdateCaseStatus.Name = "btnUpdateCaseStatus";
+            btnUpdateCaseStatus.Size = new Size(116, 41);
+            btnUpdateCaseStatus.TabIndex = 21;
+            btnUpdateCaseStatus.Text = "Close case";
+            btnUpdateCaseStatus.UseVisualStyleBackColor = true;
             // 
             // CaseDetailsView
             // 
@@ -312,7 +368,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(btnCloseCase);
+            Controls.Add(btnUpdateCaseStatus);
             Controls.Add(btnUpdateCase);
             Controls.Add(panel3);
             Controls.Add(pnlLawyerInformation);
@@ -353,6 +409,10 @@
         private TextBox txtTotalPrice;
         private TextBox txtDescription;
         private Label lblDescription;
-        private Button btnCloseCase;
+        private Button btnUpdateCaseStatus;
+        private TextBox txtCaseID;
+        private Label lblCaseID;
+        private Label lblStatus;
+        private Label lblStatusHeadline;
     }
 }

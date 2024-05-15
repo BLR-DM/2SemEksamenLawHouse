@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace EntityModels
+﻿namespace EntityModels
 {
     public class Client : Person
     {

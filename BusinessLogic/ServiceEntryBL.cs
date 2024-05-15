@@ -24,11 +24,11 @@ namespace BusinessLogic
             return await dbAccess.CreateServiceEntryAsync(modelConverter.ConvertFromServiceEntryUI(serviceEntryUI));
         }
 
-        public async Task<List<ServiceEntryUI>> GetServiceEntryUIAsync(int id)
+        public async Task<List<ServiceEntryUI>> GetServiceEntryUIAsync(int CaseServiceID)
         {
             List<ServiceEntryUI> serviceEntriesUI = new List<ServiceEntryUI>();
 
-            foreach (ServiceEntry serviceEntry in await dbAccess.GetServiceEntriesAsync(id)) 
+            foreach (ServiceEntry serviceEntry in await dbAccess.GetServiceEntriesAsync(CaseServiceID)) 
             {
                 serviceEntriesUI.Add(modelConverter.ConvertFromServiceEntryEntity(serviceEntry));
             }

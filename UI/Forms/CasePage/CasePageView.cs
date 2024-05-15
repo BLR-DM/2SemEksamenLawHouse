@@ -20,19 +20,21 @@ namespace UI.Forms.CasePage
         LawyerBL lawyerBL;
         CaseBL caseBL;
         FrontPageView f1;
+        ServiceEntryBL serviceEntryBL;
 
 
         List<CaseTypeUI> caseTypeList;
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
         List<CaseUI> filteredCases;
-        public CasePageView(FrontPageView f1)
+        public CasePageView(FrontPageView f1, ServiceEntryBL serviceEntryBL)
         {
             InitializeComponent();
             caseTypeBL = new CaseTypeBL();
             lawyerBL = new LawyerBL();
             caseBL = new CaseBL();
             this.f1 = f1;
+            this.serviceEntryBL = serviceEntryBL;
 
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
             btnCreateCase.Click += BtnCreateCase_Click;
@@ -92,7 +94,7 @@ namespace UI.Forms.CasePage
                 {
                     if (int.TryParse(selectedRow.Cells["CaseID"].Value.ToString(), out int id))
                     {
-                        CaseDetailsView detailsView = new CaseDetailsView(id, false);
+                        CaseDetailsView detailsView = new CaseDetailsView(id, false, serviceEntryBL);
                         f1.PnlContextChange(detailsView);
                     }
                 }

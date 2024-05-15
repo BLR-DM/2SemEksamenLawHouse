@@ -34,11 +34,12 @@ namespace UI.Forms.CasePage
         CaseServiceBL caseServiceBL;
         CaseTypeBL caseTypeBL;
         CaseValidator cValidator;
+        ServiceEntryBL serviceEntryBL;
 
         bool isClient;
 
         bool isEstimatedEndDateValid;
-        public CaseDetailsView(int selectedCaseID, bool isClient)
+        public CaseDetailsView(int selectedCaseID, bool isClient, ServiceEntryBL serviceEntryBL)
         {
             InitializeComponent();
             clientBL = new ClientBL();
@@ -50,6 +51,7 @@ namespace UI.Forms.CasePage
             cValidator = new CaseValidator();
             this.selectedCaseID = selectedCaseID;
             this.isClient = isClient;
+            this.serviceEntryBL = serviceEntryBL;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -61,6 +63,7 @@ namespace UI.Forms.CasePage
             txtTitle.TextChanged += TxtTitle_TextChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
+            btnPrintDetails.Click += BtnPrintDetails_Click;
 
 
             btnUpdateCase.Enabled = false;
@@ -75,6 +78,15 @@ namespace UI.Forms.CasePage
                 btnUpdateCaseStatus.Visible = false;
             }
 
+            
+        }
+        
+        private void BtnPrintDetails_Click(object? sender, EventArgs e)
+        {
+            PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView
+                                                        (selectedCase, caseTypeUIList, selectedLawyer,
+                                                        selectedClient, caseServiceList, serviceBL, lawyerBL, serviceEntryBL);
+            printCaseDetailsView.ShowDialog();
         }
 
         private async void BtnCloseCase_Click(object? sender, EventArgs e)

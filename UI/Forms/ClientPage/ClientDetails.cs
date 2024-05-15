@@ -27,6 +27,7 @@ namespace UI.Forms.ClientPage
         FormDocumentBL formBL;
         SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
+        ServiceEntryBL serviceEntryBL;
 
         Color validFormat;
         Color invalidFormat;
@@ -37,7 +38,7 @@ namespace UI.Forms.ClientPage
         List<ClientSubscriptionUI> subscriptions;
         List<CaseUI> cases;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL)
         {
             InitializeComponent();
             this.frontPageView = fpv;
@@ -48,6 +49,7 @@ namespace UI.Forms.ClientPage
             this.subscriptionBL = subscriptionBL;
             this.pValidator = pValidator;
             this.caseBL = caseBL;
+            this.serviceEntryBL = serviceEntryBL;
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();
@@ -271,11 +273,11 @@ namespace UI.Forms.ClientPage
                 CaseUI selectedCase = cases[e.RowIndex];
                 if(currentUser is ClientUI)
                 {
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, serviceEntryBL);
                 }
                 else
                 {
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, serviceEntryBL);
                 }
                 frontPageView.PnlContextChange(caseDetailsView);
             }

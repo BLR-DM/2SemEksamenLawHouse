@@ -55,6 +55,7 @@
             lblServices = new Label();
             btnUpdateCase = new Button();
             btnUpdateCaseStatus = new Button();
+            btnPrintDetails = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
@@ -362,12 +363,22 @@
             btnUpdateCaseStatus.Text = "Close case";
             btnUpdateCaseStatus.UseVisualStyleBackColor = true;
             // 
+            // btnPrintDetails
+            // 
+            btnPrintDetails.Location = new Point(787, 513);
+            btnPrintDetails.Name = "btnPrintDetails";
+            btnPrintDetails.Size = new Size(116, 41);
+            btnPrintDetails.TabIndex = 22;
+            btnPrintDetails.Text = "Print Details";
+            btnPrintDetails.UseVisualStyleBackColor = true;
+            // 
             // CaseDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnPrintDetails);
             Controls.Add(btnUpdateCaseStatus);
             Controls.Add(btnUpdateCase);
             Controls.Add(panel3);
@@ -414,5 +425,6 @@
         private Label lblCaseID;
         private Label lblStatus;
         private Label lblStatusHeadline;
+        private Button btnPrintDetails;
     }
 }

@@ -77,7 +77,7 @@ namespace UI.Forms.AdminPage
                 }
                 else btnRemoveSpeciality.Enabled = false;
             }
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void BtnAddSpeciality_Click(object? sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace UI.Forms.AdminPage
                 }
                 else btnAddSpeciality.Enabled = false;
             }
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void CboxSpecialities_SelectionChangeCommitted(object? sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace UI.Forms.AdminPage
             {
                 txtEmail.Text = string.Empty;
             }
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private async void BtnCreate_Click(object? sender, EventArgs e)
@@ -214,49 +214,50 @@ namespace UI.Forms.AdminPage
                 lblInvalidDate.Show();
             else
                 lblInvalidDate.Hide();
-            btnCreateEnabled();
+
+            UpdateCreateButtonState();
         }
 
         private void TxtCity_TextChanged(object? sender, EventArgs e)
         {
             txtCity.ForeColor = pValidator.ValidName(txtCity.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void TxtAddress_TextChanged(object? sender, EventArgs e)
         {
             txtAddress.ForeColor = pValidator.ValidAddress(txtAddress.Text) ? validFormat : invalidFormat;
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void TxtPhone_TextChanged(object? sender, EventArgs e)
         {
             txtPhone.ForeColor = pValidator.ValidPhone(txtPhone.Text) ? validFormat : invalidFormat;
             SetEmail();
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void TxtLastname_TextChanged(object? sender, EventArgs e)
         {
             txtLastname.ForeColor = pValidator.ValidName(txtLastname.Text) ? validFormat : invalidFormat;
             SetEmail();
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
         private void TxtFirstname_TextChanged(object? sender, EventArgs e)
         {
             txtFirstname.ForeColor = pValidator.ValidName(txtFirstname.Text) ? validFormat : invalidFormat;
             SetEmail();
-            btnCreateEnabled();
+            UpdateCreateButtonState();
         }
 
-        private void btnCreateEnabled()
+        private void UpdateCreateButtonState()
         {
             btnCreate.Enabled =
                     txtFirstname.ForeColor != invalidFormat &&

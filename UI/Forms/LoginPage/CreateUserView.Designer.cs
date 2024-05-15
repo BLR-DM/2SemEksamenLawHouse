@@ -54,8 +54,6 @@
             txtPasswordConfirm = new TextBox();
             lblPhone = new Label();
             txtPhoneMain = new TextBox();
-            txtPhoneAlt = new TextBox();
-            lblPhoneAlt = new Label();
             lblPhoneMain = new Label();
             lblEmailEnter = new Label();
             lblCity = new Label();
@@ -66,10 +64,16 @@
             lblPasswordEnter = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
             lblCancel = new Label();
-            ttipPassword = new ToolTip(components);
+            Password = new ToolTip(components);
+            txtPhoneAlt = new TextBox();
+            lblAltPhone = new Label();
+            lblAltPhonenumber = new Label();
+            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            altPhone = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
             pnlLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pboxEye
@@ -110,7 +114,7 @@
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
             lblName.Location = new Point(33, 120);
             lblName.Name = "lblName";
-            lblName.Size = new Size(53, 21);
+            lblName.Size = new Size(81, 21);
             lblName.TabIndex = 4;
             lblName.Text = "Firstname";
             // 
@@ -368,30 +372,6 @@
             txtPhoneMain.Size = new Size(230, 27);
             txtPhoneMain.TabIndex = 5;
             // 
-            // txtPhoneAlt
-            // 
-            txtPhoneAlt.Anchor = AnchorStyles.Top;
-            txtPhoneAlt.BackColor = Color.White;
-            txtPhoneAlt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPhoneAlt.Location = new Point(272, 305);
-            txtPhoneAlt.MaxLength = 50;
-            txtPhoneAlt.Name = "txtPhoneAlt";
-            txtPhoneAlt.Size = new Size(230, 27);
-            txtPhoneAlt.TabIndex = 6;
-            // 
-            // lblPhoneAlt
-            // 
-            lblPhoneAlt.Anchor = AnchorStyles.Top;
-            lblPhoneAlt.AutoSize = true;
-            lblPhoneAlt.BackColor = SystemColors.GradientInactiveCaption;
-            lblPhoneAlt.Font = new Font("Segoe UI", 8.25F);
-            lblPhoneAlt.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPhoneAlt.Location = new Point(272, 335);
-            lblPhoneAlt.Name = "lblPhoneAlt";
-            lblPhoneAlt.Size = new Size(142, 13);
-            lblPhoneAlt.TabIndex = 4;
-            lblPhoneAlt.Text = "Alternative phone number";
-            // 
             // lblPhoneMain
             // 
             lblPhoneMain.Anchor = AnchorStyles.Top;
@@ -466,13 +446,13 @@
             iconPictureBox1.IconColor = Color.FromArgb(45, 93, 134);
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 25;
-            iconPictureBox1.Location = new Point(222, 84);
+            iconPictureBox1.Location = new Point(94, 84);
             iconPictureBox1.Name = "iconPictureBox1";
             iconPictureBox1.Size = new Size(25, 25);
             iconPictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             iconPictureBox1.TabIndex = 8;
             iconPictureBox1.TabStop = false;
-            ttipPassword.SetToolTip(iconPictureBox1, resources.GetString("iconPictureBox1.ToolTip"));
+            Password.SetToolTip(iconPictureBox1, resources.GetString("iconPictureBox1.ToolTip"));
             // 
             // label1
             // 
@@ -483,9 +463,9 @@
             label1.ForeColor = Color.FromArgb(45, 93, 134);
             label1.Location = new Point(16, 58);
             label1.Name = "label1";
-            label1.Size = new Size(146, 13);
+            label1.Size = new Size(162, 13);
             label1.TabIndex = 4;
-            label1.Text = "Username is the valid email";
+            label1.Text = "Username is the entered email";
             // 
             // lblPasswordEnter
             // 
@@ -534,10 +514,63 @@
             lblCancel.TabIndex = 0;
             lblCancel.Text = "Cancel";
             // 
-            // ttipPassword
+            // Password
             // 
-            ttipPassword.ToolTipIcon = ToolTipIcon.Info;
-            ttipPassword.ToolTipTitle = "Password";
+            Password.ToolTipIcon = ToolTipIcon.Info;
+            Password.ToolTipTitle = "Password";
+            // 
+            // txtPhoneAlt
+            // 
+            txtPhoneAlt.Anchor = AnchorStyles.Top;
+            txtPhoneAlt.BackColor = Color.White;
+            txtPhoneAlt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhoneAlt.Location = new Point(272, 305);
+            txtPhoneAlt.MaxLength = 50;
+            txtPhoneAlt.Name = "txtPhoneAlt";
+            txtPhoneAlt.Size = new Size(230, 27);
+            txtPhoneAlt.TabIndex = 5;
+            // 
+            // lblAltPhone
+            // 
+            lblAltPhone.Anchor = AnchorStyles.Top;
+            lblAltPhone.AutoSize = true;
+            lblAltPhone.BackColor = SystemColors.GradientInactiveCaption;
+            lblAltPhone.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblAltPhone.ForeColor = Color.FromArgb(45, 93, 134);
+            lblAltPhone.Location = new Point(272, 280);
+            lblAltPhone.Name = "lblAltPhone";
+            lblAltPhone.Size = new Size(141, 21);
+            lblAltPhone.TabIndex = 4;
+            lblAltPhone.Text = "Alternative phone";
+            // 
+            // lblAltPhonenumber
+            // 
+            lblAltPhonenumber.Anchor = AnchorStyles.Top;
+            lblAltPhonenumber.AutoSize = true;
+            lblAltPhonenumber.BackColor = SystemColors.GradientInactiveCaption;
+            lblAltPhonenumber.Font = new Font("Segoe UI", 8.25F);
+            lblAltPhonenumber.ForeColor = Color.FromArgb(45, 93, 134);
+            lblAltPhonenumber.Location = new Point(273, 335);
+            lblAltPhonenumber.Name = "lblAltPhonenumber";
+            lblAltPhonenumber.Size = new Size(141, 13);
+            lblAltPhonenumber.TabIndex = 4;
+            lblAltPhonenumber.Text = "Additional phone number";
+            // 
+            // iconPictureBox2
+            // 
+            iconPictureBox2.BackColor = Color.Transparent;
+            iconPictureBox2.ForeColor = Color.FromArgb(45, 93, 134);
+            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.QuestionCircle;
+            iconPictureBox2.IconColor = Color.FromArgb(45, 93, 134);
+            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox2.IconSize = 25;
+            iconPictureBox2.Location = new Point(413, 281);
+            iconPictureBox2.Name = "iconPictureBox2";
+            iconPictureBox2.Size = new Size(25, 25);
+            iconPictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            iconPictureBox2.TabIndex = 8;
+            iconPictureBox2.TabStop = false;
+            altPhone.SetToolTip(iconPictureBox2, "Additional phone numbers can be added\r\nafter account creation in the 'My Page' section.");
             // 
             // CreateUserView
             // 
@@ -547,14 +580,15 @@
             ClientSize = new Size(544, 805);
             ControlBox = false;
             Controls.Add(btnCreate);
+            Controls.Add(iconPictureBox2);
             Controls.Add(txtLastname);
             Controls.Add(txtCity);
             Controls.Add(txtPostal);
             Controls.Add(txtAddress);
             Controls.Add(txtPasswordConfirm);
-            Controls.Add(txtPhoneAlt);
             Controls.Add(txtEmailConfirm);
             Controls.Add(txtPassword);
+            Controls.Add(txtPhoneAlt);
             Controls.Add(txtPhoneMain);
             Controls.Add(txtEmail);
             Controls.Add(txtFirstname);
@@ -564,10 +598,11 @@
             Controls.Add(lblCreate);
             Controls.Add(lblCancel);
             Controls.Add(lblPassword);
+            Controls.Add(lblAltPhone);
             Controls.Add(lblPhone);
             Controls.Add(lblEmail);
+            Controls.Add(lblAltPhonenumber);
             Controls.Add(lblPhoneMain);
-            Controls.Add(lblPhoneAlt);
             Controls.Add(lblEmailEnter);
             Controls.Add(lblConfirmEmail);
             Controls.Add(lblLastname);
@@ -584,6 +619,7 @@
             pnlLoginInfo.ResumeLayout(false);
             pnlLoginInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -613,8 +649,6 @@
         private TextBox txtPasswordConfirm;
         private Label lblPhone;
         private TextBox txtPhoneMain;
-        private TextBox txtPhoneAlt;
-        private Label lblPhoneAlt;
         private Label lblPhoneMain;
         private Label lblEmailEnter;
         private Label lblCity;
@@ -624,7 +658,12 @@
         private Label lblCancel;
         private Label lblPasswordEnter;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private ToolTip ttipPassword;
+        private ToolTip Password;
         private Label label1;
+        private TextBox txtPhoneAlt;
+        private Label lblAltPhone;
+        private Label lblAltPhonenumber;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private ToolTip altPhone;
     }
 }

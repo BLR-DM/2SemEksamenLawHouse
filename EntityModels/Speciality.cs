@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EntityModels
 {
@@ -23,6 +18,5 @@ namespace EntityModels
 
         //foreign key (nav prop??)
         public virtual ICollection<LawyerSpeciality> LawyerSpecialities { get; set;}
-
     }
 }

@@ -456,7 +456,7 @@
             lblAddedSpecialities.BackColor = SystemColors.GradientInactiveCaption;
             lblAddedSpecialities.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAddedSpecialities.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddedSpecialities.Location = new Point(253, 444);
+            lblAddedSpecialities.Location = new Point(353, 517);
             lblAddedSpecialities.Name = "lblAddedSpecialities";
             lblAddedSpecialities.Size = new Size(100, 13);
             lblAddedSpecialities.TabIndex = 25;
@@ -486,7 +486,7 @@
             label1.TabIndex = 25;
             label1.Text = "Add specialities";
             // 
-            // AdminCUDLawyer
+            // AdminCreateLawyer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -524,7 +524,7 @@
             Controls.Add(lblPostal);
             Controls.Add(txtAddress);
             Controls.Add(txtPostal);
-            Name = "AdminCUDLawyer";
+            Name = "AdminCreateLawyer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminCUDLawyer";
             pnlLogin.ResumeLayout(false);

@@ -19,7 +19,6 @@ namespace DataAccess
         public async Task<bool> CheckUsernameAsync(string username)
         {
             return await db.LoginDetails.AnyAsync(u => u.Username == username);
-
         }
 
         public async Task<int> CheckUsernameAndPasswordAsync(string username, string password)

@@ -82,7 +82,7 @@ namespace UI.Forms.CreateUserPage
             phoneUIs.Add(phoneUI);
 
             // Opret PhoneAlt UI
-            if (!string.IsNullOrWhiteSpace(txtPhoneAlt.Text))
+            if (!string.IsNullOrWhiteSpace(txtPhoneAlt.Text) && pValidator.ValidPhone(txtPhoneAlt.Text))
             {
                 PhoneUI phoneUIAlt = new PhoneUI { PhoneNumber = int.Parse(txtPhoneAlt.Text) };
                 phoneUIs.Add(phoneUIAlt);

@@ -183,7 +183,6 @@ namespace UI.Forms.CasePage
                 {
                     CaseServiceUI selectedCaseService = caseServiceList[e.RowIndex] as CaseServiceUI;
                     
-                    ServiceDetailsView serviceDetailsView;
                     if (isClient)
                     {
                         serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true);

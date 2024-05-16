@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblPaymentPrYear = new Label();
+            lblTotalPrYear = new Label();
             lblAmountPrPayment = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -45,26 +45,28 @@
             btnClear = new FontAwesome.Sharp.IconButton();
             btnCalculate = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
+            panel2 = new Panel();
             pnlTop.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // lblPaymentPrYear
+            // lblTotalPrYear
             // 
-            lblPaymentPrYear.AutoSize = true;
-            lblPaymentPrYear.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPaymentPrYear.ForeColor = SystemColors.ActiveCaptionText;
-            lblPaymentPrYear.Location = new Point(269, 481);
-            lblPaymentPrYear.Name = "lblPaymentPrYear";
-            lblPaymentPrYear.Size = new Size(71, 17);
-            lblPaymentPrYear.TabIndex = 64;
-            lblPaymentPrYear.Text = "3650,63 kr.";
+            lblTotalPrYear.AutoSize = true;
+            lblTotalPrYear.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalPrYear.ForeColor = SystemColors.ActiveCaptionText;
+            lblTotalPrYear.Location = new Point(269, 463);
+            lblTotalPrYear.Name = "lblTotalPrYear";
+            lblTotalPrYear.Size = new Size(71, 17);
+            lblTotalPrYear.TabIndex = 64;
+            lblTotalPrYear.Text = "3650,63 kr.";
             // 
             // lblAmountPrPayment
             // 
             lblAmountPrPayment.AutoSize = true;
             lblAmountPrPayment.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAmountPrPayment.ForeColor = SystemColors.ActiveCaptionText;
-            lblAmountPrPayment.Location = new Point(269, 445);
+            lblAmountPrPayment.Location = new Point(269, 432);
             lblAmountPrPayment.Name = "lblAmountPrPayment";
             lblAmountPrPayment.Size = new Size(64, 17);
             lblAmountPrPayment.TabIndex = 63;
@@ -76,7 +78,7 @@
             label6.BackColor = SystemColors.GradientInactiveCaption;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label6.ForeColor = Color.FromArgb(45, 93, 134);
-            label6.Location = new Point(119, 477);
+            label6.Location = new Point(119, 459);
             label6.Name = "label6";
             label6.Size = new Size(133, 21);
             label6.TabIndex = 62;
@@ -88,7 +90,7 @@
             label5.BackColor = SystemColors.GradientInactiveCaption;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(45, 93, 134);
-            label5.Location = new Point(88, 441);
+            label5.Location = new Point(91, 428);
             label5.Name = "label5";
             label5.Size = new Size(161, 21);
             label5.TabIndex = 61;
@@ -111,7 +113,7 @@
             lblCreate.BackColor = SystemColors.GradientActiveCaption;
             lblCreate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCreate.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCreate.Location = new Point(144, 10);
+            lblCreate.Location = new Point(130, 9);
             lblCreate.Name = "lblCreate";
             lblCreate.Size = new Size(215, 21);
             lblCreate.TabIndex = 43;
@@ -236,10 +238,19 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Highlight;
+            panel1.Controls.Add(panel2);
             panel1.Location = new Point(44, 402);
             panel1.Name = "panel1";
             panel1.Size = new Size(431, 3);
             panel1.TabIndex = 49;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Highlight;
+            panel2.Location = new Point(35, 402);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(431, 3);
+            panel2.TabIndex = 50;
             // 
             // CalcLoanPaymentView
             // 
@@ -247,7 +258,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
-            Controls.Add(lblPaymentPrYear);
+            Controls.Add(lblTotalPrYear);
             Controls.Add(lblAmountPrPayment);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -268,13 +279,14 @@
             Text = "CalcLoanPaymentView";
             pnlTop.ResumeLayout(false);
             pnlTop.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblPaymentPrYear;
+        private Label lblTotalPrYear;
         private Label lblAmountPrPayment;
         private Label label6;
         private Label label5;
@@ -291,5 +303,6 @@
         private FontAwesome.Sharp.IconButton btnClear;
         private FontAwesome.Sharp.IconButton btnCalculate;
         private Panel panel1;
+        private Panel panel2;
     }
 }

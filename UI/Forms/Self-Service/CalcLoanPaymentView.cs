@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Validation;
+﻿using BusinessLogic.Calculations;
+using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +20,15 @@ namespace UI.Forms.Self_Service
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
+
+        LoanPaymentCalculator loanPaymentCalculator;
         public CalcLoanPaymentView(OverallValidator oaValidator, ClientUI client)
         {
             InitializeComponent();
             this.oaValidator = oaValidator;
             this.client = client;
+
+            loanPaymentCalculator = new LoanPaymentCalculator();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -36,6 +41,64 @@ namespace UI.Forms.Self_Service
             txtAnnualInterestRate.TextChanged += TxtAnnualInterestRate_TextChanged;
             txtPaymentsPrYear.TextChanged += TxtPaymentsPrYear_TextChanged;
             txtAmountOfYears.TextChanged += TxtAmountOfYears_TextChanged;
+        }
+
+        private void CalcLoanPaymentView_Load(object? sender, EventArgs e)
+        {
+            lblAmountPrPayment.Text = string.Empty;
+            lblTotalPrYear.Text = string.Empty;
+            btnCalculate.Enabled = false;
+        }
+
+        private void BtnCalculate_Click(object? sender, EventArgs e)
+        {
+
+            if (client.IsSubscribed)
+            {
+                //lånets størrelse
+                double loanAmount = double.Parse(txtLoanAmount.Text);
+                //rentefod p.a
+                double interestRate = double.Parse(txtAnnualInterestRate.Text) / 100;
+                //antal aar
+                double amountOfYears = double.Parse(txtAmountOfYears.Text);
+                //antal ydelser pr aar
+                double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
+
+
+
+                LoanPaymentCalculator result = loanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
+
+                //udskriver total betaling pr aar i kroner
+                lblTotalPrYear.Text = result.TotalPrYear.ToString("C", new CultureInfo("da-DK"));
+
+                //udskriver beløb pr betaling i kroner
+                lblAmountPrPayment.Text = result.AmountPrPayment.ToString("C", new CultureInfo("da-DK"));
+            }
+            else
+            {
+                MessageBox.Show("You must be subscribed to use calculations");
+            }
+        }
+
+        private void BtnCalculateEnabled()
+        {
+            btnCalculate.Enabled =
+                txtLoanAmount.ForeColor == validFormat &&
+                txtAmountOfYears.ForeColor == validFormat &&
+                txtAnnualInterestRate.ForeColor == validFormat &&
+                txtPaymentsPrYear.ForeColor == validFormat
+                ? true : false;
+        }
+
+        private void BtnClear_Click(object? sender, EventArgs e)
+        {
+            txtLoanAmount.Text = string.Empty;
+            txtAnnualInterestRate.Text = string.Empty;
+            txtPaymentsPrYear.Text = string.Empty;
+            txtAmountOfYears.Text = string.Empty;
+
+            lblAmountPrPayment.Text = string.Empty;
+            lblTotalPrYear.Text = string.Empty;
         }
 
         private void TxtAmountOfYears_TextChanged(object? sender, EventArgs e)
@@ -60,70 +123,6 @@ namespace UI.Forms.Self_Service
         {
             txtLoanAmount.ForeColor = oaValidator.ValidDigit(txtLoanAmount.Text) ? validFormat : invalidFormat;
             BtnCalculateEnabled();
-        }
-
-        private void BtnCalculateEnabled()
-        {
-            btnCalculate.Enabled =
-                txtLoanAmount.ForeColor == validFormat &&
-                txtAmountOfYears.ForeColor == validFormat &&
-                txtAnnualInterestRate.ForeColor == validFormat &&
-                txtPaymentsPrYear.ForeColor == validFormat
-                ? true : false;
-        }
-
-        private void CalcLoanPaymentView_Load(object? sender, EventArgs e)
-        {
-            lblAmountPrPayment.Text = string.Empty;
-            lblPaymentPrYear.Text = string.Empty;
-
-            btnCalculate.Enabled = false;
-        }
-
-        private void BtnCalculate_Click(object? sender, EventArgs e)
-        {
-
-            if (client.IsSubscribed)
-            {
-                //lånets størrelse
-                double loanAmount = double.Parse(txtLoanAmount.Text);
-                //rentefod p.a
-                double interestRate = double.Parse(txtAnnualInterestRate.Text) / 100;
-                //antal aar
-                double amountOfYears = double.Parse(txtAmountOfYears.Text);
-
-                //udregning at betaling pr aar
-                double paymentPrYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
-                //afrunder svar til 2 decimaler
-                double roundedPaymentPrYear = Math.Round(paymentPrYear, 2);
-                //udskriver beløb i kroner
-                lblPaymentPrYear.Text = roundedPaymentPrYear.ToString("C", new CultureInfo("da-DK"));
-
-
-                //antal ydelser pr aar
-                double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
-                //tager betaling pr aar og deler ud i antal ydelser pa aaret
-                double prPayment = paymentPrYear / paymentsPrYear;
-                //afrunde til 2 decimaler
-                double roundedPrPayment = Math.Round(prPayment, 2);
-                //udskriver beløb i kroner
-                lblAmountPrPayment.Text = roundedPrPayment.ToString("C", new CultureInfo("da-DK"));
-            }
-            else
-            {
-                MessageBox.Show("You must be subscribed to use calculations");
-            }
-        }
-
-        private void BtnClear_Click(object? sender, EventArgs e)
-        {
-            txtLoanAmount.Text = string.Empty;
-            txtAnnualInterestRate.Text = string.Empty;
-            txtPaymentsPrYear.Text = string.Empty;
-            txtAmountOfYears.Text = string.Empty;
-
-            lblAmountPrPayment.Text = string.Empty;
-            lblPaymentPrYear.Text = string.Empty;
         }
     }
 }

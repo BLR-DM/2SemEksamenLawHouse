@@ -31,6 +31,7 @@
             lblCalcLoanPayment = new Label();
             pnlCalc = new Panel();
             panel1 = new Panel();
+            lblCalcROI = new Label();
             SuspendLayout();
             // 
             // lblCalcLoanPayment
@@ -59,12 +60,24 @@
             panel1.Size = new Size(3, 493);
             panel1.TabIndex = 4;
             // 
+            // lblCalcROI
+            // 
+            lblCalcROI.AutoSize = true;
+            lblCalcROI.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCalcROI.ForeColor = Color.FromArgb(45, 93, 134);
+            lblCalcROI.Location = new Point(40, 147);
+            lblCalcROI.Name = "lblCalcROI";
+            lblCalcROI.Size = new Size(243, 21);
+            lblCalcROI.TabIndex = 7;
+            lblCalcROI.Text = "- Calculate return on investment";
+            // 
             // CalculationsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblCalcROI);
             Controls.Add(lblCalcLoanPayment);
             Controls.Add(pnlCalc);
             Controls.Add(panel1);
@@ -80,5 +93,6 @@
         private Label lblCalcLoanPayment;
         private Panel pnlCalc;
         private Panel panel1;
+        private Label lblCalcROI;
     }
 }

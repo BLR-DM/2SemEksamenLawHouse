@@ -39,14 +39,14 @@ namespace UI.Forms.CasePage
             dgvCaseList.CellDoubleClick += DgvCaseList_CellDoubleClick;
             btnCreateCase.Click += BtnCreateCase_Click;
             txtTitle.TextChanged += TxtTitle_TextChanged;
-            ckboxFinsished.CheckedChanged += CkboxFinsished_CheckedChanged;
+            ckboxClosed.CheckedChanged += CkboxFinsished_CheckedChanged;
             ckboxActive.CheckedChanged += CkboxActive_CheckedChanged;
             cboLawyers.SelectionChangeCommitted += CboLawyers_SelectionChangeCommitted;
             cboCaseType.SelectionChangeCommitted += CboCaseType_SelectionChangeCommitted;
 
-            SetLawyerComboBox();
-            SetCaseTypeComboBox();
-            SetDgv();
+            SetLawyerComboBoxAsync();
+            SetCaseTypeComboBoxAsync();
+            SetDgvAsync();
 
         }
 
@@ -101,7 +101,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetCaseTypeComboBox()
+        public async Task SetCaseTypeComboBoxAsync()
         {
             caseTypeList = await caseTypeBL.GetCaseTypeAsync();
 
@@ -116,7 +116,7 @@ namespace UI.Forms.CasePage
 
             cboCaseType.SelectedIndex = 0;
         }
-        public async Task SetLawyerComboBox()
+        public async Task SetLawyerComboBoxAsync()
         {
 
             lawyerList = await lawyerBL.GetLawyersAsync();
@@ -134,7 +134,7 @@ namespace UI.Forms.CasePage
         }
 
 
-        public async Task SetDgv()
+        public async Task SetDgvAsync()
         {
             originalCaseList = await caseBL.GetCasesAsync();
             dgvCaseList.DataSource = originalCaseList;
@@ -161,15 +161,15 @@ namespace UI.Forms.CasePage
                 filteredCases = filteredCases.Where(caseUI => caseUI.Title.StartsWith(txtTitle.Text)).ToList();
             }
 
-            if(ckboxActive.Checked && ckboxFinsished.Checked)
+            if(ckboxActive.Checked && ckboxClosed.Checked)
             {
                 filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active" || caseUI.Status == "Finished").ToList();
             }
-            else if(ckboxActive.Checked && !ckboxFinsished.Checked)
+            else if(ckboxActive.Checked && !ckboxClosed.Checked)
             {
                 filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active").ToList();
             }
-            else if(!ckboxActive.Checked && ckboxFinsished.Checked)
+            else if(!ckboxActive.Checked && ckboxClosed.Checked)
             {
                 filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Finished").ToList();
             }

@@ -35,6 +35,7 @@ namespace UI.Forms.CasePage
         CaseTypeBL caseTypeBL;
         CaseValidator cValidator;
         ServiceEntryBL serviceEntryBL;
+        
 
         bool isClient;
 
@@ -65,7 +66,7 @@ namespace UI.Forms.CasePage
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
             btnPrintDetails.Click += BtnPrintDetails_Click;
 
-
+            
             btnUpdateCase.Enabled = false;
 
             InitializeData();

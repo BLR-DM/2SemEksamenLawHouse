@@ -67,6 +67,8 @@ namespace UI.Forms.CasePage
             txtPrice.Visible = false;
             lblTotalPrice.Visible = false;
             txtTotalPrice.Visible = false;
+
+            btnAddService.Enabled = false;
         }
 
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)

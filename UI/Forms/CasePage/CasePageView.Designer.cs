@@ -34,7 +34,7 @@
             lblSearch = new Label();
             cboLawyers = new ComboBox();
             cboCaseType = new ComboBox();
-            ckboxFinsished = new CheckBox();
+            ckboxClosed = new CheckBox();
             ckboxActive = new CheckBox();
             lblNumberOfCases = new Label();
             btnCreateCase = new FontAwesome.Sharp.IconButton();
@@ -63,7 +63,7 @@
             panelTopBar.Controls.Add(lblSearch);
             panelTopBar.Controls.Add(cboLawyers);
             panelTopBar.Controls.Add(cboCaseType);
-            panelTopBar.Controls.Add(ckboxFinsished);
+            panelTopBar.Controls.Add(ckboxClosed);
             panelTopBar.Controls.Add(ckboxActive);
             panelTopBar.Location = new Point(12, 12);
             panelTopBar.Name = "panelTopBar";
@@ -102,15 +102,15 @@
             cboCaseType.Size = new Size(142, 23);
             cboCaseType.TabIndex = 2;
             // 
-            // ckboxFinsished
+            // ckboxClosed
             // 
-            ckboxFinsished.AutoSize = true;
-            ckboxFinsished.Location = new Point(298, 33);
-            ckboxFinsished.Name = "ckboxFinsished";
-            ckboxFinsished.Size = new Size(70, 19);
-            ckboxFinsished.TabIndex = 1;
-            ckboxFinsished.Text = "Finished";
-            ckboxFinsished.UseVisualStyleBackColor = true;
+            ckboxClosed.AutoSize = true;
+            ckboxClosed.Location = new Point(298, 33);
+            ckboxClosed.Name = "ckboxClosed";
+            ckboxClosed.Size = new Size(62, 19);
+            ckboxClosed.TabIndex = 1;
+            ckboxClosed.Text = "Closed";
+            ckboxClosed.UseVisualStyleBackColor = true;
             // 
             // ckboxActive
             // 
@@ -183,7 +183,7 @@
         private CheckBox ckboxActive;
         private ComboBox cboLawyers;
         private ComboBox cboCaseType;
-        private CheckBox ckboxFinsished;
+        private CheckBox ckboxClosed;
         private TextBox txtTitle;
         private Label lblSearch;
         private FontAwesome.Sharp.IconButton btnCreateCase;

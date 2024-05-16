@@ -144,7 +144,7 @@
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(120, 20);
+            txtEmail.Size = new Size(257, 20);
             txtEmail.TabIndex = 58;
             // 
             // LawyerInformation

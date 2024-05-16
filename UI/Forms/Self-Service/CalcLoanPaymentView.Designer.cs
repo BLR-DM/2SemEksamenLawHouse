@@ -88,7 +88,7 @@
             label5.BackColor = SystemColors.GradientInactiveCaption;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(45, 93, 134);
-            label5.Location = new Point(77, 441);
+            label5.Location = new Point(88, 441);
             label5.Name = "label5";
             label5.Size = new Size(161, 21);
             label5.TabIndex = 61;
@@ -123,7 +123,7 @@
             label4.BackColor = SystemColors.GradientInactiveCaption;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(45, 93, 134);
-            label4.Location = new Point(103, 267);
+            label4.Location = new Point(112, 267);
             label4.Name = "label4";
             label4.Size = new Size(135, 21);
             label4.TabIndex = 59;
@@ -159,7 +159,7 @@
             label1.BackColor = SystemColors.GradientInactiveCaption;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(129, 92);
+            label1.Location = new Point(138, 90);
             label1.Name = "label1";
             label1.Size = new Size(109, 21);
             label1.TabIndex = 56;

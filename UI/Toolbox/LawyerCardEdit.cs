@@ -19,7 +19,6 @@ namespace UI.Toolbox
         List<LawyerTitleUI> lawyerTitles;
         List<SpecialityUI> specialities;
         List<LawyerSpecialityUI> updatedLawyerSpecialities;
-        List<LawyerSpecialityUI> deletedLawyerSpecialities;
 
         bool isAdmin;
         public LawyerCardEdit(LawyerUI lawyerUI, bool isAdmin)
@@ -35,7 +34,6 @@ namespace UI.Toolbox
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
 
-            deletedLawyerSpecialities = new List<LawyerSpecialityUI>();
             updatedLawyerSpecialities = new List<LawyerSpecialityUI>();
 
             InitializeComponent();
@@ -113,10 +111,6 @@ namespace UI.Toolbox
                     };
                     updatedLawyerSpecialities.Add(lawyerSpecialityUI);
                 }
-
-                deletedLawyerSpecialities = lawyerUI.LawyerSpecialities
-                    .Where(x => !updatedLawyerSpecialities
-                    .Any(ls => ls.SpecialityID == x.SpecialityID)).ToList();
 
                 bool deleted = await lawyerBL.DeleteLawyerSpecialitiesAsync(lawyerUI.LawyerSpecialities as List<LawyerSpecialityUI>);
                 if (!deleted)

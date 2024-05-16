@@ -67,6 +67,8 @@ namespace UI.Forms.CasePage
             txtPrice.Visible = false;
             lblTotalPrice.Visible = false;
             txtTotalPrice.Visible = false;
+
+            btnAddService.Enabled = false;
         }
 
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
@@ -96,6 +98,12 @@ namespace UI.Forms.CasePage
         public void BtnCreateEnabled()
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
+            if (selectedService == null)
+            {
+                btnAddService.Enabled = false;
+                return;
+            }
+
             if (selectedService.PriceType == "Kilometer")
             {
                 btnAddService.Enabled =
@@ -105,7 +113,7 @@ namespace UI.Forms.CasePage
                                 selectedLawyer != null &&
                                 txtHoursWorked.ForeColor == validFormat;
             }
-            else if(selectedService.PriceType == "Fixed")
+            else if (selectedService.PriceType == "Fixed")
             {
                 btnAddService.Enabled =
                                 txtTotalPrice.ForeColor == validFormat &&
@@ -115,11 +123,12 @@ namespace UI.Forms.CasePage
             }
             else if (selectedService.PriceType == "Hourly")
             {
-                btnAddService.Enabled = 
+                btnAddService.Enabled =
                                 txtServiceDescription.ForeColor == validFormat &&
                                 cboServices.SelectedItem != null &&
                                 selectedLawyer != null;
             }
+
         }
 
 

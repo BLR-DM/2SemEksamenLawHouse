@@ -27,6 +27,7 @@ namespace UI.Toolbox
             txtFirstname.Text = lawyer.Firstname;
             txtLastname.Text = lawyer.Lastname;
             txtPhone.Text = lawyer.PhoneNumber.ToString();
+            txtEmail.Text = lawyer.Email;
         }
 
         public LawyerInformation()
@@ -36,6 +37,7 @@ namespace UI.Toolbox
             txtFirstname.Text = string.Empty;
             txtLastname.Text = string.Empty;
             txtPhone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
         }
 
     }

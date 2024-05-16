@@ -93,7 +93,7 @@
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(473, 220);
+            lblTotalPrice.Location = new Point(473, 227);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.Size = new Size(86, 21);
             lblTotalPrice.TabIndex = 58;
@@ -112,15 +112,15 @@
             // 
             // lblUnites
             // 
-            lblUnites.AutoSize = true;
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(510, 169);
+            lblUnites.Location = new Point(473, 169);
             lblUnites.Name = "lblUnites";
-            lblUnites.Size = new Size(47, 21);
+            lblUnites.Size = new Size(84, 21);
             lblUnites.TabIndex = 56;
             lblUnites.Text = "Units";
+            lblUnites.TextAlign = ContentAlignment.TopRight;
             // 
             // lblPriceType
             // 
@@ -147,15 +147,15 @@
             // 
             // lblPrice
             // 
-            lblPrice.AutoSize = true;
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(511, 115);
+            lblPrice.Location = new Point(473, 115);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(46, 21);
+            lblPrice.Size = new Size(84, 21);
             lblPrice.TabIndex = 53;
             lblPrice.Text = "Price";
+            lblPrice.TextAlign = ContentAlignment.TopRight;
             // 
             // txtPrice
             // 

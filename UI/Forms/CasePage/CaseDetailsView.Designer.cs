@@ -56,6 +56,8 @@
             btnUpdateCase = new Button();
             btnUpdateCaseStatus = new Button();
             btnPrintDetails = new Button();
+            txtTotalHours = new TextBox();
+            lblTotalHours = new Label();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
@@ -89,6 +91,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblTotalHours);
+            panel1.Controls.Add(txtTotalHours);
             panel1.Controls.Add(lblStatus);
             panel1.Controls.Add(lblStatusHeadline);
             panel1.Controls.Add(txtCaseID);
@@ -372,6 +376,29 @@
             btnPrintDetails.Text = "Print Details";
             btnPrintDetails.UseVisualStyleBackColor = true;
             // 
+            // txtTotalHours
+            // 
+            txtTotalHours.BackColor = Color.White;
+            txtTotalHours.Enabled = false;
+            txtTotalHours.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTotalHours.Location = new Point(271, 234);
+            txtTotalHours.MaxLength = 50;
+            txtTotalHours.Name = "txtTotalHours";
+            txtTotalHours.Size = new Size(167, 27);
+            txtTotalHours.TabIndex = 29;
+            // 
+            // lblTotalHours
+            // 
+            lblTotalHours.AutoSize = true;
+            lblTotalHours.BackColor = SystemColors.GradientInactiveCaption;
+            lblTotalHours.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblTotalHours.ForeColor = Color.FromArgb(45, 93, 134);
+            lblTotalHours.Location = new Point(271, 210);
+            lblTotalHours.Name = "lblTotalHours";
+            lblTotalHours.Size = new Size(90, 21);
+            lblTotalHours.TabIndex = 30;
+            lblTotalHours.Text = "Total hours";
+            // 
             // CaseDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -426,5 +453,7 @@
         private Label lblStatus;
         private Label lblStatusHeadline;
         private Button btnPrintDetails;
+        private Label lblTotalHours;
+        private TextBox txtTotalHours;
     }
 }

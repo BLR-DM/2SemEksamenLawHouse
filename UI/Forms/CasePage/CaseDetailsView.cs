@@ -80,7 +80,7 @@ namespace UI.Forms.CasePage
 
             
         }
-
+        
         private void BtnPrintDetails_Click(object? sender, EventArgs e)
         {
             PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView
@@ -89,33 +89,28 @@ namespace UI.Forms.CasePage
             printCaseDetailsView.ShowDialog();
         }
 
-        public void BtnCloseEnabled()
+        private async void BtnCloseCase_Click(object? sender, EventArgs e)
         {
-            if(caseServiceList.Count == 0)
+            if (caseServiceList.Count == 0)
             {
-                btnUpdateCaseStatus.Enabled = false;
+                MessageBox.Show("Cannot close case without any services connected");
                 return;
             }
-            
-            foreach(CaseServiceUI caseServiceUI in caseServiceList)
+
+            foreach (CaseServiceUI caseServiceUI in caseServiceList)
             {
-                if(caseServiceUI.Status == "Active")
+                if (caseServiceUI.Status == "Active")
                 {
-                    btnUpdateCaseStatus.Enabled = false;
+                    MessageBox.Show("Cannot close case with active services");
                     return;
                 }
             }
-            btnUpdateCaseStatus.Enabled = true;
-
-        }
-
-        private async void BtnCloseCase_Click(object? sender, EventArgs e)
-        {
             btnUpdateCaseStatus.Enabled = false;
             DialogResult dialogResult = MessageBox.Show("Do you wanna close this case", "Close case", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(dialogResult == DialogResult.Yes)
             {
-                selectedCase.Status = "Finished";
+                selectedCase.Status = "Closed";
+                selectedCase.EndDate = DateTime.Now;
                 if (await caseBL.UpdateCaseSync(selectedCase))
                 {
                     MessageBox.Show("Case closed");
@@ -158,6 +153,7 @@ namespace UI.Forms.CasePage
         private async void BtnUpdateCase_Click(object? sender, EventArgs e)
         {
             btnUpdateCase.Enabled = false;
+            CaseTypeUI selectedCaseType = cboxCaseType.SelectedItem as CaseTypeUI;
 
             CaseUI caseUpdate = new CaseUI()
             {
@@ -170,7 +166,7 @@ namespace UI.Forms.CasePage
                 Status = selectedCase.Status,
                 TotalPrice = selectedCase.TotalPrice,
 
-                CaseTypeID = selectedCase.CaseTypeID,
+                CaseTypeID = selectedCaseType.CaseTypeID,
                 LawyerID = selectedCase.LawyerID,
                 ClientID = selectedCase.ClientID,
             };
@@ -233,7 +229,7 @@ namespace UI.Forms.CasePage
         {
             selectedCase = await caseBL.GetCaseAsync(selectedCaseID);
 
-            if(selectedCase != null)
+            if (selectedCase != null)
             {
                 txtTitle.Text = selectedCase.Title;
                 dtpEstimatedEndDate.Value = selectedCase.EndDate;
@@ -242,7 +238,14 @@ namespace UI.Forms.CasePage
                 txtDescription.Text = selectedCase.Description;
                 lblStatus.Text = selectedCase.Status;
                 txtCaseID.Text = selectedCase.CaseID.ToString();
+
+                if (selectedCase.Status == "Closed")
+                {
+                    lblEstimatedEndDate.Text = "End Date";
+                }
+
             }
+
         }
 
         public async Task SetClientDataAsync()
@@ -262,8 +265,7 @@ namespace UI.Forms.CasePage
 
             caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
 
-            BtnCloseEnabled();
-
+            txtTotalHours.Text = caseServiceList.Sum(cs => cs.HoursWorked).ToString();
             dgvServices.DataSource = caseServiceList;
 
             dgvServices.Columns["CaseServiceID"].Visible = false;
@@ -278,8 +280,8 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["Units"].DisplayIndex = 2;
             dgvServices.Columns["PriceType"].DisplayIndex = 3;
             dgvServices.Columns["StartDate"].DisplayIndex = 4;
-            dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
-            dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "d";
+            dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "d";
 
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

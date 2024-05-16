@@ -441,6 +441,7 @@
             // iconPictureBox1
             // 
             iconPictureBox1.BackColor = Color.Transparent;
+            iconPictureBox1.BackgroundImageLayout = ImageLayout.None;
             iconPictureBox1.ForeColor = Color.FromArgb(45, 93, 134);
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.QuestionCircle;
             iconPictureBox1.IconColor = Color.FromArgb(45, 93, 134);
@@ -528,7 +529,7 @@
             txtPhoneAlt.MaxLength = 50;
             txtPhoneAlt.Name = "txtPhoneAlt";
             txtPhoneAlt.Size = new Size(230, 27);
-            txtPhoneAlt.TabIndex = 5;
+            txtPhoneAlt.TabIndex = 6;
             // 
             // lblAltPhone
             // 
@@ -559,12 +560,13 @@
             // iconPictureBox2
             // 
             iconPictureBox2.BackColor = Color.Transparent;
+            iconPictureBox2.BackgroundImageLayout = ImageLayout.None;
             iconPictureBox2.ForeColor = Color.FromArgb(45, 93, 134);
             iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.QuestionCircle;
             iconPictureBox2.IconColor = Color.FromArgb(45, 93, 134);
             iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox2.IconSize = 25;
-            iconPictureBox2.Location = new Point(413, 281);
+            iconPictureBox2.Location = new Point(413, 280);
             iconPictureBox2.Name = "iconPictureBox2";
             iconPictureBox2.Size = new Size(25, 25);
             iconPictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;

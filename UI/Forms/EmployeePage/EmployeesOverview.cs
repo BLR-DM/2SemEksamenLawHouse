@@ -66,12 +66,12 @@ namespace UI.Forms.EmployeePage
             switch (cboxShow.SelectedItem)
             {
                 case "Employees":
-                    if (e.RowIndex >= 0)
-                    {
+                    //if (e.RowIndex >= 0)
+                    //{
                         //EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
 
                         //new LawyerDetailsView(employee.PersonID, false).ShowDialog();
-                    }
+                    //}
                     break;
                 case "  Lawyers":
                     if (e.RowIndex >= 0)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlLeft = new Panel();
+            btnSubscribe = new FontAwesome.Sharp.IconButton();
             btnEmployees = new FontAwesome.Sharp.IconButton();
             btnAdminPage = new FontAwesome.Sharp.IconButton();
             btnMyPageLawyer = new FontAwesome.Sharp.IconButton();
@@ -45,7 +46,6 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
-            btnSubscribe = new FontAwesome.Sharp.IconButton();
             pnlLeft.SuspendLayout();
             gradiantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
@@ -69,6 +69,28 @@
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(200, 613);
             pnlLeft.TabIndex = 2;
+            // 
+            // btnSubscribe
+            // 
+            btnSubscribe.BackColor = Color.Transparent;
+            btnSubscribe.Dock = DockStyle.Top;
+            btnSubscribe.FlatAppearance.BorderSize = 0;
+            btnSubscribe.FlatStyle = FlatStyle.Flat;
+            btnSubscribe.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSubscribe.ForeColor = Color.Black;
+            btnSubscribe.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnSubscribe.IconColor = Color.Black;
+            btnSubscribe.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSubscribe.IconSize = 40;
+            btnSubscribe.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSubscribe.Location = new Point(0, 450);
+            btnSubscribe.Name = "btnSubscribe";
+            btnSubscribe.Padding = new Padding(25, 0, 20, 0);
+            btnSubscribe.Size = new Size(200, 75);
+            btnSubscribe.TabIndex = 4;
+            btnSubscribe.Text = "Subscribe";
+            btnSubscribe.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSubscribe.UseVisualStyleBackColor = false;
             // 
             // btnEmployees
             // 
@@ -359,28 +381,6 @@
             pnlContext.Name = "pnlContext";
             pnlContext.Size = new Size(998, 613);
             pnlContext.TabIndex = 3;
-            // 
-            // btnSubscribe
-            // 
-            btnSubscribe.BackColor = Color.Transparent;
-            btnSubscribe.Dock = DockStyle.Top;
-            btnSubscribe.FlatAppearance.BorderSize = 0;
-            btnSubscribe.FlatStyle = FlatStyle.Flat;
-            btnSubscribe.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSubscribe.ForeColor = Color.Black;
-            btnSubscribe.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
-            btnSubscribe.IconColor = Color.Black;
-            btnSubscribe.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSubscribe.IconSize = 40;
-            btnSubscribe.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSubscribe.Location = new Point(0, 450);
-            btnSubscribe.Name = "btnSubscribe";
-            btnSubscribe.Padding = new Padding(25, 0, 20, 0);
-            btnSubscribe.Size = new Size(200, 75);
-            btnSubscribe.TabIndex = 4;
-            btnSubscribe.Text = "Subscribe";
-            btnSubscribe.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSubscribe.UseVisualStyleBackColor = false;
             // 
             // FrontPageView
             // 

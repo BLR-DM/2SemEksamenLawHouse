@@ -36,8 +36,8 @@
             txtSearchPhone = new TextBox();
             lblSearchPhone = new Label();
             dgvClients = new DataGridView();
-            btnCreate = new FontAwesome.Sharp.IconButton();
             lblClientAmmount = new Label();
+            btnCreate = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             SuspendLayout();
@@ -45,7 +45,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
-            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.CausesValidation = false;
             panel1.Controls.Add(txtSearchPostal);
             panel1.Controls.Add(lblSøgPris);
@@ -121,26 +121,6 @@
             dgvClients.Size = new Size(948, 404);
             dgvClients.TabIndex = 9;
             // 
-            // btnCreate
-            // 
-            btnCreate.Anchor = AnchorStyles.Bottom;
-            btnCreate.BackColor = Color.FromArgb(45, 93, 134);
-            btnCreate.Cursor = Cursors.Hand;
-            btnCreate.FlatAppearance.BorderSize = 0;
-            btnCreate.FlatStyle = FlatStyle.Flat;
-            btnCreate.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCreate.ForeColor = Color.White;
-            btnCreate.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnCreate.IconColor = Color.Black;
-            btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCreate.IconSize = 70;
-            btnCreate.Location = new Point(25, 113);
-            btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(156, 41);
-            btnCreate.TabIndex = 12;
-            btnCreate.Text = "Create new client";
-            btnCreate.UseVisualStyleBackColor = false;
-            // 
             // lblClientAmmount
             // 
             lblClientAmmount.AutoSize = true;
@@ -151,14 +131,34 @@
             lblClientAmmount.TabIndex = 13;
             lblClientAmmount.Text = "10.000 Clients";
             // 
+            // btnCreate
+            // 
+            btnCreate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCreate.BackColor = SystemColors.GradientActiveCaption;
+            btnCreate.FlatAppearance.BorderSize = 0;
+            btnCreate.FlatStyle = FlatStyle.Flat;
+            btnCreate.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreate.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            btnCreate.IconColor = Color.Black;
+            btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCreate.IconSize = 30;
+            btnCreate.Location = new Point(25, 115);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(135, 38);
+            btnCreate.TabIndex = 51;
+            btnCreate.TabStop = false;
+            btnCreate.Text = "Create client";
+            btnCreate.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnCreate.UseVisualStyleBackColor = false;
+            // 
             // ClientsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(lblClientAmmount);
             Controls.Add(btnCreate);
+            Controls.Add(lblClientAmmount);
             Controls.Add(dgvClients);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -186,8 +186,8 @@
         private TextBox txtSearchPhone;
         private Label lblSearchPhone;
         private DataGridView dgvClients;
-        private FontAwesome.Sharp.IconButton btnCreate;
         private Label lblClientAmmount;
         private TextBox txtSearchPostal;
+        private FontAwesome.Sharp.IconButton btnCreate;
     }
 }

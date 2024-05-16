@@ -263,6 +263,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = SystemColors.Control;
             txtEmail.Location = new Point(118, 134);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(214, 23);

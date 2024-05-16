@@ -243,10 +243,7 @@ namespace UI.Forms.CasePage
                 {
                     lblEstimatedEndDate.Text = "End Date";
                 }
-                else
-                {
 
-                }
             }
 
         }
@@ -268,7 +265,7 @@ namespace UI.Forms.CasePage
 
             caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
 
-
+            txtTotalHours.Text = caseServiceList.Sum(cs => cs.HoursWorked).ToString();
             dgvServices.DataSource = caseServiceList;
 
             dgvServices.Columns["CaseServiceID"].Visible = false;
@@ -283,8 +280,8 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["Units"].DisplayIndex = 2;
             dgvServices.Columns["PriceType"].DisplayIndex = 3;
             dgvServices.Columns["StartDate"].DisplayIndex = 4;
-            dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
-            dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "d";
+            dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "d";
 
 
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

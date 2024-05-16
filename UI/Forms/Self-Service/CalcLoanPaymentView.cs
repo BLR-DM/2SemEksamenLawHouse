@@ -9,18 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UIModels;
 
 namespace UI.Forms.Self_Service
 {
     public partial class CalcLoanPaymentView : Form
     {
         OverallValidator oaValidator;
+        ClientUI client;
         Color validFormat;
         Color invalidFormat;
-        public CalcLoanPaymentView(OverallValidator oaValidator)
+        public CalcLoanPaymentView(OverallValidator oaValidator, ClientUI client)
         {
             InitializeComponent();
             this.oaValidator = oaValidator;
+            this.client = client;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -80,29 +83,36 @@ namespace UI.Forms.Self_Service
         private void BtnCalculate_Click(object? sender, EventArgs e)
         {
 
-            //lånets størrelse
-            double loanAmount = double.Parse(txtLoanAmount.Text);
-            //rentefod p.a
-            double interestRate = double.Parse(txtAnnualInterestRate.Text)/100;
-            //antal aar
-            double amountOfYears = double.Parse(txtAmountOfYears.Text);
+            if (client.IsSubscribed)
+            {
+                //lånets størrelse
+                double loanAmount = double.Parse(txtLoanAmount.Text);
+                //rentefod p.a
+                double interestRate = double.Parse(txtAnnualInterestRate.Text) / 100;
+                //antal aar
+                double amountOfYears = double.Parse(txtAmountOfYears.Text);
 
-            //udregning at betaling pr aar
-            double paymentPrYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
-            //afrunder svar til 2 decimaler
-            double roundedPaymentPrYear = Math.Round(paymentPrYear, 2);
-            //udskriver beløb i kroner
-            lblPaymentPrYear.Text = roundedPaymentPrYear.ToString("C", new CultureInfo("da-DK"));
+                //udregning at betaling pr aar
+                double paymentPrYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
+                //afrunder svar til 2 decimaler
+                double roundedPaymentPrYear = Math.Round(paymentPrYear, 2);
+                //udskriver beløb i kroner
+                lblPaymentPrYear.Text = roundedPaymentPrYear.ToString("C", new CultureInfo("da-DK"));
 
 
-            //antal ydelser pr aar
-            double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
-            //tager betaling pr aar og deler ud i antal ydelser pa aaret
-            double prPayment = paymentPrYear / paymentsPrYear;
-            //afrunde til 2 decimaler
-            double roundedPrPayment = Math.Round(prPayment, 2);
-            //udskriver beløb i kroner
-            lblAmountPrPayment.Text = roundedPrPayment.ToString("C", new CultureInfo("da-DK"));
+                //antal ydelser pr aar
+                double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
+                //tager betaling pr aar og deler ud i antal ydelser pa aaret
+                double prPayment = paymentPrYear / paymentsPrYear;
+                //afrunde til 2 decimaler
+                double roundedPrPayment = Math.Round(prPayment, 2);
+                //udskriver beløb i kroner
+                lblAmountPrPayment.Text = roundedPrPayment.ToString("C", new CultureInfo("da-DK"));
+            }
+            else
+            {
+                MessageBox.Show("You must be subscribed to use calculations");
+            }
         }
 
         private void BtnClear_Click(object? sender, EventArgs e)

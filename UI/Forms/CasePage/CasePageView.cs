@@ -144,8 +144,8 @@ namespace UI.Forms.CasePage
 
             dgvCaseList.Columns["CaseTypeID"].Visible = false;
             dgvCaseList.Columns["LawyerID"].Visible = false;
-            dgvCaseList.Columns["EndDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
-            dgvCaseList.Columns["CreationDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvCaseList.Columns["EndDate"].DefaultCellStyle.Format = "d";
+            dgvCaseList.Columns["CreationDate"].DefaultCellStyle.Format = "d";
 
             dgvCaseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCaseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

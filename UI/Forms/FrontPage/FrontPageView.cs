@@ -103,6 +103,9 @@ namespace UI.Forms.FrontPage
             btnLawyers.Visible = true;
             btnForms.Visible = true;
             btnSubscribe.Visible = true;
+            btnCalculations.Visible = true;
+
+            SetNavBtnColor(btnMyPageClient);
 
             //set mypage
             ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL); 
@@ -111,11 +114,7 @@ namespace UI.Forms.FrontPage
                 PnlContextChange(cdMyPage);
             }
 
-
-            if (clientUI.IsSubscribed == true)
-            {
-                btnCalculations.Visible = true; // Vis med restrictions
-            }
+           
         }
 
         private async Task SetupLawyerFormAsync()
@@ -128,7 +127,16 @@ namespace UI.Forms.FrontPage
             btnCase.Visible = true;
             btnClients.Visible = true;
             btnAdminPage.Visible = true; // test
-            
+
+            SetNavBtnColor(btnMyPageLawyer);
+
+            //set mypage
+            LawyerDetailsView lawyerDetailsView = new LawyerDetailsView(lawyerUI.PersonID, true, lawyerUI);
+            if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(LawyerDetailsView))
+            {
+                PnlContextChange(lawyerDetailsView);
+            }
+
             if (lawyerUI.Admin)
             {
                 btnAdminPage.Visible = true;
@@ -145,11 +153,25 @@ namespace UI.Forms.FrontPage
             f.Show();
             pnlContext.Show();
         }
+
+        private void SetNavBtnColor(Button btn)
+        {
+            foreach(Button buttonnis in pnlLeft.Controls)
+            {
+                buttonnis.BackColor = Color.FromArgb(194, 205, 240);
+            }
+
+            btn.BackColor = Color.FromArgb(174, 183, 212);
+        }
+
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CalculationsView calculationsView = new CalculationsView(oaValidator);
+            CalculationsView calculationsView = new CalculationsView(oaValidator, clientUI);
             PnlContextChange(calculationsView);
+            SetNavBtnColor(btnCalculations);
+
+
         }
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)
@@ -157,6 +179,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI.PersonID, true, lawyerUI);
             PnlContextChange(myPageLawyer);
+            SetNavBtnColor(btnMyPageLawyer);
         }
 
         private void BtnEmployees_Click(object? sender, EventArgs e)
@@ -164,6 +187,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI);
             PnlContextChange(employeesOverview);
+            SetNavBtnColor(btnEmployees);
         }
 
         private void BtnAdminPage_Click(object? sender, EventArgs e)
@@ -171,6 +195,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             AdminPageView apv = new AdminPageView();
             PnlContextChange(apv);
+            SetNavBtnColor(btnAdminPage);
         }
 
         private void BtnCase_Click(object? sender, EventArgs e)
@@ -178,6 +203,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             CasePageView casePageView = new CasePageView(this, serviceEntryBL);
             PnlContextChange(casePageView);
+            SetNavBtnColor(btnCase);
         }
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
@@ -185,6 +211,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             EmployeesView employeesView = new EmployeesView();
             PnlContextChange(employeesView);
+            SetNavBtnColor(btnLawyers);
         }
 
         private void BtnForms_Click(object? sender, EventArgs e)
@@ -192,6 +219,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             FormView fv = new FormView(clientUI);
             PnlContextChange(fv);
+            SetNavBtnColor(btnForms);
         }
 
         private void BtnClients_Click(object? sender, EventArgs e)
@@ -199,6 +227,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, caseBL, subscriptionBL, pValidator, serviceEntryBL);
             PnlContextChange(cv);
+            SetNavBtnColor(btnClients);
         }
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
@@ -206,6 +235,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL);
             PnlContextChange(cdMyPage);
+            SetNavBtnColor(btnMyPageClient);
         }
 
         private void BtnSubscribe_Click(object? sender, EventArgs e)
@@ -213,6 +243,7 @@ namespace UI.Forms.FrontPage
             lblCurrentPage.Text = (sender as Button).Text;
             SubscriptionView subscriptionView = new SubscriptionView(this, clientUI);
             PnlContextChange(subscriptionView);
+            SetNavBtnColor(btnSubscribe);
         }
 
         private void BtnClose_Click(object? sender, EventArgs e)

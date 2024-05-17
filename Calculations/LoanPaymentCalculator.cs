@@ -28,11 +28,7 @@ namespace Calculations
 
 
 
-            return new LoanPaymentCalculator
-            {
-                TotalPrYear = roundedTotalPrYear,
-                AmountPrPayment = roundedAmountPrPayment,
-            };
+            return this;
         }
     }
 }

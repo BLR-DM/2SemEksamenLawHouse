@@ -215,7 +215,7 @@ namespace UI.Forms.FrontPage
             if (currentUser is LawyerUI)
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, lawyerUI);
+                LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, employeeUI);
                 PnlContextChange(myPageLawyer);
                 SetNavBtnColor(btnMyPageLawyer); 
             }

@@ -163,7 +163,11 @@ namespace BusinessLogic
                 PostalCode = employeeE.PostalCode,
                 City = employeeE.City,
                 HireDate = employeeE.HireDate,
-                LawyerTitle = employeeE.LawyerTitle.Title
+                LawyerTitle = employeeE.LawyerTitle.Title,
+
+                //foreign keys
+                LoginDetailsID = employeeE.LoginDetailsID,
+                LawyerTitleID = employeeE.LawyerTitleID,
             };
             return employeeUI;
         }

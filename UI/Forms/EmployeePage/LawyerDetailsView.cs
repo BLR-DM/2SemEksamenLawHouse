@@ -10,17 +10,24 @@ namespace UI.Forms.EmployeePage
         LawyerUI displayedLawyerUI;
         CaseServiceBL caseServiceBL;
         List<CaseServiceUI> caseServices;
-        int displayedLawyerID;
         bool isMyPage;
+        bool isAdmin;
         LawyerUI currentUser;
-        public LawyerDetailsView(int displayedLawyerID, bool isMyPage, LawyerUI currentUser)
+        EmployeeUI employeeUI;
+        public LawyerDetailsView(LawyerUI displayedLawyerUI, bool isMyPage, EmployeeUI currentUser)
         {
-            this.displayedLawyerID = displayedLawyerID;
+            this.displayedLawyerUI = displayedLawyerUI;
             this.isMyPage = isMyPage;
-            this.currentUser = currentUser;
+
+            if (currentUser is LawyerUI lawyerUI)
+            {;
+                isAdmin = lawyerUI.Admin;
+            }
+            else
+                employeeUI = currentUser;
 
             lawyerBL = new LawyerBL();
-            displayedLawyerUI = new LawyerUI();
+            
             //caseServiceBL = new CaseServiceBL();
             //caseServices = new List<CaseServiceUI>();
 
@@ -35,26 +42,27 @@ namespace UI.Forms.EmployeePage
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
 
-            CheckUser(displayedLawyerUI, currentUser);
+            CheckUser();
         }
 
-        private void CheckUser(LawyerUI lawyer, EmployeeUI emp)
+        private void CheckUser()
         {
-            if (displayedLawyerID != emp.PersonID || !isMyPage)
+            if (!isMyPage)
             {
-                btnEditDetails.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 StartPosition = FormStartPosition.CenterScreen;
-
-                if (currentUser.Admin)
-                {
-                    btnEditDetails.Visible = true;
-                }
             }
+
+            if (isMyPage || isAdmin)
+            {
+                btnEditDetails.Visible = true;
+            }
+            else
+                btnEditDetails.Visible = false;
         }
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
         {
-            displayedLawyerUI = await GetLawyerAsync();
+            //displayedLawyerUI = await GetLawyerAsync();
             if (displayedLawyerUI != null)
             {
                 DisplayLawyer(displayedLawyerUI);
@@ -83,7 +91,7 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Enabled = false;
 
             pnlEdit.Controls.Clear();
-            pnlEdit.Controls.Add(new LawyerCardEdit(displayedLawyerUI, currentUser.Admin));
+            pnlEdit.Controls.Add(new LawyerCardEdit(displayedLawyerUI, isAdmin));
             pnlEdit.Visible = true;            
         }
 
@@ -106,7 +114,7 @@ namespace UI.Forms.EmployeePage
 
         private async Task<LawyerUI> GetLawyerAsync()
         {
-            return await lawyerBL.GetLawyerWithCollectionsAsync(displayedLawyerID);
+            return await lawyerBL.GetLawyerWithCollectionsAsync(displayedLawyerUI.PersonID);
         }
 
         private void SetDgvData(bool check)

@@ -85,7 +85,7 @@
             btnUpdate.IconColor = Color.Black;
             btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdate.IconSize = 70;
-            btnUpdate.Location = new Point(85, 406);
+            btnUpdate.Location = new Point(73, 406);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(150, 33);
             btnUpdate.TabIndex = 29;
@@ -150,7 +150,7 @@
             lblLastname.BackColor = Color.Transparent;
             lblLastname.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblLastname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLastname.Location = new Point(28, 175);
+            lblLastname.Location = new Point(16, 175);
             lblLastname.Name = "lblLastname";
             lblLastname.Size = new Size(76, 19);
             lblLastname.TabIndex = 19;
@@ -163,7 +163,7 @@
             lblFirstname.BackColor = Color.Transparent;
             lblFirstname.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblFirstname.ForeColor = Color.FromArgb(45, 93, 134);
-            lblFirstname.Location = new Point(28, 146);
+            lblFirstname.Location = new Point(16, 146);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(78, 19);
             lblFirstname.TabIndex = 20;
@@ -176,7 +176,7 @@
             lblCity.BackColor = Color.Transparent;
             lblCity.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblCity.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCity.Location = new Point(65, 351);
+            lblCity.Location = new Point(53, 351);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(39, 19);
             lblCity.TabIndex = 23;
@@ -189,7 +189,7 @@
             lblDetailsTitle.BackColor = Color.Transparent;
             lblDetailsTitle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsTitle.Location = new Point(63, 204);
+            lblDetailsTitle.Location = new Point(51, 204);
             lblDetailsTitle.Name = "lblDetailsTitle";
             lblDetailsTitle.Size = new Size(42, 19);
             lblDetailsTitle.TabIndex = 21;
@@ -202,7 +202,7 @@
             lblPostal.BackColor = Color.Transparent;
             lblPostal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPostal.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPostal.Location = new Point(50, 322);
+            lblPostal.Location = new Point(38, 322);
             lblPostal.Name = "lblPostal";
             lblPostal.Size = new Size(54, 19);
             lblPostal.TabIndex = 24;
@@ -215,7 +215,7 @@
             lblAddress.BackColor = Color.Transparent;
             lblAddress.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblAddress.ForeColor = Color.FromArgb(45, 93, 134);
-            lblAddress.Location = new Point(37, 291);
+            lblAddress.Location = new Point(25, 291);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(67, 19);
             lblAddress.TabIndex = 27;
@@ -228,7 +228,7 @@
             lblDetailsPhone.BackColor = Color.Transparent;
             lblDetailsPhone.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsPhone.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsPhone.Location = new Point(51, 233);
+            lblDetailsPhone.Location = new Point(39, 233);
             lblDetailsPhone.Name = "lblDetailsPhone";
             lblDetailsPhone.Size = new Size(55, 19);
             lblDetailsPhone.TabIndex = 26;
@@ -241,7 +241,7 @@
             lblDetailsEmail.BackColor = Color.Transparent;
             lblDetailsEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDetailsEmail.ForeColor = Color.FromArgb(45, 93, 134);
-            lblDetailsEmail.Location = new Point(57, 262);
+            lblDetailsEmail.Location = new Point(45, 262);
             lblDetailsEmail.Name = "lblDetailsEmail";
             lblDetailsEmail.Size = new Size(49, 19);
             lblDetailsEmail.TabIndex = 28;
@@ -251,6 +251,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             Controls.Add(pboxDetails);
             Controls.Add(txtAddress);
             Controls.Add(btnUpdate);
@@ -270,7 +271,7 @@
             Controls.Add(lblDetailsPhone);
             Controls.Add(lblDetailsEmail);
             Name = "EmployeeCardEdit";
-            Size = new Size(320, 442);
+            Size = new Size(296, 442);
             ((System.ComponentModel.ISupportInitialize)pboxDetails).EndInit();
             ResumeLayout(false);
             PerformLayout();

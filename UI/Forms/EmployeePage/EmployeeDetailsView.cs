@@ -22,13 +22,11 @@ namespace UI.Forms.EmployeePage
         EmployeeUI displayedEmployee;
         bool isMyPage;
         bool isAdmin;
-        public EmployeeDetailsView(int personID, bool isMyPage, EmployeeUI currentUser)
+        public EmployeeDetailsView(EmployeeUI displayedEmployee, bool isMyPage, EmployeeUI currentUser)
         {
             employeeBL = new EmployeeBL();
-            displayedEmployee = new EmployeeUI();
-
-            this.personID = personID;
             this.isMyPage = isMyPage;
+            this.displayedEmployee = displayedEmployee;
 
             if (currentUser is LawyerUI lawyerUI)
             {
@@ -40,53 +38,41 @@ namespace UI.Forms.EmployeePage
 
             InitializeComponent();
 
-            pnlEdit.Visible = false;
             btnCancel.Visible = false;            
 
             btnEditDetails.Click += BtnEditDetails_Click;
-            pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
+            btnEditDetails.EnabledChanged += BtnEditDetails_EnabledChanged;
             btnCancel.Click += BtnCancel_Click;
             
             SetupView(isMyPage, currentUser);
             GetAndDisplayEmployeeAsync();
         }
 
-        private void BtnCancel_Click(object? sender, EventArgs e)
+        private void BtnEditDetails_EnabledChanged(object? sender, EventArgs e)
         {
-            pnlEdit.Visible = false;
-            //DisplayEmployee();
+            btnCancel.Visible = !btnEditDetails.Enabled;
         }
 
+        private void BtnCancel_Click(object? sender, EventArgs e)
+        {
+            GetAndDisplayEmployeeAsync();
+        }
 
         private async Task GetAndDisplayEmployeeAsync()
         {
-            displayedEmployee = await employeeBL.GetEmployeeAsync(personID);
             if (displayedEmployee != null)
             {
                 pnlEmployeeDetails.Controls.Clear();
                 pnlEmployeeDetails.Controls.Add(new EmployeeCardDisplay(displayedEmployee));
-            }
-            //pnlEmployeeDetails.Visible = false;
-        }
-
-        private void PnlEdit_VisibleChanged(object? sender, EventArgs e)
-        {
-            if (!pnlEdit.Visible)
-            {
-                btnCancel.Visible = false;
                 btnEditDetails.Enabled = true;
             }
-            else
-                btnCancel.Visible = true;
         }
 
         private void BtnEditDetails_Click(object? sender, EventArgs e)
         {
             btnEditDetails.Enabled = false;
-
-            pnlEdit.Controls.Clear();
-            pnlEdit.Controls.Add(new EmployeeCardEdit(displayedEmployee, isAdmin));
-            pnlEdit.Visible = true;
+            pnlEmployeeDetails.Controls.Clear();
+            pnlEmployeeDetails.Controls.Add(new EmployeeCardEdit(displayedEmployee, isAdmin));
         }
 
 
@@ -95,15 +81,13 @@ namespace UI.Forms.EmployeePage
             if (!isMyPage)
             {
                 //btnEditDetails.Visible = false;
-                FormBorderStyle = FormBorderStyle.Sizable;
-                StartPosition = FormStartPosition.CenterScreen;
-                Size = new Size(350, 613);
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.StartPosition = FormStartPosition.CenterScreen;
+                this.Size = new Size(350, 613);
             }
 
             if (isMyPage || isAdmin)
-            {
                 btnEditDetails.Visible = true;
-            }
             else
                 btnEditDetails.Visible = false;
         }

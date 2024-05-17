@@ -75,7 +75,7 @@ namespace UI.Forms.EmployeePage
                     {
                         EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
 
-                        new EmployeeDetailsView(employee.PersonID, false, employeeUI).ShowDialog();
+                        new EmployeeDetailsView(employee, false, employeeUI).ShowDialog();
                     }
                     break;
                 case "  Lawyers":

@@ -28,27 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlEmployeeDetails = new Panel();
-            pnlEdit = new Panel();
             btnEditDetails = new FontAwesome.Sharp.IconButton();
             btnCancel = new FontAwesome.Sharp.IconButton();
-            pnlEmployeeDetails.SuspendLayout();
+            pnlEmployeeDetails = new Panel();
             SuspendLayout();
-            // 
-            // pnlEmployeeDetails
-            // 
-            pnlEmployeeDetails.Controls.Add(pnlEdit);
-            pnlEmployeeDetails.Location = new Point(9, 26);
-            pnlEmployeeDetails.Name = "pnlEmployeeDetails";
-            pnlEmployeeDetails.Size = new Size(329, 501);
-            pnlEmployeeDetails.TabIndex = 0;
-            // 
-            // pnlEdit
-            // 
-            pnlEdit.Location = new Point(3, 3);
-            pnlEdit.Name = "pnlEdit";
-            pnlEdit.Size = new Size(307, 452);
-            pnlEdit.TabIndex = 1;
             // 
             // btnEditDetails
             // 
@@ -81,6 +64,13 @@
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             // 
+            // pnlEmployeeDetails
+            // 
+            pnlEmployeeDetails.Location = new Point(9, 26);
+            pnlEmployeeDetails.Name = "pnlEmployeeDetails";
+            pnlEmployeeDetails.Size = new Size(329, 501);
+            pnlEmployeeDetails.TabIndex = 0;
+            // 
             // EmployeeDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -93,15 +83,12 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeeDetailsView";
             Text = "EmployeeDetailsView";
-            pnlEmployeeDetails.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel pnlEmployeeDetails;
         private FontAwesome.Sharp.IconButton btnEditDetails;
         private FontAwesome.Sharp.IconButton btnCancel;
-        private Panel pnlEdit;
+        private Panel pnlEmployeeDetails;
     }
 }

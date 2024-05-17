@@ -6,14 +6,9 @@ namespace UI.Forms.EmployeePage
 {
     public partial class LawyerDetailsView : Form
     {
-        LawyerBL lawyerBL;
         LawyerUI displayedLawyerUI;
-        CaseServiceBL caseServiceBL;
-        List<CaseServiceUI> caseServices;
         bool isMyPage;
         bool isAdmin;
-        LawyerUI currentUser;
-        EmployeeUI employeeUI;
         public LawyerDetailsView(LawyerUI displayedLawyerUI, bool isMyPage, EmployeeUI currentUser)
         {
             this.displayedLawyerUI = displayedLawyerUI;
@@ -23,13 +18,6 @@ namespace UI.Forms.EmployeePage
             {
                 isAdmin = lawyerUI.Admin;
             }
-            else
-                employeeUI = currentUser;
-
-            lawyerBL = new LawyerBL();
-            
-            //caseServiceBL = new CaseServiceBL();
-            //caseServices = new List<CaseServiceUI>();
 
             InitializeComponent();
 
@@ -53,16 +41,12 @@ namespace UI.Forms.EmployeePage
                 StartPosition = FormStartPosition.CenterScreen;
             }
 
-            if (isMyPage || isAdmin)
-            {
-                btnEditDetails.Visible = true;
-            }
-            else
-                btnEditDetails.Visible = false;
+            btnEditDetails.Visible = isMyPage || isAdmin;
         }
         private async void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
-            //displayedLawyerUI = await GetLawyerAsync();
+            chboxShowAll.Checked = false;
+
             if (displayedLawyerUI != null)
             {
                 DisplayLawyer(displayedLawyerUI);
@@ -100,27 +84,15 @@ namespace UI.Forms.EmployeePage
             SetDgvData(chboxShowAll.Checked);
         }
 
-
-        //private async Task GetCaseServices()
-        //{
-        //    caseServices = await caseServiceBL.GetCaseServicesForLawyerAsync(lawyerID);
-        //}
-
         private void DisplayLawyer(LawyerUI lawyer)
         {
             pnlLawyerDetails.Controls.Clear();
             pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(displayedLawyerUI));
         }
 
-        private async Task<LawyerUI> GetLawyerAsync()
-        {
-            return await lawyerBL.GetLawyerWithCollectionsAsync(displayedLawyerUI.PersonID);
-        }
-
         private void SetDgvData(bool check)
         {
             dgvCases.DataSource = displayedLawyerUI.Cases;
-            //dgvServices.DataSource = caseServices;
             dgvServices.DataSource = displayedLawyerUI.CaseServices;
 
             foreach (DataGridViewRow row in dgvServices.Rows)

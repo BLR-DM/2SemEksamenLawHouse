@@ -95,6 +95,11 @@ namespace UI.Forms.FrontPage
                     this.lawyerUI = lawyer;
                     await SetupLawyerFormAsync();
                 }
+                else if (currentUser is SecretaryUI secretary)
+                {
+                    this.secretaryUI = secretary;
+                    await SetupEmployeeFormAsync();
+                }
                 else if (currentUser is EmployeeUI employeeUI)
                 {
                     this.employeeUI = employeeUI;
@@ -200,6 +205,13 @@ namespace UI.Forms.FrontPage
                 LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, lawyerUI);
                 PnlContextChange(myPageLawyer);
                 SetNavBtnColor(btnMyPageLawyer); 
+            }
+            else if (currentUser is SecretaryUI)
+            {
+                lblCurrentPage.Text = (sender as Button).Text;
+                EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(secretaryUI, true, employeeUI);
+                PnlContextChange(myPageEmployee);
+                SetNavBtnColor(btnMyPageLawyer);
             }
             else
             {

@@ -17,12 +17,15 @@ namespace UI.Forms.EmployeePage
     {
         EmployeeBL employeeBL;
         LawyerBL lawyerBL;
+        SecretaryBL secretaryBL;
 
         List<EmployeeUI> employeeUIs;
         List<LawyerUI> lawyerUIs;
+        List<SecretaryUI> secretaryUIs;
 
         LawyerUI lawyerUI;
         EmployeeUI employeeUI;
+        SecretaryUI secretaryUI;
 
         public EmployeesOverview(int userID, EmployeeUI currentUser)
         {
@@ -34,9 +37,11 @@ namespace UI.Forms.EmployeePage
 
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
+            secretaryBL = new SecretaryBL();
 
             employeeUIs = new List<EmployeeUI>();
             lawyerUIs = new List<LawyerUI>();
+            secretaryUIs = new List<SecretaryUI>();
 
             InitializeComponent();
 
@@ -62,6 +67,9 @@ namespace UI.Forms.EmployeePage
                     break;
                 case "  Lawyers":
                     SetupDgvWithLawyers();
+                    break;
+                case "  Secretaries":
+                    SetupDgvWithSecretaries();
                     break;
             }
         }
@@ -89,9 +97,9 @@ namespace UI.Forms.EmployeePage
                 case "  Secretaries":
                     if (e.RowIndex >= 0)
                     {
-                        //SecretaryUI secretary = dgvEmployees.Rows[e.RowIndex].DataBoundItem as SecretaryUI;
+                        SecretaryUI secretary = dgvEmployees.Rows[e.RowIndex].DataBoundItem as SecretaryUI;
 
-                        //new LawyerDetailsView(secretary.PersonID, false).ShowDialog();
+                        new EmployeeDetailsView(secretary, false, employeeUI).ShowDialog();
                     }
                     break;
             }
@@ -101,6 +109,7 @@ namespace UI.Forms.EmployeePage
         {
             employeeUIs = await GetEmployeesAsync();
             lawyerUIs = await GetLawyersWithCollectionsAsync();
+            secretaryUIs = await GetSecretariesAsync();
 
             FillComboBoxes();
             SetupDgvWithEmployees();
@@ -175,7 +184,8 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.Columns["City"].Visible = true;
             dgvEmployees.Columns["HireDate"].Visible = true;
 
-            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "yyyy/MM/dd"; 
+            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvEmployees.Columns["PersonID"].HeaderText = "EmployeeID";
 
             dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
             dgvEmployees.Columns["Firstname"].DisplayIndex = 1;
@@ -191,8 +201,40 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        
+        private async Task<List<SecretaryUI>> GetSecretariesAsync()
+        {
+            return await secretaryBL.GetSecretariesAsync();
+        }
 
+        private void SetupDgvWithSecretaries()
+        {
+            dgvEmployees.DataSource = secretaryUIs;
+
+            dgvEmployees.Columns["LawyerTitleID"].Visible = false;
+            dgvEmployees.Columns["LoginDetailsID"].Visible = false;
+
+            dgvEmployees.Columns["LawyerTitle"].Visible = true;
+            dgvEmployees.Columns["AddressLine"].Visible = true;
+            dgvEmployees.Columns["City"].Visible = true;
+            dgvEmployees.Columns["HireDate"].Visible = true;
+
+            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvEmployees.Columns["PersonID"].HeaderText = "SecretaryID";
+
+            dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
+            dgvEmployees.Columns["LawyerTitle"].DisplayIndex = 1;
+            dgvEmployees.Columns["Firstname"].DisplayIndex = 2;
+            dgvEmployees.Columns["Lastname"].DisplayIndex = 3;
+            dgvEmployees.Columns["Email"].DisplayIndex = 4;
+            dgvEmployees.Columns["PhoneNumber"].DisplayIndex = 5;
+            dgvEmployees.Columns["AddressLine"].DisplayIndex = 6;
+            dgvEmployees.Columns["PostalCode"].DisplayIndex = 7;
+            dgvEmployees.Columns["City"].DisplayIndex = 8;
+            dgvEmployees.Columns["HireDate"].DisplayIndex = 9;
+
+            dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
         //private async Task<List<LawyerUI>> GetLawyersAsync()
         //{
         //    return await lawyerBL.GetLawyersAsync();

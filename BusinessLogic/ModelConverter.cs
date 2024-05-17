@@ -285,17 +285,20 @@ namespace BusinessLogic
         {
             SecretaryUI secretaryUI = new SecretaryUI
             {
-                //SecretaryID = secretaryE.SecretaryID,
+                PersonID = secretaryE.PersonID,
                 Firstname = secretaryE.Firstname,
                 Lastname = secretaryE.Lastname,
                 PhoneNumber = secretaryE.PhoneNumber,
                 Email = secretaryE.Email,
                 AddressLine = secretaryE.AddressLine,
                 PostalCode = secretaryE.PostalCode,
+                City = secretaryE.City,
                 HireDate = secretaryE.HireDate,
+                LawyerTitle = secretaryE.LawyerTitle.Title,
 
-                //foreign Key
-                //UserID = secretaryE.UserID,
+                //foreign keys
+                LoginDetailsID = secretaryE.LoginDetailsID,
+                LawyerTitleID = secretaryE.LawyerTitleID,
             };
             return secretaryUI;
         }
@@ -568,19 +571,21 @@ namespace BusinessLogic
         {
             Secretary secretaryE = new Secretary
             {
-                //SecretaryID = secretaryUI.SecretaryID,
-
                 //employee attributter
+                PersonID = secretaryUI.PersonID,
                 Firstname = secretaryUI.Firstname,
                 Lastname = secretaryUI.Lastname,
                 PhoneNumber = secretaryUI.PhoneNumber,
                 Email = secretaryUI.Email,
                 AddressLine = secretaryUI.AddressLine,
                 PostalCode = secretaryUI.PostalCode,
+                City = secretaryUI.City,
+                LawyerTitleID = secretaryUI.LawyerTitleID,
                 HireDate = secretaryUI.HireDate,
 
-                //foreign key
-                //UserID = secretaryUI.UserID,
+                // foreign keys
+                LoginDetailsID = secretaryUI.LoginDetailsID,
+
             };
             return secretaryE;
         }

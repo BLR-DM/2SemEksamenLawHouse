@@ -19,29 +19,15 @@ namespace UI.Forms.EmployeePage
         LawyerBL lawyerBL;
         SecretaryBL secretaryBL;
 
-        List<EmployeeUI> employeeUIs;
-        List<LawyerUI> lawyerUIs;
-        List<SecretaryUI> secretaryUIs;
-
-        LawyerUI lawyerUI;
         EmployeeUI employeeUI;
-        SecretaryUI secretaryUI;
 
         public EmployeesOverview(int userID, EmployeeUI currentUser)
         {
-            //if (currentUser is LawyerUI lawyerUI)
-            //    this.lawyerUI = lawyerUI;
-            //else
-            //    currentUser = currentUser;
             this.employeeUI = currentUser;
 
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
             secretaryBL = new SecretaryBL();
-
-            employeeUIs = new List<EmployeeUI>();
-            lawyerUIs = new List<LawyerUI>();
-            secretaryUIs = new List<SecretaryUI>();
 
             InitializeComponent();
 
@@ -53,23 +39,23 @@ namespace UI.Forms.EmployeePage
 
         private void DgvEmployees_DataSourceChanged(object? sender, EventArgs e)
         {
-            lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
-            lblCurrentlyShowing.Text = cboxShow.Text.TrimStart();
+            dgvEmployees.CurrentCell = null;
         }
 
-        private void CboxFilterEmployees_SelectionChangeCommitted(object? sender, EventArgs e)
+        private async void CboxFilterEmployees_SelectionChangeCommitted(object? sender, EventArgs e)
         {
             lblShow.Focus();
-            switch(cboxShow.SelectedItem)
+            lblTotalEmployees.Text = "Loading...";
+            switch (cboxShow.SelectedItem)
             {
                 case "Employees":
-                    SetupDgvWithEmployees();
+                    await SetupDgvWithEmployeesAsync();
                     break;
                 case "  Lawyers":
-                    SetupDgvWithLawyers();
+                    await SetupDgvWithLawyersAsync();
                     break;
                 case "  Secretaries":
-                    SetupDgvWithSecretaries();
+                    await SetupDgvWithSecretariesAsync();
                     break;
             }
         }
@@ -107,12 +93,8 @@ namespace UI.Forms.EmployeePage
 
         private async void EmployeesOverview_Load(object? sender, EventArgs e)
         {
-            employeeUIs = await GetEmployeesAsync();
-            lawyerUIs = await GetLawyersWithCollectionsAsync();
-            secretaryUIs = await GetSecretariesAsync();
-
             FillComboBoxes();
-            SetupDgvWithEmployees();
+            await SetupDgvWithEmployeesAsync();
         }
 
         private void FillComboBoxes()
@@ -133,14 +115,9 @@ namespace UI.Forms.EmployeePage
             //cboxSort.SelectionStart = 0;
         }
 
-        private async Task<List<LawyerUI>> GetLawyersWithCollectionsAsync()
+        private async Task SetupDgvWithLawyersAsync()
         {
-            return await lawyerBL.GetLawyersWithCollectionsAsync();
-        }
-
-        private void SetupDgvWithLawyers()
-        {
-            dgvEmployees.DataSource = lawyerUIs;
+            dgvEmployees.DataSource = await lawyerBL.GetLawyersWithCollectionsAsync();
 
             dgvEmployees.Columns["LawyerTitleID"].Visible = false;
             dgvEmployees.Columns["LoginDetailsID"].Visible = false;
@@ -165,17 +142,14 @@ namespace UI.Forms.EmployeePage
 
             dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
         }
 
-        private async Task<List<EmployeeUI>> GetEmployeesAsync()
+        private async Task SetupDgvWithEmployeesAsync()
         {
-            return await employeeBL.GetEmployeesAsync();
-        }
+            dgvEmployees.DataSource = await employeeBL.GetEmployeesAsync();
 
-        private void SetupDgvWithEmployees()
-        {
-            dgvEmployees.DataSource = employeeUIs;
-            
             dgvEmployees.Columns["LawyerTitleID"].Visible = false;
             dgvEmployees.Columns["LoginDetailsID"].Visible = false;
             dgvEmployees.Columns["LawyerTitle"].Visible = false;
@@ -184,7 +158,7 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.Columns["City"].Visible = true;
             dgvEmployees.Columns["HireDate"].Visible = true;
 
-            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "d";
             dgvEmployees.Columns["PersonID"].HeaderText = "EmployeeID";
 
             dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
@@ -199,16 +173,13 @@ namespace UI.Forms.EmployeePage
 
             dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
         }
 
-        private async Task<List<SecretaryUI>> GetSecretariesAsync()
+        private async Task SetupDgvWithSecretariesAsync()
         {
-            return await secretaryBL.GetSecretariesAsync();
-        }
-
-        private void SetupDgvWithSecretaries()
-        {
-            dgvEmployees.DataSource = secretaryUIs;
+            dgvEmployees.DataSource = await secretaryBL.GetSecretariesAsync();
 
             dgvEmployees.Columns["LawyerTitleID"].Visible = false;
             dgvEmployees.Columns["LoginDetailsID"].Visible = false;
@@ -218,7 +189,7 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.Columns["City"].Visible = true;
             dgvEmployees.Columns["HireDate"].Visible = true;
 
-            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "d";
             dgvEmployees.Columns["PersonID"].HeaderText = "SecretaryID";
 
             dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
@@ -234,6 +205,8 @@ namespace UI.Forms.EmployeePage
 
             dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
         }
         //private async Task<List<LawyerUI>> GetLawyersAsync()
         //{

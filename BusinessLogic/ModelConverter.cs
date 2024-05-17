@@ -543,6 +543,27 @@ namespace BusinessLogic
             return lawyerSpecialityE;
         }
 
+        public Employee ConvertFromEmployeeUI(EmployeeUI employeeUI)
+        {
+            Employee employeeE = new Employee
+            {
+                PersonID = employeeUI.PersonID,
+                Firstname = employeeUI.Firstname,
+                Lastname = employeeUI.Lastname,
+                PhoneNumber = employeeUI.PhoneNumber,
+                Email = employeeUI.Email,
+                AddressLine = employeeUI.AddressLine,
+                PostalCode = employeeUI.PostalCode,
+                City = employeeUI.City,
+                HireDate = employeeUI.HireDate,
+                LawyerTitleID = employeeUI.LawyerTitleID,
+
+                //foreign keys
+                LoginDetailsID = employeeUI.LoginDetailsID
+            };
+            return employeeE;
+        }
+
         public Secretary ConvertFromSecretaryUI(SecretaryUI secretaryUI)
         {
             Secretary secretaryE = new Secretary

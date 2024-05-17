@@ -204,7 +204,7 @@ namespace UI.Forms.FrontPage
             else
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(employeeUI, true, employeeUI);
+                EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(employeeUI.PersonID, true, employeeUI);
                 PnlContextChange(myPageEmployee);
                 SetNavBtnColor(btnMyPageLawyer);
             }

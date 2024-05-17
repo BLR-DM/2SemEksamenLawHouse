@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,21 @@ namespace DataAccess
             return await db.Employees
                 .Include(t => t.LawyerTitle)
                 .SingleOrDefaultAsync(e => e.PersonID == id);
+        }
+
+        public async Task<bool> UpdateEmployeeAsync(Employee employee)
+        {
+            try
+            {
+                db.Employees.Update(employee);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

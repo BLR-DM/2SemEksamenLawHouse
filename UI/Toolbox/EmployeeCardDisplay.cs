@@ -10,6 +10,7 @@ namespace UI.Toolbox
         {
             InitializeComponent();
             DisplayEmployeeInformation(employeeUI);
+
         }
 
         private void DisplayEmployeeInformation(EmployeeUI employeeUI)
@@ -25,13 +26,13 @@ namespace UI.Toolbox
                     SetupDisplayEmployee(employeeUI);
                 }
 
-                //switch (employeeUI)
+                //switch (currentUser)
                 //{
                 //    case LawyerUI lawyerUI:
                 //        SetupDisplayLawyer(lawyerUI);
                 //        break;
                 //    default:
-                //        SetupDisplayEmployee(employeeUI);
+                //        SetupDisplayEmployee(currentUser);
                 //        break;
                 //} 
             }
@@ -66,9 +67,7 @@ namespace UI.Toolbox
             lblDetailsPhoneValue.Text = $"+45{employeeUI.PhoneNumber}";
             lblDetailsEmailValue.Text = employeeUI.Email;
             lblSpecialities.Text = "Hire Date:";
-            lblHireDate.Text = employeeUI.HireDate.ToString("d");
-
-            
+            lblHireDate.Text = employeeUI.HireDate.ToString("d");            
             
             lboxSpecialties.Visible = false;
         }

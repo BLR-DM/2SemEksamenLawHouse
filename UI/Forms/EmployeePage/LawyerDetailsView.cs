@@ -20,7 +20,7 @@ namespace UI.Forms.EmployeePage
             this.isMyPage = isMyPage;
 
             if (currentUser is LawyerUI lawyerUI)
-            {;
+            {
                 isAdmin = lawyerUI.Admin;
             }
             else
@@ -36,7 +36,7 @@ namespace UI.Forms.EmployeePage
             pnlEdit.Visible = false;
             btnCancel.Visible = false;
 
-            Load += MyPageLawyerView_Load;
+            Load += LawyerDetailsView_Load;
             chboxShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
             btnEditDetails.Click += BtnEditDetails_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
@@ -60,7 +60,7 @@ namespace UI.Forms.EmployeePage
             else
                 btnEditDetails.Visible = false;
         }
-        private async void MyPageLawyerView_Load(object? sender, EventArgs e)
+        private async void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
             //displayedLawyerUI = await GetLawyerAsync();
             if (displayedLawyerUI != null)

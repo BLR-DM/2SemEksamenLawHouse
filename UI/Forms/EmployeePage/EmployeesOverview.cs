@@ -29,7 +29,7 @@ namespace UI.Forms.EmployeePage
             //if (currentUser is LawyerUI lawyerUI)
             //    this.lawyerUI = lawyerUI;
             //else
-            //    employeeUI = currentUser;
+            //    currentUser = currentUser;
             this.employeeUI = currentUser;
 
             employeeBL = new EmployeeBL();
@@ -75,7 +75,7 @@ namespace UI.Forms.EmployeePage
                     {
                         EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
 
-                        new EmployeeDetailsView(employee, false, lawyerUI).ShowDialog();
+                        new EmployeeDetailsView(employee.PersonID, false, employeeUI).ShowDialog();
                     }
                     break;
                 case "  Lawyers":

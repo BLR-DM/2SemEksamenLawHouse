@@ -41,5 +41,18 @@ namespace BusinessLogic
             }
             return new EmployeeUI();
         }
+
+        public async Task<bool> UpdateEmployeeAsync(EmployeeUI employeeUI)
+        {
+            try
+            {
+                Employee employee = modelConverter.ConvertFromEmployeeUI(employeeUI);
+                return await dbAccess.UpdateEmployeeAsync(employee);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

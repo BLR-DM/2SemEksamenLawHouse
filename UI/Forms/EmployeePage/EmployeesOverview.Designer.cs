@@ -125,7 +125,7 @@
             lblTotalEmployees.Name = "lblTotalEmployees";
             lblTotalEmployees.Size = new Size(122, 25);
             lblTotalEmployees.TabIndex = 4;
-            lblTotalEmployees.Text = "10 Employees";
+            lblTotalEmployees.Text = "Employees";
             lblTotalEmployees.TextAlign = ContentAlignment.BottomCenter;
             // 
             // lblFilter

@@ -21,11 +21,16 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> employeeUIs;
         List<LawyerUI> lawyerUIs;
 
-        LawyerUI currentUser;
+        LawyerUI lawyerUI;
+        EmployeeUI employeeUI;
 
-        public EmployeesOverview(int userID, LawyerUI currentUser)
+        public EmployeesOverview(int userID, EmployeeUI currentUser)
         {
-            this.currentUser = currentUser;
+            //if (currentUser is LawyerUI lawyerUI)
+            //    this.lawyerUI = lawyerUI;
+            //else
+            //    currentUser = currentUser;
+            this.employeeUI = currentUser;
 
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
@@ -66,19 +71,19 @@ namespace UI.Forms.EmployeePage
             switch (cboxShow.SelectedItem)
             {
                 case "Employees":
-                    //if (e.RowIndex >= 0)
-                    //{
-                        //EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
+                    if (e.RowIndex >= 0)
+                    {
+                        EmployeeUI employee = dgvEmployees.Rows[e.RowIndex].DataBoundItem as EmployeeUI;
 
-                        //new LawyerDetailsView(employee.PersonID, false).ShowDialog();
-                    //}
+                        new EmployeeDetailsView(employee, false, employeeUI).ShowDialog();
+                    }
                     break;
                 case "  Lawyers":
                     if (e.RowIndex >= 0)
                     {
                         LawyerUI lawyer = dgvEmployees.Rows[e.RowIndex].DataBoundItem as LawyerUI;
 
-                        new LawyerDetailsView(lawyer.PersonID, false, currentUser).ShowDialog();
+                        new LawyerDetailsView(lawyer, false, employeeUI).ShowDialog();
                     }
                     break;
                 case "  Secretaries":

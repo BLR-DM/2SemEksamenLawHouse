@@ -40,13 +40,13 @@
             lblDetailsPhoneValue = new Label();
             lblDetailsEmailValue = new Label();
             lboxSpecialties = new ListBox();
+            lblHireDate = new Label();
             ((System.ComponentModel.ISupportInitialize)pboxDetails).BeginInit();
             SuspendLayout();
             // 
             // lblSpecialities
             // 
             lblSpecialities.Anchor = AnchorStyles.Top;
-            lblSpecialities.AutoSize = true;
             lblSpecialities.BackColor = Color.Transparent;
             lblSpecialities.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblSpecialities.ForeColor = Color.FromArgb(45, 93, 134);
@@ -55,6 +55,7 @@
             lblSpecialities.Size = new Size(88, 19);
             lblSpecialities.TabIndex = 4;
             lblSpecialities.Text = "Specialities:";
+            lblSpecialities.TextAlign = ContentAlignment.TopRight;
             // 
             // lblDetailsTitle
             // 
@@ -203,6 +204,19 @@
             lboxSpecialties.Sorted = true;
             lboxSpecialties.TabIndex = 11;
             // 
+            // lblHireDate
+            // 
+            lblHireDate.Anchor = AnchorStyles.Top;
+            lblHireDate.AutoSize = true;
+            lblHireDate.BackColor = Color.Transparent;
+            lblHireDate.Font = new Font("Segoe UI", 9.75F);
+            lblHireDate.ForeColor = SystemColors.ControlText;
+            lblHireDate.Location = new Point(100, 370);
+            lblHireDate.Name = "lblHireDate";
+            lblHireDate.Size = new Size(74, 17);
+            lblHireDate.TabIndex = 4;
+            lblHireDate.Text = "15-05-2024";
+            // 
             // EmployeeCardDisplay
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -211,6 +225,7 @@
             Controls.Add(lblFullname);
             Controls.Add(lboxSpecialties);
             Controls.Add(lblSpecialities);
+            Controls.Add(lblHireDate);
             Controls.Add(lblDetailsEmailValue);
             Controls.Add(lblDetailsTitle);
             Controls.Add(lblDetailsPhoneValue);
@@ -240,5 +255,6 @@
         private Label lblDetailsPhoneValue;
         private Label lblDetailsEmailValue;
         private ListBox lboxSpecialties;
+        private Label lblHireDate;
     }
 }

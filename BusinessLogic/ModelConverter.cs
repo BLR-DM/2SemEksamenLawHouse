@@ -163,7 +163,11 @@ namespace BusinessLogic
                 PostalCode = employeeE.PostalCode,
                 City = employeeE.City,
                 HireDate = employeeE.HireDate,
-                LawyerTitle = employeeE.LawyerTitle.Title
+                LawyerTitle = employeeE.LawyerTitle.Title,
+
+                //foreign keys
+                LoginDetailsID = employeeE.LoginDetailsID,
+                LawyerTitleID = employeeE.LawyerTitleID,
             };
             return employeeUI;
         }
@@ -537,6 +541,27 @@ namespace BusinessLogic
                 SpecialityID = lawyerSpecialityUI.SpecialityID,
             };
             return lawyerSpecialityE;
+        }
+
+        public Employee ConvertFromEmployeeUI(EmployeeUI employeeUI)
+        {
+            Employee employeeE = new Employee
+            {
+                PersonID = employeeUI.PersonID,
+                Firstname = employeeUI.Firstname,
+                Lastname = employeeUI.Lastname,
+                PhoneNumber = employeeUI.PhoneNumber,
+                Email = employeeUI.Email,
+                AddressLine = employeeUI.AddressLine,
+                PostalCode = employeeUI.PostalCode,
+                City = employeeUI.City,
+                HireDate = employeeUI.HireDate,
+                LawyerTitleID = employeeUI.LawyerTitleID,
+
+                //foreign keys
+                LoginDetailsID = employeeUI.LoginDetailsID
+            };
+            return employeeE;
         }
 
         public Secretary ConvertFromSecretaryUI(SecretaryUI secretaryUI)

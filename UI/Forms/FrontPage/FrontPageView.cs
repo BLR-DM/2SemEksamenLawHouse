@@ -19,6 +19,8 @@ namespace UI.Forms.FrontPage
         PersonUI currentUser;
         ClientUI clientUI;
         LawyerUI lawyerUI;
+        SecretaryUI secretaryUI;
+        EmployeeUI employeeUI;
 
 
         PersonBL personBL;
@@ -93,12 +95,14 @@ namespace UI.Forms.FrontPage
                     this.lawyerUI = lawyer;
                     await SetupLawyerFormAsync();
                 }
-                else if (currentUser is SecretaryUI secretaryUI)
+                else if (currentUser is EmployeeUI employeeUI)
                 {
-
+                    this.employeeUI = employeeUI;
+                    await SetupEmployeeFormAsync();
                 }
             }
         }
+
 
         private async Task SetupClientFormAsync()
         {
@@ -133,7 +137,7 @@ namespace UI.Forms.FrontPage
             SetNavBtnColor(btnMyPageLawyer);
 
             //set mypage
-            LawyerDetailsView lawyerDetailsView = new LawyerDetailsView(lawyerUI.PersonID, true, lawyerUI);
+            LawyerDetailsView lawyerDetailsView = new LawyerDetailsView(lawyerUI, true, lawyerUI);
             if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(LawyerDetailsView))
             {
                 PnlContextChange(lawyerDetailsView);
@@ -143,6 +147,18 @@ namespace UI.Forms.FrontPage
             {
                 btnAdminPage.Visible = true;
             }
+        }
+
+        private async Task SetupEmployeeFormAsync()
+        {
+            // Knapper
+            btnMyPageLawyer.Visible = true;
+            btnEmployees.Visible = true;
+            btnCase.Visible = true;
+            btnClients.Visible = true;
+            btnAdminPage.Visible = true; // test
+
+            SetNavBtnColor(btnMyPageLawyer);
         }
 
         public void PnlContextChange(Form f)
@@ -178,18 +194,38 @@ namespace UI.Forms.FrontPage
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
-            LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI.PersonID, true, lawyerUI);
-            PnlContextChange(myPageLawyer);
-            SetNavBtnColor(btnMyPageLawyer);
+            if (currentUser is LawyerUI)
+            {
+                lblCurrentPage.Text = (sender as Button).Text;
+                LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, lawyerUI);
+                PnlContextChange(myPageLawyer);
+                SetNavBtnColor(btnMyPageLawyer); 
+            }
+            else
+            {
+                lblCurrentPage.Text = (sender as Button).Text;
+                EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(employeeUI, true, employeeUI);
+                PnlContextChange(myPageEmployee);
+                SetNavBtnColor(btnMyPageLawyer);
+            }
         }
 
         private void BtnEmployees_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
-            EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI);
-            PnlContextChange(employeesOverview);
-            SetNavBtnColor(btnEmployees);
+            if (currentUser is LawyerUI)
+            {
+                lblCurrentPage.Text = (sender as Button).Text;
+                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI);
+                PnlContextChange(employeesOverview);
+                SetNavBtnColor(btnEmployees); 
+            }
+            else
+            {
+                lblCurrentPage.Text = (sender as Button).Text;
+                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, employeeUI);
+                PnlContextChange(employeesOverview);
+                SetNavBtnColor(btnEmployees);
+            }
         }
 
         private void BtnAdminPage_Click(object? sender, EventArgs e)

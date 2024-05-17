@@ -43,6 +43,7 @@ namespace UI.Toolbox
             txtFirstname.TextChanged += TxtFirstname_TextChanged;
             txtLastname.TextChanged += TxtLastname_TextChanged;
             txtPhone.TextChanged += TxtPhone_TextChanged;
+            txtEmail.TextChanged += TxtEmail_TextChanged;
             txtAddress.TextChanged += TxtAddress_TextChanged;
             txtPostal.TextChanged += TxtPostal_TextChanged;
             txtCity.TextChanged += TxtCity_TextChanged;
@@ -151,7 +152,7 @@ namespace UI.Toolbox
                 txtCity.Text = lawyerUI.City;
 
                 FillSpecialityListBox();
-                FillTitleComboBox();
+                FillTitleComboBoxAsync();
                 FillSpecialityComboBox();
                 UpdateLabelCount();
 
@@ -180,7 +181,7 @@ namespace UI.Toolbox
             }
         }
 
-        private async Task FillTitleComboBox()
+        private async Task FillTitleComboBoxAsync()
         {
             lawyerTitles = await lawyerTitleBL.GetLawyerTitles();
 
@@ -230,6 +231,11 @@ namespace UI.Toolbox
             btnUpdateEnabled();
         }
 
+        private void TxtEmail_TextChanged(object? sender, EventArgs e)
+        {
+            txtEmail.ForeColor = pValidator.ValidEmail(txtEmail.Text) ? validFormat : invalidFormat;
+        }
+
         private void TxtPhone_TextChanged(object? sender, EventArgs e)
         {
             txtPhone.ForeColor = pValidator.ValidPhone(txtPhone.Text) ? validFormat : invalidFormat;
@@ -256,6 +262,7 @@ namespace UI.Toolbox
                     txtAddress.ForeColor != invalidFormat &&
                     txtPostal.ForeColor != invalidFormat &&
                     txtPhone.ForeColor != invalidFormat &&
+                    txtEmail.ForeColor != invalidFormat &&
                     txtCity.ForeColor != invalidFormat &&
                     lboxSpecialities.Items.Count > 0 &&
                     cboxTitles.SelectedItem != null;

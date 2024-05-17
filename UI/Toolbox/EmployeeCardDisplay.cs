@@ -10,33 +10,41 @@ namespace UI.Toolbox
         {
             InitializeComponent();
             DisplayEmployeeInformation(employeeUI);
+
         }
 
         private void DisplayEmployeeInformation(EmployeeUI employeeUI)
         {
             if (employeeUI != null)
             {
-                switch (employeeUI)
+                if (employeeUI is LawyerUI lawyerUI)
                 {
-                    case LawyerUI lawyerUI:
-                        InitializePropertiesLawyer(lawyerUI);
-                        break;
-                    case SecretaryUI secretaryUI:
-                        InitializePropertiesSecretary(secretaryUI);
-                        break;
-                    default:
-                        throw new ArgumentException("Unsupported employee type");
-                } 
+                    SetupDisplayLawyer(lawyerUI);
+                }
+                else
+                {
+                    SetupDisplayEmployee(employeeUI);
+                }
+
+                //switch (currentUser)
+                //{
+                //    case LawyerUI lawyerUI:
+                //        SetupDisplayLawyer(lawyerUI);
+                //        break;
+                //    default:
+                //        SetupDisplayEmployee(currentUser);
+                //        break;
+                //} 
             }
         }
 
-        private void InitializePropertiesLawyer(LawyerUI lawyerUI)
+        private void SetupDisplayLawyer(LawyerUI lawyerUI)
         {
             pboxDetails.IconColor = Color.Black;
             //pboxDetails.IconChar = lawyerUI.PersonID == 5 ? FontAwesome.Sharp.IconChar.PiedPiperAlt : FontAwesome.Sharp.IconChar.PersonMilitaryPointing;
 
             // Attributter
-            lblFullname.Text = string.Join(" ", lawyerUI.Firstname, lawyerUI.Lastname);
+            lblFullname.Text = $"{lawyerUI.Firstname} {lawyerUI.Lastname}";
             lblDetailsTitleValue.Text = lawyerUI.LawyerTitle;
             lblDetailsCityValue.Text = lawyerUI.City;
             lblDetailsPhoneValue.Text = $"+45{lawyerUI.PhoneNumber}";
@@ -44,18 +52,24 @@ namespace UI.Toolbox
 
             // Specialer i listbox
             lboxSpecialties.DataSource = lawyerUI.LawyerSpecialities.Select(ls => ls.SpecialityName).ToList();
+
+            lblHireDate.Visible = false;
         }
 
-        private void InitializePropertiesSecretary(SecretaryUI secretaryUI)
+        private void SetupDisplayEmployee(EmployeeUI employeeUI)
         {
             pboxDetails.IconColor = Color.Black;
 
             // Attributter
-            lblFullname.Text = string.Join(" ", secretaryUI.Firstname, secretaryUI.Lastname);
-            lblDetailsTitleValue.Text = secretaryUI.LawyerTitle;
-            lblDetailsCityValue.Text = secretaryUI.City;
-            lblDetailsPhoneValue.Text = $"+45{secretaryUI.PhoneNumber}";
-            lblDetailsEmailValue.Text = secretaryUI.Email;
+            lblFullname.Text = $"{employeeUI.Firstname} {employeeUI.Lastname}";
+            lblDetailsTitleValue.Text = employeeUI.LawyerTitle;
+            lblDetailsCityValue.Text = employeeUI.City;
+            lblDetailsPhoneValue.Text = $"+45{employeeUI.PhoneNumber}";
+            lblDetailsEmailValue.Text = employeeUI.Email;
+            lblSpecialities.Text = "Hire Date:";
+            lblHireDate.Text = employeeUI.HireDate.ToString("d");            
+            
+            lboxSpecialties.Visible = false;
         }
     }
 }

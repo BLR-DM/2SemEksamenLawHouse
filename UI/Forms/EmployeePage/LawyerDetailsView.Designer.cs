@@ -146,7 +146,7 @@
             Controls.Add(dgvCases);
             FormBorderStyle = FormBorderStyle.None;
             Name = "LawyerDetailsView";
-            Tag = "My page";
+            Tag = "";
             Text = "MyPageLawyerView";
             ((System.ComponentModel.ISupportInitialize)dgvCases).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();

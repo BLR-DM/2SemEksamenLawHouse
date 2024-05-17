@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityModels", "EntityModel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIModels", "UIModels\UIModels.csproj", "{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculations", "Calculations\Calculations.csproj", "{74EA0242-5955-4817-BD6C-6586798161F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD7CDA5-2721-4E20-B62B-7CD2BF999BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74EA0242-5955-4817-BD6C-6586798161F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EA0242-5955-4817-BD6C-6586798161F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EA0242-5955-4817-BD6C-6586798161F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EA0242-5955-4817-BD6C-6586798161F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

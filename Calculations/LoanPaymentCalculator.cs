@@ -16,6 +16,7 @@ namespace Calculations
 
             //udregning at betaling pr aar
             double totalPrYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
+            TotalPrYear = totalPrYear;
             //afrunder svar til 2 decimaler
             double roundedTotalPrYear = Math.Round(totalPrYear, 2);
 
@@ -25,14 +26,11 @@ namespace Calculations
             double amountPrPayment = totalPrYear / paymentsPrYear;
             //afrunde til 2 decimaler
             double roundedAmountPrPayment = Math.Round(amountPrPayment, 2);
+            AmountPrPayment = roundedAmountPrPayment;
 
 
 
-            return new LoanPaymentCalculator
-            {
-                TotalPrYear = roundedTotalPrYear,
-                AmountPrPayment = roundedAmountPrPayment,
-            };
+            return this;
         }
     }
 }

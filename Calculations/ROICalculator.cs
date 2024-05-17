@@ -17,12 +17,10 @@ namespace Calculations
 
             //afrunder svar til 2 decimaler
             double roundedReturnOnInvestment = Math.Round(returnOnInvestment, 2);
+            ReturnOnInvestment = roundedReturnOnInvestment;
 
 
-            return new ROICalculator()
-            {
-                ReturnOnInvestment = roundedReturnOnInvestment,
-            };
+            return this;
         }
     }
 }

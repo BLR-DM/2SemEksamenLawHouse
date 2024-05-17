@@ -15,12 +15,13 @@ namespace UI.Forms.CasePage
     public partial class AddClientView : Form
     {
         ClientBL clientBL;
+
         List<ClientUI> originalClientList;
         public event EventHandler<ClientUI> ClientSelected;
-        public AddClientView()
+        public AddClientView(ClientBL clientBL)
         {
             InitializeComponent();
-            clientBL = new ClientBL();
+            this.clientBL = clientBL;
             originalClientList = new List<ClientUI>();
             dgvClientView.CellDoubleClick += DgvClientView_CellDoubleClick;
             txtSearch.TextChanged += TxtSearch_TextChanged;

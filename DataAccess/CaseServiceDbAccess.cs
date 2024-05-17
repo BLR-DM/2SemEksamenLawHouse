@@ -22,7 +22,9 @@ namespace DataAccess
             try
             {
                 db.CaseServices.AddAsync(caseService);
-                return db.SaveChanges() > 0;
+                bool succes = db.SaveChanges() > 0;
+                db.ChangeTracker.Clear();
+                return succes;
             }
             catch (Exception)
             {

@@ -28,10 +28,18 @@ namespace UI.Forms.ClientPage
 
         ServiceEntryBL serviceEntryBL;
 
+        LawyerBL lawyerBL;
+        CaseTypeBL caseTypeBL;
+        CaseServiceBL caseServiceBL;
+        CaseValidator cValidator;
+        ServiceBL serviceBL;
+        SpecialityBL specialityBL;
+
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
 
-        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, CaseBL caseBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL)
+        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, CaseBL caseBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL,
+                            LawyerBL lawyerBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
         {
             InitializeComponent();
             
@@ -43,6 +51,12 @@ namespace UI.Forms.ClientPage
             this.subscriptionBL = subscriptionBL;
             this.caseBL = caseBL;
             this.serviceEntryBL = serviceEntryBL;
+            this.lawyerBL = lawyerBL;
+            this.caseTypeBL = caseTypeBL;
+            this.caseServiceBL = caseServiceBL;
+            this.cValidator = cValidator;
+            this.serviceBL = serviceBL;
+            this.specialityBL = specialityBL;
 
             //Events
             Load += ClientsView_Load;
@@ -82,7 +96,8 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL);
+                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL,
+                                                                    caseServiceBL, cValidator, serviceBL, specialityBL);
                 frontPageView.PnlContextChange(clientDetails);
             }
         }

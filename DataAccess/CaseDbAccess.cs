@@ -21,7 +21,9 @@ namespace DataAccess
             try
             {
                 await db.Cases.AddAsync(caseE);
-                return await db.SaveChangesAsync() > 0;
+                bool succes = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return succes;
             }
             catch (Exception)
             {

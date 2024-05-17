@@ -29,6 +29,13 @@ namespace UI.Forms.ClientPage
         PersonValidator pValidator;
         ServiceEntryBL serviceEntryBL;
 
+        LawyerBL lawyerBL;
+        CaseTypeBL caseTypeBL;
+        CaseServiceBL caseServiceBL;
+        CaseValidator cValidator;
+        ServiceBL serviceBL;
+        SpecialityBL specialityBL;
+
         Color validFormat;
         Color invalidFormat;
 
@@ -38,7 +45,8 @@ namespace UI.Forms.ClientPage
         List<ClientSubscriptionUI> subscriptions;
         List<CaseUI> cases;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL,
+                                LawyerBL lawyerBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
         {
             InitializeComponent();
             this.frontPageView = fpv;
@@ -50,6 +58,13 @@ namespace UI.Forms.ClientPage
             this.pValidator = pValidator;
             this.caseBL = caseBL;
             this.serviceEntryBL = serviceEntryBL;
+            
+            this.lawyerBL = lawyerBL;
+            this.caseTypeBL = caseTypeBL;
+            this.caseServiceBL = caseServiceBL;
+            this.cValidator = cValidator;
+            this.serviceBL = serviceBL;
+            this.specialityBL = specialityBL;
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();
@@ -275,11 +290,13 @@ namespace UI.Forms.ClientPage
                 CaseUI selectedCase = cases[e.RowIndex];
                 if(currentUser is ClientUI)
                 {
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, serviceEntryBL);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
+                                                                            cValidator, serviceBL, specialityBL);
                 }
                 else
                 {
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, serviceEntryBL);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
+                                                                            cValidator, serviceBL, specialityBL);
                 }
                 frontPageView.PnlContextChange(caseDetailsView);
             }

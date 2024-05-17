@@ -26,7 +26,15 @@ namespace UI.Forms.FrontPage
         PersonBL personBL;
         ClientBL clientBL;
         LawyerBL lawyerBL;
+
         CaseBL caseBL;
+        CaseTypeBL caseTypeBL;
+        SpecialityBL specialityBL;
+        CaseServiceBL caseServiceBL;
+        CaseValidator cValidator;
+        ServiceBL serviceBL;
+
+
         FormDocumentBL formBL;
         SubscriptionBL subscriptionBL;
         ServiceEntryBL serviceEntryBL;
@@ -45,6 +53,11 @@ namespace UI.Forms.FrontPage
             pValidator = new PersonValidator();
             oaValidator = new OverallValidator();
             serviceEntryBL = new ServiceEntryBL();
+            caseTypeBL = new CaseTypeBL();
+            specialityBL = new SpecialityBL();
+            caseServiceBL = new CaseServiceBL();
+            serviceBL = new ServiceBL();
+            cValidator = new CaseValidator();
 
             
             rgbColorBlue = Color.FromArgb(45, 93, 134);
@@ -116,7 +129,7 @@ namespace UI.Forms.FrontPage
             SetNavBtnColor(btnMyPageClient);
 
             //set mypage
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL); 
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL); 
             if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(ClientDetails))
             {
                 PnlContextChange(cdMyPage);
@@ -239,7 +252,7 @@ namespace UI.Forms.FrontPage
         private void BtnCase_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CasePageView casePageView = new CasePageView(this, serviceEntryBL);
+            CasePageView casePageView = new CasePageView(this, serviceEntryBL, caseBL, caseTypeBL, lawyerBL, clientBL, specialityBL, caseServiceBL, serviceBL, cValidator);
             PnlContextChange(casePageView);
             SetNavBtnColor(btnCase);
         }
@@ -263,7 +276,7 @@ namespace UI.Forms.FrontPage
         private void BtnClients_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, caseBL, subscriptionBL, pValidator, serviceEntryBL);
+            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, caseBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
             PnlContextChange(cv);
             SetNavBtnColor(btnClients);
         }
@@ -271,7 +284,7 @@ namespace UI.Forms.FrontPage
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL);
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
             PnlContextChange(cdMyPage);
             SetNavBtnColor(btnMyPageClient);
         }

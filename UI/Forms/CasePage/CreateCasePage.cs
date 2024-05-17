@@ -17,6 +17,10 @@ namespace UI.Forms.CasePage
     {
         CaseBL caseBL;
         CaseTypeBL caseTypeBL;
+        SpecialityBL specialityBL;
+        LawyerBL lawyerBL;
+        ClientBL clientBL;
+
         List<CaseTypeUI> caseTypeUIList;
         ClientUI selectedClient;
         LawyerUI selectedLawyer;
@@ -26,11 +30,15 @@ namespace UI.Forms.CasePage
         Color invalidFormat;
 
         bool isEstimatedEndDateValid;
-        public CreateCasePage()
+        public CreateCasePage(CaseBL caseBL, CaseTypeBL caseTypeBL, SpecialityBL specialityBL, LawyerBL lawyerBL, ClientBL clientBL)
         {
             InitializeComponent();
-            caseBL = new CaseBL();
-            caseTypeBL = new CaseTypeBL();
+            this.caseBL = caseBL;
+            this.caseTypeBL = caseTypeBL;
+            this.specialityBL = specialityBL;
+            this.lawyerBL = lawyerBL;
+            this.clientBL = clientBL;
+
             cValidator = new CaseValidator();
 
             btnAddClient.Click += BtnAddClient_Click;
@@ -140,7 +148,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
-            AddLawyerView addLawyerView = new AddLawyerView();
+            AddLawyerView addLawyerView = new AddLawyerView(lawyerBL, specialityBL);
 
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
@@ -160,7 +168,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddClient_Click(object? sender, EventArgs e)
         {
-            AddClientView addClientView = new AddClientView();
+            AddClientView addClientView = new AddClientView(clientBL);
 
             addClientView.ClientSelected += AddClientView_ClientSelected;
            

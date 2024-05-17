@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Calculations;
+﻿using Calculations;
 using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;

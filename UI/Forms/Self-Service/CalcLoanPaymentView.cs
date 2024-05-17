@@ -52,7 +52,7 @@ namespace UI.Forms.Self_Service
 
         private void BtnCalculate_Click(object? sender, EventArgs e)
         {
-
+            
             if (client.IsSubscribed)
             {
                 //lånets størrelse
@@ -64,15 +64,18 @@ namespace UI.Forms.Self_Service
                 //antal ydelser pr aar
                 double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
 
+                //double result = LoanPaymentCalculatorStatic.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
 
 
-                LoanPaymentCalculator result = loanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
+
+                (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
 
                 //udskriver total betaling pr aar i kroner
-                lblTotalPrYear.Text = result.TotalPrYear.ToString("C", new CultureInfo("da-DK"));
+                lblTotalPrYear.Text = result.totalPrYear.ToString("C", new CultureInfo("da-DK"));
 
+                double amountPrPayment = LoanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
                 //udskriver beløb pr betaling i kroner
-                lblAmountPrPayment.Text = result.AmountPrPayment.ToString("C", new CultureInfo("da-DK"));
+                lblAmountPrPayment.Text = result.amountPrYear.ToString("C", new CultureInfo("da-DK"));
             }
             else
             {

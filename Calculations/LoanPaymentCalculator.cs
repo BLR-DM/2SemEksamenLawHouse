@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculations
+﻿namespace Calculations
 {
-    public class LoanPaymentCalculator
+    public static class LoanPaymentCalculator
     {
-        public double TotalPrYear { get; set; }
-        public double AmountPrPayment { get; set; }
-
-        public LoanPaymentCalculator CalcPayment(double loanAmount, double interestRate, double amountOfYears, double paymentsPrYear)
+        public static (double TotalPerYear, double AmountPerPayment) CalcPayment(double loanAmount, double interestRate, double amountOfYears, double paymentsPerYear)
         {
-
             //udregning at betaling pr aar
-            double totalPrYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
-            TotalPrYear = totalPrYear;
+            double totalPerYear = loanAmount * ((interestRate) / (1 - Math.Pow(1 + interestRate, -amountOfYears)));
             //afrunder svar til 2 decimaler
-            double roundedTotalPrYear = Math.Round(totalPrYear, 2);
-
+            double roundedTotalPerYear = Math.Round(totalPerYear, 2);
 
 
             //tager betaling pr aar og deler ud i antal ydelser pa aaret
-            double amountPrPayment = totalPrYear / paymentsPrYear;
+            double amountPerPayment = totalPerYear / paymentsPerYear;
             //afrunde til 2 decimaler
-            double roundedAmountPrPayment = Math.Round(amountPrPayment, 2);
-            AmountPrPayment = roundedAmountPrPayment;
+            double roundedAmountPerPayment = Math.Round(amountPerPayment, 2);
 
-
-
-            return this;
+            return (roundedTotalPerYear, roundedAmountPerPayment);
         }
+
     }
 }

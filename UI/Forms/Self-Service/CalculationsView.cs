@@ -31,6 +31,27 @@ namespace UI.Forms.Self_Service
             lblCalcROI.MouseHover += LblCalcROI_MouseHover;
             lblCalcROI.MouseLeave += LblCalcROI_MouseLeave;
             lblCalcROI.Click += LblCalcROI_Click;
+
+            lblCalcRemainingBalanceOnLoan.MouseHover += LblCalcRemainingBalanceOnLoan_MouseHover;
+            lblCalcRemainingBalanceOnLoan.MouseLeave += LblCalcRemainingBalanceOnLoan_MouseLeave;
+            lblCalcRemainingBalanceOnLoan.Click += LblCalcRemainingBalanceOnLoan_Click;
+        }
+
+        private void LblCalcRemainingBalanceOnLoan_Click(object? sender, EventArgs e)
+        {
+            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Underline);
+        }
+
+        private void LblCalcRemainingBalanceOnLoan_MouseLeave(object? sender, EventArgs e)
+        {
+            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Regular);
+        }
+
+        private void LblCalcRemainingBalanceOnLoan_MouseHover(object? sender, EventArgs e)
+        {
+            CalcRemainingBalanceOnLoanView calcRemainingBalanceOnLoanView = new CalcRemainingBalanceOnLoanView(oaValidator, client);
+            PnlCalcChange(calcRemainingBalanceOnLoanView);
+
         }
 
         private void LblCalcROI_Click(object? sender, EventArgs e)

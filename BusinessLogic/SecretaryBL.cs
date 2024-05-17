@@ -1,12 +1,6 @@
 ﻿using DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EntityModels;
 using UIModels;
-using System.ComponentModel;
 
 namespace BusinessLogic
 {
@@ -23,10 +17,17 @@ namespace BusinessLogic
 
         public async Task<bool> CreateSecretaryAsync(SecretaryUI secretaryUI, LoginDetailsUI loginDetailsUI)
         {
-            Secretary secretary = new Secretary();
-            secretary = modelConverter.ConvertFromSecretaryUI(secretaryUI);
-            secretary.LoginDetails = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
-            return await dbAccess.CreateSecretaryAsync(secretary);
+            try
+            {
+                Secretary secretary = new Secretary();
+                secretary = modelConverter.ConvertFromSecretaryUI(secretaryUI);
+                secretary.LoginDetails = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
+                return await dbAccess.CreateSecretaryAsync(secretary);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<List<SecretaryUI>> GetSecretariesAsync()

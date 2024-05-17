@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.Validation;
 using EntityModels;
 using System;
 using System.Collections.Generic;
@@ -21,18 +22,32 @@ namespace UI.Forms.CasePage
         CaseBL caseBL;
         FrontPageView f1;
         ServiceEntryBL serviceEntryBL;
+        ClientBL clientBL;
+        SpecialityBL specialityBL;
+        CaseServiceBL caseServiceBL;
+        ServiceBL serviceBL;
+        CaseValidator cValidator;
 
 
         List<CaseTypeUI> caseTypeList;
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
         List<CaseUI> filteredCases;
-        public CasePageView(FrontPageView f1, ServiceEntryBL serviceEntryBL)
+        public CasePageView(FrontPageView f1, ServiceEntryBL serviceEntryBL, CaseBL caseBL, CaseTypeBL caseTypeBL,
+                                    LawyerBL lawyerBL, ClientBL clientBL, SpecialityBL specialityBL,CaseServiceBL caseServiceBL,
+                                    ServiceBL serviceBL, CaseValidator cValidator)
         {
             InitializeComponent();
-            caseTypeBL = new CaseTypeBL();
-            lawyerBL = new LawyerBL();
-            caseBL = new CaseBL();
+            this.caseTypeBL = caseTypeBL;
+            this.lawyerBL = lawyerBL;
+            this.caseBL = caseBL;
+            this.specialityBL = specialityBL;
+            this.clientBL = clientBL;
+            this.caseServiceBL = caseServiceBL;
+            this.serviceBL = serviceBL;
+            this.cValidator = cValidator;
+
+
             this.f1 = f1;
             this.serviceEntryBL = serviceEntryBL;
 
@@ -81,7 +96,7 @@ namespace UI.Forms.CasePage
 
         private void BtnCreateCase_Click(object? sender, EventArgs e)
         {
-            CreateCasePage createCasePage = new CreateCasePage();
+            CreateCasePage createCasePage = new CreateCasePage(caseBL, caseTypeBL, specialityBL, lawyerBL, clientBL);
             f1.PnlContextChange(createCasePage);
         }
 
@@ -94,7 +109,8 @@ namespace UI.Forms.CasePage
                 {
                     if (int.TryParse(selectedRow.Cells["CaseID"].Value.ToString(), out int id))
                     {
-                        CaseDetailsView detailsView = new CaseDetailsView(id, false, serviceEntryBL);
+                        CaseDetailsView detailsView = new CaseDetailsView(id, false, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
+                                                                            cValidator, serviceBL, specialityBL);
                         f1.PnlContextChange(detailsView);
                     }
                 }

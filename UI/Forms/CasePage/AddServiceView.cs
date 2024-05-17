@@ -13,6 +13,7 @@ using UIModels;
 using UI.Toolbox;
 using DataAccess.Migrations;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using EntityModels;
 
 namespace UI.Forms.CasePage
 {
@@ -28,18 +29,24 @@ namespace UI.Forms.CasePage
         ServiceBL serviceBL;
         CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
+        LawyerBL lawyerBL;
+        SpecialityBL specialityBL;
+
 
         Color validFormat;
         Color invalidFormat;
-        public AddServiceView(CaseUI selectedCase, CaseDetailsView caseDetailsView)
+        public AddServiceView(CaseUI selectedCase, CaseDetailsView caseDetailsView, ServiceBL serviceBL, CaseServiceBL caseServiceBL, CaseValidator cValidator,
+                                LawyerBL lawyerBL, SpecialityBL specialityBL)
         {
             InitializeComponent();
             this.selectedCase = selectedCase;
             this.caseDetailsView = caseDetailsView;
 
-            serviceBL = new ServiceBL();
-            caseServiceBL = new CaseServiceBL();
-            cValidator = new CaseValidator();
+            this.serviceBL = serviceBL;
+            this.caseServiceBL = caseServiceBL;
+            this.cValidator = cValidator;
+            this.lawyerBL = lawyerBL;
+            this.specialityBL = specialityBL;
             
 
             cboServices.SelectedIndexChanged += CboServices_SelectedIndexChanged;
@@ -190,7 +197,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
-            AddLawyerView addLawyerView = new AddLawyerView();
+            AddLawyerView addLawyerView = new AddLawyerView(lawyerBL, specialityBL);
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
             addLawyerView.ShowDialog();

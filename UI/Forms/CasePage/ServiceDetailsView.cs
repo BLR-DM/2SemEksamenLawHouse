@@ -31,20 +31,21 @@ namespace UI.Forms.CasePage
         ServiceEntryBL serviceEntryBL;
         CaseServiceBL caseServiceBL;
 
-        CaseValidator caseValidator;
+        CaseValidator cValidator;
         
-        public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient)
+        public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient, LawyerBL lawyerBL, 
+                                    ServiceBL serviceBL, ServiceEntryBL serviceEntryBL, CaseValidator cValidator, CaseServiceBL caseServiceBL)
         {
             InitializeComponent();
 
             this.selectedCaseService = selectedCaseService;
             this.caseDetailsView = caseDetailsView;
 
-            lawyerBL = new LawyerBL();
-            serviceBL = new ServiceBL();
-            serviceEntryBL = new ServiceEntryBL();
-            caseServiceBL = new CaseServiceBL();
-            caseValidator = new CaseValidator();
+            this.lawyerBL = lawyerBL;   
+            this.serviceBL = serviceBL;
+            this.serviceEntryBL = serviceEntryBL;
+            this.caseServiceBL = caseServiceBL;
+            this.cValidator = cValidator;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -104,6 +105,7 @@ namespace UI.Forms.CasePage
                 {
                     MessageBox.Show("Service closed");
                     txtHoursWorked.Enabled = false;
+                    this.Close();
                 }
                 else
                 {
@@ -118,7 +120,7 @@ namespace UI.Forms.CasePage
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
         {
-            txtHoursWorked.ForeColor = caseValidator.ValidEstimatedHours(txtHoursWorked.Text) ? validFormat : invalidFormat;
+            txtHoursWorked.ForeColor = cValidator.ValidEstimatedHours(txtHoursWorked.Text) ? validFormat : invalidFormat;
             BtnSubmitEnabled();
         }
 

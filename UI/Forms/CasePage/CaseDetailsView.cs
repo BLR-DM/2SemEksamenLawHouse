@@ -30,29 +30,32 @@ namespace UI.Forms.CasePage
         ClientBL clientBL;
         LawyerBL lawyerBL;
         CaseBL caseBL;
-        ServiceBL serviceBL;
-        CaseServiceBL caseServiceBL;
         CaseTypeBL caseTypeBL;
+        CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
+        ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
+        SpecialityBL SpecialityBL;
         
 
         bool isClient;
 
         bool isEstimatedEndDateValid;
-        public CaseDetailsView(int selectedCaseID, bool isClient, ServiceEntryBL serviceEntryBL)
+        public CaseDetailsView(int selectedCaseID, bool isClient, ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
+                                CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
         {
             InitializeComponent();
-            clientBL = new ClientBL();
-            lawyerBL = new LawyerBL();
-            caseBL = new CaseBL();
-            serviceBL = new ServiceBL();
-            caseServiceBL = new CaseServiceBL();
-            caseTypeBL = new CaseTypeBL();
-            cValidator = new CaseValidator();
+            this.clientBL = clientBL;
+            this.lawyerBL = lawyerBL;
+            this.caseBL = caseBL;
+            this.serviceBL = serviceBL;
+            this.caseServiceBL = caseServiceBL;
+            this.caseTypeBL = caseTypeBL;
+            this.cValidator = cValidator;
             this.selectedCaseID = selectedCaseID;
             this.isClient = isClient;
             this.serviceEntryBL = serviceEntryBL;
+            this.SpecialityBL = specialityBL;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -197,7 +200,7 @@ namespace UI.Forms.CasePage
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
 
-            AddServiceView addServiceView = new AddServiceView(selectedCase, this);
+            AddServiceView addServiceView = new AddServiceView(selectedCase, this, serviceBL, caseServiceBL, cValidator, lawyerBL, SpecialityBL);
             addServiceView.ShowDialog();
         }
 
@@ -214,11 +217,11 @@ namespace UI.Forms.CasePage
                     
                     if (isClient)
                     {
-                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true);
+                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true, lawyerBL, serviceBL, serviceEntryBL, cValidator, caseServiceBL);
                     }
                     else
                     {
-                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false);
+                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false, lawyerBL, serviceBL, serviceEntryBL, cValidator, caseServiceBL);
                     }
                     serviceDetailsView.ShowDialog();
                 }

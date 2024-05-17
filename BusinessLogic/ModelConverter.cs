@@ -330,6 +330,22 @@ namespace BusinessLogic
             };
             return subscriptionUI;
         }
+        
+        public PersonUI ConvertFromPersonEntity(Person personE)
+        {
+            PersonUI personUI = new PersonUI
+            {
+                PersonID = personE.PersonID,
+                Firstname = personE.Firstname,
+                Lastname = personE.Lastname,
+                Email = personE.Email,
+                AddressLine = personE.AddressLine,
+                PostalCode = personE.PostalCode,
+                City = personE.City,
+                LoginDetailsID = personE.LoginDetailsID,
+            };
+            return personUI;
+        }
 
         //public UserUI ConvertFromUserEntity(User userE)
         //{

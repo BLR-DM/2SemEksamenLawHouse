@@ -28,7 +28,7 @@ namespace BusinessLogic
                 ClientUI clientUI = await new ClientBL().GetClientAsync(person.PersonID);
                 return clientUI;
             }
-            if(person is Lawyer)
+            if (person is Lawyer)
             {
                 LawyerUI lawyerUI = await new LawyerBL().GetLawyerAsync(person.PersonID);
                 return lawyerUI;

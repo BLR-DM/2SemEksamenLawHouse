@@ -7,20 +7,20 @@ namespace UI.Forms.EmployeePage
     public partial class LawyerDetailsView : Form
     {
         LawyerBL lawyerBL;
-        LawyerUI lawyerUI;
+        LawyerUI displayedLawyerUI;
         CaseServiceBL caseServiceBL;
         List<CaseServiceUI> caseServices;
-        int lawyerID;
+        int displayedLawyerID;
         bool isMyPage;
         LawyerUI currentUser;
-        public LawyerDetailsView(int lawyerID, bool isMyPage, LawyerUI currentUser)
+        public LawyerDetailsView(int displayedLawyerID, bool isMyPage, LawyerUI currentUser)
         {
-            this.lawyerID = lawyerID;
+            this.displayedLawyerID = displayedLawyerID;
             this.isMyPage = isMyPage;
             this.currentUser = currentUser;
 
             lawyerBL = new LawyerBL();
-            lawyerUI = new LawyerUI();
+            displayedLawyerUI = new LawyerUI();
             //caseServiceBL = new CaseServiceBL();
             //caseServices = new List<CaseServiceUI>();
 
@@ -35,12 +35,12 @@ namespace UI.Forms.EmployeePage
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
 
-            CheckUser(lawyerUI, currentUser);
+            CheckUser(displayedLawyerUI, currentUser);
         }
 
         private void CheckUser(LawyerUI lawyer, EmployeeUI emp)
         {
-            if (lawyerID != emp.PersonID || !isMyPage)
+            if (displayedLawyerID != emp.PersonID || !isMyPage)
             {
                 btnEditDetails.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
@@ -54,10 +54,10 @@ namespace UI.Forms.EmployeePage
         }
         private async void MyPageLawyerView_Load(object? sender, EventArgs e)
         {
-            lawyerUI = await GetLawyerAsync();
-            if (lawyerUI != null)
+            displayedLawyerUI = await GetLawyerAsync();
+            if (displayedLawyerUI != null)
             {
-                DisplayLawyer(lawyerUI);
+                DisplayLawyer(displayedLawyerUI);
                 SetDgvData(chboxShowAll.Checked);
             }
         }
@@ -83,7 +83,7 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Enabled = false;
 
             pnlEdit.Controls.Clear();
-            pnlEdit.Controls.Add(new LawyerCardEdit(lawyerUI, currentUser.Admin));
+            pnlEdit.Controls.Add(new LawyerCardEdit(displayedLawyerUI, currentUser.Admin));
             pnlEdit.Visible = true;            
         }
 
@@ -101,19 +101,19 @@ namespace UI.Forms.EmployeePage
         private void DisplayLawyer(LawyerUI lawyer)
         {
             pnlLawyerDetails.Controls.Clear();
-            pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(lawyerUI));
+            pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(displayedLawyerUI));
         }
 
         private async Task<LawyerUI> GetLawyerAsync()
         {
-            return await lawyerBL.GetLawyerWithCollectionsAsync(lawyerID);
+            return await lawyerBL.GetLawyerWithCollectionsAsync(displayedLawyerID);
         }
 
         private void SetDgvData(bool check)
         {
-            dgvCases.DataSource = lawyerUI.Cases;
+            dgvCases.DataSource = displayedLawyerUI.Cases;
             //dgvServices.DataSource = caseServices;
-            dgvServices.DataSource = lawyerUI.CaseServices;
+            dgvServices.DataSource = displayedLawyerUI.CaseServices;
 
             foreach (DataGridViewRow row in dgvServices.Rows)
             {

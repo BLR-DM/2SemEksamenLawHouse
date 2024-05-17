@@ -83,21 +83,25 @@ namespace UI.Forms.FrontPage
                 lblCurrentUser.Text = currentUser.GetType().Name;// slet
                 lblCurrentUserName.Text = currentUser.Firstname; // slet
 
-                if (currentUser is ClientUI)
+                if (currentUser is ClientUI clientUI)
                 {
+                    this.clientUI = clientUI;
                     await SetupClientFormAsync();
                 }
-                if (currentUser is LawyerUI)
+                else if (currentUser is LawyerUI lawyer)
                 {
+                    this.lawyerUI = lawyer;
                     await SetupLawyerFormAsync();
+                }
+                else if (currentUser is SecretaryUI secretaryUI)
+                {
+
                 }
             }
         }
 
         private async Task SetupClientFormAsync()
         {
-            clientUI = await clientBL.GetClientAsync(currentUser.PersonID);
-
             // Knapper
             btnMyPageClient.Visible = true;
             btnLawyers.Visible = true;
@@ -119,8 +123,6 @@ namespace UI.Forms.FrontPage
 
         private async Task SetupLawyerFormAsync()
         {
-            lawyerUI = await lawyerBL.GetLawyerAsync(currentUser.PersonID);
-
             // Knapper
             btnMyPageLawyer.Visible = true;
             btnEmployees.Visible = true;

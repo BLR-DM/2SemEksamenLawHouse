@@ -20,15 +20,12 @@ namespace UI.Forms.Self_Service
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
-
-        LoanPaymentCalculator loanPaymentCalculator;
         public CalcLoanPaymentView(OverallValidator oaValidator, ClientUI client)
         {
             InitializeComponent();
             this.oaValidator = oaValidator;
             this.client = client;
 
-            loanPaymentCalculator = new LoanPaymentCalculator();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -63,8 +60,6 @@ namespace UI.Forms.Self_Service
                 double amountOfYears = double.Parse(txtAmountOfYears.Text);
                 //antal ydelser pr aar
                 double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
-
-                //double result = LoanPaymentCalculatorStatic.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
 
 
 

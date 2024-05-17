@@ -71,7 +71,9 @@ namespace DataAccess
             try
             {
                 await db.AddAsync(client);
-                return await db.SaveChangesAsync() > 0;
+                bool success = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return success;
             }
             catch (Exception)
             {

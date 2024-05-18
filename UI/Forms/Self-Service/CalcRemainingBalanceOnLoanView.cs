@@ -20,7 +20,7 @@ namespace UI.Forms.Self_Service
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
-        RemainingBalanceOnLoanCalculator calculator;
+
         public CalcRemainingBalanceOnLoanView(OverallValidator oaValidator, ClientUI client)
         {
             InitializeComponent();
@@ -30,8 +30,6 @@ namespace UI.Forms.Self_Service
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
-
-            calculator = new RemainingBalanceOnLoanCalculator();
 
             btnCalculate.Click += BtnCalculate_Click;
             btnClear.Click += BtnClear_Click;
@@ -65,7 +63,8 @@ namespace UI.Forms.Self_Service
                 //antal betalinger lavet
                 double paymentsMade = double.Parse(txtPaymentsMade.Text);
 
-                RemainingBalanceOnLoanCalculator result = calculator.CalcRemainingBalance(totalLoanAmount, annualInterestRate, paymentsPrYear, totalYears, paymentsMade);
+                (double RemainingBalance, double PaymentAmount) result = LoanPaymentCalculator
+                    .CalcRemainingBalance(totalLoanAmount, annualInterestRate, paymentsPrYear, totalYears, paymentsMade);
 
                 lblRemainingBalance.Text = result.RemainingBalance.ToString("C", new CultureInfo("da-DK"));
                 lblAmountPrPayment.Text = result.PaymentAmount.ToString("C", new CultureInfo("da-DK")); 

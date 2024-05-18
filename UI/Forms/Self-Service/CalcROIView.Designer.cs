@@ -39,8 +39,10 @@
             panel2 = new Panel();
             btnCalculate = new FontAwesome.Sharp.IconButton();
             btnClear = new FontAwesome.Sharp.IconButton();
-            label4 = new Label();
-            lblReturnOnInvestment = new Label();
+            lblROI = new Label();
+            lblROIResult = new Label();
+            lblProfit = new Label();
+            lblProfitResult = new Label();
             pnlTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -172,28 +174,51 @@
             btnClear.Text = "Clear all";
             btnClear.UseVisualStyleBackColor = false;
             // 
-            // label4
+            // lblROI
             // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.GradientInactiveCaption;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(45, 93, 134);
-            label4.Location = new Point(69, 448);
-            label4.Name = "label4";
-            label4.Size = new Size(171, 21);
-            label4.TabIndex = 73;
-            label4.Text = "Return on investment:";
+            lblROI.AutoSize = true;
+            lblROI.BackColor = SystemColors.GradientInactiveCaption;
+            lblROI.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblROI.ForeColor = Color.FromArgb(45, 93, 134);
+            lblROI.Location = new Point(69, 448);
+            lblROI.Name = "lblROI";
+            lblROI.Size = new Size(171, 21);
+            lblROI.TabIndex = 73;
+            lblROI.Text = "Return on investment:";
             // 
-            // lblReturnOnInvestment
+            // lblROIResult
             // 
-            lblReturnOnInvestment.AutoSize = true;
-            lblReturnOnInvestment.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblReturnOnInvestment.ForeColor = SystemColors.ActiveCaptionText;
-            lblReturnOnInvestment.Location = new Point(258, 451);
-            lblReturnOnInvestment.Name = "lblReturnOnInvestment";
-            lblReturnOnInvestment.Size = new Size(64, 17);
-            lblReturnOnInvestment.TabIndex = 74;
-            lblReturnOnInvestment.Text = "304,22 kr.";
+            lblROIResult.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblROIResult.ForeColor = SystemColors.ActiveCaptionText;
+            lblROIResult.Location = new Point(235, 451);
+            lblROIResult.Name = "lblROIResult";
+            lblROIResult.Size = new Size(120, 17);
+            lblROIResult.TabIndex = 74;
+            lblROIResult.Text = "304,22 kr.";
+            lblROIResult.TextAlign = ContentAlignment.TopRight;
+            // 
+            // lblProfit
+            // 
+            lblProfit.AutoSize = true;
+            lblProfit.BackColor = SystemColors.GradientInactiveCaption;
+            lblProfit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblProfit.ForeColor = Color.FromArgb(45, 93, 134);
+            lblProfit.Location = new Point(185, 478);
+            lblProfit.Name = "lblProfit";
+            lblProfit.Size = new Size(55, 21);
+            lblProfit.TabIndex = 73;
+            lblProfit.Text = "Profit:";
+            // 
+            // lblProfitResult
+            // 
+            lblProfitResult.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblProfitResult.ForeColor = SystemColors.ActiveCaptionText;
+            lblProfitResult.Location = new Point(235, 481);
+            lblProfitResult.Name = "lblProfitResult";
+            lblProfitResult.Size = new Size(120, 17);
+            lblProfitResult.TabIndex = 74;
+            lblProfitResult.Text = "452";
+            lblProfitResult.TextAlign = ContentAlignment.TopRight;
             // 
             // CalcROIView
             // 
@@ -201,8 +226,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
-            Controls.Add(lblReturnOnInvestment);
-            Controls.Add(label4);
+            Controls.Add(lblProfitResult);
+            Controls.Add(lblROIResult);
+            Controls.Add(lblProfit);
+            Controls.Add(lblROI);
             Controls.Add(btnClear);
             Controls.Add(btnCalculate);
             Controls.Add(panel2);
@@ -236,7 +263,9 @@
         private Panel panel2;
         private FontAwesome.Sharp.IconButton btnCalculate;
         private FontAwesome.Sharp.IconButton btnClear;
-        private Label label4;
-        private Label lblReturnOnInvestment;
+        private Label lblROI;
+        private Label lblROIResult;
+        private Label lblProfit;
+        private Label lblProfitResult;
     }
 }

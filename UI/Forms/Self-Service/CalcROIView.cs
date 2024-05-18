@@ -20,7 +20,6 @@ namespace UI.Forms.Self_Service
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
-        ROICalculator rOICalculator;
 
         public CalcROIView(OverallValidator oaValidator, ClientUI client)
         {
@@ -31,8 +30,6 @@ namespace UI.Forms.Self_Service
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
-
-            rOICalculator = new ROICalculator();
 
             btnCalculate.Click += BtnCalculate_Click;
             btnClear.Click += BtnClear_Click;
@@ -55,9 +52,13 @@ namespace UI.Forms.Self_Service
                 //antal aar
                 double amountOfYears = double.Parse(txtAmountOfYears.Text);
 
-                ROICalculator result = rOICalculator.CalcROI(investment, interestRate, amountOfYears);
+
+                double returnOfInvestment = ROICalculator.CalcROI(investment, interestRate, amountOfYears);
+
                 //udskriver total betaling pr aar i kroner
-                lblReturnOnInvestment.Text = result.ReturnOnInvestment.ToString("C", new CultureInfo("da-DK"));
+                lblROIResult.Text = returnOfInvestment.ToString("C", new CultureInfo("da-DK"));
+                // Udskriver overskud/underskud
+                lblProfitResult.Text = (returnOfInvestment - investment).ToString("C", new CultureInfo("da-DK"));
 
             }
             else
@@ -68,7 +69,8 @@ namespace UI.Forms.Self_Service
 
         private void CalcROIView_Load(object? sender, EventArgs e)
         {
-            lblReturnOnInvestment.Text = string.Empty;
+            lblROIResult.Text = string.Empty;
+            lblProfitResult.Text = string.Empty;
             btnCalculate.Enabled = false;
         }
 
@@ -86,7 +88,8 @@ namespace UI.Forms.Self_Service
             txtInvestment.Text = string.Empty;
             txtInterestRate.Text = string.Empty;
             txtAmountOfYears.Text = string.Empty;
-            lblReturnOnInvestment.Text = string.Empty;
+            lblROIResult.Text = string.Empty;
+            lblProfitResult.Text = string.Empty;
         }
 
         private void TxtAmountOfYears_TextChanged(object? sender, EventArgs e)

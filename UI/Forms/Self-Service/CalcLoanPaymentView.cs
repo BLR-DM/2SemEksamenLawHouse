@@ -62,8 +62,8 @@ namespace UI.Forms.Self_Service
                 double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
 
 
-
-                (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
+                (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator
+                    .CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
 
                 //udskriver total betaling pr aar i kroner
                 lblTotalPrYear.Text = result.totalPrYear.ToString("C", new CultureInfo("da-DK"));

@@ -63,12 +63,12 @@ namespace UI.Forms.Self_Service
 
 
                 (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator
-                    .CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
+                    .CalcLoanPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
 
                 //udskriver total betaling pr aar i kroner
                 lblTotalPrYear.Text = result.totalPrYear.ToString("C", new CultureInfo("da-DK"));
 
-                double amountPrPayment = LoanPaymentCalculator.CalcPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
+                double amountPrPayment = LoanPaymentCalculator.CalcLoanPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
                 //udskriver beløb pr betaling i kroner
                 lblAmountPrPayment.Text = result.amountPrYear.ToString("C", new CultureInfo("da-DK"));
             }

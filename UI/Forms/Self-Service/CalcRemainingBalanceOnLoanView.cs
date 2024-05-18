@@ -64,7 +64,7 @@ namespace UI.Forms.Self_Service
                 double paymentsMade = double.Parse(txtPaymentsMade.Text);
 
                 (double RemainingBalance, double PaymentAmount) result = LoanPaymentCalculator
-                    .CalcRemainingBalance(totalLoanAmount, annualInterestRate, paymentsPrYear, totalYears, paymentsMade);
+                    .CalcRemainingBalanceOnLoan(totalLoanAmount, annualInterestRate, paymentsPrYear, totalYears, paymentsMade);
 
                 lblRemainingBalance.Text = result.RemainingBalance.ToString("C", new CultureInfo("da-DK"));
                 lblAmountPrPayment.Text = result.PaymentAmount.ToString("C", new CultureInfo("da-DK")); 

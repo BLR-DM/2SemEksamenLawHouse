@@ -2,7 +2,7 @@
 {
     public static class LoanPaymentCalculator
     {
-        public static (double TotalPerYear, double AmountPerPayment) CalcPayment (
+        public static (double TotalPerYear, double AmountPerPayment) CalcLoanPayment (
             double loanAmount, double interestRate, double amountOfYears, double paymentsPerYear)
         {
             //udregning at betaling pr aar
@@ -19,7 +19,7 @@
             return (roundedTotalPerYear, roundedAmountPerPayment);
         }
 
-        public static (double RemainingBalance, double PaymentAmount) CalcRemainingBalance (
+        public static (double RemainingBalance, double PaymentAmount) CalcRemainingBalanceOnLoan (
             double totalLoanAmount, double annualInterestRate, double paymentsPerYear, double totalYears, double paymentsMade)
         {
             // Rente pr betaling

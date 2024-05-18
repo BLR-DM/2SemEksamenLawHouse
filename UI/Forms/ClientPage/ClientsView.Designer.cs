@@ -125,7 +125,7 @@
             // 
             lblClientAmmount.AutoSize = true;
             lblClientAmmount.Font = new Font("Segoe UI", 14F);
-            lblClientAmmount.Location = new Point(423, 120);
+            lblClientAmmount.Location = new Point(435, 120);
             lblClientAmmount.Name = "lblClientAmmount";
             lblClientAmmount.Size = new Size(128, 25);
             lblClientAmmount.TabIndex = 13;

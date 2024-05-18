@@ -40,6 +40,8 @@
             panel1 = new Panel();
             btnTrash = new FontAwesome.Sharp.IconButton();
             flpnlFilters = new FlowLayoutPanel();
+            lblSearch = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -62,9 +64,9 @@
             cboxShow.Cursor = Cursors.Hand;
             cboxShow.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxShow.FormattingEnabled = true;
-            cboxShow.Location = new Point(770, 22);
+            cboxShow.Location = new Point(787, 22);
             cboxShow.Name = "cboxShow";
-            cboxShow.Size = new Size(152, 23);
+            cboxShow.Size = new Size(140, 23);
             cboxShow.TabIndex = 1;
             // 
             // lblShow
@@ -73,8 +75,8 @@
             lblShow.AutoSize = true;
             lblShow.BackColor = Color.Transparent;
             lblShow.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblShow.ForeColor = Color.FromArgb(45, 93, 134);
-            lblShow.Location = new Point(717, 23);
+            lblShow.ForeColor = SystemColors.ControlText;
+            lblShow.Location = new Point(734, 23);
             lblShow.Name = "lblShow";
             lblShow.Size = new Size(47, 19);
             lblShow.TabIndex = 4;
@@ -86,8 +88,8 @@
             lblSort.AutoSize = true;
             lblSort.BackColor = Color.Transparent;
             lblSort.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblSort.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSort.Location = new Point(333, 23);
+            lblSort.ForeColor = SystemColors.ControlText;
+            lblSort.Location = new Point(282, 23);
             lblSort.Name = "lblSort";
             lblSort.Size = new Size(57, 19);
             lblSort.TabIndex = 4;
@@ -99,9 +101,9 @@
             cboxSort.Cursor = Cursors.Hand;
             cboxSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxSort.FormattingEnabled = true;
-            cboxSort.Location = new Point(396, 22);
+            cboxSort.Location = new Point(345, 22);
             cboxSort.Name = "cboxSort";
-            cboxSort.Size = new Size(152, 23);
+            cboxSort.Size = new Size(140, 23);
             cboxSort.TabIndex = 8;
             // 
             // lblCurrentlyShowing
@@ -136,7 +138,7 @@
             lblFilter.AutoSize = true;
             lblFilter.BackColor = Color.Transparent;
             lblFilter.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblFilter.ForeColor = Color.FromArgb(45, 93, 134);
+            lblFilter.ForeColor = SystemColors.ControlText;
             lblFilter.Location = new Point(26, 23);
             lblFilter.Name = "lblFilter";
             lblFilter.Size = new Size(45, 19);
@@ -151,7 +153,7 @@
             cboxFilter.FormattingEnabled = true;
             cboxFilter.Location = new Point(77, 22);
             cboxFilter.Name = "cboxFilter";
-            cboxFilter.Size = new Size(152, 23);
+            cboxFilter.Size = new Size(140, 23);
             cboxFilter.Sorted = true;
             cboxFilter.TabIndex = 1;
             // 
@@ -175,7 +177,7 @@
             // 
             // btnTrash
             // 
-            btnTrash.BackColor = SystemColors.GradientActiveCaption;
+            btnTrash.BackColor = Color.Transparent;
             btnTrash.BackgroundImageLayout = ImageLayout.Stretch;
             btnTrash.Cursor = Cursors.Hand;
             btnTrash.FlatAppearance.BorderSize = 0;
@@ -184,7 +186,7 @@
             btnTrash.IconColor = Color.FromArgb(45, 93, 134);
             btnTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnTrash.IconSize = 22;
-            btnTrash.Location = new Point(234, 22);
+            btnTrash.Location = new Point(222, 22);
             btnTrash.Name = "btnTrash";
             btnTrash.Size = new Size(27, 23);
             btnTrash.TabIndex = 11;
@@ -197,16 +199,40 @@
             flpnlFilters.Size = new Size(942, 27);
             flpnlFilters.TabIndex = 10;
             // 
+            // lblSearch
+            // 
+            lblSearch.Anchor = AnchorStyles.Top;
+            lblSearch.AutoSize = true;
+            lblSearch.BackColor = Color.Transparent;
+            lblSearch.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblSearch.ForeColor = SystemColors.ControlText;
+            lblSearch.Location = new Point(752, 127);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(54, 19);
+            lblSearch.TabIndex = 4;
+            lblSearch.Text = "Search:";
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(812, 129);
+            textBox1.MaxLength = 15;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(140, 16);
+            textBox1.TabIndex = 0;
+            // 
             // EmployeesOverview
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(textBox1);
             Controls.Add(panel1);
             Controls.Add(dgvEmployees);
             Controls.Add(lblTotalEmployees);
             Controls.Add(lblCurrentlyShowing);
+            Controls.Add(lblSearch);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesOverview";
             Text = "EmployeesManage";
@@ -231,5 +257,7 @@
         private Panel panel1;
         private FlowLayoutPanel flpnlFilters;
         private FontAwesome.Sharp.IconButton btnTrash;
+        private Label lblSearch;
+        private TextBox textBox1;
     }
 }

@@ -38,10 +38,11 @@
             lblFilter = new Label();
             cboxFilter = new ComboBox();
             panel1 = new Panel();
-            btnTrash = new FontAwesome.Sharp.IconButton();
+            btnTrashFilter = new FontAwesome.Sharp.IconButton();
             flpnlFilters = new FlowLayoutPanel();
             lblSearch = new Label();
             textBox1 = new TextBox();
+            btnTrashSort = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -162,7 +163,8 @@
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.CausesValidation = false;
-            panel1.Controls.Add(btnTrash);
+            panel1.Controls.Add(btnTrashSort);
+            panel1.Controls.Add(btnTrashFilter);
             panel1.Controls.Add(flpnlFilters);
             panel1.Controls.Add(cboxShow);
             panel1.Controls.Add(cboxSort);
@@ -175,22 +177,22 @@
             panel1.Size = new Size(948, 76);
             panel1.TabIndex = 9;
             // 
-            // btnTrash
+            // btnTrashFilter
             // 
-            btnTrash.BackColor = Color.Transparent;
-            btnTrash.BackgroundImageLayout = ImageLayout.Stretch;
-            btnTrash.Cursor = Cursors.Hand;
-            btnTrash.FlatAppearance.BorderSize = 0;
-            btnTrash.FlatStyle = FlatStyle.Flat;
-            btnTrash.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnTrash.IconColor = Color.FromArgb(45, 93, 134);
-            btnTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnTrash.IconSize = 22;
-            btnTrash.Location = new Point(222, 22);
-            btnTrash.Name = "btnTrash";
-            btnTrash.Size = new Size(27, 23);
-            btnTrash.TabIndex = 11;
-            btnTrash.UseVisualStyleBackColor = false;
+            btnTrashFilter.BackColor = Color.Transparent;
+            btnTrashFilter.BackgroundImageLayout = ImageLayout.Stretch;
+            btnTrashFilter.Cursor = Cursors.Hand;
+            btnTrashFilter.FlatAppearance.BorderSize = 0;
+            btnTrashFilter.FlatStyle = FlatStyle.Flat;
+            btnTrashFilter.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnTrashFilter.IconColor = Color.FromArgb(45, 93, 134);
+            btnTrashFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnTrashFilter.IconSize = 22;
+            btnTrashFilter.Location = new Point(222, 22);
+            btnTrashFilter.Name = "btnTrashFilter";
+            btnTrashFilter.Size = new Size(27, 23);
+            btnTrashFilter.TabIndex = 11;
+            btnTrashFilter.UseVisualStyleBackColor = false;
             // 
             // flpnlFilters
             // 
@@ -220,6 +222,23 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(140, 16);
             textBox1.TabIndex = 0;
+            // 
+            // btnTrashSort
+            // 
+            btnTrashSort.BackColor = Color.Transparent;
+            btnTrashSort.BackgroundImageLayout = ImageLayout.Stretch;
+            btnTrashSort.Cursor = Cursors.Hand;
+            btnTrashSort.FlatAppearance.BorderSize = 0;
+            btnTrashSort.FlatStyle = FlatStyle.Flat;
+            btnTrashSort.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnTrashSort.IconColor = Color.FromArgb(45, 93, 134);
+            btnTrashSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnTrashSort.IconSize = 22;
+            btnTrashSort.Location = new Point(491, 22);
+            btnTrashSort.Name = "btnTrashSort";
+            btnTrashSort.Size = new Size(27, 23);
+            btnTrashSort.TabIndex = 11;
+            btnTrashSort.UseVisualStyleBackColor = false;
             // 
             // EmployeesOverview
             // 
@@ -256,8 +275,9 @@
         private ComboBox cboxFilter;
         private Panel panel1;
         private FlowLayoutPanel flpnlFilters;
-        private FontAwesome.Sharp.IconButton btnTrash;
+        private FontAwesome.Sharp.IconButton btnTrashFilter;
         private Label lblSearch;
         private TextBox textBox1;
+        private FontAwesome.Sharp.IconButton btnTrashSort;
     }
 }

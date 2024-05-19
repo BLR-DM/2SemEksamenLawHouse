@@ -60,7 +60,7 @@ namespace UI.Forms.ClientPage
         {
             List<LawyerCard> visibleControls = OriginalLawyerControls.Where(c => c.Visible).ToList();
 
-            switch (cboxSort.SelectedItem.ToString())
+            switch (cboxSort.SelectedItem)
             {
                 case "":
                     visibleControls = OriginalLawyerControls.Where((c) => c.Visible).ToList();

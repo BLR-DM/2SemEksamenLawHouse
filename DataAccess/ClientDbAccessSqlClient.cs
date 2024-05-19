@@ -25,14 +25,107 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public async Task<Client> GetClientAsync(int id)
+        public async Task<Client> GetClientAsync(int ClientID)
         {
-            throw new NotImplementedException();
+            Client client = new Client();
+            List<Phone> phoneList = new();
+            List<ClientSubscription> clientSubscriptonList = new();
+
+            //dbconnection
+            using SqlConnection dbConn = new SqlConnection(connString);
+
+            try
+            {
+                await dbConn.OpenAsync();
+
+                string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
+
+                using SqlCommand sqlCommandClient = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
+                {
+
+                    using SqlDataReader reader = await sqlCommandClient.ExecuteReaderAsync();
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            client.PersonID = (int)reader["PersonID"];
+                            client.Firstname = (string)reader["Firstname"];
+                            client.Lastname = (string)reader["Lastname"];
+                            client.Email = (string)reader["Email"];
+                            client.AddressLine = (string)reader["AddressLine"];
+                            client.PostalCode = (int)reader["PostalCode"];
+                            client.City = (string)reader["City"];
+                            client.LoginDetailsID = (int)reader["LoginDetailsID"];
+                        }
+                    }
+                }
+
+
+
+                string selectAllClientPhonesQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
+
+                using SqlCommand sqlCommandPhones = new SqlCommand(selectAllClientPhonesQuery, dbConn);
+                {
+                    sqlCommandPhones.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader phoneReader = await sqlCommandPhones.ExecuteReaderAsync();
+                    {
+                        while (await phoneReader.ReadAsync())
+                        {
+                            Phone phone = new Phone()
+                            {
+                                PhoneID = (int)phoneReader["PhoneID"],
+                                PhoneNumber = (int)phoneReader["PhoneNumber"],
+                                ClientID = (int)phoneReader["ClientID"],
+                            };
+                            phoneList.Add(phone);
+
+                        }
+                    }
+
+                }
+
+
+
+                string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions WHERE ClientID = @CID";
+                using SqlCommand sqlCommandClientSubscriptions = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
+                {
+                    sqlCommandClientSubscriptions.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader subReader = await sqlCommandClientSubscriptions.ExecuteReaderAsync();
+                    {
+
+                        while (await subReader.ReadAsync())
+                        {
+                            ClientSubscription clientSubscription = new ClientSubscription()
+                            {
+                                ClientSubscriptionID = (int)subReader["ClientSubscriptionID"],
+                                StartDate = (DateTime)subReader["StartDate"],
+                                EndDate = (DateTime)subReader["EndDate"],
+                                PaidPrice = (float)subReader["PaidPrice"],
+                                ClientID = (int)subReader["ClientID"],
+                                SubscriptionID = (int)subReader["SubscriptionID"]
+                            };
+                            clientSubscriptonList.Add(clientSubscription);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                return new Client();
+            }
+            finally
+            {
+                await dbConn.CloseAsync();
+            }
+
+
+            client.Phones = phoneList; 
+            client.ClientSubscriptions = clientSubscriptonList;
+            
+
+            return client;
         }
 
         public async Task<List<Phone>> GetClientPhonesAsync(int ClientID)
@@ -42,31 +135,41 @@ namespace DataAccess
             //dbconnection
             using SqlConnection dbConn = new SqlConnection(connString);
 
-            await dbConn.OpenAsync();
-
-            string selectAllPhonesOnMatchQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
-
-            using SqlCommand sqlCommand = new SqlCommand(selectAllPhonesOnMatchQuery, dbConn);
+            try
             {
-                sqlCommand.Parameters.AddWithValue("@CID", ClientID);
-                using SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
+                await dbConn.OpenAsync();
+
+                string selectAllPhonesOnMatchQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
+
+                using SqlCommand sqlCommand = new SqlCommand(selectAllPhonesOnMatchQuery, dbConn);
                 {
-                    while (await reader.ReadAsync())
+                    sqlCommand.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
                     {
-                        Phone phone = new Phone()
+                        while (await reader.ReadAsync())
                         {
-                            PhoneID = (int)reader["PhoneID"],
-                            PhoneNumber = (int)reader["PhoneNumber"],
-                            ClientID = (int)reader["ClientID"],
-                        };
-                        phoneList.Add(phone);
+                            Phone phone = new Phone()
+                            {
+                                PhoneID = (int)reader["PhoneID"],
+                                PhoneNumber = (int)reader["PhoneNumber"],
+                                ClientID = (int)reader["ClientID"],
+                            };
+                            phoneList.Add(phone);
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
 
-            await dbConn.CloseAsync();
-
+                return new List<Phone>();
+            }
+            finally
+            {
+                await dbConn.CloseAsync();
+            }
             return phoneList;
+
         }
 
         public async Task<List<Client>> GetClientsAsync()
@@ -78,81 +181,91 @@ namespace DataAccess
             //dbconnection
             using SqlConnection dbConn = new SqlConnection(connString);
 
-            await dbConn.OpenAsync();
-
-            string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
-
-            using SqlCommand sqlCommandClient = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
+            try
             {
+                await dbConn.OpenAsync();
 
-                using SqlDataReader reader = await sqlCommandClient.ExecuteReaderAsync();
+                string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
+
+                using SqlCommand sqlCommandClient = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
                 {
-                    while (await reader.ReadAsync())
+
+                    using SqlDataReader reader = await sqlCommandClient.ExecuteReaderAsync();
                     {
-                        Client client = new Client()
+                        while (await reader.ReadAsync())
                         {
-                            PersonID = (int)reader["PersonID"],
-                            Firstname = (string)reader["Firstname"],
-                            Lastname = (string)reader["Lastname"],
-                            Email = (string)reader["Email"],
-                            AddressLine = (string)reader["AddressLine"],
-                            PostalCode = (int)reader["PostalCode"],
-                            City = (string)reader["City"],
-                            LoginDetailsID = (int)reader["LoginDetailsID"],
-                        };
-                        clientList.Add(client);
-                    }
-                }
-            }
-
-
-
-            string selectAllClientPhonesQuery = "SELECT * FROM Phones";
-
-            using SqlCommand sqlCommandPhones = new SqlCommand(selectAllClientPhonesQuery, dbConn);
-            {
-                using SqlDataReader phoneReader = await sqlCommandPhones.ExecuteReaderAsync();
-                {
-                    while (await phoneReader.ReadAsync())
-                    {
-                        Phone phone = new Phone()
-                        {
-                            PhoneID = (int)phoneReader["PhoneID"],
-                            PhoneNumber = (int)phoneReader["PhoneNumber"],
-                            ClientID = (int)phoneReader["ClientID"],
-                        };
-                        phoneList.Add(phone);
-
+                            Client client = new Client()
+                            {
+                                PersonID = (int)reader["PersonID"],
+                                Firstname = (string)reader["Firstname"],
+                                Lastname = (string)reader["Lastname"],
+                                Email = (string)reader["Email"],
+                                AddressLine = (string)reader["AddressLine"],
+                                PostalCode = (int)reader["PostalCode"],
+                                City = (string)reader["City"],
+                                LoginDetailsID = (int)reader["LoginDetailsID"],
+                            };
+                            clientList.Add(client);
+                        }
                     }
                 }
 
+
+
+                string selectAllClientPhonesQuery = "SELECT * FROM Phones";
+
+                using SqlCommand sqlCommandPhones = new SqlCommand(selectAllClientPhonesQuery, dbConn);
+                {
+                    using SqlDataReader phoneReader = await sqlCommandPhones.ExecuteReaderAsync();
+                    {
+                        while (await phoneReader.ReadAsync())
+                        {
+                            Phone phone = new Phone()
+                            {
+                                PhoneID = (int)phoneReader["PhoneID"],
+                                PhoneNumber = (int)phoneReader["PhoneNumber"],
+                                ClientID = (int)phoneReader["ClientID"],
+                            };
+                            phoneList.Add(phone);
+
+                        }
+                    }
+
+                }
+
+
+
+                string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions";
+                using SqlCommand sqlCommandClientSubscriptions = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
+                {
+                    using SqlDataReader subReader = await sqlCommandClientSubscriptions.ExecuteReaderAsync();
+                    {
+                        while (await subReader.ReadAsync())
+                        {
+                            ClientSubscription clientSubscription = new ClientSubscription()
+                            {
+                                ClientSubscriptionID = (int)subReader["ClientSubscriptionID"],
+                                StartDate = (DateTime)subReader["StartDate"],
+                                EndDate = (DateTime)subReader["EndDate"],
+                                PaidPrice = (float)subReader["PaidPrice"],
+                                ClientID = (int)subReader["ClientID"],
+                                SubscriptionID = (int)subReader["SubscriptionID"]
+                            };
+                            clientSubscriptonList.Add(clientSubscription);
+                        }
+                    }
+                }
             }
+            catch (Exception)
+            {
 
-
+                return new List<Client>();
+            }
+            finally
+            {
+                await dbConn.CloseAsync();
+            }
             
-            string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions";
-            using SqlCommand sqlCommandClientSubscriptions = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
-            {
-                using SqlDataReader subReader = await sqlCommandClientSubscriptions.ExecuteReaderAsync();
-                {
-                    while (await subReader.ReadAsync())
-                    {
-                        ClientSubscription clientSubscription = new ClientSubscription()
-                        {
-                            ClientSubscriptionID = (int)subReader["ClientSubscriptionID"],
-                            StartDate = (DateTime)subReader["StartDate"],
-                            EndDate = (DateTime)subReader["EndDate"],
-                            PaidPrice = (float)subReader["PaidPrice"],
-                            ClientID = (int)subReader["ClientID"],
-                            SubscriptionID = (int)subReader["SubscriptionID"]
-                        };
-                        clientSubscriptonList.Add(clientSubscription);
-                    }
-                }
-            }
-            
-
-            await dbConn.CloseAsync();
 
             foreach (Client c in clientList)
             {
@@ -164,6 +277,11 @@ namespace DataAccess
         }
 
         public async Task<bool> UpdateClientAsync(Client client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
         {
             throw new NotImplementedException();
         }

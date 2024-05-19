@@ -3,19 +3,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Interfaces;
 
 namespace DataAccess
 {
     
-    public class ClientDbAccess
+    public class ClientDbAccess : IClientDbAccess
     {
         LawHouseDbContext db;
         public ClientDbAccess()
         {
             db = new LawHouseDbContext();
+
         }
 
         public async Task<List<Client>> GetClientsAsync()
@@ -32,20 +36,6 @@ namespace DataAccess
             {
 
                 return new List<Client>();
-            }
-        }
-
-        public async Task<List<Phone>> GetClientPhonesAsync(int id)
-        {
-            try
-            {
-                List<Phone> phones = await db.Phones.Where(p => p.ClientID == id).ToListAsync();
-                return phones;
-            }
-            catch (Exception)
-            {
-
-                return new List<Phone>();
             }
         }
 
@@ -96,6 +86,21 @@ namespace DataAccess
             }
         }
 
+        //client phone numbers
+        public async Task<List<Phone>> GetClientPhonesAsync(int ClientID)
+        {
+            try
+            {
+                List<Phone> phones = await db.Phones.Where(p => p.ClientID == ClientID).ToListAsync();
+                return phones;
+            }
+            catch (Exception)
+            {
+
+                return new List<Phone>();
+            }
+        }
+
         public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
         {
             try
@@ -111,5 +116,6 @@ namespace DataAccess
                 return false;
             }
         }
+
     }
 }

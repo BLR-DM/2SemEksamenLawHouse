@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class CaseTypeDbAccess
+    public class CaseTypeDbAccess : ICaseTypeDbAccess
     {
         LawHouseDbContext db;
         public CaseTypeDbAccess() 

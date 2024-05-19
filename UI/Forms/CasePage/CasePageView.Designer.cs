@@ -74,6 +74,7 @@
             // 
             txtTitle.Location = new Point(78, 31);
             txtTitle.Name = "txtTitle";
+            txtTitle.PlaceholderText = "Case number";
             txtTitle.Size = new Size(119, 23);
             txtTitle.TabIndex = 5;
             // 
@@ -105,7 +106,7 @@
             // ckboxClosed
             // 
             ckboxClosed.AutoSize = true;
-            ckboxClosed.Location = new Point(298, 33);
+            ckboxClosed.Location = new Point(334, 33);
             ckboxClosed.Name = "ckboxClosed";
             ckboxClosed.Size = new Size(62, 19);
             ckboxClosed.TabIndex = 1;
@@ -115,7 +116,7 @@
             // ckboxActive
             // 
             ckboxActive.AutoSize = true;
-            ckboxActive.Location = new Point(389, 33);
+            ckboxActive.Location = new Point(419, 34);
             ckboxActive.Name = "ckboxActive";
             ckboxActive.Size = new Size(55, 19);
             ckboxActive.TabIndex = 0;

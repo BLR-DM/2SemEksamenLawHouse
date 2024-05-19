@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using EntityModels;
+using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BusinessLogic
     public class CaseTypeBL
     {
         ModelConverter modelConverter;
-        CaseTypeDbAccess dbAccess;
+        ICaseTypeDbAccess dbAccess;
         public CaseTypeBL()
         {
             modelConverter = new ModelConverter();

@@ -118,6 +118,7 @@ namespace UI.Forms.CasePage
                 if (await caseBL.UpdateCaseSync(selectedCase))
                 {
                     MessageBox.Show("Case closed");
+                    await SetCaseDataAsync();
                 }
                 else
                 {
@@ -253,6 +254,8 @@ namespace UI.Forms.CasePage
                     txtEstimatedHours.ReadOnly = true;
                     dtpEstimatedEndDate.Enabled = false;
                     cboxCaseType.Enabled = false;
+
+                    btnUpdateCaseStatus.Enabled = false;
                 }
 
             }
@@ -287,16 +290,21 @@ namespace UI.Forms.CasePage
 
 
             dgvServices.Columns["ServiceName"].DisplayIndex = 0;
-            dgvServices.Columns["TotalPrice"].DisplayIndex = 1;
-            dgvServices.Columns["Units"].DisplayIndex = 2;
-            dgvServices.Columns["PriceType"].DisplayIndex = 3;
-            dgvServices.Columns["StartDate"].DisplayIndex = 4;
+            dgvServices.Columns["Status"].DisplayIndex = 1;
+            dgvServices.Columns["TotalPrice"].DisplayIndex = 2;
+            dgvServices.Columns["Units"].DisplayIndex = 3;
+            dgvServices.Columns["HoursWorked"].DisplayIndex = 4;
+            dgvServices.Columns["PriceType"].DisplayIndex = 5;
+            dgvServices.Columns["StartDate"].DisplayIndex = 6;
+            dgvServices.Columns["EndDate"].DisplayIndex = 7;
             dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "d";
             dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "d";
 
 
+
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvServices.Columns["ServiceName"].Width = 150;
         }
 
         public async Task SetComboBox()

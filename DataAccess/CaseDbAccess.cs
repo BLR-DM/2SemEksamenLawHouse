@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class CaseDbAccess
+    public class CaseDbAccess : ICaseDbAccess
     {
         LawHouseDbContext db;
         public CaseDbAccess() 
@@ -16,7 +17,7 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
-        public async Task<bool> CreateCase(Case caseE)
+        public async Task<bool> CreateCaseAsync(Case caseE)
         {
             try
             {

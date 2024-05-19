@@ -56,11 +56,16 @@ namespace UI.Forms.CasePage
             if(e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow dataGridViewRow = dgvLawyerView.Rows[e.RowIndex];
+                
                 if (dataGridViewRow.Cells["PersonID"].Value != null)
                 {
+                    
                     if (int.TryParse(dataGridViewRow.Cells["PersonID"].Value.ToString(), out int id))
                     {
+                        //henter den selected lawyer fra listen som matcher på id, ud fra den lawyer der er blevet dobbeltklikket på
                         LawyerUI selectedLawyer = originalLawyerList.FirstOrDefault(l => l.PersonID == id);
+
+                        //Udfører hændelsen LawyerSelected
                         LawyerSelected?.Invoke(this, selectedLawyer);
                         this.Close();
                     }
@@ -102,11 +107,13 @@ namespace UI.Forms.CasePage
 
         public async Task SetComboBox()
         {
+            //henter specialities
             specialityList = await specialityBL.GetSpecialitiesAsync();
 
+            //viser specialityname attributten i comboboxen
             cboSpecialities.DisplayMember = "SpecialityName";
 
-
+            //For hver speciality i listen tilføjes de til comboboxen
             foreach(SpecialityUI speciality in specialityList)
             {
                 cboSpecialities.Items.Add(speciality);
@@ -117,6 +124,7 @@ namespace UI.Forms.CasePage
             originalLawyerList = await lawyerBL.GetLawyersAsync();
             dgvLawyerView.DataSource = originalLawyerList;
 
+            //Dgv indstillinger
             dgvLawyerView.Columns["PersonID"].DisplayIndex = 0;
             dgvLawyerView.Columns["Firstname"].DisplayIndex = 1;
             dgvLawyerView.Columns["Lastname"].DisplayIndex = 2;
@@ -127,11 +135,23 @@ namespace UI.Forms.CasePage
             dgvLawyerView.Columns["City"].DisplayIndex = 7;
 
 
+
             //Skjuler infomrmation da det er unødvendigt i dette tilfælde
             dgvLawyerView.Columns["PersonID"].Visible = false;
             dgvLawyerView.Columns["LoginDetailsID"].Visible = false;
             dgvLawyerView.Columns["LawyerTitleID"].Visible = false;
             dgvLawyerView.Columns["HireDate"].Visible = false;
+            dgvLawyerView.Columns["OpenCases"].Visible = false;
+            dgvLawyerView.Columns["ClosedCases"].Visible = false;
+            dgvLawyerView.Columns["SpecialityCount"].Visible = false;
+            dgvLawyerView.Columns["OpenCaseServices"].Visible = false;
+            dgvLawyerView.Columns["ClosedCaseServices"].Visible = false;
+            dgvLawyerView.Columns["LawyerSpecialities"].Visible = false;
+            dgvLawyerView.Columns["CaseServices"].Visible = false;
+            dgvLawyerView.Columns["Cases"].Visible = false;
+
+
+
 
             dgvLawyerView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLawyerView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

@@ -173,13 +173,16 @@ namespace UI.Forms.CasePage
 
         private void SortDgv()
         {
+            //ny liste filteredCase som arver fra den originale list
             filteredCases = new List<CaseUI>(originalCaseList);
 
+            //tester på title
             if(!string.IsNullOrWhiteSpace(txtTitle.Text))
             {
-                filteredCases = filteredCases.Where(caseUI => caseUI.Title.StartsWith(txtTitle.Text)).ToList();
+                filteredCases = filteredCases.Where(caseUI => caseUI.CaseID.ToString().StartsWith(txtTitle.Text)).ToList();
             }
 
+            //tester på checkboxene
             if(ckboxActive.Checked && ckboxClosed.Checked)
             {
                 filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Open" || caseUI.Status == "Closed").ToList();
@@ -193,13 +196,13 @@ namespace UI.Forms.CasePage
                 filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Closed").ToList();
             }
 
+            //tester på combox
             if(cboCaseType.SelectedItem != null && cboCaseType.SelectedIndex != 0)
             {
                 CaseTypeUI selectedCaseType = (CaseTypeUI)cboCaseType.SelectedItem;
 
                 filteredCases = filteredCases.Where(caseUI => caseUI.CaseTypeID == selectedCaseType.CaseTypeID).ToList();
             }
-
             if(cboLawyers.SelectedItem != null && cboLawyers.SelectedIndex != 0)
             {
                 LawyerUI selectedLawyer = (LawyerUI)cboLawyers.SelectedItem;
@@ -207,6 +210,7 @@ namespace UI.Forms.CasePage
                 filteredCases = filteredCases.Where(caseUI => caseUI.LawyerID == selectedLawyer.PersonID).ToList();
             }
 
+            //sætter dgv'et til den sorterede liste
             dgvCaseList.DataSource = filteredCases;
             dgvCaseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 

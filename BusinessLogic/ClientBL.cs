@@ -6,16 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UIModels;
 using EntityModels;
+using Interfaces;
 
 namespace BusinessLogic
 {
     public class ClientBL
     {
-        ClientDbAccess dbAccess;
+        IClientDbAccess dbAccess;
         ModelConverter modelConverter;
         public ClientBL()
         {
-            dbAccess = new ClientDbAccess();
+            dbAccess = new ClientDbAccessSqlClient();
             modelConverter = new ModelConverter();
         }
 

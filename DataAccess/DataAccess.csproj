@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityModels\EntityModels.csproj" />
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

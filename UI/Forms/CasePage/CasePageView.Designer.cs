@@ -117,9 +117,9 @@
             ckboxActive.AutoSize = true;
             ckboxActive.Location = new Point(389, 33);
             ckboxActive.Name = "ckboxActive";
-            ckboxActive.Size = new Size(59, 19);
+            ckboxActive.Size = new Size(55, 19);
             ckboxActive.TabIndex = 0;
-            ckboxActive.Text = "Active";
+            ckboxActive.Text = "Open";
             ckboxActive.UseVisualStyleBackColor = true;
             // 
             // lblNumberOfCases

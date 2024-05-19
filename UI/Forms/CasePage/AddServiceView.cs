@@ -164,7 +164,7 @@ namespace UI.Forms.CasePage
             }
             else if(selectedService.PriceType == "Fixed")
             {
-                caseServiceUI.Status = "Active";
+                caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;
@@ -172,7 +172,7 @@ namespace UI.Forms.CasePage
             }
             else if(selectedService.PriceType == "Hourly")
             {
-                caseServiceUI.Status = "Active";
+                caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = 0;
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;

@@ -47,6 +47,7 @@
             // 
             txtSearch.Location = new Point(81, 26);
             txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Phonenumber";
             txtSearch.Size = new Size(164, 23);
             txtSearch.TabIndex = 3;
             // 

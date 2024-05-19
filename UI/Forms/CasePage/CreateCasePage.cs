@@ -89,6 +89,7 @@ namespace UI.Forms.CasePage
 
         public bool btnCreateEnablid()
         {
+            //Håndterer adfærden på CreateCase knappen, så den kun er enabled, hvis alle felter overholder valideringen
             return btnCreateCase.Enabled =
                 txtTitle.ForeColor == validFormat &&
                 cboxCaseType.SelectedItem != null &&
@@ -157,12 +158,16 @@ namespace UI.Forms.CasePage
 
         private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
         {
+            //metoden er en event handler som bliver kaldt, når hændelsen LawyerSelected bliver kaldt fra AddLawyerView, hvor LawyerUI e er dataen fra den selectedlawyer i AddLawyerView.
+
             txtLawyerFirstName.Text = e.Firstname;
             txtLawyerLastName.Text = e.Lastname;
             txtLawyerEmail.Text = e.Email;
             txtLawyerPhone.Text = e.PhoneNumber.ToString();
 
+            //gemmer den valgte advokat i en variabel selectedLawyer for senere brug
             selectedLawyer = e;
+
             btnCreateEnablid();
         }
 
@@ -178,6 +183,7 @@ namespace UI.Forms.CasePage
 
         private void AddClientView_ClientSelected(object? sender, ClientUI e)
         {
+
             txtClientFirstname.Text = e.Firstname;
             txtClientLastName.Text = e.Lastname;
             txtClientAddress.Text = e.AddressLine;

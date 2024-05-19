@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using EntityModels;
+using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BusinessLogic
     public class CaseBL
     {
         ModelConverter modelConverter;
-        CaseDbAccess dbAccess;
+        ICaseDbAccess dbAccess;
         public CaseBL() 
         {
             modelConverter = new ModelConverter();
@@ -22,7 +23,7 @@ namespace BusinessLogic
         public async Task<bool> CreateCase(CaseUI caseUI)
         {
             Case temp = modelConverter.ConvertFromCaseUI(caseUI);
-            return await dbAccess.CreateCase(temp);
+            return await dbAccess.CreateCaseAsync(temp);
         }
 
         public async Task<CaseUI> GetCaseAsync(int id)

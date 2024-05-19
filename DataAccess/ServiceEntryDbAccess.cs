@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ServiceEntryDbAccess
+    public class ServiceEntryDbAccess : IServiceEntryDbAccess
     {
         LawHouseDbContext db;
         public ServiceEntryDbAccess()

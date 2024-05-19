@@ -275,9 +275,6 @@ namespace UI.Forms.EmployeePage
         private async Task GetLawyersWithCollectionsAsync()
         {
             lawyers = await lawyerBL.GetLawyersWithCollectionsAsync();
-
-            if (lawyers != null)
-                filteredLawyers = new List<LawyerUI>(lawyers);
         }
 
         private async Task GetSecretariesAsync()

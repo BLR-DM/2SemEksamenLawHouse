@@ -29,74 +29,73 @@ namespace UI.Forms.EmployeePage
         List<SecretaryUI> secretaries;
 
         List<string> selectedFilters;
-        List<LawyerUI> visibleLawyers;
+        List<LawyerUI> filteredLawyers;
+
+        int sortByNameCount, sortByCaseCount, sortByServiceCount, sortBySpecialityCount, sortByPostal;
 
         public EmployeesOverview(int userID, EmployeeUI currentUser)
         {
             this.employeeUI = currentUser;
             selectedFilters = new List<string>();
-            visibleLawyers = new List<LawyerUI>();
 
             employeeBL = new EmployeeBL();
             lawyerBL = new LawyerBL();
             secretaryBL = new SecretaryBL();
             specialityBL = new SpecialityBL();
 
+
+
             InitializeComponent();
 
+            sortByNameCount = sortByCaseCount = sortByServiceCount = sortBySpecialityCount = sortByPostal = 0;
+
             btnTrashFilter.Visible = false;
+            btnTrashSort.Visible = false;
             cboxFilter.Enabled = false;
 
             Load += EmployeesOverview_Load;
             dgvEmployees.CellDoubleClick += DgvEmployees_CellDoubleClick;
             dgvEmployees.DataSourceChanged += DgvEmployees_DataSourceChanged;
             cboxShow.SelectedIndexChanged += CboxShowEmployees_SelectedIndexChanged;
-            cboxFilter.SelectionChangeCommitted += CboxFilter_SelectionChangeCommitted;
-            btnTrashFilter.Click += BtnTrash_Click;
+            cboxFilter.SelectedIndexChanged += CboxFilter_SelectedIndexChanged;
+            btnTrashFilter.Click += BtnTrashFilter_Click;
             btnTrashSort.Click += BtnTrashSort_Click;
             cboxSort.SelectedIndexChanged += CboxSort_SelectedIndexChanged;
         }
 
         private void BtnTrashSort_Click(object? sender, EventArgs e)
         {
-            cboxSort.SelectedItem = null;
+            btnTrashSort.Visible = false;
+            cboxSort.SelectedItem = null;            
+        }
+
+        private void BtnTrashFilter_Click(object? sender, EventArgs e)
+        {
+            btnTrashFilter.Visible = false;
+            ResetFilters();
         }
 
         private void CboxSort_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (cboxSort.SelectedItem != null)
-            {
-                foreach (DataGridViewRow row in dgvEmployees.Rows)
-                {
-                    if (row.Visible)
-                    {
-                        visibleLawyers.Add(row.DataBoundItem as LawyerUI);
-                    }
-                }
+                btnTrashSort.Visible = true;
 
-                switch (cboxSort.SelectedItem)
-                {
-                    case "Name":
-                        visibleLawyers = visibleLawyers.OrderBy(l => l.Firstname).ToList();
-                        SetupDgvWithLawyers();
-                        break;
-                }
-            }
-            else
-                visibleLawyers.Clear();
+            SortDgv();
         }
 
-        private void CboxFilter_SelectionChangeCommitted(object? sender, EventArgs e)
+        private void CboxFilter_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (cboxFilter.SelectedItem != null)
             {
+                btnTrashFilter.Visible = true;
+
                 selectedFilters.Add(cboxFilter.SelectedItem.ToString());
                 FilterSpeciality fs = new FilterSpeciality(cboxFilter.SelectedItem.ToString());
                 fs.Click += Fs_Click;
                 flpnlFilters.Controls.Add(fs);
                 cboxFilter.Items.Remove(cboxFilter.SelectedItem);
             }
-            ShowHideLawyers();
+            SortDgv();
         }
 
         private void Fs_Click(object? sender, EventArgs e)
@@ -107,56 +106,126 @@ namespace UI.Forms.EmployeePage
                 selectedFilters.Remove(filter.BtnText);
                 flpnlFilters.Controls.Remove(filter);
 
-                ShowHideLawyers();
+                SortDgv();
             }
         }
 
         private void ResetFilters()
         {
-            if (flpnlFilters.Controls.Count > 0)
+            foreach (FilterSpeciality fs in flpnlFilters.Controls)
             {
-                foreach (FilterSpeciality fs in flpnlFilters.Controls)
-                {
-                    cboxFilter.Items.Add(fs.BtnText);
-                }
-                flpnlFilters.Controls.Clear();
-                selectedFilters.Clear();
+                cboxFilter.Items.Add(fs.BtnText);
             }
+            flpnlFilters.Controls.Clear();
+            selectedFilters.Clear();
             btnTrashFilter.Visible = false;
-            ShowHideLawyers();
+
+            SortDgv();
         }
 
-        private void ShowHideLawyers()
+        private void SortDgv()
         {
+            filteredLawyers = new List<LawyerUI>(lawyers);
+
             if (selectedFilters.Count > 0)
             {
-                foreach (DataGridViewRow row in dgvEmployees.Rows)
-                {
-                    if (row.DataBoundItem is LawyerUI lawyer)
-                    {
-                        bool hasAllSpecialities = selectedFilters.All(filter =>
-                            lawyer.LawyerSpecialities.Any(ls => ls.SpecialityName == filter));
-
-                        dgvEmployees.CurrentCell = null; // <-- vigtig, hvis cell er markeret, kan den ikke skjule row
-                        row.Visible = hasAllSpecialities;
-                    }
-                }
+                filteredLawyers = lawyers
+                    .Where(l => selectedFilters
+                    .All(filter => l.LawyerSpecialities
+                    .Any(ls => ls.SpecialityName == filter))).ToList();
             }
-            else
+
+            if (cboxSort.SelectedItem != null)
             {
-                foreach (DataGridViewRow row in dgvEmployees.Rows)
+                switch (cboxSort.SelectedItem)
                 {
-                    row.Visible = true;
+                    case "Name":
+                        sortByNameCount++;                        
+                        if (sortByNameCount % 2 == 1)
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderBy(lawyer => lawyer.Firstname)
+                                .ThenBy(lawyer => lawyer.Lastname)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderByDescending(lawyer => lawyer.Firstname)
+                                .ThenByDescending(lawyer => lawyer.Lastname)
+                                .ToList();
+                        }
+                        break;
+
+                    case "Open Cases":
+                        sortByCaseCount++;
+                        if (sortByCaseCount % 2 == 1)
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderBy(cases => cases.OpenCases)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderByDescending(cases => cases.OpenCases)
+                                .ToList();
+                        }
+                        break;
+
+                    case "Open Services":
+                        sortByServiceCount++;
+                        if (sortByServiceCount  % 2 == 1)
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderBy(service => service.OpenCaseServices)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderByDescending(service => service.OpenCaseServices)
+                                .ToList();
+                        }
+                        break;
+
+                    case "Speciality":
+                        sortBySpecialityCount++;
+                        if (sortBySpecialityCount % 2 == 1)
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderBy(speciality => speciality.SpecialityCount)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderByDescending(speciality => speciality.SpecialityCount)
+                                .ToList();
+                        }
+                        break;
+
+                    case "PostalCode":
+                        sortByPostal++;
+                        if (sortByPostal % 2 == 1)
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderBy(postal => postal.PostalCode)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredLawyers = filteredLawyers
+                                .OrderByDescending(postal => postal.PostalCode)
+                                .ToList();
+                        }
+                        break;
                 }
             }
             dgvEmployees.CurrentCell = null;
-
             btnTrashFilter.Visible = flpnlFilters.Controls.Count > 0;
-        }
-
-        private void BtnTrash_Click(object? sender, EventArgs e)
-        {
-            ResetFilters();
+            dgvEmployees.DataSource = filteredLawyers;
+            SetupDgvWithLawyers();
         }
 
         private async void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
@@ -206,6 +275,9 @@ namespace UI.Forms.EmployeePage
         private async Task GetLawyersWithCollectionsAsync()
         {
             lawyers = await lawyerBL.GetLawyersWithCollectionsAsync();
+
+            if (lawyers != null)
+                filteredLawyers = new List<LawyerUI>(lawyers);
         }
 
         private async Task GetSecretariesAsync()
@@ -237,6 +309,10 @@ namespace UI.Forms.EmployeePage
 
             // Sorterings combobox
             cboxSort.Items.Add("Name");
+            cboxSort.Items.Add("Speciality");
+            cboxSort.Items.Add("Open Cases");
+            cboxSort.Items.Add("Open Services");
+            cboxSort.Items.Add("PostalCode");
         }
 
         private void DgvEmployees_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -312,33 +388,33 @@ namespace UI.Forms.EmployeePage
         {
             cboxFilter.Enabled = true;
 
-            if (cboxSort.SelectedItem != null)
-                dgvEmployees.DataSource = visibleLawyers;
-            else
-                dgvEmployees.DataSource = lawyers;
-
-
-
             dgvEmployees.Columns["LawyerTitleID"].Visible = false;
             dgvEmployees.Columns["LoginDetailsID"].Visible = false;
             dgvEmployees.Columns["Cases"].Visible = false;
             dgvEmployees.Columns["AddressLine"].Visible = false;
             dgvEmployees.Columns["City"].Visible = false;
             dgvEmployees.Columns["HireDate"].Visible = false;
+            dgvEmployees.Columns["LawyerSpecialities"].Visible = false;
+            dgvEmployees.Columns["CaseServices"].Visible = false;
 
             dgvEmployees.Columns["LawyerTitle"].Visible = true;
 
             dgvEmployees.Columns["PersonID"].HeaderText = "LawyerID";
+            dgvEmployees.Columns["LawyerTitle"].HeaderText = "Title";
 
             dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
             dgvEmployees.Columns["LawyerTitle"].DisplayIndex = 1;
             dgvEmployees.Columns["Firstname"].DisplayIndex = 2;
             dgvEmployees.Columns["Lastname"].DisplayIndex = 3;
             dgvEmployees.Columns["OpenCases"].DisplayIndex = 4;
-            dgvEmployees.Columns["ClosedCases"].DisplayIndex = 5;
-            dgvEmployees.Columns["PhoneNumber"].DisplayIndex = 6;
-            dgvEmployees.Columns["Email"].DisplayIndex = 7;
-            dgvEmployees.Columns["PostalCode"].DisplayIndex = 8;
+            dgvEmployees.Columns["OpenCaseServices"].DisplayIndex = 5;
+            dgvEmployees.Columns["SpecialityCount"].DisplayIndex = 6;
+            dgvEmployees.Columns["PhoneNumber"].DisplayIndex = 7;
+            dgvEmployees.Columns["Email"].DisplayIndex = 8;
+            dgvEmployees.Columns["PostalCode"].DisplayIndex = 9;
+            dgvEmployees.Columns["ClosedCases"].DisplayIndex = 10;
+            dgvEmployees.Columns["ClosedCaseServices"].DisplayIndex = 11;
+            dgvEmployees.Columns["Admin"].DisplayIndex = 12;
 
             dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

@@ -359,7 +359,7 @@
             lblAddressView.Name = "lblAddressView";
             lblAddressView.Size = new Size(38, 21);
             lblAddressView.TabIndex = 34;
-            lblAddressView.Text = "test";
+            lblAddressView.Text = "sortByNameCount";
             // 
             // lblEmailView
             // 
@@ -371,7 +371,7 @@
             lblEmailView.Name = "lblEmailView";
             lblEmailView.Size = new Size(38, 21);
             lblEmailView.TabIndex = 34;
-            lblEmailView.Text = "test";
+            lblEmailView.Text = "sortByNameCount";
             // 
             // lblNameView
             // 
@@ -383,7 +383,7 @@
             lblNameView.Name = "lblNameView";
             lblNameView.Size = new Size(38, 21);
             lblNameView.TabIndex = 34;
-            lblNameView.Text = "test";
+            lblNameView.Text = "sortByNameCount";
             // 
             // lblUsernameView
             // 
@@ -395,7 +395,7 @@
             lblUsernameView.Name = "lblUsernameView";
             lblUsernameView.Size = new Size(38, 21);
             lblUsernameView.TabIndex = 35;
-            lblUsernameView.Text = "test";
+            lblUsernameView.Text = "sortByNameCount";
             // 
             // label7
             // 

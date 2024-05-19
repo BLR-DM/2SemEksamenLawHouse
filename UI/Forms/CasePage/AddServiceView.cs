@@ -147,7 +147,7 @@ namespace UI.Forms.CasePage
             CaseServiceUI caseServiceUI = new CaseServiceUI()
             {
                 Description = txtServiceDescription.Text,
-                StartDate = DateTime.Now, // test
+                StartDate = DateTime.Now, // sortByNameCount
 
                 CaseID = selectedCase.CaseID,
                 ServiceID = selectedService.ServiceID,

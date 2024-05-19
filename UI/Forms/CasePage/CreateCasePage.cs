@@ -112,7 +112,7 @@ namespace UI.Forms.CasePage
                 CreationDate = DateTime.Now,
                 EndDate = dtpEstimatedEndDate.Value,
                 EstimatedHours = float.Parse(txtEstimatedHours.Text),
-                Status = "Active",
+                Status = "Open",
                 TotalPrice = 0,
 
                 CaseTypeID = selectedCaseType.CaseTypeID,

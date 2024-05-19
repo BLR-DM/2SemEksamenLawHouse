@@ -160,6 +160,9 @@ namespace UI.Forms.CasePage
 
             dgvCaseList.Columns["CaseTypeID"].Visible = false;
             dgvCaseList.Columns["LawyerID"].Visible = false;
+            dgvCaseList.Columns["CaseServices"].Visible = false;
+
+
             dgvCaseList.Columns["EndDate"].DefaultCellStyle.Format = "d";
             dgvCaseList.Columns["CreationDate"].DefaultCellStyle.Format = "d";
 
@@ -179,15 +182,15 @@ namespace UI.Forms.CasePage
 
             if(ckboxActive.Checked && ckboxClosed.Checked)
             {
-                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active" || caseUI.Status == "Finished").ToList();
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Open" || caseUI.Status == "Closed").ToList();
             }
             else if(ckboxActive.Checked && !ckboxClosed.Checked)
             {
-                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Active").ToList();
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Open").ToList();
             }
             else if(!ckboxActive.Checked && ckboxClosed.Checked)
             {
-                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Finished").ToList();
+                filteredCases = filteredCases.Where(caseUI => caseUI.Status == "Closed").ToList();
             }
 
             if(cboCaseType.SelectedItem != null && cboCaseType.SelectedIndex != 0)

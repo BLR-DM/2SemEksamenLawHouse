@@ -82,7 +82,7 @@ namespace UI.Forms.CasePage
                 btnUpdateCaseStatus.Visible = false;
             }
 
-            
+
         }
         
         private void BtnPrintDetails_Click(object? sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace UI.Forms.CasePage
 
             foreach (CaseServiceUI caseServiceUI in caseServiceList)
             {
-                if (caseServiceUI.Status == "Active")
+                if (caseServiceUI.Status == "Open")
                 {
                     MessageBox.Show("Cannot close case with active services");
                     return;
@@ -199,7 +199,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
-
+           
             AddServiceView addServiceView = new AddServiceView(selectedCase, this, serviceBL, caseServiceBL, cValidator, lawyerBL, SpecialityBL);
             addServiceView.ShowDialog();
         }
@@ -246,6 +246,13 @@ namespace UI.Forms.CasePage
                 if (selectedCase.Status == "Closed")
                 {
                     lblEstimatedEndDate.Text = "End Date";
+                    btnAddService.Enabled = false;
+                    btnUpdateCase.Enabled = false;
+                    txtDescription.ReadOnly = true;
+                    txtTitle.ReadOnly = true;
+                    txtEstimatedHours.ReadOnly = true;
+                    dtpEstimatedEndDate.Enabled = false;
+                    cboxCaseType.Enabled = false;
                 }
 
             }

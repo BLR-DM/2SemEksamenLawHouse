@@ -38,11 +38,11 @@
             lblFilter = new Label();
             cboxFilter = new ComboBox();
             panel1 = new Panel();
+            btnTrashSort = new FontAwesome.Sharp.IconButton();
             btnTrashFilter = new FontAwesome.Sharp.IconButton();
             flpnlFilters = new FlowLayoutPanel();
             lblSearch = new Label();
-            textBox1 = new TextBox();
-            btnTrashSort = new FontAwesome.Sharp.IconButton();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -51,6 +51,8 @@
             // 
             dgvEmployees.AllowUserToAddRows = false;
             dgvEmployees.AllowUserToDeleteRows = false;
+            dgvEmployees.AllowUserToResizeColumns = false;
+            dgvEmployees.AllowUserToResizeRows = false;
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployees.Location = new Point(25, 171);
             dgvEmployees.Name = "dgvEmployees";
@@ -177,6 +179,23 @@
             panel1.Size = new Size(948, 76);
             panel1.TabIndex = 9;
             // 
+            // btnTrashSort
+            // 
+            btnTrashSort.BackColor = Color.Transparent;
+            btnTrashSort.BackgroundImageLayout = ImageLayout.Stretch;
+            btnTrashSort.Cursor = Cursors.Hand;
+            btnTrashSort.FlatAppearance.BorderSize = 0;
+            btnTrashSort.FlatStyle = FlatStyle.Flat;
+            btnTrashSort.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnTrashSort.IconColor = Color.FromArgb(45, 93, 134);
+            btnTrashSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnTrashSort.IconSize = 22;
+            btnTrashSort.Location = new Point(491, 22);
+            btnTrashSort.Name = "btnTrashSort";
+            btnTrashSort.Size = new Size(27, 23);
+            btnTrashSort.TabIndex = 11;
+            btnTrashSort.UseVisualStyleBackColor = false;
+            // 
             // btnTrashFilter
             // 
             btnTrashFilter.BackColor = Color.Transparent;
@@ -214,31 +233,14 @@
             lblSearch.TabIndex = 4;
             lblSearch.Text = "Search:";
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(812, 129);
-            textBox1.MaxLength = 15;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(140, 16);
-            textBox1.TabIndex = 0;
-            // 
-            // btnTrashSort
-            // 
-            btnTrashSort.BackColor = Color.Transparent;
-            btnTrashSort.BackgroundImageLayout = ImageLayout.Stretch;
-            btnTrashSort.Cursor = Cursors.Hand;
-            btnTrashSort.FlatAppearance.BorderSize = 0;
-            btnTrashSort.FlatStyle = FlatStyle.Flat;
-            btnTrashSort.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnTrashSort.IconColor = Color.FromArgb(45, 93, 134);
-            btnTrashSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnTrashSort.IconSize = 22;
-            btnTrashSort.Location = new Point(491, 22);
-            btnTrashSort.Name = "btnTrashSort";
-            btnTrashSort.Size = new Size(27, 23);
-            btnTrashSort.TabIndex = 11;
-            btnTrashSort.UseVisualStyleBackColor = false;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Location = new Point(812, 129);
+            txtSearch.MaxLength = 15;
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(140, 16);
+            txtSearch.TabIndex = 0;
             // 
             // EmployeesOverview
             // 
@@ -246,7 +248,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(textBox1);
+            Controls.Add(txtSearch);
             Controls.Add(panel1);
             Controls.Add(dgvEmployees);
             Controls.Add(lblTotalEmployees);
@@ -277,7 +279,7 @@
         private FlowLayoutPanel flpnlFilters;
         private FontAwesome.Sharp.IconButton btnTrashFilter;
         private Label lblSearch;
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private FontAwesome.Sharp.IconButton btnTrashSort;
     }
 }

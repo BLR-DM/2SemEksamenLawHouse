@@ -145,6 +145,7 @@
             // 
             // cboxCaseType
             // 
+            cboxCaseType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxCaseType.FormattingEnabled = true;
             cboxCaseType.Location = new Point(3, 202);
             cboxCaseType.Name = "cboxCaseType";
@@ -198,7 +199,7 @@
             lblEstimatedEndDate.ForeColor = Color.FromArgb(45, 93, 134);
             lblEstimatedEndDate.Location = new Point(3, 74);
             lblEstimatedEndDate.Name = "lblEstimatedEndDate";
-            lblEstimatedEndDate.Size = new Size(151, 21);
+            lblEstimatedEndDate.Size = new Size(178, 21);
             lblEstimatedEndDate.TabIndex = 13;
             lblEstimatedEndDate.Text = "Estimated End EndDate";
             // 

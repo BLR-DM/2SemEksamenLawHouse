@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {    
-    public class SecretaryDbAccess
+    public class SecretaryDbAccess : ISecretaryDbAccess
     {
         LawHouseDbContext db;
         public SecretaryDbAccess() 

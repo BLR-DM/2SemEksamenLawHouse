@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UIModels;
 using EntityModels;
+using Interfaces;
 
 namespace BusinessLogic
 {
     public class ClientFormDocumentBL
     {
-        ClientFormDocumentDbAccess dbAccess;
+        IClientFormDocumentDbAccess dbAccess;
         ModelConverter modelConverter;
         public ClientFormDocumentBL()
         {

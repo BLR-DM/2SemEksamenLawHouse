@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public class EmployeeDbAccess
+    public class EmployeeDbAccess : IEmployeeDbAccess
     {
         LawHouseDbContext db;
         List<Employee> employees;

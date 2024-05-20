@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class SubscriptionDbAccess
+    public class SubscriptionDbAccess : ISubscriptionDbAccess
     {
         LawHouseDbContext db;
         public SubscriptionDbAccess()

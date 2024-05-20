@@ -1,12 +1,13 @@
 ﻿using DataAccess;
 using UIModels;
 using EntityModels;
+using Interfaces;
 
 namespace BusinessLogic
 {
     public class PersonBL
     {
-        PersonDbAccess dbAccess;
+        IPersonDbAccess dbAccess;
         ModelConverter modelConverter;
         public PersonBL()
         {

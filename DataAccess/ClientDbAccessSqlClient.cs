@@ -389,7 +389,43 @@ namespace DataAccess
 
         public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
         {
-            throw new NotImplementedException();
+            using SqlConnection dbConn = new SqlConnection(connString);
+
+            try
+            {
+                dbConn.OpenAsync();
+
+                //DELETE fra phones tabellen
+                string insertPhonesQuery = "DELETE FROM Phones WHERE PhoneID = @PHID";
+
+                foreach (Phone phone in phones)
+                {
+                    using SqlCommand createPhonesCMD = new SqlCommand(insertPhonesQuery, dbConn);
+                    {
+                        createPhonesCMD.Parameters.AddRange(new SqlParameter[]
+                        {
+                            new SqlParameter("@CID", phone.PhoneID),
+                        });
+
+                        await createPhonesCMD.ExecuteNonQueryAsync();
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+               await dbConn.CloseAsync();
+            }
+
+            
+
+
         }
     }
 }

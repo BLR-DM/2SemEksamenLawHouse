@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public class PersonDbAccess
+    public class PersonDbAccess : IPersonDbAccess
     {
         LawHouseDbContext db;
         public PersonDbAccess()

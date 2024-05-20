@@ -1,9 +1,10 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public class LawyerDbAccess
+    public class LawyerDbAccess : ILawyerDbAccess
     {
         LawHouseDbContext db;
         public LawyerDbAccess()

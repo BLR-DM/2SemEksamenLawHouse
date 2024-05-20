@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using EntityModels;
+using Interfaces;
 using UIModels;
 
 namespace BusinessLogic
 {
     public class EmployeeBL
     {
-        EmployeeDbAccess dbAccess;
+        IEmployeeDbAccess dbAccess;
         ModelConverter modelConverter;
         public EmployeeBL()
         {

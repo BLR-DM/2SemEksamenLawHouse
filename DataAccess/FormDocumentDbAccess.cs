@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityModels;
 using Microsoft.EntityFrameworkCore;
+using Interfaces;
 
 namespace DataAccess
 {
-    public class FormDocumentDbAccess
+    public class FormDocumentDbAccess : IFormDocumentDbAccess
     {
         LawHouseDbContext db;
         public FormDocumentDbAccess()

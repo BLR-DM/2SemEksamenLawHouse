@@ -1,12 +1,13 @@
 ﻿using DataAccess;
 using EntityModels;
+using Interfaces;
 using UIModels;
 
 namespace BusinessLogic
 {
     public class SecretaryBL
     {
-        SecretaryDbAccess dbAccess;
+        ISecretaryDbAccess dbAccess;
         ModelConverter modelConverter;
 
         public SecretaryBL()

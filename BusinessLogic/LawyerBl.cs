@@ -1,12 +1,13 @@
 ﻿using DataAccess;
 using EntityModels;
+using Interfaces;
 using UIModels;
 
 namespace BusinessLogic
 {
     public class LawyerBL
     {
-        LawyerDbAccess dbAccess;
+        ILawyerDbAccess dbAccess;
         ModelConverter modelConverter;
         public LawyerBL()
         {

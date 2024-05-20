@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UIModels;
 using BusinessLogic;
+using Interfaces;
 
 namespace BusinessLogic
 {
     public class LawyerTitleBL
     {
-        LawyerTitleDbAccess dbAccess;
+        ILawyerTitleDbAccess dbAccess;
         ModelConverter modelConverter;
         public LawyerTitleBL()
         {

@@ -189,8 +189,8 @@ namespace UI.Forms.CasePage
                 MessageBox.Show("Du dum");
             }
 
-            caseDetailsView.SetDgvAsync();
-            caseDetailsView.SetCaseDataAsync();
+            await caseDetailsView.SetDgvAsync();
+            await caseDetailsView.SetCaseDataAsync();
             this.Close();
 
         }

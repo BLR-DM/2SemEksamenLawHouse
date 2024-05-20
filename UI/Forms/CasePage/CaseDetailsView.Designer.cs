@@ -119,9 +119,9 @@
             // 
             // dtpEstimatedEndDate
             // 
-            dtpEstimatedEndDate.Location = new Point(303, 123);
+            dtpEstimatedEndDate.Location = new Point(273, 123);
             dtpEstimatedEndDate.Name = "dtpEstimatedEndDate";
-            dtpEstimatedEndDate.Size = new Size(178, 23);
+            dtpEstimatedEndDate.Size = new Size(208, 23);
             dtpEstimatedEndDate.TabIndex = 15;
             // 
             // btnUpdateCase
@@ -139,7 +139,7 @@
             lblEstimatedEndDate.BackColor = SystemColors.GradientInactiveCaption;
             lblEstimatedEndDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblEstimatedEndDate.ForeColor = Color.FromArgb(45, 93, 134);
-            lblEstimatedEndDate.Location = new Point(303, 97);
+            lblEstimatedEndDate.Location = new Point(273, 98);
             lblEstimatedEndDate.Name = "lblEstimatedEndDate";
             lblEstimatedEndDate.Size = new Size(151, 21);
             lblEstimatedEndDate.TabIndex = 13;

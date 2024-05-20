@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using EntityModels;
+using Interfaces;
 
 namespace BusinessLogic
 {
     public class LoginBL
     {
-        LoginDbAccess dbAccess;
+        ILoginDbAccess dbAccess;
         ModelConverter modelConverter;
 
         public LoginBL()

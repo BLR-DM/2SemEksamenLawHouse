@@ -137,8 +137,6 @@ namespace UI.Forms.CasePage
 
             lawyerList = await lawyerBL.GetLawyersAsync();
 
-            cboLawyers.DisplayMember = "Firstname";
-
             cboLawyers.Items.Add(new LawyerUI { PersonID = -1, Firstname = "Cases for all lawyers" });
 
             foreach(LawyerUI lawyerUI in lawyerList)

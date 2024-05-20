@@ -30,12 +30,14 @@
         {
             dgvCases = new DataGridView();
             dgvServices = new DataGridView();
-            chboxShowAll = new CheckBox();
+            chboxServicesShowAll = new CheckBox();
             lblTask = new Label();
             btnEditDetails = new FontAwesome.Sharp.IconButton();
             pnlLawyerDetails = new Panel();
             pnlEdit = new Panel();
             btnCancel = new FontAwesome.Sharp.IconButton();
+            lblCases = new Label();
+            chboxCasesShowAll = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -47,10 +49,10 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(331, 12);
+            dgvCases.Location = new Point(331, 34);
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
-            dgvCases.Size = new Size(655, 254);
+            dgvCases.Size = new Size(655, 265);
             dgvCases.TabIndex = 1;
             // 
             // dgvServices
@@ -60,30 +62,30 @@
             dgvServices.AllowUserToResizeColumns = false;
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(331, 311);
+            dgvServices.Location = new Point(331, 337);
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(655, 291);
+            dgvServices.Size = new Size(655, 265);
             dgvServices.TabIndex = 1;
             // 
-            // chboxShowAll
+            // chboxServicesShowAll
             // 
-            chboxShowAll.AutoSize = true;
-            chboxShowAll.Location = new Point(370, 292);
-            chboxShowAll.Name = "chboxShowAll";
-            chboxShowAll.Size = new Size(72, 19);
-            chboxShowAll.TabIndex = 2;
-            chboxShowAll.Text = "Show All";
-            chboxShowAll.UseVisualStyleBackColor = true;
+            chboxServicesShowAll.AutoSize = true;
+            chboxServicesShowAll.Location = new Point(386, 318);
+            chboxServicesShowAll.Name = "chboxServicesShowAll";
+            chboxServicesShowAll.Size = new Size(72, 19);
+            chboxServicesShowAll.TabIndex = 2;
+            chboxServicesShowAll.Text = "Show All";
+            chboxServicesShowAll.UseVisualStyleBackColor = true;
             // 
             // lblTask
             // 
             lblTask.AutoSize = true;
-            lblTask.Location = new Point(331, 293);
+            lblTask.Location = new Point(331, 319);
             lblTask.Name = "lblTask";
-            lblTask.Size = new Size(34, 15);
+            lblTask.Size = new Size(49, 15);
             lblTask.TabIndex = 0;
-            lblTask.Text = "Tasks";
+            lblTask.Text = "Services";
             // 
             // btnEditDetails
             // 
@@ -130,6 +132,25 @@
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             // 
+            // lblCases
+            // 
+            lblCases.AutoSize = true;
+            lblCases.Location = new Point(331, 16);
+            lblCases.Name = "lblCases";
+            lblCases.Size = new Size(37, 15);
+            lblCases.TabIndex = 0;
+            lblCases.Text = "Cases";
+            // 
+            // chboxCasesShowAll
+            // 
+            chboxCasesShowAll.AutoSize = true;
+            chboxCasesShowAll.Location = new Point(386, 15);
+            chboxCasesShowAll.Name = "chboxCasesShowAll";
+            chboxCasesShowAll.Size = new Size(72, 19);
+            chboxCasesShowAll.TabIndex = 2;
+            chboxCasesShowAll.Text = "Show All";
+            chboxCasesShowAll.UseVisualStyleBackColor = true;
+            // 
             // LawyerDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -140,7 +161,9 @@
             Controls.Add(pnlEdit);
             Controls.Add(pnlLawyerDetails);
             Controls.Add(btnEditDetails);
-            Controls.Add(chboxShowAll);
+            Controls.Add(chboxCasesShowAll);
+            Controls.Add(chboxServicesShowAll);
+            Controls.Add(lblCases);
             Controls.Add(dgvServices);
             Controls.Add(lblTask);
             Controls.Add(dgvCases);
@@ -157,11 +180,13 @@
         #endregion
         private DataGridView dgvCases;
         private DataGridView dgvServices;
-        private CheckBox chboxShowAll;
+        private CheckBox chboxServicesShowAll;
         private Label lblTask;
         private FontAwesome.Sharp.IconButton btnEditDetails;
         private Panel pnlLawyerDetails;
         private Panel pnlEdit;
         private FontAwesome.Sharp.IconButton btnCancel;
+        private Label lblCases;
+        private CheckBox chboxCasesShowAll;
     }
 }

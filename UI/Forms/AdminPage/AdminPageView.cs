@@ -11,6 +11,12 @@
             btnDeleteForm.Click += BtnDeleteForm_Click;
             btnCreateLawyer.Click += BtnCreateLawyer_Click;
             btnCreateSecretary.Click += BtnCreateSecretary_Click;
+            btnCreateService.Click += BtnCreateService_Click;
+        }
+
+        private void BtnCreateService_Click(object? sender, EventArgs e)
+        {
+            new AdminCreateService().ShowDialog();
         }
 
         private void BtnCreateSecretary_Click(object? sender, EventArgs e)

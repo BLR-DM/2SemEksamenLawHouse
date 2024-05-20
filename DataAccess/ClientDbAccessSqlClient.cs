@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,112 @@ namespace DataAccess
 
         public async Task<bool> CreateClientAsync(Client client)
         {
-            throw new NotImplementedException();
+            using SqlConnection dbConn = new SqlConnection(connString);
+            {
+
+                try
+                {
+                    await dbConn.OpenAsync();
+
+                    using (DbTransaction transaction = await dbConn.BeginTransactionAsync())
+                    {
+                        try
+                        {
+                            //insert ind i login tabel
+                            string insertLoginQuery = "INSERT INTO LoginDetails VALUES (@UN, @PW, @CD);" +
+                                                      "SELECT SCOPE_IDENTITY()";
+
+                            int loginDetailsID;
+
+                            using DbCommand createLoginCMD = new SqlCommand(insertLoginQuery, dbConn, (SqlTransaction)transaction);
+                            {
+                                createLoginCMD.Parameters.AddRange(new SqlParameter[]
+                                {
+                                    new SqlParameter("@UN", client.LoginDetails.Username),
+                                    new SqlParameter("@PW", client.LoginDetails.Password),
+                                    new SqlParameter("@CD", DateTime.Now),
+                                });
+
+                                loginDetailsID = Convert.ToInt32(await createLoginCMD.ExecuteScalarAsync());
+
+                            }
+
+
+                            //INSERT ind i person tabellen
+                            string insertPersonQuery = "INSERT INTO Persons VALUES (@FN, @LN, @EM, @AL, @PC, @C, @LDID);" +
+                                                       "SELECT SCOPE_IDENTITY()";
+
+                            int personID;
+
+                            using DbCommand createPersonCMD = new SqlCommand(insertPersonQuery, dbConn, (SqlTransaction)transaction);
+                            {
+                                createPersonCMD.Parameters.AddRange(new SqlParameter[]
+                                {
+                                    new SqlParameter("@FN", client.Firstname),
+                                    new SqlParameter("@LN", client.Lastname),
+                                    new SqlParameter("@EM", client.Email),
+                                    new SqlParameter("@AL", client.AddressLine),
+                                    new SqlParameter("@PC", client.PostalCode),
+                                    new SqlParameter("@C", client.City),
+                                    new SqlParameter("@LDID", loginDetailsID),
+                                });
+
+                                personID = Convert.ToInt32(await createPersonCMD.ExecuteScalarAsync());
+                            }
+
+                            //INSERT ind i Client tabellen
+                            string insertClientQuery = "INSERT INTO Clients VALUES (@PID);";
+
+                            using DbCommand createClientCMD = new SqlCommand(insertClientQuery, dbConn, (SqlTransaction)transaction);
+                            {
+                                createClientCMD.Parameters.AddRange(new SqlParameter[]
+                                {
+                                    new SqlParameter("@PID", personID),
+                                });
+
+                                await createClientCMD.ExecuteNonQueryAsync();
+                            }
+
+                            //INSERT ind i Phones tabellen
+                            string insertPhonesQuery = "INSERT INTO Phones VALUES (@PN, @CID)"; //@CID = ClientID/PersonID
+
+                            foreach (Phone phone in client.Phones)
+                            {
+                                using DbCommand createPhonesCMD = new SqlCommand(insertPhonesQuery, dbConn, (SqlTransaction)transaction);
+                                {
+                                    createPhonesCMD.Parameters.AddRange(new SqlParameter[]
+                                    {
+                                        new SqlParameter("@PN", phone.PhoneNumber),
+                                        new SqlParameter("@CID", personID),
+                                    });
+
+
+                                    await createPhonesCMD.ExecuteNonQueryAsync();
+                                }
+                            }
+
+                            await transaction.CommitAsync();
+                            
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+
+                            await transaction.RollbackAsync();
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+                finally
+                {
+                    await dbConn.CloseAsync();
+                }
+            }
         }
 
         
@@ -42,10 +148,10 @@ namespace DataAccess
 
                 string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
 
-                using SqlCommand sqlCommandClient = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
+                using SqlCommand SelectClientCMD = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
                 {
 
-                    using SqlDataReader reader = await sqlCommandClient.ExecuteReaderAsync();
+                    using SqlDataReader reader = await SelectClientCMD.ExecuteReaderAsync();
                     {
                         if (await reader.ReadAsync())
                         {
@@ -65,10 +171,10 @@ namespace DataAccess
 
                 string selectAllClientPhonesQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
 
-                using SqlCommand sqlCommandPhones = new SqlCommand(selectAllClientPhonesQuery, dbConn);
+                using SqlCommand selectPhonesCMD = new SqlCommand(selectAllClientPhonesQuery, dbConn);
                 {
-                    sqlCommandPhones.Parameters.AddWithValue("@CID", ClientID);
-                    using SqlDataReader phoneReader = await sqlCommandPhones.ExecuteReaderAsync();
+                    selectPhonesCMD.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader phoneReader = await selectPhonesCMD.ExecuteReaderAsync();
                     {
                         while (await phoneReader.ReadAsync())
                         {
@@ -88,10 +194,10 @@ namespace DataAccess
 
 
                 string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions WHERE ClientID = @CID";
-                using SqlCommand sqlCommandClientSubscriptions = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
+                using SqlCommand selectClientSubCMD = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
                 {
-                    sqlCommandClientSubscriptions.Parameters.AddWithValue("@CID", ClientID);
-                    using SqlDataReader subReader = await sqlCommandClientSubscriptions.ExecuteReaderAsync();
+                    selectClientSubCMD.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader subReader = await selectClientSubCMD.ExecuteReaderAsync();
                     {
 
                         while (await subReader.ReadAsync())
@@ -141,10 +247,10 @@ namespace DataAccess
 
                 string selectAllPhonesOnMatchQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
 
-                using SqlCommand sqlCommand = new SqlCommand(selectAllPhonesOnMatchQuery, dbConn);
+                using SqlCommand selectPhonesCMD = new SqlCommand(selectAllPhonesOnMatchQuery, dbConn);
                 {
-                    sqlCommand.Parameters.AddWithValue("@CID", ClientID);
-                    using SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
+                    selectPhonesCMD.Parameters.AddWithValue("@CID", ClientID);
+                    using SqlDataReader reader = await selectPhonesCMD.ExecuteReaderAsync();
                     {
                         while (await reader.ReadAsync())
                         {
@@ -187,10 +293,10 @@ namespace DataAccess
 
                 string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
 
-                using SqlCommand sqlCommandClient = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
+                using SqlCommand selectClientCMD = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
                 {
 
-                    using SqlDataReader reader = await sqlCommandClient.ExecuteReaderAsync();
+                    using SqlDataReader reader = await selectClientCMD.ExecuteReaderAsync();
                     {
                         while (await reader.ReadAsync())
                         {
@@ -214,9 +320,9 @@ namespace DataAccess
 
                 string selectAllClientPhonesQuery = "SELECT * FROM Phones";
 
-                using SqlCommand sqlCommandPhones = new SqlCommand(selectAllClientPhonesQuery, dbConn);
+                using SqlCommand selectPhonesCMD = new SqlCommand(selectAllClientPhonesQuery, dbConn);
                 {
-                    using SqlDataReader phoneReader = await sqlCommandPhones.ExecuteReaderAsync();
+                    using SqlDataReader phoneReader = await selectPhonesCMD.ExecuteReaderAsync();
                     {
                         while (await phoneReader.ReadAsync())
                         {
@@ -236,9 +342,9 @@ namespace DataAccess
 
 
                 string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions";
-                using SqlCommand sqlCommandClientSubscriptions = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
+                using SqlCommand selectClientSubCMD = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
                 {
-                    using SqlDataReader subReader = await sqlCommandClientSubscriptions.ExecuteReaderAsync();
+                    using SqlDataReader subReader = await selectClientSubCMD.ExecuteReaderAsync();
                     {
                         while (await subReader.ReadAsync())
                         {

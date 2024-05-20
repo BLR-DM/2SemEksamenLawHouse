@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using EntityModels;
+using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,20 @@ namespace BusinessLogic
     public class ServiceBL
     {
         ModelConverter modelConverter;
-        ServiceDbAccess dbAccess;
+        IServiceDbAccess dbAccess;
         public ServiceBL() 
         {
             modelConverter = new ModelConverter();
             dbAccess = new ServiceDbAccess();
         }
+
+        public async Task<bool> CreateServiceAsync(ServiceUI serviceUI)
+        {
+            Service service = modelConverter.ConvertFromServiceUI(serviceUI);
+            return await dbAccess.CreateServiceAsync(service);
+        }
+
+
 
         public async Task<List<ServiceUI>> GetServicesAsync()
         {
@@ -48,6 +57,12 @@ namespace BusinessLogic
             }
 
             return serviceForCaseUI;
+        }
+
+        public async Task<bool> UpdateServiceAsync(ServiceUI serviceUI)
+        {
+            Service serviceToUpdate = modelConverter.ConvertFromServiceUI(serviceUI);
+            return await dbAccess.UpdateServiceAsync(serviceToUpdate);
         }
     }
 }

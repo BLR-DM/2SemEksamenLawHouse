@@ -42,6 +42,7 @@
             label3 = new Label();
             btnCreateSecretary = new FontAwesome.Sharp.IconButton();
             btnDeleteSecretary = new FontAwesome.Sharp.IconButton();
+            btnCreateService = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // label7
@@ -124,9 +125,9 @@
             label1.ForeColor = Color.FromArgb(45, 93, 134);
             label1.Location = new Point(470, 60);
             label1.Name = "label1";
-            label1.Size = new Size(59, 21);
+            label1.Size = new Size(71, 21);
             label1.TabIndex = 52;
-            label1.Text = "Clients";
+            label1.Text = "Services";
             // 
             // btnDeleteClient
             // 
@@ -141,7 +142,7 @@
             btnDeleteClient.IconColor = Color.Black;
             btnDeleteClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteClient.IconSize = 70;
-            btnDeleteClient.Location = new Point(414, 95);
+            btnDeleteClient.Location = new Point(424, 153);
             btnDeleteClient.Name = "btnDeleteClient";
             btnDeleteClient.Size = new Size(171, 37);
             btnDeleteClient.TabIndex = 53;
@@ -284,12 +285,33 @@
             btnDeleteSecretary.Text = "Delete";
             btnDeleteSecretary.UseVisualStyleBackColor = false;
             // 
+            // btnCreateService
+            // 
+            btnCreateService.Anchor = AnchorStyles.Bottom;
+            btnCreateService.BackColor = Color.FromArgb(45, 93, 134);
+            btnCreateService.Cursor = Cursors.Hand;
+            btnCreateService.FlatAppearance.BorderSize = 0;
+            btnCreateService.FlatStyle = FlatStyle.Flat;
+            btnCreateService.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnCreateService.ForeColor = Color.White;
+            btnCreateService.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCreateService.IconColor = Color.Black;
+            btnCreateService.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCreateService.IconSize = 70;
+            btnCreateService.Location = new Point(424, 95);
+            btnCreateService.Name = "btnCreateService";
+            btnCreateService.Size = new Size(171, 37);
+            btnCreateService.TabIndex = 62;
+            btnCreateService.Text = "Create";
+            btnCreateService.UseVisualStyleBackColor = false;
+            // 
             // AdminPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnCreateService);
             Controls.Add(btnDeleteSecretary);
             Controls.Add(btnCreateSecretary);
             Controls.Add(label3);
@@ -327,5 +349,6 @@
         private Label label3;
         private FontAwesome.Sharp.IconButton btnCreateSecretary;
         private FontAwesome.Sharp.IconButton btnDeleteSecretary;
+        private FontAwesome.Sharp.IconButton btnCreateService;
     }
 }

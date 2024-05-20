@@ -1,4 +1,5 @@
 ﻿using EntityModels;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ServiceDbAccess
+    public class ServiceDbAccess : IServiceDbAccess
     {
         LawHouseDbContext db;
         public ServiceDbAccess() 
@@ -16,6 +17,19 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
+
+        public async Task<bool> CreateServiceAsync(Service service)
+        {
+            try
+            {
+                await db.Services.AddAsync(service);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public async Task<List<Service>> GetServicesAsync()
         {
             try
@@ -59,6 +73,19 @@ namespace DataAccess
             {
 
                 return new List<Service>();
+            }
+        }
+
+        public async Task<bool> UpdateServiceAsync(Service service)
+        {
+            try
+            {
+                db.Services.Update(service);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 

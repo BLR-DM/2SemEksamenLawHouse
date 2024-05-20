@@ -25,7 +25,9 @@ namespace UI.Forms.FrontPage
 
         PersonBL personBL;
         ClientBL clientBL;
+        EmployeeBL employeeBL;
         LawyerBL lawyerBL;
+        SecretaryBL secretaryBL;
 
         CaseBL caseBL;
         CaseTypeBL caseTypeBL;
@@ -45,8 +47,10 @@ namespace UI.Forms.FrontPage
         public FrontPageView(int loginDetailsID)
         {
             personBL = new PersonBL();
+            employeeBL = new EmployeeBL();
             clientBL = new ClientBL();
             lawyerBL = new LawyerBL();
+            secretaryBL = new SecretaryBL();
             caseBL = new CaseBL();
             formBL = new FormDocumentBL();
             subscriptionBL = new SubscriptionBL();
@@ -155,7 +159,8 @@ namespace UI.Forms.FrontPage
             SetNavBtnColor(btnMyPageLawyer);
 
             //set mypage
-            LawyerDetailsView lawyerDetailsView = new LawyerDetailsView(lawyerUI, true, lawyerUI);
+            LawyerDetailsView lawyerDetailsView = new LawyerDetailsView(lawyerUI, true, lawyerUI, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
+                        cValidator, serviceBL, specialityBL);
             if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(LawyerDetailsView))
             {
                 PnlContextChange(lawyerDetailsView);
@@ -215,7 +220,8 @@ namespace UI.Forms.FrontPage
             if (currentUser is LawyerUI)
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, employeeUI);
+                LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI, true, employeeUI, serviceEntryBL, clientBL, lawyerBL,
+                                caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
                 PnlContextChange(myPageLawyer);
                 SetNavBtnColor(btnMyPageLawyer); 
             }
@@ -240,14 +246,16 @@ namespace UI.Forms.FrontPage
             if (currentUser is LawyerUI)
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI);
+                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI, employeeBL, secretaryBL, serviceEntryBL,
+                    clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
                 PnlContextChange(employeesOverview);
                 SetNavBtnColor(btnEmployees); 
             }
             else
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, employeeUI);
+                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, employeeUI, employeeBL, secretaryBL, serviceEntryBL,
+                    clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
                 PnlContextChange(employeesOverview);
                 SetNavBtnColor(btnEmployees);
             }

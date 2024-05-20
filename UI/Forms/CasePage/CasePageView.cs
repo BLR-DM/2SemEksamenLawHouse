@@ -33,6 +33,7 @@ namespace UI.Forms.CasePage
         List<LawyerUI> lawyerList;
         List<CaseUI> originalCaseList;
         List<CaseUI> filteredCases;
+
         public CasePageView(FrontPageView f1, ServiceEntryBL serviceEntryBL, CaseBL caseBL, CaseTypeBL caseTypeBL,
                                     LawyerBL lawyerBL, ClientBL clientBL, SpecialityBL specialityBL,CaseServiceBL caseServiceBL,
                                     ServiceBL serviceBL, CaseValidator cValidator)
@@ -109,7 +110,7 @@ namespace UI.Forms.CasePage
                 {
                     if (int.TryParse(selectedRow.Cells["CaseID"].Value.ToString(), out int id))
                     {
-                        CaseDetailsView detailsView = new CaseDetailsView(id, false, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
+                        CaseDetailsView detailsView = new CaseDetailsView(id, false, false, serviceEntryBL, clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL,
                                                                             cValidator, serviceBL, specialityBL);
                         f1.PnlContextChange(detailsView);
                     }

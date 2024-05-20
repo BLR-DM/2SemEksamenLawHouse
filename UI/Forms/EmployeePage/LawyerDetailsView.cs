@@ -1,16 +1,41 @@
 ﻿using UIModels;
 using BusinessLogic;
 using UI.Toolbox;
+using EntityModels;
+using UI.Forms.CasePage;
+using BusinessLogic.Validation;
+using UI.Forms.FrontPage;
 
 namespace UI.Forms.EmployeePage
 {
     public partial class LawyerDetailsView : Form
     {
+        ServiceEntryBL serviceEntryBL;
+        ClientBL clientBL;
+        LawyerBL lawyerBL;
+        CaseBL caseBL;
+        CaseTypeBL caseTypeBL;
+        SpecialityBL specialityBL;
+        CaseServiceBL caseServiceBL;
+        ServiceBL serviceBL;
+        CaseValidator cValidator;
+
         LawyerUI displayedLawyerUI;
         bool isMyPage;
         bool isAdmin;
-        public LawyerDetailsView(LawyerUI displayedLawyerUI, bool isMyPage, EmployeeUI currentUser)
+        public LawyerDetailsView(LawyerUI displayedLawyerUI, bool isMyPage, EmployeeUI currentUser, ServiceEntryBL serviceEntryBL,
+                        ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL,
+                        CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
         {
+            this.clientBL = clientBL;
+            this.lawyerBL = lawyerBL;
+            this.caseBL = caseBL;
+            this.serviceBL = serviceBL;
+            this.caseServiceBL = caseServiceBL;
+            this.caseTypeBL = caseTypeBL;
+            this.cValidator = cValidator;
+            this.serviceEntryBL = serviceEntryBL;
+            this.specialityBL = specialityBL;
             this.displayedLawyerUI = displayedLawyerUI;
             this.isMyPage = isMyPage;
 
@@ -30,10 +55,37 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Click += BtnEditDetails_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
+            dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
+            dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
 
             CheckUser();
         }
 
+        private void DgvServices_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dgvServices.Rows[e.RowIndex].DataBoundItem is CaseServiceUI caseServiceUI)
+                {
+                    CaseDetailsView detailsView = new CaseDetailsView(caseServiceUI.CaseID, false, true, serviceEntryBL, clientBL,
+                        lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    detailsView.ShowDialog();
+                }
+            }
+        }
+
+        private void DgvCases_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dgvCases.Rows[e.RowIndex].DataBoundItem is CaseUI caseUI)
+                {
+                    CaseDetailsView detailsView = new CaseDetailsView(caseUI.CaseID, false, true, serviceEntryBL, clientBL,
+                        lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    detailsView.ShowDialog();
+                }
+            }
+        }
         private void CheckUser()
         {
             if (!isMyPage)
@@ -41,7 +93,6 @@ namespace UI.Forms.EmployeePage
                 FormBorderStyle = FormBorderStyle.Sizable;
                 StartPosition = FormStartPosition.CenterScreen;
             }
-
             btnEditDetails.Visible = isMyPage || isAdmin;
         }
         private async void LawyerDetailsView_Load(object? sender, EventArgs e)

@@ -12,16 +12,24 @@ using UIModels;
 using UI.Toolbox;
 using System.Windows.Controls;
 using EntityModels;
+using BusinessLogic.Validation;
 
 
 namespace UI.Forms.EmployeePage
 {
     public partial class EmployeesOverview : Form
     {
-        EmployeeBL employeeBL;
+        ServiceEntryBL serviceEntryBL;
+        ClientBL clientBL;
         LawyerBL lawyerBL;
-        SecretaryBL secretaryBL;
+        CaseBL caseBL;
+        CaseTypeBL caseTypeBL;
         SpecialityBL specialityBL;
+        CaseServiceBL caseServiceBL;
+        ServiceBL serviceBL;
+        CaseValidator cValidator;
+        EmployeeBL employeeBL;
+        SecretaryBL secretaryBL;
 
         EmployeeUI employeeUI;
 
@@ -35,24 +43,32 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> filteredEmployees;
 
         int sortByNameCount, sortByCaseCount, sortByServiceCount, 
-            sortBySpecialityCount, sortByPostal, sortByHireDate;
+            sortBySpecialityCount, sortByHireDate;
 
-        public EmployeesOverview(int userID, EmployeeUI currentUser)
+        public EmployeesOverview(int userID, EmployeeUI currentUser, EmployeeBL employeeBL, SecretaryBL secretaryBL,
+                        ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
+                        CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator,
+                        ServiceBL serviceBL, SpecialityBL specialityBL)
         {
+            this.clientBL = clientBL;
+            this.lawyerBL = lawyerBL;
+            this.caseBL = caseBL;
+            this.serviceBL = serviceBL;
+            this.caseServiceBL = caseServiceBL;
+            this.caseTypeBL = caseTypeBL;
+            this.cValidator = cValidator;
+            this.serviceEntryBL = serviceEntryBL;
+            this.specialityBL = specialityBL;
+            this.employeeBL = employeeBL;
+            this.secretaryBL = secretaryBL;
+
             this.employeeUI = currentUser;
             selectedFilters = new List<string>();
-
-            employeeBL = new EmployeeBL();
-            lawyerBL = new LawyerBL();
-            secretaryBL = new SecretaryBL();
-            specialityBL = new SpecialityBL();
-
-
 
             InitializeComponent();
 
             sortByNameCount = sortByCaseCount = sortByServiceCount = 
-                sortBySpecialityCount = sortByPostal = sortByHireDate = 0;
+                sortBySpecialityCount = sortByHireDate = 0;
 
             btnTrashFilter.Visible = false;
             btnTrashSort.Visible = false;
@@ -414,7 +430,8 @@ namespace UI.Forms.EmployeePage
 
                     case "  Lawyers":
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is LawyerUI lawyer)
-                            new LawyerDetailsView(lawyer, false, employeeUI).ShowDialog();
+                            new LawyerDetailsView(lawyer, false, employeeUI, serviceEntryBL, clientBL, lawyerBL,
+                                caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL).ShowDialog();
                         break;
 
                     case "  Secretaries":

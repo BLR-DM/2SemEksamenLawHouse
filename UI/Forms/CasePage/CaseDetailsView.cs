@@ -35,13 +35,13 @@ namespace UI.Forms.CasePage
         CaseValidator cValidator;
         ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
-        SpecialityBL SpecialityBL;
-        
+        SpecialityBL specialityBL;
 
-        bool isClient;
+
+        bool isClient, isMyPage;
 
         bool isEstimatedEndDateValid;
-        public CaseDetailsView(int selectedCaseID, bool isClient, ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
+        public CaseDetailsView(int selectedCaseID, bool isClient, bool isMyPage, ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
                                 CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
         {
             InitializeComponent();
@@ -54,8 +54,9 @@ namespace UI.Forms.CasePage
             this.cValidator = cValidator;
             this.selectedCaseID = selectedCaseID;
             this.isClient = isClient;
+            this.isMyPage = isMyPage;
             this.serviceEntryBL = serviceEntryBL;
-            this.SpecialityBL = specialityBL;
+            this.specialityBL = specialityBL;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -80,6 +81,12 @@ namespace UI.Forms.CasePage
                 btnAddService.Visible = false;
                 btnUpdateCase.Visible = false;
                 btnUpdateCaseStatus.Visible = false;
+            }
+
+            if (isMyPage)
+            {
+                FormBorderStyle = FormBorderStyle.Sizable;
+                StartPosition = FormStartPosition.CenterScreen;
             }
 
 
@@ -201,7 +208,7 @@ namespace UI.Forms.CasePage
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
            
-            AddServiceView addServiceView = new AddServiceView(selectedCase, this, serviceBL, caseServiceBL, cValidator, lawyerBL, SpecialityBL);
+            AddServiceView addServiceView = new AddServiceView(selectedCase, this, serviceBL, caseServiceBL, cValidator, lawyerBL, specialityBL);
             addServiceView.ShowDialog();
         }
 

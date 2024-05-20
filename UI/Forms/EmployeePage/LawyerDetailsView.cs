@@ -25,7 +25,8 @@ namespace UI.Forms.EmployeePage
             btnCancel.Visible = false;
 
             Load += LawyerDetailsView_Load;
-            chboxShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
+            chboxServicesShowAll.CheckedChanged += ChboxClosed_CheckedChanged;
+            chboxCasesShowAll.CheckedChanged += ChboxCasesShowAll_CheckedChanged;
             btnEditDetails.Click += BtnEditDetails_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             btnCancel.Click += BtnCancel_Click;
@@ -45,12 +46,13 @@ namespace UI.Forms.EmployeePage
         }
         private async void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
-            chboxShowAll.Checked = false;
+            chboxServicesShowAll.Checked = false;
 
             if (displayedLawyerUI != null)
             {
                 DisplayLawyer(displayedLawyerUI);
-                SetDgvData(chboxShowAll.Checked);
+                SetCasesDgv(chboxCasesShowAll.Checked);
+                SetServicesDgv(chboxServicesShowAll.Checked);
             }
         }
 
@@ -79,9 +81,14 @@ namespace UI.Forms.EmployeePage
             pnlEdit.Visible = true;            
         }
 
+        private void ChboxCasesShowAll_CheckedChanged(object? sender, EventArgs e)
+        {
+            SetCasesDgv(chboxCasesShowAll.Checked);
+        }
+
         private void ChboxClosed_CheckedChanged(object? sender, EventArgs e)
         {
-            SetDgvData(chboxShowAll.Checked);
+            SetServicesDgv(chboxServicesShowAll.Checked);
         }
 
         private void DisplayLawyer(LawyerUI lawyer)
@@ -89,21 +96,24 @@ namespace UI.Forms.EmployeePage
             pnlLawyerDetails.Controls.Clear();
             pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(displayedLawyerUI));
         }
-
-        private void SetDgvData(bool check)
+        private void SetCasesDgv(bool serviceShowAllCheck)
         {
-            dgvCases.DataSource = displayedLawyerUI.Cases;
-            dgvServices.DataSource = displayedLawyerUI.CaseServices;
+            if (serviceShowAllCheck)
+                dgvCases.DataSource = displayedLawyerUI.Cases;
+            else
+                dgvCases.DataSource = displayedLawyerUI.Cases
+                    .Where(c => c.Status == "Open")
+                    .ToList();
+        }
+            private void SetServicesDgv(bool serviceShowAllCheck)
+        {
 
-            foreach (DataGridViewRow row in dgvServices.Rows)
-            {
-                if (row.Cells["Status"].Value != null)
-                {
-                    string status = row.Cells["Status"].Value.ToString();
-                    dgvServices.CurrentCell = null;
-                    row.Visible = check || status == "Active";
-                }
-            }
+            if (serviceShowAllCheck)
+                dgvServices.DataSource = displayedLawyerUI.CaseServices;
+            else
+                dgvServices.DataSource = displayedLawyerUI.CaseServices
+                    .Where(cs => cs.Status == "Open")
+                    .ToList();
         }
     }
 }

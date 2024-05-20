@@ -1,4 +1,6 @@
-﻿namespace UIModels
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace UIModels
 {
     public class LawyerUI : EmployeeUI
     {
@@ -13,5 +15,10 @@
         public virtual ICollection<LawyerSpecialityUI> LawyerSpecialities { get; set; }
         public virtual ICollection<CaseUI> Cases { get; set; }
         public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Firstname} {Lastname}";
+        }
     }
 }

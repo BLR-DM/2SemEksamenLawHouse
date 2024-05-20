@@ -312,8 +312,20 @@ namespace BusinessLogic
                 Description = serviceE.Description,
                 PriceType = serviceE.ServicePriceType.PriceType,
                 Price = serviceE.Price,
+                ServicePriceTypeID = serviceE.ServicePriceTypeID,
             };
             return serviceUI;
+        }
+
+        public ServicePriceTypeUI ConvertFromServicePriceTypeEntity(ServicePriceType servicePriceTypeE)
+        {
+            ServicePriceTypeUI servicePriceTypeUI = new ServicePriceTypeUI
+            {
+                ServicePriceTypeID = servicePriceTypeE.ServicePriceTypeID,
+                PriceType = servicePriceTypeE.PriceType,
+            };
+
+            return servicePriceTypeUI;
         }
 
         public SpecialityUI ConvertFromSpecialityEntity(Speciality specialityE)
@@ -599,6 +611,7 @@ namespace BusinessLogic
                 Description = serviceUI.Description,
                 //PriceType = serviceUI.PriceType,
                 Price = serviceUI.Price,
+                ServicePriceTypeID = serviceUI.ServicePriceTypeID,
             };
             return serviceE;
         }
@@ -611,8 +624,20 @@ namespace BusinessLogic
                 Date = serviceEntryUI.Date,
                 HoursWorked = serviceEntryUI.HoursWorked,
                 CaseServiceID = serviceEntryUI.CaseServiceID,
+                
             };
             return serviceEntryE;
+        }
+
+        public ServicePriceType ConvertFromServicePriceTypeUI(ServicePriceTypeUI servicePriceTypeUI)
+        {
+            ServicePriceType servicePriceTypeE = new ServicePriceType
+            { 
+                ServicePriceTypeID = servicePriceTypeUI.ServicePriceTypeID,
+                PriceType = servicePriceTypeUI.PriceType,
+            };
+
+            return servicePriceTypeE;
         }
 
         public Speciality ConvertFromSpecialityUI(SpecialityUI specialityUI)

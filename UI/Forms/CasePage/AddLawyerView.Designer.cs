@@ -65,6 +65,7 @@
             // 
             // cboSpecialities
             // 
+            cboSpecialities.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSpecialities.FormattingEnabled = true;
             cboSpecialities.Location = new Point(611, 26);
             cboSpecialities.Name = "cboSpecialities";

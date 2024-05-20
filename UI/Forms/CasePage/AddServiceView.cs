@@ -249,11 +249,14 @@ namespace UI.Forms.CasePage
                 lblUnites.Visible = true;
                 txtUnits.Visible = true;
 
+                lblPrice.Text = "Price/km";
                 lblPrice.Visible = true;
                 txtPrice.Visible = true;
 
+                lblTotalPrice.Text = "Total price";
                 lblTotalPrice.Visible = true;
                 txtTotalPrice.Visible = true;
+                txtTotalPrice.Enabled = false;
 
                 lblHoursWorked.Visible = true;
                 txtHoursWorked.Visible = true;

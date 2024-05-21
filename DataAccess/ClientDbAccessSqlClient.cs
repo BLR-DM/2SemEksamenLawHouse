@@ -384,7 +384,95 @@ namespace DataAccess
 
         public async Task<bool> UpdateClientAsync(Client client)
         {
-            throw new NotImplementedException();
+            using SqlConnection dbConn = new SqlConnection(connString);
+
+            try
+            {
+                await dbConn.OpenAsync();
+                using (DbTransaction transaction = await dbConn.BeginTransactionAsync())
+                {
+                    try
+                    {
+                        //Update i person tabel
+                        string updatePersonQuery = "UPDATE Persons SET Firstname = @FN, Lastname = @LN, Email = @EM, AddressLine = @AL, PostalCode = @PC, City = @C, LoginDetailsID = @LDID WHERE PersonID = @PID";
+
+                        using (DbCommand updatePersonsCMD = new SqlCommand(updatePersonQuery, dbConn, (SqlTransaction)transaction))
+                        {
+                            updatePersonsCMD.Parameters.AddRange(new SqlParameter[]
+                            {
+                        new SqlParameter("@FN", client.Firstname),
+                        new SqlParameter("@LN", client.Lastname),
+                        new SqlParameter("@EM", client.Email),
+                        new SqlParameter("@AL", client.AddressLine),
+                        new SqlParameter("@PC", client.PostalCode),
+                        new SqlParameter("@C", client.City),
+                        new SqlParameter("@LDID", client.LoginDetailsID),
+                        new SqlParameter("@PID", client.PersonID)
+                            });
+
+                            await updatePersonsCMD.ExecuteNonQueryAsync();
+                        }
+
+                        //Get phone
+                        List<int> existingPhoneList = new List<int>();
+
+                        string selectAllClientPhonesQuery = "SELECT * FROM Phones WHERE ClientID = @CID";
+
+                        using SqlCommand selectPhonesCMD = new SqlCommand(selectAllClientPhonesQuery, dbConn, (SqlTransaction)transaction);
+                        {
+                            selectPhonesCMD.Parameters.AddWithValue("@CID", client.PersonID);
+                            using SqlDataReader phoneReader = await selectPhonesCMD.ExecuteReaderAsync();
+                            {
+                                while (await phoneReader.ReadAsync())
+                                {
+                                    existingPhoneList.Add((int)phoneReader["PhoneNumber"]);
+                                }
+                            }
+
+                        }
+
+                        //Insert new phones
+
+                        string insertPhonesQuery = "INSERT INTO Phones VALUES (@PN, @CID)"; //@CID = ClientID/PersonID
+
+                        foreach (Phone phone in client.Phones)
+                        {
+                            if (!existingPhoneList.Contains(phone.PhoneNumber))
+                            {
+                                using DbCommand createPhonesCMD = new SqlCommand(insertPhonesQuery, dbConn, (SqlTransaction)transaction);
+                                {
+                                    createPhonesCMD.Parameters.AddRange(new SqlParameter[]
+                                    {
+                                        new SqlParameter("@PN", phone.PhoneNumber),
+                                        new SqlParameter("@CID", client.PersonID),
+                                    });
+
+                                    await createPhonesCMD.ExecuteNonQueryAsync();
+                                }
+                            }
+                        }
+
+                        await transaction.CommitAsync();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        await transaction.RollbackAsync();
+                        return false;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                dbConn.CloseAsync();
+            }
+
         }
 
         public async Task<bool> DeleteClientPhoneNumbersAsync(List<Phone> phones)
@@ -393,7 +481,7 @@ namespace DataAccess
 
             try
             {
-                dbConn.OpenAsync();
+                await dbConn.OpenAsync();
 
                 //DELETE fra phones tabellen
                 string insertPhonesQuery = "DELETE FROM Phones WHERE PhoneID = @PHID";
@@ -404,7 +492,7 @@ namespace DataAccess
                     {
                         createPhonesCMD.Parameters.AddRange(new SqlParameter[]
                         {
-                            new SqlParameter("@CID", phone.PhoneID),
+                            new SqlParameter("@PHID", phone.PhoneID),
                         });
 
                         await createPhonesCMD.ExecuteNonQueryAsync();

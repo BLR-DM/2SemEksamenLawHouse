@@ -33,19 +33,18 @@ namespace UI.Forms.CasePage
 
         CaseValidator cValidator;
         
-        public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient, LawyerBL lawyerBL, 
-                                    ServiceBL serviceBL, ServiceEntryBL serviceEntryBL, CaseValidator cValidator, CaseServiceBL caseServiceBL)
+        public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient)
         {
             InitializeComponent();
 
             this.selectedCaseService = selectedCaseService;
             this.caseDetailsView = caseDetailsView;
 
-            this.lawyerBL = lawyerBL;   
-            this.serviceBL = serviceBL;
-            this.serviceEntryBL = serviceEntryBL;
-            this.caseServiceBL = caseServiceBL;
-            this.cValidator = cValidator;
+            lawyerBL = new LawyerBL();
+            serviceBL = new ServiceBL();
+            serviceEntryBL = new ServiceEntryBL();
+            caseServiceBL = new CaseServiceBL();
+            cValidator = new CaseValidator();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -168,11 +167,11 @@ namespace UI.Forms.CasePage
 
             if(succes && succes1)
             {
-                MessageBox.Show("Doner");
+                MessageBox.Show("Entry submitted");
             }
             else
             {
-                MessageBox.Show("Fejl");
+                MessageBox.Show("Error!");
             }
             btnSubmit.Enabled = true;
         }

@@ -302,11 +302,9 @@ namespace UI.Forms.ClientPage
                 CaseDetailsView caseDetailsView;
                 CaseUI selectedCase = cases[e.RowIndex];
                 if(currentUser is ClientUI)
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, true, serviceEntryBL, 
-                        clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, true);
                 else
-                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, true, serviceEntryBL,
-                        clientBL, lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, true);
                 frontPageView.PnlContextChange(caseDetailsView);
             }
         }

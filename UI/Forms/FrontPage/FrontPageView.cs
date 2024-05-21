@@ -272,7 +272,7 @@ namespace UI.Forms.FrontPage
         private void BtnCase_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CasePageView casePageView = new CasePageView(this, serviceEntryBL, caseBL, caseTypeBL, lawyerBL, clientBL, specialityBL, caseServiceBL, serviceBL, cValidator);
+            CasePageView casePageView = new CasePageView(this);
             PnlContextChange(casePageView);
             SetNavBtnColor(btnCase);
         }

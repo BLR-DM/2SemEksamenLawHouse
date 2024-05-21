@@ -29,25 +29,21 @@ namespace UI.Forms.CasePage
         ServiceBL serviceBL;
         CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
-        LawyerBL lawyerBL;
-        SpecialityBL specialityBL;
+
 
 
         Color validFormat;
         Color invalidFormat;
-        public AddServiceView(CaseUI selectedCase, CaseDetailsView caseDetailsView, ServiceBL serviceBL, CaseServiceBL caseServiceBL, CaseValidator cValidator,
-                                LawyerBL lawyerBL, SpecialityBL specialityBL)
+        public AddServiceView(CaseUI selectedCase, CaseDetailsView caseDetailsView)
         {
             InitializeComponent();
             this.selectedCase = selectedCase;
             this.caseDetailsView = caseDetailsView;
 
-            this.serviceBL = serviceBL;
-            this.caseServiceBL = caseServiceBL;
-            this.cValidator = cValidator;
-            this.lawyerBL = lawyerBL;
-            this.specialityBL = specialityBL;
-            
+            serviceBL = new ServiceBL();
+            caseServiceBL = new CaseServiceBL();
+            cValidator = new CaseValidator();
+
 
             cboServices.SelectedIndexChanged += CboServices_SelectedIndexChanged;
             txtUnits.TextChanged += TxtUnits_TextChanged;
@@ -197,7 +193,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
-            AddLawyerView addLawyerView = new AddLawyerView(lawyerBL, specialityBL);
+            AddLawyerView addLawyerView = new AddLawyerView();
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
             addLawyerView.ShowDialog();

@@ -35,28 +35,27 @@ namespace UI.Forms.CasePage
         CaseValidator cValidator;
         ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
-        SpecialityBL specialityBL;
 
 
         bool isClient, isMyPage;
 
         bool isEstimatedEndDateValid;
-        public CaseDetailsView(int selectedCaseID, bool isClient, bool isMyPage, ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
-                                CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
+        public CaseDetailsView(int selectedCaseID, bool isClient, bool isMyPage)
         {
             InitializeComponent();
-            this.clientBL = clientBL;
-            this.lawyerBL = lawyerBL;
-            this.caseBL = caseBL;
-            this.serviceBL = serviceBL;
-            this.caseServiceBL = caseServiceBL;
-            this.caseTypeBL = caseTypeBL;
-            this.cValidator = cValidator;
+            clientBL = new ClientBL();
+            lawyerBL = new LawyerBL();
+            caseBL = new CaseBL();
+            caseServiceBL = new CaseServiceBL();
+            caseTypeBL = new CaseTypeBL();
+            cValidator = new CaseValidator();
+
+
             this.selectedCaseID = selectedCaseID;
+
             this.isClient = isClient;
             this.isMyPage = isMyPage;
-            this.serviceEntryBL = serviceEntryBL;
-            this.specialityBL = specialityBL;
+
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -208,7 +207,7 @@ namespace UI.Forms.CasePage
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
            
-            AddServiceView addServiceView = new AddServiceView(selectedCase, this, serviceBL, caseServiceBL, cValidator, lawyerBL, specialityBL);
+            AddServiceView addServiceView = new AddServiceView(selectedCase, this);
             addServiceView.ShowDialog();
         }
 
@@ -225,11 +224,11 @@ namespace UI.Forms.CasePage
                     
                     if (isClient)
                     {
-                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true, lawyerBL, serviceBL, serviceEntryBL, cValidator, caseServiceBL);
+                        serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, true);
                     }
                     else
                     {
-                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false, lawyerBL, serviceBL, serviceEntryBL, cValidator, caseServiceBL);
+                       serviceDetailsView = new ServiceDetailsView(this, selectedCaseService, false);
                     }
                     serviceDetailsView.ShowDialog();
                 }

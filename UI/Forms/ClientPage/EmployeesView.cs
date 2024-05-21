@@ -16,14 +16,14 @@ namespace UI.Forms.ClientPage
         SpecialityBL specialityBL;
         List<LawyerUI> lawyerUIs;
         List<LawyerSpecialityUI> lawyerSpecialityUIs;
-        readonly List<LawyerCard> OriginalLawyerControls;
+        readonly List<LawyerCardMini> OriginalLawyerControls;
         public EmployeesView()
         {
             specialityBL = new SpecialityBL();
             lawyerBL = new LawyerBL();
             lawyerUIs = new List<LawyerUI>();
             lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
-            OriginalLawyerControls = new List<LawyerCard>();
+            OriginalLawyerControls = new List<LawyerCardMini>();
 
             InitializeComponent();
 
@@ -58,7 +58,7 @@ namespace UI.Forms.ClientPage
 
         private void SortAndUpdateFlowLayoutPanel()
         {
-            List<LawyerCard> visibleControls = OriginalLawyerControls.Where(c => c.Visible).ToList();
+            List<LawyerCardMini> visibleControls = OriginalLawyerControls.Where(c => c.Visible).ToList();
 
             switch (cboxSort.SelectedItem)
             {
@@ -100,7 +100,7 @@ namespace UI.Forms.ClientPage
                             .Where(x => x.SpecialityName == selectedSpeciality)
                             .Select(x => x.LawyerID).ToList();
 
-                    foreach (LawyerCard lawyerControl in OriginalLawyerControls)
+                    foreach (LawyerCardMini lawyerControl in OriginalLawyerControls)
                     {
                         if (matchingLawyerIDs.Contains(lawyerControl.LawyerID))
                             lawyerControl.Show();
@@ -153,7 +153,7 @@ namespace UI.Forms.ClientPage
         {
             foreach (LawyerUI lawyer in lawyerUIs)
             {
-                LawyerCard lawyerCard = new LawyerCard(lawyer);
+                LawyerCardMini lawyerCard = new LawyerCardMini(lawyer);
 
                 // For hver child lawyerControl i LawyerCard lawyerControl, tilknyt klik event
                 foreach (Control control in lawyerCard.Controls)
@@ -169,13 +169,13 @@ namespace UI.Forms.ClientPage
 
         private void LawyerCard_Click(object? sender, EventArgs e)
         {
-            if (sender is LawyerCard lawyerCard)
+            if (sender is LawyerCardMini lawyerCard)
             {
                 if (lawyerCard != null)
                 {
                     pnlLawyerDetails.Controls.Clear();
                     pnlLawyerDetails.Controls
-                        .Add(new EmployeeCardDisplay(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
+                        .Add(new LawyerCardDisplay(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
                 }
             }
         }

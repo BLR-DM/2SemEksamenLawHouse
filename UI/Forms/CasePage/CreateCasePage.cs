@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.CasePage
@@ -17,29 +18,28 @@ namespace UI.Forms.CasePage
     {
         CaseBL caseBL;
         CaseTypeBL caseTypeBL;
-        SpecialityBL specialityBL;
-        LawyerBL lawyerBL;
-        ClientBL clientBL;
 
         List<CaseTypeUI> caseTypeUIList;
         ClientUI selectedClient;
         LawyerUI selectedLawyer;
         CaseValidator cValidator;
 
+        FrontPageView f1;
+        CasePageView casePageView;
+
         Color validFormat;
         Color invalidFormat;
 
         bool isEstimatedEndDateValid;
-        public CreateCasePage(CaseBL caseBL, CaseTypeBL caseTypeBL, SpecialityBL specialityBL, LawyerBL lawyerBL, ClientBL clientBL)
+        public CreateCasePage(FrontPageView f1, CasePageView casePageView)
         {
             InitializeComponent();
-            this.caseBL = caseBL;
-            this.caseTypeBL = caseTypeBL;
-            this.specialityBL = specialityBL;
-            this.lawyerBL = lawyerBL;
-            this.clientBL = clientBL;
-
+            caseBL = new CaseBL();
+            caseTypeBL = new CaseTypeBL();
             cValidator = new CaseValidator();
+
+            this.f1 = f1;
+            this.casePageView = casePageView;
 
             btnAddClient.Click += BtnAddClient_Click;
             btnAddLawyer.Click += BtnAddLawyer_Click;
@@ -125,10 +125,12 @@ namespace UI.Forms.CasePage
             if (succes)
             {
                 MessageBox.Show("Case created");
+                await casePageView.SetDgvAsync();
+                f1.PnlContextChange(casePageView);
             }
             else
             {
-                MessageBox.Show("FEJL");
+                MessageBox.Show("Error! Couldnt create case");
             }
 
             btnCreateCase.Enabled = true;
@@ -149,7 +151,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
-            AddLawyerView addLawyerView = new AddLawyerView(lawyerBL, specialityBL);
+            AddLawyerView addLawyerView = new AddLawyerView();
 
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
@@ -173,7 +175,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddClient_Click(object? sender, EventArgs e)
         {
-            AddClientView addClientView = new AddClientView(clientBL);
+            AddClientView addClientView = new AddClientView();
 
             addClientView.ClientSelected += AddClientView_ClientSelected;
            

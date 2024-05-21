@@ -24,11 +24,11 @@ namespace UI.Forms.CasePage
         List<SpecialityUI> specialityList;
         List<LawyerSpecialityUI> lawyerSpecialityList;
         public event EventHandler<LawyerUI> LawyerSelected;
-        public AddLawyerView(LawyerBL lawyerBL, SpecialityBL specialityBL)
+        public AddLawyerView()
         {
             InitializeComponent();
-            this.lawyerBL = lawyerBL;
-            this.specialityBL = specialityBL;
+            lawyerBL = new LawyerBL();
+            specialityBL = new SpecialityBL();
 
             dgvLawyerView.CellDoubleClick += DgvLawyerView_CellDoubleClick;
             specialityList = new List<SpecialityUI>();

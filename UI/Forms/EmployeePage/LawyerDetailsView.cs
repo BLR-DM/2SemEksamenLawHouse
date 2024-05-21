@@ -67,8 +67,7 @@ namespace UI.Forms.EmployeePage
             {
                 if (dgvServices.Rows[e.RowIndex].DataBoundItem is CaseServiceUI caseServiceUI)
                 {
-                    CaseDetailsView detailsView = new CaseDetailsView(caseServiceUI.CaseID, false, true, serviceEntryBL, clientBL,
-                        lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    CaseDetailsView detailsView = new CaseDetailsView(caseServiceUI.CaseID, false, true);
                     detailsView.ShowDialog();
                 }
             }
@@ -80,8 +79,7 @@ namespace UI.Forms.EmployeePage
             {
                 if (dgvCases.Rows[e.RowIndex].DataBoundItem is CaseUI caseUI)
                 {
-                    CaseDetailsView detailsView = new CaseDetailsView(caseUI.CaseID, false, true, serviceEntryBL, clientBL,
-                        lawyerBL, caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+                    CaseDetailsView detailsView = new CaseDetailsView(caseUI.CaseID, false, true);
                     detailsView.ShowDialog();
                 }
             }

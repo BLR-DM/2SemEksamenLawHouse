@@ -93,6 +93,7 @@ namespace UI.Forms.ClientPage
 
             Load += ClientDetails_Load;
 
+
         }
 
         private void BtnSubscriptionDetails_Click(object? sender, EventArgs e)
@@ -151,6 +152,18 @@ namespace UI.Forms.ClientPage
             await SetPhoneDetailsAsync();
         }
 
+        private void BtnDeletePhoneEnabled()
+        {
+            if (phoneNumbers.Count < 2)
+            {
+                btnDeletePhone.Enabled = false;
+            }
+            else
+            {
+                btnDeletePhone.Enabled = true;
+            }
+        }
+
         private async void BtnUpdate_ClickAsync(object? sender, EventArgs e)
         {
             btnUpdate.Enabled = false;
@@ -173,15 +186,15 @@ namespace UI.Forms.ClientPage
 
             clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
 
+            if (deletedNumbers.Count > 0)
+            {
+                numberDeleted = await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
+            }
+
             List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
             if (newNumbers.Count > 0)
             {
                 phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
-            }
-
-            if (deletedNumbers.Count > 0)
-            {
-                numberDeleted = await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
             }
 
             if (clientUpdated && numberDeleted)
@@ -310,6 +323,8 @@ namespace UI.Forms.ClientPage
             {
                 phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
             }
+
+            BtnDeletePhoneEnabled();
 
             dgvPhoneNumbers.DataSource = phoneNumbers;
             dgvPhoneNumbers.Columns["PhoneID"].Visible = false;

@@ -13,12 +13,10 @@ namespace BusinessLogic
     public class LoginBL
     {
         ILoginDbAccess dbAccess;
-        ModelConverter modelConverter;
 
         public LoginBL()
         {
             dbAccess = new LoginDbAccess();
-            modelConverter = new ModelConverter();
         }
 
         public async Task<bool> CheckUsernameAsync(string username)

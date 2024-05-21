@@ -58,6 +58,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnClose);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblTotalPrice);
             panel1.Controls.Add(txtUnits);
@@ -81,7 +82,7 @@
             txtTotalPrice.BackColor = Color.White;
             txtTotalPrice.Enabled = false;
             txtTotalPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(449, 249);
+            txtTotalPrice.Location = new Point(449, 219);
             txtTotalPrice.MaxLength = 50;
             txtTotalPrice.Name = "txtTotalPrice";
             txtTotalPrice.Size = new Size(108, 27);
@@ -93,7 +94,7 @@
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(473, 227);
+            lblTotalPrice.Location = new Point(473, 197);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.Size = new Size(86, 21);
             lblTotalPrice.TabIndex = 58;
@@ -104,7 +105,7 @@
             txtUnits.BackColor = Color.White;
             txtUnits.Enabled = false;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(491, 190);
+            txtUnits.Location = new Point(491, 160);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -115,7 +116,7 @@
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(473, 169);
+            lblUnites.Location = new Point(473, 139);
             lblUnites.Name = "lblUnites";
             lblUnites.Size = new Size(84, 21);
             lblUnites.TabIndex = 56;
@@ -128,7 +129,7 @@
             lblPriceType.BackColor = SystemColors.GradientInactiveCaption;
             lblPriceType.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPriceType.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPriceType.Location = new Point(469, 61);
+            lblPriceType.Location = new Point(469, 31);
             lblPriceType.Name = "lblPriceType";
             lblPriceType.Size = new Size(90, 21);
             lblPriceType.TabIndex = 55;
@@ -139,7 +140,7 @@
             txtTotalHours.BackColor = Color.White;
             txtTotalHours.Enabled = false;
             txtTotalHours.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalHours.Location = new Point(467, 85);
+            txtTotalHours.Location = new Point(467, 55);
             txtTotalHours.MaxLength = 50;
             txtTotalHours.Name = "txtTotalHours";
             txtTotalHours.Size = new Size(90, 27);
@@ -150,7 +151,7 @@
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(473, 115);
+            lblPrice.Location = new Point(473, 85);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(84, 21);
             lblPrice.TabIndex = 53;
@@ -162,7 +163,7 @@
             txtPrice.BackColor = Color.White;
             txtPrice.Enabled = false;
             txtPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.Location = new Point(454, 139);
+            txtPrice.Location = new Point(454, 109);
             txtPrice.MaxLength = 50;
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(103, 27);
@@ -299,12 +300,12 @@
             pnlLawyerInformation.BorderStyle = BorderStyle.FixedSingle;
             pnlLawyerInformation.Location = new Point(298, 324);
             pnlLawyerInformation.Name = "pnlLawyerInformation";
-            pnlLawyerInformation.Size = new Size(281, 175);
+            pnlLawyerInformation.Size = new Size(281, 232);
             pnlLawyerInformation.TabIndex = 21;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(399, 517);
+            btnClose.Location = new Point(477, 257);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(85, 31);
             btnClose.TabIndex = 22;
@@ -317,7 +318,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(584, 573);
-            Controls.Add(btnClose);
             Controls.Add(pnlLawyerInformation);
             Controls.Add(pnlTasks);
             Controls.Add(panel1);

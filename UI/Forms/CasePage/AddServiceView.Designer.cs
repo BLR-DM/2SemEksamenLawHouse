@@ -235,7 +235,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.GradientActiveCaption;
-            panel2.Location = new Point(42, 196);
+            panel2.Location = new Point(46, 226);
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 3);
             panel2.TabIndex = 51;

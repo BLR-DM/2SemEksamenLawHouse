@@ -21,11 +21,11 @@ namespace UI.Forms.Self_Service
         Color validFormat;
         Color invalidFormat;
 
-        public CalcROIView(OverallValidator oaValidator, ClientUI client)
+        public CalcROIView(ClientUI client)
         {
             InitializeComponent();
 
-            this.oaValidator = oaValidator;
+            oaValidator = new OverallValidator();
             this.client = client;
 
             validFormat = Color.Black;

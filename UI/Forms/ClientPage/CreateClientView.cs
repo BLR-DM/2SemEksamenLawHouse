@@ -29,11 +29,11 @@ namespace UI.Forms.ClientPage
         bool isPhoneAdded;
         bool passwordIsValid;
 
-        public CreateClientView(ClientBL clientBL, PersonValidator pValidator)
+        public CreateClientView()
         {
             InitializeComponent();
-            this.clientBL = clientBL;
-            this.pValidator = pValidator;
+            clientBL =  new ClientBL();
+            pValidator = new PersonValidator();
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;

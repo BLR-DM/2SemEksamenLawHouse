@@ -32,12 +32,13 @@ namespace UI.Forms.Self_Service
 
         private void BtnResendMail_Click(object? sender, EventArgs e)
         {
+            //viser besked for at formular er gensendt til clients email
             MessageBox.Show($"The form has been resent to: {client.Email}");
         }
 
        
 
-        //set details for formens informationer
+        //set details for formularens informationer
         private void SetDetails()
         {
             lblTitle.Text = form.Name;

@@ -61,7 +61,7 @@ namespace UI.Forms.Self_Service
                 //antal ydelser pr aar
                 double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
 
-
+                //kalder beregner med inputs
                 (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator
                     .CalcLoanPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
 
@@ -78,6 +78,7 @@ namespace UI.Forms.Self_Service
             }
         }
 
+        //tester på inputs og enabler calc knap
         private void BtnCalculateEnabled()
         {
             btnCalculate.Enabled =
@@ -88,6 +89,7 @@ namespace UI.Forms.Self_Service
                 ? true : false;
         }
 
+        //sletter txt fra alle txtfelter
         private void BtnClear_Click(object? sender, EventArgs e)
         {
             txtLoanAmount.Text = string.Empty;
@@ -99,6 +101,7 @@ namespace UI.Forms.Self_Service
             lblTotalPrYear.Text = string.Empty;
         }
 
+        //validere inputs
         private void TxtAmountOfYears_TextChanged(object? sender, EventArgs e)
         {
             txtAmountOfYears.ForeColor = oaValidator.ValidDigit(txtAmountOfYears.Text) ? validFormat : invalidFormat;

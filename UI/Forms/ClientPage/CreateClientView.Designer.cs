@@ -333,7 +333,7 @@
             // 
             rtxtPhoneNumbers.Location = new Point(193, 157);
             rtxtPhoneNumbers.Name = "rtxtPhoneNumbers";
-            rtxtPhoneNumbers.Size = new Size(183, 83);
+            rtxtPhoneNumbers.Size = new Size(118, 83);
             rtxtPhoneNumbers.TabIndex = 35;
             rtxtPhoneNumbers.Text = "";
             // 
@@ -357,9 +357,9 @@
             lblAddressView.ForeColor = Color.FromArgb(45, 93, 134);
             lblAddressView.Location = new Point(96, 103);
             lblAddressView.Name = "lblAddressView";
-            lblAddressView.Size = new Size(144, 21);
+            lblAddressView.Size = new Size(38, 21);
             lblAddressView.TabIndex = 34;
-            lblAddressView.Text = "sortByNameCount";
+            lblAddressView.Text = "test";
             // 
             // lblEmailView
             // 
@@ -369,9 +369,9 @@
             lblEmailView.ForeColor = Color.FromArgb(45, 93, 134);
             lblEmailView.Location = new Point(96, 57);
             lblEmailView.Name = "lblEmailView";
-            lblEmailView.Size = new Size(144, 21);
+            lblEmailView.Size = new Size(38, 21);
             lblEmailView.TabIndex = 34;
-            lblEmailView.Text = "sortByNameCount";
+            lblEmailView.Text = "test";
             // 
             // lblNameView
             // 
@@ -381,9 +381,9 @@
             lblNameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblNameView.Location = new Point(96, 11);
             lblNameView.Name = "lblNameView";
-            lblNameView.Size = new Size(144, 21);
+            lblNameView.Size = new Size(38, 21);
             lblNameView.TabIndex = 34;
-            lblNameView.Text = "sortByNameCount";
+            lblNameView.Text = "test";
             // 
             // lblUsernameView
             // 
@@ -393,9 +393,9 @@
             lblUsernameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblUsernameView.Location = new Point(623, 407);
             lblUsernameView.Name = "lblUsernameView";
-            lblUsernameView.Size = new Size(144, 21);
+            lblUsernameView.Size = new Size(38, 21);
             lblUsernameView.TabIndex = 35;
-            lblUsernameView.Text = "sortByNameCount";
+            lblUsernameView.Text = "test";
             // 
             // label7
             // 

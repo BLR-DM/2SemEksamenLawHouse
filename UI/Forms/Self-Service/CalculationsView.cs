@@ -37,16 +37,7 @@ namespace UI.Forms.Self_Service
             lblCalcRemainingBalanceOnLoan.Click += LblCalcRemainingBalanceOnLoan_Click;
         }
 
-        private void LblCalcRemainingBalanceOnLoan_Click(object? sender, EventArgs e)
-        {
-            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Underline);
-        }
-
-        private void LblCalcRemainingBalanceOnLoan_MouseLeave(object? sender, EventArgs e)
-        {
-            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Regular);
-        }
-
+        //viser beregner for remainingalanceonloan
         private void LblCalcRemainingBalanceOnLoan_MouseHover(object? sender, EventArgs e)
         {
             CalcRemainingBalanceOnLoanView calcRemainingBalanceOnLoanView = new CalcRemainingBalanceOnLoanView(client);
@@ -54,10 +45,18 @@ namespace UI.Forms.Self_Service
 
         }
 
+        //viser beregner for Return on investment
         private void LblCalcROI_Click(object? sender, EventArgs e)
         {
             CalcROIView calcROIView = new CalcROIView(client);
             PnlCalcChange(calcROIView);
+        }
+
+        //viser berenger for calc loan payment
+        private void LblCalcLoanPayment_Click(object? sender, EventArgs e)
+        {
+            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(client);
+            PnlCalcChange(calcLoanPaymentView);
         }
 
         private void LblCalcROI_MouseLeave(object? sender, EventArgs e)
@@ -70,11 +69,6 @@ namespace UI.Forms.Self_Service
             lblCalcROI.Font = new Font(lblCalcROI.Font, FontStyle.Underline);
         }
 
-        private void LblCalcLoanPayment_Click(object? sender, EventArgs e)
-        {
-            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(client);
-            PnlCalcChange(calcLoanPaymentView);
-        }
 
         private void LblCalcLoanPayment_MouseLeave(object? sender, EventArgs e)
         {
@@ -85,7 +79,17 @@ namespace UI.Forms.Self_Service
         {
             lblCalcLoanPayment.Font = new Font(lblCalcLoanPayment.Font, FontStyle.Underline);
         }
+        private void LblCalcRemainingBalanceOnLoan_Click(object? sender, EventArgs e)
+        {
+            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Underline);
+        }
 
+        private void LblCalcRemainingBalanceOnLoan_MouseLeave(object? sender, EventArgs e)
+        {
+            lblCalcRemainingBalanceOnLoan.Font = new Font(lblCalcRemainingBalanceOnLoan.Font, FontStyle.Regular);
+        }
+
+        //metode til at skifte beregner
         public void PnlCalcChange(Form f)
         {
             //clearer controls fra panelForm

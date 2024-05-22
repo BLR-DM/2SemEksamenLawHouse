@@ -343,7 +343,6 @@ namespace UI.Forms.EmployeePage
                     lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
                     break;
                 case "  Lawyers":
-                    ResetFilters();
                     FillComboBoxesForLawyers();
                     SetupDgvWithLawyers();
                     lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";

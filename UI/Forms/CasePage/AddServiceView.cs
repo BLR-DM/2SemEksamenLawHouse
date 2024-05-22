@@ -270,6 +270,11 @@ namespace UI.Forms.CasePage
                 txtTotalPrice.Visible = true;
                 txtTotalPrice.Enabled = true;
 
+                lblHoursWorked.Visible = false;
+                txtHoursWorked.Visible = false;
+
+                lblUnites.Visible = false;
+                txtUnits.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }

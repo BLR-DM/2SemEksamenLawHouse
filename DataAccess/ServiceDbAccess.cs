@@ -89,5 +89,18 @@ namespace DataAccess
             }
         }
 
+        public async Task<bool> DeleteServiceAsync(Service service)
+        {
+            try
+            {
+                db.Services.Remove(service);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

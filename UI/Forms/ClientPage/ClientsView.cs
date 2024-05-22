@@ -20,11 +20,6 @@ namespace UI.Forms.ClientPage
         FrontPageView frontPageView;
         PersonUI currentUser;
         ClientBL clientBL;
-        FormDocumentBL formBL;
-        CaseBL caseBL;
-        SubscriptionBL subscriptionBL;
-
-        PersonValidator pValidator;
 
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
@@ -37,10 +32,6 @@ namespace UI.Forms.ClientPage
             this.currentUser = currentUser;
 
             clientBL = new ClientBL();
-            formBL = new FormDocumentBL();
-            pValidator = new PersonValidator();
-            subscriptionBL = new SubscriptionBL();
-            caseBL = new CaseBL();
 
             //Events
             Load += ClientsView_Load;

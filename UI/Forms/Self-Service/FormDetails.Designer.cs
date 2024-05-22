@@ -37,7 +37,7 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Location = new Point(153, 39);
+            lblTitle.Location = new Point(153, 38);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(29, 15);
             lblTitle.TabIndex = 14;
@@ -46,7 +46,7 @@
             // lblPrice
             // 
             lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(144, 348);
+            lblPrice.Location = new Point(151, 349);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(33, 15);
             lblPrice.TabIndex = 16;
@@ -56,7 +56,7 @@
             // 
             txtDescription.BackColor = SystemColors.GradientInactiveCaption;
             txtDescription.BorderStyle = BorderStyle.None;
-            txtDescription.Location = new Point(82, 109);
+            txtDescription.Location = new Point(82, 101);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.ReadOnly = true;
@@ -77,7 +77,7 @@
             btnResendMail.IconColor = Color.Black;
             btnResendMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnResendMail.IconSize = 70;
-            btnResendMail.Location = new Point(82, 381);
+            btnResendMail.Location = new Point(89, 381);
             btnResendMail.Name = "btnResendMail";
             btnResendMail.Size = new Size(156, 41);
             btnResendMail.TabIndex = 18;

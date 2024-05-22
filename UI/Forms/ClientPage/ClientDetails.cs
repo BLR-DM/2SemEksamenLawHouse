@@ -27,14 +27,6 @@ namespace UI.Forms.ClientPage
         FormDocumentBL formBL;
         SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
-        ServiceEntryBL serviceEntryBL;
-
-        LawyerBL lawyerBL;
-        CaseTypeBL caseTypeBL;
-        CaseServiceBL caseServiceBL;
-        CaseValidator cValidator;
-        ServiceBL serviceBL;
-        SpecialityBL specialityBL;
 
         Color validFormat;
         Color invalidFormat;
@@ -57,14 +49,6 @@ namespace UI.Forms.ClientPage
             subscriptionBL = new SubscriptionBL();
             pValidator = new PersonValidator();
             caseBL = new CaseBL();
-            serviceEntryBL = new ServiceEntryBL();
-
-            lawyerBL = new LawyerBL();
-            caseTypeBL = new CaseTypeBL();
-            caseServiceBL = new CaseServiceBL();
-            cValidator = new CaseValidator();
-            serviceBL = new ServiceBL();
-            specialityBL = new SpecialityBL();
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();
@@ -305,7 +289,7 @@ namespace UI.Forms.ClientPage
                     caseDetailsView = new CaseDetailsView(selectedCase.CaseID, true, true);
                 else
                     caseDetailsView = new CaseDetailsView(selectedCase.CaseID, false, true);
-                frontPageView.PnlContextChange(caseDetailsView);
+                caseDetailsView.ShowDialog();
             }
         }
 

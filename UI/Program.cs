@@ -39,7 +39,7 @@ namespace UI
 //    PostalCode = 7000,
 //    City = "Fredericia",
 //    PhoneNumber = 22840883,
-//    HireDate = DateTime.Now,
+//    HireDate = DateTime.Now, 
 //    LawyerTitleID = 1,
 
 //    LoginDetails = new LoginDetails()

@@ -14,5 +14,6 @@ namespace Interfaces
         Task<Service> GetServiceAsync(int id);
         Task<List<Service>> GetServicesForCaseAsync(int caseID);
         Task<bool> UpdateServiceAsync(Service service);
+        Task<bool> DeleteServiceAsync(Service service);
     }
 }

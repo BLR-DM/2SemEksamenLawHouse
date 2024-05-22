@@ -89,6 +89,7 @@
             // 
             // cboLawyers
             // 
+            cboLawyers.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLawyers.FormattingEnabled = true;
             cboLawyers.Location = new Point(629, 31);
             cboLawyers.Name = "cboLawyers";
@@ -97,6 +98,7 @@
             // 
             // cboCaseType
             // 
+            cboCaseType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCaseType.FormattingEnabled = true;
             cboCaseType.Location = new Point(810, 31);
             cboCaseType.Name = "cboCaseType";

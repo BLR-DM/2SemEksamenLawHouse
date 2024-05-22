@@ -12,11 +12,25 @@
             btnCreateLawyer.Click += BtnCreateLawyer_Click;
             btnCreateSecretary.Click += BtnCreateSecretary_Click;
             btnCreateService.Click += BtnCreateService_Click;
+            btnUpdateService.Click += BtnUpdateService_Click;
+            btnDeleteService.Click += BtnDeleteService_Click;
         }
+
+        private void BtnDeleteService_Click(object? sender, EventArgs e)
+        {
+            new AdminServiceView().ShowDialog();
+        }
+
+        private void BtnUpdateService_Click(object? sender, EventArgs e)
+        {
+            new AdminServiceView().ShowDialog();
+        }
+
+
 
         private void BtnCreateService_Click(object? sender, EventArgs e)
         {
-            new AdminCreateService().ShowDialog();
+            new AdminCUDService().ShowDialog();
         }
 
         private void BtnCreateSecretary_Click(object? sender, EventArgs e)

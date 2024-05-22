@@ -108,7 +108,7 @@ namespace UI.Forms.CasePage
                 }
                 else
                 {
-                    MessageBox.Show("fejl");
+                    MessageBox.Show("Failed to close the service");
                     btnClose.Enabled = true;
                 }
 
@@ -130,6 +130,7 @@ namespace UI.Forms.CasePage
         }
         protected async override void OnClosing(CancelEventArgs e)
         {
+            //Når formen lukkes så opdateres detailview for casen
             await caseDetailsView.SetDgvAsync();
             await caseDetailsView.SetCaseDataAsync();
             base.OnClosing(e);
@@ -145,6 +146,7 @@ namespace UI.Forms.CasePage
                 CaseServiceID = selectedCaseService.CaseServiceID,
             };
 
+            //forskellig opdatering ift til om pricetype er hourly eller fixed
             if(selectedCaseService.PriceType == "Hourly")
             {
                 selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
@@ -185,7 +187,7 @@ namespace UI.Forms.CasePage
 
             txtServiceDescription.Text = selectedCaseService.Description;
 
-
+            //forksellig adfærd ift til pricetypen
             if (selectedCaseService.PriceType == "Hourly")
             {
                 txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
@@ -225,6 +227,7 @@ namespace UI.Forms.CasePage
         {
             LawyerUI assignedLawyer = await lawyerBL.GetLawyerAsync(selectedCaseService.LawyerID);
 
+            //Sætter den assigned lawyer til det panel
             pnlLawyerInformation.Controls.Add(new LawyerInformation(assignedLawyer));
         }
     }

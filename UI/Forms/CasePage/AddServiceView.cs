@@ -178,11 +178,11 @@ namespace UI.Forms.CasePage
             bool succes = await caseServiceBL.CreateCaseServiceAsync(caseServiceUI);
             if (succes)
             {
-                MessageBox.Show("Du er dejlig Rasmus");
+                MessageBox.Show("Service has been added");
             }
             else
             {
-                MessageBox.Show("Du dum");
+                MessageBox.Show("Failed to add the service");
             }
 
             await caseDetailsView.SetDgvAsync();
@@ -270,6 +270,11 @@ namespace UI.Forms.CasePage
                 txtTotalPrice.Visible = true;
                 txtTotalPrice.Enabled = true;
 
+                lblHoursWorked.Visible = false;
+                txtHoursWorked.Visible = false;
+
+                lblUnites.Visible = false;
+                txtUnits.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }

@@ -31,6 +31,13 @@ namespace BusinessLogic
             return modelConverter.ConvertFromCaseEntity(await dbAccess.GetCaseAsync(id));
         }
 
+        public async Task<CaseUI> GetCaseWithAllCollectionsAsync(int id)
+        {
+            Case caseE = await dbAccess.GetCaseWithAllCollectionsAsync(id);
+            CaseUI caseUI = modelConverter.ConvertFromCaseEntityWithAllCollections(caseE);
+            return caseUI;
+        }
+
         public async Task<List<CaseUI>> GetCasesAsync()
         {
             List<CaseUI> cases = new List<CaseUI>();

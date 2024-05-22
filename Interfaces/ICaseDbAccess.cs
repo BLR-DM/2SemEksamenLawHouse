@@ -11,6 +11,7 @@ namespace Interfaces
     {
         Task<bool> CreateCaseAsync(Case caseE);
         Task<Case> GetCaseAsync(int id);
+        Task<Case> GetCaseWithAllCollectionsAsync(int id);
         Task<List<Case>> GetCasesAsync();
         Task<List<Case>> GetCasesAsync(int ClientID);
         Task<bool> UpdateCaseAsync(Case caseE);

@@ -1,6 +1,7 @@
 ﻿using EntityModels;
 using Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,31 @@ namespace DataAccess
             }
         }
 
+        public async Task<Case> GetCaseWithAllCollectionsAsync(int id)
+        {
+            try
+            {
+                Case caseE = await db.Cases
+                    .Include(c => c.Lawyer)
+                        .ThenInclude(l => l.LawyerTitle)
+                    .Include(c => c.Client)
+                        .ThenInclude(client => client.Phones)
+                    .Include(c => c.CaseType)
+                    .Include(c => c.CaseServices)
+                        .ThenInclude(cs => cs.Service)
+                            .ThenInclude(s => s.ServicePriceType)
+                    .Include(c => c.CaseServices)
+                        .ThenInclude(cs => cs.Lawyer)
+                            .ThenInclude(l => l.LawyerTitle)
+                    .FirstOrDefaultAsync(c => c.CaseID == id);
+                return caseE;
+            }
+            catch (Exception)
+            {
+                return new Case();
+            }
+        }
+
         public async Task<List<Case>> GetCasesAsync()
         {
             try
@@ -72,6 +98,8 @@ namespace DataAccess
                 return new List<Case>();
             }
         }
+
+        
 
         public async Task<bool> UpdateCaseAsync(Case caseE)
         {

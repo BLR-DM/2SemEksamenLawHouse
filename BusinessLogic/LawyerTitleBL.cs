@@ -38,5 +38,12 @@ namespace BusinessLogic
             LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
             return await dbAccess.UpdateLawyerTitleAsync(lawyerTitle);
         }
+
+        public async Task<bool> DeleteLawyerTitleAsync(LawyerTitleUI lawyerTitleUI)
+        {
+            LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
+            return await dbAccess.DeleteLawyerTitleAsync(lawyerTitle);
+        }
+
     }
 }

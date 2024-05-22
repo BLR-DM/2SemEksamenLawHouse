@@ -12,5 +12,6 @@ namespace Interfaces
         Task<bool> CreateLawyerTitleAsync(LawyerTitle lawyerTitle);
         Task<List<LawyerTitle>> GetLawyerTitles();
         Task<bool> UpdateLawyerTitleAsync(LawyerTitle lawyerTitle);
+        Task<bool> DeleteLawyerTitleAsync(LawyerTitle lawyerTitle);
     }
 }

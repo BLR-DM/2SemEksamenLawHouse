@@ -47,6 +47,7 @@
             lblLawyerTitle = new Label();
             btnCreateLawyerTitle = new FontAwesome.Sharp.IconButton();
             btnUpdateLawyerTitle = new FontAwesome.Sharp.IconButton();
+            btnDeleteLawyerTitle = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // label7
@@ -381,6 +382,26 @@
             btnUpdateLawyerTitle.Text = "Update";
             btnUpdateLawyerTitle.UseVisualStyleBackColor = false;
             // 
+            // btnDeleteLawyerTitle
+            // 
+            btnDeleteLawyerTitle.Anchor = AnchorStyles.Bottom;
+            btnDeleteLawyerTitle.BackColor = Color.IndianRed;
+            btnDeleteLawyerTitle.Cursor = Cursors.Hand;
+            btnDeleteLawyerTitle.FlatAppearance.BorderSize = 0;
+            btnDeleteLawyerTitle.FlatStyle = FlatStyle.Flat;
+            btnDeleteLawyerTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnDeleteLawyerTitle.ForeColor = Color.White;
+            btnDeleteLawyerTitle.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnDeleteLawyerTitle.IconColor = Color.Black;
+            btnDeleteLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDeleteLawyerTitle.IconSize = 70;
+            btnDeleteLawyerTitle.Location = new Point(723, 498);
+            btnDeleteLawyerTitle.Name = "btnDeleteLawyerTitle";
+            btnDeleteLawyerTitle.Size = new Size(171, 37);
+            btnDeleteLawyerTitle.TabIndex = 53;
+            btnDeleteLawyerTitle.Text = "Delete";
+            btnDeleteLawyerTitle.UseVisualStyleBackColor = false;
+            // 
             // AdminPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -400,6 +421,7 @@
             Controls.Add(lblLawyers);
             Controls.Add(BtnDeleteCases);
             Controls.Add(label2);
+            Controls.Add(btnDeleteLawyerTitle);
             Controls.Add(btnDeleteService);
             Controls.Add(label1);
             Controls.Add(btnUpdateForm);
@@ -434,5 +456,6 @@
         private Label lblLawyerTitle;
         private FontAwesome.Sharp.IconButton btnCreateLawyerTitle;
         private FontAwesome.Sharp.IconButton btnUpdateLawyerTitle;
+        private FontAwesome.Sharp.IconButton btnDeleteLawyerTitle;
     }
 }

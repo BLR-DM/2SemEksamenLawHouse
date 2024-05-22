@@ -58,5 +58,20 @@ namespace DataAccess
                 return false;
             };
         }
+
+        public async Task<bool> DeleteLawyerTitleAsync(LawyerTitle title)
+        {
+            try
+            {
+                db.LawyerTitles.Remove(title);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

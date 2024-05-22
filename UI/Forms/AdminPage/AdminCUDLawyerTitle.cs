@@ -24,9 +24,9 @@ namespace UI.Forms.AdminPage
                 Title = txtTitle.Text
             };
 
-            bool test = await lawyerTitleBL.CreateLawyerTitleAsync(lawyerTitleUI);
+            bool result = await lawyerTitleBL.CreateLawyerTitleAsync(lawyerTitleUI);
 
-            if (test)
+            if (result)
             {
                 MessageBox.Show($"Lawyer Title \"{lawyerTitleUI.Title}\" was created!");
                 this.Close();
@@ -35,10 +35,10 @@ namespace UI.Forms.AdminPage
                 MessageBox.Show("Failed!");
         }
 
-        LawyerTitleUI lawyerTitleUpdate;
+        LawyerTitleUI selectedTitle;
         public AdminCUDLawyerTitle(LawyerTitleUI lawyerTitleUI)
         {
-            lawyerTitleUpdate = lawyerTitleUI;
+            selectedTitle = lawyerTitleUI;
 
             lawyerTitleBL = new LawyerTitleBL();
 
@@ -49,28 +49,53 @@ namespace UI.Forms.AdminPage
 
             txtTitle.TextChanged += TxtTitle_TextChanged;
             btnUpdate.Click += BtnUpdate_Click;
+            btnDelete.Click += BtnDelete_Click;
         }
 
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            lawyerTitleUpdate.Title = txtTitle.Text;
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to update the title to: {txtTitle.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            bool isUpdated = await lawyerTitleBL.UpdateLawyerTitleAsync(lawyerTitleUpdate);
-
-            if (isUpdated)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show($"LawyerTitle has been updated to: \"{lawyerTitleUpdate.Title}\"!");
-                this.Close();
+                selectedTitle.Title = txtTitle.Text;
+
+                bool result = await lawyerTitleBL.DeleteLawyerTitleAsync(selectedTitle);        
+
+                if (result)
+                {
+                    MessageBox.Show($"LawyerTitle has been updated to: \"{selectedTitle.Title}\"!", "Success", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Failed!");
+        }
+
+        private async void BtnDelete_Click(object? sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to delete \"{selectedTitle.Title}\"?",
+                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                bool result = await lawyerTitleBL.DeleteLawyerTitleAsync(selectedTitle);
+
+                if (result)
+                {
+                    MessageBox.Show($"\"{selectedTitle.Title}\" was succesfully deleted from the system!", "Deleted", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else MessageBox.Show("Could not delete the title!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void TxtTitle_TextChanged(object? sender, EventArgs e)
         {
-            btnUpdate.Enabled = txtTitle.Text != lawyerTitleUpdate.Title && !string.IsNullOrEmpty(txtTitle.Text);
+            btnUpdate.Enabled = txtTitle.Text != selectedTitle.Title && !string.IsNullOrEmpty(txtTitle.Text);
         }
-
-
     }
 }

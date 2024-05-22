@@ -28,11 +28,12 @@ namespace UI.Forms.AdminPage
 
             if (result)
             {
-                MessageBox.Show($"Lawyer Title \"{lawyerTitleUI.Title}\" was created!");
+                MessageBox.Show($"Lawyer Title \"{lawyerTitleUI.Title}\" was created!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
-                MessageBox.Show("Failed!");
+                MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         LawyerTitleUI selectedTitle;

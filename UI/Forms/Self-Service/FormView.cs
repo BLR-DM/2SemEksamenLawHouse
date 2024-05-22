@@ -36,27 +36,23 @@ namespace UI.Forms.Self_Service
             GetSetData();
         }
 
-        private void BtnResendMail_Click(object? sender, EventArgs e)
-        {
-            MessageBox.Show($"The form has been resent to: {client.Email}");
-        }
-
-        private async Task GetBoughtFormsAsync()
-        {
-            boughtForms = await formBL.GetBoughtFormDocumentsAsync(client.PersonID);
-        }
 
         private async void BtnBuy_Click(object? sender, EventArgs e)
         {
             btnBuy.Enabled = false;
 
+            //opretter ny clientformDocumentUI
             ClientFormDocumentUI clientFormBought = new ClientFormDocumentUI()
             {
                 BuyDate = DateTime.Now,
                 ClientID = client.PersonID,
                 FormDocumentID = selectedForm.FormDocumentID,
             };
+            
+            //opretter koebet i db
             bool success = await clientFormBL.BuyFormDocumentAsync(clientFormBought);
+
+            //tester på om koeb er successfuld
             if (success)
             {
                 MessageBox.Show($"Form has been bought and sent to: {client.Email}");
@@ -72,6 +68,7 @@ namespace UI.Forms.Self_Service
             btnBuy.Enabled = true;
         }
 
+        //setter detaljer for den valgte form i dgv
         private void DgvForms_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -81,7 +78,7 @@ namespace UI.Forms.Self_Service
             }
         }
 
-
+        //henter formularer og setter details for formularer
         private async void GetSetData()
         {
             SetDetails();
@@ -91,7 +88,7 @@ namespace UI.Forms.Self_Service
 
         private void SetDetails()
         {
-
+            //hvis ingen formular er valgt skal den ik vise noget details
             if (dgvForms.SelectedRows.Count == 0)
             {
                 lblTitle.Visible = false;
@@ -107,6 +104,7 @@ namespace UI.Forms.Self_Service
                 return;
             }
 
+            //ellers vis detaljer
             lblTitle.Visible = true;
             lblTitlelbl.Visible = true;
             txtDescription.Visible = true;
@@ -116,11 +114,12 @@ namespace UI.Forms.Self_Service
 
             txtSelectForm.Visible = false;
 
-
+            //set txt til formularens details
             lblTitle.Text = selectedForm.Name;
             txtDescription.Text = selectedForm.Description;
             lblPrice.Text = selectedForm.Price.ToString() + "$";
 
+            //tjekker om den valgte form allerede er købt
             bool formIsBought = boughtForms.FirstOrDefault(f => f.FormDocumentID == selectedForm.FormDocumentID) != null ? true : false;
             if (formIsBought)
             {
@@ -134,7 +133,20 @@ namespace UI.Forms.Self_Service
             }
         }
 
+        //henter de forms som clienten har købt
+        private async Task GetBoughtFormsAsync()
+        {
+            boughtForms = await formBL.GetBoughtFormDocumentsAsync(client.PersonID);
+        }
 
+        
+        private void BtnResendMail_Click(object? sender, EventArgs e)
+        {
+            //gensend mail til clientens mail
+            MessageBox.Show($"The form has been resent to: {client.Email}");
+        }
+
+        //setup for formular dgv
         private async Task SetDGVFormAsync()
         {
             formUIs = await formBL.GetFormDocumentAsync();
@@ -145,6 +157,15 @@ namespace UI.Forms.Self_Service
             dgvForms.ReadOnly = true;
             dgvForms.RowHeadersVisible = false;
             dgvForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvForms.EnableHeadersVisualStyles = false;
+            dgvForms.RowHeadersVisible = false;
+
+            dgvForms.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvForms.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvForms.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvForms.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 }

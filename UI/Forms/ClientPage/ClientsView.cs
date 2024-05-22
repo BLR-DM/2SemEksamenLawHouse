@@ -169,12 +169,24 @@ namespace UI.Forms.ClientPage
             dgvClients.Columns["IsSubscribed"].DisplayIndex = 8;
             dgvClients.Columns["LoginDetailsID"].DisplayIndex = 9;
 
+           
+
             //dgvClients.Columns["LoginDetailsID"].Visible = false;
 
             //fylder dgv ud med kolonnerne
             dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //vaelg hele rækken
             dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClients.ReadOnly = true;
+
+            dgvClients.EnableHeadersVisualStyles = false;
+            dgvClients.RowHeadersVisible = false;
+
+            dgvClients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvClients.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvClients.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvClients.DefaultCellStyle.SelectionForeColor = Color.Black;
 
         }
     }

@@ -63,9 +63,11 @@ namespace UI.Forms.Self_Service
                 //antal betalinger lavet
                 double paymentsMade = double.Parse(txtPaymentsMade.Text);
 
+                //kalder beregner med inputs
                 (double RemainingBalance, double PaymentAmount) result = LoanPaymentCalculator
                     .CalcRemainingBalanceOnLoan(totalLoanAmount, annualInterestRate, paymentsPrYear, totalYears, paymentsMade);
 
+                //saetter labels med results
                 lblRemainingBalance.Text = result.RemainingBalance.ToString("C", new CultureInfo("da-DK"));
                 lblAmountPrPayment.Text = result.PaymentAmount.ToString("C", new CultureInfo("da-DK")); 
             }
@@ -82,6 +84,7 @@ namespace UI.Forms.Self_Service
             btnCalculate.Enabled = false;
         }
         
+        //tester på valid inputs og enabler/disabler knap
         private void BtnCalculateEnabled()
         {
             btnCalculate.Enabled =
@@ -93,6 +96,7 @@ namespace UI.Forms.Self_Service
                 ? true : false;
         }
 
+        //slet alt text fra inputfelter
         private void BtnClear_Click(object? sender, EventArgs e)
         {
             txtTotalLoanAmount.Text = string.Empty;
@@ -105,6 +109,8 @@ namespace UI.Forms.Self_Service
             lblAmountPrPayment.Text = string.Empty;
         }
 
+
+        //valider inputs
         private void TxtPaymentsMade_TextChanged(object? sender, EventArgs e)
         {
             txtPaymentsMade.ForeColor = oaValidator.ValidDigit(txtPaymentsMade.Text) ? validFormat : invalidFormat;

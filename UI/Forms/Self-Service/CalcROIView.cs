@@ -52,7 +52,7 @@ namespace UI.Forms.Self_Service
                 //antal aar
                 double amountOfYears = double.Parse(txtAmountOfYears.Text);
 
-
+                //kalder beregner med inputs
                 double returnOfInvestment = ROICalculator.CalcROI(investment, interestRate, amountOfYears);
 
                 //udskriver total betaling pr aar i kroner
@@ -74,6 +74,7 @@ namespace UI.Forms.Self_Service
             btnCalculate.Enabled = false;
         }
 
+        //validerer inputs og enabler/disabler knap
         private void BtnCalculateEnabled()
         {
             btnCalculate.Enabled =
@@ -83,6 +84,7 @@ namespace UI.Forms.Self_Service
                 ? true : false;
         }
 
+        //slet tekst fra alle txtfelter
         private void BtnClear_Click(object? sender, EventArgs e)
         {
             txtInvestment.Text = string.Empty;
@@ -92,6 +94,7 @@ namespace UI.Forms.Self_Service
             lblProfitResult.Text = string.Empty;
         }
 
+        //validerer
         private void TxtAmountOfYears_TextChanged(object? sender, EventArgs e)
         {
             txtAmountOfYears.ForeColor = oaValidator.ValidDigit(txtAmountOfYears.Text) ? validFormat : invalidFormat;

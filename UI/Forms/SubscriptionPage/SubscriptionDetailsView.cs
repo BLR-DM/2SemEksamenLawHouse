@@ -31,6 +31,7 @@ namespace UI.Forms.SubscriptionPage
             SetDetails();
         }
 
+        //setter dgv for subs
         private void SetSubscriptionsDGV()
         {
             dgvSubscriptions.DataSource = subscriptions;
@@ -39,16 +40,19 @@ namespace UI.Forms.SubscriptionPage
             dgvSubscriptions.Columns[5].Visible = false;
             dgvSubscriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        
+        //setter details for clientens sub
         private void SetDetails()
         {
             if (client.IsSubscribed == false) { lblSubscribed.Text = "No"; }
             else if (client.IsSubscribed == true) { lblSubscribed.Text = "Yes"; }
             else { lblSubscribed.Text = "Undefined"; }
 
-
+            //henter aktiv sub hvis exist
             ClientSubscriptionUI? activeSubscription = subscriptions.FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
             if (activeSubscription != null)
             {
+                //beregner og udskriver tid tilbage på sub
                 TimeSpan timeTillExpiration = activeSubscription.EndDate - DateTime.Now;
                 int daysUntilExpiration = (int)timeTillExpiration.TotalDays;
                 lblSubscribed.Text = lblSubscribed.Text + $" - Expires in: {daysUntilExpiration} Days\n on the {activeSubscription.EndDate.Day} of {activeSubscription.EndDate.ToString("MMMM")}";

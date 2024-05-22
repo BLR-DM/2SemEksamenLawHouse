@@ -30,19 +30,23 @@ namespace UI.Forms.SubscriptionPage
 
         }
 
+        //koeb 3 month sub
         private async void BtnBuySubscriptionThreeMonth_Click(object? sender, EventArgs e)
         {
 
             btnBuySubscriptionThreeMonth.Enabled = false;
 
+            //tjekker om client allerede er sub
             if (client.IsSubscribed)
             {
                 MessageBox.Show("You are already subscribed!");
                 btnBuySubscriptionThreeMonth.Enabled = true;
                 return;
             }
-
+            
+            //ellers create sub
             bool subscriptionIsCreated = await CreateSubscriptionOne(3);
+            //tester om sub er oprettet
             if (subscriptionIsCreated)
             {
                 MessageBox.Show("Successfully subscribed for 3 months!");
@@ -54,10 +58,12 @@ namespace UI.Forms.SubscriptionPage
             btnBuySubscriptionThreeMonth.Enabled = true;
         }
 
+        //koeb 6 month sub
         private async void BtnBuySubscribtionSixMonths_ClickAsync(object? sender, EventArgs e)
         {
             btnBuySubscribtionSixMonths.Enabled = false;
 
+            //tjekker om client allerede er sub
             if (client.IsSubscribed)
             {
                 MessageBox.Show("You are already subscribed!");
@@ -65,8 +71,10 @@ namespace UI.Forms.SubscriptionPage
                 return;
             }
 
-
+            //ellers create sub
             bool subscriptionIsCreated = await CreateSubscriptionOne(6);
+
+            //tester om sub er oprettet
             if (subscriptionIsCreated)
             {
                 MessageBox.Show("Successfully subscribed for 6 months!");
@@ -78,10 +86,12 @@ namespace UI.Forms.SubscriptionPage
             btnBuySubscribtionSixMonths.Enabled = true;
         }
 
+        //koeb 12 month sub
         private async void BtnBuySubscription12Months_Click(object? sender, EventArgs e)
         {
             btnBuySubscription12Months.Enabled = false;
 
+            //tjekker om client allerede er sub
             if (client.IsSubscribed)
             {
                 MessageBox.Show("You are already subscribed!");
@@ -89,7 +99,10 @@ namespace UI.Forms.SubscriptionPage
                 return;
             }
 
+            //ellers create sub
             bool subscriptionIsCreated = await CreateSubscriptionOne(12);
+
+            //tester om sub er oprettet
             if (subscriptionIsCreated)
             {
                 MessageBox.Show("Successfully subscribed for 12 months!");
@@ -101,12 +114,16 @@ namespace UI.Forms.SubscriptionPage
             btnBuySubscription12Months.Enabled = true;
         }
 
+        //metode til at oprette sub med input på length
         public async Task<bool> CreateSubscriptionOne(int subLength)
         {
+            //henter den valgte abonnement type //kun en findes nu
             SubscriptionUI subscriptionOne = await subscriptionBL.GetSubscriptionAsync(1);
 
+            //berenger den betalte pris
             float PaidPrice = CalcPaidPrice(subscriptionOne, subLength);
 
+            //opretter nyt koeb af sub i UI
             ClientSubscriptionUI subscription = new ClientSubscriptionUI()
             {
                 StartDate = DateTime.Now,
@@ -117,11 +134,12 @@ namespace UI.Forms.SubscriptionPage
                 
             };
 
-
+            //opretter koeb i db
             return await subscriptionBL.CreateSubscriptionAsync(subscription);
             
         }
 
+        //beregner den betalte pris for sub udfra length af sub
         private float CalcPaidPrice(SubscriptionUI subscription, int subLength)
         {
             switch(subLength)

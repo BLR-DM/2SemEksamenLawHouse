@@ -1,5 +1,6 @@
 ﻿using UIModels;
 using EntityModels;
+using Microsoft.Identity.Client;
 
 namespace BusinessLogic
 {
@@ -546,6 +547,16 @@ namespace BusinessLogic
                 
             };
             return lawyerE;
+        }
+
+        public LawyerTitle ConvertFromLawyerTitleUI(LawyerTitleUI lawyerTitleUI)
+        {
+            LawyerTitle lawyerTitleE = new LawyerTitle
+            {
+                Title = lawyerTitleUI.Title,
+                LawyerTitleID = lawyerTitleUI.LawyerTitleID
+            };
+            return lawyerTitleE;
         }
 
         public LawyerSpeciality ConvertFromLawyerSpecialityUI(LawyerSpecialityUI lawyerSpecialityUI)

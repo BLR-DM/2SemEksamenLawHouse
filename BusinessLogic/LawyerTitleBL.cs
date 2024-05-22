@@ -21,10 +21,22 @@ namespace BusinessLogic
             modelConverter = new ModelConverter();
         }
 
+        public async Task<bool> CreateLawyerTitleAsync(LawyerTitleUI titleUI)
+        {
+            LawyerTitle title = modelConverter.ConvertFromLawyerTitleUI(titleUI);
+            return await dbAccess.CreateLawyerTitleAsync(title);
+        }
+
         public async Task<List<LawyerTitleUI>> GetLawyerTitles()
         {
             List<LawyerTitle> lawyerTitles = await dbAccess.GetLawyerTitles();
             return lawyerTitles.Select(modelConverter.ConvertFromLawyerTitleEntity).ToList();
+        }
+
+        public async Task<bool> UpdateLawyerTitleAsync(LawyerTitleUI lawyerTitleUI)
+        {
+            LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
+            return await dbAccess.UpdateLawyerTitleAsync(lawyerTitle);
         }
     }
 }

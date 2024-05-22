@@ -14,6 +14,18 @@
             btnCreateService.Click += BtnCreateService_Click;
             btnUpdateService.Click += BtnUpdateService_Click;
             btnDeleteService.Click += BtnDeleteService_Click;
+            btnCreateLawyerTitle.Click += BtnCreateLawyerTitle_Click;
+            btnUpdateLawyerTitle.Click += BtnUpdateTitle_Click;
+        }
+
+        private void BtnUpdateTitle_Click(object? sender, EventArgs e)
+        {
+            new AdminLawyerTitlesView().ShowDialog();
+        }
+
+        private void BtnCreateLawyerTitle_Click(object? sender, EventArgs e)
+        {
+            new AdminCUDLawyerTitle().ShowDialog();
         }
 
         private void BtnDeleteService_Click(object? sender, EventArgs e)

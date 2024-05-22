@@ -9,6 +9,8 @@ namespace Interfaces
 {
     public interface ILawyerTitleDbAccess
     {
+        Task<bool> CreateLawyerTitleAsync(LawyerTitle lawyerTitle);
         Task<List<LawyerTitle>> GetLawyerTitles();
+        Task<bool> UpdateLawyerTitleAsync(LawyerTitle lawyerTitle);
     }
 }

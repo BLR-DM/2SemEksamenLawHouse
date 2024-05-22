@@ -55,12 +55,12 @@
             panel1.Controls.Add(lblSearchPhone);
             panel1.Location = new Point(25, 21);
             panel1.Name = "panel1";
-            panel1.Size = new Size(948, 68);
+            panel1.Size = new Size(948, 76);
             panel1.TabIndex = 8;
             // 
             // txtSearchPostal
             // 
-            txtSearchPostal.Location = new Point(814, 24);
+            txtSearchPostal.Location = new Point(806, 26);
             txtSearchPostal.Name = "txtSearchPostal";
             txtSearchPostal.PlaceholderText = "Postalcode";
             txtSearchPostal.Size = new Size(100, 23);
@@ -69,7 +69,7 @@
             // lblSøgPris
             // 
             lblSøgPris.AutoSize = true;
-            lblSøgPris.Location = new Point(763, 28);
+            lblSøgPris.Location = new Point(755, 30);
             lblSøgPris.Name = "lblSøgPris";
             lblSøgPris.Size = new Size(45, 15);
             lblSøgPris.TabIndex = 13;
@@ -78,7 +78,7 @@
             // ckboxNotSubscribed
             // 
             ckboxNotSubscribed.AutoSize = true;
-            ckboxNotSubscribed.Location = new Point(487, 24);
+            ckboxNotSubscribed.Location = new Point(479, 29);
             ckboxNotSubscribed.Name = "ckboxNotSubscribed";
             ckboxNotSubscribed.Size = new Size(106, 19);
             ckboxNotSubscribed.TabIndex = 10;
@@ -88,7 +88,7 @@
             // ckboxSubscribed
             // 
             ckboxSubscribed.AutoSize = true;
-            ckboxSubscribed.Location = new Point(356, 23);
+            ckboxSubscribed.Location = new Point(359, 28);
             ckboxSubscribed.Name = "ckboxSubscribed";
             ckboxSubscribed.Size = new Size(84, 19);
             ckboxSubscribed.TabIndex = 9;
@@ -97,7 +97,7 @@
             // 
             // txtSearchPhone
             // 
-            txtSearchPhone.Location = new Point(71, 21);
+            txtSearchPhone.Location = new Point(77, 24);
             txtSearchPhone.Name = "txtSearchPhone";
             txtSearchPhone.PlaceholderText = "phonenumber";
             txtSearchPhone.Size = new Size(100, 23);
@@ -106,7 +106,7 @@
             // lblSearchPhone
             // 
             lblSearchPhone.AutoSize = true;
-            lblSearchPhone.Location = new Point(20, 25);
+            lblSearchPhone.Location = new Point(26, 28);
             lblSearchPhone.Name = "lblSearchPhone";
             lblSearchPhone.Size = new Size(45, 15);
             lblSearchPhone.TabIndex = 7;
@@ -115,21 +115,22 @@
             // dgvClients
             // 
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClients.Location = new Point(25, 183);
+            dgvClients.Location = new Point(25, 171);
             dgvClients.Name = "dgvClients";
             dgvClients.ReadOnly = true;
-            dgvClients.Size = new Size(948, 404);
+            dgvClients.Size = new Size(948, 416);
             dgvClients.TabIndex = 9;
             // 
             // lblClientAmmount
             // 
             lblClientAmmount.AutoSize = true;
-            lblClientAmmount.Font = new Font("Segoe UI", 14F);
-            lblClientAmmount.Location = new Point(435, 120);
+            lblClientAmmount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblClientAmmount.ForeColor = Color.FromArgb(45, 93, 134);
+            lblClientAmmount.Location = new Point(462, 123);
             lblClientAmmount.Name = "lblClientAmmount";
-            lblClientAmmount.Size = new Size(128, 25);
+            lblClientAmmount.Size = new Size(81, 21);
             lblClientAmmount.TabIndex = 13;
-            lblClientAmmount.Text = "10.000 Clients";
+            lblClientAmmount.Text = "Loading...";
             // 
             // btnCreate
             // 

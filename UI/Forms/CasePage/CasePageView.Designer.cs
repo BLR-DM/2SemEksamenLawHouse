@@ -49,10 +49,10 @@
             dgvCaseList.AllowUserToResizeColumns = false;
             dgvCaseList.AllowUserToResizeRows = false;
             dgvCaseList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCaseList.Location = new Point(12, 157);
+            dgvCaseList.Location = new Point(25, 171);
             dgvCaseList.Name = "dgvCaseList";
             dgvCaseList.ReadOnly = true;
-            dgvCaseList.Size = new Size(974, 444);
+            dgvCaseList.Size = new Size(948, 416);
             dgvCaseList.TabIndex = 0;
             // 
             // panelTopBar
@@ -65,14 +65,14 @@
             panelTopBar.Controls.Add(cboCaseType);
             panelTopBar.Controls.Add(ckboxClosed);
             panelTopBar.Controls.Add(ckboxActive);
-            panelTopBar.Location = new Point(12, 12);
+            panelTopBar.Location = new Point(25, 21);
             panelTopBar.Name = "panelTopBar";
-            panelTopBar.Size = new Size(974, 76);
+            panelTopBar.Size = new Size(948, 76);
             panelTopBar.TabIndex = 9;
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(78, 31);
+            txtTitle.Location = new Point(92, 27);
             txtTitle.Name = "txtTitle";
             txtTitle.PlaceholderText = "Case number";
             txtTitle.Size = new Size(119, 23);
@@ -81,7 +81,7 @@
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(27, 34);
+            lblSearch.Location = new Point(41, 30);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(45, 15);
             lblSearch.TabIndex = 4;
@@ -91,7 +91,7 @@
             // 
             cboLawyers.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLawyers.FormattingEnabled = true;
-            cboLawyers.Location = new Point(629, 31);
+            cboLawyers.Location = new Point(608, 25);
             cboLawyers.Name = "cboLawyers";
             cboLawyers.Size = new Size(148, 23);
             cboLawyers.TabIndex = 3;
@@ -100,7 +100,7 @@
             // 
             cboCaseType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCaseType.FormattingEnabled = true;
-            cboCaseType.Location = new Point(810, 31);
+            cboCaseType.Location = new Point(782, 25);
             cboCaseType.Name = "cboCaseType";
             cboCaseType.Size = new Size(142, 23);
             cboCaseType.TabIndex = 2;
@@ -108,7 +108,7 @@
             // ckboxClosed
             // 
             ckboxClosed.AutoSize = true;
-            ckboxClosed.Location = new Point(334, 33);
+            ckboxClosed.Location = new Point(402, 29);
             ckboxClosed.Name = "ckboxClosed";
             ckboxClosed.Size = new Size(62, 19);
             ckboxClosed.TabIndex = 1;
@@ -118,7 +118,7 @@
             // ckboxActive
             // 
             ckboxActive.AutoSize = true;
-            ckboxActive.Location = new Point(419, 34);
+            ckboxActive.Location = new Point(490, 29);
             ckboxActive.Name = "ckboxActive";
             ckboxActive.Size = new Size(55, 19);
             ckboxActive.TabIndex = 0;
@@ -131,11 +131,11 @@
             lblNumberOfCases.BackColor = SystemColors.GradientInactiveCaption;
             lblNumberOfCases.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblNumberOfCases.ForeColor = Color.FromArgb(45, 93, 134);
-            lblNumberOfCases.Location = new Point(460, 115);
+            lblNumberOfCases.Location = new Point(462, 123);
             lblNumberOfCases.Name = "lblNumberOfCases";
-            lblNumberOfCases.Size = new Size(79, 21);
+            lblNumberOfCases.Size = new Size(81, 21);
             lblNumberOfCases.TabIndex = 21;
-            lblNumberOfCases.Text = "120 Cases";
+            lblNumberOfCases.Text = "Loading...";
             // 
             // btnCreateCase
             // 
@@ -148,7 +148,7 @@
             btnCreateCase.IconColor = Color.Black;
             btnCreateCase.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateCase.IconSize = 30;
-            btnCreateCase.Location = new Point(12, 105);
+            btnCreateCase.Location = new Point(25, 115);
             btnCreateCase.Name = "btnCreateCase";
             btnCreateCase.Size = new Size(135, 38);
             btnCreateCase.TabIndex = 50;

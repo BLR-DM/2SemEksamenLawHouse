@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,17 +44,24 @@ namespace UI.Forms.SubscriptionPage
                 btnBuySubscriptionThreeMonth.Enabled = true;
                 return;
             }
-            
-            //ellers create sub
-            bool subscriptionIsCreated = await CreateSubscriptionOne(3);
-            //tester om sub er oprettet
-            if (subscriptionIsCreated)
+
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to buy subscription for 3 months?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Successfully subscribed for 3 months!");
-                await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                //ellers create sub
+                bool subscriptionIsCreated = await CreateSubscriptionOne(3);
+
+                if (subscriptionIsCreated)
+                {
+                    await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                    MessageBox.Show($"Successfully subscribed for 3 months!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Failed to pay!");
 
             btnBuySubscriptionThreeMonth.Enabled = true;
         }
@@ -71,17 +79,23 @@ namespace UI.Forms.SubscriptionPage
                 return;
             }
 
-            //ellers create sub
-            bool subscriptionIsCreated = await CreateSubscriptionOne(6);
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to buy subscription for 6 months?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //tester om sub er oprettet
-            if (subscriptionIsCreated)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Successfully subscribed for 6 months!");
-                await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                //ellers create sub
+                bool subscriptionIsCreated = await CreateSubscriptionOne(6);
+
+                if (subscriptionIsCreated)
+                {
+                    await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                    MessageBox.Show($"Successfully subscribed for 6 months!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Failed to pay!");
 
             btnBuySubscribtionSixMonths.Enabled = true;
         }
@@ -99,17 +113,23 @@ namespace UI.Forms.SubscriptionPage
                 return;
             }
 
-            //ellers create sub
-            bool subscriptionIsCreated = await CreateSubscriptionOne(12);
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to buy subscription for 12 months?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //tester om sub er oprettet
-            if (subscriptionIsCreated)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Successfully subscribed for 12 months!");
-                await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                //ellers create sub
+                bool subscriptionIsCreated = await CreateSubscriptionOne(12);
+
+                if (subscriptionIsCreated)
+                {
+                    await frontPageView.GetPersonAsync(client.LoginDetailsID);
+                    MessageBox.Show($"Successfully subscribed for 12 months!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Failed to pay!");
 
             btnBuySubscription12Months.Enabled = true;
         }

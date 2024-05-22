@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,44 +75,50 @@ namespace UI.Forms.ClientPage
             //disable create knap
             btnCreate.Enabled = false;
 
-            //ny clientUI
-            ClientUI clientUI = new ClientUI()
-            {
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                Email = txtEmail.Text.ToLower(),
-                AddressLine = txtAddress.Text,
-                PostalCode = int.Parse(txtPostal.Text),
-                City = txtCity.Text,
-                IsSubscribed = false,
-            };
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to create {txtFirstname.Text}?", 
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //ny logindetailsUI
-            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            if (dialogResult == DialogResult.Yes)
             {
-                Username = clientUI.Email.ToLower(),
-                Password = "0000",
-                CreationDate = DateTime.Now,
-            };
+                //ny clientUI
+                ClientUI clientUI = new ClientUI()
+                {
+                    Firstname = txtFirstname.Text,
+                    Lastname = txtLastname.Text,
+                    Email = txtEmail.Text.ToLower(),
+                    AddressLine = txtAddress.Text,
+                    PostalCode = int.Parse(txtPostal.Text),
+                    City = txtCity.Text,
+                    IsSubscribed = false,
+                };
 
-            //saet ny kode til bruger hvis kode er indtastet
-            if(txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
-            {
-                loginDetailsUI.Password = txtPassword.Text;
+                //ny logindetailsUI
+                LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+                {
+                    Username = clientUI.Email.ToLower(),
+                    Password = "0000",
+                    CreationDate = DateTime.Now,
+                };
+
+                //saet ny kode til bruger hvis kode er indtastet
+                if (txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
+                {
+                    loginDetailsUI.Password = txtPassword.Text;
+                }
+
+                //opretter klient i systemet
+                bool result = await clientBL.CreateClientAsync(clientUI, loginDetailsUI, phoneUIList);
+
+                if (result)
+                {
+                    MessageBox.Show($"{txtFirstname.Text} Has been created! ", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //opretter klient i systemet
-            bool success = await clientBL.CreateClientAsync(clientUI, loginDetailsUI, phoneUIList);
-
-            //test om oprettelese lykkedes
-            if(success)
-            {
-                MessageBox.Show("Client has been created!");
-            }
-            else
-            {
-                MessageBox.Show("Error Client not created");
-            }
 
             ClientsView cv = new ClientsView(frontPageView, currentUser);
             frontPageView.PnlContextChange(cv);

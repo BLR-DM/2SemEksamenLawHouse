@@ -20,10 +20,10 @@ namespace UI.Forms.Self_Service
         ClientUI client;
         Color validFormat;
         Color invalidFormat;
-        public CalcLoanPaymentView(OverallValidator oaValidator, ClientUI client)
+        public CalcLoanPaymentView(ClientUI client)
         {
             InitializeComponent();
-            this.oaValidator = oaValidator;
+            oaValidator = new OverallValidator();
             this.client = client;
 
 

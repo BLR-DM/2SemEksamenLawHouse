@@ -24,44 +24,11 @@ namespace UI.Forms.FrontPage
 
 
         PersonBL personBL;
-        ClientBL clientBL;
-        EmployeeBL employeeBL;
-        LawyerBL lawyerBL;
-        SecretaryBL secretaryBL;
-
-        CaseBL caseBL;
-        CaseTypeBL caseTypeBL;
-        SpecialityBL specialityBL;
-        CaseServiceBL caseServiceBL;
-        CaseValidator cValidator;
-        ServiceBL serviceBL;
-
-
-        FormDocumentBL formBL;
-        SubscriptionBL subscriptionBL;
-        ServiceEntryBL serviceEntryBL;
-
-        PersonValidator pValidator;
         OverallValidator oaValidator;
 
         public FrontPageView(int loginDetailsID)
         {
             personBL = new PersonBL();
-            employeeBL = new EmployeeBL();
-            clientBL = new ClientBL();
-            lawyerBL = new LawyerBL();
-            secretaryBL = new SecretaryBL();
-            caseBL = new CaseBL();
-            formBL = new FormDocumentBL();
-            subscriptionBL = new SubscriptionBL();
-            pValidator = new PersonValidator();
-            oaValidator = new OverallValidator();
-            serviceEntryBL = new ServiceEntryBL();
-            caseTypeBL = new CaseTypeBL();
-            specialityBL = new SpecialityBL();
-            caseServiceBL = new CaseServiceBL();
-            serviceBL = new ServiceBL();
-            cValidator = new CaseValidator();
 
             
             rgbColorBlue = Color.FromArgb(45, 93, 134);
@@ -207,7 +174,7 @@ namespace UI.Forms.FrontPage
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            CalculationsView calculationsView = new CalculationsView(oaValidator, clientUI);
+            CalculationsView calculationsView = new CalculationsView(clientUI);
             PnlContextChange(calculationsView);
             SetNavBtnColor(btnCalculations);
 
@@ -292,7 +259,7 @@ namespace UI.Forms.FrontPage
         private void BtnClients_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientsView cv = new ClientsView(this, currentUser, clientBL, formBL, caseBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+            ClientsView cv = new ClientsView(this, currentUser);
             PnlContextChange(cv);
             SetNavBtnColor(btnClients);
         }

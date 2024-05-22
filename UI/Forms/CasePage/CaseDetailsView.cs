@@ -88,6 +88,8 @@ namespace UI.Forms.CasePage
                 StartPosition = FormStartPosition.CenterScreen;
             }
 
+           
+
 
         }
         
@@ -260,12 +262,8 @@ namespace UI.Forms.CasePage
                     txtEstimatedHours.ReadOnly = true;
                     dtpEstimatedEndDate.Enabled = false;
                     cboxCaseType.Enabled = false;
-
-                    btnUpdateCaseStatus.Enabled = false;
                 }
-
             }
-
         }
 
         public async Task SetClientDataAsync()

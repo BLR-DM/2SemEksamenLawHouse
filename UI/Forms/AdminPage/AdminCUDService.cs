@@ -12,12 +12,12 @@ using UIModels;
 
 namespace UI.Forms.AdminPage
 {
-    public partial class AdminCreateService : Form
+    public partial class AdminCUDService : Form
     {
         ServicePriceTypeBL servicePriceTypeBL;
         ServiceBL serviceBL;
 
-        public AdminCreateService()
+        public AdminCUDService()
         {
             InitializeComponent();
 

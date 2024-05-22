@@ -16,7 +16,7 @@
 
         private void BtnCreateService_Click(object? sender, EventArgs e)
         {
-            new AdminCreateService().ShowDialog();
+            new AdminCUDService().ShowDialog();
         }
 
         private void BtnCreateSecretary_Click(object? sender, EventArgs e)

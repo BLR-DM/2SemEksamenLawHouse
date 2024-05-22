@@ -64,5 +64,11 @@ namespace BusinessLogic
             Service serviceToUpdate = modelConverter.ConvertFromServiceUI(serviceUI);
             return await dbAccess.UpdateServiceAsync(serviceToUpdate);
         }
+
+        public async Task<bool> DeleteServiceAsync(ServiceUI serviceUI)
+        {
+            Service service = modelConverter.ConvertFromServiceUI(serviceUI);
+            return await dbAccess.DeleteServiceAsync(service);
+        }
     }
 }

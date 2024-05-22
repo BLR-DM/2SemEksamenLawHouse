@@ -33,7 +33,7 @@
             btnDeleteForm = new FontAwesome.Sharp.IconButton();
             btnUpdateForm = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            btnDeleteClient = new FontAwesome.Sharp.IconButton();
+            btnDeleteService = new FontAwesome.Sharp.IconButton();
             label2 = new Label();
             BtnDeleteCases = new FontAwesome.Sharp.IconButton();
             lblLawyers = new Label();
@@ -43,6 +43,7 @@
             btnCreateSecretary = new FontAwesome.Sharp.IconButton();
             btnDeleteSecretary = new FontAwesome.Sharp.IconButton();
             btnCreateService = new FontAwesome.Sharp.IconButton();
+            btnUpdateService = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // label7
@@ -129,25 +130,25 @@
             label1.TabIndex = 52;
             label1.Text = "Services";
             // 
-            // btnDeleteClient
+            // btnDeleteService
             // 
-            btnDeleteClient.Anchor = AnchorStyles.Bottom;
-            btnDeleteClient.BackColor = Color.IndianRed;
-            btnDeleteClient.Cursor = Cursors.Hand;
-            btnDeleteClient.FlatAppearance.BorderSize = 0;
-            btnDeleteClient.FlatStyle = FlatStyle.Flat;
-            btnDeleteClient.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDeleteClient.ForeColor = Color.White;
-            btnDeleteClient.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDeleteClient.IconColor = Color.Black;
-            btnDeleteClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeleteClient.IconSize = 70;
-            btnDeleteClient.Location = new Point(424, 153);
-            btnDeleteClient.Name = "btnDeleteClient";
-            btnDeleteClient.Size = new Size(171, 37);
-            btnDeleteClient.TabIndex = 53;
-            btnDeleteClient.Text = "Delete";
-            btnDeleteClient.UseVisualStyleBackColor = false;
+            btnDeleteService.Anchor = AnchorStyles.Bottom;
+            btnDeleteService.BackColor = Color.IndianRed;
+            btnDeleteService.Cursor = Cursors.Hand;
+            btnDeleteService.FlatAppearance.BorderSize = 0;
+            btnDeleteService.FlatStyle = FlatStyle.Flat;
+            btnDeleteService.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnDeleteService.ForeColor = Color.White;
+            btnDeleteService.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnDeleteService.IconColor = Color.Black;
+            btnDeleteService.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDeleteService.IconSize = 70;
+            btnDeleteService.Location = new Point(424, 215);
+            btnDeleteService.Name = "btnDeleteService";
+            btnDeleteService.Size = new Size(171, 37);
+            btnDeleteService.TabIndex = 53;
+            btnDeleteService.Text = "Delete";
+            btnDeleteService.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -305,12 +306,33 @@
             btnCreateService.Text = "Create";
             btnCreateService.UseVisualStyleBackColor = false;
             // 
+            // btnUpdateService
+            // 
+            btnUpdateService.Anchor = AnchorStyles.Bottom;
+            btnUpdateService.BackColor = Color.FromArgb(45, 93, 134);
+            btnUpdateService.Cursor = Cursors.Hand;
+            btnUpdateService.FlatAppearance.BorderSize = 0;
+            btnUpdateService.FlatStyle = FlatStyle.Flat;
+            btnUpdateService.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnUpdateService.ForeColor = Color.White;
+            btnUpdateService.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnUpdateService.IconColor = Color.Black;
+            btnUpdateService.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdateService.IconSize = 70;
+            btnUpdateService.Location = new Point(424, 153);
+            btnUpdateService.Name = "btnUpdateService";
+            btnUpdateService.Size = new Size(171, 37);
+            btnUpdateService.TabIndex = 63;
+            btnUpdateService.Text = "Update";
+            btnUpdateService.UseVisualStyleBackColor = false;
+            // 
             // AdminPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnUpdateService);
             Controls.Add(btnCreateService);
             Controls.Add(btnDeleteSecretary);
             Controls.Add(btnCreateSecretary);
@@ -320,7 +342,7 @@
             Controls.Add(lblLawyers);
             Controls.Add(BtnDeleteCases);
             Controls.Add(label2);
-            Controls.Add(btnDeleteClient);
+            Controls.Add(btnDeleteService);
             Controls.Add(label1);
             Controls.Add(btnUpdateForm);
             Controls.Add(btnDeleteForm);
@@ -340,7 +362,7 @@
         private FontAwesome.Sharp.IconButton btnDeleteForm;
         private FontAwesome.Sharp.IconButton btnUpdateForm;
         private Label label1;
-        private FontAwesome.Sharp.IconButton btnDeleteClient;
+        private FontAwesome.Sharp.IconButton btnDeleteService;
         private Label label2;
         private FontAwesome.Sharp.IconButton BtnDeleteCases;
         private Label lblLawyers;
@@ -350,5 +372,6 @@
         private FontAwesome.Sharp.IconButton btnCreateSecretary;
         private FontAwesome.Sharp.IconButton btnDeleteSecretary;
         private FontAwesome.Sharp.IconButton btnCreateService;
+        private FontAwesome.Sharp.IconButton btnUpdateService;
     }
 }

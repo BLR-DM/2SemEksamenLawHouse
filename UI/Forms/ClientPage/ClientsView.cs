@@ -96,8 +96,7 @@ namespace UI.Forms.ClientPage
             if(e.RowIndex >= 0)
             {
                 ClientUI selectedClient = filteredClients[e.RowIndex] as ClientUI;
-                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL,
-                                                                    caseServiceBL, cValidator, serviceBL, specialityBL);
+                ClientDetails clientDetails = new ClientDetails(frontPageView, currentUser, selectedClient);
                 frontPageView.PnlContextChange(clientDetails);
             }
         }

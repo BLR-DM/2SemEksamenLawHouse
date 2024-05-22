@@ -138,7 +138,7 @@ namespace UI.Forms.FrontPage
             SetNavBtnColor(btnMyPageClient);
 
             //set mypage
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL); 
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI); 
             if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(ClientDetails))
             {
                 PnlContextChange(cdMyPage);
@@ -300,7 +300,7 @@ namespace UI.Forms.FrontPage
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
             lblCurrentPage.Text = (sender as Button).Text;
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI, clientBL, caseBL, formBL, subscriptionBL, pValidator, serviceEntryBL, lawyerBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL);
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
             PnlContextChange(cdMyPage);
             SetNavBtnColor(btnMyPageClient);
         }

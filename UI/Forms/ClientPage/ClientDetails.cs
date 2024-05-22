@@ -45,26 +45,26 @@ namespace UI.Forms.ClientPage
         List<ClientSubscriptionUI> subscriptions;
         List<CaseUI> cases;
 
-        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client, ClientBL clientBL, CaseBL caseBL, FormDocumentBL formBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL,
-                                LawyerBL lawyerBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
+        public ClientDetails(FrontPageView fpv, PersonUI currenUser, ClientUI client)
         {
             InitializeComponent();
             this.frontPageView = fpv;
             this.currentUser = currenUser;
             this.client = client;
-            this.clientBL = clientBL;
-            this.formBL = formBL;
-            this.subscriptionBL = subscriptionBL;
-            this.pValidator = pValidator;
-            this.caseBL = caseBL;
-            this.serviceEntryBL = serviceEntryBL;
-            
-            this.lawyerBL = lawyerBL;
-            this.caseTypeBL = caseTypeBL;
-            this.caseServiceBL = caseServiceBL;
-            this.cValidator = cValidator;
-            this.serviceBL = serviceBL;
-            this.specialityBL = specialityBL;
+
+            clientBL = new ClientBL();
+            formBL = new FormDocumentBL();
+            subscriptionBL = new SubscriptionBL();
+            pValidator = new PersonValidator();
+            caseBL = new CaseBL();
+            serviceEntryBL = new ServiceEntryBL();
+
+            lawyerBL = new LawyerBL();
+            caseTypeBL = new CaseTypeBL();
+            caseServiceBL = new CaseServiceBL();
+            cValidator = new CaseValidator();
+            serviceBL = new ServiceBL();
+            specialityBL = new SpecialityBL();
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();

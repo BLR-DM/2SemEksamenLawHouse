@@ -16,15 +16,17 @@ namespace UI.Forms.EmployeePage
     public partial class EmployeeDetailsView : Form
     {
         EmployeeBL employeeBL;
-        int personID;
 
         EmployeeUI currentUser;
         EmployeeUI displayedEmployee;
+
+        int employeeID;
         bool isMyPage;
         bool isAdmin;
-        public EmployeeDetailsView(EmployeeUI displayedEmployee, bool isMyPage, EmployeeUI currentUser)
+        public EmployeeDetailsView(int employeeID, bool isMyPage, EmployeeUI currentUser)
         {
             employeeBL = new EmployeeBL();
+            this.employeeID = employeeID;
             this.isMyPage = isMyPage;
             this.displayedEmployee = displayedEmployee;
 
@@ -38,28 +40,43 @@ namespace UI.Forms.EmployeePage
 
             InitializeComponent();
 
-            btnCancel.Visible = false;            
+            btnCancel.Visible = false;
+            pnlEdit.Visible = false;
 
+            Load += EmployeeDetailsView_Load;
             btnEditDetails.Click += BtnEditDetails_Click;
-            btnEditDetails.EnabledChanged += BtnEditDetails_EnabledChanged;
             btnCancel.Click += BtnCancel_Click;
+            pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             
-            SetupView(isMyPage, currentUser);
-            GetAndDisplayEmployeeAsync();
+            CheckUser(isMyPage, currentUser);
+            
         }
 
-        private void BtnEditDetails_EnabledChanged(object? sender, EventArgs e)
+        private async void EmployeeDetailsView_Load(object? sender, EventArgs e)
         {
-            btnCancel.Visible = !btnEditDetails.Enabled;
+            await SetupView(employeeID);
+        }
+
+        private void PnlEdit_VisibleChanged(object? sender, EventArgs e)
+        {
+            if (!pnlEdit.Visible)
+            {
+                btnCancel.Visible = false;
+                btnEditDetails.Enabled = true;
+            }
+            else
+                btnCancel.Visible = true;
         }
 
         private void BtnCancel_Click(object? sender, EventArgs e)
         {
-            GetAndDisplayEmployeeAsync();
+            pnlEdit.Visible = false;
         }
 
-        private async Task GetAndDisplayEmployeeAsync()
+        public async Task SetupView(int id)
         {
+            displayedEmployee = await employeeBL.GetEmployeeAsync(id);
+
             if (displayedEmployee != null)
             {
                 pnlEmployeeDetails.Controls.Clear();
@@ -71,12 +88,13 @@ namespace UI.Forms.EmployeePage
         private void BtnEditDetails_Click(object? sender, EventArgs e)
         {
             btnEditDetails.Enabled = false;
-            pnlEmployeeDetails.Controls.Clear();
-            pnlEmployeeDetails.Controls.Add(new EmployeeCardEdit(displayedEmployee, isAdmin));
+            pnlEdit.Controls.Clear();
+            pnlEdit.Controls.Add(new EmployeeCardEdit(this, displayedEmployee, isAdmin));
+            pnlEdit.Visible = true;
         }
 
 
-        private void SetupView(bool isMyPage, EmployeeUI currentUser)
+        private void CheckUser(bool isMyPage, EmployeeUI currentUser)
         {
             if (!isMyPage)
             {
@@ -85,11 +103,7 @@ namespace UI.Forms.EmployeePage
                 this.StartPosition = FormStartPosition.CenterScreen;
                 this.Size = new Size(350, 613);
             }
-
-            if (isMyPage || isAdmin)
-                btnEditDetails.Visible = true;
-            else
-                btnEditDetails.Visible = false;
+            btnEditDetails.Visible = isMyPage || isAdmin;
         }
     }
 }

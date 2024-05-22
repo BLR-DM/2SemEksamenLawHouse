@@ -19,18 +19,10 @@ namespace UI.Forms.EmployeePage
 {
     public partial class EmployeesOverview : Form
     {
-        ServiceEntryBL serviceEntryBL;
-        ClientBL clientBL;
         LawyerBL lawyerBL;
-        CaseBL caseBL;
-        CaseTypeBL caseTypeBL;
-        SpecialityBL specialityBL;
-        CaseServiceBL caseServiceBL;
-        ServiceBL serviceBL;
-        CaseValidator cValidator;
         EmployeeBL employeeBL;
         SecretaryBL secretaryBL;
-
+        SpecialityBL specialityBL;
         EmployeeUI employeeUI;
 
         List<LawyerSpecialityUI> lawyerSpecialites;
@@ -45,22 +37,12 @@ namespace UI.Forms.EmployeePage
         int sortByNameCount, sortByCaseCount, sortByServiceCount, 
             sortBySpecialityCount, sortByHireDate;
 
-        public EmployeesOverview(int userID, EmployeeUI currentUser, EmployeeBL employeeBL, SecretaryBL secretaryBL,
-                        ServiceEntryBL serviceEntryBL, ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL,
-                        CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator,
-                        ServiceBL serviceBL, SpecialityBL specialityBL)
+        public EmployeesOverview(int userID, EmployeeUI currentUser)
         {
-            this.clientBL = clientBL;
-            this.lawyerBL = lawyerBL;
-            this.caseBL = caseBL;
-            this.serviceBL = serviceBL;
-            this.caseServiceBL = caseServiceBL;
-            this.caseTypeBL = caseTypeBL;
-            this.cValidator = cValidator;
-            this.serviceEntryBL = serviceEntryBL;
-            this.specialityBL = specialityBL;
-            this.employeeBL = employeeBL;
-            this.secretaryBL = secretaryBL;
+            lawyerBL = new LawyerBL();
+            employeeBL = new EmployeeBL();
+            secretaryBL = new SecretaryBL();
+            specialityBL = new SpecialityBL();
 
             this.employeeUI = currentUser;
             selectedFilters = new List<string>();
@@ -425,18 +407,17 @@ namespace UI.Forms.EmployeePage
                 {
                     case "Employees":
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is EmployeeUI employee)
-                            new EmployeeDetailsView(employee, false, employeeUI).ShowDialog();
+                            new EmployeeDetailsView(employee.PersonID, false, employeeUI).ShowDialog();
                         break;
 
                     case "  Lawyers":
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is LawyerUI lawyer)
-                            new LawyerDetailsView(lawyer, false, employeeUI, serviceEntryBL, clientBL, lawyerBL,
-                                caseBL, caseTypeBL, caseServiceBL, cValidator, serviceBL, specialityBL).ShowDialog();
+                            new LawyerDetailsView(lawyer.PersonID, false, employeeUI).ShowDialog();
                         break;
 
                     case "  Secretaries":
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is SecretaryUI secretary)
-                            new EmployeeDetailsView(secretary, false, employeeUI).ShowDialog();
+                            new EmployeeDetailsView(secretary.PersonID, false, employeeUI).ShowDialog();
                         break;
                 }
             }

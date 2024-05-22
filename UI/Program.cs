@@ -22,7 +22,7 @@ namespace UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrontPageView(6));
+            Application.Run(new FrontPageView(57));
         }
     }
 }
@@ -78,7 +78,7 @@ namespace UI
 
 //LawyerBL bl = new LawyerBL();
 
-//Lawyer lawyerUI = new Lawyer()
+//Lawyer displayedLawyerUI = new Lawyer()
 //{
 //    Firstname = "Bilal",
 //    Lastname = "Kinali",
@@ -99,13 +99,13 @@ namespace UI
 //    }
 
 //};
-//bool success2 = bl.CreateLawyerAsync(lawyerUI);
+//bool success2 = bl.CreateLawyerAsync(displayedLawyerUI);
 
 //Lawyer lawyer2 = new Lawyer()
 //{
 //    Firstname = "Lawyer",
 //    Lastname = "lawyersen",
-//    Email = "lawyerUI@gmail.com",
+//    Email = "displayedLawyerUI@gmail.com",
 //    AddressLine = "lawyervej 16",
 //    PostalCode = 7000,
 //    City = "Fredericia",
@@ -115,8 +115,8 @@ namespace UI
 
 //    LoginDetails = new LoginDetails()
 //    {
-//        Username = "lawyerUI@gmail.com",
-//        Password = "lawyerUI",
+//        Username = "displayedLawyerUI@gmail.com",
+//        Password = "displayedLawyerUI",
 //        CreationDate = DateTime.Now,
 
 //    }

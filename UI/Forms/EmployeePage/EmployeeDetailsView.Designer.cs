@@ -31,6 +31,7 @@
             btnEditDetails = new FontAwesome.Sharp.IconButton();
             btnCancel = new FontAwesome.Sharp.IconButton();
             pnlEmployeeDetails = new Panel();
+            pnlEdit = new Panel();
             SuspendLayout();
             // 
             // btnEditDetails
@@ -71,12 +72,20 @@
             pnlEmployeeDetails.Size = new Size(329, 501);
             pnlEmployeeDetails.TabIndex = 0;
             // 
+            // pnlEdit
+            // 
+            pnlEdit.Location = new Point(14, 12);
+            pnlEdit.Name = "pnlEdit";
+            pnlEdit.Size = new Size(323, 520);
+            pnlEdit.TabIndex = 6;
+            // 
             // EmployeeDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(pnlEdit);
             Controls.Add(btnCancel);
             Controls.Add(pnlEmployeeDetails);
             Controls.Add(btnEditDetails);
@@ -90,5 +99,6 @@
         private FontAwesome.Sharp.IconButton btnEditDetails;
         private FontAwesome.Sharp.IconButton btnCancel;
         private Panel pnlEmployeeDetails;
+        private Panel pnlEdit;
     }
 }

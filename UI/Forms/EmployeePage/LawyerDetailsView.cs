@@ -1,42 +1,25 @@
 ﻿using UIModels;
 using BusinessLogic;
 using UI.Toolbox;
-using EntityModels;
 using UI.Forms.CasePage;
 using BusinessLogic.Validation;
 using UI.Forms.FrontPage;
+using EntityModels;
 
 namespace UI.Forms.EmployeePage
 {
     public partial class LawyerDetailsView : Form
     {
-        ServiceEntryBL serviceEntryBL;
-        ClientBL clientBL;
         LawyerBL lawyerBL;
-        CaseBL caseBL;
-        CaseTypeBL caseTypeBL;
-        SpecialityBL specialityBL;
-        CaseServiceBL caseServiceBL;
-        ServiceBL serviceBL;
-        CaseValidator cValidator;
-
         LawyerUI displayedLawyerUI;
+        int lawyerID;
         bool isMyPage;
         bool isAdmin;
-        public LawyerDetailsView(LawyerUI displayedLawyerUI, bool isMyPage, EmployeeUI currentUser, ServiceEntryBL serviceEntryBL,
-                        ClientBL clientBL, LawyerBL lawyerBL, CaseBL caseBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL,
-                        CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
+        public LawyerDetailsView(int lawyerID, bool isMyPage, EmployeeUI currentUser)
         {
-            this.clientBL = clientBL;
-            this.lawyerBL = lawyerBL;
-            this.caseBL = caseBL;
-            this.serviceBL = serviceBL;
-            this.caseServiceBL = caseServiceBL;
-            this.caseTypeBL = caseTypeBL;
-            this.cValidator = cValidator;
-            this.serviceEntryBL = serviceEntryBL;
-            this.specialityBL = specialityBL;
-            this.displayedLawyerUI = displayedLawyerUI;
+            lawyerBL = new LawyerBL();
+
+            this.lawyerID = lawyerID;
             this.isMyPage = isMyPage;
 
             if (currentUser is LawyerUI lawyerUI)
@@ -95,6 +78,13 @@ namespace UI.Forms.EmployeePage
         }
         private async void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
+            await SetupView(lawyerID);
+        }
+
+        public async Task SetupView(int id)
+        {
+            displayedLawyerUI = await lawyerBL.GetLawyerWithCollectionsAsync(id);
+
             chboxServicesShowAll.Checked = false;
 
             if (displayedLawyerUI != null)
@@ -126,8 +116,8 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Enabled = false;
 
             pnlEdit.Controls.Clear();
-            pnlEdit.Controls.Add(new LawyerCardEdit(displayedLawyerUI, isAdmin));
-            pnlEdit.Visible = true;            
+            pnlEdit.Controls.Add(new LawyerCardEdit(this, displayedLawyerUI, isAdmin));
+            pnlEdit.Visible = true;
         }
 
         private void ChboxCasesShowAll_CheckedChanged(object? sender, EventArgs e)
@@ -143,7 +133,7 @@ namespace UI.Forms.EmployeePage
         private void DisplayLawyer(LawyerUI lawyer)
         {
             pnlLawyerDetails.Controls.Clear();
-            pnlLawyerDetails.Controls.Add(new EmployeeCardDisplay(displayedLawyerUI));
+            pnlLawyerDetails.Controls.Add(new LawyerCardDisplay(displayedLawyerUI));
         }
         private void SetCasesDgv(bool serviceShowAllCheck)
         {
@@ -156,7 +146,6 @@ namespace UI.Forms.EmployeePage
         }
             private void SetServicesDgv(bool serviceShowAllCheck)
         {
-
             if (serviceShowAllCheck)
                 dgvServices.DataSource = displayedLawyerUI.CaseServices;
             else

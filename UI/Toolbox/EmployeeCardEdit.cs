@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
+using UI.Forms.EmployeePage;
 using UIModels;
 
 namespace UI.Toolbox
@@ -16,7 +17,9 @@ namespace UI.Toolbox
         LawyerTitleBL lawyerTitleBL;
         List<LawyerTitleUI> lawyerTitles;
         PersonValidator pValidator;
-        public EmployeeCardEdit(EmployeeUI employee, bool isAdmin)
+
+        EmployeeDetailsView employeeDetailsForm;
+        public EmployeeCardEdit(EmployeeDetailsView employeeDetailsForm,EmployeeUI employee, bool isAdmin)
         {
             employeeBL = new EmployeeBL();
             lawyerTitleBL = new LawyerTitleBL();
@@ -27,6 +30,7 @@ namespace UI.Toolbox
 
             this.employee = employee;
             this.isAdmin = isAdmin;
+            this.employeeDetailsForm = employeeDetailsForm;
 
             InitializeComponent();
 
@@ -60,7 +64,10 @@ namespace UI.Toolbox
             btnUpdate.Enabled = true;
 
             if (result)
+            {
                 MessageBox.Show("Updated!");
+                employeeDetailsForm.SetupView(employee.PersonID);
+            }
             else
                 MessageBox.Show("Failed!");
         }

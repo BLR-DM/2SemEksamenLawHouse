@@ -2,6 +2,8 @@
 using BusinessLogic.Validation;
 using EntityModels;
 using System.Data;
+using System.Windows.Navigation;
+using UI.Forms.EmployeePage;
 using UIModels;
 
 namespace UI.Toolbox
@@ -20,8 +22,10 @@ namespace UI.Toolbox
         List<SpecialityUI> specialities;
         List<LawyerSpecialityUI> updatedLawyerSpecialities;
 
+        LawyerDetailsView lawyerDetailsForm;
+
         bool isAdmin;
-        public LawyerCardEdit(LawyerUI lawyerUI, bool isAdmin)
+        public LawyerCardEdit(LawyerDetailsView lawyerDetailsForm, LawyerUI lawyerUI, bool isAdmin)
         {
             this.isAdmin = isAdmin;
             this.lawyerUI = lawyerUI;
@@ -35,6 +39,8 @@ namespace UI.Toolbox
             invalidFormat = Color.OrangeRed;
 
             updatedLawyerSpecialities = new List<LawyerSpecialityUI>();
+
+            this.lawyerDetailsForm = lawyerDetailsForm;
 
             InitializeComponent();
 
@@ -97,12 +103,13 @@ namespace UI.Toolbox
             lawyerUI.AddressLine = txtAddress.Text;
             lawyerUI.PostalCode = int.Parse(txtPostal.Text);
             lawyerUI.City = txtCity.Text;
-            
+
             lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
 
             // if admin
             if (isAdmin)
             {
+                updatedLawyerSpecialities.Clear();
                 foreach (string lawyerSpeciality in lboxSpecialities.Items)
                 {
                     LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
@@ -126,16 +133,20 @@ namespace UI.Toolbox
                     MessageBox.Show("Failed to add lawyer specialities!");
                     return;
                 }
+                //displayedLawyerUI.LawyerSpecialities = updatedLawyerSpecialities.ToList();
             }
 
             bool result = await lawyerBL.UpdateLawyerAsync(lawyerUI);
             btnUpdate.Enabled = true;
 
             if (result)
+            {            
                 MessageBox.Show("Updated!");
+                lawyerDetailsForm.SetupView(lawyerUI.PersonID);
+            }
             else
                 MessageBox.Show("Failed!");
-            
+
         }
 
         private void DisplayInformationLawyer()

@@ -17,11 +17,11 @@ namespace UI.Forms.Self_Service
     {
         OverallValidator oaValidator;
         ClientUI client;
-        public CalculationsView(OverallValidator oaValidator, ClientUI client)
+        public CalculationsView(ClientUI client)
         {
             InitializeComponent();
 
-            this.oaValidator = oaValidator;
+            oaValidator = new OverallValidator();
             this.client = client;
 
             lblCalcLoanPayment.MouseHover += LblCalcLoanPayment_MouseHover;
@@ -49,14 +49,14 @@ namespace UI.Forms.Self_Service
 
         private void LblCalcRemainingBalanceOnLoan_MouseHover(object? sender, EventArgs e)
         {
-            CalcRemainingBalanceOnLoanView calcRemainingBalanceOnLoanView = new CalcRemainingBalanceOnLoanView(oaValidator, client);
+            CalcRemainingBalanceOnLoanView calcRemainingBalanceOnLoanView = new CalcRemainingBalanceOnLoanView(client);
             PnlCalcChange(calcRemainingBalanceOnLoanView);
 
         }
 
         private void LblCalcROI_Click(object? sender, EventArgs e)
         {
-            CalcROIView calcROIView = new CalcROIView(oaValidator, client);
+            CalcROIView calcROIView = new CalcROIView(client);
             PnlCalcChange(calcROIView);
         }
 
@@ -72,7 +72,7 @@ namespace UI.Forms.Self_Service
 
         private void LblCalcLoanPayment_Click(object? sender, EventArgs e)
         {
-            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(oaValidator, client);
+            CalcLoanPaymentView calcLoanPaymentView = new CalcLoanPaymentView(client);
             PnlCalcChange(calcLoanPaymentView);
         }
 

@@ -26,37 +26,21 @@ namespace UI.Forms.ClientPage
 
         PersonValidator pValidator;
 
-        ServiceEntryBL serviceEntryBL;
-
-        LawyerBL lawyerBL;
-        CaseTypeBL caseTypeBL;
-        CaseServiceBL caseServiceBL;
-        CaseValidator cValidator;
-        ServiceBL serviceBL;
-        SpecialityBL specialityBL;
-
         List<ClientUI> originalClientsList;
         List<ClientUI> filteredClients;
 
-        public ClientsView(FrontPageView fpv, PersonUI currentUser, ClientBL clientBL, FormDocumentBL formBL, CaseBL caseBL, SubscriptionBL subscriptionBL, PersonValidator pValidator, ServiceEntryBL serviceEntryBL,
-                            LawyerBL lawyerBL, CaseTypeBL caseTypeBL, CaseServiceBL caseServiceBL, CaseValidator cValidator, ServiceBL serviceBL, SpecialityBL specialityBL)
+        public ClientsView(FrontPageView fpv, PersonUI currentUser)
         {
             InitializeComponent();
             
             this.frontPageView = fpv;
             this.currentUser = currentUser;
-            this.clientBL = clientBL;
-            this.formBL = formBL;
-            this.pValidator = pValidator;
-            this.subscriptionBL = subscriptionBL;
-            this.caseBL = caseBL;
-            this.serviceEntryBL = serviceEntryBL;
-            this.lawyerBL = lawyerBL;
-            this.caseTypeBL = caseTypeBL;
-            this.caseServiceBL = caseServiceBL;
-            this.cValidator = cValidator;
-            this.serviceBL = serviceBL;
-            this.specialityBL = specialityBL;
+
+            clientBL = new ClientBL();
+            formBL = new FormDocumentBL();
+            pValidator = new PersonValidator();
+            subscriptionBL = new SubscriptionBL();
+            caseBL = new CaseBL();
 
             //Events
             Load += ClientsView_Load;
@@ -86,7 +70,7 @@ namespace UI.Forms.ClientPage
 
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
-            CreateClientView createClientsView = new CreateClientView(clientBL, pValidator);
+            CreateClientView createClientsView = new CreateClientView();
             frontPageView.PnlContextChange(createClientsView);
         }
 

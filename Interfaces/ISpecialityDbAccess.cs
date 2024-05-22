@@ -9,7 +9,11 @@ namespace Interfaces
 {
     public interface ISpecialityDbAccess
     {
+        Task<bool> CreateSpecialityAsync(Speciality speciality);
         Task<List<Speciality>> GetSpecialitiesAsync();
         Task<List<LawyerSpeciality>> GetLawyerSpecialitiesAsync();
+        Task<bool> UpdateSpecialityAsync(Speciality speciality);
+        Task<bool> DeleteSpecialityAsync(Speciality speciality);
+
     }
 }

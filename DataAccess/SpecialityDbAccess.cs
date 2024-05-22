@@ -17,6 +17,21 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
+        public async Task<bool> CreateSpecialityAsync(Speciality speciality)
+        {
+            try
+            {
+                await db.AddAsync(speciality);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<List<Speciality>> GetSpecialitiesAsync()
         {
             return await db.Specialities.ToListAsync();
@@ -27,6 +42,36 @@ namespace DataAccess
             return await db.LawyerSpecialities
                 .Include(x => x.Speciality)
                 .ToListAsync();
+        }
+
+        public async Task<bool> UpdateSpecialityAsync(Speciality speciality)
+        {
+            try
+            {
+                db.Specialities.Update(speciality);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteSpecialityAsync(Speciality speciality)
+        {
+            try
+            {
+                db.Specialities.Remove(speciality);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

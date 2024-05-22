@@ -20,6 +20,12 @@ namespace BusinessLogic
             dbAccess = new SpecialityDbAccess();
         }
 
+        public async Task<bool> CreateSpecialityAsync(SpecialityUI specialityUI)
+        {
+            Speciality speciality = modelConverter.ConvertFromSpecialityUI(specialityUI);
+            return await dbAccess.CreateSpecialityAsync(speciality);
+        }
+
         public async Task<List<SpecialityUI>> GetSpecialitiesAsync()
         {
             List<SpecialityUI> specialityUIs = new List<SpecialityUI>();
@@ -44,6 +50,17 @@ namespace BusinessLogic
             return lawyerSpecialityList;
         }
 
+        public async Task<bool> UpdateSpecialityAsync(SpecialityUI specialityUI)
+        {
+            Speciality speciality = modelConverter.ConvertFromSpecialityUI(specialityUI);
+            return await dbAccess.UpdateSpecialityAsync(speciality);
+        }
+
+        public async Task<bool> DeleteSpecialityAsync(SpecialityUI specialityUI)
+        {
+            Speciality speciality = modelConverter.ConvertFromSpecialityUI(specialityUI);
+            return await dbAccess.DeleteSpecialityAsync(speciality);
+        }
 
     }
 }

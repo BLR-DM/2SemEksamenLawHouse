@@ -17,6 +17,24 @@
             btnCreateLawyerTitle.Click += BtnCreateLawyerTitle_Click;
             btnUpdateLawyerTitle.Click += BtnUpdateTitle_Click;
             btnDeleteLawyerTitle.Click += BtnDeleteLawyerTitle_Click;
+            btnCreateSpeciality.Click += BtnCreateSpeciality_Click;
+            btnUpdateSpeciality.Click += BtnUpdateSpeciality_Click;
+            btnDeleteSpeciality.Click += BtnDeleteSpeciality_Click;
+        }
+
+        private void BtnDeleteSpeciality_Click(object? sender, EventArgs e)
+        {
+            new AdminSpecialityView().ShowDialog();
+        }
+
+        private void BtnUpdateSpeciality_Click(object? sender, EventArgs e)
+        {
+            new AdminSpecialityView().ShowDialog();
+        }
+
+        private void BtnCreateSpeciality_Click(object? sender, EventArgs e)
+        {
+            new AdminCUDSpeciality().ShowDialog();
         }
 
         private void BtnDeleteLawyerTitle_Click(object? sender, EventArgs e)

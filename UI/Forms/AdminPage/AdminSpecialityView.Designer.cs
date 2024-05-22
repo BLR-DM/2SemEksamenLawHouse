@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.AdminPage
 {
-    partial class AdminLawyerTitlesView
+    partial class AdminSpecialityView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            dgvTitles = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvTitles).BeginInit();
+            dgvSpecialities = new DataGridView();
+            lblText = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvSpecialities).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dgvSpecialities
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(86, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(106, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Double click a Title";
+            dgvSpecialities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSpecialities.Location = new Point(52, 55);
+            dgvSpecialities.Name = "dgvSpecialities";
+            dgvSpecialities.Size = new Size(173, 298);
+            dgvSpecialities.TabIndex = 3;
             // 
-            // dgvTitles
+            // lblText
             // 
-            dgvTitles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTitles.Location = new Point(53, 55);
-            dgvTitles.Name = "dgvTitles";
-            dgvTitles.Size = new Size(173, 298);
-            dgvTitles.TabIndex = 3;
+            lblText.AutoSize = true;
+            lblText.Location = new Point(72, 24);
+            lblText.Name = "lblText";
+            lblText.Size = new Size(134, 15);
+            lblText.TabIndex = 4;
+            lblText.Text = "Double click a Speciality";
             // 
-            // AdminLawyerTitlesView
+            // AdminSpecialityView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(279, 376);
-            Controls.Add(label1);
-            Controls.Add(dgvTitles);
-            Name = "AdminLawyerTitlesView";
+            Controls.Add(lblText);
+            Controls.Add(dgvSpecialities);
+            Name = "AdminSpecialityView";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "AdminLawyerTitlesView";
-            ((System.ComponentModel.ISupportInitialize)dgvTitles).EndInit();
+            Text = "AdminSpecialityView";
+            ((System.ComponentModel.ISupportInitialize)dgvSpecialities).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private DataGridView dgvTitles;
+        private DataGridView dgvSpecialities;
+        private Label lblText;
     }
 }

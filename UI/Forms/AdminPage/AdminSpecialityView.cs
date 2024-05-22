@@ -35,7 +35,7 @@ namespace UI.Forms.AdminPage
                 if (selectedSpeciality != null)
                 {
                     new AdminCUDSpeciality(selectedSpeciality).ShowDialog();
-                    this.Close();
+                    //this.Close();
                 }
             }
         }

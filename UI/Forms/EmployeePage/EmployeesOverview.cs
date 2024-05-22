@@ -329,10 +329,11 @@ namespace UI.Forms.EmployeePage
             lblShow.Focus();
             lblTotalEmployees.Text = "Loading...";
 
-            //if (cboxFilter.SelectedItem != "  Lawyers")
-            //{
-            //    ResetFilters();
-            //}
+            if (btnTrashFilter.Visible)
+            {
+                ResetFilters();
+                cboxFilter.Items.Clear();
+            }
 
             switch (cboxShow.SelectedItem)
             {
@@ -342,6 +343,7 @@ namespace UI.Forms.EmployeePage
                     lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
                     break;
                 case "  Lawyers":
+                    ResetFilters();
                     FillComboBoxesForLawyers();
                     SetupDgvWithLawyers();
                     lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
@@ -392,6 +394,7 @@ namespace UI.Forms.EmployeePage
             cboxSort.Items.Add("Open Services");
 
             // Sepciale combobox
+            cboxFilter.Items.Clear();
             foreach (string ls in lawyerSpecialites.Select(ls => ls.SpecialityName).Distinct())
             {
                 cboxFilter.Items.Add(ls);

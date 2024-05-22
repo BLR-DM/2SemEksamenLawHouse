@@ -159,7 +159,7 @@
             btnUpdate.Location = new Point(118, 525);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(171, 37);
-            btnUpdate.TabIndex = 48;
+            btnUpdate.TabIndex = 8;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
@@ -176,7 +176,7 @@
             btnAddPhone.Location = new Point(143, 445);
             btnAddPhone.Name = "btnAddPhone";
             btnAddPhone.Size = new Size(30, 28);
-            btnAddPhone.TabIndex = 48;
+            btnAddPhone.TabIndex = 7;
             btnAddPhone.TabStop = false;
             btnAddPhone.UseVisualStyleBackColor = true;
             // 
@@ -221,7 +221,7 @@
             txtAddPhone.MaxLength = 50;
             txtAddPhone.Name = "txtAddPhone";
             txtAddPhone.Size = new Size(126, 27);
-            txtAddPhone.TabIndex = 45;
+            txtAddPhone.TabIndex = 6;
             // 
             // label10
             // 
@@ -252,14 +252,14 @@
             txtPostal.Location = new Point(118, 259);
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(63, 23);
-            txtPostal.TabIndex = 49;
+            txtPostal.TabIndex = 5;
             // 
             // txtAddress
             // 
             txtAddress.Location = new Point(118, 197);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(214, 23);
-            txtAddress.TabIndex = 48;
+            txtAddress.TabIndex = 4;
             // 
             // txtEmail
             // 
@@ -267,7 +267,7 @@
             txtEmail.Location = new Point(118, 134);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(214, 23);
-            txtEmail.TabIndex = 47;
+            txtEmail.TabIndex = 3;
             // 
             // label9
             // 
@@ -286,14 +286,14 @@
             txtLastname.Location = new Point(118, 73);
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(156, 23);
-            txtLastname.TabIndex = 45;
+            txtLastname.TabIndex = 2;
             // 
             // txtFirstname
             // 
             txtFirstname.Location = new Point(118, 16);
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(156, 23);
-            txtFirstname.TabIndex = 44;
+            txtFirstname.TabIndex = 1;
             // 
             // label6
             // 
@@ -427,7 +427,7 @@
             iconButton1.Location = new Point(770, 564);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(171, 37);
-            iconButton1.TabIndex = 49;
+            iconButton1.TabIndex = 100;
             iconButton1.Text = "Delete";
             iconButton1.UseVisualStyleBackColor = false;
             // 

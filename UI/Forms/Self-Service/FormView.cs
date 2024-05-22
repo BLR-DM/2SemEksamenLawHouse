@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Forms.ClientPage;
+using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.Self_Service
@@ -41,28 +42,32 @@ namespace UI.Forms.Self_Service
         {
             btnBuy.Enabled = false;
 
-            //opretter ny clientformDocumentUI
-            ClientFormDocumentUI clientFormBought = new ClientFormDocumentUI()
-            {
-                BuyDate = DateTime.Now,
-                ClientID = client.PersonID,
-                FormDocumentID = selectedForm.FormDocumentID,
-            };
-            
-            //opretter koebet i db
-            bool success = await clientFormBL.BuyFormDocumentAsync(clientFormBought);
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to buy the form {selectedForm.Name}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //tester på om koeb er successfuld
-            if (success)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show($"Form has been bought and sent to: {client.Email}");
-                await GetBoughtFormsAsync();
-                SetDetails();
+                //opretter ny clientformDocumentUI
+                ClientFormDocumentUI clientFormBought = new ClientFormDocumentUI()
+                {
+                    BuyDate = DateTime.Now,
+                    ClientID = client.PersonID,
+                    FormDocumentID = selectedForm.FormDocumentID,
+                };
 
-            }
-            else
-            {
-                MessageBox.Show("ERROR! Form not bought");
+
+                //opretter koebet i db
+                bool success = await clientFormBL.BuyFormDocumentAsync(clientFormBought);
+
+                if (success)
+                {
+                    await GetBoughtFormsAsync();
+                    SetDetails();
+                    MessageBox.Show($"Form has been bought and sent to: {client.Email}", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             btnBuy.Enabled = true;

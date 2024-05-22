@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -118,39 +119,46 @@ namespace UI.Forms.ClientPage
                 LoginDetailsID = client.LoginDetailsID,
             };
 
-            //opdaterer clienten
-            clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
 
-            //hvis der er 1 eller flere slette numre
-            if (deletedNumbers.Count > 0)
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to update the client: {txtFirstname.Text}?",
+                                    "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                //slet telefonnumre
-                numberDeleted = await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
-            }
+                //opdaterer clienten
+                clientUpdated = await clientBL.UpdateClientAsync(tempC, phoneNumbers);
 
-            //tjekker om der er ny tilføjet numre
-            List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
-            if (newNumbers.Count > 0)
-            {
-                //hent clientens telefonnumre
-                phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
-            }
+                //hvis der er 1 eller flere slette numre
+                if (deletedNumbers.Count > 0)
+                {
+                    //slet telefonnumre
+                    numberDeleted = await clientBL.DeletePhoneNumbersAsync(deletedNumbers);
+                }
 
-            //tester om client er opdaterert og telefonnumre er slettet
-            if (clientUpdated && numberDeleted)
-            {
-                lblSuccess.ForeColor = Color.Green;
+                //tjekker om der er ny tilføjet numre
+                List<PhoneUI> newNumbers = phoneNumbers.Where(p => p.ClientID == 0).ToList();
+                if (newNumbers.Count > 0)
+                {
+                    //hent clientens telefonnumre
+                    phoneNumbers = await clientBL.GetClientPhonesAsync(client.PersonID);
+                }
 
-                //resetter listen for deleted numbers
-                deletedNumbers = new List<PhoneUI>();
-                lblSuccess.Text = "Saved";
-            }
-            else
-            {
-                lblSuccess.ForeColor = Color.Red;
-                lblSuccess.Text = "Save Failed";
-            }
+                //tester om client er opdaterert og telefonnumre er slettet
+                if (clientUpdated && numberDeleted)
+                {
+                    lblSuccess.ForeColor = Color.Green;
 
+                    //resetter listen for deleted numbers
+                    deletedNumbers = new List<PhoneUI>();
+                    lblSuccess.Text = "Saved";
+                }
+                else
+                {
+                    lblSuccess.ForeColor = Color.Red;
+                    lblSuccess.Text = "Save Failed";
+                }
+
+            }
 
             //Hvis update sker på "mypage" så henter den brugerens detaljer igen
             if(currentUser is ClientUI) { frontPageView.GetPersonAsync(currentUser.LoginDetailsID); }

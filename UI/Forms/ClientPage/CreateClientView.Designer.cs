@@ -95,7 +95,7 @@
             txtLastname.MaxLength = 50;
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(200, 27);
-            txtLastname.TabIndex = 13;
+            txtLastname.TabIndex = 2;
             // 
             // txtPostal
             // 
@@ -105,7 +105,7 @@
             txtPostal.MaxLength = 50;
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(94, 27);
-            txtPostal.TabIndex = 30;
+            txtPostal.TabIndex = 7;
             // 
             // txtAddress
             // 
@@ -115,7 +115,7 @@
             txtAddress.MaxLength = 50;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(425, 27);
-            txtAddress.TabIndex = 27;
+            txtAddress.TabIndex = 6;
             // 
             // txtPhone
             // 
@@ -125,7 +125,7 @@
             txtPhone.MaxLength = 50;
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(200, 27);
-            txtPhone.TabIndex = 16;
+            txtPhone.TabIndex = 4;
             // 
             // txtEmail
             // 
@@ -135,7 +135,7 @@
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(200, 27);
-            txtEmail.TabIndex = 17;
+            txtEmail.TabIndex = 3;
             // 
             // txtFirstname
             // 
@@ -145,7 +145,7 @@
             txtFirstname.MaxLength = 50;
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(200, 27);
-            txtFirstname.TabIndex = 12;
+            txtFirstname.TabIndex = 1;
             // 
             // lblPostal
             // 
@@ -263,7 +263,7 @@
             txtCity.MaxLength = 50;
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(200, 27);
-            txtCity.TabIndex = 32;
+            txtCity.TabIndex = 8;
             // 
             // lblCity
             // 
@@ -357,7 +357,7 @@
             lblAddressView.ForeColor = Color.FromArgb(45, 93, 134);
             lblAddressView.Location = new Point(96, 103);
             lblAddressView.Name = "lblAddressView";
-            lblAddressView.Size = new Size(38, 21);
+            lblAddressView.Size = new Size(144, 21);
             lblAddressView.TabIndex = 34;
             lblAddressView.Text = "sortByNameCount";
             // 
@@ -369,7 +369,7 @@
             lblEmailView.ForeColor = Color.FromArgb(45, 93, 134);
             lblEmailView.Location = new Point(96, 57);
             lblEmailView.Name = "lblEmailView";
-            lblEmailView.Size = new Size(38, 21);
+            lblEmailView.Size = new Size(144, 21);
             lblEmailView.TabIndex = 34;
             lblEmailView.Text = "sortByNameCount";
             // 
@@ -381,7 +381,7 @@
             lblNameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblNameView.Location = new Point(96, 11);
             lblNameView.Name = "lblNameView";
-            lblNameView.Size = new Size(38, 21);
+            lblNameView.Size = new Size(144, 21);
             lblNameView.TabIndex = 34;
             lblNameView.Text = "sortByNameCount";
             // 
@@ -393,7 +393,7 @@
             lblUsernameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblUsernameView.Location = new Point(623, 407);
             lblUsernameView.Name = "lblUsernameView";
-            lblUsernameView.Size = new Size(38, 21);
+            lblUsernameView.Size = new Size(144, 21);
             lblUsernameView.TabIndex = 35;
             lblUsernameView.Text = "sortByNameCount";
             // 
@@ -403,7 +403,7 @@
             label7.BackColor = SystemColors.GradientInactiveCaption;
             label7.Font = new Font("Segoe UI", 8.25F);
             label7.ForeColor = Color.FromArgb(45, 93, 134);
-            label7.Location = new Point(240, 282);
+            label7.Location = new Point(256, 282);
             label7.Name = "label7";
             label7.Size = new Size(28, 13);
             label7.TabIndex = 37;
@@ -423,7 +423,7 @@
             btnAddPhone.Location = new Point(256, 251);
             btnAddPhone.Name = "btnAddPhone";
             btnAddPhone.Size = new Size(28, 28);
-            btnAddPhone.TabIndex = 38;
+            btnAddPhone.TabIndex = 5;
             btnAddPhone.TabStop = false;
             btnAddPhone.UseVisualStyleBackColor = true;
             // 
@@ -435,7 +435,7 @@
             txtConfirmPassword.MaxLength = 50;
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Size = new Size(208, 27);
-            txtConfirmPassword.TabIndex = 39;
+            txtConfirmPassword.TabIndex = 10;
             // 
             // txtPassword
             // 
@@ -445,7 +445,7 @@
             txtPassword.MaxLength = 50;
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(195, 27);
-            txtPassword.TabIndex = 40;
+            txtPassword.TabIndex = 9;
             // 
             // lblPassword
             // 

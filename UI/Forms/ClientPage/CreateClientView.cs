@@ -10,12 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Converters;
+using UI.Forms.FrontPage;
 using UIModels;
 
 namespace UI.Forms.ClientPage
 {
     public partial class CreateClientView : Form
     {
+        FrontPageView frontPageView;
+
+        PersonUI currentUser;
+
         ClientBL clientBL;
         PersonValidator pValidator;
 
@@ -29,9 +34,11 @@ namespace UI.Forms.ClientPage
         bool isPhoneAdded;
         bool passwordIsValid;
 
-        public CreateClientView()
+        public CreateClientView(FrontPageView frontPageView, PersonUI currentUser)
         {
             InitializeComponent();
+            this.frontPageView = frontPageView;
+            this.currentUser = currentUser;
             clientBL =  new ClientBL();
             pValidator = new PersonValidator();
 
@@ -62,19 +69,81 @@ namespace UI.Forms.ClientPage
 
         }
 
-        private void TxtConfirmPassword_TextChanged(object? sender, EventArgs e)
+        private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            ValidatePasswords();
-            BtnCreateEnabled();
+            //disable create knap
+            btnCreate.Enabled = false;
+
+            //ny clientUI
+            ClientUI clientUI = new ClientUI()
+            {
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmail.Text.ToLower(),
+                AddressLine = txtAddress.Text,
+                PostalCode = int.Parse(txtPostal.Text),
+                City = txtCity.Text,
+                IsSubscribed = false,
+            };
+
+            //ny logindetailsUI
+            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+            {
+                Username = clientUI.Email.ToLower(),
+                Password = "0000",
+                CreationDate = DateTime.Now,
+            };
+
+            //saet ny kode til bruger hvis kode er indtastet
+            if(txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
+            {
+                loginDetailsUI.Password = txtPassword.Text;
+            }
+
+            //opretter klient i systemet
+            bool success = await clientBL.CreateClientAsync(clientUI, loginDetailsUI, phoneUIList);
+
+            //test om oprettelese lykkedes
+            if(success)
+            {
+                MessageBox.Show("Client has been created!");
+            }
+            else
+            {
+                MessageBox.Show("Error Client not created");
+            }
+
+            ClientsView cv = new ClientsView(frontPageView, currentUser);
+            frontPageView.PnlContextChange(cv);
+
         }
 
-        private void TxtPassword_TextChanged(object? sender, EventArgs e)
+        private void BtnAddPhone_Click(object? sender, EventArgs e)
         {
-            ValidatePasswords();
+            //opretter ny tlf nummer
+            PhoneUI tempPhone = new PhoneUI()
+            {
+                PhoneNumber = Convert.ToInt32(txtPhone.Text),
+            };
+            //tilfoejer nr til list af tlfnr
+            phoneUIList.Add(tempPhone);
+
+            //true - der er tilfoejet et nr
+            isPhoneAdded = true;
+
             BtnCreateEnabled();
+            
+            //clear txt for tlfnr
+            txtPhone.Clear();
+            //disabler addphoneknap
+            btnAddPhone.Enabled = false;
+
+            rtxtPhoneNumbers.Text = string.Join("\n", phoneUIList.Select(p => p.PhoneNumber));// CHANGE?
         }
-        private void ValidatePasswords()
+
+        private void ValidatePasswords() 
         {
+            //hvis begge felter for password er tomme return
             if (string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtConfirmPassword.Text))
             {
                 passwordIsValid = true;
@@ -83,13 +152,16 @@ namespace UI.Forms.ClientPage
 
             passwordIsValid = false;
 
+            //test om kode er valid
             bool primaryPasswordValid = pValidator.ValidPassword(txtPassword.Text);
             txtPassword.ForeColor = primaryPasswordValid ? validFormat : invalidFormat;
 
-            // Tjek om confirm password er indtastet og om primary password er korrekt format
+            // Tjek om confirm password er indtastet
             if (!string.IsNullOrEmpty(txtConfirmPassword.Text))
             {
+                //tjek om confirm password er valid input
                 bool confirmationPasswordValid = pValidator.ValidPassword(txtConfirmPassword.Text);
+                //tjek om confirmpassword of password matcher
                 bool sameAsPrimary = txtConfirmPassword.Text == txtPassword.Text;
 
                 // This begge koder er identiske og valide = validFormat ellers invalidFormat
@@ -112,78 +184,32 @@ namespace UI.Forms.ClientPage
             }
         }
 
-
+        //metode til at enable/disable create knap alt efter input
         private void BtnCreateEnabled()
         {
-            btnCreate.Enabled = 
+            btnCreate.Enabled =
                 txtFirstname.ForeColor == validFormat &&
                 txtLastname.ForeColor == validFormat &&
-                txtEmail.ForeColor == validFormat && 
-                isPhoneAdded && 
-                txtAddress.ForeColor == validFormat && 
-                txtPostal.ForeColor == validFormat && 
+                txtEmail.ForeColor == validFormat &&
+                isPhoneAdded &&
+                txtAddress.ForeColor == validFormat &&
+                txtPostal.ForeColor == validFormat &&
                 txtCity.ForeColor == validFormat &&
-                passwordIsValid 
+                passwordIsValid
                 ? true : false;
         }
 
-        private async void BtnCreate_Click(object? sender, EventArgs e)
+
+        //masse metoder der validerer indput
+        private void TxtConfirmPassword_TextChanged(object? sender, EventArgs e)
         {
-            btnCreate.Enabled = false;
-
-            ClientUI clientUI = new ClientUI()
-            {
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                Email = txtEmail.Text.ToLower(),
-                AddressLine = txtAddress.Text,
-                PostalCode = int.Parse(txtPostal.Text),
-                City = txtCity.Text,
-                IsSubscribed = false,
-            };
-
-            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
-            {
-                Username = clientUI.Email.ToLower(),
-                Password = "0000",
-                CreationDate = DateTime.Now,
-            };
-            if(txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
-            {
-                loginDetailsUI.Password = txtPassword.Text;
-            }
-
-            
-            bool success = await clientBL.CreateClientAsync(clientUI, loginDetailsUI, phoneUIList);
-            if(success)
-            {
-                MessageBox.Show("Client has been created!");
-            }
-            else
-            {
-                MessageBox.Show("Error Client not created");
-            }
-            
-
-            btnCreate.Enabled = true;
-
-        }
-
-        private void BtnAddPhone_Click(object? sender, EventArgs e)
-        {
-            PhoneUI tempPhone = new PhoneUI()
-            {
-                PhoneNumber = Convert.ToInt32(txtPhone.Text),
-            };
-            phoneUIList.Add(tempPhone);
-
-            isPhoneAdded = true;
+            ValidatePasswords();
             BtnCreateEnabled();
-
-            txtPhone.Clear();
-            btnAddPhone.Enabled = false;
-
-            rtxtPhoneNumbers.Text = string.Join("\n", phoneUIList.Select(p => p.PhoneNumber));
+        }
+        private void TxtPassword_TextChanged(object? sender, EventArgs e)
+        {
+            ValidatePasswords();
+            BtnCreateEnabled();
         }
 
         private void TxtFirstname_TextChanged(object? sender, EventArgs e)

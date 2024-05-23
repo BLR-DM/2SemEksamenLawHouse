@@ -74,7 +74,7 @@ namespace UI.Forms.EmployeePage
 
         private async void BtnRefresh_Click(object? sender, EventArgs e)
         {
-            await RefreshDvgData();
+            await RefreshDvgDataAsync();
             SortDgv();
         }
 
@@ -413,7 +413,7 @@ namespace UI.Forms.EmployeePage
             }
         }
 
-        private async void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
+        private void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
         {
             lblShow.Focus();
             lblTotalEmployees.Text = "Loading...";
@@ -605,7 +605,7 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private async Task RefreshDvgData() // Hvis der skal opdateres efter ændring - CUD
+        private async Task RefreshDvgDataAsync() // Hvis der skal opdateres efter ændring - CUD
         {
             await GetEmployeesAsync();
             await GetLawyersWithCollectionsAsync();

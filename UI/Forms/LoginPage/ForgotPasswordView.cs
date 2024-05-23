@@ -46,22 +46,20 @@ namespace UI.Forms.LoginPage
 
         private async void BtnRetrievePassword_Click(object? sender, EventArgs e)
         {
-            // Valider først email format
             btnRetrievePassword.Enabled = false;
             MessageBox.Show("A link to reset your password has been sent to" +
                 " your email. Please check your email to complete the process.",
                 "Email Sent");
 
-            bool validEmail = await loginBL.CheckUsernameAsync(txtEmail.Text);
+            string password = await loginBL.RetrievePasswordAsync(txtEmail.Text);
 
-            if (validEmail)
+            if (!string.IsNullOrEmpty(password))
             {
                 DialogResult result = MessageBox.Show("Would you like to display your" +
                 " password?", "Show Password", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
-                {
-                    string password = await loginBL.RetrievePasswordAsync(txtEmail.Text);
+                {                    
                     MessageBox.Show($"Your password is: {password}");
                 }
             }

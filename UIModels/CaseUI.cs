@@ -53,7 +53,7 @@ namespace UIModels
             // Padding the headers and caseData to ensure alignment
             for (int i = 0; i < caseHeader.Count; i++)
             {
-                caseHeader[i] = caseHeader[i].PadRight(casePadding);
+                caseHeader[i] = caseHeader[i].PadRight(casePadding).ToUpper();
                 caseData[i] = caseData[i].PadRight(casePadding);
             }
 
@@ -69,7 +69,7 @@ namespace UIModels
 
             for (int i = 0; i < caseServiceHeader.Count; i++)
             {
-                caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToString();
+                caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToUpper().ToString();
             }
 
 

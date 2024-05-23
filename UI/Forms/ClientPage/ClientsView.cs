@@ -42,12 +42,13 @@ namespace UI.Forms.ClientPage
             dgvClients.DataSourceChanged += DgvClients_DataSourceChanged;
             ckboxSubscribed.CheckedChanged += CkboxSubscribed_CheckedChanged;
             ckboxNotSubscribed.CheckedChanged += CkboxNotSubscribed_CheckedChanged;
-            button1.Click += Button1_Click;
+            lblHelp.Click += LblHelp_Click;
+            
         }
 
-        private void Button1_Click(object? sender, EventArgs e)
+        private void LblHelp_Click(object? sender, EventArgs e)
         {
-            OpenPDF.ShowPDF("LawHouseDiagrammer.drawio");
+            OpenPDF.ShowPDF("ClientsViewHelp");
         }
 
         private void DgvClients_DataSourceChanged(object? sender, EventArgs e)

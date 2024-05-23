@@ -38,7 +38,7 @@
             dgvClients = new DataGridView();
             lblClientAmmount = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
-            button1 = new Button();
+            lblHelp = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             SuspendLayout();
@@ -153,14 +153,16 @@
             btnCreate.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnCreate.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // lblHelp
             // 
-            button1.Location = new Point(260, 123);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 52;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(907, 590);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 52;
+            lblHelp.Text = "Need help?";
             // 
             // ClientsView
             // 
@@ -168,11 +170,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
-            Controls.Add(button1);
+            Controls.Add(lblHelp);
             Controls.Add(btnCreate);
             Controls.Add(lblClientAmmount);
             Controls.Add(dgvClients);
             Controls.Add(panel1);
+            Cursor = Cursors.Hand;
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientsView";
             Tag = "";
@@ -201,6 +204,6 @@
         private Label lblClientAmmount;
         private TextBox txtSearchPostal;
         private FontAwesome.Sharp.IconButton btnCreate;
-        private Button button1;
+        private Label lblHelp;
     }
 }

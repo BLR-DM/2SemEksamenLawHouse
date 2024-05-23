@@ -12,12 +12,12 @@ namespace BusinessLogic
     {
         public static bool ShowPDF(string filename)
         {
-            string filePath = $@"Resources\HelpPdfs\{filename}.PDF";
+            string filePath = $"Resources\\HelpPdfs\\{filename}.pdf";
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string fullPath = Path.Combine(baseDirectory, filePath);      
             
 
-            if (File.Exists(filePath))
+            if (File.Exists(fullPath))
             {
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
                 return true;

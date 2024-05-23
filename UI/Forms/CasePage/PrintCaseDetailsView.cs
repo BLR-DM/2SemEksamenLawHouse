@@ -14,15 +14,11 @@ namespace UI.Forms.CasePage
 {
     public partial class PrintCaseDetailsView : Form
     {
-        CaseUI caseUI;
-        CaseBL caseBL;
-
-        CaseUI caseUItest;
+        CaseUI selectedCase;
 
         public PrintCaseDetailsView(CaseUI caseUI)
         {
-            caseBL = new CaseBL();
-            this.caseUI = caseUI;
+            this.selectedCase = caseUI;
 
 
             InitializeComponent();
@@ -41,11 +37,11 @@ namespace UI.Forms.CasePage
 
             if(ckboxDetailedVersion.Checked)
             {
-                success = await caseUI.PrintWithExtraDetailsAsync(txtPath.Text);
+                success = await selectedCase.PrintWithExtraDetailsAsync(txtPath.Text);
             }
             else
             {
-                success = await caseUI.PrintDetails(txtPath.Text);
+                success = await selectedCase.PrintDetails(txtPath.Text);
             }
 
             if(success)

@@ -64,7 +64,6 @@ namespace UI.Forms.Self_Service
                     SetDetails();
                     MessageBox.Show($"Form has been bought and sent to: {client.Email}", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                 }
                 else
                     MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -162,6 +161,9 @@ namespace UI.Forms.Self_Service
             dgvForms.ReadOnly = true;
             dgvForms.RowHeadersVisible = false;
             dgvForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvForms.AllowUserToResizeColumns = false;
+            dgvForms.AllowUserToResizeRows = false;
 
             dgvForms.EnableHeadersVisualStyles = false;
             dgvForms.RowHeadersVisible = false;

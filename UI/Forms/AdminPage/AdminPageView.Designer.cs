@@ -34,14 +34,10 @@
             btnUpdateForm = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             btnDeleteService = new FontAwesome.Sharp.IconButton();
-            label2 = new Label();
-            BtnDeleteCases = new FontAwesome.Sharp.IconButton();
             lblLawyers = new Label();
-            btnDeleteLawyer = new FontAwesome.Sharp.IconButton();
             btnCreateLawyer = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
             btnCreateSecretary = new FontAwesome.Sharp.IconButton();
-            btnDeleteSecretary = new FontAwesome.Sharp.IconButton();
             btnCreateService = new FontAwesome.Sharp.IconButton();
             btnUpdateService = new FontAwesome.Sharp.IconButton();
             lblLawyerTitle = new Label();
@@ -132,7 +128,7 @@
             label1.BackColor = SystemColors.GradientInactiveCaption;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(45, 93, 134);
-            label1.Location = new Point(346, 60);
+            label1.Location = new Point(463, 60);
             label1.Name = "label1";
             label1.Size = new Size(71, 21);
             label1.TabIndex = 52;
@@ -151,44 +147,12 @@
             btnDeleteService.IconColor = Color.Black;
             btnDeleteService.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteService.IconSize = 70;
-            btnDeleteService.Location = new Point(300, 215);
+            btnDeleteService.Location = new Point(413, 215);
             btnDeleteService.Name = "btnDeleteService";
             btnDeleteService.Size = new Size(171, 37);
             btnDeleteService.TabIndex = 53;
             btnDeleteService.Text = "Delete";
             btnDeleteService.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.GradientInactiveCaption;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(45, 93, 134);
-            label2.Location = new Point(594, 60);
-            label2.Name = "label2";
-            label2.Size = new Size(51, 21);
-            label2.TabIndex = 54;
-            label2.Text = "Cases";
-            // 
-            // BtnDeleteCases
-            // 
-            BtnDeleteCases.Anchor = AnchorStyles.Bottom;
-            BtnDeleteCases.BackColor = Color.IndianRed;
-            BtnDeleteCases.Cursor = Cursors.Hand;
-            BtnDeleteCases.FlatAppearance.BorderSize = 0;
-            BtnDeleteCases.FlatStyle = FlatStyle.Flat;
-            BtnDeleteCases.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            BtnDeleteCases.ForeColor = Color.White;
-            BtnDeleteCases.IconChar = FontAwesome.Sharp.IconChar.None;
-            BtnDeleteCases.IconColor = Color.Black;
-            BtnDeleteCases.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnDeleteCases.IconSize = 70;
-            BtnDeleteCases.Location = new Point(532, 95);
-            BtnDeleteCases.Name = "BtnDeleteCases";
-            BtnDeleteCases.Size = new Size(171, 37);
-            BtnDeleteCases.TabIndex = 55;
-            BtnDeleteCases.Text = "Delete";
-            BtnDeleteCases.UseVisualStyleBackColor = false;
             // 
             // lblLawyers
             // 
@@ -201,26 +165,6 @@
             lblLawyers.Size = new Size(68, 21);
             lblLawyers.TabIndex = 56;
             lblLawyers.Text = "Lawyers";
-            // 
-            // btnDeleteLawyer
-            // 
-            btnDeleteLawyer.Anchor = AnchorStyles.Bottom;
-            btnDeleteLawyer.BackColor = Color.IndianRed;
-            btnDeleteLawyer.Cursor = Cursors.Hand;
-            btnDeleteLawyer.FlatAppearance.BorderSize = 0;
-            btnDeleteLawyer.FlatStyle = FlatStyle.Flat;
-            btnDeleteLawyer.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDeleteLawyer.ForeColor = Color.White;
-            btnDeleteLawyer.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDeleteLawyer.IconColor = Color.Black;
-            btnDeleteLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeleteLawyer.IconSize = 70;
-            btnDeleteLawyer.Location = new Point(61, 433);
-            btnDeleteLawyer.Name = "btnDeleteLawyer";
-            btnDeleteLawyer.Size = new Size(171, 37);
-            btnDeleteLawyer.TabIndex = 57;
-            btnDeleteLawyer.Text = "Delete";
-            btnDeleteLawyer.UseVisualStyleBackColor = false;
             // 
             // btnCreateLawyer
             // 
@@ -248,7 +192,7 @@
             label3.BackColor = SystemColors.GradientInactiveCaption;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(45, 93, 134);
-            label3.Location = new Point(341, 326);
+            label3.Location = new Point(771, 60);
             label3.Name = "label3";
             label3.Size = new Size(91, 21);
             label3.TabIndex = 59;
@@ -267,32 +211,12 @@
             btnCreateSecretary.IconColor = Color.Black;
             btnCreateSecretary.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateSecretary.IconSize = 70;
-            btnCreateSecretary.Location = new Point(300, 369);
+            btnCreateSecretary.Location = new Point(728, 95);
             btnCreateSecretary.Name = "btnCreateSecretary";
             btnCreateSecretary.Size = new Size(171, 37);
             btnCreateSecretary.TabIndex = 60;
             btnCreateSecretary.Text = "Create";
             btnCreateSecretary.UseVisualStyleBackColor = false;
-            // 
-            // btnDeleteSecretary
-            // 
-            btnDeleteSecretary.Anchor = AnchorStyles.Bottom;
-            btnDeleteSecretary.BackColor = Color.IndianRed;
-            btnDeleteSecretary.Cursor = Cursors.Hand;
-            btnDeleteSecretary.FlatAppearance.BorderSize = 0;
-            btnDeleteSecretary.FlatStyle = FlatStyle.Flat;
-            btnDeleteSecretary.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDeleteSecretary.ForeColor = Color.White;
-            btnDeleteSecretary.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDeleteSecretary.IconColor = Color.Black;
-            btnDeleteSecretary.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeleteSecretary.IconSize = 70;
-            btnDeleteSecretary.Location = new Point(300, 433);
-            btnDeleteSecretary.Name = "btnDeleteSecretary";
-            btnDeleteSecretary.Size = new Size(171, 37);
-            btnDeleteSecretary.TabIndex = 61;
-            btnDeleteSecretary.Text = "Delete";
-            btnDeleteSecretary.UseVisualStyleBackColor = false;
             // 
             // btnCreateService
             // 
@@ -307,7 +231,7 @@
             btnCreateService.IconColor = Color.Black;
             btnCreateService.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateService.IconSize = 70;
-            btnCreateService.Location = new Point(300, 95);
+            btnCreateService.Location = new Point(413, 95);
             btnCreateService.Name = "btnCreateService";
             btnCreateService.Size = new Size(171, 37);
             btnCreateService.TabIndex = 62;
@@ -327,7 +251,7 @@
             btnUpdateService.IconColor = Color.Black;
             btnUpdateService.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateService.IconSize = 70;
-            btnUpdateService.Location = new Point(300, 153);
+            btnUpdateService.Location = new Point(413, 153);
             btnUpdateService.Name = "btnUpdateService";
             btnUpdateService.Size = new Size(171, 37);
             btnUpdateService.TabIndex = 63;
@@ -340,7 +264,7 @@
             lblLawyerTitle.BackColor = SystemColors.GradientInactiveCaption;
             lblLawyerTitle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblLawyerTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLawyerTitle.Location = new Point(569, 326);
+            lblLawyerTitle.Location = new Point(450, 326);
             lblLawyerTitle.Name = "lblLawyerTitle";
             lblLawyerTitle.Size = new Size(97, 21);
             lblLawyerTitle.TabIndex = 59;
@@ -359,7 +283,7 @@
             btnCreateLawyerTitle.IconColor = Color.Black;
             btnCreateLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateLawyerTitle.IconSize = 70;
-            btnCreateLawyerTitle.Location = new Point(532, 369);
+            btnCreateLawyerTitle.Location = new Point(413, 369);
             btnCreateLawyerTitle.Name = "btnCreateLawyerTitle";
             btnCreateLawyerTitle.Size = new Size(171, 37);
             btnCreateLawyerTitle.TabIndex = 60;
@@ -379,7 +303,7 @@
             btnUpdateLawyerTitle.IconColor = Color.Black;
             btnUpdateLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateLawyerTitle.IconSize = 70;
-            btnUpdateLawyerTitle.Location = new Point(532, 433);
+            btnUpdateLawyerTitle.Location = new Point(413, 433);
             btnUpdateLawyerTitle.Name = "btnUpdateLawyerTitle";
             btnUpdateLawyerTitle.Size = new Size(171, 37);
             btnUpdateLawyerTitle.TabIndex = 63;
@@ -399,7 +323,7 @@
             btnDeleteLawyerTitle.IconColor = Color.Black;
             btnDeleteLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteLawyerTitle.IconSize = 70;
-            btnDeleteLawyerTitle.Location = new Point(532, 498);
+            btnDeleteLawyerTitle.Location = new Point(413, 498);
             btnDeleteLawyerTitle.Name = "btnDeleteLawyerTitle";
             btnDeleteLawyerTitle.Size = new Size(171, 37);
             btnDeleteLawyerTitle.TabIndex = 53;
@@ -419,7 +343,7 @@
             btnDeleteSpeciality.IconColor = Color.Black;
             btnDeleteSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteSpeciality.IconSize = 70;
-            btnDeleteSpeciality.Location = new Point(761, 498);
+            btnDeleteSpeciality.Location = new Point(728, 498);
             btnDeleteSpeciality.Name = "btnDeleteSpeciality";
             btnDeleteSpeciality.Size = new Size(171, 37);
             btnDeleteSpeciality.TabIndex = 53;
@@ -432,7 +356,7 @@
             lblSpeciality.BackColor = SystemColors.GradientInactiveCaption;
             lblSpeciality.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSpeciality.Location = new Point(805, 326);
+            lblSpeciality.Location = new Point(772, 326);
             lblSpeciality.Name = "lblSpeciality";
             lblSpeciality.Size = new Size(80, 21);
             lblSpeciality.TabIndex = 59;
@@ -451,7 +375,7 @@
             btnCreateSpeciality.IconColor = Color.Black;
             btnCreateSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateSpeciality.IconSize = 70;
-            btnCreateSpeciality.Location = new Point(761, 369);
+            btnCreateSpeciality.Location = new Point(728, 369);
             btnCreateSpeciality.Name = "btnCreateSpeciality";
             btnCreateSpeciality.Size = new Size(171, 37);
             btnCreateSpeciality.TabIndex = 60;
@@ -471,7 +395,7 @@
             btnUpdateSpeciality.IconColor = Color.Black;
             btnUpdateSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateSpeciality.IconSize = 70;
-            btnUpdateSpeciality.Location = new Point(761, 433);
+            btnUpdateSpeciality.Location = new Point(728, 433);
             btnUpdateSpeciality.Name = "btnUpdateSpeciality";
             btnUpdateSpeciality.Size = new Size(171, 37);
             btnUpdateSpeciality.TabIndex = 63;
@@ -488,7 +412,6 @@
             Controls.Add(btnUpdateLawyerTitle);
             Controls.Add(btnUpdateService);
             Controls.Add(btnCreateService);
-            Controls.Add(btnDeleteSecretary);
             Controls.Add(btnCreateSpeciality);
             Controls.Add(lblSpeciality);
             Controls.Add(btnCreateLawyerTitle);
@@ -496,11 +419,8 @@
             Controls.Add(btnCreateSecretary);
             Controls.Add(label3);
             Controls.Add(btnCreateLawyer);
-            Controls.Add(btnDeleteLawyer);
             Controls.Add(lblLawyers);
-            Controls.Add(BtnDeleteCases);
             Controls.Add(btnDeleteSpeciality);
-            Controls.Add(label2);
             Controls.Add(btnDeleteLawyerTitle);
             Controls.Add(btnDeleteService);
             Controls.Add(label1);
@@ -523,14 +443,10 @@
         private FontAwesome.Sharp.IconButton btnUpdateForm;
         private Label label1;
         private FontAwesome.Sharp.IconButton btnDeleteService;
-        private Label label2;
-        private FontAwesome.Sharp.IconButton BtnDeleteCases;
         private Label lblLawyers;
-        private FontAwesome.Sharp.IconButton btnDeleteLawyer;
         private FontAwesome.Sharp.IconButton btnCreateLawyer;
         private Label label3;
         private FontAwesome.Sharp.IconButton btnCreateSecretary;
-        private FontAwesome.Sharp.IconButton btnDeleteSecretary;
         private FontAwesome.Sharp.IconButton btnCreateService;
         private FontAwesome.Sharp.IconButton btnUpdateService;
         private Label lblLawyerTitle;

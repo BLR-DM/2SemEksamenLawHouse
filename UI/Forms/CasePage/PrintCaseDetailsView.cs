@@ -32,8 +32,7 @@ namespace UI.Forms.CasePage
         CaseUI caseUItest;
 
         public PrintCaseDetailsView(CaseUI caseUI, List<CaseTypeUI> caseTypes, LawyerUI lawyer,
-                                    ClientUI client, List<CaseServiceUI> caseServices,
-                                    ServiceBL serviceBL, LawyerBL lawyerBL, ServiceEntryBL serviceEntryBL)
+                                    ClientUI client, List<CaseServiceUI> caseServices)
         {
             serviceBL = new ServiceBL();
             caseBL = new CaseBL();
@@ -43,9 +42,9 @@ namespace UI.Forms.CasePage
             this.lawyer = lawyer;
             this.client = client;
             this.caseServices = caseServices;
-            this.serviceBL = serviceBL;
-            this.lawyerBL = lawyerBL;
-            this.serviceEntryBL = serviceEntryBL;
+            this.serviceBL = new ServiceBL();
+            this.lawyerBL = new LawyerBL();
+            this.serviceEntryBL = new ServiceEntryBL();
 
             services = new List<ServiceUI>();
             lawyers = new List<LawyerUI>();

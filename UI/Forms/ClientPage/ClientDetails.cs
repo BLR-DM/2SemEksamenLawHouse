@@ -25,6 +25,7 @@ namespace UI.Forms.ClientPage
         ClientUI client;
         ClientBL clientBL;
         CaseBL caseBL;
+        PersonBL personBL;
         FormDocumentBL formBL;
         SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
@@ -50,6 +51,7 @@ namespace UI.Forms.ClientPage
             subscriptionBL = new SubscriptionBL();
             pValidator = new PersonValidator();
             caseBL = new CaseBL();
+            personBL = new PersonBL();
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();
@@ -297,6 +299,9 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.Columns["ClientID"].Visible = false;
             dgvPhoneNumbers.ColumnHeadersVisible = false;
             dgvPhoneNumbers.RowHeadersVisible = false;
+            dgvPhoneNumbers.ReadOnly = true;
+            dgvPhoneNumbers.AllowUserToResizeColumns = false;
+            dgvPhoneNumbers.AllowUserToResizeRows = false;
             dgvPhoneNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
@@ -314,6 +319,9 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBoughtForms.ReadOnly = true;
             dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvBoughtForms.AllowUserToResizeColumns = false;
+            dgvBoughtForms.AllowUserToResizeRows = false;
 
             dgvBoughtForms.EnableHeadersVisualStyles = false;
             dgvBoughtForms.RowHeadersVisible = false;
@@ -352,6 +360,9 @@ namespace UI.Forms.ClientPage
             dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCases.ReadOnly = true;
             dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvCases.AllowUserToResizeColumns = false;
+            dgvCases.AllowUserToResizeRows = false;
 
             dgvCases.EnableHeadersVisualStyles = false;
             dgvCases.RowHeadersVisible = false;

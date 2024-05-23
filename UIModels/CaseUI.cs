@@ -32,40 +32,92 @@ namespace UIModels
 
         public void PrintDetails(string path)
         {
-            int headerSize = 20;
+            int casePadding = 25;
 
             List<string> caseHeader = new List<string>()
             {
-                "CaseID", "Title", "Case Type", "Creation Date", "End Date", "Hours", "Status",
-                "Total Price", "Lawyer", "Client"
-            };
-
-            
-
-            List<string> data = new List<string>()
-            {
-                CaseID.ToString(), Title, "Family Law Case", CreationDate.ToString("d"), EndDate.ToString("d"),
-                EstimatedHours.ToString(), Status.ToString(), TotalPrice.ToString(), "Ramus Seebach", "Lucas Podolski"
+                "CaseID", "Title", "Type", "Status", "Creation Date", "End Date", "Hours", 
+                "Total Price", "Lawyer", "Lawyer Number", "Client", "Client Number"
             };
 
 
 
-            // Padding the headers and data to ensure alignment
-            for (int i = 0, count = caseHeader.Count; i < count; i++)
+            List<string> caseData = new List<string>()
             {
-                caseHeader[i] = caseHeader[i].PadRight(headerSize);
-                data[i] = data[i].PadRight(headerSize);
+                CaseID.ToString(), Title, CaseType.Title, Status.ToString(), CreationDate.ToString("d"), EndDate.ToString("d"),
+                EstimatedHours.ToString(), TotalPrice.ToString(), Lawyer.ToString(), Lawyer.PersonID.ToString(),
+                Client.ToString(), Client.PersonID.ToString()
+            };
+
+
+            // Padding the headers and caseData to ensure alignment
+            for (int i = 0; i < caseHeader.Count; i++)
+            {
+                caseHeader[i] = caseHeader[i].PadRight(casePadding);
+                caseData[i] = caseData[i].PadRight(casePadding);
+            }
+
+
+            int caseServicePadding = 25;
+
+
+            List<string> caseServiceHeader = new List<string>()
+            {
+                "ServiceID", "Name", "Price Type", "Status", "Start Date", "End Date", "Hours Worked", 
+                "Units", "Price/Unit", "Total Price", "Lawyer", "Lawyer Number"
+            };
+
+            for (int i = 0; i < caseServiceHeader.Count; i++)
+            {
+                caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToString();
+            }
+
+
+            List<List<string>> caseServiceData = new List<List<string>>();
+
+            foreach (CaseServiceUI caseService in CaseServices)
+            {
+                List<string> caseServiceLine = new List<string>()
+                {
+                    caseService.ServiceID.ToString(), caseService.Service.Name, caseService.Service.PriceType.ToString(), caseService.Status, caseService.StartDate.ToString("d"), 
+                    caseService.EndDate?.ToString("d") ?? "null", caseService.HoursWorked.ToString(),  caseService.Units.ToString(),
+                    caseService.Service.Price.ToString(), caseService.TotalPrice.ToString(), caseService.Lawyer.ToString(), caseService.LawyerID.ToString()
+                };
+
+                for (int i = 0; i < caseServiceLine.Count; i++)
+                {
+                    caseServiceLine[i] = caseServiceLine[i].PadRight(caseServicePadding).ToString();
+                }
+
+                caseServiceData.Add(caseServiceLine);
             }
 
 
 
-            // Combine headers and data into lines
-            string header = string.Join("", caseHeader);
-            string dataLine = string.Join("", data);
+            // Combine headers and caseData into lines
+            string caseHeaderRow = string.Join("", caseHeader);
+            string caseDataRow = string.Join("", caseData);
+            string caseServiceHeaderRow = string.Join("", caseServiceHeader);
+            
+
 
             // Write to the file
-            List<string> list = new List<string> { header, dataLine };
-            File.WriteAllLines(path, list);
+            List<string> rowsToPrint = new List<string>();
+            rowsToPrint.Add(caseHeaderRow);
+            rowsToPrint.Add(caseDataRow);
+            rowsToPrint.Add("");
+            rowsToPrint.Add("------------------------------------------------------------------------------------------------------------------------------------------" +
+                "------------------------------------------------------------------------------------------------------------------------------------------------------");
+            rowsToPrint.Add("");
+            rowsToPrint.Add(caseServiceHeaderRow);
+
+            foreach (List<string> serviceLine in caseServiceData)
+            {
+                rowsToPrint.Add(string.Join("", serviceLine));
+            }
+
+
+            File.WriteAllLines(path, rowsToPrint);
 
 
 

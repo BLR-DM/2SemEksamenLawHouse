@@ -27,15 +27,8 @@ namespace UI.Forms.CasePage
         Color validFormat;
         Color invalidFormat;
 
-        ClientBL clientBL;
-        LawyerBL lawyerBL;
         CaseBL caseBL;
-        CaseTypeBL caseTypeBL;
-        CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
-        ServiceBL serviceBL;
-        ServiceEntryBL serviceEntryBL;
-
 
         bool isClient, isMyPage;
 
@@ -43,11 +36,7 @@ namespace UI.Forms.CasePage
         public CaseDetailsView(int selectedCaseID, bool isClient, bool isMyPage)
         {
             InitializeComponent();
-            clientBL = new ClientBL();
-            lawyerBL = new LawyerBL();
             caseBL = new CaseBL();
-            caseServiceBL = new CaseServiceBL();
-            caseTypeBL = new CaseTypeBL();
             cValidator = new CaseValidator();
 
 
@@ -145,9 +134,8 @@ namespace UI.Forms.CasePage
         {
             await SetCaseDataAsync();
             await SetDgvAsync();
-            await SetComboBox();
-            await SetClientDataAsync();
-            await SetLawyerDataAsync();
+            SetClientDataAsync();
+            SetLawyerDataAsync();
         }
 
         private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
@@ -171,7 +159,6 @@ namespace UI.Forms.CasePage
         private async void BtnUpdateCase_Click(object? sender, EventArgs e)
         {
             btnUpdateCase.Enabled = false;
-            CaseTypeUI selectedCaseType = cboxCaseType.SelectedItem as CaseTypeUI;
 
             CaseUI caseUpdate = new CaseUI()
             {
@@ -184,7 +171,7 @@ namespace UI.Forms.CasePage
                 Status = selectedCase.Status,
                 TotalPrice = selectedCase.TotalPrice,
 
-                CaseTypeID = selectedCaseType.CaseTypeID,
+                CaseTypeID = selectedCase.CaseTypeID,
                 LawyerID = selectedCase.LawyerID,
                 ClientID = selectedCase.ClientID,
             };
@@ -213,7 +200,6 @@ namespace UI.Forms.CasePage
 
         private void BtnAddService_Click(object? sender, EventArgs e)
         {
-           
             AddServiceView addServiceView = new AddServiceView(selectedCase, this);
             addServiceView.ShowDialog();
         }
@@ -245,7 +231,7 @@ namespace UI.Forms.CasePage
 
         public async Task SetCaseDataAsync()
         {
-            selectedCase = await caseBL.GetCaseAsync(selectedCaseID);
+            selectedCase = await caseBL.GetCaseWithAllCollectionsAsync(selectedCaseID);
 
             if (selectedCase != null)
             {
@@ -256,6 +242,10 @@ namespace UI.Forms.CasePage
                 txtDescription.Text = selectedCase.Description;
                 lblStatus.Text = selectedCase.Status;
                 txtCaseID.Text = selectedCase.CaseID.ToString();
+                txtCaseType.Text = selectedCase.CaseType.Title;
+                txtCaseType.Enabled = false;
+                dtpStartDate.Value = selectedCase.CreationDate;
+                dtpStartDate.Enabled = false;
 
                 if (selectedCase.Status == "Closed")
                 {
@@ -266,27 +256,26 @@ namespace UI.Forms.CasePage
                     txtTitle.ReadOnly = true;
                     txtEstimatedHours.ReadOnly = true;
                     dtpEstimatedEndDate.Enabled = false;
-                    cboxCaseType.Enabled = false;
+                    
+
+                    btnUpdateCaseStatus.Enabled = false;
                 }
             }
         }
 
-        public async Task SetClientDataAsync()
+        private void SetClientDataAsync()
         {
-            selectedClient = await clientBL.GetClientAsync(selectedCase.ClientID);
-            pnlClientInformation.Controls.Add(new ClientInformation(selectedClient));
+            pnlClientInformation.Controls.Add(new ClientInformation(selectedCase.Client));
         }
 
-        public async Task SetLawyerDataAsync()
+        private void SetLawyerDataAsync()
         {
-            selectedLawyer = await lawyerBL.GetLawyerAsync(selectedCase.LawyerID);
-            pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedLawyer));
+            pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedCase.Lawyer));
         }
 
         public async Task SetDgvAsync()
         {
-
-            caseServiceList = await caseServiceBL.GetCaseServicesAsync(selectedCase.CaseID);
+            caseServiceList = selectedCase.CaseServices.ToList();
 
             txtTotalHours.Text = caseServiceList.Sum(cs => cs.HoursWorked).ToString();
             dgvServices.DataSource = caseServiceList;
@@ -296,6 +285,8 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["LawyerID"].Visible = false;
             dgvServices.Columns["CaseID"].Visible = false;
             dgvServices.Columns["Description"].Visible = false;
+            dgvServices.Columns["Service"].Visible = false;
+
 
 
             dgvServices.Columns["ServiceName"].DisplayIndex = 0;
@@ -315,21 +306,6 @@ namespace UI.Forms.CasePage
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvServices.Columns["ServiceName"].Width = 150;
         }
-
-        public async Task SetComboBox()
-        {
-            caseTypeUIList = await caseTypeBL.GetCaseTypeAsync();
-
-            cboxCaseType.DisplayMember = "Title";
-
-            foreach (CaseTypeUI caseTypeUI in caseTypeUIList)
-            {
-                cboxCaseType.Items.Add(caseTypeUI);
-            }
-
-            cboxCaseType.SelectedItem = caseTypeUIList.Where(ct => ct.CaseTypeID == selectedCase.CaseTypeID).FirstOrDefault();
-        }
-
     }
 
 }

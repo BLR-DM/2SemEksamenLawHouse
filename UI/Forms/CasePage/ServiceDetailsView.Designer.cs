@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnClose = new Button();
             txtTotalPrice = new TextBox();
             lblTotalPrice = new Label();
             txtUnits = new TextBox();
@@ -49,7 +50,6 @@
             btnSubmit = new Button();
             dgvServiceEntry = new DataGridView();
             pnlLawyerInformation = new Panel();
-            btnClose = new Button();
             panel1.SuspendLayout();
             pnlTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).BeginInit();
@@ -77,6 +77,15 @@
             panel1.Size = new Size(567, 293);
             panel1.TabIndex = 19;
             // 
+            // btnClose
+            // 
+            btnClose.Location = new Point(477, 257);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(85, 31);
+            btnClose.TabIndex = 22;
+            btnClose.Text = "Close service";
+            btnClose.UseVisualStyleBackColor = true;
+            // 
             // txtTotalPrice
             // 
             txtTotalPrice.BackColor = Color.White;
@@ -90,22 +99,22 @@
             // 
             // lblTotalPrice
             // 
-            lblTotalPrice.AutoSize = true;
             lblTotalPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTotalPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblTotalPrice.Location = new Point(473, 197);
+            lblTotalPrice.Location = new Point(444, 197);
             lblTotalPrice.Name = "lblTotalPrice";
-            lblTotalPrice.Size = new Size(86, 21);
+            lblTotalPrice.Size = new Size(115, 21);
             lblTotalPrice.TabIndex = 58;
             lblTotalPrice.Text = "Total price";
+            lblTotalPrice.TextAlign = ContentAlignment.TopRight;
             // 
             // txtUnits
             // 
             txtUnits.BackColor = Color.White;
             txtUnits.Enabled = false;
             txtUnits.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUnits.Location = new Point(491, 160);
+            txtUnits.Location = new Point(491, 55);
             txtUnits.MaxLength = 50;
             txtUnits.Name = "txtUnits";
             txtUnits.Size = new Size(66, 27);
@@ -116,11 +125,11 @@
             lblUnites.BackColor = SystemColors.GradientInactiveCaption;
             lblUnites.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblUnites.ForeColor = Color.FromArgb(45, 93, 134);
-            lblUnites.Location = new Point(473, 139);
+            lblUnites.Location = new Point(454, 31);
             lblUnites.Name = "lblUnites";
-            lblUnites.Size = new Size(84, 21);
+            lblUnites.Size = new Size(103, 21);
             lblUnites.TabIndex = 56;
-            lblUnites.Text = "Units";
+            lblUnites.Text = "Kilometer";
             lblUnites.TextAlign = ContentAlignment.TopRight;
             // 
             // lblPriceType
@@ -129,18 +138,18 @@
             lblPriceType.BackColor = SystemColors.GradientInactiveCaption;
             lblPriceType.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPriceType.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPriceType.Location = new Point(469, 31);
+            lblPriceType.Location = new Point(444, 89);
             lblPriceType.Name = "lblPriceType";
-            lblPriceType.Size = new Size(90, 21);
+            lblPriceType.Size = new Size(113, 21);
             lblPriceType.TabIndex = 55;
-            lblPriceType.Text = "Total hours";
+            lblPriceType.Text = "Hours worked";
             // 
             // txtTotalHours
             // 
             txtTotalHours.BackColor = Color.White;
             txtTotalHours.Enabled = false;
             txtTotalHours.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalHours.Location = new Point(467, 55);
+            txtTotalHours.Location = new Point(467, 113);
             txtTotalHours.MaxLength = 50;
             txtTotalHours.Name = "txtTotalHours";
             txtTotalHours.Size = new Size(90, 27);
@@ -151,11 +160,11 @@
             lblPrice.BackColor = SystemColors.GradientInactiveCaption;
             lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.ForeColor = Color.FromArgb(45, 93, 134);
-            lblPrice.Location = new Point(473, 85);
+            lblPrice.Location = new Point(444, 143);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(84, 21);
+            lblPrice.Size = new Size(113, 21);
             lblPrice.TabIndex = 53;
-            lblPrice.Text = "Price";
+            lblPrice.Text = "Price/km";
             lblPrice.TextAlign = ContentAlignment.TopRight;
             // 
             // txtPrice
@@ -163,10 +172,10 @@
             txtPrice.BackColor = Color.White;
             txtPrice.Enabled = false;
             txtPrice.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrice.Location = new Point(454, 109);
+            txtPrice.Location = new Point(449, 167);
             txtPrice.MaxLength = 50;
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(103, 27);
+            txtPrice.Size = new Size(108, 27);
             txtPrice.TabIndex = 52;
             // 
             // txtServiceDescription
@@ -178,7 +187,7 @@
             txtServiceDescription.MaxLength = 50;
             txtServiceDescription.Multiline = true;
             txtServiceDescription.Name = "txtServiceDescription";
-            txtServiceDescription.Size = new Size(340, 167);
+            txtServiceDescription.Size = new Size(356, 167);
             txtServiceDescription.TabIndex = 51;
             // 
             // lblServiceDescription
@@ -288,6 +297,8 @@
             // 
             dgvServiceEntry.AllowUserToAddRows = false;
             dgvServiceEntry.AllowUserToDeleteRows = false;
+            dgvServiceEntry.AllowUserToResizeColumns = false;
+            dgvServiceEntry.AllowUserToResizeRows = false;
             dgvServiceEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvServiceEntry.Location = new Point(3, 33);
             dgvServiceEntry.Name = "dgvServiceEntry";
@@ -302,15 +313,6 @@
             pnlLawyerInformation.Name = "pnlLawyerInformation";
             pnlLawyerInformation.Size = new Size(281, 232);
             pnlLawyerInformation.TabIndex = 21;
-            // 
-            // btnClose
-            // 
-            btnClose.Location = new Point(477, 257);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(85, 31);
-            btnClose.TabIndex = 22;
-            btnClose.Text = "Close service";
-            btnClose.UseVisualStyleBackColor = true;
             // 
             // ServiceDetailsView
             // 

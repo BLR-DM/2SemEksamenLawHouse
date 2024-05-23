@@ -38,10 +38,13 @@
             // 
             dgvClientView.AllowUserToAddRows = false;
             dgvClientView.AllowUserToDeleteRows = false;
+            dgvClientView.AllowUserToResizeColumns = false;
+            dgvClientView.AllowUserToResizeRows = false;
             dgvClientView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientView.Location = new Point(12, 55);
             dgvClientView.MultiSelect = false;
             dgvClientView.Name = "dgvClientView";
+            dgvClientView.ReadOnly = true;
             dgvClientView.Size = new Size(753, 332);
             dgvClientView.TabIndex = 0;
             // 

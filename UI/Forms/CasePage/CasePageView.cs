@@ -48,6 +48,7 @@ namespace UI.Forms.CasePage
             SetLawyerComboBoxAsync();
             SetCaseTypeComboBoxAsync();
             SetDgvAsync();
+            SetDgvStyle();
 
         }
 
@@ -144,13 +145,29 @@ namespace UI.Forms.CasePage
             dgvCaseList.Columns["CaseTypeID"].Visible = false;
             dgvCaseList.Columns["LawyerID"].Visible = false;
             dgvCaseList.Columns["CaseServices"].Visible = false;
+            dgvCaseList.Columns["CaseType"].Visible = false;
+            dgvCaseList.Columns["Lawyer"].Visible = false;
+            dgvCaseList.Columns["Client"].Visible = false;
 
 
             dgvCaseList.Columns["EndDate"].DefaultCellStyle.Format = "d";
             dgvCaseList.Columns["CreationDate"].DefaultCellStyle.Format = "d";
+        }
 
+        private void SetDgvStyle()
+        {
             dgvCaseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCaseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgvCaseList.EnableHeadersVisualStyles = false;
+
+            dgvCaseList.RowHeadersVisible = false;
+
+            dgvCaseList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvCaseList.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvCaseList.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvCaseList.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
 

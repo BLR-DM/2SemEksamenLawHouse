@@ -62,6 +62,7 @@ namespace UI.Forms.CasePage
             btnUpdateCase.Enabled = false;
 
             InitializeData();
+            SetDgvStyle();
 
             //fjerner knapper hvis brugeren er client
             if (isClient)
@@ -284,8 +285,10 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["CaseID"].Visible = false;
             dgvServices.Columns["Description"].Visible = false;
             dgvServices.Columns["Service"].Visible = false;
+            dgvServices.Columns["ServiceEntries"].Visible = false;
+            dgvServices.Columns["Lawyer"].Visible = false;
 
-
+            dgvServices.Columns["HoursWorked"].HeaderText = "Hours";
 
             dgvServices.Columns["ServiceName"].DisplayIndex = 0;
             dgvServices.Columns["Status"].DisplayIndex = 1;
@@ -298,11 +301,23 @@ namespace UI.Forms.CasePage
             dgvServices.Columns["StartDate"].DefaultCellStyle.Format = "d";
             dgvServices.Columns["EndDate"].DefaultCellStyle.Format = "d";
 
+            dgvServices.Columns["ServiceName"].Width = 150;
+        }
 
-
+        private void SetDgvStyle()
+        {
             dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvServices.Columns["ServiceName"].Width = 150;
+
+            dgvServices.EnableHeadersVisualStyles = false;
+
+            dgvServices.RowHeadersVisible = false;
+
+            dgvServices.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvServices.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvServices.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvServices.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 

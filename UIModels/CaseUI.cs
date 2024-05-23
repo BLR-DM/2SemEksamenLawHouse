@@ -30,7 +30,7 @@ namespace UIModels
 
         public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
 
-        public void PrintDetails(string path)
+        public async Task<bool> PrintDetails(string path)
         {
             int casePadding = 25;
 
@@ -117,31 +117,236 @@ namespace UIModels
             }
 
 
-            File.WriteAllLines(path, rowsToPrint);
+            try
+            {
+                File.WriteAllLines(path, rowsToPrint);
+            }
+            catch (Exception)
+            {
 
+                return false;
+            }
 
+            return true;
 
-            //string test =
-            //    $"Case Number: {CaseID}"
-            //    $"Case Number: {caseUI.CaseID}",
-            //    $"Case Type: {caseType}",
-            //    $"",
-            //    $"Lawyer: {lawyer.Firstname} {lawyer.Lastname}",
-            //    $"Client: {client.Firstname} {client.Lastname}",
-            //    $"Client Number: {client.PersonID}",
-            //    $"",
-            //    $"Title: {caseUI.Title}",
-            //    $"",
-            //    $"Description: {caseUI.Description}",
-            //    $"",
-            //    $"Status: {caseUI.Status}",
-            //    $"",
-            //    $"Start Date: {caseUI.CreationDate.ToString("d")}",
-            //    $"End Date  : {caseUI.EndDate.ToString("d")}",
-            //    $"",
-            //    $"Total Price: {caseUI.TotalPrice}",
-            //    $"",
-            //    $"---------------------------------------------------------------------------";
         }
+
+
+        //
+        //PRINT EXTRA DETALJERET VERSION
+        //
+        public async Task<bool> PrintWithExtraDetailsAsync(string path)
+        {
+            List<string> textToWrite = new List<string>();
+
+            textToWrite = BuildHeader(textToWrite);
+
+            foreach (CaseServiceUI caseService in CaseServices)
+            {
+                if (caseService.Service.PriceType == "Kilometer")
+                {
+                    textToWrite = BuildKilometerServiceText(caseService, textToWrite);
+                }
+                else if (caseService.Service.PriceType == "Hourly")
+                {
+                    textToWrite = BuildHourlyServiceTextAsync(caseService, textToWrite);
+                }
+                else if (caseService.Service.PriceType == "Fixed")
+                {
+                    textToWrite = BuildFixedServiceTextAsync(caseService, textToWrite);
+                }
+            }
+
+
+            try
+            {
+                File.WriteAllLines(path, textToWrite);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+
+
+        }
+
+        private List<string> BuildHeader(List<string> textToWrite)
+        {
+
+            List<string> header = new List<string>()
+            {
+                $"Case Number: {CaseID}",
+                $"Case Type: {CaseType.Title}",
+                $"",
+                $"Lawyer: {Lawyer.Firstname} {Lawyer.Lastname}",
+                $"Client: {Client.Firstname} {Client.Lastname}",
+                $"Client Number: {Client.PersonID}",
+                $"",
+                $"Title: {Title}",
+                $"",
+                $"Description: {Description}",
+                $"",
+                $"Status: {Status}",
+                $"",
+                $"Start Date: {CreationDate.ToString("d")}",
+                $"End Date  : {EndDate.ToString("d")}",
+                $"",
+                $"Total Price: {TotalPrice}",
+                $"",
+                $"---------------------------------------------------------------------------",
+            };
+
+            foreach (string txt in header)
+            {
+                textToWrite.Add(txt);
+            }
+
+            return textToWrite;
+        }
+
+        private List<string> BuildKilometerServiceText(CaseServiceUI caseService, List<string> textToWrite)
+        {
+
+            List<string> kilometerServiceText = new List<string>()
+            {
+                $"",
+                $"Service number: {caseService.ServiceID}",
+                $"Service name  : {caseService.Service.Name}",
+                $"",
+                $"Lawyer: {caseService.Lawyer.Firstname} {caseService.Lawyer.Lastname}",
+                $"",
+                $"Description: {caseService.Description}",
+                $"",
+                $"Date: {caseService.EndDate?.ToString("d")}",
+                $"",
+                $"Total Hours: {caseService.HoursWorked}",
+                $"",
+                $"Kilometers : {caseService.Units}",
+                $"Price pr km: {caseService.Service.Price}",
+                $"Total price: {caseService.TotalPrice}",
+                $"",
+                $"---------------------------------------------------------------------------",
+            };
+
+            //tilfoojer hele HourlyService teksten til listen den skal udskrive til txt
+            foreach (string txt in kilometerServiceText)
+            {
+                textToWrite.Add(txt);
+            }
+
+            return textToWrite;
+
+        }
+
+        private List<string> BuildHourlyServiceTextAsync(CaseServiceUI caseService, List<string> textToWrite)
+        {
+
+            List<string> hourlyServiceText = new List<string>()
+            {
+                $"",
+                $"Service number: {caseService.ServiceID}",
+                $"Service name  : {caseService.Service.Name}",
+                $"",
+                $"Lawyer: {caseService.Lawyer.Firstname} {caseService.Lawyer.Lastname}",
+                $"",
+                $"Description: {caseService.Description}",
+                $"",
+                $"Start Date: {caseService.StartDate.ToString("d")}",
+                $"End Date  : {caseService.EndDate?.ToString("d")}",
+                $"",
+                $"Entries:",
+            };
+
+
+
+            //tilføjer entries til Service text
+            foreach (ServiceEntryUI entry in caseService.ServiceEntries)
+            {
+                hourlyServiceText.Add($"{entry.Date.ToString("d")}: {entry.HoursWorked} Hours");
+            }
+
+            //text der skal staa under entries
+            List<string> hourlyServiceBottomText = new List<string>()
+            {
+                $"",
+                $"Price pr hour: {caseService.Service.Price}",
+                $"Total Hours: {caseService.HoursWorked}",
+                $"Total Price: {caseService.TotalPrice}",
+                $"",
+                $"---------------------------------------------------------------------------",
+            };
+
+            //tilfoojer teksten efter entries til hovedteksten for HourlyService
+            foreach (string txt in hourlyServiceBottomText)
+            {
+                hourlyServiceText.Add(txt);
+            }
+
+            //tilfoojer hele HourlyService teksten til listen den skal udskrive til txt
+            foreach (string txt in hourlyServiceText)
+            {
+                textToWrite.Add(txt);
+            }
+
+            return textToWrite;
+
+
+        }
+
+        private List<string> BuildFixedServiceTextAsync(CaseServiceUI caseService, List<string> textToWrite)
+        {
+
+            List<string> fixedServiceText = new List<string>()
+            {
+                $"",
+                $"Service number: {caseService.ServiceID}",
+                $"Service name  : {caseService.Service.Name}",
+                $"",
+                $"Lawyer: {caseService.Lawyer.Firstname} {caseService.Lawyer.Lastname}",
+                $"",
+                $"Description: {caseService.Description}",
+                $"",
+                $"Start Date: {caseService.StartDate.ToString("d")}",
+                $"End Date  : {caseService.EndDate?.ToString("d")}",
+                $"",
+                $"Entries:",
+            };
+
+            //tilføjer entries til Service text
+            foreach (ServiceEntryUI entry in caseService.ServiceEntries)
+            {
+                fixedServiceText.Add($"{entry.Date.ToString("d")}: {entry.HoursWorked} Hours");
+            }
+
+            //text der skal staa under entries
+            List<string> fixedServiceBottomText = new List<string>()
+            {
+                $"",
+                $"Total Hours: {caseService.HoursWorked}",
+                $"",
+                $"FixedPrice: {caseService.Service.Price}",
+                $"Agreed Price: {caseService.TotalPrice}",
+                $"",
+                $"---------------------------------------------------------------------------",
+            };
+
+            //tilfoojer teksten efter entries til hovedteksten for HourlyService
+            foreach (string txt in fixedServiceBottomText)
+            {
+                fixedServiceText.Add(txt);
+            }
+
+            //tilfoojer hele HourlyService teksten til listen den skal udskrive til txt
+            foreach (string txt in fixedServiceText)
+            {
+                textToWrite.Add(txt);
+            }
+
+            return textToWrite;
+        }
+
+
     }
 }

@@ -34,11 +34,12 @@
             saveFileDialog1 = new SaveFileDialog();
             btnSave = new Button();
             btnCancel = new Button();
+            ckboxDetailedVersion = new CheckBox();
             SuspendLayout();
             // 
             // txtPath
             // 
-            txtPath.Location = new Point(84, 49);
+            txtPath.Location = new Point(84, 37);
             txtPath.Name = "txtPath";
             txtPath.Size = new Size(272, 23);
             txtPath.TabIndex = 0;
@@ -46,7 +47,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 52);
+            label1.Location = new Point(26, 40);
             label1.Name = "label1";
             label1.Size = new Size(52, 15);
             label1.TabIndex = 1;
@@ -54,7 +55,7 @@
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new Point(362, 49);
+            btnBrowse.Location = new Point(362, 37);
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Size(33, 23);
             btnBrowse.TabIndex = 2;
@@ -79,11 +80,23 @@
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
+            // ckboxDetailedVersion
+            // 
+            ckboxDetailedVersion.AutoSize = true;
+            ckboxDetailedVersion.CheckAlign = ContentAlignment.MiddleRight;
+            ckboxDetailedVersion.Location = new Point(177, 98);
+            ckboxDetailedVersion.Name = "ckboxDetailedVersion";
+            ckboxDetailedVersion.Size = new Size(137, 19);
+            ckboxDetailedVersion.TabIndex = 5;
+            ckboxDetailedVersion.Text = "Print detailed version";
+            ckboxDetailedVersion.UseVisualStyleBackColor = true;
+            // 
             // PrintCaseDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(480, 130);
+            ClientSize = new Size(432, 130);
+            Controls.Add(ckboxDetailedVersion);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(btnBrowse);
@@ -104,5 +117,6 @@
         private SaveFileDialog saveFileDialog1;
         private Button btnSave;
         private Button btnCancel;
+        private CheckBox ckboxDetailedVersion;
     }
 }

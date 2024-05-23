@@ -32,5 +32,7 @@ namespace UIModels
 
         public ServiceUI Service { get; set; }
         public LawyerUI Lawyer { get; set; }
+
+        public ICollection<ServiceEntryUI> ServiceEntries { get; set; }
     }
 }

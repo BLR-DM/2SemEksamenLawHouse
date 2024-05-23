@@ -19,11 +19,6 @@ namespace BusinessLogic
             dbAccess = new LoginDbAccess();
         }
 
-        public async Task<bool> CheckUsernameAsync(string username)
-        {
-            return await dbAccess.CheckUsernameAsync(username);
-        }
-
         public async Task<int> CheckUsernameAndPasswordAsync(string username, string password)
         {
             return await dbAccess.CheckUsernameAndPasswordAsync(username, password);

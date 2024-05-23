@@ -52,6 +52,7 @@ namespace UI.Forms.CasePage
             btnSubmit.Enabled = false;
 
             CheckStatus();
+            SetDgvStyle();
             SetDgvAsync();
             SetCaseInformationAsync();
             SetLawyerInformationAsync();
@@ -129,7 +130,7 @@ namespace UI.Forms.CasePage
         {
             //Når formen lukkes så opdateres detailview for casen
             await caseDetailsView.SetCaseDataAsync();
-            await caseDetailsView.SetDgvAsync();
+            caseDetailsView.SetDgvAsync();
             base.OnClosing(e);
         }
 
@@ -226,9 +227,22 @@ namespace UI.Forms.CasePage
             dgvServiceEntry.Columns["CaseServiceID"].Visible = false;
             dgvServiceEntry.Columns["CaseService"].Visible = false;
 
-            dgvServiceEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvServiceEntry.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
 
+        private void SetDgvStyle()
+        {
+            dgvServiceEntry.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvServiceEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgvServiceEntry.EnableHeadersVisualStyles = false;
+
+            dgvServiceEntry.RowHeadersVisible = false;
+
+            dgvServiceEntry.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvServiceEntry.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvServiceEntry.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvServiceEntry.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public async Task SetLawyerInformationAsync()

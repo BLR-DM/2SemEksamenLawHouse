@@ -26,6 +26,7 @@ namespace UI.Forms.CasePage
             dgvClientView.CellDoubleClick += DgvClientView_CellDoubleClick;
             txtSearch.TextChanged += TxtSearch_TextChanged;
 
+            SetDgvStyle();
             SetDgv();
 
         }
@@ -83,11 +84,22 @@ namespace UI.Forms.CasePage
             dgvClientView.Columns["PersonID"].Visible = false;
             dgvClientView.Columns["IsSubscribed"].Visible = false;
             dgvClientView.Columns["LoginDetailsID"].Visible = false;
-
+        }
+        private void SetDgvStyle()
+        {
             dgvClientView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
 
+            dgvClientView.EnableHeadersVisualStyles = false;
+
+            dgvClientView.RowHeadersVisible = false;
+
+            dgvClientView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvClientView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvClientView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvClientView.DefaultCellStyle.SelectionForeColor = Color.Black;
+        }
 
 
     }

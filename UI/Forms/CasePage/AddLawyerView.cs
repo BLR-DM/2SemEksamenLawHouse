@@ -35,7 +35,8 @@ namespace UI.Forms.CasePage
 
             cboSpecialities.SelectedIndexChanged += CboSpecialities_SelectedIndexChanged;
             txtSearch.TextChanged += TxtSearch_TextChanged;
-            
+
+            SetDgvStyle();
             SetDgv();
             SetComboBox();
         }
@@ -150,11 +151,22 @@ namespace UI.Forms.CasePage
             dgvLawyerView.Columns["CaseServices"].Visible = false;
             dgvLawyerView.Columns["Cases"].Visible = false;
 
+        }
 
-
-
+        private void SetDgvStyle()
+        {
             dgvLawyerView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLawyerView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgvLawyerView.EnableHeadersVisualStyles = false;
+
+            dgvLawyerView.RowHeadersVisible = false;
+
+            dgvLawyerView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvLawyerView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvLawyerView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvLawyerView.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 }

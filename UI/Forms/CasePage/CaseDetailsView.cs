@@ -80,6 +80,11 @@ namespace UI.Forms.CasePage
                 btnAddService.Visible = false;
                 btnUpdateCase.Visible = false;
                 btnUpdateCaseStatus.Visible = false;
+                txtTitle.Enabled = false;
+                txtDescription.Enabled = false;
+                dtpEstimatedEndDate.Enabled = false;
+                txtEstimatedHours.Enabled = false;
+
             }
 
             if (isMyPage)
@@ -97,7 +102,7 @@ namespace UI.Forms.CasePage
         {
             PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView
                                                         (selectedCase, caseTypeUIList, selectedLawyer,
-                                                        selectedClient, caseServiceList, serviceBL, lawyerBL, serviceEntryBL);
+                                                        selectedClient, caseServiceList);
             printCaseDetailsView.ShowDialog();
         }
 

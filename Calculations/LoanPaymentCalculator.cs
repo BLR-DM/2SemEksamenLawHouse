@@ -2,7 +2,7 @@
 {
     public static class LoanPaymentCalculator
     {
-        public static (double TotalPerYear, double AmountPerPayment) CalcLoanPayment (
+        public static (double TotalPerYear, double AmountPerPayment, double TotalAmountPaid) CalcLoanPayment (
             double loanAmount, double interestRate, double amountOfYears, double paymentsPerYear)
         {
             //udregning at betaling pr aar
@@ -16,7 +16,13 @@
             //afrunde til 2 decimaler
             double roundedAmountPerPayment = Math.Round(amountPerPayment, 2);
 
-            return (roundedTotalPerYear, roundedAmountPerPayment);
+            //berening af samlet betalt belob
+            double totalAmountPaid = totalPerYear * amountOfYears;
+            //afrund til 2 decimaler
+            double roundedTotalAmountPaid = Math.Round(totalAmountPaid, 2);
+
+
+            return (roundedTotalPerYear, roundedAmountPerPayment, roundedTotalAmountPaid);
         }
 
         public static (double RemainingBalance, double PaymentAmount) CalcRemainingBalanceOnLoan (

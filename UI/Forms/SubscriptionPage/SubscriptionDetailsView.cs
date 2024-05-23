@@ -38,6 +38,9 @@ namespace UI.Forms.SubscriptionPage
             dgvSubscriptions.Columns[0].Visible = false;
             dgvSubscriptions.Columns[4].Visible = false;
             dgvSubscriptions.Columns[5].Visible = false;
+            dgvSubscriptions.AllowUserToResizeRows = false;
+            dgvSubscriptions.AllowUserToResizeColumns = false;
+            dgvSubscriptions.ReadOnly = true;
             dgvSubscriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         

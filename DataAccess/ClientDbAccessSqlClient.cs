@@ -133,7 +133,7 @@ namespace DataAccess
 
         
 
-        public async Task<Client> GetClientAsync(int ClientID)
+        public async Task<Client> GetClientAsync(int clientID)
         {
             Client client = new Client();
             List<Phone> phoneList = new();
@@ -146,10 +146,11 @@ namespace DataAccess
             {
                 await dbConn.OpenAsync();
 
-                string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID";
+                string selectAllClientAndPersonQuery = "SELECT p.* FROM Clients c, Persons p WHERE c.PersonID = p.PersonID AND p.PersonID = @CID";
 
                 using SqlCommand SelectClientCMD = new SqlCommand(selectAllClientAndPersonQuery, dbConn);
                 {
+                    SelectClientCMD.Parameters.AddWithValue("@CID", clientID);
 
                     using SqlDataReader reader = await SelectClientCMD.ExecuteReaderAsync();
                     {
@@ -173,7 +174,7 @@ namespace DataAccess
 
                 using SqlCommand selectPhonesCMD = new SqlCommand(selectAllClientPhonesQuery, dbConn);
                 {
-                    selectPhonesCMD.Parameters.AddWithValue("@CID", ClientID);
+                    selectPhonesCMD.Parameters.AddWithValue("@CID", clientID);
                     using SqlDataReader phoneReader = await selectPhonesCMD.ExecuteReaderAsync();
                     {
                         while (await phoneReader.ReadAsync())
@@ -196,7 +197,7 @@ namespace DataAccess
                 string selectAllClientSubscriptionQuery = "SELECT * FROM ClientSubscriptions WHERE ClientID = @CID";
                 using SqlCommand selectClientSubCMD = new SqlCommand(selectAllClientSubscriptionQuery, dbConn);
                 {
-                    selectClientSubCMD.Parameters.AddWithValue("@CID", ClientID);
+                    selectClientSubCMD.Parameters.AddWithValue("@CID", clientID);
                     using SqlDataReader subReader = await selectClientSubCMD.ExecuteReaderAsync();
                     {
 

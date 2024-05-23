@@ -67,6 +67,7 @@ namespace UI.Forms.CasePage
                 btnSubmit.Visible = false;
                 txtHoursWorked.Visible = false;
                 lblHoursWorked.Visible = false;
+                btnClose.Visible = false;
             }
 
             if(selectedCaseService.PriceType == "Kilometer")

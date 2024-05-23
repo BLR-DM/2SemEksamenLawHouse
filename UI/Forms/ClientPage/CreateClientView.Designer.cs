@@ -251,9 +251,9 @@
             lblName.ForeColor = Color.FromArgb(45, 93, 134);
             lblName.Location = new Point(34, 30);
             lblName.Name = "lblName";
-            lblName.Size = new Size(81, 21);
+            lblName.Size = new Size(53, 21);
             lblName.TabIndex = 29;
-            lblName.Text = "Firstname";
+            lblName.Text = "Name";
             // 
             // txtCity
             // 
@@ -325,14 +325,15 @@
             label1.ForeColor = Color.FromArgb(45, 93, 134);
             label1.Location = new Point(16, 11);
             label1.Name = "label1";
-            label1.Size = new Size(85, 21);
+            label1.Size = new Size(83, 21);
             label1.TabIndex = 38;
-            label1.Text = "Firstname:";
+            label1.Text = "Full name:";
             // 
             // rtxtPhoneNumbers
             // 
-            rtxtPhoneNumbers.Location = new Point(193, 157);
+            rtxtPhoneNumbers.Location = new Point(165, 155);
             rtxtPhoneNumbers.Name = "rtxtPhoneNumbers";
+            rtxtPhoneNumbers.ReadOnly = true;
             rtxtPhoneNumbers.Size = new Size(118, 83);
             rtxtPhoneNumbers.TabIndex = 35;
             rtxtPhoneNumbers.Text = "";
@@ -357,9 +358,8 @@
             lblAddressView.ForeColor = Color.FromArgb(45, 93, 134);
             lblAddressView.Location = new Point(96, 103);
             lblAddressView.Name = "lblAddressView";
-            lblAddressView.Size = new Size(38, 21);
+            lblAddressView.Size = new Size(0, 21);
             lblAddressView.TabIndex = 34;
-            lblAddressView.Text = "test";
             // 
             // lblEmailView
             // 
@@ -369,9 +369,8 @@
             lblEmailView.ForeColor = Color.FromArgb(45, 93, 134);
             lblEmailView.Location = new Point(96, 57);
             lblEmailView.Name = "lblEmailView";
-            lblEmailView.Size = new Size(38, 21);
+            lblEmailView.Size = new Size(0, 21);
             lblEmailView.TabIndex = 34;
-            lblEmailView.Text = "test";
             // 
             // lblNameView
             // 
@@ -381,9 +380,8 @@
             lblNameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblNameView.Location = new Point(96, 11);
             lblNameView.Name = "lblNameView";
-            lblNameView.Size = new Size(38, 21);
+            lblNameView.Size = new Size(0, 21);
             lblNameView.TabIndex = 34;
-            lblNameView.Text = "test";
             // 
             // lblUsernameView
             // 
@@ -393,9 +391,8 @@
             lblUsernameView.ForeColor = Color.FromArgb(45, 93, 134);
             lblUsernameView.Location = new Point(623, 407);
             lblUsernameView.Name = "lblUsernameView";
-            lblUsernameView.Size = new Size(38, 21);
+            lblUsernameView.Size = new Size(0, 21);
             lblUsernameView.TabIndex = 35;
-            lblUsernameView.Text = "test";
             // 
             // label7
             // 

@@ -38,6 +38,7 @@
             // lblCalcLoanPayment
             // 
             lblCalcLoanPayment.AutoSize = true;
+            lblCalcLoanPayment.Cursor = Cursors.Hand;
             lblCalcLoanPayment.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCalcLoanPayment.ForeColor = Color.FromArgb(45, 93, 134);
             lblCalcLoanPayment.Location = new Point(40, 87);
@@ -64,6 +65,7 @@
             // lblCalcROI
             // 
             lblCalcROI.AutoSize = true;
+            lblCalcROI.Cursor = Cursors.Hand;
             lblCalcROI.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCalcROI.ForeColor = Color.FromArgb(45, 93, 134);
             lblCalcROI.Location = new Point(40, 147);
@@ -75,6 +77,7 @@
             // lblCalcRemainingBalanceOnLoan
             // 
             lblCalcRemainingBalanceOnLoan.AutoSize = true;
+            lblCalcRemainingBalanceOnLoan.Cursor = Cursors.Hand;
             lblCalcRemainingBalanceOnLoan.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCalcRemainingBalanceOnLoan.ForeColor = Color.FromArgb(45, 93, 134);
             lblCalcRemainingBalanceOnLoan.Location = new Point(40, 208);

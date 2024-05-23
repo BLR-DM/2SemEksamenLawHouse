@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using EntityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,25 +34,29 @@ namespace UI.Forms.AdminPage
 
         private async void BtnCreateForm_Click(object? sender, EventArgs e)
         {
-            FormDocumentUI formToCreate = new FormDocumentUI()
-            {
-                Name = txtName.Text,
-                Description = txtDescription.Text,
-                Price = float.Parse(txtPrice.Text)
-            };
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to create the form: {txtName.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            bool isCreated = await formBL.CreateFormDocumentAsync(formToCreate);
-
-            if (isCreated)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Form has been created");
-                this.Close();
+                FormDocumentUI formToCreate = new FormDocumentUI()
+                {
+                    Name = txtName.Text,
+                    Description = txtDescription.Text,
+                    Price = float.Parse(txtPrice.Text)
+                };
+
+                bool isCreated = await formBL.CreateFormDocumentAsync(formToCreate);
+
+                if (isCreated)
+                {
+                    MessageBox.Show($"The form {txtName.Text} has been created!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("ERROR! This form hasnt been created");
-            }
-
         }
 
 
@@ -81,37 +86,48 @@ namespace UI.Forms.AdminPage
 
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            FormDocumentUI formToUpdate = new FormDocumentUI()
-            {
-                FormDocumentID = form.FormDocumentID,
-                Name = txtName.Text,
-                Description = txtDescription.Text,
-                Price = float.Parse(txtPrice.Text)
-            };
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to update the form: {txtName.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            bool isUpdated = await formBL.UpdateFormDocumentAsync(formToUpdate);
-            if (isUpdated)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Form has been updated");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("ERROR! Form hasnt been updated");
-            }
+                FormDocumentUI formToUpdate = new FormDocumentUI()
+                {
+                    FormDocumentID = form.FormDocumentID,
+                    Name = txtName.Text,
+                    Description = txtDescription.Text,
+                    Price = float.Parse(txtPrice.Text)
+                };
 
+                bool isUpdated = await formBL.UpdateFormDocumentAsync(formToUpdate);
+
+                if (isUpdated)
+                {
+                    MessageBox.Show($"The form {txtName.Text} has been updated!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private async void BtnDelete_Click(object? sender, EventArgs e)
         {
-            bool isDeleted = await formBL.DeleteFormDocumentAsync(form);
-            if (isDeleted)
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to DELETE the form: {txtName.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Form has been deleted");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("ERROR! Form hasnt been deleted");
+                bool isDeleted = await formBL.DeleteFormDocumentAsync(form);
+
+                if (isDeleted)
+                {
+                    MessageBox.Show($"The form {txtName.Text} has been deleted!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

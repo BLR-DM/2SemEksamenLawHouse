@@ -24,14 +24,20 @@ namespace UI.Forms.FrontPage
 
 
         PersonBL personBL;
+        ClientBL clientBL;
+        
         OverallValidator oaValidator;
+
+        int loginDetailsID;
 
         public FrontPageView(int loginDetailsID)
         {
             personBL = new PersonBL();
-
+            clientBL = new ClientBL();
             
             rgbColorBlue = Color.FromArgb(45, 93, 134);
+
+            this.loginDetailsID = loginDetailsID;
 
             GetPersonAsync(loginDetailsID);
 
@@ -93,8 +99,11 @@ namespace UI.Forms.FrontPage
         }
 
 
+
         private async Task SetupClientFormAsync()
         {
+            this.clientUI = await clientBL.GetClientAsync(clientUI.PersonID);
+
             // Knapper
             btnMyPageClient.Visible = true;
             btnLawyers.Visible = true;
@@ -121,7 +130,7 @@ namespace UI.Forms.FrontPage
             btnEmployees.Visible = true;
             btnCase.Visible = true;
             btnClients.Visible = true;
-            btnAdminPage.Visible = true; // sortByNameCount
+            btnAdminPage.Visible = false; ; // sortByNameCount
 
             SetNavBtnColor(btnMyPageLawyer);
 

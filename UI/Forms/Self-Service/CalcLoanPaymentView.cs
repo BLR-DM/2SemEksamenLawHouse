@@ -45,6 +45,7 @@ namespace UI.Forms.Self_Service
             lblAmountPrPayment.Text = string.Empty;
             lblTotalPrYear.Text = string.Empty;
             btnCalculate.Enabled = false;
+            lblTotalAmountPaid.Text = string.Empty;
         }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)
@@ -62,15 +63,19 @@ namespace UI.Forms.Self_Service
                 double paymentsPrYear = double.Parse(txtPaymentsPrYear.Text);
 
                 //kalder beregner med inputs
-                (double totalPrYear, double amountPrYear) result = LoanPaymentCalculator
+                (double totalPrYear, double amountPrPayment, double totalAmountPaid) result = LoanPaymentCalculator
                     .CalcLoanPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear);
 
                 //udskriver total betaling pr aar i kroner
                 lblTotalPrYear.Text = result.totalPrYear.ToString("C", new CultureInfo("da-DK"));
 
-                double amountPrPayment = LoanPaymentCalculator.CalcLoanPayment(loanAmount, interestRate, amountOfYears, paymentsPrYear).AmountPerPayment;
                 //udskriver beløb pr betaling i kroner
-                lblAmountPrPayment.Text = result.amountPrYear.ToString("C", new CultureInfo("da-DK"));
+                lblAmountPrPayment.Text = result.amountPrPayment.ToString("C", new CultureInfo("da-DK"));
+
+                //udskriver total belob betalt nar lan er betalt ud
+                lblTotalAmountPaid.Text = result.totalAmountPaid.ToString("C", new CultureInfo("da-DK"));
+
+
             }
             else
             {
@@ -99,6 +104,7 @@ namespace UI.Forms.Self_Service
 
             lblAmountPrPayment.Text = string.Empty;
             lblTotalPrYear.Text = string.Empty;
+            lblTotalAmountPaid.Text = string.Empty;
         }
 
         //validere inputs

@@ -29,13 +29,9 @@ namespace UI.Forms.CasePage
             btnBrowse.Click += BtnBrowse_Click;
             btnSave.Click += BtnSave_Click;
             btnCancel.Click += BtnCancel_Click;
-            Load += PrintCaseDetailsView_Load;
+
         }
 
-        private async void PrintCaseDetailsView_Load(object? sender, EventArgs e)
-        {
-            caseUItest = await caseBL.GetCaseWithAllCollectionsAsync(caseUI.CaseID);
-        }
 
         private async void BtnSave_Click(object? sender, EventArgs e)
         {
@@ -45,11 +41,11 @@ namespace UI.Forms.CasePage
 
             if(ckboxDetailedVersion.Checked)
             {
-                success = await caseUItest.PrintWithExtraDetailsAsync(txtPath.Text);
+                success = await caseUI.PrintWithExtraDetailsAsync(txtPath.Text);
             }
             else
             {
-                success = await caseUItest.PrintDetails(txtPath.Text);
+                success = await caseUI.PrintDetails(txtPath.Text);
             }
 
             if(success)

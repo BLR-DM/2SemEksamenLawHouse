@@ -162,6 +162,8 @@ namespace UI.Forms.Self_Service
             dgvForms.RowHeadersVisible = false;
             dgvForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            dgvForms.MultiSelect = false;
+
             dgvForms.AllowUserToResizeColumns = false;
             dgvForms.AllowUserToResizeRows = false;
 

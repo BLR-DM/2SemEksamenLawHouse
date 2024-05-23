@@ -178,6 +178,7 @@ namespace UI.Forms.ClientPage
             //vaelg hele rækken
             dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClients.ReadOnly = true;
+            dgvClients.MultiSelect = false;
 
             dgvClients.EnableHeadersVisualStyles = false;
             dgvClients.RowHeadersVisible = false;

@@ -44,6 +44,7 @@ namespace UI.Forms.AdminPage
             dgvForms.DataSource = formDocumentUIs;
             dgvForms.Columns["FormDocumentID"].Visible = false;
             dgvForms.Columns["Description"].Visible = false;
+            dgvForms.MultiSelect = false;
             dgvForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvForms.ReadOnly = true;
             dgvForms.RowHeadersVisible = false;

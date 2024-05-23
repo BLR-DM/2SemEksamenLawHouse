@@ -300,6 +300,7 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.ColumnHeadersVisible = false;
             dgvPhoneNumbers.RowHeadersVisible = false;
             dgvPhoneNumbers.ReadOnly = true;
+            dgvPhoneNumbers.MultiSelect = false;
             dgvPhoneNumbers.AllowUserToResizeColumns = false;
             dgvPhoneNumbers.AllowUserToResizeRows = false;
             dgvPhoneNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -319,6 +320,7 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBoughtForms.ReadOnly = true;
             dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCases.MultiSelect = false;
 
             dgvBoughtForms.AllowUserToResizeColumns = false;
             dgvBoughtForms.AllowUserToResizeRows = false;
@@ -360,6 +362,7 @@ namespace UI.Forms.ClientPage
             dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCases.ReadOnly = true;
             dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCases.MultiSelect = false;
 
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;

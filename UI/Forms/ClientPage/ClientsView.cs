@@ -42,6 +42,12 @@ namespace UI.Forms.ClientPage
             dgvClients.DataSourceChanged += DgvClients_DataSourceChanged;
             ckboxSubscribed.CheckedChanged += CkboxSubscribed_CheckedChanged;
             ckboxNotSubscribed.CheckedChanged += CkboxNotSubscribed_CheckedChanged;
+            button1.Click += Button1_Click;
+        }
+
+        private void Button1_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("LawHouseDiagrammer.drawio");
         }
 
         private void DgvClients_DataSourceChanged(object? sender, EventArgs e)
@@ -168,10 +174,6 @@ namespace UI.Forms.ClientPage
             dgvClients.Columns["City"].DisplayIndex = 7;
             dgvClients.Columns["IsSubscribed"].DisplayIndex = 8;
             dgvClients.Columns["LoginDetailsID"].DisplayIndex = 9;
-
-           
-
-            //dgvClients.Columns["LoginDetailsID"].Visible = false;
 
             //fylder dgv ud med kolonnerne
             dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

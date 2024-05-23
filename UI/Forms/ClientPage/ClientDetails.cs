@@ -79,7 +79,9 @@ namespace UI.Forms.ClientPage
             dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
 
             Load += ClientDetails_Load;
-
+            SetDgvStyle(dgvBoughtForms);
+            SetDgvStyle(dgvCases);
+            SetDgvStyle(dgvPhoneNumbers);
 
         }
 
@@ -297,14 +299,6 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.DataSource = phoneNumbers;
             dgvPhoneNumbers.Columns["PhoneID"].Visible = false;
             dgvPhoneNumbers.Columns["ClientID"].Visible = false;
-            dgvPhoneNumbers.ColumnHeadersVisible = false;
-            dgvPhoneNumbers.RowHeadersVisible = false;
-            dgvPhoneNumbers.ReadOnly = true;
-            dgvPhoneNumbers.MultiSelect = false;
-            dgvPhoneNumbers.AllowUserToResizeColumns = false;
-            dgvPhoneNumbers.AllowUserToResizeRows = false;
-            dgvPhoneNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         
@@ -317,20 +311,6 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.DataSource = boughtForms;
             dgvBoughtForms.Columns["FormDocumentID"].Visible = false;
             dgvBoughtForms.Columns["Description"].Visible = false;
-            dgvBoughtForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBoughtForms.ReadOnly = true;
-            dgvBoughtForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCases.MultiSelect = false;
-
-            dgvBoughtForms.AllowUserToResizeColumns = false;
-            dgvBoughtForms.AllowUserToResizeRows = false;
-
-            dgvBoughtForms.EnableHeadersVisualStyles = false;
-            dgvBoughtForms.RowHeadersVisible = false;
-
-            dgvBoughtForms.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
-            dgvBoughtForms.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
-
 
         }
         private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -359,19 +339,6 @@ namespace UI.Forms.ClientPage
             dgvCases.Columns[9].Visible = false;
             dgvCases.Columns[10].Visible = false;
             dgvCases.Columns[11].Visible = false;
-            dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCases.ReadOnly = true;
-            dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCases.MultiSelect = false;
-
-            dgvCases.AllowUserToResizeColumns = false;
-            dgvCases.AllowUserToResizeRows = false;
-
-            dgvCases.EnableHeadersVisualStyles = false;
-            dgvCases.RowHeadersVisible = false;
-
-            dgvCases.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
-            dgvCases.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
 
         }
 
@@ -396,7 +363,20 @@ namespace UI.Forms.ClientPage
             }
         }
 
+        private void SetDgvStyle(DataGridView dgv)
+        {
+            dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCases.ReadOnly = true;
+            dgvCases.MultiSelect = false;
+            dgvCases.AllowUserToResizeColumns = false;
+            dgvCases.AllowUserToResizeRows = false;
 
+            dgvCases.EnableHeadersVisualStyles = false;
+            dgvCases.RowHeadersVisible = false;
+            dgvCases.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvCases.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+        }
         private void btnUpdateEnabled()
         {
             //tester på at alle indputs er valid og enabler/disabler update knap

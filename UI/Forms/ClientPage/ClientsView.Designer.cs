@@ -38,6 +38,7 @@
             dgvClients = new DataGridView();
             lblClientAmmount = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             SuspendLayout();
@@ -152,12 +153,22 @@
             btnCreate.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnCreate.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            button1.Location = new Point(260, 123);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 52;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // ClientsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(button1);
             Controls.Add(btnCreate);
             Controls.Add(lblClientAmmount);
             Controls.Add(dgvClients);
@@ -190,5 +201,6 @@
         private Label lblClientAmmount;
         private TextBox txtSearchPostal;
         private FontAwesome.Sharp.IconButton btnCreate;
+        private Button button1;
     }
 }

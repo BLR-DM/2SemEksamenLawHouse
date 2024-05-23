@@ -27,22 +27,23 @@ namespace BusinessLogic.Validation
         public bool ValidDescription(string description)
         {
             return !string.IsNullOrEmpty(description)
-                && description.Length > 2
-                && description.Length < 300;
+                && description.Length >= 4
+                && description.Length <= 300;
         }
 
         public bool ValidTitle(string title)
         {
             return !string.IsNullOrEmpty(title)
-                && title.Length > 2
-                && title.Length < 50;
+                && title.Length >= 4
+                && title.Length <= 50;
         }
 
         public bool ValidEstimatedHours(string estimatedHours)
         {
             return !string.IsNullOrEmpty(estimatedHours)
-                && int.TryParse(estimatedHours, out int hours)
+                && float.TryParse(estimatedHours, out float hours)
                 && hours > 0
+
                 && vUnit.IsMatch(estimatedHours);
         }
 

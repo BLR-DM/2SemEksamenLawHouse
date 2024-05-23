@@ -14,28 +14,20 @@ namespace UI.Forms.CasePage
 {
     public partial class PrintCaseDetailsView : Form
     {
-        CaseUI caseUI;
-        CaseBL caseBL;
-
-        CaseUI caseUItest;
+        CaseUI selectedCase;
 
         public PrintCaseDetailsView(CaseUI caseUI)
         {
-            caseBL = new CaseBL();
-            this.caseUI = caseUI;
+            this.selectedCase = caseUI;
 
 
             InitializeComponent();
             btnBrowse.Click += BtnBrowse_Click;
             btnSave.Click += BtnSave_Click;
             btnCancel.Click += BtnCancel_Click;
-            Load += PrintCaseDetailsView_Load;
+
         }
 
-        private async void PrintCaseDetailsView_Load(object? sender, EventArgs e)
-        {
-            caseUItest = await caseBL.GetCaseWithAllCollectionsAsync(caseUI.CaseID);
-        }
 
         private async void BtnSave_Click(object? sender, EventArgs e)
         {
@@ -45,11 +37,11 @@ namespace UI.Forms.CasePage
 
             if(ckboxDetailedVersion.Checked)
             {
-                success = await caseUItest.PrintWithExtraDetailsAsync(txtPath.Text);
+                success = await selectedCase.PrintWithExtraDetailsAsync(txtPath.Text);
             }
             else
             {
-                success = await caseUItest.PrintDetails(txtPath.Text);
+                success = await selectedCase.PrintDetails(txtPath.Text);
             }
 
             if(success)

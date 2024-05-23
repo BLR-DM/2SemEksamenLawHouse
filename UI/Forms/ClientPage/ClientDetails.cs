@@ -63,6 +63,9 @@ namespace UI.Forms.ClientPage
 
             txtEmail.Enabled = false;
             btnAddPhone.Enabled = false;
+            SetDgvStyle(dgvBoughtForms);
+            SetDgvStyle(dgvCases);
+            SetDgvStyle(dgvPhoneNumbers);
 
             //Events
             btnUpdate.Click += BtnUpdate_ClickAsync;
@@ -79,9 +82,6 @@ namespace UI.Forms.ClientPage
             dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
 
             Load += ClientDetails_Load;
-            SetDgvStyle(dgvBoughtForms);
-            SetDgvStyle(dgvCases);
-            SetDgvStyle(dgvPhoneNumbers);
 
         }
 
@@ -365,17 +365,17 @@ namespace UI.Forms.ClientPage
 
         private void SetDgvStyle(DataGridView dgv)
         {
-            dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCases.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCases.ReadOnly = true;
-            dgvCases.MultiSelect = false;
-            dgvCases.AllowUserToResizeColumns = false;
-            dgvCases.AllowUserToResizeRows = false;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.ReadOnly = true;
+            dgv.MultiSelect = false;
+            dgv.AllowUserToResizeColumns = false;
+            dgv.AllowUserToResizeRows = false;
 
-            dgvCases.EnableHeadersVisualStyles = false;
-            dgvCases.RowHeadersVisible = false;
-            dgvCases.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
-            dgvCases.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.RowHeadersVisible = false;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
         }
         private void btnUpdateEnabled()
         {

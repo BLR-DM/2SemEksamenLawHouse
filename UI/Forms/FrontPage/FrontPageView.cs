@@ -110,7 +110,6 @@ namespace UI.Forms.FrontPage
             btnForms.Visible = true;
             btnSubscribe.Visible = true;
             btnCalculations.Visible = true;
-            btnAdminPage.Visible = true; //
 
             SetNavBtnColor(btnMyPageClient);
 

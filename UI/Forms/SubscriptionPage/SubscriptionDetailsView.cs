@@ -41,6 +41,7 @@ namespace UI.Forms.SubscriptionPage
             dgvSubscriptions.AllowUserToResizeRows = false;
             dgvSubscriptions.AllowUserToResizeColumns = false;
             dgvSubscriptions.ReadOnly = true;
+            dgvSubscriptions.MultiSelect = false;
             dgvSubscriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         

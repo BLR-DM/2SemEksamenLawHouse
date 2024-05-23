@@ -281,13 +281,23 @@ namespace BusinessLogic
             return lawyerUI;
         }
 
-        public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
+        public LawyerUI ConvertFromLawyerEntityWithAllCollections(Lawyer lawyerE)
         {
             LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
             lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
             lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceAndServiceEntity).ToList();
             lawyerUI.LawyerSpecialities = lawyerE.LawyerSpecialities.Select(ConvertFromLawyerSpecialityEntity).ToList();
             //lawyerUI.OpenCases = lawyerUI.Cases.Count(c => c.Status == "Active");
+
+            return lawyerUI;
+        }
+
+        public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
+        {
+            LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);
+            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
+            lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceEntity).ToList();
+            lawyerUI.LawyerSpecialities = lawyerE.LawyerSpecialities.Select(ConvertFromLawyerSpecialityEntity).ToList();
 
             return lawyerUI;
         }

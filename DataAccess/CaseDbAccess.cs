@@ -63,6 +63,8 @@ namespace DataAccess
                     .Include(c => c.CaseServices)
                         .ThenInclude(cs => cs.Lawyer)
                             .ThenInclude(l => l.LawyerTitle)
+                    .Include(c => c.CaseServices)
+                        .ThenInclude(cs => cs.ServiceEntries)
                     .FirstOrDefaultAsync(c => c.CaseID == id);
                 return caseE;
             }

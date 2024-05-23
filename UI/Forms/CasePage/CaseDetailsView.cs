@@ -100,9 +100,7 @@ namespace UI.Forms.CasePage
         
         private void BtnPrintDetails_Click(object? sender, EventArgs e)
         {
-            PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView
-                                                        (selectedCase, caseTypeUIList, selectedLawyer,
-                                                        selectedClient, caseServiceList);
+            PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView(selectedCase);
             printCaseDetailsView.ShowDialog();
         }
 

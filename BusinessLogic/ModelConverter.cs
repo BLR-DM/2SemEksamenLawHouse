@@ -91,7 +91,8 @@ namespace BusinessLogic
 
                 // Nav props
                 Lawyer = ConvertFromLawyerEntity(caseServiceE.Lawyer),
-                Service = ConvertFromServiceEntity(caseServiceE.Service)
+                Service = ConvertFromServiceEntity(caseServiceE.Service),
+                ServiceEntries = caseServiceE.ServiceEntries.Select(ConvertFromServiceEntryEntity).ToList(),
             };
             return caseServiceUI;
         }

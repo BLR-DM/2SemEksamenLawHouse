@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using UIModels;
 using BusinessLogic.Validation;
+using UI.Forms.LoginPage;
 
 namespace UI.Forms.CreateUserPage
 {
@@ -12,10 +13,13 @@ namespace UI.Forms.CreateUserPage
         Color validFormat;
         Color invalidFormat;
         Color rgbColorBlue;
-        public CreateUserView()
+
+        LoginPageView loginPage;
+        public CreateUserView(LoginPageView loginPage)
         {
             clientBL = new ClientBL();
             pValidator = new PersonValidator();
+            this.loginPage = loginPage;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -92,12 +96,17 @@ namespace UI.Forms.CreateUserPage
 
             if (result)
             {
-                MessageBox.Show("CLIENT ADDED!");
+                MessageBox.Show($"Client '{client}' successfully added!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loginPage.GetCreatedUsername(client.Email);
                 this.Close();
             }
-                
             else
-                MessageBox.Show("Failed!");
+            {
+                MessageBox.Show("Failed to add client. Please check the entered details and try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             btnCreate.Enabled = true;
         }
 
@@ -129,6 +138,12 @@ namespace UI.Forms.CreateUserPage
         private void LblCancel_Click(object? sender, EventArgs e)
         {
             this.Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            loginPage.Show();
         }
 
         // Validering events

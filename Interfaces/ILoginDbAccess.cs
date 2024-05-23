@@ -8,7 +8,6 @@ namespace Interfaces
 {
     public interface ILoginDbAccess
     {
-        Task<bool> CheckUsernameAsync(string username);
         Task<int> CheckUsernameAndPasswordAsync(string username, string password);
         Task<string> RetrievePasswordAsync(string username);
     }

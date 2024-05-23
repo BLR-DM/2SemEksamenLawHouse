@@ -33,6 +33,7 @@ namespace UI.Forms.EmployeePage
         List<string> selectedFilters;
         List<LawyerUI> filteredLawyers;
         List<EmployeeUI> filteredEmployees;
+        List<SecretaryUI> filteredSecretaries;
 
         int sortByNameCount, sortByCaseCount, sortByServiceCount, 
             sortBySpecialityCount, sortByHireDate;
@@ -57,7 +58,6 @@ namespace UI.Forms.EmployeePage
             cboxFilter.Enabled = false;
 
 
-
             Load += EmployeesOverview_Load;
             dgvEmployees.CellDoubleClick += DgvEmployees_CellDoubleClick;
             dgvEmployees.DataSourceChanged += DgvEmployees_DataSourceChanged;
@@ -66,7 +66,7 @@ namespace UI.Forms.EmployeePage
             btnTrashFilter.Click += BtnTrashFilter_Click;
             btnTrashSort.Click += BtnTrashSort_Click;
             cboxSort.SelectedIndexChanged += CboxSort_SelectedIndexChanged;
-            txtSearch.TextChanged += TxtSearch_TextChanged;  
+            txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
         private async void EmployeesOverview_Load(object? sender, EventArgs e)
@@ -152,73 +152,33 @@ namespace UI.Forms.EmployeePage
             flpnlFilters.Controls.Clear();
             selectedFilters.Clear();
             btnTrashFilter.Visible = false;
+            cboxFilter.SelectedItem = null;
 
             SortDgv();
+        }
+
+        private void ResetSorts()
+        {
+            sortByNameCount = sortByCaseCount = sortByServiceCount = sortBySpecialityCount = sortByHireDate = 0;
+            cboxSort.SelectedItem = null;
+            btnTrashSort.Visible = false;
         }
 
         private void SortDgv()
         {
             if (cboxShow.SelectedItem == "Employees")
             {
-                filteredEmployees = new List<EmployeeUI>(employees);
-
-                string search = txtSearch.Text.Trim().ToLower();
-                if (!string.IsNullOrEmpty(search))
-                {
-                    filteredEmployees = filteredEmployees
-                        .Where(employee =>
-                        employee.PhoneNumber.ToString().Contains(search) ||
-                        employee.AddressLine.ToLower().Contains(search) ||
-                        employee.PostalCode.ToString().Contains(search) ||
-                        employee.Firstname.ToLower().Contains(search) ||
-                        employee.Lastname.ToLower().Contains(search) ||
-                        employee.HireDate.ToString().Contains(search) ||
-                        employee.Email.ToLower().Contains(search))
-                        .ToList();
-                }
-
-                if (cboxSort.SelectedItem != null)
-                {
-                    switch (cboxSort.SelectedItem)
-                    {
-                        case "Name":
-                            sortByNameCount++;
-                            if (sortByNameCount % 2 == 1)
-                            {
-                                filteredEmployees = filteredEmployees
-                                    .OrderBy(employee => employee.Firstname)
-                                    .ThenBy(employee => employee.Lastname)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredEmployees = filteredEmployees
-                                    .OrderByDescending(employee => employee.Firstname)
-                                    .ThenByDescending(employee => employee.Lastname)
-                                    .ToList();
-                            }
-                            break;
-
-                        case "Hire date":
-                            sortByHireDate++;
-                            if (sortByHireDate % 2 == 1)
-                            {
-                                filteredEmployees = filteredEmployees
-                                    .OrderBy(employee => employee.HireDate)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredEmployees = filteredEmployees
-                                    .OrderByDescending(employee => employee.HireDate)
-                                    .ToList();
-                            }
-                            break;
-                    }
-                }
+                SortEmployees();
 
                 dgvEmployees.CurrentCell = null;
                 SetupDgvWithEmployees();
+            }
+            else if (cboxShow.SelectedItem == "  Secretaries")
+            {
+                SortSecretaries();
+
+                dgvEmployees.CurrentCell = null;
+                SetupDgvWithSecretaries();
             }
             else if (cboxShow.SelectedItem == "  Lawyers")
             {
@@ -324,69 +284,168 @@ namespace UI.Forms.EmployeePage
             }
         }
 
+        private void SortEmployees()
+        {
+            filteredEmployees = new List<EmployeeUI>(employees);
+
+            string search = txtSearch.Text.Trim().ToLower();
+            if (!string.IsNullOrEmpty(search))
+            {
+                filteredEmployees = filteredEmployees
+                    .Where(employee =>
+                    employee.PhoneNumber.ToString().Contains(search) ||
+                    employee.AddressLine.ToLower().Contains(search) ||
+                    employee.PostalCode.ToString().Contains(search) ||
+                    employee.Firstname.ToLower().Contains(search) ||
+                    employee.Lastname.ToLower().Contains(search) ||
+                    employee.HireDate.ToString().Contains(search) ||
+                    employee.Email.ToLower().Contains(search))
+                    .ToList();
+            }
+
+            if (cboxSort.SelectedItem != null)
+            {
+                switch (cboxSort.SelectedItem)
+                {
+                    case "Name":
+                        sortByNameCount++;
+                        if (sortByNameCount % 2 == 1)
+                        {
+                            filteredEmployees = filteredEmployees
+                                .OrderBy(employee => employee.Firstname)
+                                .ThenBy(employee => employee.Lastname)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredEmployees = filteredEmployees
+                                .OrderByDescending(employee => employee.Firstname)
+                                .ThenByDescending(employee => employee.Lastname)
+                                .ToList();
+                        }
+                        break;
+
+                    case "Hire date":
+                        sortByHireDate++;
+                        if (sortByHireDate % 2 == 1)
+                        {
+                            filteredEmployees = filteredEmployees
+                                .OrderBy(employee => employee.HireDate)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredEmployees = filteredEmployees
+                                .OrderByDescending(employee => employee.HireDate)
+                                .ToList();
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void SortSecretaries()
+        {
+            filteredSecretaries = new List<SecretaryUI>(secretaries);
+
+            string search = txtSearch.Text.Trim().ToLower();
+            if (!string.IsNullOrEmpty(search))
+            {
+                filteredSecretaries = filteredSecretaries
+                    .Where(employee =>
+                    employee.PhoneNumber.ToString().Contains(search) ||
+                    employee.AddressLine.ToLower().Contains(search) ||
+                    employee.PostalCode.ToString().Contains(search) ||
+                    employee.Firstname.ToLower().Contains(search) ||
+                    employee.Lastname.ToLower().Contains(search) ||
+                    employee.HireDate.ToString().Contains(search) ||
+                    employee.Email.ToLower().Contains(search))
+                    .ToList();
+            }
+
+            if (cboxSort.SelectedItem != null)
+            {
+                switch (cboxSort.SelectedItem)
+                {
+                    case "Name":
+                        sortByNameCount++;
+                        if (sortByNameCount % 2 == 1)
+                        {
+                            filteredSecretaries = filteredSecretaries
+                                .OrderBy(employee => employee.Firstname)
+                                .ThenBy(employee => employee.Lastname)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredSecretaries = filteredSecretaries
+                                .OrderByDescending(employee => employee.Firstname)
+                                .ThenByDescending(employee => employee.Lastname)
+                                .ToList();
+                        }
+                        break;
+
+                    case "Hire date":
+                        sortByHireDate++;
+                        if (sortByHireDate % 2 == 1)
+                        {
+                            filteredSecretaries = filteredSecretaries
+                                .OrderBy(employee => employee.HireDate)
+                                .ToList();
+                        }
+                        else
+                        {
+                            filteredSecretaries = filteredSecretaries
+                                .OrderByDescending(employee => employee.HireDate)
+                                .ToList();
+                        }
+                        break;
+                }
+            }
+        }
+
         private async void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
         {
             lblShow.Focus();
             lblTotalEmployees.Text = "Loading...";
 
-            if (btnTrashFilter.Visible)
-            {
-                ResetFilters();
-                cboxFilter.Items.Clear();
-            }
+            ResetFilters();
+            ResetSorts();
 
             switch (cboxShow.SelectedItem)
             {
                 case "Employees":
                     FillComboBoxesForEmployees();
                     SetupDgvWithEmployees();
-                    lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
+                    lblTotalEmployees.Text = $"{filteredEmployees.Count} Employees";
                     break;
                 case "  Lawyers":
                     FillComboBoxesForLawyers();
                     SetupDgvWithLawyers();
-                    lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
+                    lblTotalEmployees.Text = $"{filteredLawyers.Count} Lawyers";
                     break;
                 case "  Secretaries":
                     FillComboBoxesForEmployees();
                     SetupDgvWithSecretaries();
-                    lblTotalEmployees.Text = $"{dgvEmployees.RowCount} {cboxShow.Text.TrimStart()}";
+                    lblTotalEmployees.Text = $"{filteredSecretaries.Count} Secretaries";
                     break;
             }
         }
 
-
-
-        private void SetDgvStyle()
-        {
-            dgvEmployees.EnableHeadersVisualStyles = false;
-
-            dgvEmployees.RowHeadersVisible = false;
-
-            dgvEmployees.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
-            dgvEmployees.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
-
-            dgvEmployees.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
-            dgvEmployees.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-            dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
-
         private void FillComboBoxesForEmployees()
         {
-            cboxSort.Items.Clear();
-
             // Sorterings combobox
+            cboxSort.Items.Clear();
             cboxSort.Items.Add("Name");
             cboxSort.Items.Add("Hire date");
+
+            cboxFilter.Items.Clear();
         }
 
         private void FillComboBoxesForLawyers()
         {
-            cboxSort.Items.Clear();
-
             // Sorterings combobox
+            cboxSort.Items.Clear();
             cboxSort.Items.Add("Name");
             cboxSort.Items.Add("Speciality");
             cboxSort.Items.Add("Open Cases");
@@ -495,7 +554,7 @@ namespace UI.Forms.EmployeePage
 
         private void SetupDgvWithSecretaries()
         {
-            dgvEmployees.DataSource = filteredEmployees;
+            dgvEmployees.DataSource = secretaries;
 
             cboxFilter.Enabled = false;
 
@@ -519,6 +578,22 @@ namespace UI.Forms.EmployeePage
             dgvEmployees.Columns["PostalCode"].DisplayIndex = 7;
             dgvEmployees.Columns["City"].DisplayIndex = 8;
             dgvEmployees.Columns["HireDate"].DisplayIndex = 9;
+        }
+
+        private void SetDgvStyle()
+        {
+            dgvEmployees.EnableHeadersVisualStyles = false;
+
+            dgvEmployees.RowHeadersVisible = false;
+
+            dgvEmployees.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvEmployees.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvEmployees.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvEmployees.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private async Task RefreshDvgData() // Hvis der skal opdateres efter ændring - CUD
@@ -550,7 +625,7 @@ namespace UI.Forms.EmployeePage
 
         private void DgvEmployees_DataSourceChanged(object? sender, EventArgs e)
         {
-            dgvEmployees.CurrentCell = null;            
+            dgvEmployees.CurrentCell = null;
         }
     }
 }

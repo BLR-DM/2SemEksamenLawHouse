@@ -46,6 +46,8 @@ partial class LoginPageView
         lblCreateAccount = new Label();
         lblRegister = new Label();
         lblForgotPassword = new Label();
+        lblUsernameError = new Label();
+        lblPasswordError = new Label();
         ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxPassword).BeginInit();
@@ -267,6 +269,28 @@ partial class LoginPageView
         lblForgotPassword.TabIndex = 4;
         lblForgotPassword.Text = "Forgot password?";
         // 
+        // lblUsernameError
+        // 
+        lblUsernameError.AutoSize = true;
+        lblUsernameError.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+        lblUsernameError.ForeColor = Color.OrangeRed;
+        lblUsernameError.Location = new Point(79, 336);
+        lblUsernameError.Name = "lblUsernameError";
+        lblUsernameError.Size = new Size(127, 15);
+        lblUsernameError.TabIndex = 8;
+        lblUsernameError.Text = "Email format is invalid.";
+        // 
+        // lblPasswordError
+        // 
+        lblPasswordError.AutoSize = true;
+        lblPasswordError.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+        lblPasswordError.ForeColor = Color.OrangeRed;
+        lblPasswordError.Location = new Point(83, 471);
+        lblPasswordError.Name = "lblPasswordError";
+        lblPasswordError.Size = new Size(148, 15);
+        lblPasswordError.TabIndex = 8;
+        lblPasswordError.Text = "Password format is invalid.";
+        // 
         // LoginPageView
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -274,6 +298,8 @@ partial class LoginPageView
         BackColor = SystemColors.GradientInactiveCaption;
         ClientSize = new Size(432, 706);
         ControlBox = false;
+        Controls.Add(lblPasswordError);
+        Controls.Add(lblUsernameError);
         Controls.Add(pboxEye);
         Controls.Add(txtPassword);
         Controls.Add(txtUsername);
@@ -321,4 +347,6 @@ partial class LoginPageView
     private Label lblCreateAccount;
     private Label lblRegister;
     private Label lblForgotPassword;
+    private Label lblUsernameError;
+    private Label lblPasswordError;
 }

@@ -31,14 +31,18 @@ namespace DataAccess
         {
             try
             {
-                return await db.Lawyers
+                Lawyer lawyer = await db.Lawyers
                         .Include(l => l.LawyerTitle)
                         .Include(c => c.Cases)
                             .ThenInclude(cs => cs.CaseServices)
                         .Include(l => l.CaseServices)
+                            .ThenInclude(cs => cs.Service)
+                                .ThenInclude(s => s.ServicePriceType)
+                        .Include(c => c.CaseServices)
                         .Include(l => l.LawyerSpecialities)
                             .ThenInclude(ls => ls.Speciality)
                         .SingleOrDefaultAsync(c => c.PersonID == id);
+                return lawyer;
             }
             catch (Exception)
             {

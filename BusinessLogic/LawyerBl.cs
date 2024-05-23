@@ -45,7 +45,7 @@ namespace BusinessLogic
             try
             {
                 Lawyer lawyer = await dbAccess.GetLawyerWithCollectionsAsync(id);
-                return modelConverter.ConvertFromLawyerEntityWithCollections(lawyer);
+                return modelConverter.ConvertFromLawyerEntityWithAllCollections(lawyer);
             }
             catch (Exception)
             {

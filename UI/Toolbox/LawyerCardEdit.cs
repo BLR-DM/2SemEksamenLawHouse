@@ -94,58 +94,64 @@ namespace UI.Toolbox
 
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            btnUpdate.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to update the Lawyer details?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            lawyerUI.Firstname = txtFirstname.Text;
-            lawyerUI.Lastname = txtLastname.Text;
-            lawyerUI.PhoneNumber = int.Parse(txtPhone.Text);
-            lawyerUI.Email = txtEmail.Text;
-            lawyerUI.AddressLine = txtAddress.Text;
-            lawyerUI.PostalCode = int.Parse(txtPostal.Text);
-            lawyerUI.City = txtCity.Text;
-
-            lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
-
-            // if admin
-            if (isAdmin)
+            if (dialogResult == DialogResult.Yes)
             {
-                updatedLawyerSpecialities.Clear();
-                foreach (string lawyerSpeciality in lboxSpecialities.Items)
+                btnUpdate.Enabled = false;
+
+                lawyerUI.Firstname = txtFirstname.Text;
+                lawyerUI.Lastname = txtLastname.Text;
+                lawyerUI.PhoneNumber = int.Parse(txtPhone.Text);
+                lawyerUI.Email = txtEmail.Text;
+                lawyerUI.AddressLine = txtAddress.Text;
+                lawyerUI.PostalCode = int.Parse(txtPostal.Text);
+                lawyerUI.City = txtCity.Text;
+
+                lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
+
+                // if admin
+                if (isAdmin)
                 {
-                    LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
+                    updatedLawyerSpecialities.Clear();
+                    foreach (string lawyerSpeciality in lboxSpecialities.Items)
                     {
-                        LawyerID = lawyerUI.PersonID,
-                        SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == lawyerSpeciality).SpecialityID
-                    };
-                    updatedLawyerSpecialities.Add(lawyerSpecialityUI);
+                        LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
+                        {
+                            LawyerID = lawyerUI.PersonID,
+                            SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == lawyerSpeciality).SpecialityID
+                        };
+                        updatedLawyerSpecialities.Add(lawyerSpecialityUI);
+                    }
+
+                    bool deleted = await lawyerBL.DeleteLawyerSpecialitiesAsync(lawyerUI.LawyerSpecialities as List<LawyerSpecialityUI>);
+                    if (!deleted)
+                    {
+                        MessageBox.Show("Failed to delete Lawyer Speciality!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    bool added = await lawyerBL.UpdateLawyerSpecialitiesAsync(updatedLawyerSpecialities);
+                    if (!added)
+                    {
+                        MessageBox.Show("Failed to add Lawyer Speciality!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
-                bool deleted = await lawyerBL.DeleteLawyerSpecialitiesAsync(lawyerUI.LawyerSpecialities as List<LawyerSpecialityUI>);
-                if (!deleted)
+                bool result = await lawyerBL.UpdateLawyerAsync(lawyerUI);
+                btnUpdate.Enabled = true;
+
+                if (result)
                 {
-                    MessageBox.Show("Failed to delete lawyer specialities!");
-                    return;
+                    MessageBox.Show($"Lawyer details has been updated!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await lawyerDetailsForm.SetupView(lawyerUI.PersonID);
                 }
-
-                bool added = await lawyerBL.UpdateLawyerSpecialitiesAsync(updatedLawyerSpecialities);
-                if (!added)
-                {
-                    MessageBox.Show("Failed to add lawyer specialities!");
-                    return;
-                }
-                //displayedLawyerUI.LawyerSpecialities = updatedLawyerSpecialities.ToList();
+                else
+                    MessageBox.Show("Failed to update!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            bool result = await lawyerBL.UpdateLawyerAsync(lawyerUI);
-            btnUpdate.Enabled = true;
-
-            if (result)
-            {            
-                MessageBox.Show("Updated!");
-                lawyerDetailsForm.SetupView(lawyerUI.PersonID);
-            }
-            else
-                MessageBox.Show("Failed!");
 
         }
 

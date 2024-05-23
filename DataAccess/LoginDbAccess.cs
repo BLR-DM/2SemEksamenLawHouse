@@ -17,41 +17,33 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
-        public async Task<bool> CheckUsernameAsync(string username)
-        {
-            return await db.LoginDetails.AnyAsync(u => u.Username == username);
-        }
-
         public async Task<int> CheckUsernameAndPasswordAsync(string username, string password)
         {
-            //return await db.LoginDetails.AnyAsync(u => u.Username == username && u.Password == password);
-
-            LoginDetails user = await db.LoginDetails
-                .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
-
-            if (user != null)
+            try
             {
-                return user.LoginDetailsID; 
+                LoginDetails user = await db.LoginDetails
+                        .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+
+                return user != null ? user.LoginDetailsID : 0;
             }
-            return 0;
-
-            //Person person = await db.Persons.FirstOrDefaultAsync(p => p.LoginDetailsID == id);
-
-
-            //if (person is Client)
-            //    return await db.Clients.FirstOrDefaultAsync(c => c.PersonID == person.PersonID);
-            //return person;
-
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         public async Task<string> RetrievePasswordAsync(string username)
         {
-            LoginDetails tmp = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username);
-            if (tmp != null)
+            try
             {
+                LoginDetails tmp = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username);
+                
                 return tmp.Password;
             }
-            return string.Empty;
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
 
     }

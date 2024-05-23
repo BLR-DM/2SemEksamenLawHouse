@@ -26,6 +26,8 @@ namespace UI.Forms.LoginPage
 
             InitializeComponent();
 
+            btnRetrievePassword.Enabled = false;
+
             lblCancel.MouseHover += LblCancel_MouseHover;
             lblCancel.MouseLeave += LblCancel_MouseLeave;
             lblCancel.Click += LblCancel_Click;
@@ -36,40 +38,28 @@ namespace UI.Forms.LoginPage
         private void TxtEmail_TextChanged(object? sender, EventArgs e)
         {
             if (txtEmail.Text.Length > 4)
-            {
                 validEmailFormat = personValidator.ValidEmail(txtEmail.Text);
-
-                if (validEmailFormat)
-                {
-                    btnRetrievePassword.Enabled = true;
-                    txtEmail.ForeColor = Color.Black;
-                }
-                else
-                {
-                    btnRetrievePassword.Enabled = false;
-                    txtEmail.ForeColor = Color.OrangeRed;
-                }
-            }
+        
+            btnRetrievePassword.Enabled = validEmailFormat;
+            txtEmail.ForeColor = validEmailFormat ? Color.Black : Color.OrangeRed;
         }
 
         private async void BtnRetrievePassword_Click(object? sender, EventArgs e)
         {
-            // Valider først email format
             btnRetrievePassword.Enabled = false;
             MessageBox.Show("A link to reset your password has been sent to" +
                 " your email. Please check your email to complete the process.",
                 "Email Sent");
 
-            bool validEmail = await loginBL.CheckUsernameAsync(txtEmail.Text);
+            string password = await loginBL.RetrievePasswordAsync(txtEmail.Text);
 
-            if (validEmail)
+            if (!string.IsNullOrEmpty(password))
             {
                 DialogResult result = MessageBox.Show("Would you like to display your" +
                 " password?", "Show Password", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
-                {
-                    string password = await loginBL.RetrievePasswordAsync(txtEmail.Text);
+                {                    
                     MessageBox.Show($"Your password is: {password}");
                 }
             }

@@ -44,7 +44,7 @@ namespace BusinessLogic
         public CaseUI ConvertFromCaseEntityWithAllCollections(Case caseE)
         {
             CaseUI caseUI = ConvertFromCaseEntity(caseE);
-            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceAndServiceEntity).ToList();
+            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceWithNavEntity).ToList();
 
             // Nav props
             caseUI.Lawyer = ConvertFromLawyerEntity(caseE.Lawyer);
@@ -82,6 +82,10 @@ namespace BusinessLogic
                 Status = caseServiceE.Status,
                 StartDate = caseServiceE.StartDate,
                 EndDate = caseServiceE.EndDate,
+
+                //kun i UI
+                ServiceName = caseServiceE.Service.Name,
+                PriceType = caseServiceE.Service.ServicePriceType.PriceType,
 
 
                 //foreign key

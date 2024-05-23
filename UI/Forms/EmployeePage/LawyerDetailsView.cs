@@ -167,6 +167,7 @@ namespace UI.Forms.EmployeePage
             dgvServices.Columns["LawyerID"].Visible =
             dgvServices.Columns["Service"].Visible =
             dgvServices.Columns["Lawyer"].Visible =
+            dgvServices.Columns["ServiceEntries"].Visible =
             dgvServices.Columns["EndDate"].Visible = false;
 
             dgvServices.Columns["ServiceName"].DisplayIndex = 1;

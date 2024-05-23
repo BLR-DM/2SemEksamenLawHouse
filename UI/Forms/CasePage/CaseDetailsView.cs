@@ -131,7 +131,7 @@ namespace UI.Forms.CasePage
         public async Task InitializeData()
         {
             await SetCaseDataAsync();
-            await SetDgvAsync();
+            SetDgvAsync();
             SetClientDataAsync();
             SetLawyerDataAsync();
         }
@@ -271,7 +271,7 @@ namespace UI.Forms.CasePage
             pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedCase.Lawyer));
         }
 
-        public async Task SetDgvAsync()
+        public void SetDgvAsync()
         {
             caseServiceList = selectedCase.CaseServices.ToList();
 

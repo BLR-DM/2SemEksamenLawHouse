@@ -37,9 +37,15 @@
             // 
             // dgvLawyerView
             // 
+            dgvLawyerView.AllowUserToAddRows = false;
+            dgvLawyerView.AllowUserToDeleteRows = false;
+            dgvLawyerView.AllowUserToResizeColumns = false;
+            dgvLawyerView.AllowUserToResizeRows = false;
             dgvLawyerView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvLawyerView.Location = new Point(12, 55);
+            dgvLawyerView.MultiSelect = false;
             dgvLawyerView.Name = "dgvLawyerView";
+            dgvLawyerView.ReadOnly = true;
             dgvLawyerView.Size = new Size(753, 332);
             dgvLawyerView.TabIndex = 1;
             // 

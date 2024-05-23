@@ -26,8 +26,6 @@ namespace UI.Forms.CasePage
         Color validFormat;
         Color invalidFormat;
 
-        LawyerBL lawyerBL;
-        ServiceBL serviceBL;
         ServiceEntryBL serviceEntryBL;
         CaseServiceBL caseServiceBL;
 
@@ -40,8 +38,6 @@ namespace UI.Forms.CasePage
             this.selectedCaseService = selectedCaseService;
             this.caseDetailsView = caseDetailsView;
 
-            lawyerBL = new LawyerBL();
-            serviceBL = new ServiceBL();
             serviceEntryBL = new ServiceEntryBL();
             caseServiceBL = new CaseServiceBL();
             cValidator = new CaseValidator();
@@ -132,8 +128,8 @@ namespace UI.Forms.CasePage
         protected async override void OnClosing(CancelEventArgs e)
         {
             //Når formen lukkes så opdateres detailview for casen
-            await caseDetailsView.SetDgvAsync();
             await caseDetailsView.SetCaseDataAsync();
+            await caseDetailsView.SetDgvAsync();
             base.OnClosing(e);
         }
 
@@ -181,10 +177,11 @@ namespace UI.Forms.CasePage
 
         public async Task SetCaseInformationAsync()
         {
-            selectedService = await serviceBL.GetServiceAsync(selectedCaseService.ServiceID);
+            selectedService = selectedCaseService.Service;
 
             txtServiceName.Text = selectedService.Name;
             txtPrice.Text = selectedService.Price.ToString();
+            txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
 
             txtServiceDescription.Text = selectedCaseService.Description;
 
@@ -193,21 +190,31 @@ namespace UI.Forms.CasePage
             {
                 txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
                 txtUnits.Text = txtTotalHours.Text;
+
+                lblPrice.Text = "Price/hour";
+                lblTotalPrice.Text = "Total Price";
+
+                txtUnits.Visible = false;
+                lblUnites.Visible = false;
             }
             else if (selectedCaseService.PriceType == "Fixed")
             {
-                txtUnits.Text = "1";
+                txtUnits.Visible = false;
+                lblUnites.Visible = false;
+
+                lblPrice.Text = "Listed Price";
+                lblTotalPrice.Text = "Agreed Price";
+
                 txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
             }
             else if (selectedCaseService.PriceType == "Kilometer")
             {
                 lblUnites.Text = "Kilometer";
                 lblPrice.Text = "Price/km";
+
                 txtTotalHours.Text = selectedCaseService.HoursWorked.ToString();
                 txtUnits.Text = selectedCaseService.Units.ToString();
             }
-            txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
-
         }
 
         public async Task SetDgvAsync()
@@ -226,10 +233,8 @@ namespace UI.Forms.CasePage
 
         public async Task SetLawyerInformationAsync()
         {
-            LawyerUI assignedLawyer = await lawyerBL.GetLawyerAsync(selectedCaseService.LawyerID);
-
             //Sætter den assigned lawyer til det panel
-            pnlLawyerInformation.Controls.Add(new LawyerInformation(assignedLawyer));
+            pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedCaseService.Lawyer));
         }
     }
 }

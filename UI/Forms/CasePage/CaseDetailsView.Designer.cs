@@ -32,6 +32,9 @@
             pnlLawyerInformation = new Panel();
             pnlClientInformation = new Panel();
             panel1 = new Panel();
+            dtpStartDate = new DateTimePicker();
+            lblStartDate = new Label();
+            txtCaseType = new TextBox();
             dtpEstimatedEndDate = new DateTimePicker();
             btnUpdateCase = new Button();
             lblEstimatedEndDate = new Label();
@@ -47,7 +50,6 @@
             txtTotalPrice = new TextBox();
             lblCaseInformation = new Label();
             label1 = new Label();
-            cboxCaseType = new ComboBox();
             txtEstimatedHours = new TextBox();
             lblEstimatedHours = new Label();
             txtEstimatedEndDate = new TextBox();
@@ -91,6 +93,9 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(dtpStartDate);
+            panel1.Controls.Add(lblStartDate);
+            panel1.Controls.Add(txtCaseType);
             panel1.Controls.Add(dtpEstimatedEndDate);
             panel1.Controls.Add(btnUpdateCase);
             panel1.Controls.Add(lblEstimatedEndDate);
@@ -106,7 +111,6 @@
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblCaseInformation);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(cboxCaseType);
             panel1.Controls.Add(txtEstimatedHours);
             panel1.Controls.Add(lblEstimatedHours);
             panel1.Controls.Add(txtEstimatedEndDate);
@@ -116,6 +120,35 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(687, 326);
             panel1.TabIndex = 15;
+            // 
+            // dtpStartDate
+            // 
+            dtpStartDate.Location = new Point(273, 64);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(208, 23);
+            dtpStartDate.TabIndex = 33;
+            // 
+            // lblStartDate
+            // 
+            lblStartDate.AutoSize = true;
+            lblStartDate.BackColor = SystemColors.GradientInactiveCaption;
+            lblStartDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblStartDate.ForeColor = Color.FromArgb(45, 93, 134);
+            lblStartDate.Location = new Point(273, 40);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(83, 21);
+            lblStartDate.TabIndex = 32;
+            lblStartDate.Text = "Start Date";
+            // 
+            // txtCaseType
+            // 
+            txtCaseType.BackColor = Color.White;
+            txtCaseType.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCaseType.Location = new Point(104, 56);
+            txtCaseType.MaxLength = 50;
+            txtCaseType.Name = "txtCaseType";
+            txtCaseType.Size = new Size(125, 27);
+            txtCaseType.TabIndex = 31;
             // 
             // dtpEstimatedEndDate
             // 
@@ -273,7 +306,7 @@
             lblCaseInformation.BackColor = SystemColors.GradientInactiveCaption;
             lblCaseInformation.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCaseInformation.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCaseInformation.Location = new Point(273, 2);
+            lblCaseInformation.Location = new Point(263, -4);
             lblCaseInformation.Name = "lblCaseInformation";
             lblCaseInformation.Size = new Size(134, 21);
             lblCaseInformation.TabIndex = 20;
@@ -290,16 +323,6 @@
             label1.Size = new Size(81, 21);
             label1.TabIndex = 17;
             label1.Text = "Casetype:";
-            // 
-            // cboxCaseType
-            // 
-            cboxCaseType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboxCaseType.FormattingEnabled = true;
-            cboxCaseType.Location = new Point(100, 59);
-            cboxCaseType.Name = "cboxCaseType";
-            cboxCaseType.RightToLeft = RightToLeft.No;
-            cboxCaseType.Size = new Size(129, 23);
-            cboxCaseType.TabIndex = 18;
             // 
             // txtEstimatedHours
             // 
@@ -380,8 +403,11 @@
             // 
             dgvServices.AllowUserToAddRows = false;
             dgvServices.AllowUserToDeleteRows = false;
+            dgvServices.AllowUserToResizeColumns = false;
+            dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvServices.Location = new Point(17, 36);
+            dgvServices.MultiSelect = false;
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
             dgvServices.Size = new Size(655, 172);
@@ -439,7 +465,6 @@
         private Panel panel1;
         private Label lblCaseInformation;
         private Label label1;
-        private ComboBox cboxCaseType;
         private TextBox txtEstimatedHours;
         private Label lblEstimatedHours;
         private DateTimePicker dtpEstimatedEndDate;
@@ -463,5 +488,8 @@
         private Button btnPrintDetails;
         private Label lblTotalHours;
         private TextBox txtTotalHours;
+        private TextBox txtCaseType;
+        private DateTimePicker dtpStartDate;
+        private Label lblStartDate;
     }
 }

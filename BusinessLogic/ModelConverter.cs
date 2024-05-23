@@ -44,7 +44,7 @@ namespace BusinessLogic
         public CaseUI ConvertFromCaseEntityWithAllCollections(Case caseE)
         {
             CaseUI caseUI = ConvertFromCaseEntity(caseE);
-            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceWithNavEntity).ToList();
+            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceAndServiceEntity).ToList();
 
             // Nav props
             caseUI.Lawyer = ConvertFromLawyerEntity(caseE.Lawyer);
@@ -138,7 +138,11 @@ namespace BusinessLogic
                 //foreign key
                 CaseID = caseServiceE.CaseID,
                 ServiceID = caseServiceE.ServiceID,
-                LawyerID = caseServiceE.LawyerID
+                LawyerID = caseServiceE.LawyerID,
+
+                // Nav props
+                Lawyer = ConvertFromLawyerEntity(caseServiceE.Lawyer),
+                Service = ConvertFromServiceEntity(caseServiceE.Service)
             };
             return caseServiceUI;
         }

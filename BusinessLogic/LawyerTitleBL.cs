@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UIModels;
-using BusinessLogic;
 using Interfaces;
+using BusinessLogic.HelpServices;
 
 namespace BusinessLogic
 {

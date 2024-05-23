@@ -2,7 +2,7 @@
 using EntityModels;
 using Microsoft.Identity.Client;
 
-namespace BusinessLogic
+namespace BusinessLogic.HelpServices
 {
     public class ModelConverter
     {
@@ -15,14 +15,14 @@ namespace BusinessLogic
         {
             CaseUI caseUI = new CaseUI
             {
-                CaseID = caseE.CaseID, 
-                Title = caseE.Title, 
+                CaseID = caseE.CaseID,
+                Title = caseE.Title,
                 Description = caseE.Description,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
                 EstimatedHours = caseE.EstimatedHours,
                 Status = caseE.Status,
-                TotalPrice = caseE.TotalPrice,                
+                TotalPrice = caseE.TotalPrice,
 
                 //foreign keys
                 LawyerID = caseE.LawyerID,
@@ -119,7 +119,7 @@ namespace BusinessLogic
             CaseServiceUI caseServiceUI = new CaseServiceUI
             {
                 CaseServiceID = caseServiceE.CaseServiceID,
-                Description= caseServiceE.Description,
+                Description = caseServiceE.Description,
                 Units = caseServiceE.Units,
                 HoursWorked = caseServiceE.HoursWorked,
                 TotalPrice = caseServiceE.TotalPrice,
@@ -181,7 +181,7 @@ namespace BusinessLogic
             ClientSubscription? subscription = clientE.ClientSubscriptions
                 .FirstOrDefault(cs => cs.EndDate >= DateTime.Now && cs.StartDate <= DateTime.Now);
 
-            if(subscription != null)
+            if (subscription != null)
             {
                 clientUI.IsSubscribed = true;
             }
@@ -283,7 +283,7 @@ namespace BusinessLogic
 
         public LawyerUI ConvertFromLawyerEntityWithAllCollections(Lawyer lawyerE)
         {
-            LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
+            LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);
             lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
             lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceAndServiceEntity).ToList();
             lawyerUI.LawyerSpecialities = lawyerE.LawyerSpecialities.Select(ConvertFromLawyerSpecialityEntity).ToList();
@@ -416,7 +416,7 @@ namespace BusinessLogic
             };
             return subscriptionUI;
         }
-        
+
         public PersonUI ConvertFromPersonEntity(Person personE)
         {
             PersonUI personUI = new PersonUI
@@ -472,7 +472,7 @@ namespace BusinessLogic
                 StartDate = CaseServiceUI.StartDate, // test
                 EndDate = CaseServiceUI.EndDate,
 
-                
+
 
                 //foreign keys
                 CaseID = CaseServiceUI.CaseID,
@@ -568,7 +568,7 @@ namespace BusinessLogic
             };
             return formE;
         }
-        
+
         public Lawyer ConvertFromLawyerUI(LawyerUI lawyerUI)
         {
             Lawyer lawyerE = new Lawyer
@@ -588,7 +588,7 @@ namespace BusinessLogic
 
                 // foreign keys
                 LoginDetailsID = lawyerUI.LoginDetailsID,
-                
+
             };
             return lawyerE;
         }
@@ -679,7 +679,7 @@ namespace BusinessLogic
                 Date = serviceEntryUI.Date,
                 HoursWorked = serviceEntryUI.HoursWorked,
                 CaseServiceID = serviceEntryUI.CaseServiceID,
-                
+
             };
             return serviceEntryE;
         }
@@ -687,7 +687,7 @@ namespace BusinessLogic
         public ServicePriceType ConvertFromServicePriceTypeUI(ServicePriceTypeUI servicePriceTypeUI)
         {
             ServicePriceType servicePriceTypeE = new ServicePriceType
-            { 
+            {
                 ServicePriceTypeID = servicePriceTypeUI.ServicePriceTypeID,
                 PriceType = servicePriceTypeUI.PriceType,
             };
@@ -699,7 +699,7 @@ namespace BusinessLogic
         {
             Speciality specialityE = new Speciality
             {
-                
+
                 SpecialityID = specialityUI.SpecialityID,
                 SpecialityName = specialityUI.SpecialityName,
             };
@@ -728,7 +728,7 @@ namespace BusinessLogic
         //    };
         //    return userE;
         //}
-        
+
 
 
 

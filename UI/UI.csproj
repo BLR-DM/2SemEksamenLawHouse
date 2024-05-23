@@ -48,6 +48,9 @@
     <None Update="Resources\HelpPdfs\LawHouseDiagrammer.drawio.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\postnumre.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

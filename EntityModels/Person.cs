@@ -28,12 +28,12 @@ namespace EntityModels
         [Required]
         [MaxLength(50), MinLength(4)]
         public string City { get; set; }
-        
 
         //foreign key
         public int LoginDetailsID { get; set; }
 
         //nav prop 
         public LoginDetails LoginDetails { get; set; }
+
     }
 }

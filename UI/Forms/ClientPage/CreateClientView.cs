@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using EntityModels;
 using System;
@@ -48,6 +49,7 @@ namespace UI.Forms.ClientPage
 
             btnAddPhone.Enabled = false;
             passwordIsValid = true;
+            txtCity.Enabled = false;
 
             phoneUIList = new List<PhoneUI>();
 
@@ -88,7 +90,7 @@ namespace UI.Forms.ClientPage
                     Email = txtEmail.Text.ToLower(),
                     AddressLine = txtAddress.Text,
                     PostalCode = int.Parse(txtPostal.Text),
-                    City = txtCity.Text,
+                    //City = txtCity.Text,
                     IsSubscribed = false,
                 };
 
@@ -249,6 +251,10 @@ namespace UI.Forms.ClientPage
         {
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+
+            int postal = int.Parse(txtPostal.Text);
+            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(postal);
+
             BtnCreateEnabled();
         }
         private void TxtCity_TextChanged(object? sender, EventArgs e)
@@ -267,5 +273,6 @@ namespace UI.Forms.ClientPage
             else
                 btnAddPhone.Enabled = false;
         }
+
     }
 }

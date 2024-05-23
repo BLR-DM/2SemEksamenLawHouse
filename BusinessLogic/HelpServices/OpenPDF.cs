@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using static System.Net.Mime.MediaTypeNames;
 
-namespace BusinessLogic
+namespace BusinessLogic.HelpServices
 {
     public static class OpenPDF
     {
@@ -14,8 +14,8 @@ namespace BusinessLogic
         {
             string filePath = $"Resources\\HelpPdfs\\{filename}.pdf";
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string fullPath = Path.Combine(baseDirectory, filePath);      
-            
+            string fullPath = Path.Combine(baseDirectory, filePath);
+
 
             if (File.Exists(fullPath))
             {

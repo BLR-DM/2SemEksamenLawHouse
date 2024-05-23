@@ -50,6 +50,8 @@ namespace UI.Forms.EmployeePage
 
             InitializeComponent();
 
+            btnRefresh.IconChar = FontAwesome.Sharp.IconChar.ArrowsRotate;
+            
             sortByNameCount = sortByCaseCount = sortByServiceCount = 
                 sortBySpecialityCount = sortByHireDate = 0;
 
@@ -67,6 +69,13 @@ namespace UI.Forms.EmployeePage
             btnTrashSort.Click += BtnTrashSort_Click;
             cboxSort.SelectedIndexChanged += CboxSort_SelectedIndexChanged;
             txtSearch.TextChanged += TxtSearch_TextChanged;
+            btnRefresh.Click += BtnRefresh_Click;
+        }
+
+        private async void BtnRefresh_Click(object? sender, EventArgs e)
+        {
+            await RefreshDvgData();
+            SortDgv();
         }
 
         private async void EmployeesOverview_Load(object? sender, EventArgs e)

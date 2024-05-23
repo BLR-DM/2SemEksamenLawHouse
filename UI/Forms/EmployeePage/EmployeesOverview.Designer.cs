@@ -33,7 +33,6 @@
             lblShow = new Label();
             lblSort = new Label();
             cboxSort = new ComboBox();
-            lblCurrentlyShowing = new Label();
             lblTotalEmployees = new Label();
             lblFilter = new Label();
             cboxFilter = new ComboBox();
@@ -41,6 +40,7 @@
             btnTrashSort = new FontAwesome.Sharp.IconButton();
             btnTrashFilter = new FontAwesome.Sharp.IconButton();
             flpnlFilters = new FlowLayoutPanel();
+            btnRefresh = new FontAwesome.Sharp.IconButton();
             lblSearch = new Label();
             txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
@@ -92,7 +92,7 @@
             lblSort.BackColor = Color.Transparent;
             lblSort.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             lblSort.ForeColor = SystemColors.ControlText;
-            lblSort.Location = new Point(282, 23);
+            lblSort.Location = new Point(332, 23);
             lblSort.Name = "lblSort";
             lblSort.Size = new Size(57, 19);
             lblSort.TabIndex = 4;
@@ -104,23 +104,10 @@
             cboxSort.Cursor = Cursors.Hand;
             cboxSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxSort.FormattingEnabled = true;
-            cboxSort.Location = new Point(345, 22);
+            cboxSort.Location = new Point(395, 22);
             cboxSort.Name = "cboxSort";
             cboxSort.Size = new Size(140, 23);
             cboxSort.TabIndex = 8;
-            // 
-            // lblCurrentlyShowing
-            // 
-            lblCurrentlyShowing.Anchor = AnchorStyles.Top;
-            lblCurrentlyShowing.AutoSize = true;
-            lblCurrentlyShowing.BackColor = SystemColors.GradientInactiveCaption;
-            lblCurrentlyShowing.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
-            lblCurrentlyShowing.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCurrentlyShowing.Location = new Point(25, 121);
-            lblCurrentlyShowing.Name = "lblCurrentlyShowing";
-            lblCurrentlyShowing.Size = new Size(104, 25);
-            lblCurrentlyShowing.TabIndex = 4;
-            lblCurrentlyShowing.Text = "Employees";
             // 
             // lblTotalEmployees
             // 
@@ -142,7 +129,7 @@
             lblFilter.BackColor = Color.Transparent;
             lblFilter.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             lblFilter.ForeColor = SystemColors.ControlText;
-            lblFilter.Location = new Point(26, 23);
+            lblFilter.Location = new Point(35, 24);
             lblFilter.Name = "lblFilter";
             lblFilter.Size = new Size(45, 19);
             lblFilter.TabIndex = 4;
@@ -154,9 +141,9 @@
             cboxFilter.Cursor = Cursors.Hand;
             cboxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cboxFilter.FormattingEnabled = true;
-            cboxFilter.Location = new Point(77, 22);
+            cboxFilter.Location = new Point(86, 22);
             cboxFilter.Name = "cboxFilter";
-            cboxFilter.Size = new Size(140, 23);
+            cboxFilter.Size = new Size(131, 23);
             cboxFilter.Sorted = true;
             cboxFilter.TabIndex = 1;
             // 
@@ -190,7 +177,7 @@
             btnTrashSort.IconColor = Color.FromArgb(45, 93, 134);
             btnTrashSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnTrashSort.IconSize = 22;
-            btnTrashSort.Location = new Point(491, 22);
+            btnTrashSort.Location = new Point(541, 22);
             btnTrashSort.Name = "btnTrashSort";
             btnTrashSort.Size = new Size(27, 23);
             btnTrashSort.TabIndex = 11;
@@ -220,6 +207,23 @@
             flpnlFilters.Size = new Size(942, 27);
             flpnlFilters.TabIndex = 10;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = SystemColors.GradientInactiveCaption;
+            btnRefresh.BackgroundImageLayout = ImageLayout.Center;
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.IconChar = FontAwesome.Sharp.IconChar.ArrowsUpDownLeftRight;
+            btnRefresh.IconColor = Color.FromArgb(45, 93, 134);
+            btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnRefresh.IconSize = 25;
+            btnRefresh.Location = new Point(940, 122);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(30, 30);
+            btnRefresh.TabIndex = 12;
+            btnRefresh.UseVisualStyleBackColor = false;
+            // 
             // lblSearch
             // 
             lblSearch.Anchor = AnchorStyles.Top;
@@ -227,7 +231,7 @@
             lblSearch.BackColor = Color.Transparent;
             lblSearch.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             lblSearch.ForeColor = SystemColors.ControlText;
-            lblSearch.Location = new Point(752, 127);
+            lblSearch.Location = new Point(51, 126);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(54, 19);
             lblSearch.TabIndex = 4;
@@ -236,10 +240,10 @@
             // txtSearch
             // 
             txtSearch.BorderStyle = BorderStyle.None;
-            txtSearch.Location = new Point(812, 129);
+            txtSearch.Location = new Point(111, 128);
             txtSearch.MaxLength = 15;
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(140, 16);
+            txtSearch.Size = new Size(131, 16);
             txtSearch.TabIndex = 0;
             // 
             // EmployeesOverview
@@ -248,11 +252,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnRefresh);
             Controls.Add(txtSearch);
             Controls.Add(panel1);
             Controls.Add(dgvEmployees);
             Controls.Add(lblTotalEmployees);
-            Controls.Add(lblCurrentlyShowing);
             Controls.Add(lblSearch);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EmployeesOverview";
@@ -267,7 +271,6 @@
         #endregion
 
         private DataGridView dgvEmployees;
-        private Label lblCurrentlyShowing;
         private ComboBox cboxShow;
         private Label lblShow;
         private Label lblSort;
@@ -281,5 +284,6 @@
         private Label lblSearch;
         private TextBox txtSearch;
         private FontAwesome.Sharp.IconButton btnTrashSort;
+        private FontAwesome.Sharp.IconButton btnRefresh;
     }
 }

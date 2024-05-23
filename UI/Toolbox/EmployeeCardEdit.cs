@@ -48,28 +48,35 @@ namespace UI.Toolbox
 
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
-            btnUpdate.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to update the Employee details?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            employee.Firstname = txtFirstname.Text;
-            employee.Lastname = txtLastname.Text;
-            employee.PhoneNumber = int.Parse(txtPhone.Text);
-            employee.Email = txtEmail.Text;
-            employee.AddressLine = txtAddress.Text;
-            employee.PostalCode = int.Parse(txtPostal.Text);
-            employee.City = txtCity.Text;
-
-            employee.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
-
-            bool result = await employeeBL.UpdateEmployeeAsync(employee);
-            btnUpdate.Enabled = true;
-
-            if (result)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Updated!");
-                employeeDetailsForm.SetupView(employee.PersonID);
+                btnUpdate.Enabled = false;
+
+                employee.Firstname = txtFirstname.Text;
+                employee.Lastname = txtLastname.Text;
+                employee.PhoneNumber = int.Parse(txtPhone.Text);
+                employee.Email = txtEmail.Text;
+                employee.AddressLine = txtAddress.Text;
+                employee.PostalCode = int.Parse(txtPostal.Text);
+                employee.City = txtCity.Text;
+
+                employee.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
+
+                bool result = await employeeBL.UpdateEmployeeAsync(employee);
+                btnUpdate.Enabled = true;
+
+                if (result)
+                {
+                    MessageBox.Show($"Employee details has been updated!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    employeeDetailsForm.SetupView(employee.PersonID);
+                }
+                else
+                    MessageBox.Show("Failed to update!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Failed!");
         }
 
         private void DisplayInformationEmployee()

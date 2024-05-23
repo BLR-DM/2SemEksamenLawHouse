@@ -29,5 +29,8 @@ namespace UIModels
         public int CaseID { get; set; }
         public int ServiceID { get; set; }
         public int LawyerID { get; set; }
+
+        public ServiceUI Service { get; set; }
+        public LawyerUI Lawyer { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace BusinessLogic
             {
                 CaseID = caseE.CaseID, 
                 Title = caseE.Title, 
-                //CaseType = caseE.CaseType,
                 Description = caseE.Description,
                 CreationDate = caseE.CreationDate,
                 EndDate = caseE.EndDate,
@@ -39,6 +38,18 @@ namespace BusinessLogic
                 ClientID = caseE.ClientID,
                 CaseTypeID = caseE.CaseTypeID,
             };
+            return caseUI;
+        }
+
+        public CaseUI ConvertFromCaseEntityWithAllCollections(Case caseE)
+        {
+            CaseUI caseUI = ConvertFromCaseEntity(caseE);
+            caseUI.CaseServices = caseE.CaseServices.Select(ConvertFromCaseServiceWithNavEntity).ToList();
+
+            // Nav props
+            caseUI.Lawyer = ConvertFromLawyerEntity(caseE.Lawyer);
+            caseUI.Client = ConvertFromClientEntity(caseE.Client);
+            caseUI.CaseType = ConvertFromCaseTypeEntity(caseE.CaseType);
             return caseUI;
         }
 
@@ -59,13 +70,14 @@ namespace BusinessLogic
             return caseTypeUI;
         }
 
-        public CaseServiceUI ConvertFromCaseServiceEntity(CaseService caseServiceE)
+        public CaseServiceUI ConvertFromCaseServiceWithNavEntity(CaseService caseServiceE)
         {
             CaseServiceUI caseServiceUI = new CaseServiceUI
             {
                 CaseServiceID = caseServiceE.CaseServiceID,
                 Description = caseServiceE.Description,
                 Units = caseServiceE.Units,
+                HoursWorked = caseServiceE.HoursWorked,
                 TotalPrice = caseServiceE.TotalPrice,
                 Status = caseServiceE.Status,
                 StartDate = caseServiceE.StartDate,
@@ -76,6 +88,32 @@ namespace BusinessLogic
                 CaseID = caseServiceE.CaseID,
                 ServiceID = caseServiceE.ServiceID,
                 LawyerID = caseServiceE.LawyerID,
+
+                // Nav props
+                Lawyer = ConvertFromLawyerEntity(caseServiceE.Lawyer),
+                Service = ConvertFromServiceEntity(caseServiceE.Service)
+            };
+            return caseServiceUI;
+        }
+
+        public CaseServiceUI ConvertFromCaseServiceEntity(CaseService caseServiceE)
+        {
+            CaseServiceUI caseServiceUI = new CaseServiceUI
+            {
+                CaseServiceID = caseServiceE.CaseServiceID,
+                Description = caseServiceE.Description,
+                Units = caseServiceE.Units,
+                HoursWorked = caseServiceE.HoursWorked,
+                TotalPrice = caseServiceE.TotalPrice,
+                Status = caseServiceE.Status,
+                StartDate = caseServiceE.StartDate,
+                EndDate = caseServiceE.EndDate,
+
+
+                //foreign key
+                CaseID = caseServiceE.CaseID,
+                ServiceID = caseServiceE.ServiceID,
+                LawyerID = caseServiceE.LawyerID
             };
             return caseServiceUI;
         }
@@ -99,7 +137,7 @@ namespace BusinessLogic
                 //foreign key
                 CaseID = caseServiceE.CaseID,
                 ServiceID = caseServiceE.ServiceID,
-                LawyerID = caseServiceE.LawyerID,
+                LawyerID = caseServiceE.LawyerID
             };
             return caseServiceUI;
         }
@@ -115,11 +153,29 @@ namespace BusinessLogic
                 AddressLine = clientE.AddressLine,
                 PostalCode = clientE.PostalCode,
                 City = clientE.City,
+                MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0,
+
+                //foreign keys
+                LoginDetailsID = clientE.LoginDetailsID
+            };
+            return clientUI;
+        }
+
+        public ClientUI ConvertFromClientWithSubEntity(Client clientE)
+        {
+            ClientUI clientUI = new ClientUI
+            {
+                PersonID = clientE.PersonID,
+                Firstname = clientE.Firstname,
+                Lastname = clientE.Lastname,
+                Email = clientE.Email,
+                AddressLine = clientE.AddressLine,
+                PostalCode = clientE.PostalCode,
+                City = clientE.City,
                 MainPhone = clientE.Phones.FirstOrDefault()?.PhoneNumber ?? 0, // remove?
 
                 //foreign keys
-                LoginDetailsID = clientE.LoginDetailsID,
-                
+                LoginDetailsID = clientE.LoginDetailsID
             };
 
             ClientSubscription? subscription = clientE.ClientSubscriptions
@@ -228,7 +284,7 @@ namespace BusinessLogic
         public LawyerUI ConvertFromLawyerEntityWithCollections(Lawyer lawyerE)
         {
             LawyerUI lawyerUI = ConvertFromLawyerEntity(lawyerE);            
-            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntityWithCollections).ToList();
+            lawyerUI.Cases = lawyerE.Cases.Select(ConvertFromCaseEntity).ToList();
             lawyerUI.CaseServices = lawyerE.CaseServices.Select(ConvertFromCaseServiceEntity).ToList();
             lawyerUI.LawyerSpecialities = lawyerE.LawyerSpecialities.Select(ConvertFromLawyerSpecialityEntity).ToList();
             //lawyerUI.OpenCases = lawyerUI.Cases.Count(c => c.Status == "Active");

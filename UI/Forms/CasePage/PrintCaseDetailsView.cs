@@ -24,15 +24,20 @@ namespace UI.Forms.CasePage
         List<CaseServiceUI> caseServices;
         List<ServiceUI> services;
         List<LawyerUI> lawyers;
+        CaseBL caseBL;
 
         ServiceBL serviceBL;
         LawyerBL lawyerBL;
         ServiceEntryBL serviceEntryBL;
+        CaseUI caseUItest;
 
         public PrintCaseDetailsView(CaseUI caseUI, List<CaseTypeUI> caseTypes, LawyerUI lawyer,
                                     ClientUI client, List<CaseServiceUI> caseServices,
                                     ServiceBL serviceBL, LawyerBL lawyerBL, ServiceEntryBL serviceEntryBL)
         {
+            serviceBL = new ServiceBL();
+            caseBL = new CaseBL();
+
             this.caseUI = caseUI;
             this.caseTypes = caseTypes;
             this.lawyer = lawyer;
@@ -55,6 +60,7 @@ namespace UI.Forms.CasePage
 
         private async void PrintCaseDetailsView_Load(object? sender, EventArgs e)
         {
+            caseUItest = await caseBL.GetCaseWithAllCollectionsAsync(caseUI.CaseID);
             await GetServicesAsync();
             await GetLawyersAsync();
         }
@@ -62,43 +68,46 @@ namespace UI.Forms.CasePage
         private async void BtnSave_Click(object? sender, EventArgs e)
         {
             btnSave.Enabled = false;
-            BuildHeader(caseUI, lawyer, client);
 
-            foreach(CaseServiceUI caseService in caseServices)
-            {
-                if(caseService.PriceType == "Kilometer")
-                {
-                    BuildKilometerServiceText(caseService);
-                }
-                else if(caseService.PriceType == "Hourly")
-                {
-                    await BuildHourlyServiceTextAsync(caseService);
-                }
-                else if(caseService.PriceType == "Fixed")
-                {
-                    await BuildFixedServiceTextAsync(caseService);
-                }
-            }
+            caseUItest.PrintDetails(txtPath.Text);
+
+            //BuildHeader(caseUI, lawyer, client);
+
+            //foreach(CaseServiceUI caseService in caseServices)
+            //{
+            //    if(caseService.PriceType == "Kilometer")
+            //    {
+            //        BuildKilometerServiceText(caseService);
+            //    }
+            //    else if(caseService.PriceType == "Hourly")
+            //    {
+            //        await BuildHourlyServiceTextAsync(caseService);
+            //    }
+            //    else if(caseService.PriceType == "Fixed")
+            //    {
+            //        await BuildFixedServiceTextAsync(caseService);
+            //    }
+            //}
 
 
-            try
-            {
-                File.WriteAllLines(txtPath.Text, textToWrite);
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    File.WriteAllLines(txtPath.Text, textToWrite);
+            //}
+            //catch (Exception)
+            //{
 
-                System.Windows.Forms.MessageBox.Show("Error!, File wasnt made");
-                return;
+            //    System.Windows.Forms.MessageBox.Show("Error!, File wasnt made");
+            //    return;
 
-            }
-            finally
-            {
-                btnSave.Enabled = true;
-            }
+            //}
+            //finally
+            //{
+            //    btnSave.Enabled = true;
+            //}
 
-            System.Windows.Forms.MessageBox.Show("File was succesfully created!");
-            this.Close();
+            //System.Windows.Forms.MessageBox.Show("File was succesfully created!");
+            //this.Close();
 
         }
 

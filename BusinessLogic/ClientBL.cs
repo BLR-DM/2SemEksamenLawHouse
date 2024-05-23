@@ -25,7 +25,7 @@ namespace BusinessLogic
             List<ClientUI> clientUIs = new List<ClientUI>();
             foreach (Client c in await dbAccess.GetClientsAsync())
             {
-                clientUIs.Add(modelConverter.ConvertFromClientEntity(c));
+                clientUIs.Add(modelConverter.ConvertFromClientWithSubEntity(c));
             }
             return clientUIs;
         }
@@ -33,7 +33,7 @@ namespace BusinessLogic
         public async Task<ClientUI> GetClientAsync(int id)
         {
             Client client = await dbAccess.GetClientAsync(id);
-            ClientUI clientUI = modelConverter.ConvertFromClientEntity(client);
+            ClientUI clientUI = modelConverter.ConvertFromClientWithSubEntity(client);
             return clientUI;
         }
 

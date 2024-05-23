@@ -46,6 +46,8 @@
             btnCalculate = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             panel2 = new Panel();
+            lblTotalAmountPaid = new Label();
+            label8 = new Label();
             pnlTop.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -252,12 +254,37 @@
             panel2.Size = new Size(431, 3);
             panel2.TabIndex = 50;
             // 
+            // lblTotalAmountPaid
+            // 
+            lblTotalAmountPaid.AutoSize = true;
+            lblTotalAmountPaid.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalAmountPaid.ForeColor = SystemColors.ActiveCaptionText;
+            lblTotalAmountPaid.Location = new Point(269, 493);
+            lblTotalAmountPaid.Name = "lblTotalAmountPaid";
+            lblTotalAmountPaid.Size = new Size(71, 17);
+            lblTotalAmountPaid.TabIndex = 66;
+            lblTotalAmountPaid.Text = "3650,63 kr.";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = SystemColors.GradientInactiveCaption;
+            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label8.ForeColor = Color.FromArgb(45, 93, 134);
+            label8.Location = new Point(107, 490);
+            label8.Name = "label8";
+            label8.Size = new Size(145, 21);
+            label8.TabIndex = 65;
+            label8.Text = "Total amount paid:";
+            // 
             // CalcLoanPaymentView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
+            Controls.Add(lblTotalAmountPaid);
+            Controls.Add(label8);
             Controls.Add(lblTotalPrYear);
             Controls.Add(lblAmountPrPayment);
             Controls.Add(label6);
@@ -304,5 +331,7 @@
         private FontAwesome.Sharp.IconButton btnCalculate;
         private Panel panel1;
         private Panel panel2;
+        private Label lblTotalAmountPaid;
+        private Label label8;
     }
 }

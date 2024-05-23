@@ -95,6 +95,7 @@
             Controls.Add(lblPrice);
             Controls.Add(lblTitle);
             Name = "FormDetails";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form Details";
             ResumeLayout(false);
             PerformLayout();

@@ -244,7 +244,7 @@
             btnForms.Padding = new Padding(25, 0, 20, 0);
             btnForms.Size = new Size(200, 75);
             btnForms.TabIndex = 0;
-            btnForms.Text = "Formulars";
+            btnForms.Text = "Forms";
             btnForms.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnForms.UseVisualStyleBackColor = false;
             // 
@@ -331,7 +331,7 @@
             lblCurrentUserName.Name = "lblCurrentUserName";
             lblCurrentUserName.Size = new Size(81, 21);
             lblCurrentUserName.TabIndex = 1;
-            lblCurrentUserName.Text = "Firstname";
+            lblCurrentUserName.Text = "Loading...";
             // 
             // lblCurrentUser
             // 
@@ -341,9 +341,9 @@
             lblCurrentUser.ForeColor = Color.White;
             lblCurrentUser.Location = new Point(206, 19);
             lblCurrentUser.Name = "lblCurrentUser";
-            lblCurrentUser.Size = new Size(100, 21);
+            lblCurrentUser.Size = new Size(81, 21);
             lblCurrentUser.TabIndex = 1;
-            lblCurrentUser.Text = "Current user";
+            lblCurrentUser.Text = "Loading...";
             // 
             // btnClose
             // 

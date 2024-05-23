@@ -57,7 +57,6 @@
             label7 = new Label();
             dgvBoughtForms = new DataGridView();
             label8 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             pboxProfile = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             panel2.SuspendLayout();
@@ -411,26 +410,6 @@
             label8.TabIndex = 46;
             label8.Text = "Formulars";
             // 
-            // iconButton1
-            // 
-            iconButton1.Anchor = AnchorStyles.Bottom;
-            iconButton1.BackColor = Color.IndianRed;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderSize = 0;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 70;
-            iconButton1.Location = new Point(770, 564);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(171, 37);
-            iconButton1.TabIndex = 100;
-            iconButton1.Text = "Delete";
-            iconButton1.UseVisualStyleBackColor = false;
-            // 
             // pboxProfile
             // 
             pboxProfile.BackColor = SystemColors.GradientActiveCaption;
@@ -454,7 +433,6 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
             Controls.Add(pboxProfile);
-            Controls.Add(iconButton1);
             Controls.Add(label8);
             Controls.Add(dgvBoughtForms);
             Controls.Add(label7);
@@ -502,7 +480,6 @@
         private TextBox txtAddPhone;
         private Label label10;
         private FontAwesome.Sharp.IconButton btnDeletePhone;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private Label lblSuccess;
         private FontAwesome.Sharp.IconPictureBox pboxProfile;
         private Button btnSubscriptionDetails;

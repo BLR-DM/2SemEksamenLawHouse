@@ -18,7 +18,11 @@ namespace EntityModels
         public int ServiceID { get; set; }
 
         //attributes
+        [Required]
+        [MaxLength(50), MinLength(4)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(300), MinLength(4)]
         public string Description { get; set; }
         public float Price { get; set; }
 

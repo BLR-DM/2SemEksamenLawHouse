@@ -13,6 +13,8 @@ namespace EntityModels
         public int SpecialityID { get; set; }
 
         //attributes
+        [Required]
+        [MaxLength(50), MinLength(4)]
         public string SpecialityName { get; set;}
 
 

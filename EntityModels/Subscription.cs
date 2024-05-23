@@ -11,6 +11,8 @@ namespace EntityModels
     {
         [Key]
         public int SubscriptionID { get; set; }
+        [Required]
+        [MaxLength(50), MinLength(4)]
         public string Title { get; set; }
         public float Price { get; set; }
 

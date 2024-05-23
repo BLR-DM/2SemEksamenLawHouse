@@ -55,6 +55,7 @@
             dgvEmployees.AllowUserToResizeRows = false;
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployees.Location = new Point(25, 171);
+            dgvEmployees.MultiSelect = false;
             dgvEmployees.Name = "dgvEmployees";
             dgvEmployees.ReadOnly = true;
             dgvEmployees.RowTemplate.ReadOnly = true;

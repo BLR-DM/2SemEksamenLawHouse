@@ -50,6 +50,7 @@
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCases.Location = new Point(331, 34);
+            dgvCases.MultiSelect = false;
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
             dgvCases.Size = new Size(655, 265);
@@ -63,6 +64,7 @@
             dgvServices.AllowUserToResizeRows = false;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvServices.Location = new Point(331, 337);
+            dgvServices.MultiSelect = false;
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
             dgvServices.Size = new Size(655, 265);
@@ -143,7 +145,7 @@
             lblCases.Name = "lblCases";
             lblCases.Size = new Size(122, 25);
             lblCases.TabIndex = 15;
-            lblCases.Text = "My Cases";
+            lblCases.Text = "Cases";
             lblCases.TextAlign = ContentAlignment.BottomCenter;
             // 
             // lblServices
@@ -156,7 +158,7 @@
             lblServices.Name = "lblServices";
             lblServices.Size = new Size(122, 25);
             lblServices.TabIndex = 15;
-            lblServices.Text = "My Case Services";
+            lblServices.Text = "Case Services";
             lblServices.TextAlign = ContentAlignment.BottomCenter;
             // 
             // LawyerDetailsView

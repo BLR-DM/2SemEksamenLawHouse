@@ -14,7 +14,11 @@ namespace EntityModels
         public int CaseServiceID { get; set; }
 
         //Attributes
+        [Required]
+        [MaxLength(10), MinLength(2)]
         public string Status { get; set; }
+        [Required]
+        [MaxLength(300), MinLength(4)]
         public string Description { get; set; }
         public float HoursWorked { get; set; }
         public float Units { get; set; }

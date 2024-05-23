@@ -17,7 +17,7 @@ namespace DataAccess.Migrations
                 {
                     CaseTypeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,8 +30,8 @@ namespace DataAccess.Migrations
                 {
                     FormDocumentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
@@ -45,7 +45,7 @@ namespace DataAccess.Migrations
                 {
                     LawyerTitleID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,8 +58,8 @@ namespace DataAccess.Migrations
                 {
                     LoginDetailsID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -73,7 +73,7 @@ namespace DataAccess.Migrations
                 {
                     ServicePriceTypeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PriceType = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PriceType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,7 +86,7 @@ namespace DataAccess.Migrations
                 {
                     SpecialityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SpecialityName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    SpecialityName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,7 @@ namespace DataAccess.Migrations
                 {
                     SubscriptionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
@@ -112,13 +112,13 @@ namespace DataAccess.Migrations
                 columns: table => new
                 {
                     PersonID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AddressLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostalCode = table.Column<int>(type: "int", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation("SqlServer:Identity", "100, 1"),
+                    Firstname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Lastname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    AddressLine = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PostalCode = table.Column<int>(type: "int", maxLength: 4, nullable: false),
+                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LoginDetailsID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -138,8 +138,8 @@ namespace DataAccess.Migrations
                 {
                     ServiceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     ServicePriceTypeID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -176,7 +176,7 @@ namespace DataAccess.Migrations
                 columns: table => new
                 {
                     PersonID = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<int>(type: "int", maxLength: 8, nullable: false),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LawyerTitleID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -259,7 +259,7 @@ namespace DataAccess.Migrations
                 {
                     PhoneID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<int>(type: "int", maxLength: 8, nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -313,13 +313,13 @@ namespace DataAccess.Migrations
                 columns: table => new
                 {
                     CaseID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EstimatedHours = table.Column<float>(type: "real", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     TotalPrice = table.Column<float>(type: "real", nullable: false),
                     CaseTypeID = table.Column<int>(type: "int", nullable: false),
                     LawyerID = table.Column<int>(type: "int", nullable: false),
@@ -378,13 +378,13 @@ namespace DataAccess.Migrations
                 {
                     CaseServiceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     HoursWorked = table.Column<float>(type: "real", nullable: false),
                     Units = table.Column<float>(type: "real", nullable: false),
                     TotalPrice = table.Column<float>(type: "real", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CaseID = table.Column<int>(type: "int", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
                     LawyerID = table.Column<int>(type: "int", nullable: false)
@@ -409,6 +409,27 @@ namespace DataAccess.Migrations
                         column: x => x.ServiceID,
                         principalTable: "Services",
                         principalColumn: "ServiceID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServiceEntries",
+                columns: table => new
+                {
+                    ServiceEntryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HoursWorked = table.Column<float>(type: "real", nullable: false),
+                    CaseServiceID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceEntries", x => x.ServiceEntryID);
+                    table.ForeignKey(
+                        name: "FK_ServiceEntries_CaseServices_CaseServiceID",
+                        column: x => x.CaseServiceID,
+                        principalTable: "CaseServices",
+                        principalColumn: "CaseServiceID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -503,6 +524,11 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ServiceEntries_CaseServiceID",
+                table: "ServiceEntries",
+                column: "CaseServiceID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Services_ServicePriceTypeID",
                 table: "Services",
                 column: "ServicePriceTypeID");
@@ -511,9 +537,6 @@ namespace DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "CaseServices");
-
             migrationBuilder.DropTable(
                 name: "ClientFormDocuments");
 
@@ -530,10 +553,7 @@ namespace DataAccess.Migrations
                 name: "Secretaries");
 
             migrationBuilder.DropTable(
-                name: "Cases");
-
-            migrationBuilder.DropTable(
-                name: "Services");
+                name: "ServiceEntries");
 
             migrationBuilder.DropTable(
                 name: "FormDocuments");
@@ -543,6 +563,15 @@ namespace DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Specialities");
+
+            migrationBuilder.DropTable(
+                name: "CaseServices");
+
+            migrationBuilder.DropTable(
+                name: "Cases");
+
+            migrationBuilder.DropTable(
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "CaseTypes");

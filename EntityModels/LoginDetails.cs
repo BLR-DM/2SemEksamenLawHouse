@@ -14,7 +14,11 @@ namespace EntityModels
         public int LoginDetailsID { get; set; }
 
         //attributes
+        [Required]
+        [MaxLength(50), MinLength(4)]
         public string Username { get; set; }
+        [Required]
+        [MaxLength(50), MinLength(4)]
         public string Password { get; set; }
         public DateTime CreationDate { get; set; }
 

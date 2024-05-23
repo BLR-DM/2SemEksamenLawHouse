@@ -37,6 +37,12 @@ namespace DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Case>()
+                .Property(c => c.CaseID)
+                .UseIdentityColumn(10000, 1);
+            modelBuilder.Entity<Person>()
+                .Property(p => p.PersonID)
+                .UseIdentityColumn(100, 1);
 
             modelBuilder.Entity<Person>()
                         .HasIndex(p => p.Email)
@@ -66,15 +72,6 @@ namespace DataAccess
             modelBuilder.Entity<Person>().UseTptMappingStrategy();
             modelBuilder.Entity<Employee>().UseTptMappingStrategy();
 
-            ////discriminator til usertype paa user tabel
-            //modelBuilder.Entity<User>()
-            //    .HasDiscriminator<String>("UserType")
-            //    .HasValue<Client>("Client")
-            //    .HasValue<Lawyer>("Lawyer")
-            //    .HasValue<Secretary>("Secretary");
-
-            /////////
-
             modelBuilder.Entity<LawyerSpeciality>()
                 .HasKey(c => new { c.LawyerID, c.SpecialityID });
 
@@ -90,29 +87,6 @@ namespace DataAccess
 
 
             modelBuilder.Entity<CaseService>().ToTable(cs => cs.HasTrigger("Trigger"));
-            //////////
-            
-            //modelBuilder.Entity<ClientFormular>()
-            //    .HasOne(ls => ls.Client)
-            //    .WithMany(l => l.ClientFormulars)
-            //    .HasForeignKey(ls => ls.ClientID);
-
-            //modelBuilder.Entity<ClientFormular>()
-            //    .HasOne(ls => ls.Formular)
-            //    .WithMany(s => s.ClientFormulars)
-            //    .HasForeignKey(ls => ls.FormularID);
-
-            ///////////
-
-            //modelBuilder.Entity<CaseService>()
-            //    .HasOne(ls => ls.Case)
-            //    .WithMany(l => l.CaseServices)
-            //    .HasForeignKey(ls => ls.CaseID);
-
-            //modelBuilder.Entity<CaseService>()
-            //    .HasOne(ls => ls.Service)
-            //    .WithMany(s => s.CaseServices)
-            //    .HasForeignKey(ls => ls.ServiceID);
 
         }
     }

@@ -13,6 +13,7 @@ namespace EntityModels
         public int PhoneID { get; set; }
 
         //attributes
+        [StringLength(8, MinimumLength = 8)]
         public int PhoneNumber { get; set; }
 
         //foreign Key

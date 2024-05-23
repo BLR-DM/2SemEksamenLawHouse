@@ -10,15 +10,6 @@ namespace BusinessLogic
         //Entity til UI Converters
         //
 
-        public CalculationUI ConvertFromCalculationEntity(Calculation calculationE)
-        {
-            CalculationUI  calculationUI = new CalculationUI 
-            { 
-                CalculationID = calculationE.CalculationID,
-                Name = calculationE.Name
-            };
-            return calculationUI;
-        }
 
         public CaseUI ConvertFromCaseEntity(Case caseE)
         {
@@ -442,33 +433,11 @@ namespace BusinessLogic
             return personUI;
         }
 
-        //public UserUI ConvertFromUserEntity(User userE)
-        //{
-        //    UserUI userUI = new UserUI
-        //    {
-        //        UserID = userE.UserID,
-        //        Username = userE.Username,
-        //        Password = userE.Password,
-        //        //Type = userE.Type,
-        //    };
-        //    return userUI;
-        //}
-
 
 
         //
         //UI til Entity Converters
         //
-        
-        public Calculation ConvertFromCalculationUI(CalculationUI calculationUI)
-        {
-            Calculation calculationE = new Calculation
-            {
-                CalculationID = calculationUI.CalculationID,
-                Name = calculationUI.Name,
-            };
-            return calculationE;
-        }
 
         public Case ConvertFromCaseUI(CaseUI caseUI)
         {

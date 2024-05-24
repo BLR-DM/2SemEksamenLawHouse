@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIModels
 {
-    public class DistanceCalc
+    public class DistanceMatrix
     {
         public string[] destination_addresses { get; set; }
         public string[] origin_addresses { get; set; }

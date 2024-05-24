@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.API;
-using EntityModels;
+using UIModels;
 
 namespace UI.Forms.AdminPage
 {
@@ -29,7 +29,7 @@ namespace UI.Forms.AdminPage
 
         private async void BtnSearch_Click(object? sender, EventArgs e)
         {
-            DistanceCalc test = new DistanceCalc() {};
+            DistanceMatrix test = new DistanceMatrix() {};
 
             test = await apiTestBL.GetDistance(txtOrigin.Text, txtDestination.Text);
 

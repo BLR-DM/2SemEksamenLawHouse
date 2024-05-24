@@ -33,7 +33,6 @@
             btnDeleteForm = new FontAwesome.Sharp.IconButton();
             btnUpdateForm = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            btnDeleteService = new FontAwesome.Sharp.IconButton();
             lblLawyers = new Label();
             btnCreateLawyer = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
@@ -136,26 +135,6 @@
             label1.Size = new Size(71, 21);
             label1.TabIndex = 52;
             label1.Text = "Services";
-            // 
-            // btnDeleteService
-            // 
-            btnDeleteService.Anchor = AnchorStyles.Bottom;
-            btnDeleteService.BackColor = Color.IndianRed;
-            btnDeleteService.Cursor = Cursors.Hand;
-            btnDeleteService.FlatAppearance.BorderSize = 0;
-            btnDeleteService.FlatStyle = FlatStyle.Flat;
-            btnDeleteService.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDeleteService.ForeColor = Color.White;
-            btnDeleteService.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDeleteService.IconColor = Color.Black;
-            btnDeleteService.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeleteService.IconSize = 70;
-            btnDeleteService.Location = new Point(413, 215);
-            btnDeleteService.Name = "btnDeleteService";
-            btnDeleteService.Size = new Size(171, 37);
-            btnDeleteService.TabIndex = 53;
-            btnDeleteService.Text = "Delete";
-            btnDeleteService.UseVisualStyleBackColor = false;
             // 
             // lblLawyers
             // 
@@ -480,7 +459,6 @@
             Controls.Add(lblLawyers);
             Controls.Add(btnDeleteSpeciality);
             Controls.Add(btnDeleteLawyerTitle);
-            Controls.Add(btnDeleteService);
             Controls.Add(label1);
             Controls.Add(btnUpdateForm);
             Controls.Add(btnDeleteForm);
@@ -500,7 +478,6 @@
         private FontAwesome.Sharp.IconButton btnDeleteForm;
         private FontAwesome.Sharp.IconButton btnUpdateForm;
         private Label label1;
-        private FontAwesome.Sharp.IconButton btnDeleteService;
         private Label lblLawyers;
         private FontAwesome.Sharp.IconButton btnCreateLawyer;
         private Label label3;

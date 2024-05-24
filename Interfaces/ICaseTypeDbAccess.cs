@@ -11,5 +11,6 @@ namespace Interfaces
     {
         Task<List<CaseType>> GetCaseTypeAsync();
         Task<bool> CreateCaseTypeAsync(CaseType caseType);
+        Task<bool> UpdateCaseTypeAsync(CaseType caseType);
     }
 }

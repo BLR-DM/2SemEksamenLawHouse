@@ -2,6 +2,7 @@
 using BusinessLogic;
 using UIModels;
 using EntityModels;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.AdminPage
 {
@@ -156,6 +157,8 @@ namespace UI.Forms.AdminPage
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
+
             UpdateCreateButtonState();
         }
 

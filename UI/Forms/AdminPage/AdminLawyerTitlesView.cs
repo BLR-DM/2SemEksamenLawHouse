@@ -34,7 +34,6 @@ namespace UI.Forms.AdminPage
                 if (selectedTitle != null)
                 {
                     new AdminCUDLawyerTitle(selectedTitle).ShowDialog();
-                    this.Close();
                 }
             }
         }

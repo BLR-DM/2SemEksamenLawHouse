@@ -116,6 +116,7 @@
             // dgvClients
             // 
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClients.Cursor = Cursors.Arrow;
             dgvClients.Location = new Point(25, 171);
             dgvClients.Name = "dgvClients";
             dgvClients.ReadOnly = true;

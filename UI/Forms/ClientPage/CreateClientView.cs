@@ -66,6 +66,7 @@ namespace UI.Forms.ClientPage
             btnCreate.Click += BtnCreate_Click;
             txtPassword.TextChanged += TxtPassword_TextChanged;
             txtConfirmPassword.TextChanged += TxtConfirmPassword_TextChanged;
+            
 
             BtnCreateEnabled();
 
@@ -90,7 +91,7 @@ namespace UI.Forms.ClientPage
                     Email = txtEmail.Text.ToLower(),
                     AddressLine = txtAddress.Text,
                     PostalCode = int.Parse(txtPostal.Text),
-                    //City = txtCity.Text,
+                    City = txtCity.Text,
                     IsSubscribed = false,
                 };
 
@@ -116,14 +117,13 @@ namespace UI.Forms.ClientPage
                     MessageBox.Show($"{txtFirstname.Text} Has been created! ", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    ClientsView cv = new ClientsView(frontPageView, currentUser);
+                    frontPageView.PnlContextChange(cv);
                 }
                 else
                     MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            ClientsView cv = new ClientsView(frontPageView, currentUser);
-            frontPageView.PnlContextChange(cv);
 
         }
 
@@ -252,8 +252,10 @@ namespace UI.Forms.ClientPage
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
 
-            int postal = int.Parse(txtPostal.Text);
-            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(postal);
+            if(txtPostal.ForeColor == validFormat)
+            {
+                txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(int.Parse(txtPostal.Text));
+            }
 
             BtnCreateEnabled();
         }

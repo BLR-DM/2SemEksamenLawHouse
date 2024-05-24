@@ -49,7 +49,7 @@ namespace UI.Forms.ClientPage
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            OpenPDF.ShowPDF("ClientsViewHelp");
+            OpenPDF.ShowPDF("ClientViewHelp");
         }
 
         private void DgvClients_DataSourceChanged(object? sender, EventArgs e)
@@ -183,6 +183,8 @@ namespace UI.Forms.ClientPage
             dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClients.ReadOnly = true;
             dgvClients.MultiSelect = false;
+            dgvClients.AllowUserToResizeColumns = false;
+            dgvClients.AllowUserToResizeRows = false;
 
             dgvClients.EnableHeadersVisualStyles = false;
             dgvClients.RowHeadersVisible = false;

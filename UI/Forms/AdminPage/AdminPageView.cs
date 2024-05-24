@@ -1,9 +1,14 @@
-﻿namespace UI.Forms.AdminPage
+﻿using BusinessLogic.API;
+using EntityModels;
+
+namespace UI.Forms.AdminPage
 {
     public partial class AdminPageView : Form
     {
+        DistanceMatrixBL apiTestBL;
         public AdminPageView()
         {
+            apiTestBL = new DistanceMatrixBL();
             InitializeComponent();
 
             btnCreateForm.Click += BtnCreateForm_Click;
@@ -19,6 +24,19 @@
             btnCreateSpeciality.Click += BtnCreateSpeciality_Click;
             btnUpdateSpeciality.Click += BtnUpdateSpeciality_Click;
             btnDeleteSpeciality.Click += BtnDeleteSpeciality_Click;
+            btnSearch.Click += BtnSearch_Click;
+        }
+
+        private async void BtnSearch_Click(object? sender, EventArgs e)
+        {
+            DistanceCalc test = new DistanceCalc() {};
+
+            test = await apiTestBL.GetDistance(txtOrigin.Text, txtDestination.Text);
+
+            if (test != null)
+            {
+                txtResult.Text = test.rows[0].elements[0].distance.text; 
+            }
             btnCreateCaseType.Click += BtnCreateCaseType_Click;
             btnUpdateCaseType.Click += BtnUpdateCaseType_Click;
         }

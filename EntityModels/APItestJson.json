@@ -1,0 +1,32 @@
+{
+   "destination_addresses" : 
+   [
+      "Los Angeles, CA, USA"
+   ],
+   "origin_addresses" : 
+   [
+      "New York, NY, USA"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "4,496 km",
+                  "value" : 4496132
+               },
+               "duration" : 
+               {
+                  "text" : "1 day 17 hours",
+                  "value" : 147896
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -31,7 +31,7 @@ namespace UI.Forms.AdminPage
         {
             if (e.RowIndex >= 0)
             {
-                SpecialityUI selectedSpeciality = specialityUIs[e.RowIndex] as SpecialityUI;
+                SpecialityUI selectedSpeciality = specialityUIs[e.RowIndex];
                 if (selectedSpeciality != null)
                 {
                     new AdminCUDSpeciality(selectedSpeciality).ShowDialog();
@@ -43,6 +43,19 @@ namespace UI.Forms.AdminPage
         private async void AdminSpecialityView_Load(object? sender, EventArgs e)
         {
             await SetDgvTitles();
+            SetDgvStyle();
+        }
+
+        private void SetDgvStyle()
+        {
+            dgvSpecialities.EnableHeadersVisualStyles = false;
+            dgvSpecialities.RowHeadersVisible = false;
+            dgvSpecialities.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvSpecialities.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvSpecialities.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvSpecialities.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvSpecialities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSpecialities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private async Task SetDgvTitles()

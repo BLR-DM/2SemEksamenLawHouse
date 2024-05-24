@@ -37,8 +37,11 @@
             // 
             dgvServiceList.AllowUserToAddRows = false;
             dgvServiceList.AllowUserToDeleteRows = false;
+            dgvServiceList.AllowUserToResizeColumns = false;
+            dgvServiceList.AllowUserToResizeRows = false;
             dgvServiceList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvServiceList.Location = new Point(24, 61);
+            dgvServiceList.MultiSelect = false;
             dgvServiceList.Name = "dgvServiceList";
             dgvServiceList.ReadOnly = true;
             dgvServiceList.Size = new Size(294, 342);

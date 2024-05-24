@@ -97,12 +97,10 @@ namespace UI.Forms.AdminPage
         private async void BtnUpdate_Click(object? sender, EventArgs e)
         {
             btnUpdate.Enabled = false;
-            CaseTypeUI caseTypeUI = new CaseTypeUI()
-            {
-                Title = txtCaseType.Text,
-            };
 
-            bool succes = await caseTypeBL.UpdateCaseTypeAsync(caseTypeUI);
+            selectedCaseType.Title = txtCaseType.Text;
+
+            bool succes = await caseTypeBL.UpdateCaseTypeAsync(selectedCaseType);
           
 
             if (succes)

@@ -41,6 +41,7 @@
             dgvCaseType.AllowUserToResizeRows = false;
             dgvCaseType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCaseType.Location = new Point(12, 64);
+            dgvCaseType.MultiSelect = false;
             dgvCaseType.Name = "dgvCaseType";
             dgvCaseType.ReadOnly = true;
             dgvCaseType.Size = new Size(207, 305);

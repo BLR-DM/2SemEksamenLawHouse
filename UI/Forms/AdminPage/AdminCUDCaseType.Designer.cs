@@ -93,7 +93,7 @@
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(125, 38);
             btnUpdate.TabIndex = 48;
-            btnUpdate.Text = "Create";
+            btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
             // AdminCUDCaseType

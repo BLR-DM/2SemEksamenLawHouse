@@ -35,7 +35,6 @@ namespace UI.Forms.AdminPage
                 {
                     AdminCUDCaseType adminCUDCaseType = new AdminCUDCaseType(selectedCaseType);
                     adminCUDCaseType.ShowDialog();
-                    this.Close();
                 }
             }
         }
@@ -47,8 +46,19 @@ namespace UI.Forms.AdminPage
             dgvCaseType.DataSource = caseTypeUIs;
 
             dgvCaseType.Columns["CaseTypeID"].Visible = false;
+
             dgvCaseType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCaseType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvCaseType.EnableHeadersVisualStyles = false;
+
+            dgvCaseType.RowHeadersVisible = false;
+
+            dgvCaseType.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvCaseType.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+
+            dgvCaseType.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvCaseType.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 }

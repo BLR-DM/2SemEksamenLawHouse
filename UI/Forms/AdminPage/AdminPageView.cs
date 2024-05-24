@@ -25,6 +25,8 @@ namespace UI.Forms.AdminPage
             btnUpdateSpeciality.Click += BtnUpdateSpeciality_Click;
             btnDeleteSpeciality.Click += BtnDeleteSpeciality_Click;
             btnSearch.Click += BtnSearch_Click;
+            btnCreateCaseType.Click += BtnCreateCaseType_Click;
+            btnUpdateCaseType.Click += BtnUpdateCaseType_Click;
         }
 
         private async void BtnSearch_Click(object? sender, EventArgs e)

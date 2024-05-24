@@ -20,6 +20,12 @@
             btnCreateSpeciality.Click += BtnCreateSpeciality_Click;
             btnUpdateSpeciality.Click += BtnUpdateSpeciality_Click;
             btnDeleteSpeciality.Click += BtnDeleteSpeciality_Click;
+            btnCreateCaseType.Click += BtnCreateCaseType_Click;
+        }
+
+        private void BtnCreateCaseType_Click(object? sender, EventArgs e)
+        {
+            new AdminCUDCaseType().ShowDialog();
         }
 
         private void BtnDeleteSpeciality_Click(object? sender, EventArgs e)

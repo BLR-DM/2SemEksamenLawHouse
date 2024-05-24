@@ -482,6 +482,17 @@ namespace BusinessLogic.HelpServices
             return caseServiceE;
         }
 
+        public CaseType ConvertFromCaseTypeUI(CaseTypeUI caseTypeUI)
+        {
+            CaseType caseType = new CaseType
+            {
+                CaseTypeID = caseTypeUI.CaseTypeID,
+                Title = caseTypeUI.Title,
+            };
+
+            return caseType;
+        }
+
         public Client ConvertFromClientUI(ClientUI clientUI)
         {
             Client clientE = new Client

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityModels\EntityModels.csproj" />
+    <ProjectReference Include="..\UIModels\UIModels.csproj" />
   </ItemGroup>
 
 </Project>

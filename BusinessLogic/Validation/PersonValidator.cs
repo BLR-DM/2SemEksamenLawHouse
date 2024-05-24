@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using EntityModels;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.Text.RegularExpressions;
 using UIModels;
 
 namespace BusinessLogic.Validation
@@ -66,6 +68,8 @@ namespace BusinessLogic.Validation
                 && vPassword.IsMatch(password);
         }
 
+
+
         public bool ValidPerson(EmployeeUI person)
         {
             return ValidName(person.Firstname) &&
@@ -76,5 +80,16 @@ namespace BusinessLogic.Validation
                 ValidEmail(person.Email) &&
                 ValidPhone(person.PhoneNumber.ToString());
         }
+        public bool ValidClient(ClientUI client)
+        {
+            return ValidName(client.Firstname) &&
+                ValidName(client.Lastname) &&
+                ValidAddress(client.AddressLine) &&
+                ValidName(client.City) &&
+                ValidPostalCode(client.PostalCode.ToString()) &&
+                ValidEmail(client.Email);
+
+        }
+
     }
 }

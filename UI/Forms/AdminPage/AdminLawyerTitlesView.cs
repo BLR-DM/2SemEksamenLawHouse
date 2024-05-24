@@ -42,6 +42,18 @@ namespace UI.Forms.AdminPage
         private async void AdminLawyerTitlesView_Load(object? sender, EventArgs e)
         {
             await SetDgvTitles();
+            SetDgvStyle();
+        }
+        private void SetDgvStyle()
+        {
+            dgvTitles.EnableHeadersVisualStyles = false;
+            dgvTitles.RowHeadersVisible = false;
+            dgvTitles.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
+            dgvTitles.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvTitles.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
+            dgvTitles.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvTitles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTitles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private async Task SetDgvTitles()

@@ -1,15 +1,6 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
 using UIModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace UI.Forms.AdminPage
 {
@@ -58,6 +49,12 @@ namespace UI.Forms.AdminPage
             lboxSpecialities.SelectedIndexChanged += LboxSpecialities_SelectedIndexChanged;
             btnAddSpeciality.Click += BtnAddSpeciality_Click;
             btnRemoveSpeciality.Click += BtnRemoveSpeciality_Click;
+            lblHelp.Click += LblHelp_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void LboxSpecialities_SelectedIndexChanged(object? sender, EventArgs e)
@@ -160,47 +157,58 @@ namespace UI.Forms.AdminPage
 
         private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            btnCreate.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to reate this Lawyer? " +
+                $"{txtFirstname.Text} {txtLastname.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            LawyerUI lawyerUI = new LawyerUI()
+            if (dialogResult == DialogResult.Yes)
             {
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                PhoneNumber = int.Parse(txtPhone.Text),
-                Email = txtEmailLogin.Text,
-                AddressLine = txtAddress.Text,
-                PostalCode = int.Parse(txtPostal.Text),
-                City = txtCity.Text,
-                LawyerTitleID = lawyerTitles.FirstOrDefault(x => x.Title == cboxTitles.SelectedItem).LawyerTitleID,
-                HireDate = dtpHireDate.Value
-            };
+                btnCreate.Enabled = false;
 
-            lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
-
-            foreach (string item in lboxSpecialities.Items)
-            {
-                LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
+                LawyerUI lawyerUI = new LawyerUI()
                 {
-                    SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == item).SpecialityID,
+                    Firstname = txtFirstname.Text,
+                    Lastname = txtLastname.Text,
+                    PhoneNumber = int.Parse(txtPhone.Text),
+                    Email = txtEmailLogin.Text,
+                    AddressLine = txtAddress.Text,
+                    PostalCode = int.Parse(txtPostal.Text),
+                    City = txtCity.Text,
+                    LawyerTitleID = lawyerTitles.FirstOrDefault(x => x.Title == cboxTitles.SelectedItem).LawyerTitleID,
+                    HireDate = dtpHireDate.Value
                 };
-                this.lawyerSpecialityUIs.Add(lawyerSpecialityUI);
+
+                lawyerSpecialityUIs = new List<LawyerSpecialityUI>();
+
+                foreach (string item in lboxSpecialities.Items)
+                {
+                    LawyerSpecialityUI lawyerSpecialityUI = new LawyerSpecialityUI()
+                    {
+                        SpecialityID = specialities.FirstOrDefault(s => s.SpecialityName == item).SpecialityID,
+                    };
+                    this.lawyerSpecialityUIs.Add(lawyerSpecialityUI);
+                }
+
+                LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+                {
+                    Username = txtEmailLogin.Text,
+                    Password = txtPassword.Text,
+                    CreationDate = DateTime.Now,
+                };
+
+
+                bool result = await lawyerBL.CreateLawyerAsync(lawyerUI, lawyerSpecialityUIs, loginDetailsUI);
+
+                if (result)
+                {
+                    MessageBox.Show($"Lawyer '{lawyerUI}' was successfully created!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed to create Lawyer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
-            {
-                Username = txtEmailLogin.Text,
-                Password = txtPassword.Text,
-                CreationDate = DateTime.Now,
-            };
-
-
-            bool test = await lawyerBL.CreateLawyerAsync(lawyerUI, lawyerSpecialityUIs, loginDetailsUI);
             btnCreate.Enabled = true;
-
-            if (test)
-                MessageBox.Show("Lawyer Created!");
-            else
-                MessageBox.Show("Failed!");
         }
 
         private void BtnToday_Click(object? sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Validation;
 using BusinessLogic;
 using UIModels;
+using EntityModels;
 
 namespace UI.Forms.AdminPage
 {
@@ -88,36 +89,47 @@ namespace UI.Forms.AdminPage
 
         private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            btnCreate.Enabled = false;
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to reate this Secretary? " +
+                $"{txtFirstname.Text} {txtLastname.Text}?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            SecretaryUI secretaryUI = new SecretaryUI()
+            if (dialogResult == DialogResult.Yes)
             {
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                PhoneNumber = int.Parse(txtPhone.Text),
-                Email = txtEmailLogin.Text,
-                AddressLine = txtAddress.Text,
-                PostalCode = int.Parse(txtPostal.Text),
-                City = txtCity.Text,
-                LawyerTitleID = lawyerTitles.FirstOrDefault(x => x.Title == cboxTitles.SelectedItem).LawyerTitleID,
-                HireDate = dtpHireDate.Value
-            };
+                btnCreate.Enabled = false;
 
-            LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
-            {
-                Username = txtEmailLogin.Text,
-                Password = txtPassword.Text,
-                CreationDate = DateTime.Now,
-            };
+                SecretaryUI secretaryUI = new SecretaryUI()
+                {
+                    Firstname = txtFirstname.Text,
+                    Lastname = txtLastname.Text,
+                    PhoneNumber = int.Parse(txtPhone.Text),
+                    Email = txtEmailLogin.Text,
+                    AddressLine = txtAddress.Text,
+                    PostalCode = int.Parse(txtPostal.Text),
+                    City = txtCity.Text,
+                    LawyerTitleID = lawyerTitles.FirstOrDefault(x => x.Title == cboxTitles.SelectedItem).LawyerTitleID,
+                    HireDate = dtpHireDate.Value
+                };
+
+                LoginDetailsUI loginDetailsUI = new LoginDetailsUI()
+                {
+                    Username = txtEmailLogin.Text,
+                    Password = txtPassword.Text,
+                    CreationDate = DateTime.Now,
+                };
 
 
-            bool test = await secretaryBL.CreateSecretaryAsync(secretaryUI, loginDetailsUI);
+                bool result = await secretaryBL.CreateSecretaryAsync(secretaryUI, loginDetailsUI);
+
+                if (result)
+                {
+                    MessageBox.Show($"Secretary '{secretaryUI.Firstname} {secretaryUI.Lastname}' was successfully created!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Failed to create Secretary!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             btnCreate.Enabled = true;
-
-            if (test)
-                MessageBox.Show("Secretary Created!");
-            else
-                MessageBox.Show("Failed!");
         }
 
         private void BtnToday_Click(object? sender, EventArgs e)

@@ -35,9 +35,15 @@
             // 
             // dgvSpecialities
             // 
+            dgvSpecialities.AllowUserToAddRows = false;
+            dgvSpecialities.AllowUserToDeleteRows = false;
+            dgvSpecialities.AllowUserToResizeColumns = false;
+            dgvSpecialities.AllowUserToResizeRows = false;
             dgvSpecialities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSpecialities.Location = new Point(52, 55);
+            dgvSpecialities.MultiSelect = false;
             dgvSpecialities.Name = "dgvSpecialities";
+            dgvSpecialities.ReadOnly = true;
             dgvSpecialities.Size = new Size(173, 298);
             dgvSpecialities.TabIndex = 3;
             // 

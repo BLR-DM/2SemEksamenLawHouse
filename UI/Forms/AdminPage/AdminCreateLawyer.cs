@@ -55,7 +55,7 @@ namespace UI.Forms.AdminPage
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("Done finished");
+            MessageBox.Show("Not ready");
             //OpenPDF.ShowPDF(lblHelp.Tag.ToString());
         }
 

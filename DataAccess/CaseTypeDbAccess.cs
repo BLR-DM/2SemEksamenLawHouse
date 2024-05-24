@@ -35,5 +35,18 @@ namespace DataAccess
                 return false;
             }
         }
+
+        public async Task<bool> UpdateCaseTypeAsync(CaseType caseType)
+        {
+            try
+            {
+                db.CaseTypes.Update(caseType);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -63,6 +63,7 @@ namespace UI.Forms.AdminPage
             {
                 MessageBox.Show("Failed to create casetype");
             }
+
         }
 
     }

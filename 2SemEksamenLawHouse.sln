@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIModels", "UIModels\UIMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculations", "Calculations\Calculations.csproj", "{74EA0242-5955-4817-BD6C-6586798161F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{6D1D1D64-AB69-4225-8D2A-63A16BE95C89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{6D1D1D64-AB69-4225-8D2A-63A16BE95C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{48F5DA7B-B61A-4EC6-9BA3-B4D2D4CDCAF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{6D1D1D64-AB69-4225-8D2A-63A16BE95C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D1D1D64-AB69-4225-8D2A-63A16BE95C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D1D1D64-AB69-4225-8D2A-63A16BE95C89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F5DA7B-B61A-4EC6-9BA3-B4D2D4CDCAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F5DA7B-B61A-4EC6-9BA3-B4D2D4CDCAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F5DA7B-B61A-4EC6-9BA3-B4D2D4CDCAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F5DA7B-B61A-4EC6-9BA3-B4D2D4CDCAF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

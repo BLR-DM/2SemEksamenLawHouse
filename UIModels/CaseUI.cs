@@ -119,7 +119,7 @@ namespace UIModels
 
             try
             {
-                File.WriteAllLines(path, rowsToPrint);
+                await File.WriteAllLinesAsync(path, rowsToPrint);
             }
             catch (Exception)
             {
@@ -160,7 +160,7 @@ namespace UIModels
 
             try
             {
-                File.WriteAllLines(path, textToWrite);
+                await File.WriteAllLinesAsync(path, textToWrite);
             }
             catch (Exception)
             {

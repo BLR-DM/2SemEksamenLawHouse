@@ -48,6 +48,10 @@
             lblSpeciality = new Label();
             btnCreateSpeciality = new FontAwesome.Sharp.IconButton();
             btnUpdateSpeciality = new FontAwesome.Sharp.IconButton();
+            txtOrigin = new TextBox();
+            txtDestination = new TextBox();
+            btnSearch = new Button();
+            txtResult = new TextBox();
             SuspendLayout();
             // 
             // label7
@@ -402,12 +406,49 @@
             btnUpdateSpeciality.Text = "Update";
             btnUpdateSpeciality.UseVisualStyleBackColor = false;
             // 
+            // txtOrigin
+            // 
+            txtOrigin.Location = new Point(86, 447);
+            txtOrigin.Name = "txtOrigin";
+            txtOrigin.PlaceholderText = "Origin";
+            txtOrigin.Size = new Size(236, 23);
+            txtOrigin.TabIndex = 64;
+            // 
+            // txtDestination
+            // 
+            txtDestination.Location = new Point(86, 487);
+            txtDestination.Name = "txtDestination";
+            txtDestination.PlaceholderText = "Destination";
+            txtDestination.Size = new Size(236, 23);
+            txtDestination.TabIndex = 64;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(86, 527);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 65;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtResult
+            // 
+            txtResult.Location = new Point(86, 565);
+            txtResult.Name = "txtResult";
+            txtResult.PlaceholderText = "Result";
+            txtResult.Size = new Size(108, 23);
+            txtResult.TabIndex = 64;
+            // 
             // AdminPageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(btnSearch);
+            Controls.Add(txtResult);
+            Controls.Add(txtDestination);
+            Controls.Add(txtOrigin);
             Controls.Add(btnUpdateSpeciality);
             Controls.Add(btnUpdateLawyerTitle);
             Controls.Add(btnUpdateService);
@@ -457,5 +498,9 @@
         private Label lblSpeciality;
         private FontAwesome.Sharp.IconButton btnCreateSpeciality;
         private FontAwesome.Sharp.IconButton btnUpdateSpeciality;
+        private TextBox txtOrigin;
+        private TextBox txtDestination;
+        private Button btnSearch;
+        private TextBox txtResult;
     }
 }

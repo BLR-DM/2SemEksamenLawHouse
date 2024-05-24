@@ -415,6 +415,7 @@
             // 
             txtCity.Anchor = AnchorStyles.Top;
             txtCity.BackColor = Color.White;
+            txtCity.Enabled = false;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.Location = new Point(272, 465);
             txtCity.MaxLength = 50;

@@ -216,9 +216,10 @@
             // 
             // txtCity
             // 
+            txtCity.Enabled = false;
             txtCity.Location = new Point(130, 350);
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(100, 23);
+            txtCity.Size = new Size(101, 23);
             txtCity.TabIndex = 8;
             // 
             // cboxTitles

@@ -117,6 +117,7 @@
             // 
             // txtCity
             // 
+            txtCity.Enabled = false;
             txtCity.Location = new Point(113, 350);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(100, 23);

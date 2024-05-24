@@ -317,6 +317,7 @@
             // txtCity
             // 
             txtCity.BackColor = Color.White;
+            txtCity.Enabled = false;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.Location = new Point(253, 343);
             txtCity.MaxLength = 50;

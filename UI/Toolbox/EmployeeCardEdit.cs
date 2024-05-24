@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using UI.Forms.EmployeePage;
 using UIModels;
@@ -122,6 +123,8 @@ namespace UI.Toolbox
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
+
             btnUpdateEnabled();
         }
 

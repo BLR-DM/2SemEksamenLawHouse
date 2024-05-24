@@ -33,5 +33,15 @@ namespace BusinessLogic
             return result;
         }
 
+        public async Task<bool> CreateCaseTypeAsync(CaseTypeUI caseTypeUI)
+        {
+            return await dbAccess.CreateCaseTypeAsync(modelConverter.ConvertFromCaseTypeUI(caseTypeUI));
+        }
+
+        public async Task<bool> UpdateCaseTypeAsync(CaseTypeUI caseTypeUI)
+        {
+            return await dbAccess.UpdateCaseTypeAsync(modelConverter.ConvertFromCaseTypeUI(caseTypeUI));
+        }
+
     }
 }

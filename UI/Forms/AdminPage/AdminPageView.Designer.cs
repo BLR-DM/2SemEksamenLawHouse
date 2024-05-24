@@ -33,7 +33,6 @@
             btnDeleteForm = new FontAwesome.Sharp.IconButton();
             btnUpdateForm = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            btnDeleteService = new FontAwesome.Sharp.IconButton();
             lblLawyers = new Label();
             btnCreateLawyer = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
@@ -52,6 +51,9 @@
             txtDestination = new TextBox();
             btnSearch = new Button();
             txtResult = new TextBox();
+            label2 = new Label();
+            btnCreateCaseType = new FontAwesome.Sharp.IconButton();
+            btnUpdateCaseType = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // label7
@@ -137,26 +139,6 @@
             label1.Size = new Size(71, 21);
             label1.TabIndex = 52;
             label1.Text = "Services";
-            // 
-            // btnDeleteService
-            // 
-            btnDeleteService.Anchor = AnchorStyles.Bottom;
-            btnDeleteService.BackColor = Color.IndianRed;
-            btnDeleteService.Cursor = Cursors.Hand;
-            btnDeleteService.FlatAppearance.BorderSize = 0;
-            btnDeleteService.FlatStyle = FlatStyle.Flat;
-            btnDeleteService.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDeleteService.ForeColor = Color.White;
-            btnDeleteService.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDeleteService.IconColor = Color.Black;
-            btnDeleteService.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeleteService.IconSize = 70;
-            btnDeleteService.Location = new Point(413, 215);
-            btnDeleteService.Name = "btnDeleteService";
-            btnDeleteService.Size = new Size(171, 37);
-            btnDeleteService.TabIndex = 53;
-            btnDeleteService.Text = "Delete";
-            btnDeleteService.UseVisualStyleBackColor = false;
             // 
             // lblLawyers
             // 
@@ -268,7 +250,7 @@
             lblLawyerTitle.BackColor = SystemColors.GradientInactiveCaption;
             lblLawyerTitle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblLawyerTitle.ForeColor = Color.FromArgb(45, 93, 134);
-            lblLawyerTitle.Location = new Point(450, 326);
+            lblLawyerTitle.Location = new Point(331, 326);
             lblLawyerTitle.Name = "lblLawyerTitle";
             lblLawyerTitle.Size = new Size(97, 21);
             lblLawyerTitle.TabIndex = 59;
@@ -287,7 +269,7 @@
             btnCreateLawyerTitle.IconColor = Color.Black;
             btnCreateLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateLawyerTitle.IconSize = 70;
-            btnCreateLawyerTitle.Location = new Point(413, 369);
+            btnCreateLawyerTitle.Location = new Point(289, 369);
             btnCreateLawyerTitle.Name = "btnCreateLawyerTitle";
             btnCreateLawyerTitle.Size = new Size(171, 37);
             btnCreateLawyerTitle.TabIndex = 60;
@@ -307,7 +289,7 @@
             btnUpdateLawyerTitle.IconColor = Color.Black;
             btnUpdateLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateLawyerTitle.IconSize = 70;
-            btnUpdateLawyerTitle.Location = new Point(413, 433);
+            btnUpdateLawyerTitle.Location = new Point(289, 433);
             btnUpdateLawyerTitle.Name = "btnUpdateLawyerTitle";
             btnUpdateLawyerTitle.Size = new Size(171, 37);
             btnUpdateLawyerTitle.TabIndex = 63;
@@ -327,7 +309,7 @@
             btnDeleteLawyerTitle.IconColor = Color.Black;
             btnDeleteLawyerTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteLawyerTitle.IconSize = 70;
-            btnDeleteLawyerTitle.Location = new Point(413, 498);
+            btnDeleteLawyerTitle.Location = new Point(289, 498);
             btnDeleteLawyerTitle.Name = "btnDeleteLawyerTitle";
             btnDeleteLawyerTitle.Size = new Size(171, 37);
             btnDeleteLawyerTitle.TabIndex = 53;
@@ -347,7 +329,7 @@
             btnDeleteSpeciality.IconColor = Color.Black;
             btnDeleteSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDeleteSpeciality.IconSize = 70;
-            btnDeleteSpeciality.Location = new Point(728, 498);
+            btnDeleteSpeciality.Location = new Point(539, 498);
             btnDeleteSpeciality.Name = "btnDeleteSpeciality";
             btnDeleteSpeciality.Size = new Size(171, 37);
             btnDeleteSpeciality.TabIndex = 53;
@@ -360,7 +342,7 @@
             lblSpeciality.BackColor = SystemColors.GradientInactiveCaption;
             lblSpeciality.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblSpeciality.ForeColor = Color.FromArgb(45, 93, 134);
-            lblSpeciality.Location = new Point(772, 326);
+            lblSpeciality.Location = new Point(584, 326);
             lblSpeciality.Name = "lblSpeciality";
             lblSpeciality.Size = new Size(80, 21);
             lblSpeciality.TabIndex = 59;
@@ -379,7 +361,7 @@
             btnCreateSpeciality.IconColor = Color.Black;
             btnCreateSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreateSpeciality.IconSize = 70;
-            btnCreateSpeciality.Location = new Point(728, 369);
+            btnCreateSpeciality.Location = new Point(539, 369);
             btnCreateSpeciality.Name = "btnCreateSpeciality";
             btnCreateSpeciality.Size = new Size(171, 37);
             btnCreateSpeciality.TabIndex = 60;
@@ -399,7 +381,7 @@
             btnUpdateSpeciality.IconColor = Color.Black;
             btnUpdateSpeciality.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdateSpeciality.IconSize = 70;
-            btnUpdateSpeciality.Location = new Point(728, 433);
+            btnUpdateSpeciality.Location = new Point(539, 433);
             btnUpdateSpeciality.Name = "btnUpdateSpeciality";
             btnUpdateSpeciality.Size = new Size(171, 37);
             btnUpdateSpeciality.TabIndex = 63;
@@ -438,6 +420,58 @@
             txtResult.PlaceholderText = "Result";
             txtResult.Size = new Size(108, 23);
             txtResult.TabIndex = 64;
+            //
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.GradientInactiveCaption;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(45, 93, 134);
+            label2.Location = new Point(797, 326);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 21);
+            label2.TabIndex = 64;
+            label2.Text = "CaseType";
+            // 
+            // btnCreateCaseType
+            // 
+            btnCreateCaseType.Anchor = AnchorStyles.Bottom;
+            btnCreateCaseType.BackColor = Color.FromArgb(45, 93, 134);
+            btnCreateCaseType.Cursor = Cursors.Hand;
+            btnCreateCaseType.FlatAppearance.BorderSize = 0;
+            btnCreateCaseType.FlatStyle = FlatStyle.Flat;
+            btnCreateCaseType.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnCreateCaseType.ForeColor = Color.White;
+            btnCreateCaseType.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCreateCaseType.IconColor = Color.Black;
+            btnCreateCaseType.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCreateCaseType.IconSize = 70;
+            btnCreateCaseType.Location = new Point(756, 369);
+            btnCreateCaseType.Name = "btnCreateCaseType";
+            btnCreateCaseType.Size = new Size(171, 37);
+            btnCreateCaseType.TabIndex = 65;
+            btnCreateCaseType.Text = "Create";
+            btnCreateCaseType.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdateCaseType
+            // 
+            btnUpdateCaseType.Anchor = AnchorStyles.Bottom;
+            btnUpdateCaseType.BackColor = Color.FromArgb(45, 93, 134);
+            btnUpdateCaseType.Cursor = Cursors.Hand;
+            btnUpdateCaseType.FlatAppearance.BorderSize = 0;
+            btnUpdateCaseType.FlatStyle = FlatStyle.Flat;
+            btnUpdateCaseType.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnUpdateCaseType.ForeColor = Color.White;
+            btnUpdateCaseType.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnUpdateCaseType.IconColor = Color.Black;
+            btnUpdateCaseType.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdateCaseType.IconSize = 70;
+            btnUpdateCaseType.Location = new Point(756, 433);
+            btnUpdateCaseType.Name = "btnUpdateCaseType";
+            btnUpdateCaseType.Size = new Size(171, 37);
+            btnUpdateCaseType.TabIndex = 66;
+            btnUpdateCaseType.Text = "Update";
+            btnUpdateCaseType.UseVisualStyleBackColor = false;
             // 
             // AdminPageView
             // 
@@ -449,6 +483,9 @@
             Controls.Add(txtResult);
             Controls.Add(txtDestination);
             Controls.Add(txtOrigin);
+            Controls.Add(btnUpdateCaseType);
+            Controls.Add(btnCreateCaseType);
+            Controls.Add(label2);
             Controls.Add(btnUpdateSpeciality);
             Controls.Add(btnUpdateLawyerTitle);
             Controls.Add(btnUpdateService);
@@ -463,7 +500,6 @@
             Controls.Add(lblLawyers);
             Controls.Add(btnDeleteSpeciality);
             Controls.Add(btnDeleteLawyerTitle);
-            Controls.Add(btnDeleteService);
             Controls.Add(label1);
             Controls.Add(btnUpdateForm);
             Controls.Add(btnDeleteForm);
@@ -483,7 +519,6 @@
         private FontAwesome.Sharp.IconButton btnDeleteForm;
         private FontAwesome.Sharp.IconButton btnUpdateForm;
         private Label label1;
-        private FontAwesome.Sharp.IconButton btnDeleteService;
         private Label lblLawyers;
         private FontAwesome.Sharp.IconButton btnCreateLawyer;
         private Label label3;
@@ -502,5 +537,8 @@
         private TextBox txtDestination;
         private Button btnSearch;
         private TextBox txtResult;
+        private Label label2;
+        private FontAwesome.Sharp.IconButton btnCreateCaseType;
+        private FontAwesome.Sharp.IconButton btnUpdateCaseType;
     }
 }

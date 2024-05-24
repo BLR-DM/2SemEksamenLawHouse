@@ -18,7 +18,6 @@ namespace UI.Forms.AdminPage
             btnCreateSecretary.Click += BtnCreateSecretary_Click;
             btnCreateService.Click += BtnCreateService_Click;
             btnUpdateService.Click += BtnUpdateService_Click;
-            btnDeleteService.Click += BtnDeleteService_Click;
             btnCreateLawyerTitle.Click += BtnCreateLawyerTitle_Click;
             btnUpdateLawyerTitle.Click += BtnUpdateTitle_Click;
             btnDeleteLawyerTitle.Click += BtnDeleteLawyerTitle_Click;
@@ -38,6 +37,18 @@ namespace UI.Forms.AdminPage
             {
                 txtResult.Text = test.rows[0].elements[0].distance.text; 
             }
+            btnCreateCaseType.Click += BtnCreateCaseType_Click;
+            btnUpdateCaseType.Click += BtnUpdateCaseType_Click;
+        }
+
+        private void BtnUpdateCaseType_Click(object? sender, EventArgs e)
+        {
+            new AdminCaseTypeView().ShowDialog();
+        }
+
+        private void BtnCreateCaseType_Click(object? sender, EventArgs e)
+        {
+            new AdminCUDCaseType().ShowDialog();
         }
 
         private void BtnDeleteSpeciality_Click(object? sender, EventArgs e)
@@ -70,17 +81,10 @@ namespace UI.Forms.AdminPage
             new AdminCUDLawyerTitle().ShowDialog();
         }
 
-        private void BtnDeleteService_Click(object? sender, EventArgs e)
-        {
-            new AdminServiceView().ShowDialog();
-        }
-
         private void BtnUpdateService_Click(object? sender, EventArgs e)
         {
             new AdminServiceView().ShowDialog();
         }
-
-
 
         private void BtnCreateService_Click(object? sender, EventArgs e)
         {

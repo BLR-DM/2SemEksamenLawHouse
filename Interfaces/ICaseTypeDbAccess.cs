@@ -10,5 +10,7 @@ namespace Interfaces
     public interface ICaseTypeDbAccess
     {
         Task<List<CaseType>> GetCaseTypeAsync();
+        Task<bool> CreateCaseTypeAsync(CaseType caseType);
+        Task<bool> UpdateCaseTypeAsync(CaseType caseType);
     }
 }

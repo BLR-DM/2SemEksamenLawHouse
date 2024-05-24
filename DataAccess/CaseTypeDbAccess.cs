@@ -21,5 +21,32 @@ namespace DataAccess
         {
             return await db.CaseTypes.ToListAsync();
         }
+
+
+        public async Task<bool> CreateCaseTypeAsync(CaseType caseType)
+        {
+            try
+            {
+                await db.CaseTypes.AddAsync(caseType);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateCaseTypeAsync(CaseType caseType)
+        {
+            try
+            {
+                db.CaseTypes.Update(caseType);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

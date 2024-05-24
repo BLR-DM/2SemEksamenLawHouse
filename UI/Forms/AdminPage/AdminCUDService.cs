@@ -28,7 +28,6 @@ namespace UI.Forms.AdminPage
 
             btnCreate.Click += BtnCreate_Click;
 
-            btnDelete.Visible = false;
             btnUpdate.Visible = false;
         }
 
@@ -47,7 +46,8 @@ namespace UI.Forms.AdminPage
             bool succes = await serviceBL.CreateServiceAsync(newService);
             if(succes)
             {
-                MessageBox.Show("comon now dawg");
+                MessageBox.Show("Service Created");
+                this.Close();
             }
             else
             {
@@ -94,7 +94,6 @@ namespace UI.Forms.AdminPage
 
             SetComboBox();
 
-            btnDelete.Click += BtnDelete_Click;
             btnUpdate.Click += BtnUpdate_Click;
         }
 
@@ -120,21 +119,6 @@ namespace UI.Forms.AdminPage
             else
             {
                 MessageBox.Show("Service failed to update");
-            }
-        }
-
-
-        private async void BtnDelete_Click(object? sender, EventArgs e)
-        {
-            bool succes = await serviceBL.DeleteServiceAsync(selectedService);
-            if(succes)
-            {
-                MessageBox.Show("You have removed this service");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Failed to remove this service");
             }
         }
     }

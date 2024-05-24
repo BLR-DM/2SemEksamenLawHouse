@@ -142,6 +142,7 @@ namespace BusinessLogic
             return caseServiceUI;
         }
 
+
         public ClientUI ConvertFromClientEntity(Client clientE)
         {
             ClientUI clientUI = new ClientUI
@@ -480,6 +481,17 @@ namespace BusinessLogic
                 LawyerID = CaseServiceUI.LawyerID,
             };
             return caseServiceE;
+        }
+
+        public CaseType ConvertFromCaseTypeUI(CaseTypeUI caseTypeUI)
+        {
+            CaseType caseType = new CaseType
+            {
+                CaseTypeID = caseTypeUI.CaseTypeID,
+                Title = caseTypeUI.Title,
+            };
+
+            return caseType;
         }
 
         public Client ConvertFromClientUI(ClientUI clientUI)

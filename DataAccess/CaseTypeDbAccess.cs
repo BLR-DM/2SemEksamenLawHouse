@@ -17,6 +17,20 @@ namespace DataAccess
             db = new LawHouseDbContext();
         }
 
+
+        public async Task<bool> CreateCaseTypeAsync(CaseType caseType)
+        {
+            try
+            {
+                await db.CaseTypes.AddAsync(caseType);
+                return await db.SaveChangesAsync() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<List<CaseType>> GetCaseTypeAsync()
         {
             return await db.CaseTypes.ToListAsync();

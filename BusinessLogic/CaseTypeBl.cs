@@ -20,6 +20,11 @@ namespace BusinessLogic
             dbAccess = new CaseTypeDbAccess();
         }
 
+        public async Task<bool> CreateCaseTypeAsync(CaseTypeUI caseTypeUI)
+        {
+            return await dbAccess.CreateCaseTypeAsync(modelConverter.ConvertFromCaseTypeUI(caseTypeUI));
+        }
+
         public async Task<List<CaseTypeUI>> GetCaseTypeAsync()
         {
             List<CaseTypeUI> result = new List<CaseTypeUI>();

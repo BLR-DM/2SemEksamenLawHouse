@@ -37,7 +37,6 @@
             cboPriceTypes = new ComboBox();
             lblPriceType = new Label();
             btnCreate = new FontAwesome.Sharp.IconButton();
-            btnDelete = new FontAwesome.Sharp.IconButton();
             btnUpdate = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
@@ -142,32 +141,12 @@
             btnCreate.IconColor = Color.Black;
             btnCreate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCreate.IconSize = 70;
-            btnCreate.Location = new Point(83, 354);
+            btnCreate.Location = new Point(86, 354);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(179, 50);
             btnCreate.TabIndex = 43;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Bottom;
-            btnDelete.BackColor = Color.FromArgb(192, 0, 0);
-            btnDelete.Cursor = Cursors.Hand;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnDelete.ForeColor = Color.Transparent;
-            btnDelete.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnDelete.IconColor = Color.Transparent;
-            btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDelete.IconSize = 70;
-            btnDelete.Location = new Point(203, 354);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(128, 50);
-            btnDelete.TabIndex = 45;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnUpdate
             // 
@@ -182,7 +161,7 @@
             btnUpdate.IconColor = Color.Black;
             btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUpdate.IconSize = 70;
-            btnUpdate.Location = new Point(12, 354);
+            btnUpdate.Location = new Point(108, 354);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(128, 50);
             btnUpdate.TabIndex = 46;
@@ -196,7 +175,6 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(343, 426);
             Controls.Add(btnUpdate);
-            Controls.Add(btnDelete);
             Controls.Add(btnCreate);
             Controls.Add(lblPriceType);
             Controls.Add(cboPriceTypes);
@@ -224,7 +202,6 @@
         private ComboBox cboPriceTypes;
         private Label lblPriceType;
         private FontAwesome.Sharp.IconButton btnCreate;
-        private FontAwesome.Sharp.IconButton btnDelete;
         private FontAwesome.Sharp.IconButton btnUpdate;
     }
 }

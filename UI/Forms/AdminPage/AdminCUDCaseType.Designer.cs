@@ -31,6 +31,7 @@
             lblServiceName = new Label();
             txtCaseType = new TextBox();
             btnCreate = new FontAwesome.Sharp.IconButton();
+            btnUpdate = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // lblServiceName
@@ -75,12 +76,33 @@
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.Anchor = AnchorStyles.Bottom;
+            btnUpdate.BackColor = Color.FromArgb(45, 93, 134);
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnUpdate.IconColor = Color.Black;
+            btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnUpdate.IconSize = 70;
+            btnUpdate.Location = new Point(91, 90);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(125, 38);
+            btnUpdate.TabIndex = 48;
+            btnUpdate.Text = "Create";
+            btnUpdate.UseVisualStyleBackColor = false;
+            // 
             // AdminCUDCaseType
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(307, 140);
+            Controls.Add(btnUpdate);
             Controls.Add(btnCreate);
             Controls.Add(txtCaseType);
             Controls.Add(lblServiceName);
@@ -96,5 +118,6 @@
         private Label lblServiceName;
         private TextBox txtCaseType;
         private FontAwesome.Sharp.IconButton btnCreate;
+        private FontAwesome.Sharp.IconButton btnUpdate;
     }
 }

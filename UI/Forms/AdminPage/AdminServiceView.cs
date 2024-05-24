@@ -37,7 +37,7 @@ namespace UI.Forms.AdminPage
             }
         }
 
-        public async void SetDgv()
+        private async void SetDgv()
         {
             serviceList = await serviceBL.GetServicesAsync();
             dgvServiceList.DataSource = serviceList;

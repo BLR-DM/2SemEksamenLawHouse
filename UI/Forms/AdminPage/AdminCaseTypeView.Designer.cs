@@ -28,18 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dgvCaseType = new DataGridView();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvCaseType).BeginInit();
             SuspendLayout();
+            // 
+            // dgvCaseType
+            // 
+            dgvCaseType.AllowUserToAddRows = false;
+            dgvCaseType.AllowUserToDeleteRows = false;
+            dgvCaseType.AllowUserToResizeColumns = false;
+            dgvCaseType.AllowUserToResizeRows = false;
+            dgvCaseType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCaseType.Location = new Point(12, 64);
+            dgvCaseType.Name = "dgvCaseType";
+            dgvCaseType.ReadOnly = true;
+            dgvCaseType.Size = new Size(207, 305);
+            dgvCaseType.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(50, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(130, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Double click a casetype";
             // 
             // AdminCaseTypeView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(314, 450);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(231, 380);
+            Controls.Add(label1);
+            Controls.Add(dgvCaseType);
             Name = "AdminCaseTypeView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AdminCaseTypeView";
+            ((System.ComponentModel.ISupportInitialize)dgvCaseType).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DataGridView dgvCaseType;
+        private Label label1;
     }
 }

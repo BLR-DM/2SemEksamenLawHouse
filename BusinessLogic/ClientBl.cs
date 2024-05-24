@@ -8,6 +8,7 @@ using UIModels;
 using EntityModels;
 using Interfaces;
 using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 
 namespace BusinessLogic
 {
@@ -15,10 +16,12 @@ namespace BusinessLogic
     {
         IClientDbAccess dbAccess;
         ModelConverter modelConverter;
+        PersonValidator pValidator;
         public ClientBL()
         {
             dbAccess = new ClientDbAccessSqlClient();
             modelConverter = new ModelConverter();
+            pValidator = new PersonValidator();
         }
 
         public async Task<List<ClientUI>> GetClientsAsync()
@@ -51,7 +54,27 @@ namespace BusinessLogic
 
         public async Task<bool> CreateClientAsync(ClientUI clientUI, LoginDetailsUI loginDetailsUI, List<PhoneUI> phoneUIs)
         {
+            if(!pValidator.ValidClient(clientUI))
+            {
+                return false;
+            }
+
+            foreach(PhoneUI phone in phoneUIs)
+            {
+                bool succes = pValidator.ValidPhone(phone.PhoneNumber.ToString());
+                if(!succes)
+                {
+                    return false;
+                }
+            }
+            
+            if(!pValidator.ValidPassword(loginDetailsUI.Password))
+            {
+                return false;
+            }
+
             Client tempC = modelConverter.ConvertFromClientUI(clientUI);
+
             LoginDetails tempL = modelConverter.ConvertFromLoginDetailsUI(loginDetailsUI);
 
             List<Phone> phoneList = new List<Phone>();
@@ -65,6 +88,7 @@ namespace BusinessLogic
             
             tempC.Phones = phoneList;
             tempC.LoginDetails = tempL;
+
 
 
             return await dbAccess.CreateClientAsync(tempC);
@@ -96,7 +120,5 @@ namespace BusinessLogic
             }
             return await dbAccess.DeleteClientPhoneNumbersAsync(phoneNumbers);
         }
-
-
     }
 }

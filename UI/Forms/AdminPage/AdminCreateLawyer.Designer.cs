@@ -218,6 +218,7 @@
             // txtCity
             // 
             txtCity.BackColor = Color.White;
+            txtCity.Enabled = false;
             txtCity.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.Location = new Point(253, 336);
             txtCity.MaxLength = 50;
@@ -496,7 +497,7 @@
             lblHelp.Name = "lblHelp";
             lblHelp.Size = new Size(66, 15);
             lblHelp.TabIndex = 53;
-            lblHelp.Tag = "AdminCreateLawyer";
+            lblHelp.Tag = "AdminCreateLawyerHelp";
             lblHelp.Text = "Need help?";
             // 
             // AdminCreateLawyer

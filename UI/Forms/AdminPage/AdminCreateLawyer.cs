@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using UIModels;
 
@@ -54,7 +55,8 @@ namespace UI.Forms.AdminPage
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Done finished");
+            //OpenPDF.ShowPDF(lblHelp.Tag.ToString());
         }
 
         private void LboxSpecialities_SelectedIndexChanged(object? sender, EventArgs e)
@@ -235,6 +237,8 @@ namespace UI.Forms.AdminPage
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
+
             UpdateCreateButtonState();
         }
 

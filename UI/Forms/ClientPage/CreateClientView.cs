@@ -252,10 +252,7 @@ namespace UI.Forms.ClientPage
             lblAddressView.Text = string.Join(", ", txtAddress.Text, txtPostal.Text, txtCity.Text);
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
 
-            if(txtPostal.ForeColor == validFormat)
-            {
-                txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(int.Parse(txtPostal.Text));
-            }
+            txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
 
             BtnCreateEnabled();
         }

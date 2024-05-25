@@ -9,10 +9,11 @@ using EntityModels;
 using Interfaces;
 using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
+using Microsoft.Identity.Client;
 
 namespace BusinessLogic
 {
-    public class ClientBL
+    public class ClientBL : IClientBL
     {
         IClientDbAccess dbAccess;
         ModelConverter modelConverter;
@@ -59,16 +60,18 @@ namespace BusinessLogic
                 return false;
             }
 
-            foreach(PhoneUI phone in phoneUIs)
+            foreach (PhoneUI phone in phoneUIs)
             {
                 bool succes = pValidator.ValidPhone(phone.PhoneNumber.ToString());
-                if(!succes)
+                if (!succes)
                 {
                     return false;
                 }
+
             }
-            
-            if(!pValidator.ValidPassword(loginDetailsUI.Password))
+            return true;
+
+            if (!pValidator.ValidPassword(loginDetailsUI.Password))
             {
                 return false;
             }

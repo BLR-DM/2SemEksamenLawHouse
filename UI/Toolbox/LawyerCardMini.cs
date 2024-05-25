@@ -24,8 +24,8 @@ namespace UI.Toolbox
             City = lawyer.City;
 
             // Tilføj værdi til UI controls
-            lblName.Text = $"{lawyer.Firstname} {lawyer.Lastname}";
-            lblDetails.Text = $"{lawyer.LawyerTitle} • {lawyer.City}";
+            lblName.Text = lawyer.ToString();
+            lblTitle.Text = lawyer.LawyerTitle;
             lblPhoneNumber.Text = $"+45{lawyer.PhoneNumber}";
         }
     }

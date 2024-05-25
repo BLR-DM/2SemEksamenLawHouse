@@ -30,7 +30,7 @@
         {
             pboxProfile = new FontAwesome.Sharp.IconPictureBox();
             lblName = new Label();
-            lblDetails = new Label();
+            lblTitle = new Label();
             lblPhoneNumber = new Label();
             pboxClick = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pboxProfile).BeginInit();
@@ -65,16 +65,16 @@
             lblName.TabIndex = 1;
             lblName.Text = "Firstname Lastname";
             // 
-            // lblDetails
+            // lblTitle
             // 
-            lblDetails.AutoSize = true;
-            lblDetails.Cursor = Cursors.Hand;
-            lblDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDetails.Location = new Point(3, 181);
-            lblDetails.Name = "lblDetails";
-            lblDetails.Size = new Size(92, 17);
-            lblDetails.TabIndex = 1;
-            lblDetails.Text = "Title . Location";
+            lblTitle.AutoSize = true;
+            lblTitle.Cursor = Cursors.Hand;
+            lblTitle.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(3, 181);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(32, 17);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Title";
             // 
             // lblPhoneNumber
             // 
@@ -97,16 +97,16 @@
             pboxClick.TabIndex = 3;
             pboxClick.TabStop = false;
             // 
-            // LawyerCard
+            // LawyerCardMini
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(lblName);
             Controls.Add(lblPhoneNumber);
             Controls.Add(pboxProfile);
-            Controls.Add(lblDetails);
+            Controls.Add(lblTitle);
             Controls.Add(pboxClick);
-            Name = "LawyerCard";
+            Name = "LawyerCardMini";
             Size = new Size(160, 218);
             ((System.ComponentModel.ISupportInitialize)pboxProfile).EndInit();
             ((System.ComponentModel.ISupportInitialize)pboxClick).EndInit();
@@ -118,7 +118,7 @@
 
         private FontAwesome.Sharp.IconPictureBox pboxProfile;
         private Label lblName;
-        private Label lblDetails;
+        private Label lblTitle;
         private Label lblPhoneNumber;
         private PictureBox pboxClick;
     }

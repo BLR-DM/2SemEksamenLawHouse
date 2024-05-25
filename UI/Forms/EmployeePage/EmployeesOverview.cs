@@ -84,6 +84,13 @@ namespace UI.Forms.EmployeePage
 
             await GetEmployeesAsync();
             filteredEmployees = new List<EmployeeUI>(employees);
+
+            // Visnings combobox
+            cboxShow.Items.Insert(0, "Employees");
+            cboxShow.Items.Add("  Lawyers");
+            cboxShow.Items.Add("  Secretaries");
+            cboxShow.SelectedIndex = 0;
+
             SetupDgvWithEmployees();
 
             await GetLawyersWithCollectionsAsync();
@@ -92,12 +99,7 @@ namespace UI.Forms.EmployeePage
             await GetSecretariesAsync();
             secretaries = new List<SecretaryUI>(secretaries);
             await GetSpecialityUIsAsync();
-
-            // Visnings combobox
-            cboxShow.Items.Insert(0, "Employees");
-            cboxShow.Items.Add("  Lawyers");
-            cboxShow.Items.Add("  Secretaries");
-            cboxShow.SelectedIndex = 0;
+            
         }
 
         private void BtnTrashSort_Click(object? sender, EventArgs e)
@@ -426,19 +428,21 @@ namespace UI.Forms.EmployeePage
                 case "Employees":
                     FillComboBoxesForEmployees();
                     SetupDgvWithEmployees();
-                    lblTotalEmployees.Text = $"{filteredEmployees.Count} Employees";
                     break;
                 case "  Lawyers":
                     FillComboBoxesForLawyers();
                     SetupDgvWithLawyers();
-                    lblTotalEmployees.Text = $"{filteredLawyers.Count} Lawyers";
                     break;
                 case "  Secretaries":
                     FillComboBoxesForEmployees();
                     SetupDgvWithSecretaries();
-                    lblTotalEmployees.Text = $"{filteredSecretaries.Count} Secretaries";
                     break;
             }
+        }
+
+        private void SetLblTotalCount()
+        {
+            lblTotalEmployees.Text = $"{dgvEmployees.Rows.Count} {cboxShow.SelectedItem.ToString().TrimStart()}";
         }
 
         private void FillComboBoxesForEmployees()
@@ -497,6 +501,7 @@ namespace UI.Forms.EmployeePage
         private void SetupDgvWithEmployees()
         {
             dgvEmployees.DataSource = filteredEmployees;
+            SetLblTotalCount();
 
             cboxFilter.Enabled = false;
 
@@ -528,6 +533,7 @@ namespace UI.Forms.EmployeePage
         private void SetupDgvWithLawyers()
         {
             dgvEmployees.DataSource = filteredLawyers;
+            SetLblTotalCount();
 
             cboxFilter.Enabled = true;
 
@@ -543,7 +549,7 @@ namespace UI.Forms.EmployeePage
 
             dgvEmployees.Columns["PersonID"].HeaderText = "LawyerID";
             
-            dgvEmployees.Columns["OpenCaseServices"].HeaderText = "OpenServices"; //
+            dgvEmployees.Columns["OpenCaseServices"].HeaderText = "OpenServices";
             dgvEmployees.Columns["SpecialityCount"].HeaderText = "Specialities";            
 
             dgvEmployees.Columns["PersonID"].DisplayIndex = 0;
@@ -564,6 +570,7 @@ namespace UI.Forms.EmployeePage
         private void SetupDgvWithSecretaries()
         {
             dgvEmployees.DataSource = secretaries;
+            SetLblTotalCount();
 
             cboxFilter.Enabled = false;
 

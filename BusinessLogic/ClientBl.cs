@@ -69,7 +69,6 @@ namespace BusinessLogic
                 }
 
             }
-            return true;
 
             if (!pValidator.ValidPassword(loginDetailsUI.Password))
             {
@@ -99,6 +98,20 @@ namespace BusinessLogic
 
         public async Task<bool> UpdateClientAsync(ClientUI clientUI, List<PhoneUI> phoneUIs)
         {
+            if (!pValidator.ValidClient(clientUI))
+            {
+                return false;
+            }
+
+            foreach (PhoneUI phone in phoneUIs)
+            {
+                bool succes = pValidator.ValidPhone(phone.PhoneNumber.ToString());
+                if (!succes)
+                {
+                    return false;
+                }
+            }
+
             Client tempC = modelConverter.ConvertFromClientUI(clientUI);
             List<Phone> phoneList = new List<Phone>();
 
@@ -116,6 +129,15 @@ namespace BusinessLogic
 
         public async Task<bool> DeletePhoneNumbersAsync(List<PhoneUI> phoneNumbersUI)
         {
+            foreach (PhoneUI phone in phoneNumbersUI)
+            {
+                bool succes = pValidator.ValidPhone(phone.PhoneNumber.ToString());
+                if (!succes)
+                {
+                    return false;
+                }
+            }
+
             List<Phone> phoneNumbers = new List<Phone>();
             foreach(PhoneUI phoneUI in phoneNumbersUI)
             {

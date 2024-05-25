@@ -1,14 +1,17 @@
-﻿namespace DataAccess.APIRequests
+﻿using System.Configuration;
+
+namespace DataAccess.APIRequests
 {
     public class DistanceMatrixAPI
     {
         HttpClient client;
+        string apiKey;
 
         public DistanceMatrixAPI()
         {
             client = new HttpClient();
-
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+            apiKey = ConfigurationManager.AppSettings["GoogleApiKey"];
         }
 
         public async Task<string> GetDistance(string origin, string destination)

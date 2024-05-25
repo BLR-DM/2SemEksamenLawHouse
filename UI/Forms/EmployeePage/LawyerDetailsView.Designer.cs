@@ -82,6 +82,7 @@
             // 
             // btnEditDetails
             // 
+            btnEditDetails.Cursor = Cursors.Hand;
             btnEditDetails.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEditDetails.IconColor = Color.Black;
             btnEditDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;

@@ -101,7 +101,7 @@
             txtDescription.BackColor = Color.White;
             txtDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDescription.Location = new Point(12, 102);
-            txtDescription.MaxLength = 50;
+            txtDescription.MaxLength = 300;
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(313, 81);

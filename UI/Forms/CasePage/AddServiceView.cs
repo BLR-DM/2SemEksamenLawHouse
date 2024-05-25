@@ -184,8 +184,8 @@ namespace UI.Forms.CasePage
                 MessageBox.Show("Failed to add the service");
             }
 
-            caseDetailsView.SetDgvAsync();
             await caseDetailsView.SetCaseDataAsync();
+            caseDetailsView.SetDgvAsync();
             this.Close();
 
         }

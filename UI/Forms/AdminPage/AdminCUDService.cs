@@ -46,11 +46,12 @@ namespace UI.Forms.AdminPage
             bool succes = await serviceBL.CreateServiceAsync(newService);
             if(succes)
             {
-                MessageBox.Show("comon now dawg");
+                MessageBox.Show("Service Created");
+                this.Close();
             }
             else
             {
-                MessageBox.Show("gg");
+                MessageBox.Show("Failed to create the service");
             }
 
 

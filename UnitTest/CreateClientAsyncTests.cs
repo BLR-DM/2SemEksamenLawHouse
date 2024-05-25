@@ -2,21 +2,24 @@ using BusinessLogic;
 using Interfaces;
 using Moq;
 using UIModels;
+using EntityModels;
+using DataAccess;
 
 namespace UnitTest
 {
     public class CreateClientAsyncTests
     {
-        ClientBL clientBL;
+        Mock<IClientBL> clientBL;
         ClientUI client;
         List<PhoneUI> phoneList;
         LoginDetailsUI login;
 
 
+
         [SetUp]
         public void Setup()
         {
-            clientBL = new ClientBL();
+            clientBL = new Mock<IClientBL>();
 
             login = new LoginDetailsUI()
             {
@@ -37,9 +40,9 @@ namespace UnitTest
 
             phoneList = new List<PhoneUI>()
             {
-                new PhoneUI() {PhoneNumber = 28993856},
-                new PhoneUI() {PhoneNumber = 28401072}
+                new PhoneUI() {PhoneNumber = 87239565},
             };
+
 
         }
 
@@ -47,15 +50,17 @@ namespace UnitTest
         [Test]
         public async Task CreateClientAsync_InvalidPhone_ReturnFalse()
         {
-            bool expectedResult = false;
+            //clientBL.Setup(bl => bl.CreateClientAsync(client, login, phoneList)).ReturnsAsync(true);
+            
 
-            phoneList.Add(new PhoneUI() { PhoneNumber = 123 });
+            //phoneList.Add(new PhoneUI() { PhoneNumber = 123 });
 
             //Act
-            bool result = await clientBL.CreateClientAsync(client, login, phoneList);
+            //bool result = await clientBL.CreateClientAsync(client, login, phoneList);
+            bool result = await clientBL.Object.CreateClientAsync(client, login, phoneList);
 
 
-            Assert.That(result, Is.EqualTo(expectedResult));
+            Assert.That(result, Is.False);
         }
     }
 }

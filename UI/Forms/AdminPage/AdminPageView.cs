@@ -39,8 +39,6 @@ namespace UI.Forms.AdminPage
             {
                 txtResult.Text = test.rows[0].elements[0].distance.text; 
             }
-            btnCreateCaseType.Click += BtnCreateCaseType_Click;
-            btnUpdateCaseType.Click += BtnUpdateCaseType_Click;
         }
 
         private void BtnUpdateCaseType_Click(object? sender, EventArgs e)

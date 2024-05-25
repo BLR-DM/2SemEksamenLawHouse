@@ -57,6 +57,7 @@ namespace UI.Forms.CasePage
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
             btnPrintDetails.Click += BtnPrintDetails_Click;
+            panel3.Paint += Panel3_Paint;
 
             
             btnUpdateCase.Enabled = false;
@@ -87,7 +88,12 @@ namespace UI.Forms.CasePage
 
 
         }
-        
+
+        private void Panel3_Paint(object? sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panel3.ClientRectangle, Color.FromArgb(45, 93, 134), ButtonBorderStyle.Solid);
+        }
+
         private void BtnPrintDetails_Click(object? sender, EventArgs e)
         {
             PrintCaseDetailsView printCaseDetailsView = new PrintCaseDetailsView(selectedCase);

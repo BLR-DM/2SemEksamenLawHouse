@@ -306,7 +306,7 @@
             lblCaseInformation.BackColor = SystemColors.GradientInactiveCaption;
             lblCaseInformation.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCaseInformation.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCaseInformation.Location = new Point(263, -4);
+            lblCaseInformation.Location = new Point(280, 0);
             lblCaseInformation.Name = "lblCaseInformation";
             lblCaseInformation.Size = new Size(134, 21);
             lblCaseInformation.TabIndex = 20;
@@ -383,14 +383,13 @@
             // 
             btnPrintDetails.Location = new Point(705, 560);
             btnPrintDetails.Name = "btnPrintDetails";
-            btnPrintDetails.Size = new Size(116, 41);
+            btnPrintDetails.Size = new Size(116, 34);
             btnPrintDetails.TabIndex = 22;
             btnPrintDetails.Text = "Print Details";
             btnPrintDetails.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(dgvServices);
             panel3.Controls.Add(btnAddService);
             panel3.Controls.Add(lblServices);
@@ -429,7 +428,7 @@
             // 
             btnUpdateCaseStatus.Location = new Point(870, 560);
             btnUpdateCaseStatus.Name = "btnUpdateCaseStatus";
-            btnUpdateCaseStatus.Size = new Size(116, 41);
+            btnUpdateCaseStatus.Size = new Size(116, 34);
             btnUpdateCaseStatus.TabIndex = 21;
             btnUpdateCaseStatus.Text = "Close case";
             btnUpdateCaseStatus.UseVisualStyleBackColor = true;

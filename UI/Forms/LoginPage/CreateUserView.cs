@@ -54,6 +54,7 @@ namespace UI.Forms.CreateUserPage
 
         private void PnlLoginInfo_Paint(object? sender, PaintEventArgs e)
         {
+            // test
             ControlPaint.DrawBorder(e.Graphics, pnlLoginInfo.ClientRectangle, rgbColorBlue, ButtonBorderStyle.Solid);
         }
 

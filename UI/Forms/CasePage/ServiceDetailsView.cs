@@ -54,7 +54,6 @@ namespace UI.Forms.CasePage
             CheckStatus();
             SetDgvStyle();
             SetDgvAsync();
-            SetCaseInformationAsync();
             SetLawyerInformationAsync();
 
 
@@ -221,6 +220,7 @@ namespace UI.Forms.CasePage
         public async Task SetDgvAsync()
         {
             serviceEntryUIs = await serviceEntryBL.GetServiceEntryUIAsync(selectedCaseService.CaseServiceID);
+            await SetCaseInformationAsync();
 
             dgvServiceEntry.DataSource = serviceEntryUIs;
             dgvServiceEntry.Columns["ServiceEntryID"].Visible = false;

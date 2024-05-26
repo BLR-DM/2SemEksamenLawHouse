@@ -121,7 +121,7 @@ namespace UI.Forms.CasePage
                 ClientID = selectedClient.PersonID,
             };
 
-            bool succes = await caseBL.CreateCase(caseUI);
+            bool succes = await caseBL.CreateCaseAsync(caseUI);
             if (succes)
             {
                 MessageBox.Show("Case created");
@@ -134,6 +134,7 @@ namespace UI.Forms.CasePage
             }
 
             btnCreateCase.Enabled = true;
+            
         }
 
 

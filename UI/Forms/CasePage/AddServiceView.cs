@@ -222,11 +222,12 @@ namespace UI.Forms.CasePage
             {
                 txtUnits.ForeColor = default(Color);
                 selectedService = (ServiceUI)cboServices.SelectedItem;
-                if (float.TryParse(txtUnits.Text, out float units))
+
+                if(float.TryParse(txtUnits.Text, out float units))
                 {
                     float totalPrice = CalculateTotalPrice(selectedService.Price, units);
 
-                    txtTotalPrice.Text = totalPrice.ToString();
+                    txtTotalPrice.Text = totalPrice.ToString("F2");
                 }
                 else
                 {

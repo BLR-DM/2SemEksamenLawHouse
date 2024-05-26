@@ -50,6 +50,7 @@
             btnSubmit = new Button();
             dgvServiceEntry = new DataGridView();
             pnlLawyerInformation = new Panel();
+            lblHelp = new Label();
             panel1.SuspendLayout();
             pnlTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).BeginInit();
@@ -314,12 +315,24 @@
             pnlLawyerInformation.Size = new Size(281, 232);
             pnlLawyerInformation.TabIndex = 21;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(513, 559);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // ServiceDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(584, 573);
+            ClientSize = new Size(584, 577);
+            Controls.Add(lblHelp);
             Controls.Add(pnlLawyerInformation);
             Controls.Add(pnlTasks);
             Controls.Add(panel1);
@@ -332,6 +345,7 @@
             pnlTasks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServiceEntry).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -357,5 +371,6 @@
         private Label lblTasks;
         private Panel pnlLawyerInformation;
         private Button btnClose;
+        private Label lblHelp;
     }
 }

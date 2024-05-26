@@ -60,6 +60,7 @@
             dgvServices = new DataGridView();
             lblServices = new Label();
             btnUpdateCaseStatus = new Button();
+            lblHelp = new Label();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
@@ -433,12 +434,24 @@
             btnUpdateCaseStatus.Text = "Close case";
             btnUpdateCaseStatus.UseVisualStyleBackColor = true;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 597);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // CaseDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(btnUpdateCaseStatus);
             Controls.Add(btnPrintDetails);
             Controls.Add(panel3);
@@ -454,6 +467,7 @@
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -490,5 +504,6 @@
         private TextBox txtCaseType;
         private DateTimePicker dtpStartDate;
         private Label lblStartDate;
+        private Label lblHelp;
     }
 }

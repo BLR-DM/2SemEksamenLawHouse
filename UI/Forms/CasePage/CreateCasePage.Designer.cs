@@ -71,6 +71,7 @@
             label5 = new Label();
             lblAddLawyer = new Label();
             btnCreateCase = new Button();
+            lblHelp = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -607,12 +608,24 @@
             btnCreateCase.Text = "Create case";
             btnCreateCase.UseVisualStyleBackColor = true;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // CreateCasePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(btnCreateCase);
             Controls.Add(panel4);
             Controls.Add(panel2);
@@ -627,6 +640,7 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -677,5 +691,6 @@
         private Button btnCreateCase;
         private Label lblDescription;
         private TextBox txtDescription;
+        private Label lblHelp;
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EntityModels;
+﻿using EntityModels;
 using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +14,14 @@ namespace DataAccess
 
         public async Task<Person> GetPersonAsync(int id)
         {
-            return await db.Persons.FirstOrDefaultAsync(p => p.LoginDetailsID == id);
+            try
+            {
+                return await db.Persons.FirstOrDefaultAsync(p => p.LoginDetailsID == id);
+            }
+            catch (Exception)
+            {
+                return new Person();
+            }
         }
     }
 }

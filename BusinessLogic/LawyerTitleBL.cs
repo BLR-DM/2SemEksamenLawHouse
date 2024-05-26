@@ -23,26 +23,54 @@ namespace BusinessLogic
 
         public async Task<bool> CreateLawyerTitleAsync(LawyerTitleUI titleUI)
         {
-            LawyerTitle title = modelConverter.ConvertFromLawyerTitleUI(titleUI);
-            return await dbAccess.CreateLawyerTitleAsync(title);
+            try
+            {
+                LawyerTitle title = modelConverter.ConvertFromLawyerTitleUI(titleUI);
+                return await dbAccess.CreateLawyerTitleAsync(title);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<List<LawyerTitleUI>> GetLawyerTitles()
         {
-            List<LawyerTitle> lawyerTitles = await dbAccess.GetLawyerTitles();
-            return lawyerTitles.Select(modelConverter.ConvertFromLawyerTitleEntity).ToList();
+            try
+            {
+                List<LawyerTitle> lawyerTitles = await dbAccess.GetLawyerTitles();
+                return lawyerTitles.Select(modelConverter.ConvertFromLawyerTitleEntity).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<LawyerTitleUI>();
+            }
         }
 
         public async Task<bool> UpdateLawyerTitleAsync(LawyerTitleUI lawyerTitleUI)
         {
-            LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
-            return await dbAccess.UpdateLawyerTitleAsync(lawyerTitle);
+            try
+            {
+                LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
+                return await dbAccess.UpdateLawyerTitleAsync(lawyerTitle);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<bool> DeleteLawyerTitleAsync(LawyerTitleUI lawyerTitleUI)
         {
-            LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
-            return await dbAccess.DeleteLawyerTitleAsync(lawyerTitle);
+            try
+            {
+                LawyerTitle lawyerTitle = modelConverter.ConvertFromLawyerTitleUI(lawyerTitleUI);
+                return await dbAccess.DeleteLawyerTitleAsync(lawyerTitle);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
     }

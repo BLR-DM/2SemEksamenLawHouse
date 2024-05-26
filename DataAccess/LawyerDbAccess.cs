@@ -14,17 +14,31 @@ namespace DataAccess
 
         public async Task<bool> CreateLawyerAsync(Lawyer lawyer)
         {
-            await db.Lawyers.AddAsync(lawyer);
-            bool result = await db.SaveChangesAsync() > 0;
-            db.ChangeTracker.Clear();
-            return result;
+            try
+            {
+                await db.Lawyers.AddAsync(lawyer);
+                bool result = await db.SaveChangesAsync() > 0;
+                db.ChangeTracker.Clear();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<Lawyer> GetLawyerAsync(int id)
         {
-            return await db.Lawyers
-                .Include(l => l.LawyerTitle)
-                .SingleOrDefaultAsync(c => c.PersonID == id);
+            try
+            {
+                return await db.Lawyers
+                        .Include(l => l.LawyerTitle)
+                        .SingleOrDefaultAsync(c => c.PersonID == id);
+            }
+            catch (Exception)
+            {
+                return new Lawyer();
+            }
         }
 
         public async Task<Lawyer> GetLawyerWithCollectionsAsync(int id)

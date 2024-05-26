@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace UIModels
+﻿namespace UIModels
 {
     public class LawyerUI : EmployeeUI
     {

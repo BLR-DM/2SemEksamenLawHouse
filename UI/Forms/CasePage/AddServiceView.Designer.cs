@@ -46,6 +46,7 @@
             panel2 = new Panel();
             btnAddLawyer = new FontAwesome.Sharp.IconButton();
             btnAddService = new Button();
+            lblHelp = new Label();
             panel1.SuspendLayout();
             pnlLawyerInformation.SuspendLayout();
             SuspendLayout();
@@ -269,12 +270,24 @@
             btnAddService.Text = "Add service";
             btnAddService.UseVisualStyleBackColor = true;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(686, 335);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 69;
+            lblHelp.Text = "Need help?";
+            // 
             // AddServiceView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(759, 359);
+            Controls.Add(lblHelp);
             Controls.Add(btnAddService);
             Controls.Add(pnlLawyerInformation);
             Controls.Add(panel1);
@@ -285,6 +298,7 @@
             panel1.PerformLayout();
             pnlLawyerInformation.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -307,5 +321,6 @@
         private TextBox txtHoursWorked;
         private FontAwesome.Sharp.IconButton btnAddLawyer;
         private Panel panel2;
+        private Label lblHelp;
     }
 }

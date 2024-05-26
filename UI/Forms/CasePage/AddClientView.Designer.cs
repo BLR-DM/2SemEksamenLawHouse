@@ -31,6 +31,7 @@
             dgvClientView = new DataGridView();
             txtSearch = new TextBox();
             lblName = new Label();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientView).BeginInit();
             SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             dgvClientView.MultiSelect = false;
             dgvClientView.Name = "dgvClientView";
             dgvClientView.ReadOnly = true;
-            dgvClientView.Size = new Size(753, 332);
+            dgvClientView.Size = new Size(753, 320);
             dgvClientView.TabIndex = 0;
             // 
             // txtSearch
@@ -68,12 +69,24 @@
             lblName.TabIndex = 40;
             lblName.Text = "Search:";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(699, 378);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // AddClientView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(777, 399);
+            Controls.Add(lblHelp);
             Controls.Add(lblName);
             Controls.Add(txtSearch);
             Controls.Add(dgvClientView);
@@ -90,5 +103,6 @@
         private DataGridView dgvClientView;
         private TextBox txtSearch;
         private Label lblName;
+        private Label lblHelp;
     }
 }

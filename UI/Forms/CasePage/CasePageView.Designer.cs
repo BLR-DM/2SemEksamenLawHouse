@@ -38,6 +38,7 @@
             ckboxActive = new CheckBox();
             lblNumberOfCases = new Label();
             btnCreateCase = new FontAwesome.Sharp.IconButton();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCaseList).BeginInit();
             panelTopBar.SuspendLayout();
             SuspendLayout();
@@ -158,6 +159,17 @@
             btnCreateCase.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnCreateCase.UseVisualStyleBackColor = false;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(907, 590);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // CasePageView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -165,6 +177,7 @@
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(btnCreateCase);
             Controls.Add(lblNumberOfCases);
             Controls.Add(panelTopBar);
@@ -191,5 +204,6 @@
         private TextBox txtTitle;
         private Label lblSearch;
         private FontAwesome.Sharp.IconButton btnCreateCase;
+        private Label lblHelp;
     }
 }

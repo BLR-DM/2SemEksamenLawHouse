@@ -70,6 +70,7 @@
             lblAltPhonenumber = new Label();
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             altPhone = new ToolTip(components);
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)pboxEye).BeginInit();
             pnlLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
@@ -575,6 +576,19 @@
             iconPictureBox2.TabStop = false;
             altPhone.SetToolTip(iconPictureBox2, "Additional phone numbers can be added\r\nafter account creation in the 'My Page' section.");
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(466, 781);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 54;
+            lblHelp.Tag = "CreateUserViewHelp";
+            lblHelp.Text = "Need help?";
+            // 
             // CreateUserView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -582,6 +596,7 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(544, 805);
             ControlBox = false;
+            Controls.Add(lblHelp);
             Controls.Add(btnCreate);
             Controls.Add(iconPictureBox2);
             Controls.Add(txtLastname);
@@ -668,5 +683,6 @@
         private Label lblAltPhonenumber;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private ToolTip altPhone;
+        private Label lblHelp;
     }
 }

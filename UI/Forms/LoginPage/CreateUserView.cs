@@ -49,7 +49,13 @@ namespace UI.Forms.CreateUserPage
             txtCity.TextChanged += TxtCity_TextChanged;
             txtPassword.TextChanged += TxtPassword_TextChanged;
             txtPasswordConfirm.TextChanged += TxtPasswordConfirm_TextChanged;
+            lblHelp.Click += LblHelp_Click;
+        }
 
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString()))
+                MessageBox.Show("Could not open pdf");
         }
 
         private void PnlLoginInfo_Paint(object? sender, PaintEventArgs e)

@@ -48,6 +48,7 @@ partial class LoginPageView
         lblForgotPassword = new Label();
         lblUsernameError = new Label();
         lblPasswordError = new Label();
+        lblHelp = new Label();
         ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pboxPassword).BeginInit();
@@ -114,9 +115,9 @@ partial class LoginPageView
         lblUser.ForeColor = Color.FromArgb(45, 93, 134);
         lblUser.Location = new Point(79, 267);
         lblUser.Name = "lblUser";
-        lblUser.Size = new Size(98, 25);
+        lblUser.Size = new Size(162, 25);
         lblUser.TabIndex = 4;
-        lblUser.Text = "Username";
+        lblUser.Text = "Username (email)";
         // 
         // pboxPassword
         // 
@@ -291,6 +292,19 @@ partial class LoginPageView
         lblPasswordError.TabIndex = 8;
         lblPasswordError.Text = "Password format is invalid.";
         // 
+        // lblHelp
+        // 
+        lblHelp.AutoSize = true;
+        lblHelp.Cursor = Cursors.Hand;
+        lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+        lblHelp.ForeColor = Color.DarkBlue;
+        lblHelp.Location = new Point(354, 682);
+        lblHelp.Name = "lblHelp";
+        lblHelp.Size = new Size(66, 15);
+        lblHelp.TabIndex = 53;
+        lblHelp.Tag = "LoginPageViewHelp";
+        lblHelp.Text = "Need help?";
+        // 
         // LoginPageView
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,6 +312,7 @@ partial class LoginPageView
         BackColor = SystemColors.GradientInactiveCaption;
         ClientSize = new Size(432, 706);
         ControlBox = false;
+        Controls.Add(lblHelp);
         Controls.Add(lblPasswordError);
         Controls.Add(lblUsernameError);
         Controls.Add(pboxEye);
@@ -349,4 +364,5 @@ partial class LoginPageView
     private Label lblForgotPassword;
     private Label lblUsernameError;
     private Label lblPasswordError;
+    private Label lblHelp;
 }

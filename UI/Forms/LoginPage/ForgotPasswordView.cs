@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 
 namespace UI.Forms.LoginPage
@@ -23,6 +24,13 @@ namespace UI.Forms.LoginPage
             lblCancel.Click += LblCancel_Click;
             btnRetrievePassword.Click += BtnRetrievePassword_Click;
             txtEmail.TextChanged += TxtEmail_TextChanged;
+            lblHelp.Click += LblHelp_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString()))
+                MessageBox.Show("Could not open pdf");
         }
 
         private void TxtEmail_TextChanged(object? sender, EventArgs e)

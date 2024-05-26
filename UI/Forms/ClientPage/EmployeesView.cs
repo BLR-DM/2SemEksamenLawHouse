@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.ClientPage
 {
@@ -31,8 +32,15 @@ namespace UI.Forms.ClientPage
 
             cboxSpecialities.SelectionChangeCommitted += CboxSpecialities_SelectionChangeCommitted;
             cboxSort.SelectionChangeCommitted += CboxSort_SelectionChangeCommitted;
-            
+            lblHelp.Click += LblHelp_Click;
         }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString()))
+                MessageBox.Show("Could not open pdf");
+        }
+
         private async void EmployeesView_Load(object? sender, EventArgs e)
         {
             await GetLawyersUIsAsync();

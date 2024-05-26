@@ -2,6 +2,7 @@
 using UI.Forms.CreateUserPage;
 using UI.Forms.FrontPage;
 using BusinessLogic.Validation;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.LoginPage
 {
@@ -29,6 +30,13 @@ namespace UI.Forms.LoginPage
             lblForgotPassword.Click += LblForgotPassword_Click;
             txtUsername.TextChanged += TxtUsername_TextChanged;
             txtPassword.TextChanged += TxtPassword_TextChanged;
+            lblHelp.Click += LblHelp_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString()))
+                MessageBox.Show("Could not open pdf");
         }
 
         private void TxtPassword_TextChanged(object? sender, EventArgs e)
@@ -95,8 +103,9 @@ namespace UI.Forms.LoginPage
 
             if (userID > 0)
             {
-                new FrontPageView(userID).Show(); // Åbn programmets main page og medtag ID'et på bruger
-                Hide();
+                new FrontPageView(userID, this).Show(); // Åbn programmets main page og medtag ID'et på bruger
+                Hide(); // Skjul loginpage
+                txtPassword.Text = string.Empty; // Slet koden
             }
             else
             {

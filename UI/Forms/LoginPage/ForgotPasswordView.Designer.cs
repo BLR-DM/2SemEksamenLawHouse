@@ -38,6 +38,7 @@
             txtEmail = new TextBox();
             btnRetrievePassword = new FontAwesome.Sharp.IconButton();
             pnlLineUser = new Panel();
+            lblHelp = new Label();
             SuspendLayout();
             // 
             // pnlTop
@@ -155,6 +156,19 @@
             pnlLineUser.Size = new Size(504, 3);
             pnlLineUser.TabIndex = 3;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(466, 463);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 54;
+            lblHelp.Tag = "RecoverPasswordViewHelp";
+            lblHelp.Text = "Need help?";
+            // 
             // ForgotPasswordView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,6 +176,7 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(544, 487);
             ControlBox = false;
+            Controls.Add(lblHelp);
             Controls.Add(lblRecoverPassword);
             Controls.Add(btnRetrievePassword);
             Controls.Add(pnlTop);
@@ -191,5 +206,6 @@
         private TextBox txtEmail;
         private FontAwesome.Sharp.IconButton btnRetrievePassword;
         private Panel pnlLineUser;
+        private Label lblHelp;
     }
 }

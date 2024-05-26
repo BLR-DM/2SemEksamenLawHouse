@@ -38,6 +38,7 @@
             chboxCasesShowAll = new CheckBox();
             lblCases = new Label();
             lblServices = new Label();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             SuspendLayout();
@@ -49,11 +50,11 @@
             dgvCases.AllowUserToResizeColumns = false;
             dgvCases.AllowUserToResizeRows = false;
             dgvCases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCases.Location = new Point(331, 34);
+            dgvCases.Location = new Point(331, 40);
             dgvCases.MultiSelect = false;
             dgvCases.Name = "dgvCases";
             dgvCases.ReadOnly = true;
-            dgvCases.Size = new Size(655, 265);
+            dgvCases.Size = new Size(647, 250);
             dgvCases.TabIndex = 1;
             // 
             // dgvServices
@@ -67,13 +68,13 @@
             dgvServices.MultiSelect = false;
             dgvServices.Name = "dgvServices";
             dgvServices.ReadOnly = true;
-            dgvServices.Size = new Size(655, 265);
+            dgvServices.Size = new Size(647, 250);
             dgvServices.TabIndex = 1;
             // 
             // chboxServicesShowAll
             // 
             chboxServicesShowAll.AutoSize = true;
-            chboxServicesShowAll.Location = new Point(331, 317);
+            chboxServicesShowAll.Location = new Point(331, 314);
             chboxServicesShowAll.Name = "chboxServicesShowAll";
             chboxServicesShowAll.Size = new Size(72, 19);
             chboxServicesShowAll.TabIndex = 2;
@@ -129,7 +130,7 @@
             // chboxCasesShowAll
             // 
             chboxCasesShowAll.AutoSize = true;
-            chboxCasesShowAll.Location = new Point(331, 15);
+            chboxCasesShowAll.Location = new Point(331, 18);
             chboxCasesShowAll.Name = "chboxCasesShowAll";
             chboxCasesShowAll.Size = new Size(72, 19);
             chboxCasesShowAll.TabIndex = 2;
@@ -142,7 +143,7 @@
             lblCases.BackColor = SystemColors.GradientInactiveCaption;
             lblCases.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             lblCases.ForeColor = Color.FromArgb(45, 93, 134);
-            lblCases.Location = new Point(597, 6);
+            lblCases.Location = new Point(597, 9);
             lblCases.Name = "lblCases";
             lblCases.Size = new Size(122, 25);
             lblCases.TabIndex = 15;
@@ -155,12 +156,25 @@
             lblServices.BackColor = SystemColors.GradientInactiveCaption;
             lblServices.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             lblServices.ForeColor = Color.FromArgb(45, 93, 134);
-            lblServices.Location = new Point(597, 309);
+            lblServices.Location = new Point(597, 306);
             lblServices.Name = "lblServices";
             lblServices.Size = new Size(122, 25);
             lblServices.TabIndex = 15;
             lblServices.Text = "Case Services";
             lblServices.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 590);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 55;
+            lblHelp.Tag = "";
+            lblHelp.Text = "Need help?";
             // 
             // LawyerDetailsView
             // 
@@ -168,6 +182,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(lblServices);
             Controls.Add(lblCases);
             Controls.Add(btnCancel);
@@ -199,5 +214,6 @@
         private CheckBox chboxCasesShowAll;
         private Label lblCases;
         private Label lblServices;
+        private Label lblHelp;
     }
 }

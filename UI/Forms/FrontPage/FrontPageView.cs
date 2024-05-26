@@ -8,6 +8,7 @@ using UI.Forms.EmployeePage;
 using EntityModels;
 using UI.Forms.SubscriptionPage;
 using BusinessLogic.Validation;
+using UI.Forms.LoginPage;
 
 namespace UI.Forms.FrontPage
 {
@@ -25,19 +26,21 @@ namespace UI.Forms.FrontPage
 
         PersonBL personBL;
         ClientBL clientBL;
-        
+
         OverallValidator oaValidator;
+        LoginPageView loginPage;
 
         int loginDetailsID;
 
-        public FrontPageView(int loginDetailsID)
+        public FrontPageView(int loginDetailsID, LoginPageView loginPage)
         {
             personBL = new PersonBL();
             clientBL = new ClientBL();
-            
+
             rgbColorBlue = Color.FromArgb(45, 93, 134);
 
             this.loginDetailsID = loginDetailsID;
+            this.loginPage = loginPage;
 
             GetPersonAsync(loginDetailsID);
 
@@ -49,6 +52,7 @@ namespace UI.Forms.FrontPage
             btnForms.Visible = btnEmployees.Visible = btnClients.Visible = btnAdminPage.Visible =
             btnAdminPage.Visible = btnCalculations.Visible = btnCase.Visible = btnLawyers.Visible =
             btnMyPageClient.Visible = btnMyPageLawyer.Visible = btnSubscribe.Visible = false;
+
             btnClose.Click += BtnClose_Click;
             btnMyPageClient.Click += BtnMyPageClient_Click;
             btnClients.Click += BtnClients_Click;
@@ -60,6 +64,14 @@ namespace UI.Forms.FrontPage
             btnMyPageLawyer.Click += BtnMyPageLawyer_Click;
             btnCalculations.Click += BtnCalculations_Click;
             btnSubscribe.Click += BtnSubscribe_Click;
+            lblSignOut.Click += LblSignOut_Click;
+        }
+
+
+        private void LblSignOut_Click(object? sender, EventArgs e)
+        {
+            loginPage.Show();
+            this.Close();
         }
 
         public async Task GetPersonAsync(int id)
@@ -67,13 +79,12 @@ namespace UI.Forms.FrontPage
 
             if (currentUser == null)
             {
-                currentUser = await personBL.GetPersonAsync(id); 
+                currentUser = await personBL.GetPersonAsync(id);
             }
 
             if (currentUser != null)
             {
-                lblCurrentUser.Text = currentUser.GetType().Name;// slet
-                lblCurrentUserName.Text = currentUser.Firstname; // slet
+                lblLoggedInAs.Text = "Hans Jensen";
 
                 if (currentUser is ClientUI clientUI)
                 {
@@ -98,8 +109,6 @@ namespace UI.Forms.FrontPage
             }
         }
 
-
-
         private async Task SetupClientFormAsync()
         {
             this.clientUI = await clientBL.GetClientAsync(clientUI.PersonID);
@@ -114,13 +123,13 @@ namespace UI.Forms.FrontPage
             SetNavBtnColor(btnMyPageClient);
 
             //set mypage
-            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI); 
+            ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
             if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(ClientDetails))
             {
                 PnlContextChange(cdMyPage);
             }
 
-           
+
         }
 
         private async Task SetupLawyerFormAsync()
@@ -130,7 +139,7 @@ namespace UI.Forms.FrontPage
             btnEmployees.Visible = true;
             btnCase.Visible = true;
             btnClients.Visible = true;
-            btnAdminPage.Visible = false; ; // sortByNameCount
+            btnAdminPage.Visible = false;
 
             SetNavBtnColor(btnMyPageLawyer);
 
@@ -161,7 +170,7 @@ namespace UI.Forms.FrontPage
 
         public void PnlContextChange(Form f)
         {
-            //clearer controls fra panelForm
+            //clear controls fra panelForm
             pnlContext.Controls.Clear();
             f.TopLevel = false;
             //tilføj form som control til panelet
@@ -172,17 +181,17 @@ namespace UI.Forms.FrontPage
 
         private void SetNavBtnColor(Button btn)
         {
-            foreach(Button buttonnis in pnlLeft.Controls)
+            foreach (Button buttonnis in pnlLeft.Controls)
             {
                 buttonnis.BackColor = Color.FromArgb(194, 205, 240);
             }
 
             btn.BackColor = Color.FromArgb(174, 183, 212);
+            lblCurrentPage.Text = btn.Text;
         }
 
         private void BtnCalculations_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             CalculationsView calculationsView = new CalculationsView(clientUI);
             PnlContextChange(calculationsView);
             SetNavBtnColor(btnCalculations);
@@ -194,21 +203,18 @@ namespace UI.Forms.FrontPage
         {
             if (currentUser is LawyerUI)
             {
-                lblCurrentPage.Text = (sender as Button).Text;
                 LawyerDetailsView myPageLawyer = new LawyerDetailsView(lawyerUI.PersonID, true, lawyerUI);
                 PnlContextChange(myPageLawyer);
-                SetNavBtnColor(btnMyPageLawyer); 
+                SetNavBtnColor(btnMyPageLawyer);
             }
             else if (currentUser is SecretaryUI)
             {
-                lblCurrentPage.Text = (sender as Button).Text;
                 EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(secretaryUI.PersonID, true, employeeUI);
                 PnlContextChange(myPageEmployee);
                 SetNavBtnColor(btnMyPageLawyer);
             }
             else
             {
-                lblCurrentPage.Text = (sender as Button).Text;
                 EmployeeDetailsView myPageEmployee = new EmployeeDetailsView(employeeUI.PersonID, true, employeeUI);
                 PnlContextChange(myPageEmployee);
                 SetNavBtnColor(btnMyPageLawyer);
@@ -219,14 +225,12 @@ namespace UI.Forms.FrontPage
         {
             if (currentUser is LawyerUI)
             {
-                lblCurrentPage.Text = (sender as Button).Text;
                 EmployeesOverview employeesOverview = new EmployeesOverview(lawyerUI);
                 PnlContextChange(employeesOverview);
-                SetNavBtnColor(btnEmployees); 
+                SetNavBtnColor(btnEmployees);
             }
             else
             {
-                lblCurrentPage.Text = (sender as Button).Text;
                 EmployeesOverview employeesOverview = new EmployeesOverview(employeeUI);
                 PnlContextChange(employeesOverview);
                 SetNavBtnColor(btnEmployees);
@@ -235,7 +239,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnAdminPage_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             AdminPageView apv = new AdminPageView();
             PnlContextChange(apv);
             SetNavBtnColor(btnAdminPage);
@@ -243,7 +246,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnCase_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             CasePageView casePageView = new CasePageView(this);
             PnlContextChange(casePageView);
             SetNavBtnColor(btnCase);
@@ -251,7 +253,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             EmployeesView employeesView = new EmployeesView();
             PnlContextChange(employeesView);
             SetNavBtnColor(btnLawyers);
@@ -259,7 +260,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnForms_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             FormView fv = new FormView(clientUI);
             PnlContextChange(fv);
             SetNavBtnColor(btnForms);
@@ -267,7 +267,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnClients_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             ClientsView cv = new ClientsView(this, currentUser);
             PnlContextChange(cv);
             SetNavBtnColor(btnClients);
@@ -275,7 +274,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnMyPageClient_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             ClientDetails cdMyPage = new ClientDetails(this, currentUser, clientUI);
             PnlContextChange(cdMyPage);
             SetNavBtnColor(btnMyPageClient);
@@ -283,7 +281,6 @@ namespace UI.Forms.FrontPage
 
         private void BtnSubscribe_Click(object? sender, EventArgs e)
         {
-            lblCurrentPage.Text = (sender as Button).Text;
             SubscriptionView subscriptionView = new SubscriptionView(this, clientUI);
             PnlContextChange(subscriptionView);
             SetNavBtnColor(btnSubscribe);
@@ -292,6 +289,11 @@ namespace UI.Forms.FrontPage
         private void BtnClose_Click(object? sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblLoggedInAs_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

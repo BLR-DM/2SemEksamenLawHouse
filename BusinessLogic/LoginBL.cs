@@ -17,7 +17,7 @@ namespace BusinessLogic
 
         public async Task<int> CheckUsernameAndPasswordAsync(string username, string password)
         {
-            if (!pValidator.ValidEmail(username) || pValidator.ValidPassword(password))
+            if (!pValidator.ValidEmail(username) || !pValidator.ValidPassword(password))
                 return 0;
 
             try

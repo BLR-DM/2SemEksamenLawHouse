@@ -2,6 +2,7 @@
 using BusinessLogic;
 using UI.Toolbox;
 using UI.Forms.CasePage;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.EmployeePage
 {
@@ -42,8 +43,18 @@ namespace UI.Forms.EmployeePage
             btnCancel.Click += BtnCancel_Click;
             dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
             dgvServices.CellDoubleClick += DgvServices_CellDoubleClick;
+            lblHelp.Click += LblHelp_Click;
 
             CheckUser();
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (isMyPage)
+            {
+                if (!OpenPDF.ShowPDF("MyPageLawyerHelp"));
+                        MessageBox.Show("Could not open pdf"); 
+            }
         }
 
         private void DgvServices_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

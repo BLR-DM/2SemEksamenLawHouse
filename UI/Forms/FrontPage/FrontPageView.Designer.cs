@@ -40,9 +40,9 @@
             btnLawyers = new FontAwesome.Sharp.IconButton();
             btnClients = new FontAwesome.Sharp.IconButton();
             gradiantPanel1 = new Toolbox.GradiantPanel();
+            lblSignOut = new Label();
+            lblLoggedInAs = new Label();
             lblCurrentPage = new Label();
-            lblCurrentUserName = new Label();
-            lblCurrentUser = new Label();
             btnClose = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             pnlContext = new Panel();
@@ -156,7 +156,7 @@
             btnMyPageLawyer.Padding = new Padding(25, 0, 20, 0);
             btnMyPageLawyer.Size = new Size(200, 75);
             btnMyPageLawyer.TabIndex = 1;
-            btnMyPageLawyer.Text = "My Page (Lawyer)";
+            btnMyPageLawyer.Text = "My Page";
             btnMyPageLawyer.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageLawyer.UseVisualStyleBackColor = false;
             // 
@@ -222,7 +222,7 @@
             btnMyPageClient.Padding = new Padding(25, 0, 20, 0);
             btnMyPageClient.Size = new Size(200, 75);
             btnMyPageClient.TabIndex = 0;
-            btnMyPageClient.Text = "My Page (Client)";
+            btnMyPageClient.Text = "My Page";
             btnMyPageClient.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMyPageClient.UseVisualStyleBackColor = false;
             // 
@@ -297,9 +297,9 @@
             gradiantPanel1.Angle = 80F;
             gradiantPanel1.BackColor = Color.FromArgb(60, 110, 170);
             gradiantPanel1.BottomColor = Color.Empty;
+            gradiantPanel1.Controls.Add(lblSignOut);
+            gradiantPanel1.Controls.Add(lblLoggedInAs);
             gradiantPanel1.Controls.Add(lblCurrentPage);
-            gradiantPanel1.Controls.Add(lblCurrentUserName);
-            gradiantPanel1.Controls.Add(lblCurrentUser);
             gradiantPanel1.Controls.Add(btnClose);
             gradiantPanel1.Controls.Add(pboxLogo);
             gradiantPanel1.Dock = DockStyle.Top;
@@ -308,6 +308,33 @@
             gradiantPanel1.Size = new Size(1198, 60);
             gradiantPanel1.TabIndex = 2;
             gradiantPanel1.TopColor = Color.FromArgb(197, 212, 230);
+            // 
+            // lblSignOut
+            // 
+            lblSignOut.AutoSize = true;
+            lblSignOut.BackColor = Color.Transparent;
+            lblSignOut.Cursor = Cursors.Hand;
+            lblSignOut.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            lblSignOut.ForeColor = Color.White;
+            lblSignOut.Location = new Point(1072, 35);
+            lblSignOut.Name = "lblSignOut";
+            lblSignOut.Size = new Size(50, 15);
+            lblSignOut.TabIndex = 4;
+            lblSignOut.Text = "sign out";
+            lblSignOut.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lblLoggedInAs
+            // 
+            lblLoggedInAs.BackColor = Color.Transparent;
+            lblLoggedInAs.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            lblLoggedInAs.ForeColor = Color.White;
+            lblLoggedInAs.Location = new Point(982, 12);
+            lblLoggedInAs.Name = "lblLoggedInAs";
+            lblLoggedInAs.Size = new Size(150, 21);
+            lblLoggedInAs.TabIndex = 4;
+            lblLoggedInAs.Text = "CurrentPage";
+            lblLoggedInAs.TextAlign = ContentAlignment.MiddleRight;
+            lblLoggedInAs.Click += lblLoggedInAs_Click;
             // 
             // lblCurrentPage
             // 
@@ -320,30 +347,6 @@
             lblCurrentPage.TabIndex = 1;
             lblCurrentPage.Text = "CurrentPage";
             lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblCurrentUserName
-            // 
-            lblCurrentUserName.AutoSize = true;
-            lblCurrentUserName.BackColor = Color.Transparent;
-            lblCurrentUserName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblCurrentUserName.ForeColor = Color.White;
-            lblCurrentUserName.Location = new Point(312, 19);
-            lblCurrentUserName.Name = "lblCurrentUserName";
-            lblCurrentUserName.Size = new Size(81, 21);
-            lblCurrentUserName.TabIndex = 1;
-            lblCurrentUserName.Text = "Loading...";
-            // 
-            // lblCurrentUser
-            // 
-            lblCurrentUser.AutoSize = true;
-            lblCurrentUser.BackColor = Color.Transparent;
-            lblCurrentUser.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblCurrentUser.ForeColor = Color.White;
-            lblCurrentUser.Location = new Point(206, 19);
-            lblCurrentUser.Name = "lblCurrentUser";
-            lblCurrentUser.Size = new Size(81, 21);
-            lblCurrentUser.TabIndex = 1;
-            lblCurrentUser.Text = "Loading...";
             // 
             // btnClose
             // 
@@ -417,10 +420,11 @@
         private PictureBox pboxLogo;
         private Panel pnlContext;
         private Label lblCurrentUser;
-        private Label lblCurrentUserName;
         private FontAwesome.Sharp.IconButton btnAdminPage;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private Label lblCurrentPage;
         private FontAwesome.Sharp.IconButton btnSubscribe;
+        private Label lblLoggedInAs;
+        private Label lblSignOut;
     }
 }

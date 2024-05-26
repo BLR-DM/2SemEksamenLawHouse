@@ -103,7 +103,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetCaseTypeComboBoxAsync()
+        private async Task SetCaseTypeComboBoxAsync()
         {
             caseTypeList = await caseTypeBL.GetCaseTypeAsync();
 
@@ -118,7 +118,7 @@ namespace UI.Forms.CasePage
 
             cboCaseType.SelectedIndex = 0;
         }
-        public async Task SetLawyerComboBoxAsync()
+        private async Task SetLawyerComboBoxAsync()
         {
 
             lawyerList = await lawyerBL.GetLawyersAsync();

@@ -21,7 +21,7 @@ namespace BusinessLogic
             dbAccess = new CaseDbAccess();
         }
 
-        public async Task<bool> CreateCase(CaseUI caseUI)
+        public async Task<bool> CreateCaseAsync(CaseUI caseUI)
         {
             Case temp = modelConverter.ConvertFromCaseUI(caseUI);
             return await dbAccess.CreateCaseAsync(temp);

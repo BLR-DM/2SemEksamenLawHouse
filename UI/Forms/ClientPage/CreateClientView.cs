@@ -104,7 +104,7 @@ namespace UI.Forms.ClientPage
                 };
 
                 //saet ny kode til bruger hvis kode er indtastet
-                if (txtPassword.Text != null && txtPassword.Text == txtConfirmPassword.Text)
+                if (!String.IsNullOrEmpty(txtPassword.Text) && txtPassword.Text == txtConfirmPassword.Text)
                 {
                     loginDetailsUI.Password = txtPassword.Text;
                 }

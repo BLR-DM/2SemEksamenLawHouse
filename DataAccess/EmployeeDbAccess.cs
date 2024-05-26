@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Formats.Asn1;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EntityModels;
+﻿using EntityModels;
 using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,16 +16,30 @@ namespace DataAccess
 
         public async Task<List<Employee>> GetEmployeesAsync()
         {
-            return await db.Employees
-                .Include(t => t.LawyerTitle)
-                .ToListAsync();
+            try
+            {
+                return await db.Employees
+                        .Include(t => t.LawyerTitle)
+                        .ToListAsync();
+            }
+            catch (Exception)
+            {
+                return new List<Employee>();
+            }
         }
 
         public async Task<Employee> GetEmployeeAsync(int id)
         {
-            return await db.Employees
-                .Include(t => t.LawyerTitle)
-                .SingleOrDefaultAsync(e => e.PersonID == id);
+            try
+            {
+                return await db.Employees
+                        .Include(t => t.LawyerTitle)
+                        .SingleOrDefaultAsync(e => e.PersonID == id);
+            }
+            catch (Exception)
+            {
+                return new Employee();
+            }
         }
 
         public async Task<bool> UpdateEmployeeAsync(Employee employee)

@@ -1,28 +1,18 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using UIModels;
-
 
 namespace UI.Forms.LoginPage
 {
     public partial class ForgotPasswordView : Form
     {
         LoginBL loginBL;
-        PersonValidator personValidator;
+        PersonValidator pValidator;
         bool validEmailFormat;
-        public ForgotPasswordView(LoginBL loginBL)
+        public ForgotPasswordView(LoginBL loginBL, PersonValidator personValidator)
         {
-            this.loginBL = loginBL;
-            personValidator = new PersonValidator();
+            // Assign medbragte BL instanser for at undgå gentagne initialiseringer
+            this.loginBL = loginBL; 
+            pValidator = personValidator;
 
             InitializeComponent();
 
@@ -37,20 +27,25 @@ namespace UI.Forms.LoginPage
 
         private void TxtEmail_TextChanged(object? sender, EventArgs e)
         {
-            if (txtEmail.Text.Length > 4)
-                validEmailFormat = personValidator.ValidEmail(txtEmail.Text);
-        
+            validEmailFormat = pValidator.ValidEmail(txtEmail.Text);
             btnRetrievePassword.Enabled = validEmailFormat;
+            // Skift tekstfarve på email input efter resultat af validering
             txtEmail.ForeColor = validEmailFormat ? Color.Black : Color.OrangeRed;
         }
 
         private async void BtnRetrievePassword_Click(object? sender, EventArgs e)
         {
             btnRetrievePassword.Enabled = false;
+
+            /* -- Simulering af gendannelse af brugerens kode --
+             * Denne besked bliver vist, uafhængigt af om brugeren findes i systemet, så det ikke 
+               er muligt at finde et validt brugernavn i databasen af sikkerhedsmæssige årsager */
+
             MessageBox.Show("A link to reset your password has been sent to" +
                 " your email. Please check your email to complete the process.",
                 "Email Sent");
 
+            // Kodeordet hentes fra systemet. Her ville man dog normalt åbne sin email og gendanne det
             string password = await loginBL.RetrievePasswordAsync(txtEmail.Text);
 
             if (!string.IsNullOrEmpty(password))
@@ -66,6 +61,7 @@ namespace UI.Forms.LoginPage
             btnRetrievePassword.Enabled = true;
         }
 
+        // Underline på "Cancel" knap ved markør over knappen
         private void LblCancel_MouseHover(object? sender, EventArgs e)
         {
             lblCancel.Font = new Font(lblCancel.Font, FontStyle.Underline);

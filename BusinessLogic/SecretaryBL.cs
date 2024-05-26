@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 using DataAccess;
 using EntityModels;
 using Interfaces;
@@ -10,15 +11,20 @@ namespace BusinessLogic
     {
         ISecretaryDbAccess dbAccess;
         ModelConverter modelConverter;
+        PersonValidator pValidator;
 
         public SecretaryBL()
         {
             dbAccess = new SecretaryDbAccess();
             modelConverter = new ModelConverter();
+            pValidator = new PersonValidator();
         }
 
         public async Task<bool> CreateSecretaryAsync(SecretaryUI secretaryUI, LoginDetailsUI loginDetailsUI)
         {
+            if (!pValidator.ValidEmployee(secretaryUI) || !pValidator.ValidLogin(loginDetailsUI))
+                return false;
+
             try
             {
                 Secretary secretary = new Secretary();

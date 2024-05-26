@@ -17,7 +17,7 @@ namespace UI.Toolbox
             pboxDetails.IconColor = Color.Black;
 
             // Attributter
-            lblFullname.Text = $"{lawyerUI.Firstname} {lawyerUI.Lastname}";
+            lblFullname.Text = lawyerUI.ToString();
             lblDetailsTitleValue.Text = lawyerUI.LawyerTitle;
             lblDetailsCityValue.Text = lawyerUI.City;
             lblDetailsPhoneValue.Text = $"+45{lawyerUI.PhoneNumber}";

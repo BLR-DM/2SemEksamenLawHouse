@@ -16,7 +16,7 @@ namespace UI.Forms.ClientPage
         SpecialityBL specialityBL;
         List<LawyerUI> lawyerUIs;
         List<LawyerSpecialityUI> lawyerSpecialityUIs;
-        readonly List<LawyerCardMini> OriginalLawyerControls;
+        List<LawyerCardMini> OriginalLawyerControls;
         public EmployeesView()
         {
             specialityBL = new SpecialityBL();
@@ -62,10 +62,12 @@ namespace UI.Forms.ClientPage
 
             switch (cboxSort.SelectedItem)
             {
+                // Der vælges tom item på comboBox, for at vise uden sortering
                 case "":
                     visibleControls = OriginalLawyerControls.Where((c) => c.Visible).ToList();
                     break;
 
+                // Sorter efter valgte soteringsmulighed
                 case "Name":
                     visibleControls = visibleControls.OrderBy(c => c.Name).ToList();
                     break;
@@ -74,6 +76,7 @@ namespace UI.Forms.ClientPage
                     break;
             }
 
+            // Efter valgte filter, tilføj og vis user-controls til flow layout panel
             flpnlLawyers.Controls.Clear();
             foreach (Control c in visibleControls)
             {
@@ -85,21 +88,25 @@ namespace UI.Forms.ClientPage
         {
             switch (cboxSpecialities.SelectedIndex)
             {
+                // Ved valg af tom item, vis alle advokater fra original listen
                 case 0:
                     foreach (Control control in OriginalLawyerControls)
                     {
                         control.Show();
                     }
                     break;
+                // Ellers, skal der vises de adovkater der har den valgte speciale
                 default:
                     string selectedSpeciality = cboxSpecialities.SelectedItem.ToString();
 
                     List<int> matchingLawyerIDs = new List<int>();
 
+                    // Match speciale med alle advokater og gem deres ID i listen
                     matchingLawyerIDs = lawyerSpecialityUIs
                             .Where(x => x.SpecialityName == selectedSpeciality)
                             .Select(x => x.LawyerID).ToList();
 
+                    // Vis/skjul relevante advokater
                     foreach (LawyerCardMini lawyerControl in OriginalLawyerControls)
                     {
                         if (matchingLawyerIDs.Contains(lawyerControl.LawyerID))
@@ -161,7 +168,7 @@ namespace UI.Forms.ClientPage
                     control.Click += (sender, e) => LawyerCard_Click(lawyerCard, e);
                 }
 
-                lawyerCard.Margin = new Padding(23);
+                lawyerCard.Margin = new Padding(23); // Mellemrum for hver user-control
                 flpnlLawyers.Controls.Add(lawyerCard);
                 OriginalLawyerControls.Add(lawyerCard);
             }
@@ -169,11 +176,13 @@ namespace UI.Forms.ClientPage
 
         private void LawyerCard_Click(object? sender, EventArgs e)
         {
+            // Når der klikkes på en advokat, vises detaljer i højre side panel
             if (sender is LawyerCardMini lawyerCard)
             {
                 if (lawyerCard != null)
                 {
                     pnlLawyerDetails.Controls.Clear();
+                    // Find og vis den valgte advokat
                     pnlLawyerDetails.Controls
                         .Add(new LawyerCardDisplay(lawyerUIs.SingleOrDefault(x => x.PersonID == lawyerCard.LawyerID))); 
                 }

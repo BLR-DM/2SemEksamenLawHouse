@@ -69,16 +69,21 @@ namespace BusinessLogic.Validation
         }
 
 
-
-        public bool ValidPerson(EmployeeUI person)
+        public bool ValidLogin(LoginDetailsUI loginDetails)
         {
-            return ValidName(person.Firstname) &&
-                ValidName(person.Lastname) &&
-                ValidAddress(person.AddressLine) &&
-                ValidName(person.City) &&
-                ValidPostalCode(person.PostalCode.ToString()) &&
-                ValidEmail(person.Email) &&
-                ValidPhone(person.PhoneNumber.ToString());
+            return ValidEmail(loginDetails.Username) &&
+                ValidPassword(loginDetails.Password);
+        }
+
+        public bool ValidEmployee(EmployeeUI employee)
+        {
+            return ValidName(employee.Firstname) &&
+                ValidName(employee.Lastname) &&
+                ValidAddress(employee.AddressLine) &&
+                ValidName(employee.City) &&
+                ValidPostalCode(employee.PostalCode.ToString()) &&
+                ValidEmail(employee.Email) &&
+                ValidPhone(employee.PhoneNumber.ToString());
         }
         public bool ValidClient(ClientUI client)
         {

@@ -1,9 +1,7 @@
 ﻿using BusinessLogic;
 using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
-using EntityModels;
 using System.Data;
-using System.Windows.Navigation;
 using UI.Forms.EmployeePage;
 using UIModels;
 
@@ -63,6 +61,7 @@ namespace UI.Toolbox
 
         private void BtnAddSpeciality_Click(object? sender, EventArgs e)
         {
+            // Tilføj/fjern specialer
             if (cboxSpecialities.SelectedItem != null)
             {
                 lboxSpecialities.Items.Add(cboxSpecialities.SelectedItem);
@@ -112,7 +111,7 @@ namespace UI.Toolbox
 
                 lawyerUI.LawyerTitleID = lawyerTitles.FirstOrDefault(lt => lt.Title == cboxTitles.SelectedItem).LawyerTitleID;
 
-                // if admin
+                // Kun hvis det er administrator
                 if (isAdmin)
                 {
                     updatedLawyerSpecialities.Clear();
@@ -213,7 +212,7 @@ namespace UI.Toolbox
         {
             specialities = await specialityBL.GetSpecialitiesAsync();
 
-            foreach (SpecialityUI speciality in specialities) //Where(x => x.SpecialityName != speciality.SpecialityName
+            foreach (SpecialityUI speciality in specialities)
             {
                 if (!lawyerUI.LawyerSpecialities.Where(x => x.SpecialityID == speciality.SpecialityID).Any())
                 {

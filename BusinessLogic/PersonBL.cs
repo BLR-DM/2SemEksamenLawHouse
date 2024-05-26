@@ -9,15 +9,16 @@ namespace BusinessLogic
     public class PersonBL
     {
         IPersonDbAccess dbAccess;
-        ModelConverter modelConverter;
         public PersonBL()
         {
             dbAccess = new PersonDbAccess();
-            modelConverter = new ModelConverter();
         }
 
         public async Task<PersonUI> GetPersonAsync(int id)
         {
+            if (id <= 0)
+                return new PersonUI();
+
             try
             {
                 Person person = await dbAccess.GetPersonAsync(id);

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 using DataAccess;
 using EntityModels;
 using Interfaces;
@@ -10,14 +11,19 @@ namespace BusinessLogic
     {
         ILawyerDbAccess dbAccess;
         ModelConverter modelConverter;
+        PersonValidator pValidator;
         public LawyerBL()
         {
             dbAccess = new LawyerDbAccess();
             modelConverter = new ModelConverter();
+            pValidator = new PersonValidator();
         }
 
         public async Task<bool> CreateLawyerAsync(LawyerUI lawyerUI, List<LawyerSpecialityUI> lawyerSpecialityUIs, LoginDetailsUI loginDetailsUI)
         {
+            if (!pValidator.ValidEmployee(lawyerUI) || !pValidator.ValidLogin(loginDetailsUI) || lawyerSpecialityUIs == null)
+                return false;
+
             Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
             List<LawyerSpeciality> lawyerSpecialities = lawyerSpecialityUIs
                 .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
@@ -30,28 +36,36 @@ namespace BusinessLogic
         }
         public async Task<LawyerUI> GetLawyerAsync(int id)
         {
-            try
+            if (id > 0)
             {
-                Lawyer lawyer = await dbAccess.GetLawyerAsync(id);
-                return modelConverter.ConvertFromLawyerEntity(lawyer);
+                try
+                {
+                    Lawyer lawyer = await dbAccess.GetLawyerAsync(id);
+                    return modelConverter.ConvertFromLawyerEntity(lawyer);
+                }
+                catch (Exception)
+                {
+                    return new LawyerUI();
+                } 
             }
-            catch (Exception)
-            {
-                return new LawyerUI();
-            }
+            return new LawyerUI();
         }
 
         public async Task<LawyerUI> GetLawyerWithCollectionsAsync(int id)
         {
-            try
+            if (id > 0)
             {
-                Lawyer lawyer = await dbAccess.GetLawyerWithCollectionsAsync(id);
-                return modelConverter.ConvertFromLawyerEntityWithAllCollections(lawyer);
+                try
+                {
+                    Lawyer lawyer = await dbAccess.GetLawyerWithCollectionsAsync(id);
+                    return modelConverter.ConvertFromLawyerEntityWithAllCollections(lawyer);
+                }
+                catch (Exception)
+                {
+                    return new LawyerUI();
+                }
             }
-            catch (Exception)
-            {
-                return new LawyerUI();
-            }
+            return new LawyerUI();
         }
 
 
@@ -85,31 +99,55 @@ namespace BusinessLogic
 
         public async Task<bool> UpdateLawyerAsync(LawyerUI lawyerUI)
         {
-            try
+            if (pValidator.ValidEmployee(lawyerUI))
             {
-                Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
-                //lawyer.Cases = lawyerUI.Cases.Select(modelConverter.ConvertFromCaseUI).ToList();
-                //lawyer.CaseServices = lawyerUI.CaseServices.Select(modelConverter.ConvertFromCaseServiceUI).ToList();
-                return await dbAccess.UpdateLawyerAsync(lawyer);
+                try
+                {
+                    Lawyer lawyer = modelConverter.ConvertFromLawyerUI(lawyerUI);
+                    return await dbAccess.UpdateLawyerAsync(lawyer);
+                }
+                catch (Exception)
+                {
+                    return false;
+                } 
             }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
         }
 
         public async Task<bool> UpdateLawyerSpecialitiesAsync(List<LawyerSpecialityUI> updatedLawyerSpecialities)
         {
-            List<LawyerSpeciality> lawyerSpecialities = updatedLawyerSpecialities
-                .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
-            return await dbAccess.UpdateLawyerSpecialitiesAsync(lawyerSpecialities);
+            if (updatedLawyerSpecialities != null)
+            {
+                try
+                {
+                    List<LawyerSpeciality> lawyerSpecialities = updatedLawyerSpecialities
+                                    .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+                    return await dbAccess.UpdateLawyerSpecialitiesAsync(lawyerSpecialities);
+                }
+                catch (Exception)
+                {
+                    return false;
+                } 
+            }
+            return false;
         }
 
         public async Task<bool> DeleteLawyerSpecialitiesAsync(List<LawyerSpecialityUI> deletedLawyerSpecialities)
         {
-            List<LawyerSpeciality> lawyerSpecialities = deletedLawyerSpecialities
-                .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
-            return await dbAccess.DeleteLawyerSpecialitiesAsync(lawyerSpecialities);
+            if (deletedLawyerSpecialities != null)
+            {
+                try
+                {
+                    List<LawyerSpeciality> lawyerSpecialities = deletedLawyerSpecialities
+                                    .Select(modelConverter.ConvertFromLawyerSpecialityUI).ToList();
+                    return await dbAccess.DeleteLawyerSpecialitiesAsync(lawyerSpecialities);
+                }
+                catch (Exception)
+                {
+                    return false;
+                } 
+            }
+            return false;
         }
     }
 }

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BusinessLogic;
+﻿using BusinessLogic;
 using UIModels;
 using UI.Toolbox;
 
@@ -16,27 +7,19 @@ namespace UI.Forms.EmployeePage
     public partial class EmployeeDetailsView : Form
     {
         EmployeeBL employeeBL;
-
-        EmployeeUI currentUser;
         EmployeeUI displayedEmployee;
 
         int employeeID;
-        bool isMyPage;
         bool isAdmin;
         public EmployeeDetailsView(int employeeID, bool isMyPage, EmployeeUI currentUser)
         {
             employeeBL = new EmployeeBL();
             this.employeeID = employeeID;
-            this.isMyPage = isMyPage;
-            this.displayedEmployee = displayedEmployee;
 
             if (currentUser is LawyerUI lawyerUI)
             {
-                this.isAdmin = lawyerUI.Admin;
+                isAdmin = lawyerUI.Admin;
             }
-            else
-                this.currentUser = currentUser;
-            
 
             InitializeComponent();
 
@@ -48,13 +31,13 @@ namespace UI.Forms.EmployeePage
             btnCancel.Click += BtnCancel_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
             
-            CheckUser(isMyPage, currentUser);
+            CheckUser(isMyPage); // Tjek om formen åbnes i "MyPage" eller andre steder
             
         }
 
         private async void EmployeeDetailsView_Load(object? sender, EventArgs e)
         {
-            await SetupView(employeeID);
+            await SetupView(employeeID); // Hent og vis ansat
         }
 
         private void PnlEdit_VisibleChanged(object? sender, EventArgs e)
@@ -79,6 +62,7 @@ namespace UI.Forms.EmployeePage
 
             if (displayedEmployee != null)
             {
+                // Brug EmployeeCardDisplay user-control med hentet ansat
                 pnlEmployeeDetails.Controls.Clear();
                 pnlEmployeeDetails.Controls.Add(new EmployeeCardDisplay(displayedEmployee));
                 btnEditDetails.Enabled = true;
@@ -87,6 +71,7 @@ namespace UI.Forms.EmployeePage
 
         private void BtnEditDetails_Click(object? sender, EventArgs e)
         {
+            // Åbn EmployeeCardEdit user-control for at redigere oplysninger
             btnEditDetails.Enabled = false;
             pnlEdit.Controls.Clear();
             pnlEdit.Controls.Add(new EmployeeCardEdit(this, displayedEmployee, isAdmin));
@@ -94,15 +79,17 @@ namespace UI.Forms.EmployeePage
         }
 
 
-        private void CheckUser(bool isMyPage, EmployeeUI currentUser)
+        private void CheckUser(bool isMyPage)
         {
+            // Hvis formen ikke åbnes i "MyPage", tilføj Sizeable så den kan lukkes
             if (!isMyPage)
             {
                 //btnEditDetails.Visible = false;
                 this.FormBorderStyle = FormBorderStyle.Sizable;
                 this.StartPosition = FormStartPosition.CenterScreen;
-                this.Size = new Size(350, 613);
+                this.Size = new Size(350, 613); // Skjul unødvendig tom plads
             }
+            // Gør ændring af oplysninger muligt, hvis det er "MyPage" eller admin
             btnEditDetails.Visible = isMyPage || isAdmin;
         }
     }

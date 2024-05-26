@@ -220,14 +220,14 @@ namespace UI.Forms.FrontPage
             if (currentUser is LawyerUI)
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, lawyerUI);
+                EmployeesOverview employeesOverview = new EmployeesOverview(lawyerUI);
                 PnlContextChange(employeesOverview);
                 SetNavBtnColor(btnEmployees); 
             }
             else
             {
                 lblCurrentPage.Text = (sender as Button).Text;
-                EmployeesOverview employeesOverview = new EmployeesOverview(currentUser.PersonID, employeeUI);
+                EmployeesOverview employeesOverview = new EmployeesOverview(employeeUI);
                 PnlContextChange(employeesOverview);
                 SetNavBtnColor(btnEmployees);
             }

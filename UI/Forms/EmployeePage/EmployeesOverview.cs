@@ -35,6 +35,11 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> filteredEmployees;
         List<SecretaryUI> filteredSecretaries;
 
+        const string showEmployees = "Employee";
+        const string showLawyers = "  Lawyers";
+        const string showSecretaries = "  Secretaries";
+        string selectedShow;
+
         int sortByNameCount, sortByCaseCount, sortByServiceCount, 
             sortBySpecialityCount, sortByHireDate;
 
@@ -86,9 +91,9 @@ namespace UI.Forms.EmployeePage
             filteredEmployees = new List<EmployeeUI>(employees);
 
             // Visnings combobox
-            cboxShow.Items.Insert(0, "Employees");
-            cboxShow.Items.Add("  Lawyers");
-            cboxShow.Items.Add("  Secretaries");
+            cboxShow.Items.Insert(0, showEmployees);
+            cboxShow.Items.Add(showLawyers);
+            cboxShow.Items.Add(showSecretaries);
             cboxShow.SelectedIndex = 0;
 
             SetupDgvWithEmployees();
@@ -177,118 +182,24 @@ namespace UI.Forms.EmployeePage
 
         private void SortDgv()
         {
-            if (cboxShow.SelectedItem == "Employees")
+            if (selectedShow == showEmployees)
             {
                 SortEmployees();
 
                 dgvEmployees.CurrentCell = null;
                 SetupDgvWithEmployees();
             }
-            else if (cboxShow.SelectedItem == "  Secretaries")
+            else if (selectedShow == showSecretaries)
             {
                 SortSecretaries();
 
                 dgvEmployees.CurrentCell = null;
                 SetupDgvWithSecretaries();
             }
-            else if (cboxShow.SelectedItem == "  Lawyers")
+            else if (selectedShow == showLawyers)
             {
+                SortLawyers();
 
-                filteredLawyers = new List<LawyerUI>(lawyers);
-
-                string search = txtSearch.Text.Trim().ToLower();
-                if (!string.IsNullOrEmpty(search))
-                {
-                    filteredLawyers = filteredLawyers
-                        .Where(lawyer =>
-                        lawyer.PhoneNumber.ToString().Contains(search) ||
-                        lawyer.LawyerTitle.ToLower().Contains(search) ||
-                        lawyer.PostalCode.ToString().Contains(search) ||
-                        lawyer.Firstname.ToLower().Contains(search) ||
-                        lawyer.Lastname.ToLower().Contains(search) ||
-                        lawyer.Email.ToLower().Contains(search))
-                        .ToList();
-                }
-
-                if (selectedFilters.Count > 0)
-                {
-                    filteredLawyers = lawyers
-                        .Where(l => selectedFilters
-                        .All(filter => l.LawyerSpecialities
-                        .Any(ls => ls.SpecialityName == filter))).ToList();
-                }
-
-                if (cboxSort.SelectedItem != null)
-                {
-                    switch (cboxSort.SelectedItem)
-                    {
-                        case "Name":
-                            sortByNameCount++;
-                            if (sortByNameCount % 2 == 1)
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderBy(lawyer => lawyer.Firstname)
-                                    .ThenBy(lawyer => lawyer.Lastname)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderByDescending(lawyer => lawyer.Firstname)
-                                    .ThenByDescending(lawyer => lawyer.Lastname)
-                                    .ToList();
-                            }
-                            break;
-
-                        case "Open Cases":
-                            sortByCaseCount++;
-                            if (sortByCaseCount % 2 == 1)
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderBy(cases => cases.OpenCases)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderByDescending(cases => cases.OpenCases)
-                                    .ToList();
-                            }
-                            break;
-
-                        case "Open Services":
-                            sortByServiceCount++;
-                            if (sortByServiceCount % 2 == 1)
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderBy(service => service.OpenCaseServices)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderByDescending(service => service.OpenCaseServices)
-                                    .ToList();
-                            }
-                            break;
-
-                        case "Speciality":
-                            sortBySpecialityCount++;
-                            if (sortBySpecialityCount % 2 == 1)
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderBy(speciality => speciality.SpecialityCount)
-                                    .ToList();
-                            }
-                            else
-                            {
-                                filteredLawyers = filteredLawyers
-                                    .OrderByDescending(speciality => speciality.SpecialityCount)
-                                    .ToList();
-                            }
-                            break;
-                    }
-                }
                 dgvEmployees.CurrentCell = null;
                 btnTrashFilter.Visible = flpnlFilters.Controls.Count > 0;
                 SetupDgvWithLawyers();
@@ -314,44 +225,41 @@ namespace UI.Forms.EmployeePage
                     .ToList();
             }
 
-            if (cboxSort.SelectedItem != null)
+            switch (selectedShow)
             {
-                switch (cboxSort.SelectedItem)
-                {
-                    case "Name":
-                        sortByNameCount++;
-                        if (sortByNameCount % 2 == 1)
-                        {
-                            filteredEmployees = filteredEmployees
-                                .OrderBy(employee => employee.Firstname)
-                                .ThenBy(employee => employee.Lastname)
-                                .ToList();
-                        }
-                        else
-                        {
-                            filteredEmployees = filteredEmployees
-                                .OrderByDescending(employee => employee.Firstname)
-                                .ThenByDescending(employee => employee.Lastname)
-                                .ToList();
-                        }
-                        break;
+                case "Name":
+                    sortByNameCount++;
+                    if (sortByNameCount % 2 == 1)
+                    {
+                        filteredEmployees = filteredEmployees
+                            .OrderBy(employee => employee.Firstname)
+                            .ThenBy(employee => employee.Lastname)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredEmployees = filteredEmployees
+                            .OrderByDescending(employee => employee.Firstname)
+                            .ThenByDescending(employee => employee.Lastname)
+                            .ToList();
+                    }
+                    break;
 
-                    case "Hire date":
-                        sortByHireDate++;
-                        if (sortByHireDate % 2 == 1)
-                        {
-                            filteredEmployees = filteredEmployees
-                                .OrderBy(employee => employee.HireDate)
-                                .ToList();
-                        }
-                        else
-                        {
-                            filteredEmployees = filteredEmployees
-                                .OrderByDescending(employee => employee.HireDate)
-                                .ToList();
-                        }
-                        break;
-                }
+                case "Hire date":
+                    sortByHireDate++;
+                    if (sortByHireDate % 2 == 1)
+                    {
+                        filteredEmployees = filteredEmployees
+                            .OrderBy(employee => employee.HireDate)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredEmployees = filteredEmployees
+                            .OrderByDescending(employee => employee.HireDate)
+                            .ToList();
+                    }
+                    break;
             }
         }
 
@@ -374,66 +282,162 @@ namespace UI.Forms.EmployeePage
                     .ToList();
             }
 
-            if (cboxSort.SelectedItem != null)
+            switch (selectedShow)
             {
-                switch (cboxSort.SelectedItem)
-                {
-                    case "Name":
-                        sortByNameCount++;
-                        if (sortByNameCount % 2 == 1)
-                        {
-                            filteredSecretaries = filteredSecretaries
-                                .OrderBy(employee => employee.Firstname)
-                                .ThenBy(employee => employee.Lastname)
-                                .ToList();
-                        }
-                        else
-                        {
-                            filteredSecretaries = filteredSecretaries
-                                .OrderByDescending(employee => employee.Firstname)
-                                .ThenByDescending(employee => employee.Lastname)
-                                .ToList();
-                        }
-                        break;
+                case "Name":
+                    sortByNameCount++;
+                    if (sortByNameCount % 2 == 1)
+                    {
+                        filteredSecretaries = filteredSecretaries
+                            .OrderBy(employee => employee.Firstname)
+                            .ThenBy(employee => employee.Lastname)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredSecretaries = filteredSecretaries
+                            .OrderByDescending(employee => employee.Firstname)
+                            .ThenByDescending(employee => employee.Lastname)
+                            .ToList();
+                    }
+                    break;
 
-                    case "Hire date":
-                        sortByHireDate++;
-                        if (sortByHireDate % 2 == 1)
-                        {
-                            filteredSecretaries = filteredSecretaries
-                                .OrderBy(employee => employee.HireDate)
-                                .ToList();
-                        }
-                        else
-                        {
-                            filteredSecretaries = filteredSecretaries
-                                .OrderByDescending(employee => employee.HireDate)
-                                .ToList();
-                        }
-                        break;
-                }
+                case "Hire date":
+                    sortByHireDate++;
+                    if (sortByHireDate % 2 == 1)
+                    {
+                        filteredSecretaries = filteredSecretaries
+                            .OrderBy(employee => employee.HireDate)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredSecretaries = filteredSecretaries
+                            .OrderByDescending(employee => employee.HireDate)
+                            .ToList();
+                    }
+                    break;
+            }
+        }
+
+        private void SortLawyers()
+        {
+            filteredLawyers = new List<LawyerUI>(lawyers);
+
+            string search = txtSearch.Text.Trim().ToLower();
+            if (!string.IsNullOrEmpty(search))
+            {
+                filteredLawyers = filteredLawyers
+                    .Where(lawyer =>
+                    lawyer.PhoneNumber.ToString().Contains(search) ||
+                    lawyer.LawyerTitle.ToLower().Contains(search) ||
+                    lawyer.PostalCode.ToString().Contains(search) ||
+                    lawyer.Firstname.ToLower().Contains(search) ||
+                    lawyer.Lastname.ToLower().Contains(search) ||
+                    lawyer.Email.ToLower().Contains(search))
+                    .ToList();
+            }
+
+            if (selectedFilters.Count > 0)
+            {
+                filteredLawyers = lawyers
+                    .Where(l => selectedFilters
+                    .All(filter => l.LawyerSpecialities
+                    .Any(ls => ls.SpecialityName == filter))).ToList();
+            }
+
+            switch (selectedShow)
+            {
+                case "Name":
+                    sortByNameCount++;
+                    if (sortByNameCount % 2 == 1)
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderBy(lawyer => lawyer.Firstname)
+                            .ThenBy(lawyer => lawyer.Lastname)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderByDescending(lawyer => lawyer.Firstname)
+                            .ThenByDescending(lawyer => lawyer.Lastname)
+                            .ToList();
+                    }
+                    break;
+
+                case "Open Cases":
+                    sortByCaseCount++;
+                    if (sortByCaseCount % 2 == 1)
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderBy(cases => cases.OpenCases)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderByDescending(cases => cases.OpenCases)
+                            .ToList();
+                    }
+                    break;
+
+                case "Open Services":
+                    sortByServiceCount++;
+                    if (sortByServiceCount % 2 == 1)
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderBy(service => service.OpenCaseServices)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderByDescending(service => service.OpenCaseServices)
+                            .ToList();
+                    }
+                    break;
+
+                case "Speciality":
+                    sortBySpecialityCount++;
+                    if (sortBySpecialityCount % 2 == 1)
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderBy(speciality => speciality.SpecialityCount)
+                            .ToList();
+                    }
+                    else
+                    {
+                        filteredLawyers = filteredLawyers
+                            .OrderByDescending(speciality => speciality.SpecialityCount)
+                            .ToList();
+                    }
+                    break;
             }
         }
 
         private void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
         {
+            if (cboxShow.SelectedItem != null)
+                selectedShow = cboxShow.SelectedItem.ToString();
+
             lblShow.Focus();
             lblTotalEmployees.Text = "Loading...";
 
             ResetFilters();
             ResetSorts();
 
-            switch (cboxShow.SelectedItem)
+            switch (selectedShow)
             {
-                case "Employees":
+                case showEmployees:
                     FillComboBoxesForEmployees();
                     SetupDgvWithEmployees();
                     break;
-                case "  Lawyers":
+                case showLawyers:
                     FillComboBoxesForLawyers();
                     SetupDgvWithLawyers();
                     break;
-                case "  Secretaries":
+                case showSecretaries:
                     FillComboBoxesForEmployees();
                     SetupDgvWithSecretaries();
                     break;
@@ -442,7 +446,7 @@ namespace UI.Forms.EmployeePage
 
         private void SetLblTotalCount()
         {
-            lblTotalEmployees.Text = $"{dgvEmployees.Rows.Count} {cboxShow.SelectedItem.ToString().TrimStart()}";
+            lblTotalEmployees.Text = $"{dgvEmployees.Rows.Count} {selectedShow.TrimStart()}";
         }
 
         private void FillComboBoxesForEmployees()
@@ -477,19 +481,19 @@ namespace UI.Forms.EmployeePage
         {
             if (e.RowIndex >= 0)
             {
-                switch (cboxShow.SelectedItem)
+                switch (selectedShow)
                 {
-                    case "Employees":
+                    case showEmployees:
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is EmployeeUI employee)
                             new EmployeeDetailsView(employee.PersonID, false, employeeUI).ShowDialog();
                         break;
 
-                    case "  Lawyers":
+                    case showLawyers:
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is LawyerUI lawyer)
                             new LawyerDetailsView(lawyer.PersonID, false, employeeUI).ShowDialog();
                         break;
 
-                    case "  Secretaries":
+                    case showSecretaries:
                         if (dgvEmployees.Rows[e.RowIndex].DataBoundItem is SecretaryUI secretary)
                             new EmployeeDetailsView(secretary.PersonID, false, employeeUI).ShowDialog();
                         break;

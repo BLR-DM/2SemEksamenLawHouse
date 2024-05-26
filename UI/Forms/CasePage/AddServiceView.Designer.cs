@@ -47,7 +47,6 @@
             btnAddLawyer = new FontAwesome.Sharp.IconButton();
             btnAddService = new Button();
             lblHelp = new Label();
-            btnCalculate = new Button();
             panel1.SuspendLayout();
             pnlLawyerInformation.SuspendLayout();
             SuspendLayout();
@@ -56,7 +55,6 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblHoursWorked);
-            panel1.Controls.Add(btnCalculate);
             panel1.Controls.Add(txtHoursWorked);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(lblTotalPrice);
@@ -282,15 +280,6 @@
             lblHelp.Size = new Size(66, 15);
             lblHelp.TabIndex = 69;
             lblHelp.Text = "Need help?";
-            // 
-            // btnCalculate
-            // 
-            btnCalculate.Location = new Point(276, 68);
-            btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(82, 27);
-            btnCalculate.TabIndex = 68;
-            btnCalculate.Text = "Calculate";
-            btnCalculate.UseVisualStyleBackColor = true;
             // 
             // AddServiceView
             // 

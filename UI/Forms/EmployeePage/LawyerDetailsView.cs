@@ -2,19 +2,18 @@
 using BusinessLogic;
 using UI.Toolbox;
 using UI.Forms.CasePage;
-using BusinessLogic.Validation;
-using UI.Forms.FrontPage;
-using EntityModels;
 
 namespace UI.Forms.EmployeePage
 {
     public partial class LawyerDetailsView : Form
     {
+        // Denne form kan betragtes som en slags Dashboard, eller en oversigt over advokatens
+        // arbejdsopgaver og redigering af advokatoplsyninger
         LawyerBL lawyerBL;
         LawyerUI displayedLawyerUI;
-        int lawyerID;
-        bool isMyPage;
-        bool isAdmin;
+        int lawyerID; // ID af den viste advokat
+        bool isMyPage; // For at identificere om formen åbnes i "MyPage" eller andre steder
+        bool isAdmin; // Tjek om brugeren som åbner formen er Administrator
 
         public LawyerDetailsView(int lawyerID, bool isMyPage, EmployeeUI currentUser)
         {
@@ -23,6 +22,8 @@ namespace UI.Forms.EmployeePage
             this.lawyerID = lawyerID;
             this.isMyPage = isMyPage;
 
+            // Da formen kan åbnes andre steder og af alle ansatte, tjekkes der for bruger type
+            // Kun advokater kan være admin, tjekkes derfor først på om brugeren er advokat
             if (currentUser is LawyerUI lawyerUI)
             {
                 isAdmin = lawyerUI.Admin;
@@ -47,7 +48,8 @@ namespace UI.Forms.EmployeePage
 
         private void DgvServices_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            // Double-klik på sagsydelse åbner sagsdetaljer med medbringer nødvendige parametre
+            if (e.RowIndex >= 0) // Ignorer header rækken
             {
                 if (dgvServices.Rows[e.RowIndex].DataBoundItem is CaseServiceUI caseServiceUI)
                 {
@@ -59,6 +61,7 @@ namespace UI.Forms.EmployeePage
 
         private void DgvCases_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
+            // Double-klik på sag åbner sagsdetaljer med medbringer nødvendige parametre
             if (e.RowIndex >= 0)
             {
                 if (dgvCases.Rows[e.RowIndex].DataBoundItem is CaseUI caseUI)
@@ -70,12 +73,13 @@ namespace UI.Forms.EmployeePage
         }
         private void CheckUser()
         {
-            if (!isMyPage)
+            if (!isMyPage) // Hvis formen åbnes andre steder end "MyPage", aktiveres "Sizeable" så den kan evt. kan lukkes
             {
                 FormBorderStyle = FormBorderStyle.Sizable;
                 StartPosition = FormStartPosition.CenterScreen;
             }
-            btnEditDetails.Visible = isMyPage || isAdmin;
+            // Gør det muligt at ændre på oplysninger, hvis brugeren og den viste bruger er ens eller admin
+            btnEditDetails.Visible = isMyPage || isAdmin; 
         }
         private async void LawyerDetailsView_Load(object? sender, EventArgs e)
         {
@@ -84,9 +88,10 @@ namespace UI.Forms.EmployeePage
 
         public async Task SetupView(int id)
         {
+            // Hent og hvis den advokat der skal vises i formen
             displayedLawyerUI = await lawyerBL.GetLawyerWithCollectionsAsync(id);
 
-            chboxServicesShowAll.Checked = false;
+            chboxServicesShowAll.Checked = false; // Start med at vise åbne sagsydelser
 
             if (displayedLawyerUI != null)
             {
@@ -97,13 +102,14 @@ namespace UI.Forms.EmployeePage
                 SetupDgvCases();
                 SetupDgvCaseServices();
                 SetDgvStyle();
-
             }
         }
 
         private void DisplayLawyer(LawyerUI lawyer)
         {
+            // Tilføj hentede advokat til panel
             pnlLawyerDetails.Controls.Clear();
+            // Her bruges en user-control "LawyerCardDisplay" for at standardisere opsætning 
             pnlLawyerDetails.Controls.Add(new LawyerCardDisplay(displayedLawyerUI));
         }
 
@@ -112,6 +118,7 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Enabled = false;
 
             pnlEdit.Controls.Clear();
+            // En user-control til redigering af advokatoplysninger
             pnlEdit.Controls.Add(new LawyerCardEdit(this, displayedLawyerUI, isAdmin));
             pnlEdit.Visible = true;
         }
@@ -119,9 +126,9 @@ namespace UI.Forms.EmployeePage
         private void SetCasesDgv(bool serviceShowAllCheck)
         {
             if (serviceShowAllCheck)
-                dgvCases.DataSource = displayedLawyerUI.Cases;
+                dgvCases.DataSource = displayedLawyerUI.Cases; // Vis alle sager
             else
-                dgvCases.DataSource = displayedLawyerUI.Cases
+                dgvCases.DataSource = displayedLawyerUI.Cases // Vis kun åbne sager
                     .Where(c => c.Status == "Open")
                     .ToList();
 
@@ -130,9 +137,9 @@ namespace UI.Forms.EmployeePage
         private void SetServicesDgv(bool serviceShowAllCheck)
         {
             if (serviceShowAllCheck)
-                dgvServices.DataSource = displayedLawyerUI.CaseServices;
+                dgvServices.DataSource = displayedLawyerUI.CaseServices; // Vis alle sagsydelser
             else
-                dgvServices.DataSource = displayedLawyerUI.CaseServices
+                dgvServices.DataSource = displayedLawyerUI.CaseServices // Vis kun åbne sagsydelser
                     .Where(cs => cs.Status == "Open")
                     .ToList();
 
@@ -141,6 +148,7 @@ namespace UI.Forms.EmployeePage
 
         private void SetupDgvCases()
         {
+            // Skjul ikke relevante kolonner
             dgvCases.Columns["LawyerID"].Visible =
             dgvCases.Columns["ClientID"].Visible =
             dgvCases.Columns["Lawyer"].Visible =
@@ -182,25 +190,31 @@ namespace UI.Forms.EmployeePage
 
         private void SetDgvStyle()
         {
+            // Gør det muligt ændre i DGV stil
             dgvCases.EnableHeadersVisualStyles = dgvServices.EnableHeadersVisualStyles = false;
-
             dgvCases.RowHeadersVisible = dgvServices.RowHeadersVisible = false;
 
+            // Kolonne farve
             dgvCases.ColumnHeadersDefaultCellStyle.BackColor =
                 dgvServices.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(185, 209, 234);
 
+            // Kolonne farve efter valg af celle
             dgvCases.ColumnHeadersDefaultCellStyle.SelectionBackColor =
                 dgvServices.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
 
+            // Celle/række farve ved valg
             dgvCases.DefaultCellStyle.SelectionBackColor = dgvServices.
                 DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
 
+            // Tekst-farve af valgte celler/række
             dgvCases.DefaultCellStyle.SelectionForeColor = dgvServices.
                 DefaultCellStyle.SelectionForeColor = Color.Black;
 
+            // Tilpas kolonne-bredde
             dgvCases.AutoSizeColumnsMode =
                 dgvServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // Valg mode sat til række
             dgvCases.SelectionMode = dgvServices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
@@ -208,7 +222,7 @@ namespace UI.Forms.EmployeePage
         {
             if (!pnlEdit.Visible)
             {
-                btnCancel.Visible = false;
+                btnCancel.Visible = false; // Skjul "Cancel" knappen, hvis redigering ikke er trykket
                 btnEditDetails.Enabled = true;
             }
             else

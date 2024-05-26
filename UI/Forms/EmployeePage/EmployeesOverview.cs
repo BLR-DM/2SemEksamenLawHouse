@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using BusinessLogic;
 using UIModels;
 using UI.Toolbox;
-using System.Windows.Controls;
-using EntityModels;
-using BusinessLogic.Validation;
-
 
 namespace UI.Forms.EmployeePage
 {
     public partial class EmployeesOverview : Form
     {
+        /* Alle ansatte kan tilgå denne form, der gør det muligt at se oversigter af ansatte, samt
+         * filtrere, sortere og søge på diverse attributter.
+         * Filtrerings muligheden er udelukkende i Advokat oversigten, når dette er valgt i "Show" comboBox */
+
         LawyerBL lawyerBL;
         EmployeeBL employeeBL;
         SecretaryBL secretaryBL;
@@ -35,15 +27,16 @@ namespace UI.Forms.EmployeePage
         List<EmployeeUI> filteredEmployees;
         List<SecretaryUI> filteredSecretaries;
 
+        // Const string på "Show" comboBox elementer, da der hyppigt bliver testet på den valgte item
         const string showEmployees = "Employee";
         const string showLawyers = "  Lawyers";
         const string showSecretaries = "  Secretaries";
-        string selectedShow;
+        string selectedShow; // Den valgte "Show" item
 
         int sortByNameCount, sortByCaseCount, sortByServiceCount, 
             sortBySpecialityCount, sortByHireDate;
 
-        public EmployeesOverview(int userID, EmployeeUI currentUser)
+        public EmployeesOverview(EmployeeUI currentUser)
         {
             lawyerBL = new LawyerBL();
             employeeBL = new EmployeeBL();
@@ -79,6 +72,7 @@ namespace UI.Forms.EmployeePage
 
         private async void BtnRefresh_Click(object? sender, EventArgs e)
         {
+            // For at genhente ansatte
             await RefreshDvgDataAsync();
             SortDgv();
         }
@@ -87,7 +81,7 @@ namespace UI.Forms.EmployeePage
         {
             SetDgvStyle();
 
-            await GetEmployeesAsync();
+            await GetEmployeesAsync(); // Hent ansatte
             filteredEmployees = new List<EmployeeUI>(employees);
 
             // Visnings combobox
@@ -98,17 +92,18 @@ namespace UI.Forms.EmployeePage
 
             SetupDgvWithEmployees();
 
-            await GetLawyersWithCollectionsAsync();
+            await GetLawyersWithCollectionsAsync(); // Hent advokater med collections
             filteredLawyers = new List<LawyerUI>(lawyers);
 
-            await GetSecretariesAsync();
+            await GetSecretariesAsync(); // Hent sekretærere
             secretaries = new List<SecretaryUI>(secretaries);
-            await GetSpecialityUIsAsync();
+            await GetSpecialityUIsAsync(); // Hent specialer
             
         }
 
         private void BtnTrashSort_Click(object? sender, EventArgs e)
         {
+            // Efter tryk på skraldespand-knappen, nulstilles sortering
             btnTrashSort.Visible = false;
             cboxSort.SelectedItem = null;            
         }
@@ -122,7 +117,7 @@ namespace UI.Forms.EmployeePage
         private void CboxSort_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (cboxSort.SelectedItem != null)
-                btnTrashSort.Visible = true;
+                btnTrashSort.Visible = true; // Aktiver nulstil-muligheden
 
             SortDgv();
         }
@@ -134,15 +129,19 @@ namespace UI.Forms.EmployeePage
 
         private void CboxFilter_SelectedIndexChanged(object? sender, EventArgs e)
         {
+            // Valg af speciale i filter comboBox fjernes fra comboBoxen og tilføjes til flow layout panel,
+            // så brugeren kan tilpasse filtrerings muligheder
             if (cboxFilter.SelectedItem != null)
             {
-                btnTrashFilter.Visible = true;
+                btnTrashFilter.Visible = true; // Aktiver nulstil-muligheden
 
+                // Tilføj valgte speciale til "selectedFilters" listen
                 selectedFilters.Add(cboxFilter.SelectedItem.ToString());
+                // Opret user-control for speciale
                 FilterSpeciality fs = new FilterSpeciality(cboxFilter.SelectedItem.ToString());
-                fs.Click += Fs_Click;
-                flpnlFilters.Controls.Add(fs);
-                cboxFilter.Items.Remove(cboxFilter.SelectedItem);
+                fs.Click += Fs_Click; // Tilføj "Click event" til user-control
+                flpnlFilters.Controls.Add(fs); // Vis nu specialen/user-control i flow layout panel
+                cboxFilter.Items.Remove(cboxFilter.SelectedItem); // Fjern specialen fra filter-comboBox
             }
             SortDgv();
         }
@@ -150,7 +149,9 @@ namespace UI.Forms.EmployeePage
         private void Fs_Click(object? sender, EventArgs e)
         {
             if (sender is FilterSpeciality filter)
-            {                
+            {
+                // "Click event" for user-control speciale, som skal fjernes som filtreringsegenskab
+                // og tilføjes igen til filter comboBox
                 cboxFilter.Items.Add(filter.BtnText);
                 selectedFilters.Remove(filter.BtnText);
                 flpnlFilters.Controls.Remove(filter);
@@ -161,6 +162,7 @@ namespace UI.Forms.EmployeePage
 
         private void ResetFilters()
         {
+            // Fjerne specialerne i flow layout panel og tilføjer dem til filter comboBox
             foreach (FilterSpeciality fs in flpnlFilters.Controls)
             {
                 cboxFilter.Items.Add(fs.BtnText);
@@ -175,6 +177,7 @@ namespace UI.Forms.EmployeePage
 
         private void ResetSorts()
         {
+            // Nulstiller valgte sortering
             sortByNameCount = sortByCaseCount = sortByServiceCount = sortBySpecialityCount = sortByHireDate = 0;
             cboxSort.SelectedItem = null;
             btnTrashSort.Visible = false;
@@ -182,6 +185,7 @@ namespace UI.Forms.EmployeePage
 
         private void SortDgv()
         {
+            // Korrekte sorterings metode bruges alt efter hvilken oversigt der er valgt
             if (selectedShow == showEmployees)
             {
                 SortEmployees();
@@ -208,8 +212,10 @@ namespace UI.Forms.EmployeePage
 
         private void SortEmployees()
         {
+            // Ny liste med filtreret ansatte
             filteredEmployees = new List<EmployeeUI>(employees);
 
+            // Tilpasning af den filtrerede liste efter søgning på diverse attributter
             string search = txtSearch.Text.Trim().ToLower();
             if (!string.IsNullOrEmpty(search))
             {
@@ -225,10 +231,12 @@ namespace UI.Forms.EmployeePage
                     .ToList();
             }
 
-            switch (selectedShow)
+            // Valg af sortering
+            switch (cboxSort.SelectedItem)
             {
                 case "Name":
                     sortByNameCount++;
+                    // Værdien vil være 0 eller 1, alt efter om man vil sortere på navn ascending eller descending
                     if (sortByNameCount % 2 == 1)
                     {
                         filteredEmployees = filteredEmployees
@@ -282,7 +290,7 @@ namespace UI.Forms.EmployeePage
                     .ToList();
             }
 
-            switch (selectedShow)
+            switch (cboxSort.SelectedItem)
             {
                 case "Name":
                     sortByNameCount++;
@@ -418,15 +426,18 @@ namespace UI.Forms.EmployeePage
 
         private void CboxShowEmployees_SelectedIndexChanged(object? sender, EventArgs e)
         {
+            // Assign selectedShow med det valgte "Show" item værdi, så den kan bruges andre steder
+            // istedet for at indlæse cboxShow.SelectedItem.ToString() data hver gang
             if (cboxShow.SelectedItem != null)
                 selectedShow = cboxShow.SelectedItem.ToString();
 
             lblShow.Focus();
-            lblTotalEmployees.Text = "Loading...";
+            lblTotalEmployees.Text = "Loading..."; // Hvis loading tekst mens data indlæses
 
             ResetFilters();
             ResetSorts();
 
+            // Tilpas DGV og andre funktioner alt efter hvilken oversigt der er valgt
             switch (selectedShow)
             {
                 case showEmployees:
@@ -446,6 +457,7 @@ namespace UI.Forms.EmployeePage
 
         private void SetLblTotalCount()
         {
+            // Antal viste personer
             lblTotalEmployees.Text = $"{dgvEmployees.Rows.Count} {selectedShow.TrimStart()}";
         }
 
@@ -481,6 +493,7 @@ namespace UI.Forms.EmployeePage
         {
             if (e.RowIndex >= 0)
             {
+                // Åbn ansat/advokat user-control for at vise detaljer
                 switch (selectedShow)
                 {
                     case showEmployees:
@@ -509,15 +522,18 @@ namespace UI.Forms.EmployeePage
 
             cboxFilter.Enabled = false;
 
+            // Skjul kolonner
             dgvEmployees.Columns["LawyerTitleID"].Visible = false;
             dgvEmployees.Columns["LoginDetailsID"].Visible = false;
             dgvEmployees.Columns["LawyerTitle"].Visible = false;
 
+            // Vis kolonner
             dgvEmployees.Columns["AddressLine"].Visible = true;
             dgvEmployees.Columns["City"].Visible = true;
             dgvEmployees.Columns["HireDate"].Visible = true;
 
-            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "d";
+            // Ændre navn på kolonner
+            dgvEmployees.Columns["HireDate"].DefaultCellStyle.Format = "d"; // Short date format
             dgvEmployees.Columns["PersonID"].HeaderText = "EmployeeID";
             dgvEmployees.Columns["LawyerTitle"].HeaderText = "Title";
             dgvEmployees.Columns["PhoneNumber"].HeaderText = "Phone";
@@ -618,6 +634,7 @@ namespace UI.Forms.EmployeePage
 
         private async Task RefreshDvgDataAsync() // Hvis der skal opdateres efter ændring - CUD
         {
+            // Opdater alle ansatte
             await GetEmployeesAsync();
             await GetLawyersWithCollectionsAsync();
             await GetSecretariesAsync();
@@ -644,8 +661,8 @@ namespace UI.Forms.EmployeePage
         }
 
         private void DgvEmployees_DataSourceChanged(object? sender, EventArgs e)
-        {
-            dgvEmployees.CurrentCell = null;
+        {            
+            dgvEmployees.CurrentCell = null; // Fjern fokus fra dgv
         }
     }
 }

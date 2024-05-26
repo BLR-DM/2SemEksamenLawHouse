@@ -73,7 +73,8 @@ namespace UI.Toolbox
                 {
                     MessageBox.Show($"Employee details has been updated!", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    employeeDetailsForm.SetupView(employee.PersonID);
+                    // Efter vellykket opdatering af oplysninger, hent ansat
+                    await employeeDetailsForm.SetupView(employee.PersonID);
                 }
                 else
                     MessageBox.Show("Failed to update!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,7 +96,7 @@ namespace UI.Toolbox
 
                 FillTitleComboBoxAsync();
 
-                if (!isAdmin)
+                if (!isAdmin) // Deaktiver muligheden for at redigere email og title, hvis ikke admin
                 {
                     txtEmail.Enabled = false;
                     cboxTitles.Enabled = false;

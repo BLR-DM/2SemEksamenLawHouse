@@ -3,7 +3,6 @@ using UI.Forms.CreateUserPage;
 using UI.Forms.FrontPage;
 using BusinessLogic.Validation;
 
-
 namespace UI.Forms.LoginPage
 {
     public partial class LoginPageView : Form
@@ -18,6 +17,7 @@ namespace UI.Forms.LoginPage
 
             InitializeComponent();
 
+            // Deaktiver Login knap og errors
             btnLogin.Enabled = false;
             lblPasswordError.Visible = false;
             lblUsernameError.Visible = false;
@@ -35,8 +35,9 @@ namespace UI.Forms.LoginPage
         {
             if (txtPassword.Text.Length > 3)
             {
+                // Valider kodeord format
                 bool isPasswordValid = pValidator.ValidPassword(txtPassword.Text);
-                lblPasswordError.Visible = !isPasswordValid; 
+                lblPasswordError.Visible = !isPasswordValid; // Vis kodeord fejl-besked ved ikke valid format
             }
 
             if (string.IsNullOrEmpty(txtPassword.Text))
@@ -49,11 +50,12 @@ namespace UI.Forms.LoginPage
         {
             if (txtUsername.Text.Length > 4)
             {
+                // Valider email format
                 bool isEmailValid = pValidator.ValidEmail(txtUsername.Text);
-                lblUsernameError.Visible = !isEmailValid; 
+                lblUsernameError.Visible = !isEmailValid; // Vis username fejl-besked ved ikke valid format
             }
 
-            if (string.IsNullOrEmpty(txtUsername.Text))
+            if (string.IsNullOrEmpty(txtUsername.Text)) 
                 lblUsernameError.Visible = false;
 
             UpdateLoginButton();
@@ -61,21 +63,23 @@ namespace UI.Forms.LoginPage
 
         private void UpdateLoginButton()
         {
+            // Aktiver Login knap, hvis både email og kodeord er valid format
             btnLogin.Enabled = pValidator.ValidEmail(txtUsername.Text) 
                 && pValidator.ValidPassword(txtPassword.Text);
         }
 
         private void LblForgotPassword_Click(object? sender, EventArgs e)
         {
-            new ForgotPasswordView(loginBL).ShowDialog();
+            new ForgotPasswordView(loginBL, pValidator).ShowDialog(); // Simluering af glemt kodeord funktion
         }
 
         private void LblRegister_Click(object? sender, EventArgs e)
         {
             this.Hide();
-            new CreateUserView(this).ShowDialog();
+            new CreateUserView(this, pValidator).ShowDialog(); // Åbn "opret bruger form" inkl. denne form
         }
 
+        // public metode, så den kan kaldes efter oprettelse af bruger
         public void GetCreatedUsername(string username)
         {
             txtUsername.Text = username;
@@ -83,43 +87,39 @@ namespace UI.Forms.LoginPage
 
         private async void BtnLogin_Click(object? sender, EventArgs e)
         {
+            // Deaktiver Login knap, så det ikke er muligt at spamme knappen ved Login forsøg
             btnLogin.Enabled = false;
 
-            try
-            {
-                int userID = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
+            // Returner LoginDetailsID og tjek for korrekt loginoplysninger
+            int userID = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
 
-                if (userID > 0)
-                {
-                    new FrontPageView(userID).Show();
-                    Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid username or password. Please try again.",
-                        "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnLogin.Enabled = true;
-                }
-            }
-            catch (Exception)
+            if (userID > 0)
             {
-                MessageBox.Show("An error occurred while trying to log in. Please try again later, or contact Support.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnLogin.Enabled = true;
+                new FrontPageView(userID).Show(); // Åbn programmets main page og medtag ID'et på bruger
+                Hide();
+            }
+            else
+            {
+                // Neutral besked ved forkert loginoplysninger, for at undlade at informere brugeren om
+                // brugernavn/email eksisterer i systemet
+                MessageBox.Show("Invalid username or password. Please try again.",
+                    "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                btnLogin.Enabled = true; // Aktiver knap efter lukning af MessageBox
             }
         }
 
-        private void PBoxEye_Click(object? sender, EventArgs e)
+        private void PBoxEye_Click(object? sender, EventArgs e) // Skjul visning af brugerens kodeord
         {
             if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
             {
                 pboxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
-                txtPassword.PasswordChar = '\0'; // Default password char
+                txtPassword.PasswordChar = '\0'; // Deaktiver funktionen
             }
             else
             {
                 pboxEye.IconChar = FontAwesome.Sharp.IconChar.Eye;
-                txtPassword.PasswordChar = '\u2022'; // Unicode for bullet point '•'
+                txtPassword.PasswordChar = '\u2022'; // Unicode for "bullet point" karakteren '•'
             }
         }
 

@@ -16,15 +16,15 @@ namespace UI.Forms.CreateUserPage
         Color rgbColorBlue;
 
         LoginPageView loginPage;
-        public CreateUserView(LoginPageView loginPage)
+        public CreateUserView(LoginPageView loginPage, PersonValidator personValidator)
         {
             clientBL = new ClientBL();
-            pValidator = new PersonValidator();
+            pValidator = personValidator;
             this.loginPage = loginPage;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
-            rgbColorBlue = Color.FromArgb(45, 93, 134);
+            rgbColorBlue = Color.FromArgb(45, 93, 134); // Brugerdefineret blå farve
 
             InitializeComponent();
 
@@ -54,7 +54,7 @@ namespace UI.Forms.CreateUserPage
 
         private void PnlLoginInfo_Paint(object? sender, PaintEventArgs e)
         {
-            // test
+            // Brugerdefineret panel border farve
             ControlPaint.DrawBorder(e.Graphics, pnlLoginInfo.ClientRectangle, rgbColorBlue, ButtonBorderStyle.Solid);
         }
 
@@ -77,7 +77,7 @@ namespace UI.Forms.CreateUserPage
             {
                 Username = txtUsername.Text.ToLower(),
                 Password = txtPasswordConfirm.Text,
-                CreationDate = DateTime.Now,
+                CreationDate = DateTime.Now, // Oprettelses dato sat til Now
             };
 
             phoneUIs = new List<PhoneUI>();
@@ -87,7 +87,7 @@ namespace UI.Forms.CreateUserPage
 
             phoneUIs.Add(phoneUI);
 
-            // Opret PhoneAlt UI
+            // Opret PhoneAlt UI - Alternativ telefonnummer tilføjes til listen
             if (!string.IsNullOrWhiteSpace(txtPhoneAlt.Text) && pValidator.ValidPhone(txtPhoneAlt.Text))
             {
                 PhoneUI phoneUIAlt = new PhoneUI { PhoneNumber = int.Parse(txtPhoneAlt.Text) };
@@ -100,7 +100,8 @@ namespace UI.Forms.CreateUserPage
             {
                 MessageBox.Show($"Client '{client}' successfully added!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loginPage.GetCreatedUsername(client.Email);
+                // Ved successful oprettes, åbnes loginsiden med brugerensemail tastet ind i "username" feltet
+                loginPage.GetCreatedUsername(client.Email); 
                 this.Close();
             }
             else
@@ -124,6 +125,7 @@ namespace UI.Forms.CreateUserPage
 
         private void PboxEye_Click(object? sender, EventArgs e)
         {
+            // Skjul / vis kodeord
             if (pboxEye.IconChar == FontAwesome.Sharp.IconChar.Eye)
             {
                 pboxEye.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
@@ -144,6 +146,7 @@ namespace UI.Forms.CreateUserPage
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            // Ved lukning af form, vis skjulte loginside
             base.OnFormClosing(e);
             loginPage.Show();
         }
@@ -192,6 +195,7 @@ namespace UI.Forms.CreateUserPage
         private void TxtPostal_TextChanged(object? sender, EventArgs e)
         {
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            // By registreres ud fra postnummer vha. statisk hjælpe-klasse
             txtCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
 
             UpdateCreateButtonState();

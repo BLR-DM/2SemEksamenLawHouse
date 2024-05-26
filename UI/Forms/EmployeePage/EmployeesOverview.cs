@@ -431,6 +431,7 @@ namespace UI.Forms.EmployeePage
             if (cboxShow.SelectedItem != null)
                 selectedShow = cboxShow.SelectedItem.ToString();
 
+            txtSearch.Text = string.Empty; // Slet søgningsfelt
             lblShow.Focus();
             lblTotalEmployees.Text = "Loading..."; // Hvis loading tekst mens data indlæses
 
@@ -589,7 +590,7 @@ namespace UI.Forms.EmployeePage
 
         private void SetupDgvWithSecretaries()
         {
-            dgvEmployees.DataSource = secretaries;
+            dgvEmployees.DataSource = filteredSecretaries;
             SetLblTotalCount();
 
             cboxFilter.Enabled = false;

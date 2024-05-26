@@ -90,6 +90,7 @@ namespace UI.Forms.EmployeePage
                 this.Size = new Size(350, 613); // Skjul unødvendig tom plads
             }
             // Gør ændring af oplysninger muligt, hvis det er "MyPage" eller admin
-            btnEditDetails.Visible = isMyPage || isAdmin; 
+            btnEditDetails.Visible = isMyPage || isAdmin;
+        }
     }
 }

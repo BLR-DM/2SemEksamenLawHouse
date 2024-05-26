@@ -79,7 +79,7 @@ namespace UI.Forms.FrontPage
 
             if (currentUser != null)
             {
-                lblLoggedInAs.Text = $"{currentUser.Firstname} {currentUser.Lastname}";
+                lblLoggedInAs.Text = $"Logged in as: {currentUser.Firstname} {currentUser.Lastname}";
 
                 if (currentUser is ClientUI clientUI)
                 {

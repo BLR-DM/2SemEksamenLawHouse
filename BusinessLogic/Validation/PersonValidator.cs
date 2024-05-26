@@ -1,6 +1,4 @@
-﻿using EntityModels;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using UIModels;
 
 namespace BusinessLogic.Validation

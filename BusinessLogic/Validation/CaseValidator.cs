@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace BusinessLogic.Validation
 {
     public class CaseValidator
     {
         Regex vUnit;
+        Regex vAddress;
         public CaseValidator() 
         {
-            vUnit = new Regex("^[0-9]+$");
-
+            vUnit = new Regex("^[0-9,.]+$");
+            vAddress = new Regex("^[A-Za-zÆØÅæøå0-9\\s-,.]+$");
         }
 
         public bool ValidUnits(string units)
@@ -45,6 +45,13 @@ namespace BusinessLogic.Validation
                 && hours > 0
 
                 && vUnit.IsMatch(estimatedHours);
+        }
+
+        public bool ValidAddress(string address)
+        {
+            return !string.IsNullOrWhiteSpace(address)
+                && address.Length >= 3 && address.Length <= 50
+                && vAddress.IsMatch(address);
         }
 
         public bool ValidEndDate(DateTime dateTime)

@@ -1,18 +1,7 @@
 ﻿using BusinessLogic;
 using BusinessLogic.Validation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UIModels;
 using UI.Toolbox;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using EntityModels;
 
 namespace UI.Forms.CasePage
 {
@@ -29,6 +18,10 @@ namespace UI.Forms.CasePage
         CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
 
+
+        const string serviceKilometer = "Kilometer";
+        const string serviceFixed = "Fixed";
+        const string serviceHourly = "Hourly";
 
 
         Color validFormat;
@@ -52,6 +45,7 @@ namespace UI.Forms.CasePage
             txtUnits.TextChanged += TxtUnits_TextChanged1;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
             txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
+            btnCalculate.Click += BtnCalculate_Click;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -71,6 +65,20 @@ namespace UI.Forms.CasePage
             txtTotalPrice.Visible = false;
 
             btnAddService.Enabled = false;
+            btnCalculate.Visible = false;
+        }
+
+        private void BtnCalculate_Click(object? sender, EventArgs e)
+        {
+
+            DistanceCalculatorView distanceCalculator = new DistanceCalculatorView(cValidator);
+            distanceCalculator.saveResult += DistanceCalculator_saveResult;
+            distanceCalculator.ShowDialog();
+        }
+
+        private void DistanceCalculator_saveResult(object? sender, string e)
+        {
+            txtUnits.Text = e;
         }
 
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
@@ -106,7 +114,7 @@ namespace UI.Forms.CasePage
                 return;
             }
 
-            if (selectedService.PriceType == "Kilometer")
+            if (selectedService.PriceType == serviceKilometer)
             {
                 btnAddService.Enabled =
                                 txtUnits.ForeColor == validFormat &&
@@ -115,7 +123,7 @@ namespace UI.Forms.CasePage
                                 selectedLawyer != null &&
                                 txtHoursWorked.ForeColor == validFormat;
             }
-            else if (selectedService.PriceType == "Fixed")
+            else if (selectedService.PriceType == serviceFixed)
             {
                 btnAddService.Enabled =
                                 txtTotalPrice.ForeColor == validFormat &&
@@ -123,7 +131,7 @@ namespace UI.Forms.CasePage
                                 cboServices.SelectedItem != null &&
                                 selectedLawyer != null;
             }
-            else if (selectedService.PriceType == "Hourly")
+            else if (selectedService.PriceType == serviceHourly)
             {
                 btnAddService.Enabled =
                                 txtServiceDescription.ForeColor == validFormat &&
@@ -149,7 +157,7 @@ namespace UI.Forms.CasePage
                 LawyerID = selectedLawyer.PersonID,
             };
 
-            if(selectedService.PriceType == "Kilometer")
+            if(selectedService.PriceType == serviceKilometer)
             {
                 caseServiceUI.Status = "Closed";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
@@ -157,7 +165,7 @@ namespace UI.Forms.CasePage
                 caseServiceUI.EndDate = DateTime.Now;
                 caseServiceUI.Units = float.Parse(txtUnits.Text);
             }
-            else if(selectedService.PriceType == "Fixed")
+            else if(selectedService.PriceType == serviceFixed)
             {
                 caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
@@ -165,7 +173,7 @@ namespace UI.Forms.CasePage
                 caseServiceUI.EndDate = null;
                 caseServiceUI.Units = 1;
             }
-            else if(selectedService.PriceType == "Hourly")
+            else if(selectedService.PriceType == serviceHourly)
             {
                 caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = 0;
@@ -214,7 +222,7 @@ namespace UI.Forms.CasePage
             {
                 txtUnits.ForeColor = default(Color);
                 selectedService = (ServiceUI)cboServices.SelectedItem;
-                if(int.TryParse(txtUnits.Text, out int units))
+                if(float.TryParse(txtUnits.Text, out float units))
                 {
                     float totalPrice = CalculateTotalPrice(selectedService.Price, units);
 
@@ -239,7 +247,7 @@ namespace UI.Forms.CasePage
                 txtTotalPrice.Text = totalPrice.ToString();
             }
 
-            if (selectedService.PriceType == "Kilometer")
+            if (selectedService.PriceType == serviceKilometer)
             {
                 lblUnites.Visible = true;
                 txtUnits.Visible = true;
@@ -256,9 +264,11 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = true;
                 txtHoursWorked.Visible = true;
 
+                btnCalculate.Visible = true;
+
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
-            else if(selectedService.PriceType == "Fixed")
+            else if(selectedService.PriceType == serviceFixed)
             {
                 lblPrice.Text = "Listed price";
                 lblPrice.Visible = true;
@@ -275,9 +285,11 @@ namespace UI.Forms.CasePage
                 lblUnites.Visible = false;
                 txtUnits.Visible = false;
 
+                btnCalculate.Visible = false;
+
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
-            else if (selectedService.PriceType == "Hourly")
+            else if (selectedService.PriceType == serviceHourly)
             {
                 lblUnites.Visible = false;
                 txtUnits.Visible = false;
@@ -291,6 +303,8 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = false;
                 txtHoursWorked.Visible = false;
 
+                btnCalculate.Visible = false;
+
                 txtServiceDescription.Size = new System.Drawing.Size(429, 169);
 
             }
@@ -299,7 +313,7 @@ namespace UI.Forms.CasePage
             txtPrice.Text = selectedService.Price.ToString("C");
         }
 
-        public float CalculateTotalPrice(float unitPrice, int units)
+        public float CalculateTotalPrice(float unitPrice, float units)
         {
             return unitPrice * units;
         }

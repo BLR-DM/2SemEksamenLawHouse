@@ -24,22 +24,11 @@ namespace UI.Forms.AdminPage
             btnCreateSpeciality.Click += BtnCreateSpeciality_Click;
             btnUpdateSpeciality.Click += BtnUpdateSpeciality_Click;
             btnDeleteSpeciality.Click += BtnDeleteSpeciality_Click;
-            btnSearch.Click += BtnSearch_Click;
             btnCreateCaseType.Click += BtnCreateCaseType_Click;
             btnUpdateCaseType.Click += BtnUpdateCaseType_Click;
         }
 
-        private async void BtnSearch_Click(object? sender, EventArgs e)
-        {
-            DistanceMatrix test = new DistanceMatrix() {};
-
-            test = await apiTestBL.GetDistance(txtOrigin.Text, txtDestination.Text);
-
-            if (test != null)
-            {
-                txtResult.Text = test.rows[0].elements[0].distance.text; 
-            }
-        }
+        
 
         private void BtnUpdateCaseType_Click(object? sender, EventArgs e)
         {

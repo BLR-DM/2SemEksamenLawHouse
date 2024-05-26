@@ -19,7 +19,7 @@ namespace BusinessLogic.Validation
         public bool ValidUnits(string units)
         {
             return !string.IsNullOrEmpty(units)
-                && int.TryParse(units, out int unit) 
+                && float.TryParse(units, out float unit) 
                 && unit > 0
                 && vUnit.IsMatch(units);
         }

@@ -134,7 +134,7 @@
             panel2.Size = new Size(431, 3);
             panel2.TabIndex = 70;
             // 
-            // btnCalculate
+            // btnCalc
             // 
             btnCalculate.Anchor = AnchorStyles.Bottom;
             btnCalculate.BackColor = Color.FromArgb(45, 93, 134);
@@ -148,7 +148,7 @@
             btnCalculate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculate.IconSize = 70;
             btnCalculate.Location = new Point(88, 349);
-            btnCalculate.Name = "btnCalculate";
+            btnCalculate.Name = "btnCalc";
             btnCalculate.Size = new Size(119, 27);
             btnCalculate.TabIndex = 71;
             btnCalculate.Text = "Calculate";

@@ -45,7 +45,7 @@ namespace UI.Forms.CasePage
             txtUnits.TextChanged += TxtUnits_TextChanged1;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
             txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
-            btnCalculate.Click += BtnCalculate_Click;
+            btnCalc.Click += BtnCalculate_Click;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -65,7 +65,7 @@ namespace UI.Forms.CasePage
             txtTotalPrice.Visible = false;
 
             btnAddService.Enabled = false;
-            btnCalculate.Visible = false;
+            btnCalc.Visible = false;
         }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace UI.Forms.CasePage
                 LawyerID = selectedLawyer.PersonID,
             };
 
-            if(selectedService.PriceType == serviceKilometer)
+            if (selectedService.PriceType == serviceKilometer)
             {
                 caseServiceUI.Status = "Closed";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
@@ -165,7 +165,7 @@ namespace UI.Forms.CasePage
                 caseServiceUI.EndDate = DateTime.Now;
                 caseServiceUI.Units = float.Parse(txtUnits.Text);
             }
-            else if(selectedService.PriceType == serviceFixed)
+            else if (selectedService.PriceType == serviceFixed)
             {
                 caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
@@ -173,7 +173,7 @@ namespace UI.Forms.CasePage
                 caseServiceUI.EndDate = null;
                 caseServiceUI.Units = 1;
             }
-            else if(selectedService.PriceType == serviceHourly)
+            else if (selectedService.PriceType == serviceHourly)
             {
                 caseServiceUI.Status = "Open";
                 caseServiceUI.TotalPrice = 0;
@@ -204,7 +204,7 @@ namespace UI.Forms.CasePage
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
             addLawyerView.ShowDialog();
-            
+
         }
 
         private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
@@ -218,11 +218,11 @@ namespace UI.Forms.CasePage
 
         private void TxtUnits_TextChanged(object? sender, EventArgs e)
         {
-            if(cboServices.SelectedIndex != null)
+            if (cboServices.SelectedIndex != null)
             {
                 txtUnits.ForeColor = default(Color);
                 selectedService = (ServiceUI)cboServices.SelectedItem;
-                if(float.TryParse(txtUnits.Text, out float units))
+                if (float.TryParse(txtUnits.Text, out float units))
                 {
                     float totalPrice = CalculateTotalPrice(selectedService.Price, units);
 
@@ -264,11 +264,11 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = true;
                 txtHoursWorked.Visible = true;
 
-                btnCalculate.Visible = true;
+                btnCalc.Visible = true;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
-            else if(selectedService.PriceType == serviceFixed)
+            else if (selectedService.PriceType == serviceFixed)
             {
                 lblPrice.Text = "Listed price";
                 lblPrice.Visible = true;
@@ -285,7 +285,7 @@ namespace UI.Forms.CasePage
                 lblUnites.Visible = false;
                 txtUnits.Visible = false;
 
-                btnCalculate.Visible = false;
+                btnCalc.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
@@ -303,7 +303,7 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = false;
                 txtHoursWorked.Visible = false;
 
-                btnCalculate.Visible = false;
+                btnCalc.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(429, 169);
 
@@ -324,10 +324,15 @@ namespace UI.Forms.CasePage
 
             cboServices.DisplayMember = "Name";
 
-            foreach(ServiceUI service in serviceList)
+            foreach (ServiceUI service in serviceList)
             {
                 cboServices.Items.Add(service);
             }
+        }
+
+        private void btnCalculate_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

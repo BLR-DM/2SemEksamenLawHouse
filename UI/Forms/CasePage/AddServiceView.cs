@@ -45,7 +45,7 @@ namespace UI.Forms.CasePage
             txtUnits.TextChanged += TxtUnits_TextChanged1;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
             txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
-            btnCalc.Click += BtnCalculate_Click;
+            btnCalculation.Click += BtnCalculate_Click;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -65,7 +65,7 @@ namespace UI.Forms.CasePage
             txtTotalPrice.Visible = false;
 
             btnAddService.Enabled = false;
-            btnCalc.Visible = false;
+            btnCalculation.Visible = false;
         }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)
@@ -265,7 +265,7 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = true;
                 txtHoursWorked.Visible = true;
 
-                btnCalc.Visible = true;
+                btnCalculation.Visible = true;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
@@ -286,7 +286,7 @@ namespace UI.Forms.CasePage
                 lblUnites.Visible = false;
                 txtUnits.Visible = false;
 
-                btnCalc.Visible = false;
+                btnCalculation.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(287, 169);
             }
@@ -304,7 +304,7 @@ namespace UI.Forms.CasePage
                 lblHoursWorked.Visible = false;
                 txtHoursWorked.Visible = false;
 
-                btnCalc.Visible = false;
+                btnCalculation.Visible = false;
 
                 txtServiceDescription.Size = new System.Drawing.Size(429, 169);
 
@@ -329,11 +329,6 @@ namespace UI.Forms.CasePage
             {
                 cboServices.Items.Add(service);
             }
-        }
-
-        private void btnCalculate_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

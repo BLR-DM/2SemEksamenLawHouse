@@ -94,7 +94,7 @@ namespace UI.Forms.CasePage
         }
 
 
-        public bool btnCreateEnablid()
+        private bool btnCreateEnablid()
         {
             //Håndterer adfærden på CreateCase knappen, så den kun er enabled, hvis alle felter overholder valideringen
             return btnCreateCase.Enabled =
@@ -145,7 +145,7 @@ namespace UI.Forms.CasePage
         }
 
 
-        public async void SetComboBox()
+        private async void SetComboBox()
         {
             caseTypeUIList = await caseTypeBL.GetCaseTypeAsync();
 

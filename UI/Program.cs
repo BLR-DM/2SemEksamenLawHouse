@@ -23,7 +23,7 @@ namespace UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new LoginPageView());            
-            Application.Run(new FrontPageView(7, new LoginPageView()));
+            Application.Run(new FrontPageView(2, new LoginPageView()));
         }
     }
 }

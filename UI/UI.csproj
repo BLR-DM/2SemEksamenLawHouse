@@ -78,6 +78,12 @@
     <None Update="Resources\HelpPdfs\DistanceCalculatorHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HelpPdfs\EmployeesOverviewHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\EmployeesOverviewLawyersHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\HelpPdfs\EmployeesViewHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

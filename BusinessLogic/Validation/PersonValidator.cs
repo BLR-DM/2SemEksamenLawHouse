@@ -13,9 +13,9 @@ namespace BusinessLogic.Validation
         public PersonValidator()
         {
             // Allows upper/lowercase + space (\s) + hyphen (-)
-            vName = new Regex("^[A-Za-zÆØÅæøå-]+\\s?[A-Za-zÆØÅæøå-]+$");
+            vName = new Regex("^[A-Za-zÆØÅæøåÜÖüö-]+\\s?[A-Za-zÆØÅæøåÜÖü-]+$");
             // Same as name + digits (0-9) + comma (,) + period (.)
-            vAddress = new Regex("^[A-Za-zÆØÅæøå0-9\\s-,.]+$");
+            vAddress = new Regex("^[A-Za-zÆØÅæøåÜÖüö0-9\\s-,.]+$");
             // Allows digits
             vDigit = new Regex("^[0-9]+$");
             // Left of @ as Address but underscore (_) instead of comma

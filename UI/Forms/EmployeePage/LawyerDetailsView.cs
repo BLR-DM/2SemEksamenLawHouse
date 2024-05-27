@@ -53,7 +53,12 @@ namespace UI.Forms.EmployeePage
             if (isMyPage)
             {
                 if (!OpenPDF.ShowPDF("MyPageLawyerHelp"))
-                        MessageBox.Show("Could not open pdf"); 
+                    MessageBox.Show("Could not open pdf"); 
+            }
+            else
+            {
+                if (!OpenPDF.ShowPDF("LawyerDetailsViewHelp"))
+                    MessageBox.Show("Could not open pdf");
             }
         }
 

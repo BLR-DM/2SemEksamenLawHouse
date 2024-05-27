@@ -2,6 +2,8 @@
 using BusinessLogic.Validation;
 using UIModels;
 using UI.Toolbox;
+using System.Globalization;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.CasePage
 {
@@ -46,6 +48,7 @@ namespace UI.Forms.CasePage
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
             txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
             btnCalculation.Click += BtnCalculate_Click;
+            lblHelp.Click += LblHelp_Click;
 
             validFormat = Color.Black;
             invalidFormat = Color.OrangeRed;
@@ -68,6 +71,23 @@ namespace UI.Forms.CasePage
             btnCalculation.Visible = false;
         }
 
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
+            if(selectedService.PriceType == serviceKilometer)
+            {
+                OpenPDF.ShowPDF("AddServiceKilometerHelp");
+            }
+            else if(selectedService.PriceType == serviceHourly)
+            {
+                OpenPDF.ShowPDF("AddServiceHourlyHelp");
+            }
+            else if(selectedService.PriceType == serviceFixed)
+            {
+                OpenPDF.ShowPDF("AddServiceFixedHelp");
+            }
+        }
+
         private void BtnCalculate_Click(object? sender, EventArgs e)
         {
 
@@ -78,7 +98,7 @@ namespace UI.Forms.CasePage
 
         private void DistanceCalculator_saveResult(object? sender, string e)
         {
-            txtUnits.Text = e;
+            txtUnits.Text = e.ToString();
         }
 
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
@@ -163,7 +183,7 @@ namespace UI.Forms.CasePage
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = float.Parse(txtHoursWorked.Text);
                 caseServiceUI.EndDate = DateTime.Now;
-                caseServiceUI.Units = float.Parse(txtUnits.Text);
+                caseServiceUI.Units = float.Parse(txtUnits.Text, CultureInfo.InvariantCulture);
             }
             else if (selectedService.PriceType == serviceFixed)
             {

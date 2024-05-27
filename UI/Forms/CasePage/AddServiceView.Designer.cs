@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             lblHoursWorked = new Label();
+            btnCalculation = new Button();
             txtHoursWorked = new TextBox();
             txtTotalPrice = new TextBox();
             lblTotalPrice = new Label();
@@ -47,7 +48,6 @@
             btnAddLawyer = new FontAwesome.Sharp.IconButton();
             btnAddService = new Button();
             lblHelp = new Label();
-            btnCalculation = new Button();
             panel1.SuspendLayout();
             pnlLawyerInformation.SuspendLayout();
             SuspendLayout();
@@ -87,6 +87,15 @@
             lblHoursWorked.TabIndex = 68;
             lblHoursWorked.Text = "Hours worked";
             lblHoursWorked.TextAlign = ContentAlignment.TopRight;
+            // 
+            // btnCalculation
+            // 
+            btnCalculation.Location = new Point(278, 68);
+            btnCalculation.Name = "btnCalculation";
+            btnCalculation.Size = new Size(78, 27);
+            btnCalculation.TabIndex = 68;
+            btnCalculation.Text = "Calculate";
+            btnCalculation.UseVisualStyleBackColor = true;
             // 
             // txtHoursWorked
             // 
@@ -275,6 +284,7 @@
             // lblHelp
             // 
             lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
             lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblHelp.ForeColor = Color.DarkBlue;
             lblHelp.Location = new Point(686, 335);
@@ -282,15 +292,6 @@
             lblHelp.Size = new Size(66, 15);
             lblHelp.TabIndex = 69;
             lblHelp.Text = "Need help?";
-            // 
-            // btnCalculation
-            // 
-            btnCalculation.Location = new Point(278, 68);
-            btnCalculation.Name = "btnCalculation";
-            btnCalculation.Size = new Size(78, 27);
-            btnCalculation.TabIndex = 68;
-            btnCalculation.Text = "Calculate";
-            btnCalculation.UseVisualStyleBackColor = true;
             // 
             // AddServiceView
             // 

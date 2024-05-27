@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using EntityModels;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,16 @@ namespace UI.Forms.CasePage
 
             cboSpecialities.SelectedIndexChanged += CboSpecialities_SelectedIndexChanged;
             txtSearch.TextChanged += TxtSearch_TextChanged;
+            lblHelp.Click += LblHelp_Click;
 
             SetDgvStyle();
             SetDgv();
             SetComboBox();
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("AddLawyerViewHelp");
         }
 
         private void TxtSearch_TextChanged(object? sender, EventArgs e)

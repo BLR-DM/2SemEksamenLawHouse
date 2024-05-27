@@ -95,7 +95,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public void CheckStatus()
+        private void CheckStatus()
         {
             if(selectedCaseService.Status == "Closed")
             {
@@ -142,7 +142,7 @@ namespace UI.Forms.CasePage
             BtnSubmitEnabled();
         }
 
-        public void BtnSubmitEnabled()
+        private void BtnSubmitEnabled()
         {
             btnSubmit.Enabled =
                 txtHoursWorked.ForeColor == validFormat;
@@ -197,7 +197,7 @@ namespace UI.Forms.CasePage
             btnSubmit.Enabled = true;
         }
 
-        public async Task SetCaseInformationAsync()
+        private async Task SetCaseInformationAsync()
         {
             selectedService = selectedCaseService.Service;
 
@@ -239,7 +239,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetDgvAsync()
+        private async Task SetDgvAsync()
         {
             serviceEntryUIs = await serviceEntryBL.GetServiceEntryUIAsync(selectedCaseService.CaseServiceID);
             await SetCaseInformationAsync();
@@ -267,7 +267,7 @@ namespace UI.Forms.CasePage
             dgvServiceEntry.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        public async Task SetLawyerInformationAsync()
+        private async Task SetLawyerInformationAsync()
         {
             //Sætter den assigned lawyer til det panel
             pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedCaseService.Lawyer));

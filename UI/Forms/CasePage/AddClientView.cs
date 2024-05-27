@@ -33,7 +33,6 @@ namespace UI.Forms.CasePage
 
             SetDgvStyle();
             SetDgv();
-
         }
 
         
@@ -49,7 +48,7 @@ namespace UI.Forms.CasePage
             SortData();
         }
 
-        public void SortData()
+        private void SortData()
         {
             // Opretter en ny liste til sortering baseret på den originale liste
             List<ClientUI> sortedClientList = new List<ClientUI>(originalClientList);
@@ -86,7 +85,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetDgv()
+        private async Task SetDgv()
         {
             originalClientList = await clientBL.GetClientsAsync();
             dgvClientView.DataSource = originalClientList;
@@ -123,7 +122,5 @@ namespace UI.Forms.CasePage
             dgvClientView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(215, 228, 242);
             dgvClientView.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
-
-
     }
 }

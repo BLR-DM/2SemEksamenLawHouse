@@ -85,14 +85,11 @@ namespace UI.Forms.CasePage
                 FormBorderStyle = FormBorderStyle.Sizable;
                 StartPosition = FormStartPosition.CenterScreen;
             }
-
-           
-
-
         }
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
+            //Åbner hjælpe PDF-filen
             OpenPDF.ShowPDF("CaseDetailsViewHelp");
         }
 
@@ -109,12 +106,14 @@ namespace UI.Forms.CasePage
 
         private async void BtnCloseCase_Click(object? sender, EventArgs e)
         {
+            //Hvis der er 0 caseservies tilføjet, kan sagen ikk closes
             if (caseServiceList.Count == 0)
             {
                 MessageBox.Show("Cannot close case without any services connected");
                 return;
             }
 
+            //Hvis der er en caseservice med status åben, kan den ikke closes
             foreach (CaseServiceUI caseServiceUI in caseServiceList)
             {
                 if (caseServiceUI.Status == "Open")
@@ -123,10 +122,16 @@ namespace UI.Forms.CasePage
                     return;
                 }
             }
+
+            //Disabler knappen
             btnUpdateCaseStatus.Enabled = false;
+
+            //Messagebox
             DialogResult dialogResult = MessageBox.Show("Do you wanna close this case", "Close case", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if(dialogResult == DialogResult.Yes)
             {
+                //Opdaterer status og enddate på casen
                 selectedCase.Status = "Closed";
                 selectedCase.EndDate = DateTime.Now;
                 if (await caseBL.UpdateCaseSync(selectedCase))
@@ -142,7 +147,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task InitializeData()
+        private async Task InitializeData()
         {
             await SetCaseDataAsync();
             SetDgvAsync();
@@ -201,7 +206,7 @@ namespace UI.Forms.CasePage
 
         }
 
-        public bool BtnUpdateEnabled()
+        private bool BtnUpdateEnabled()
         {
             return btnUpdateCase.Enabled =
                 txtTitle.ForeColor == validFormat &&
@@ -292,6 +297,11 @@ namespace UI.Forms.CasePage
             txtTotalHours.Text = caseServiceList.Sum(cs => cs.HoursWorked).ToString();
             dgvServices.DataSource = caseServiceList;
 
+            SetColumnsDgv();
+        }
+
+        private void SetColumnsDgv()
+        {
             dgvServices.Columns["CaseServiceID"].Visible = false;
             dgvServices.Columns["ServiceID"].Visible = false;
             dgvServices.Columns["LawyerID"].Visible = false;

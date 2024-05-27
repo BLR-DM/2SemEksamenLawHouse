@@ -20,7 +20,7 @@ namespace UI.Forms.CasePage
         CaseServiceBL caseServiceBL;
         CaseValidator cValidator;
 
-
+        //Konstanter for forskellige typer af pricetypes
         const string serviceKilometer = "Kilometer";
         const string serviceFixed = "Fixed";
         const string serviceHourly = "Hourly";
@@ -44,7 +44,6 @@ namespace UI.Forms.CasePage
             btnAddLawyer.Click += BtnAddLawyer_Click;
             btnAddService.Click += BtnAddService_Click;
             txtServiceDescription.TextChanged += TxtServiceDescription_TextChanged;
-            txtUnits.TextChanged += TxtUnits_TextChanged1;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
             txtTotalPrice.TextChanged += TxtTotalPrice_TextChanged;
             btnCalculation.Click += BtnCalculate_Click;
@@ -58,6 +57,11 @@ namespace UI.Forms.CasePage
 
             pnlLawyerInformation.Controls.Add(new LawyerInformation());
 
+            HideServiceDetails();
+        }
+
+        private void HideServiceDetails()
+        {
             lblUnites.Visible = false;
             txtUnits.Visible = false;
             lblHoursWorked.Visible = false;
@@ -74,6 +78,8 @@ namespace UI.Forms.CasePage
         private void LblHelp_Click(object? sender, EventArgs e)
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
+            
+            //Åbner den PDF-fil som er baseret på den pricetype der er valgt for den enkelte service
             if(selectedService.PriceType == serviceKilometer)
             {
                 OpenPDF.ShowPDF("AddServiceKilometerHelp");
@@ -96,6 +102,7 @@ namespace UI.Forms.CasePage
             distanceCalculator.ShowDialog();
         }
 
+        //Event handler for gemt resultat fra distance calculater
         private void DistanceCalculator_saveResult(object? sender, string e)
         {
             txtUnits.Text = e.ToString();
@@ -103,30 +110,59 @@ namespace UI.Forms.CasePage
 
         private void TxtTotalPrice_TextChanged(object? sender, EventArgs e)
         {
+            //Tekstboksens farve ændres baseret på om den er valid og opdaterer btnEnabled true/false
             txtTotalPrice.ForeColor = cValidator.ValidUnits(txtTotalPrice.Text) ? validFormat : invalidFormat;
             BtnCreateEnabled();
         }
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
         {
+            //Tekstboksens farve ændres baseret på om den er valid og opdaterer btnEnabled true/false
             txtHoursWorked.ForeColor = cValidator.ValidUnits(txtHoursWorked.Text) ? validFormat : invalidFormat;
-            BtnCreateEnabled();
-        }
-
-        private void TxtUnits_TextChanged1(object? sender, EventArgs e)
-        {
-            txtUnits.ForeColor = cValidator.ValidUnits(txtUnits.Text) ? validFormat : invalidFormat;
             BtnCreateEnabled();
         }
 
         private void TxtServiceDescription_TextChanged(object? sender, EventArgs e)
         {
+            //Tekstboksens farve ændres baseret på om den er valid og opdaterer btnEnabled true/false
             txtServiceDescription.ForeColor = cValidator.ValidDescription(txtServiceDescription.Text) ? validFormat : invalidFormat;
             BtnCreateEnabled();
         }
 
-        public void BtnCreateEnabled()
+        private void TxtUnits_TextChanged(object? sender, EventArgs e)
         {
+
+            txtUnits.ForeColor = cValidator.ValidUnits(txtUnits.Text) ? validFormat : invalidFormat;
+
+            //Tjekker om service er valgt
+            if (cboServices.SelectedIndex != null)
+            {
+                txtUnits.ForeColor = validFormat;
+
+                //Hent den valgte service
+                selectedService = (ServiceUI)cboServices.SelectedItem;
+
+                //Kontroller om units kan konverteres til float
+                if (float.TryParse(txtUnits.Text, out float units))
+                {
+                    //Beregner og opdater den totale pris baseret på price og units
+                    float totalPrice = CalculateTotalPrice(selectedService.Price, units);
+                    txtTotalPrice.Text = totalPrice.ToString("F2");
+                }
+                else
+                {
+                    txtUnits.ForeColor = invalidFormat;
+                }
+            }
+
+            BtnCreateEnabled();
+        }
+
+        private void BtnCreateEnabled()
+        {
+            //Metode til at opdatere om knappen er enabled ud fra om tekstboksene er valid
+
+
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
             if (selectedService == null)
             {
@@ -164,9 +200,12 @@ namespace UI.Forms.CasePage
 
         private async void BtnAddService_Click(object? sender, EventArgs e)
         {
+            //Henter den service der er valgt fra comboboxen
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
+            //Disabler knappen
             btnAddService.Enabled = false;
 
+            //Opretter en ny caseserive
             CaseServiceUI caseServiceUI = new CaseServiceUI()
             {
                 Description = txtServiceDescription.Text,
@@ -177,6 +216,7 @@ namespace UI.Forms.CasePage
                 LawyerID = selectedLawyer.PersonID,
             };
 
+            //Forskellig oprettelse ift hvilken pricetype servicen har
             if (selectedService.PriceType == serviceKilometer)
             {
                 caseServiceUI.Status = "Closed";
@@ -212,6 +252,7 @@ namespace UI.Forms.CasePage
                 MessageBox.Show("Failed to add the service");
             }
 
+            //Opdater den tidligere form
             await caseDetailsView.SetCaseDataAsync();
             caseDetailsView.SetDgvAsync();
             this.Close();
@@ -220,6 +261,7 @@ namespace UI.Forms.CasePage
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)
         {
+
             AddLawyerView addLawyerView = new AddLawyerView();
             addLawyerView.LawyerSelected += AddLawyerView_LawyerSelected;
 
@@ -229,45 +271,31 @@ namespace UI.Forms.CasePage
 
         private void AddLawyerView_LawyerSelected(object? sender, LawyerUI e)
         {
+            //Clear først panel, hvis det allerede skulle være fyldt
             pnlLawyerInformation.Controls.Clear();
+            //Adder knappen
             pnlLawyerInformation.Controls.Add(btnAddLawyer);
+            //Tilføjer den nye lawyers informationer 
             pnlLawyerInformation.Controls.Add(new LawyerInformation(e));
+            //den hentede lawyer gemmes i ny variabel
             selectedLawyer = e;
             BtnCreateEnabled();
         }
 
-        private void TxtUnits_TextChanged(object? sender, EventArgs e)
-        {
-            if (cboServices.SelectedIndex != null)
-            {
-                txtUnits.ForeColor = default(Color);
-                selectedService = (ServiceUI)cboServices.SelectedItem;
-
-                if(float.TryParse(txtUnits.Text, out float units))
-                {
-                    float totalPrice = CalculateTotalPrice(selectedService.Price, units);
-
-                    txtTotalPrice.Text = totalPrice.ToString("F2");
-                }
-                else
-                {
-                    txtUnits.ForeColor = Color.Red;
-                }
-            }
-        }
-
+  
+        //Event handler for comboboxen
         private void CboServices_SelectedIndexChanged(object? sender, EventArgs e)
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
             BtnCreateEnabled();
 
-            if (int.TryParse(txtUnits.Text, out int units))
+            if (float.TryParse(txtUnits.Text, out float units))
             {
                 float totalPrice = CalculateTotalPrice(selectedService.Price, units);
 
                 txtTotalPrice.Text = totalPrice.ToString();
             }
-
+            //Visibility og adfærd på vorskkelige lbl, txt og buttons sættes forskelligt baseret på hvilken service der er valgt
             if (selectedService.PriceType == serviceKilometer)
             {
                 lblUnites.Visible = true;
@@ -334,15 +362,18 @@ namespace UI.Forms.CasePage
             txtPrice.Text = selectedService.Price.ToString("C");
         }
 
-        public float CalculateTotalPrice(float unitPrice, float units)
+        //Metode til at beregne den totale pris
+        private float CalculateTotalPrice(float unitPrice, float units)
         {
             return unitPrice * units;
         }
 
-        public async Task SetComboBox()
+        //Sætter comboboxen med services
+        private async Task SetComboBox()
         {
             serviceList = await serviceBL.GetServicesAsync();
 
+            //Viser navnet
             cboServices.DisplayMember = "Name";
 
             foreach (ServiceUI service in serviceList)

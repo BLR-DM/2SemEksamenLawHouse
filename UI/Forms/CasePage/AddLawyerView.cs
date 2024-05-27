@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using EntityModels;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,16 @@ namespace UI.Forms.CasePage
 
             cboSpecialities.SelectedIndexChanged += CboSpecialities_SelectedIndexChanged;
             txtSearch.TextChanged += TxtSearch_TextChanged;
+            lblHelp.Click += LblHelp_Click;
 
             SetDgvStyle();
-            SetDgv();
+            _ = SetDgv();
             SetComboBox();
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("AddLawyerViewHelp");
         }
 
         private void TxtSearch_TextChanged(object? sender, EventArgs e)
@@ -74,7 +81,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async void SortData()
+        private async void SortData()
         {
             lawyerSpecialityList = await specialityBL.GetLawyerSpecialitiesAsync();
             List<LawyerUI> filteredLawyers = new List<LawyerUI>();
@@ -106,7 +113,7 @@ namespace UI.Forms.CasePage
             dgvLawyerView.DataSource = filteredLawyers;
         }
 
-        public async Task SetComboBox()
+        private async Task SetComboBox()
         {
             //henter specialities
             specialityList = await specialityBL.GetSpecialitiesAsync();
@@ -120,11 +127,16 @@ namespace UI.Forms.CasePage
                 cboSpecialities.Items.Add(speciality);
             }
         }
-        public async Task SetDgv()
+        private async Task SetDgv()
         {
             originalLawyerList = await lawyerBL.GetLawyersAsync();
             dgvLawyerView.DataSource = originalLawyerList;
 
+            SetDgvColumns();
+        }
+
+        private void SetDgvColumns()
+        {
             //Dgv indstillinger
             dgvLawyerView.Columns["PersonID"].DisplayIndex = 0;
             dgvLawyerView.Columns["Firstname"].DisplayIndex = 1;
@@ -150,7 +162,6 @@ namespace UI.Forms.CasePage
             dgvLawyerView.Columns["LawyerSpecialities"].Visible = false;
             dgvLawyerView.Columns["CaseServices"].Visible = false;
             dgvLawyerView.Columns["Cases"].Visible = false;
-
         }
 
         private void SetDgvStyle()

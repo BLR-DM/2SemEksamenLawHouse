@@ -43,6 +43,7 @@
             flpnlFilters = new FlowLayoutPanel();
             lblSearch = new Label();
             btnRefresh = new FontAwesome.Sharp.IconButton();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -247,12 +248,26 @@
             btnRefresh.TabIndex = 12;
             btnRefresh.UseVisualStyleBackColor = false;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 590);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 56;
+            lblHelp.Tag = "";
+            lblHelp.Text = "Need help?";
+            // 
             // EmployeesOverview
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(btnRefresh);
             Controls.Add(panel1);
             Controls.Add(cboxShow);
@@ -286,5 +301,6 @@
         private TextBox txtSearch;
         private FontAwesome.Sharp.IconButton btnTrashSort;
         private FontAwesome.Sharp.IconButton btnRefresh;
+        private Label lblHelp;
     }
 }

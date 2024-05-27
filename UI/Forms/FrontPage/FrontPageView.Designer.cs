@@ -316,7 +316,7 @@
             lblSignOut.Cursor = Cursors.Hand;
             lblSignOut.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             lblSignOut.ForeColor = Color.White;
-            lblSignOut.Location = new Point(1072, 35);
+            lblSignOut.Location = new Point(1082, 33);
             lblSignOut.Name = "lblSignOut";
             lblSignOut.Size = new Size(50, 15);
             lblSignOut.TabIndex = 4;
@@ -328,11 +328,11 @@
             lblLoggedInAs.BackColor = Color.Transparent;
             lblLoggedInAs.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             lblLoggedInAs.ForeColor = Color.White;
-            lblLoggedInAs.Location = new Point(982, 12);
+            lblLoggedInAs.Location = new Point(884, 12);
             lblLoggedInAs.Name = "lblLoggedInAs";
-            lblLoggedInAs.Size = new Size(150, 21);
+            lblLoggedInAs.Size = new Size(248, 21);
             lblLoggedInAs.TabIndex = 4;
-            lblLoggedInAs.Text = "CurrentPage";
+            lblLoggedInAs.Text = "Loggin in as:";
             lblLoggedInAs.TextAlign = ContentAlignment.MiddleRight;
             lblLoggedInAs.Click += lblLoggedInAs_Click;
             // 
@@ -345,7 +345,7 @@
             lblCurrentPage.Name = "lblCurrentPage";
             lblCurrentPage.Size = new Size(150, 21);
             lblCurrentPage.TabIndex = 1;
-            lblCurrentPage.Text = "CurrentPage";
+            lblCurrentPage.Text = "-";
             lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnClose

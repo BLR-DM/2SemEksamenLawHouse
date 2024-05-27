@@ -2,6 +2,7 @@
 using BusinessLogic;
 using UIModels;
 using UI.Toolbox;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.EmployeePage
 {
@@ -68,6 +69,21 @@ namespace UI.Forms.EmployeePage
             cboxSort.SelectedIndexChanged += CboxSort_SelectedIndexChanged;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             btnRefresh.Click += BtnRefresh_Click;
+            lblHelp.Click += LblHelp_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            string pdfName;
+
+            // Vis den korrekte hjælpe PDF efter valgte "Show" oversigt
+            if (selectedShow == showLawyers)
+                pdfName = "EmployeesOverviewLawyersHelp";
+            else
+                pdfName = "EmployeesOverviewHelp";
+
+            if(!OpenPDF.ShowPDF(pdfName))
+                        MessageBox.Show("Could not open pdf");
         }
 
         private async void BtnRefresh_Click(object? sender, EventArgs e)

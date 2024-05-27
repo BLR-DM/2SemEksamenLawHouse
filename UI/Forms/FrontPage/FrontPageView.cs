@@ -5,7 +5,6 @@ using UI.Forms.Self_Service;
 using UI.Forms.CasePage;
 using UI.Forms.AdminPage;
 using UI.Forms.EmployeePage;
-using EntityModels;
 using UI.Forms.SubscriptionPage;
 using BusinessLogic.Validation;
 using UI.Forms.LoginPage;
@@ -14,8 +13,6 @@ namespace UI.Forms.FrontPage
 {
     public partial class FrontPageView : Form
     {
-        Color rgbColorBlue;
-
         //nuvaerende bruger
         PersonUI currentUser;
         ClientUI clientUI;
@@ -36,8 +33,6 @@ namespace UI.Forms.FrontPage
         {
             personBL = new PersonBL();
             clientBL = new ClientBL();
-
-            rgbColorBlue = Color.FromArgb(45, 93, 134);
 
             this.loginDetailsID = loginDetailsID;
             this.loginPage = loginPage;
@@ -84,7 +79,7 @@ namespace UI.Forms.FrontPage
 
             if (currentUser != null)
             {
-                lblLoggedInAs.Text = "Hans Jensen";
+                lblLoggedInAs.Text = $"Logged in as: {currentUser.Firstname} {currentUser.Lastname}";
 
                 if (currentUser is ClientUI clientUI)
                 {
@@ -128,8 +123,6 @@ namespace UI.Forms.FrontPage
             {
                 PnlContextChange(cdMyPage);
             }
-
-
         }
 
         private async Task SetupLawyerFormAsync()
@@ -195,8 +188,6 @@ namespace UI.Forms.FrontPage
             CalculationsView calculationsView = new CalculationsView(clientUI);
             PnlContextChange(calculationsView);
             SetNavBtnColor(btnCalculations);
-
-
         }
 
         private void BtnMyPageLawyer_Click(object? sender, EventArgs e)

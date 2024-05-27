@@ -12,6 +12,7 @@ using UIModels;
 using UI.Toolbox;
 using BusinessLogic.Validation;
 using EntityModels;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.CasePage
 {
@@ -30,7 +31,11 @@ namespace UI.Forms.CasePage
         CaseServiceBL caseServiceBL;
 
         CaseValidator cValidator;
-        
+
+        const string serviceKilometer = "Kilometer";
+        const string serviceFixed = "Fixed";
+        const string serviceHourly = "Hourly";
+
         public ServiceDetailsView(CaseDetailsView caseDetailsView, CaseServiceUI selectedCaseService, bool isClient)
         {
             InitializeComponent();
@@ -48,6 +53,7 @@ namespace UI.Forms.CasePage
             btnSubmit.Click += BtnSubmit_Click;
             btnClose.Click += BtnClose_Click;
             txtHoursWorked.TextChanged += TxtHoursWorked_TextChanged;
+            lblHelp.Click += LblHelp_Click;
 
             btnSubmit.Enabled = false;
 
@@ -66,14 +72,30 @@ namespace UI.Forms.CasePage
                 btnClose.Visible = false;
             }
 
-            if(selectedCaseService.PriceType == "Kilometer")
+            if(selectedCaseService.PriceType == serviceKilometer)
             {
                 pnlTasks.Enabled = false;
                 btnClose.Enabled = false;
             }
         }
 
-        public void CheckStatus()
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if(selectedCaseService.PriceType == serviceHourly)
+            {
+                OpenPDF.ShowPDF("ServiceDetailsHourlyHelp");
+            }
+            else if(selectedCaseService.PriceType == serviceFixed)
+            {
+                OpenPDF.ShowPDF("ServiceDetailsFixedHelp");
+            }
+            else if(selectedCaseService.PriceType == serviceKilometer)
+            {
+                OpenPDF.ShowPDF("ServiceDetailsKilometerHelp");
+            }
+        }
+
+        private void CheckStatus()
         {
             if(selectedCaseService.Status == "Closed")
             {
@@ -120,7 +142,7 @@ namespace UI.Forms.CasePage
             BtnSubmitEnabled();
         }
 
-        public void BtnSubmitEnabled()
+        private void BtnSubmitEnabled()
         {
             btnSubmit.Enabled =
                 txtHoursWorked.ForeColor == validFormat;
@@ -144,13 +166,13 @@ namespace UI.Forms.CasePage
             };
 
             //forskellig opdatering ift til om pricetype er hourly eller fixed
-            if(selectedCaseService.PriceType == "Hourly")
+            if(selectedCaseService.PriceType == serviceHourly)
             {
                 selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
                 selectedCaseService.Units = selectedCaseService.HoursWorked;
                 selectedCaseService.TotalPrice = selectedCaseService.Units * selectedService.Price;
             }
-            else if(selectedCaseService.PriceType == "Fixed")
+            else if(selectedCaseService.PriceType == serviceFixed)
             {
                 selectedCaseService.HoursWorked = selectedCaseService.HoursWorked + serviceEntryUI.HoursWorked;
                 selectedCaseService.Units = 1;
@@ -175,7 +197,7 @@ namespace UI.Forms.CasePage
             btnSubmit.Enabled = true;
         }
 
-        public async Task SetCaseInformationAsync()
+        private async Task SetCaseInformationAsync()
         {
             selectedService = selectedCaseService.Service;
 
@@ -186,7 +208,7 @@ namespace UI.Forms.CasePage
             txtServiceDescription.Text = selectedCaseService.Description;
 
             //forksellig adfærd ift til pricetypen
-            if (selectedCaseService.PriceType == "Hourly")
+            if (selectedCaseService.PriceType == serviceHourly)
             {
                 txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
                 txtUnits.Text = txtTotalHours.Text;
@@ -197,7 +219,7 @@ namespace UI.Forms.CasePage
                 txtUnits.Visible = false;
                 lblUnites.Visible = false;
             }
-            else if (selectedCaseService.PriceType == "Fixed")
+            else if (selectedCaseService.PriceType == serviceFixed)
             {
                 txtUnits.Visible = false;
                 lblUnites.Visible = false;
@@ -207,7 +229,7 @@ namespace UI.Forms.CasePage
 
                 txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
             }
-            else if (selectedCaseService.PriceType == "Kilometer")
+            else if (selectedCaseService.PriceType == serviceKilometer)
             {
                 lblUnites.Text = "Kilometer";
                 lblPrice.Text = "Price/km";
@@ -217,7 +239,7 @@ namespace UI.Forms.CasePage
             }
         }
 
-        public async Task SetDgvAsync()
+        private async Task SetDgvAsync()
         {
             serviceEntryUIs = await serviceEntryBL.GetServiceEntryUIAsync(selectedCaseService.CaseServiceID);
             await SetCaseInformationAsync();
@@ -245,7 +267,7 @@ namespace UI.Forms.CasePage
             dgvServiceEntry.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        public async Task SetLawyerInformationAsync()
+        private async Task SetLawyerInformationAsync()
         {
             //Sætter den assigned lawyer til det panel
             pnlLawyerInformation.Controls.Add(new LawyerInformation(selectedCaseService.Lawyer));

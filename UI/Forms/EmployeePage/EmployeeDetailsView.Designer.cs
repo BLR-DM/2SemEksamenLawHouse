@@ -32,6 +32,7 @@
             btnCancel = new FontAwesome.Sharp.IconButton();
             pnlEmployeeDetails = new Panel();
             pnlEdit = new Panel();
+            lblHelp = new Label();
             SuspendLayout();
             // 
             // btnEditDetails
@@ -79,12 +80,26 @@
             pnlEdit.Size = new Size(323, 520);
             pnlEdit.TabIndex = 6;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 57;
+            lblHelp.Tag = "";
+            lblHelp.Text = "Need help?";
+            // 
             // EmployeeDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(pnlEdit);
             Controls.Add(btnCancel);
             Controls.Add(pnlEmployeeDetails);
@@ -93,6 +108,7 @@
             Name = "EmployeeDetailsView";
             Text = "EmployeeDetailsView";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -100,5 +116,6 @@
         private FontAwesome.Sharp.IconButton btnCancel;
         private Panel pnlEmployeeDetails;
         private Panel pnlEdit;
+        private Label lblHelp;
     }
 }

@@ -64,9 +64,8 @@ namespace UI.Forms.CreateUserPage
             ControlPaint.DrawBorder(e.Graphics, pnlLoginInfo.ClientRectangle, rgbColorBlue, ButtonBorderStyle.Solid);
         }
 
-        private async void BtnCreate_Click(object? sender, EventArgs e)
+        private async Task<bool> CreateClientAsync()
         {
-            btnCreate.Enabled = false;
             // Opret Client UI
             ClientUI client = new ClientUI()
             {
@@ -100,14 +99,21 @@ namespace UI.Forms.CreateUserPage
                 phoneUIs.Add(phoneUIAlt);
             }
 
-            bool result = await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
+            return await clientBL.CreateClientAsync(client, loginDetails, phoneUIs);
+        }
+
+        private async void BtnCreate_Click(object? sender, EventArgs e)
+        {
+            btnCreate.Enabled = false;
+            bool result = await CreateClientAsync();
+            btnCreate.Enabled = true;
 
             if (result)
             {
-                MessageBox.Show($"Client '{client}' successfully added!", "Success",
+                MessageBox.Show($"Client successfully added!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Ved successful oprettes, åbnes loginsiden med brugerensemail tastet ind i "username" feltet
-                loginPage.GetCreatedUsername(client.Email); 
+                loginPage.GetCreatedUsername(txtEmail.Text);
                 this.Close();
             }
             else
@@ -115,8 +121,6 @@ namespace UI.Forms.CreateUserPage
                 MessageBox.Show("Failed to add client. Please check the entered details and try again.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            btnCreate.Enabled = true;
         }
 
         private void LblCancel_MouseHover(object? sender, EventArgs e)

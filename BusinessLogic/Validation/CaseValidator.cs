@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using UIModels;
 
 namespace BusinessLogic.Validation
 {
@@ -19,7 +20,7 @@ namespace BusinessLogic.Validation
         public bool ValidUnits(string units)
         {
             return !string.IsNullOrEmpty(units)
-                && int.TryParse(units, out int unit) 
+                && float.TryParse(units, out float unit) 
                 && unit > 0
                 && vUnit.IsMatch(units);
         }
@@ -57,6 +58,15 @@ namespace BusinessLogic.Validation
         public bool ValidEndDate(DateTime dateTime)
         {
             return dateTime > DateTime.Now;
+        }
+
+        public bool ValidateCase(CaseUI caseUI)
+        {
+            return ValidTitle(caseUI.Title) &&
+                ValidDescription(caseUI.Description) &&
+                ValidEndDate(caseUI.EndDate) &&
+                ValidEstimatedHours(caseUI.EstimatedHours.ToString());
+
         }
     }
 }

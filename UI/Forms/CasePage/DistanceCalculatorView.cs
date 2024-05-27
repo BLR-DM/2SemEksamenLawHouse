@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.API;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using UIModels;
 
@@ -23,13 +24,18 @@ namespace UI.Forms.CasePage
             txtDestination.TextChanged += TxtDestination_TextChanged;
             btnSearch.Click += BtnSearch_Click;
             btnSave.Click += BtnSave_Click;
-            btnSearch.EnabledChanged += BtnSearch_EnabledChanged; ;
-
+            txtResult.TextChanged += TxtResult_TextChanged;
+            lblHelp.Click += LblHelp_Click;
         }
 
-        private void BtnSearch_EnabledChanged(object? sender, EventArgs e)
+        private void LblHelp_Click(object? sender, EventArgs e)
         {
-            btnSave.Enabled = btnSearch.Enabled;
+            OpenPDF.ShowPDF("DistanceCalculatorHelp");
+        }
+
+        private void TxtResult_TextChanged(object? sender, EventArgs e)
+        {
+            btnSave.Enabled = !string.IsNullOrEmpty(txtResult.Text);
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)
@@ -60,13 +66,12 @@ namespace UI.Forms.CasePage
             if (calcResult.rows[0].elements[0].status == "OK")
             {
                 txtResult.Text = calcResult.rows[0].elements[0].distance.text;
+                txtDuration.Text = calcResult.rows[0].elements[0].duration.text;
             }
             else
             {
                 MessageBox.Show("Couldn't find address", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                btnSave.Enabled = false;
             }
         }
         

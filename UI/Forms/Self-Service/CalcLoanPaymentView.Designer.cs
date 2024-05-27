@@ -217,7 +217,7 @@
             btnClear.Text = "Clear all";
             btnClear.UseVisualStyleBackColor = false;
             // 
-            // btnCalculate
+            // btnCalc
             // 
             btnCalculate.Anchor = AnchorStyles.Bottom;
             btnCalculate.BackColor = Color.FromArgb(45, 93, 134);
@@ -231,7 +231,7 @@
             btnCalculate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculate.IconSize = 70;
             btnCalculate.Location = new Point(88, 349);
-            btnCalculate.Name = "btnCalculate";
+            btnCalculate.Name = "btnCalc";
             btnCalculate.Size = new Size(119, 27);
             btnCalculate.TabIndex = 50;
             btnCalculate.Text = "Calculate";

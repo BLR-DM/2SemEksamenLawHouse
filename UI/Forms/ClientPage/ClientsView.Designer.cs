@@ -116,7 +116,6 @@
             // dgvClients
             // 
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClients.Cursor = Cursors.Arrow;
             dgvClients.Location = new Point(25, 171);
             dgvClients.Name = "dgvClients";
             dgvClients.ReadOnly = true;
@@ -157,6 +156,7 @@
             // lblHelp
             // 
             lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
             lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblHelp.ForeColor = Color.DarkBlue;
             lblHelp.Location = new Point(907, 590);
@@ -176,7 +176,7 @@
             Controls.Add(lblClientAmmount);
             Controls.Add(dgvClients);
             Controls.Add(panel1);
-            Cursor = Cursors.Hand;
+            Cursor = Cursors.Arrow;
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientsView";
             Tag = "";

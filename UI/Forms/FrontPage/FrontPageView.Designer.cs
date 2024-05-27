@@ -332,7 +332,7 @@
             lblLoggedInAs.Name = "lblLoggedInAs";
             lblLoggedInAs.Size = new Size(248, 21);
             lblLoggedInAs.TabIndex = 4;
-            lblLoggedInAs.Text = "CurrentPage";
+            lblLoggedInAs.Text = "Loggin in as:";
             lblLoggedInAs.TextAlign = ContentAlignment.MiddleRight;
             lblLoggedInAs.Click += lblLoggedInAs_Click;
             // 
@@ -345,7 +345,7 @@
             lblCurrentPage.Name = "lblCurrentPage";
             lblCurrentPage.Size = new Size(150, 21);
             lblCurrentPage.TabIndex = 1;
-            lblCurrentPage.Text = "CurrentPage";
+            lblCurrentPage.Text = "-";
             lblCurrentPage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnClose

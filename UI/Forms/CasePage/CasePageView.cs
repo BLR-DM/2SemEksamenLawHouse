@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using EntityModels;
 using System;
@@ -44,12 +45,18 @@ namespace UI.Forms.CasePage
             ckboxActive.CheckedChanged += CkboxActive_CheckedChanged;
             cboLawyers.SelectionChangeCommitted += CboLawyers_SelectionChangeCommitted;
             cboCaseType.SelectionChangeCommitted += CboCaseType_SelectionChangeCommitted;
+            lblHelp.Click += LblHelp_Click;
 
             SetLawyerComboBoxAsync();
             SetCaseTypeComboBoxAsync();
             SetDgvAsync();
             SetDgvStyle();
 
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CasePageViewHelp");
         }
 
         private void CboCaseType_SelectionChangeCommitted(object? sender, EventArgs e)

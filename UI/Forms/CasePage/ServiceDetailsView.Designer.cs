@@ -318,6 +318,7 @@
             // lblHelp
             // 
             lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
             lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblHelp.ForeColor = Color.DarkBlue;
             lblHelp.Location = new Point(513, 559);

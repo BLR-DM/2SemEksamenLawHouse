@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
 using UI.Toolbox;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.CasePage
 {
@@ -58,6 +59,7 @@ namespace UI.Forms.CasePage
             txtEstimatedHours.TextChanged += TxtEstimatedHours_TextChanged;
             btnPrintDetails.Click += BtnPrintDetails_Click;
             panel3.Paint += Panel3_Paint;
+            lblHelp.Click += LblHelp_Click;
 
             
             btnUpdateCase.Enabled = false;
@@ -87,6 +89,11 @@ namespace UI.Forms.CasePage
            
 
 
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CaseDetailsViewHelp");
         }
 
         private void Panel3_Paint(object? sender, PaintEventArgs e)

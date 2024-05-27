@@ -39,6 +39,7 @@
             lblDistance = new Label();
             txtDuration = new TextBox();
             lblDuration = new Label();
+            lblHelp = new Label();
             SuspendLayout();
             // 
             // btnSearch
@@ -151,12 +152,25 @@
             lblDuration.TabIndex = 46;
             lblDuration.Text = "Duration";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(447, 221);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 54;
+            lblHelp.Text = "Need help?";
+            // 
             // DistanceCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(516, 240);
+            Controls.Add(lblHelp);
             Controls.Add(panel2);
             Controls.Add(lblDuration);
             Controls.Add(lblDestination);
@@ -188,5 +202,6 @@
         private Label lblDistance;
         private TextBox txtDuration;
         private Label lblDuration;
+        private Label lblHelp;
     }
 }

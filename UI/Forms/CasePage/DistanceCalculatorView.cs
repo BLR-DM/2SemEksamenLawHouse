@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.API;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using UIModels;
 
@@ -24,6 +25,12 @@ namespace UI.Forms.CasePage
             btnSearch.Click += BtnSearch_Click;
             btnSave.Click += BtnSave_Click;
             txtResult.TextChanged += TxtResult_TextChanged;
+            lblHelp.Click += LblHelp_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("DistanceCalculatorHelp");
         }
 
         private void TxtResult_TextChanged(object? sender, EventArgs e)

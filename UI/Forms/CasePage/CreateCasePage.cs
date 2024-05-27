@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,7 @@ namespace UI.Forms.CasePage
             cboxCaseType.SelectedIndexChanged += CboxCaseType_SelectedIndexChanged;
             dtpEstimatedEndDate.ValueChanged += DtpEstimatedEndDate_ValueChanged;
             txtDescription.TextChanged += TxtDescription_TextChanged;
+            lblHelp.Click += LblHelp_Click;
 
 
             validFormat = Color.Black;
@@ -56,6 +58,11 @@ namespace UI.Forms.CasePage
 
             btnCreateCase.Enabled = false;
             SetComboBox();
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CreateCaseViewHelp");
         }
 
         private void TxtDescription_TextChanged(object? sender, EventArgs e)

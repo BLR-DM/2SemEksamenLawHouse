@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 using DataAccess;
 using EntityModels;
 using Interfaces;
@@ -15,14 +16,20 @@ namespace BusinessLogic
     {
         ModelConverter modelConverter;
         ICaseDbAccess dbAccess;
+        CaseValidator cValidator;
         public CaseBL() 
         {
             modelConverter = new ModelConverter();
             dbAccess = new CaseDbAccess();
+            cValidator = new CaseValidator();
         }
 
         public async Task<bool> CreateCaseAsync(CaseUI caseUI)
         {
+            if(!cValidator.ValidateCase(caseUI))
+                return false;
+
+
             Case temp = modelConverter.ConvertFromCaseUI(caseUI);
             return await dbAccess.CreateCaseAsync(temp);
         }
@@ -64,6 +71,9 @@ namespace BusinessLogic
 
         public async Task<bool> UpdateCaseSync(CaseUI caseUI)
         {
+            if(!cValidator.ValidateCase(caseUI))
+                return false;
+
             Case temp = modelConverter.ConvertFromCaseUI(caseUI);
             return await dbAccess.UpdateCaseAsync(temp);
         }

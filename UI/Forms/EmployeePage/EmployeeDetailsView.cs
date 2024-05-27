@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using UIModels;
 using UI.Toolbox;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.EmployeePage
 {
@@ -11,6 +12,7 @@ namespace UI.Forms.EmployeePage
 
         int employeeID;
         bool isAdmin;
+        string pdfName;
         public EmployeeDetailsView(int employeeID, bool isMyPage, EmployeeUI currentUser)
         {
             employeeBL = new EmployeeBL();
@@ -30,9 +32,16 @@ namespace UI.Forms.EmployeePage
             btnEditDetails.Click += BtnEditDetails_Click;
             btnCancel.Click += BtnCancel_Click;
             pnlEdit.VisibleChanged += PnlEdit_VisibleChanged;
+            lblHelp.Click += LblHelp_Click;
             
             CheckUser(isMyPage); // Tjek om formen åbnes i "MyPage" eller andre steder
             
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            if (!OpenPDF.ShowPDF("MyPageEmployeeViewHelp"))
+                MessageBox.Show("Could not open pdf");
         }
 
         private async void EmployeeDetailsView_Load(object? sender, EventArgs e)
@@ -87,10 +96,13 @@ namespace UI.Forms.EmployeePage
                 //btnEditDetails.Visible = false;
                 this.FormBorderStyle = FormBorderStyle.Sizable;
                 this.StartPosition = FormStartPosition.CenterScreen;
+                lblHelp.Location = new Point(260, 545);
                 this.Size = new Size(350, 613); // Skjul unødvendig tom plads
             }
             // Gør ændring af oplysninger muligt, hvis det er "MyPage" eller admin
             btnEditDetails.Visible = isMyPage || isAdmin;
+
+            pdfName = "MyPageEmployeeViewHelp";
         }
     }
 }

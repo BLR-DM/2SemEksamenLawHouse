@@ -78,13 +78,25 @@
     <None Update="Resources\HelpPdfs\DistanceCalculatorHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HelpPdfs\EmployeesOverviewHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\EmployeesOverviewLawyersHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\HelpPdfs\EmployeesViewHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\HelpPdfs\LawHouseDiagrammer.drawio.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HelpPdfs\LawyerDetailsViewHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\HelpPdfs\LoginPageViewHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\MyPageEmployeeViewHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\HelpPdfs\MyPageLawyerHelp.pdf">

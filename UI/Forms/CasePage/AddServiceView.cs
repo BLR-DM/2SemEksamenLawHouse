@@ -78,20 +78,28 @@ namespace UI.Forms.CasePage
         private void LblHelp_Click(object? sender, EventArgs e)
         {
             ServiceUI selectedService = (ServiceUI)cboServices.SelectedItem;
-            
+
             //Åbner den PDF-fil som er baseret på den pricetype der er valgt for den enkelte service
-            if(selectedService.PriceType == serviceKilometer)
+            if (selectedService != null)
             {
-                OpenPDF.ShowPDF("AddServiceKilometerHelp");
+                if (selectedService.PriceType == serviceKilometer)
+                {
+                    OpenPDF.ShowPDF("AddServiceKilometerHelp");
+                }
+                else if (selectedService.PriceType == serviceHourly)
+                {
+                    OpenPDF.ShowPDF("AddServiceHourlyHelp");
+                }
+                else if (selectedService.PriceType == serviceFixed)
+                {
+                    OpenPDF.ShowPDF("AddServiceFixedHelp");
+                } 
             }
-            else if(selectedService.PriceType == serviceHourly)
+            else
             {
-                OpenPDF.ShowPDF("AddServiceHourlyHelp");
+                MessageBox.Show("Pick a service first");
             }
-            else if(selectedService.PriceType == serviceFixed)
-            {
-                OpenPDF.ShowPDF("AddServiceFixedHelp");
-            }
+            
         }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)

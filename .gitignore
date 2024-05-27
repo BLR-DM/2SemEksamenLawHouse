@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Ignore app.config file
 App.Config
+/UI/App.Config

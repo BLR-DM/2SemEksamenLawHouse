@@ -33,6 +33,7 @@
             panel1 = new Panel();
             lblCalcROI = new Label();
             lblCalcRemainingBalanceOnLoan = new Label();
+            lblHelp = new Label();
             SuspendLayout();
             // 
             // lblCalcLoanPayment
@@ -86,12 +87,25 @@
             lblCalcRemainingBalanceOnLoan.TabIndex = 8;
             lblCalcRemainingBalanceOnLoan.Text = "- Calculate remaining balance on loan";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 55;
+            lblHelp.Text = "Need help?";
+            // 
             // CalculationsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(lblCalcRemainingBalanceOnLoan);
             Controls.Add(lblCalcROI);
             Controls.Add(lblCalcLoanPayment);
@@ -111,5 +125,6 @@
         private Panel panel1;
         private Label lblCalcROI;
         private Label lblCalcRemainingBalanceOnLoan;
+        private Label lblHelp;
     }
 }

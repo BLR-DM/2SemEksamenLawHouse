@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using EntityModels;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,13 @@ namespace UI.Forms.SubscriptionPage
             btnBuySubscriptionThreeMonth.Click += BtnBuySubscriptionThreeMonth_Click;
             btnBuySubscribtionSixMonths.Click += BtnBuySubscribtionSixMonths_ClickAsync;
             btnBuySubscription12Months.Click += BtnBuySubscription12Months_Click;
+            lblHelp.Click += LblHelp_Click;
 
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("SubscriptionHelp");
         }
 
         //koeb 3 month sub

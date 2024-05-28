@@ -31,6 +31,7 @@
             dgvSubscriptions = new DataGridView();
             label6 = new Label();
             lblSubscribed = new Label();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvSubscriptions).BeginInit();
             SuspendLayout();
             // 
@@ -68,12 +69,25 @@
             lblSubscribed.TabIndex = 49;
             lblSubscribed.Text = "Yes/No";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(437, 238);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 76;
+            lblHelp.Text = "Need help?";
+            // 
             // SubscriptionDetailsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(515, 262);
+            Controls.Add(lblHelp);
             Controls.Add(lblSubscribed);
             Controls.Add(label6);
             Controls.Add(dgvSubscriptions);
@@ -89,5 +103,6 @@
         private DataGridView dgvSubscriptions;
         private Label label6;
         private Label lblSubscribed;
+        private Label lblHelp;
     }
 }

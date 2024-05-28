@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.Self_Service
 {
@@ -33,11 +34,17 @@ namespace UI.Forms.Self_Service
             btnCalculate.Click += BtnCalculate_Click;
             btnClear.Click += BtnClear_Click;
             Load += CalcLoanPaymentView_Load;
+            lblHelp.Click += LblHelp_Click;
 
             txtLoanAmount.TextChanged += TxtLoanAmount_TextChanged;
             txtAnnualInterestRate.TextChanged += TxtAnnualInterestRate_TextChanged;
             txtPaymentsPrYear.TextChanged += TxtPaymentsPrYear_TextChanged;
             txtAmountOfYears.TextChanged += TxtAmountOfYears_TextChanged;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CalculatePaymentOnLoanHelp");
         }
 
         private void CalcLoanPaymentView_Load(object? sender, EventArgs e)

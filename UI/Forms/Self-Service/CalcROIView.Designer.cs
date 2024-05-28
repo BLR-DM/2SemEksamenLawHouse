@@ -43,6 +43,7 @@
             lblROIResult = new Label();
             lblProfit = new Label();
             lblProfitResult = new Label();
+            lblHelp = new Label();
             pnlTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -134,7 +135,7 @@
             panel2.Size = new Size(431, 3);
             panel2.TabIndex = 70;
             // 
-            // btnCalc
+            // btnCalculate
             // 
             btnCalculate.Anchor = AnchorStyles.Bottom;
             btnCalculate.BackColor = Color.FromArgb(45, 93, 134);
@@ -148,7 +149,7 @@
             btnCalculate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculate.IconSize = 70;
             btnCalculate.Location = new Point(88, 349);
-            btnCalculate.Name = "btnCalc";
+            btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(119, 27);
             btnCalculate.TabIndex = 71;
             btnCalculate.Text = "Calculate";
@@ -220,12 +221,25 @@
             lblProfitResult.Text = "452";
             lblProfitResult.TextAlign = ContentAlignment.TopRight;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(430, 506);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 75;
+            lblHelp.Text = "Need help?";
+            // 
             // CalcROIView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
+            Controls.Add(lblHelp);
             Controls.Add(lblProfitResult);
             Controls.Add(lblROIResult);
             Controls.Add(lblProfit);
@@ -267,5 +281,6 @@
         private Label lblROIResult;
         private Label lblProfit;
         private Label lblProfitResult;
+        private Label lblHelp;
     }
 }

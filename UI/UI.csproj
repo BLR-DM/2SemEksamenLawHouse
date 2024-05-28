@@ -60,6 +60,18 @@
     <None Update="Resources\HelpPdfs\AddServiceKilometerHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HelpPdfs\CalculatePaymentOnLoanHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\CalculateRemainingBalanceOnLoanHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\CalculateROIHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\CalculationsHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\HelpPdfs\CaseDetailsViewHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -90,6 +102,12 @@
     <None Update="Resources\HelpPdfs\EmployeesViewHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HelpPdfs\FormDetailsHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\FormsHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\HelpPdfs\LawHouseDiagrammer.drawio.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -115,6 +133,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\HelpPdfs\ServiceDetailsHourlyHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\SubDetailsHelp.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\HelpPdfs\SubscriptionHelp.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\postnumre.csv">

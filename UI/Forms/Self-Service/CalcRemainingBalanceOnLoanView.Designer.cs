@@ -47,6 +47,7 @@
             label6 = new Label();
             lblAmountPrPayment = new Label();
             label8 = new Label();
+            lblHelp = new Label();
             pnlTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -138,7 +139,7 @@
             label1.TabIndex = 73;
             label1.Text = "Total loan amount:";
             // 
-            // btnCalc
+            // btnCalculate
             // 
             btnCalculate.Anchor = AnchorStyles.Bottom;
             btnCalculate.BackColor = Color.FromArgb(45, 93, 134);
@@ -152,7 +153,7 @@
             btnCalculate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculate.IconSize = 70;
             btnCalculate.Location = new Point(88, 349);
-            btnCalculate.Name = "btnCalc";
+            btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(119, 27);
             btnCalculate.TabIndex = 79;
             btnCalculate.Text = "Calculate";
@@ -262,12 +263,25 @@
             label8.TabIndex = 87;
             label8.Text = "Amount pr payment:";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(430, 506);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 89;
+            lblHelp.Text = "Need help?";
+            // 
             // CalcRemainingBalanceOnLoanView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
+            Controls.Add(lblHelp);
             Controls.Add(lblAmountPrPayment);
             Controls.Add(label8);
             Controls.Add(txtPaymentsMade);
@@ -316,5 +330,6 @@
         private Label label6;
         private Label lblAmountPrPayment;
         private Label label8;
+        private Label lblHelp;
     }
 }

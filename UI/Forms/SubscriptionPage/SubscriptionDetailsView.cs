@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,8 +22,13 @@ namespace UI.Forms.SubscriptionPage
             InitializeComponent();
             this.client = client;
             this.subscriptions = clientSubscriptionUIs;
-
+            lblHelp.Click += LblHelp_Click;
             Load += SubscriptionDetailsView_Load;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("SubDetailsHelp");
         }
 
         private async void SubscriptionDetailsView_Load(object? sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace UI.Forms.LoginPage
 
             InitializeComponent();
 
-            // Deaktiver Login knap og errors
+            // Deaktiver Login knap og fejl-tekst
             btnLogin.Enabled = false;
             lblPasswordError.Visible = false;
             lblUsernameError.Visible = false;
@@ -35,7 +35,7 @@ namespace UI.Forms.LoginPage
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString()))
+            if (!OpenPDF.ShowPDF(lblHelp.Tag.ToString())) // Fejl-besked, hvis PDF ikke kunne åbnes
                 MessageBox.Show("Could not open pdf");
         }
 
@@ -78,13 +78,15 @@ namespace UI.Forms.LoginPage
 
         private void LblForgotPassword_Click(object? sender, EventArgs e)
         {
-            new ForgotPasswordView(loginBL, pValidator).ShowDialog(); // Simluering af glemt kodeord funktion
+            // Simulering af glemt kodeord funktion
+            new ForgotPasswordView(loginBL, pValidator).ShowDialog(); 
         }
 
         private void LblRegister_Click(object? sender, EventArgs e)
         {
             this.Hide();
-            new CreateUserView(this, pValidator).ShowDialog(); // Åbn "opret bruger form" inkl. denne form
+            // Åbn "opret bruger form" inkl. denne form
+            new CreateUserView(this, pValidator).ShowDialog(); 
         }
 
         // public metode, så den kan kaldes efter oprettelse af bruger
@@ -100,6 +102,7 @@ namespace UI.Forms.LoginPage
 
             // Returner LoginDetailsID og tjek for korrekt loginoplysninger
             int userID = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
+            btnLogin.Enabled = true; // Aktiver knap efter lukning af MessageBox
 
             if (userID > 0)
             {
@@ -113,8 +116,6 @@ namespace UI.Forms.LoginPage
                 // brugernavn/email eksisterer i systemet
                 MessageBox.Show("Invalid username or password. Please try again.",
                     "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                btnLogin.Enabled = true; // Aktiver knap efter lukning af MessageBox
             }
         }
 

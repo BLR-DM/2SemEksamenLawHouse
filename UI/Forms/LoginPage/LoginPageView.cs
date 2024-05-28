@@ -102,7 +102,8 @@ namespace UI.Forms.LoginPage
 
             // Returner LoginDetailsID og tjek for korrekt loginoplysninger
             int userID = await loginBL.CheckUsernameAndPasswordAsync(txtUsername.Text, txtPassword.Text);
-            btnLogin.Enabled = true; // Aktiver knap efter lukning af MessageBox
+
+            btnLogin.Enabled = true; // Aktiver knap efter endt Task
 
             if (userID > 0)
             {

@@ -16,7 +16,7 @@ namespace DataAccess
         {
             try
             {
-                LoginDetails user = await db.LoginDetails
+                LoginDetails? user = await db.LoginDetails
                         .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
 
                 return user != null ? user.LoginDetailsID : 0;
@@ -31,9 +31,9 @@ namespace DataAccess
         {
             try
             {
-                LoginDetails tmp = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username);
+                LoginDetails? tmp = await db.LoginDetails.FirstOrDefaultAsync(u => u.Username == username);
                 
-                return tmp.Password;
+                return tmp != null ? tmp.Password : string.Empty;
             }
             catch (Exception)
             {

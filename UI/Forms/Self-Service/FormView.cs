@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using EntityModels;
 using System;
 using System.Collections.Generic;
@@ -33,10 +34,15 @@ namespace UI.Forms.Self_Service
             dgvForms.CellClick += DgvForms_CellClick;
             btnBuy.Click += BtnBuy_Click;
             btnResendMail.Click += BtnResendMail_Click;
+            lblHelp.Click += LblHelp_Click;
 
             GetSetData();
         }
 
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("FormHelp");
+        }
 
         private async void BtnBuy_Click(object? sender, EventArgs e)
         {

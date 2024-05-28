@@ -35,6 +35,7 @@
             lblTitlelbl = new Label();
             lblDescriptionlbl = new Label();
             lblPricelbl = new Label();
+            lblHelp = new Label();
             SuspendLayout();
             // 
             // lblTitle
@@ -124,12 +125,25 @@
             lblPricelbl.TabIndex = 45;
             lblPricelbl.Text = "Price:";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(256, 430);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 54;
+            lblHelp.Text = "Need help?";
+            // 
             // FormDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(334, 454);
+            Controls.Add(lblHelp);
             Controls.Add(lblPricelbl);
             Controls.Add(lblDescriptionlbl);
             Controls.Add(lblTitlelbl);
@@ -152,5 +166,6 @@
         private Label lblTitlelbl;
         private Label lblDescriptionlbl;
         private Label lblPricelbl;
+        private Label lblHelp;
     }
 }

@@ -48,6 +48,7 @@
             panel2 = new Panel();
             lblTotalAmountPaid = new Label();
             label8 = new Label();
+            lblHelp = new Label();
             pnlTop.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -217,7 +218,7 @@
             btnClear.Text = "Clear all";
             btnClear.UseVisualStyleBackColor = false;
             // 
-            // btnCalc
+            // btnCalculate
             // 
             btnCalculate.Anchor = AnchorStyles.Bottom;
             btnCalculate.BackColor = Color.FromArgb(45, 93, 134);
@@ -231,7 +232,7 @@
             btnCalculate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculate.IconSize = 70;
             btnCalculate.Location = new Point(88, 349);
-            btnCalculate.Name = "btnCalc";
+            btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(119, 27);
             btnCalculate.TabIndex = 50;
             btnCalculate.Text = "Calculate";
@@ -277,12 +278,25 @@
             label8.TabIndex = 65;
             label8.Text = "Total amount paid:";
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(430, 506);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 67;
+            lblHelp.Text = "Need help?";
+            // 
             // CalcLoanPaymentView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(508, 530);
+            Controls.Add(lblHelp);
             Controls.Add(lblTotalAmountPaid);
             Controls.Add(label8);
             Controls.Add(lblTotalPrYear);
@@ -333,5 +347,6 @@
         private Panel panel2;
         private Label lblTotalAmountPaid;
         private Label label8;
+        private Label lblHelp;
     }
 }

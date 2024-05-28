@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,13 @@ namespace UI.Forms.Self_Service
             this.form = form;
             this.client = client;
             btnResendMail.Click += BtnResendMail_Click;
+            lblHelp.Click += LblHelp_Click;
             SetDetails();
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("FormDetailsHelp");
         }
 
         private void BtnResendMail_Click(object? sender, EventArgs e)

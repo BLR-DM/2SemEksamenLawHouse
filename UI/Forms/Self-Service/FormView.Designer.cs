@@ -41,6 +41,7 @@
             txtDescription = new TextBox();
             lblTitle = new Label();
             panel2 = new Panel();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvForms).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -209,12 +210,25 @@
             panel2.Size = new Size(3, 445);
             panel2.TabIndex = 43;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(911, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // FormView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label1);
@@ -244,5 +258,6 @@
         private Label lblTitlelbl;
         private FontAwesome.Sharp.IconButton btnResendMail;
         private TextBox txtSelectForm;
+        private Label lblHelp;
     }
 }

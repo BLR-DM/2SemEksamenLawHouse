@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.Self_Service
 {
@@ -34,12 +35,17 @@ namespace UI.Forms.Self_Service
             btnCalculate.Click += BtnCalculate_Click;
             btnClear.Click += BtnClear_Click;
             Load += CalcROIView_Load;
+            lblHelp.Click += LblHelp_Click;
 
             txtInvestment.TextChanged += TxtInvestment_TextChanged;
             txtInterestRate.TextChanged += TxtInterestRate_TextChanged;
             txtAmountOfYears.TextChanged += TxtAmountOfYears_TextChanged;
         }
 
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CalculateROIHelp");
+        }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)
         {

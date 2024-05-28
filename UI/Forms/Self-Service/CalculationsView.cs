@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIModels;
+using BusinessLogic.HelpServices;
 
 namespace UI.Forms.Self_Service
 {
@@ -31,10 +32,16 @@ namespace UI.Forms.Self_Service
             lblCalcROI.MouseHover += LblCalcROI_MouseHover;
             lblCalcROI.MouseLeave += LblCalcROI_MouseLeave;
             lblCalcROI.Click += LblCalcROI_Click;
+            lblHelp.Click += LblHelp_Click;
 
             lblCalcRemainingBalanceOnLoan.MouseHover += LblCalcRemainingBalanceOnLoan_MouseHover;
             lblCalcRemainingBalanceOnLoan.MouseLeave += LblCalcRemainingBalanceOnLoan_MouseLeave;
             lblCalcRemainingBalanceOnLoan.Click += LblCalcRemainingBalanceOnLoan_Click;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CalculationsHelp");
         }
 
         //viser beregner for remainingalanceonloan

@@ -59,6 +59,7 @@
             panel7 = new Panel();
             label1 = new Label();
             panel8 = new Panel();
+            lblHelp = new Label();
             gradiantPanel1.SuspendLayout();
             gradiantPanel2.SuspendLayout();
             gradiantPanel3.SuspendLayout();
@@ -427,12 +428,25 @@
             panel8.Size = new Size(110, 3);
             panel8.TabIndex = 7;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 76;
+            lblHelp.Text = "Need help?";
+            // 
             // SubscriptionView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel3);
@@ -453,6 +467,7 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -487,5 +502,6 @@
         private Panel panel7;
         private Label label1;
         private Panel panel8;
+        private Label lblHelp;
     }
 }

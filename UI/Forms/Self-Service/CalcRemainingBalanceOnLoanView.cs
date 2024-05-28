@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Validation;
+﻿using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 using Calculations;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace UI.Forms.Self_Service
 
             btnCalculate.Click += BtnCalculate_Click;
             btnClear.Click += BtnClear_Click;
+            lblHelp.Click += LblHelp_Click;
 
             Load += CalcRemainingBalanceOnLoanView_Load;
 
@@ -41,6 +43,11 @@ namespace UI.Forms.Self_Service
             txtPaymentsPrYear.TextChanged += TxtPaymentsPrYear_TextChanged;
             txtTotalYears.TextChanged += TxtTotalYears_TextChanged;
             txtPaymentsMade.TextChanged += TxtPaymentsMade_TextChanged;
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("CalculateRemainingBalanceOnLoanHelp");
         }
 
         private void BtnCalculate_Click(object? sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
 using EntityModels;
 using System;
@@ -80,9 +81,15 @@ namespace UI.Forms.ClientPage
             txtAddPhone.TextChanged += txtAddPhone_TextChanged;
             btnSubscriptionDetails.Click += BtnSubscriptionDetails_Click;
             dgvCases.CellDoubleClick += DgvCases_CellDoubleClick;
+            lblHelp.Click += LblHelp_Click;
 
             Load += ClientDetails_Load;
 
+        }
+
+        private void LblHelp_Click(object? sender, EventArgs e)
+        {
+            OpenPDF.ShowPDF("ClientDetailsHelp");
         }
 
         //load event
@@ -339,7 +346,9 @@ namespace UI.Forms.ClientPage
             dgvCases.Columns[9].Visible = false;
             dgvCases.Columns[10].Visible = false;
             dgvCases.Columns[11].Visible = false;
-
+            dgvCases.Columns[12].Visible = false;
+            dgvCases.Columns[13].Visible = false;
+            dgvCases.Columns[14].Visible = false;
         }
 
         private void DgvCases_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

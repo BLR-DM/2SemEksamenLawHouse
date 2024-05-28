@@ -58,6 +58,7 @@
             dgvBoughtForms = new DataGridView();
             label8 = new Label();
             pboxProfile = new FontAwesome.Sharp.IconPictureBox();
+            lblHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCases).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhoneNumbers).BeginInit();
@@ -426,12 +427,25 @@
             pboxProfile.TabIndex = 51;
             pboxProfile.TabStop = false;
             // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Cursor = Cursors.Hand;
+            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblHelp.ForeColor = Color.DarkBlue;
+            lblHelp.Location = new Point(920, 589);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new Size(66, 15);
+            lblHelp.TabIndex = 53;
+            lblHelp.Text = "Need help?";
+            // 
             // ClientDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(998, 613);
+            Controls.Add(lblHelp);
             Controls.Add(pboxProfile);
             Controls.Add(label8);
             Controls.Add(dgvBoughtForms);
@@ -483,5 +497,6 @@
         private Label lblSuccess;
         private FontAwesome.Sharp.IconPictureBox pboxProfile;
         private Button btnSubscriptionDetails;
+        private Label lblHelp;
     }
 }

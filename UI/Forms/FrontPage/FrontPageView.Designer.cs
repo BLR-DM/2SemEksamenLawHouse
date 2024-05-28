@@ -78,7 +78,7 @@
             btnSubscribe.FlatStyle = FlatStyle.Flat;
             btnSubscribe.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSubscribe.ForeColor = Color.Black;
-            btnSubscribe.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnSubscribe.IconChar = FontAwesome.Sharp.IconChar.Rss;
             btnSubscribe.IconColor = Color.Black;
             btnSubscribe.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSubscribe.IconSize = 40;
@@ -100,7 +100,7 @@
             btnEmployees.FlatStyle = FlatStyle.Flat;
             btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEmployees.ForeColor = Color.Black;
-            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.Users;
             btnEmployees.IconColor = Color.Black;
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
@@ -146,7 +146,7 @@
             btnMyPageLawyer.FlatStyle = FlatStyle.Flat;
             btnMyPageLawyer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMyPageLawyer.ForeColor = Color.Black;
-            btnMyPageLawyer.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnMyPageLawyer.IconChar = FontAwesome.Sharp.IconChar.IdCard;
             btnMyPageLawyer.IconColor = Color.Black;
             btnMyPageLawyer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMyPageLawyer.IconSize = 40;
@@ -168,7 +168,7 @@
             btnCalculations.FlatStyle = FlatStyle.Flat;
             btnCalculations.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCalculations.ForeColor = Color.Black;
-            btnCalculations.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnCalculations.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             btnCalculations.IconColor = Color.Black;
             btnCalculations.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCalculations.IconSize = 40;
@@ -190,7 +190,7 @@
             btnCase.FlatStyle = FlatStyle.Flat;
             btnCase.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCase.ForeColor = Color.Black;
-            btnCase.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnCase.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             btnCase.IconColor = Color.Black;
             btnCase.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCase.IconSize = 40;
@@ -212,7 +212,7 @@
             btnMyPageClient.FlatStyle = FlatStyle.Flat;
             btnMyPageClient.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMyPageClient.ForeColor = Color.Black;
-            btnMyPageClient.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnMyPageClient.IconChar = FontAwesome.Sharp.IconChar.IdCard;
             btnMyPageClient.IconColor = Color.Black;
             btnMyPageClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMyPageClient.IconSize = 40;
@@ -234,7 +234,7 @@
             btnForms.FlatStyle = FlatStyle.Flat;
             btnForms.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnForms.ForeColor = Color.Black;
-            btnForms.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnForms.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
             btnForms.IconColor = Color.Black;
             btnForms.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnForms.IconSize = 40;
@@ -256,7 +256,7 @@
             btnLawyers.FlatStyle = FlatStyle.Flat;
             btnLawyers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLawyers.ForeColor = Color.Black;
-            btnLawyers.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnLawyers.IconChar = FontAwesome.Sharp.IconChar.UserTie;
             btnLawyers.IconColor = Color.Black;
             btnLawyers.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnLawyers.IconSize = 40;
@@ -278,7 +278,7 @@
             btnClients.FlatStyle = FlatStyle.Flat;
             btnClients.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClients.ForeColor = Color.Black;
-            btnClients.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            btnClients.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
             btnClients.IconColor = Color.Black;
             btnClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClients.IconSize = 40;

@@ -185,6 +185,7 @@ namespace UI.Forms.ClientPage
             dgvClients.MultiSelect = false;
             dgvClients.AllowUserToResizeColumns = false;
             dgvClients.AllowUserToResizeRows = false;
+            
 
             dgvClients.EnableHeadersVisualStyles = false;
             dgvClients.RowHeadersVisible = false;

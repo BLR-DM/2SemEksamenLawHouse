@@ -179,18 +179,23 @@ namespace UI.Forms.CasePage
                 selectedCaseService.TotalPrice = selectedCaseService.TotalPrice;
             }
             
-            bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
-            bool succes1 = await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService);
-            await SetDgvAsync();
-            await SetCaseInformationAsync();
+            DialogResult dialogResult = MessageBox.Show($"Do you want to add {txtHoursWorked.Text} hours", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(succes && succes1)
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Entry submitted");
-            }
-            else
-            {
-                MessageBox.Show("Error!");
+                bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
+                bool succesCaseService = await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService);
+                await SetDgvAsync();
+                await SetCaseInformationAsync();
+
+                if (succes && succesCaseService)
+                {
+                    MessageBox.Show("Entry submitted");
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                } 
             }
             btnSubmit.Enabled = true;
         }

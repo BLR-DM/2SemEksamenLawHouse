@@ -7,11 +7,8 @@ namespace BusinessLogic.HelpServices
         public static bool ShowPDF(string filename)
         {
             string filePath = $"Resources\\HelpPdfs\\{filename}.pdf";
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string fullPath = Path.Combine(baseDirectory, filePath);
 
-
-            if (File.Exists(fullPath))
+            if (File.Exists(filePath))
             {
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
                 return true;

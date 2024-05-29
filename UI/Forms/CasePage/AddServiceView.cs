@@ -321,6 +321,7 @@ namespace UI.Forms.CasePage
             txtPrice.Text = selectedService.Price.ToString("C");
         }
 
+        //adfærd for kilmoter
         private void SetDataKilometerPriceType()
         {
             lblUnites.Visible = true;
@@ -343,6 +344,7 @@ namespace UI.Forms.CasePage
             txtServiceDescription.Size = new System.Drawing.Size(287, 169);
         }
 
+        //adfærd for hourly
         private void SetDataHourlyPriceType()
         {
             lblUnites.Visible = false;
@@ -362,6 +364,7 @@ namespace UI.Forms.CasePage
             txtServiceDescription.Size = new System.Drawing.Size(429, 169);
         }
 
+        //adfærd for fixed
         private void SetDataFixedPriceType()
         {
             lblPrice.Text = "Listed price";

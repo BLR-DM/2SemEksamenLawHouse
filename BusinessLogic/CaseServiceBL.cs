@@ -53,6 +53,9 @@ namespace BusinessLogic
 
         public async Task<bool> UpdateCaseServicesAsync(CaseServiceUI caseServiceUI)
         {
+            if (!cValidator.ValidateCaseService(caseServiceUI))
+                return false;
+
             return await dbAccess.UpdateCaseServiceAsync(modelConverter.ConvertFromCaseServiceUI(caseServiceUI));
         }
     }

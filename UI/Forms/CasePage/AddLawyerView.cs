@@ -24,6 +24,7 @@ namespace UI.Forms.CasePage
         List<LawyerUI> originalLawyerList;
         List<SpecialityUI> specialityList;
         List<LawyerSpecialityUI> lawyerSpecialityList;
+
         public event EventHandler<LawyerUI> LawyerSelected;
         public AddLawyerView()
         {
@@ -60,7 +61,7 @@ namespace UI.Forms.CasePage
 
         private void DgvLawyerView_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-
+            //kontroller om cellen er gyldig
             if(e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow dataGridViewRow = dgvLawyerView.Rows[e.RowIndex];

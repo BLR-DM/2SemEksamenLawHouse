@@ -179,8 +179,6 @@ namespace UI.Forms.CasePage
                 selectedCaseService.TotalPrice = selectedCaseService.TotalPrice;
             }
             
-            
-
             bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
             bool succes1 = await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService);
             await SetDgvAsync();

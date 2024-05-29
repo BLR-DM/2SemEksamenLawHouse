@@ -20,14 +20,7 @@ namespace BusinessLogic
             if (!pValidator.ValidEmail(username) || !pValidator.ValidPassword(password))
                 return 0;
 
-            try
-            {
-                return await dbAccess.CheckUsernameAndPasswordAsync(username, password);
-            }
-            catch (Exception)
-            {
-                return 0;
-            } 
+            return await dbAccess.CheckUsernameAndPasswordAsync(username, password);
         }
 
         public async Task<string> RetrievePasswordAsync(string username)

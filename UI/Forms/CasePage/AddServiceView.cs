@@ -306,68 +306,82 @@ namespace UI.Forms.CasePage
             //Visibility og adfærd på vorskkelige lbl, txt og buttons sættes forskelligt baseret på hvilken service der er valgt
             if (selectedService.PriceType == serviceKilometer)
             {
-                lblUnites.Visible = true;
-                txtUnits.Visible = true;
-
-                lblPrice.Text = "Price/km";
-                lblPrice.Visible = true;
-                txtPrice.Visible = true;
-
-                lblTotalPrice.Text = "Total price";
-                lblTotalPrice.Visible = true;
-                txtTotalPrice.Visible = true;
-                txtTotalPrice.Enabled = false;
-
-                lblHoursWorked.Visible = true;
-                txtHoursWorked.Visible = true;
-
-                btnCalculation.Visible = true;
-
-                txtServiceDescription.Size = new System.Drawing.Size(287, 169);
+                SetDataKilometerPriceType();
             }
             else if (selectedService.PriceType == serviceFixed)
             {
-                lblPrice.Text = "Listed price";
-                lblPrice.Visible = true;
-                txtPrice.Visible = true;
-
-                lblTotalPrice.Text = "Agreed price";
-                lblTotalPrice.Visible = true;
-                txtTotalPrice.Visible = true;
-                txtTotalPrice.Enabled = true;
-
-                lblHoursWorked.Visible = false;
-                txtHoursWorked.Visible = false;
-
-                lblUnites.Visible = false;
-                txtUnits.Visible = false;
-
-                btnCalculation.Visible = false;
-
-                txtServiceDescription.Size = new System.Drawing.Size(287, 169);
+                SetDataFixedPriceType();
             }
             else if (selectedService.PriceType == serviceHourly)
             {
-                lblUnites.Visible = false;
-                txtUnits.Visible = false;
-
-                lblPrice.Visible = false;
-                txtPrice.Visible = false;
-
-                lblTotalPrice.Visible = false;
-                txtTotalPrice.Visible = false;
-
-                lblHoursWorked.Visible = false;
-                txtHoursWorked.Visible = false;
-
-                btnCalculation.Visible = false;
-
-                txtServiceDescription.Size = new System.Drawing.Size(429, 169);
-
+                SetDataHourlyPriceType();
             }
 
 
             txtPrice.Text = selectedService.Price.ToString("C");
+        }
+
+        private void SetDataKilometerPriceType()
+        {
+            lblUnites.Visible = true;
+            txtUnits.Visible = true;
+
+            lblPrice.Text = "Price/km";
+            lblPrice.Visible = true;
+            txtPrice.Visible = true;
+
+            lblTotalPrice.Text = "Total price";
+            lblTotalPrice.Visible = true;
+            txtTotalPrice.Visible = true;
+            txtTotalPrice.Enabled = false;
+
+            lblHoursWorked.Visible = true;
+            txtHoursWorked.Visible = true;
+
+            btnCalculation.Visible = true;
+
+            txtServiceDescription.Size = new System.Drawing.Size(287, 169);
+        }
+
+        private void SetDataHourlyPriceType()
+        {
+            lblUnites.Visible = false;
+            txtUnits.Visible = false;
+
+            lblPrice.Visible = false;
+            txtPrice.Visible = false;
+
+            lblTotalPrice.Visible = false;
+            txtTotalPrice.Visible = false;
+
+            lblHoursWorked.Visible = false;
+            txtHoursWorked.Visible = false;
+
+            btnCalculation.Visible = false;
+
+            txtServiceDescription.Size = new System.Drawing.Size(429, 169);
+        }
+
+        private void SetDataFixedPriceType()
+        {
+            lblPrice.Text = "Listed price";
+            lblPrice.Visible = true;
+            txtPrice.Visible = true;
+
+            lblTotalPrice.Text = "Agreed price";
+            lblTotalPrice.Visible = true;
+            txtTotalPrice.Visible = true;
+            txtTotalPrice.Enabled = true;
+
+            lblHoursWorked.Visible = false;
+            txtHoursWorked.Visible = false;
+
+            lblUnites.Visible = false;
+            txtUnits.Visible = false;
+
+            btnCalculation.Visible = false;
+
+            txtServiceDescription.Size = new System.Drawing.Size(287, 169);
         }
 
         //Metode til at beregne den totale pris

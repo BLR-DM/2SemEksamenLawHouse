@@ -21,7 +21,7 @@ namespace BusinessLogic.Validation
         {
             return !string.IsNullOrEmpty(units)
                 && float.TryParse(units, out float unit) 
-                && unit > 0
+                && unit >= 0
                 && vUnit.IsMatch(units);
         }
 
@@ -43,7 +43,7 @@ namespace BusinessLogic.Validation
         {
             return !string.IsNullOrEmpty(estimatedHours)
                 && float.TryParse(estimatedHours, out float hours)
-                && hours > 0
+                && hours >= 0
 
                 && vUnit.IsMatch(estimatedHours);
         }
@@ -67,6 +67,14 @@ namespace BusinessLogic.Validation
                 ValidEndDate(caseUI.EndDate) &&
                 ValidEstimatedHours(caseUI.EstimatedHours.ToString());
 
+        }
+
+        public bool ValidateCaseService(CaseServiceUI caseServiceUI)
+        {
+            return ValidDescription(caseServiceUI.Description) &&
+                ValidEstimatedHours(caseServiceUI.HoursWorked.ToString()) &&
+                ValidUnits(caseServiceUI.HoursWorked.ToString()) &&
+                ValidUnits(caseServiceUI.TotalPrice.ToString());
         }
     }
 }

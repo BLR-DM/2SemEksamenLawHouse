@@ -323,7 +323,6 @@ namespace UI.Forms.CasePage
                 SetDataHourlyPriceType();
             }
 
-
             txtPrice.Text = selectedService.Price.ToString("C");
         }
 

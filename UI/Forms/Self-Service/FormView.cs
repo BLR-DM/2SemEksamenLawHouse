@@ -41,7 +41,7 @@ namespace UI.Forms.Self_Service
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            OpenPDF.ShowPDF("FormHelp");
+            OpenPDF.ShowPDF("FormsHelp");
         }
 
         private async void BtnBuy_Click(object? sender, EventArgs e)

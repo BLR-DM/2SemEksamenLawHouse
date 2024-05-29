@@ -24,6 +24,8 @@ namespace UI.Forms.CasePage
         const string serviceKilometer = "Kilometer";
         const string serviceFixed = "Fixed";
         const string serviceHourly = "Hourly";
+        const string caseOpen = "Open";
+        const string caseClosed = "Closed";
 
 
         Color validFormat;
@@ -227,7 +229,7 @@ namespace UI.Forms.CasePage
             //Forskellig oprettelse ift hvilken pricetype servicen har
             if (selectedService.PriceType == serviceKilometer)
             {
-                caseServiceUI.Status = "Closed";
+                caseServiceUI.Status = caseClosed;
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = float.Parse(txtHoursWorked.Text);
                 caseServiceUI.EndDate = DateTime.Now;
@@ -235,7 +237,7 @@ namespace UI.Forms.CasePage
             }
             else if (selectedService.PriceType == serviceFixed)
             {
-                caseServiceUI.Status = "Open";
+                caseServiceUI.Status = caseOpen;
                 caseServiceUI.TotalPrice = float.Parse(txtTotalPrice.Text);
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;
@@ -243,28 +245,32 @@ namespace UI.Forms.CasePage
             }
             else if (selectedService.PriceType == serviceHourly)
             {
-                caseServiceUI.Status = "Open";
+                caseServiceUI.Status = caseOpen;
                 caseServiceUI.TotalPrice = 0;
                 caseServiceUI.HoursWorked = 0;
                 caseServiceUI.EndDate = null;
                 caseServiceUI.Units = 0;
             }
 
-            bool succes = await caseServiceBL.CreateCaseServiceAsync(caseServiceUI);
-            if (succes)
+            DialogResult dialogResult = MessageBox.Show("Do you want to add this service?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Service has been added");
-            }
-            else
-            {
-                MessageBox.Show("Failed to add the service");
+                bool succes = await caseServiceBL.CreateCaseServiceAsync(caseServiceUI);
+                if (succes)
+                {
+                    MessageBox.Show("Service has been added");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add the service");
+                } 
             }
 
             //Opdater den tidligere form
             await caseDetailsView.SetCaseDataAsync();
             caseDetailsView.SetDgvAsync();
             this.Close();
-
         }
 
         private void BtnAddLawyer_Click(object? sender, EventArgs e)

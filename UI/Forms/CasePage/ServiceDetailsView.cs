@@ -210,33 +210,48 @@ namespace UI.Forms.CasePage
             //forksellig adfærd ift til pricetypen
             if (selectedCaseService.PriceType == serviceHourly)
             {
-                txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
-                txtUnits.Text = txtTotalHours.Text;
-
-                lblPrice.Text = "Price/hour";
-                lblTotalPrice.Text = "Total Price";
-
-                txtUnits.Visible = false;
-                lblUnites.Visible = false;
+                SetDataHourly();
             }
             else if (selectedCaseService.PriceType == serviceFixed)
             {
-                txtUnits.Visible = false;
-                lblUnites.Visible = false;
-
-                lblPrice.Text = "Listed Price";
-                lblTotalPrice.Text = "Agreed Price";
-
-                txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
+                SetDataFixed();
             }
             else if (selectedCaseService.PriceType == serviceKilometer)
             {
-                lblUnites.Text = "Kilometer";
-                lblPrice.Text = "Price/km";
-
-                txtTotalHours.Text = selectedCaseService.HoursWorked.ToString();
-                txtUnits.Text = selectedCaseService.Units.ToString();
+                SetDataKilometer();
             }
+        }
+
+        private void SetDataHourly()
+        {
+            txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
+            txtUnits.Text = txtTotalHours.Text;
+
+            lblPrice.Text = "Price/hour";
+            lblTotalPrice.Text = "Total Price";
+
+            txtUnits.Visible = false;
+            lblUnites.Visible = false;
+        }
+
+        private void SetDataFixed()
+        {
+            txtUnits.Visible = false;
+            lblUnites.Visible = false;
+
+            lblPrice.Text = "Listed Price";
+            lblTotalPrice.Text = "Agreed Price";
+
+            txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
+        }
+
+        private void SetDataKilometer()
+        {
+            lblUnites.Text = "Kilometer";
+            lblPrice.Text = "Price/km";
+
+            txtTotalHours.Text = selectedCaseService.HoursWorked.ToString();
+            txtUnits.Text = selectedCaseService.Units.ToString();
         }
 
         private async Task SetDgvAsync()

@@ -432,6 +432,7 @@ namespace UI.Forms.ClientPage
             //test på postal input
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
             lblCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
+            
             btnUpdateEnabled();
         }
 

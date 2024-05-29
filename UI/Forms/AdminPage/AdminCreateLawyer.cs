@@ -59,11 +59,6 @@ namespace UI.Forms.AdminPage
             //OpenPDF.ShowPDF(lblHelp.Tag.ToString());
         }
 
-        private void LboxSpecialities_SelectedIndexChanged(object? sender, EventArgs e)
-        {
-            btnRemoveSpeciality.Enabled = true;
-        }
-
         private void BtnRemoveSpeciality_Click(object? sender, EventArgs e)
         {
             if (lboxSpecialities.SelectedItem != null)
@@ -94,6 +89,11 @@ namespace UI.Forms.AdminPage
             UpdateCreateButtonState();
         }
 
+        private void LboxSpecialities_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            btnRemoveSpeciality.Enabled = true;
+        }
+
         private void CboxSpecialities_SelectionChangeCommitted(object? sender, EventArgs e)
         {
             btnAddSpeciality.Enabled = true;
@@ -101,12 +101,10 @@ namespace UI.Forms.AdminPage
 
         private async void AdminCUDLawyer_Load(object? sender, EventArgs e)
         {
-            lblInvalidDate.Hide();
             btnCreate.Enabled = false;
             btnAddSpeciality.Enabled = false;
             btnRemoveSpeciality.Enabled = false;
             txtPassword.Text = "0000";
-            
 
             await FillTitleComboBox();
             await FillSpecialityComboBox();
@@ -220,11 +218,6 @@ namespace UI.Forms.AdminPage
 
         private void DtpHireDate_ValueChanged(object? sender, EventArgs e)
         {
-            if (dtpHireDate.Value > DateTime.Now)
-                lblInvalidDate.Show();
-            else
-                lblInvalidDate.Hide();
-
             UpdateCreateButtonState();
         }
 

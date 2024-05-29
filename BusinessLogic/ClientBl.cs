@@ -67,7 +67,6 @@ namespace BusinessLogic
                 {
                     return false;
                 }
-
             }
 
             if (!pValidator.ValidPassword(loginDetailsUI.Password))
@@ -86,12 +85,9 @@ namespace BusinessLogic
                 Phone tmp = modelConverter.ConvertFromPhoneUI(phoneUI);
                 phoneList.Add(tmp);
                 
-            }
-            
+            }            
             tempC.Phones = phoneList;
             tempC.LoginDetails = tempL;
-
-
 
             return await dbAccess.CreateClientAsync(tempC);
         }

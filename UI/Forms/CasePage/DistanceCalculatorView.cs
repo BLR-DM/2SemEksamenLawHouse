@@ -63,15 +63,21 @@ namespace UI.Forms.CasePage
 
             calcResult = await distanceMatrixBL.GetDistance(txtOrigin.Text, txtDestination.Text);
 
-            if (calcResult.rows[0].elements[0].status == "OK")
+            if (calcResult.status == "OK")
             {
-                txtResult.Text = calcResult.rows[0].elements[0].distance.text;
-                txtDuration.Text = calcResult.rows[0].elements[0].duration.text;
+                if (calcResult.rows[0].elements[0].status == "OK")
+                {
+                    txtResult.Text = calcResult.rows[0].elements[0].distance.text;
+                    txtDuration.Text = calcResult.rows[0].elements[0].duration.text; 
+                }
+                else
+                    MessageBox.Show("Couldn't find address", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Couldn't find address", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could'nt connect to service, please try again later or contact costumer support",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         

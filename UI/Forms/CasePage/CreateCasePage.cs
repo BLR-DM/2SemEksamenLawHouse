@@ -68,33 +68,34 @@ namespace UI.Forms.CasePage
         private void TxtDescription_TextChanged(object? sender, EventArgs e)
         {
             txtDescription.ForeColor = cValidator.ValidDescription(txtDescription.Text) ? validFormat : invalidFormat;
+            BtnCreateEnabled();
         }
 
         private void DtpEstimatedEndDate_ValueChanged(object? sender, EventArgs e)
         {
             isEstimatedEndDateValid = cValidator.ValidEndDate(dtpEstimatedEndDate.Value);
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
 
         private void CboxCaseType_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
 
         private void TxtEstimatedHours_TextChanged(object? sender, EventArgs e)
         {
             txtEstimatedHours.ForeColor = cValidator.ValidEstimatedHours(txtEstimatedHours.Text) ? validFormat : invalidFormat;
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
 
         private void TxtTitle_TextChanged(object? sender, EventArgs e)
         {
             txtTitle.ForeColor = cValidator.ValidTitle(txtTitle.Text) ? validFormat : invalidFormat;
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
 
 
-        private bool btnCreateEnablid()
+        private bool BtnCreateEnabled()
         {
             //Håndterer adfærden på CreateCase knappen, så den kun er enabled, hvis alle felter overholder valideringen
             return btnCreateCase.Enabled =
@@ -128,20 +129,24 @@ namespace UI.Forms.CasePage
                 ClientID = selectedClient.PersonID,
             };
 
-            bool succes = await caseBL.CreateCaseAsync(caseUI);
-            if (succes)
+            DialogResult dialogResult = MessageBox.Show("Do you wish to create this new case?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Case created");
-                await casePageView.SetDgvAsync();
-                f1.PnlContextChange(casePageView);
-            }
-            else
-            {
-                MessageBox.Show("Error! Couldnt create case");
+                bool succes = await caseBL.CreateCaseAsync(caseUI);
+                if (succes)
+                {
+                    MessageBox.Show("Case created");
+                    await casePageView.SetDgvAsync();
+                    f1.PnlContextChange(casePageView);
+                }
+                else
+                {
+                    MessageBox.Show("Error! Couldnt create case");
+                } 
             }
 
-            btnCreateCase.Enabled = true;
-            
+            btnCreateCase.Enabled = true; 
         }
 
 
@@ -178,7 +183,7 @@ namespace UI.Forms.CasePage
             //gemmer den valgte advokat i en variabel selectedLawyer for senere brug
             selectedLawyer = e;
 
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
 
         private void BtnAddClient_Click(object? sender, EventArgs e)
@@ -202,7 +207,7 @@ namespace UI.Forms.CasePage
             txtClientEmail.Text = e.Email;
 
             selectedClient = e;
-            btnCreateEnablid();
+            BtnCreateEnabled();
         }
     }
 }

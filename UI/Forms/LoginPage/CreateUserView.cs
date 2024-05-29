@@ -9,7 +9,6 @@ namespace UI.Forms.CreateUserPage
     public partial class CreateUserView : Form
     {
         ClientBL clientBL;
-        List<PhoneUI> phoneUIs;
         PersonValidator pValidator;
         Color validFormat;
         Color invalidFormat;
@@ -85,7 +84,7 @@ namespace UI.Forms.CreateUserPage
                 CreationDate = DateTime.Now, // Oprettelses dato sat til Now
             };
 
-            phoneUIs = new List<PhoneUI>();
+            List<PhoneUI> phoneUIs = new List<PhoneUI>();
 
             // Opret Phone UI
             PhoneUI phoneUI = new PhoneUI { PhoneNumber = int.Parse(txtPhoneMain.Text) };
@@ -110,7 +109,7 @@ namespace UI.Forms.CreateUserPage
 
             if (result)
             {
-                MessageBox.Show($"Client successfully added!", "Success",
+                MessageBox.Show($"Your account was successfully created!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Ved successful oprettes, åbnes loginsiden med brugerensemail tastet ind i "username" feltet
                 loginPage.GetCreatedUsername(txtEmail.Text);
@@ -118,7 +117,7 @@ namespace UI.Forms.CreateUserPage
             }
             else
             {
-                MessageBox.Show("Failed to add client. Please check the entered details and try again.", "Error",
+                MessageBox.Show("Failed to create client. Please check the entered details and try again.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

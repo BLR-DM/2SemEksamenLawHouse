@@ -17,8 +17,8 @@ namespace BusinessLogic.Validation
             // Same as name + digits (0-9) + comma (,) + period (.)
             vAddress = new Regex("^[A-Za-zÆØÅæøåÜÖüö0-9\\s-,.]+$");
             vDigit = new Regex("^[0-9]+$");
-            // Left of @ as Address but underscore (_) instead of comma
-            // Right of @ same with underscore
+            // Left of @
+            // Right of @
             // After a period min 2 letters
             vEmail = new Regex("^[A-Za-z0-9-_.]+@[A-Za-z0-9-.]+\\.[A-Za-z]{2,}$");
             vPassword = new Regex("^[A-Za-zÆØÅæøå0-9-!.]{4,30}$");
@@ -38,7 +38,7 @@ namespace BusinessLogic.Validation
                 && vAddress.IsMatch(address);                   // Pattern
         }
 
-        public bool ValidPostalCode(string post)                  // Postcode --*
+        public bool ValidPostalCode(string post)                // Postcode --*
         {
             return !string.IsNullOrEmpty(post)
                 && post.Length == 4                             // Length

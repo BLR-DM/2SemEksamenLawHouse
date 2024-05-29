@@ -21,7 +21,7 @@ namespace DataAccess
             try
             {
                 await db.ClientFormDocuments.AddAsync(clientForm);
-                return db.SaveChanges() > 0;
+                return await db.SaveChangesAsync() > 0;
             }
             catch (Exception)
             {

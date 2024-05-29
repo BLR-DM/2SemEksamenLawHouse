@@ -306,6 +306,7 @@ namespace UI.Forms.ClientPage
             dgvPhoneNumbers.DataSource = phoneNumbers;
             dgvPhoneNumbers.Columns["PhoneID"].Visible = false;
             dgvPhoneNumbers.Columns["ClientID"].Visible = false;
+            dgvPhoneNumbers.ClearSelection();
         }
 
         
@@ -318,6 +319,7 @@ namespace UI.Forms.ClientPage
             dgvBoughtForms.DataSource = boughtForms;
             dgvBoughtForms.Columns["FormDocumentID"].Visible = false;
             dgvBoughtForms.Columns["Description"].Visible = false;
+            dgvBoughtForms.ClearSelection();
 
         }
         private void DgvBoughtForms_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -349,6 +351,7 @@ namespace UI.Forms.ClientPage
             dgvCases.Columns[12].Visible = false;
             dgvCases.Columns[13].Visible = false;
             dgvCases.Columns[14].Visible = false;
+            dgvCases.ClearSelection();
         }
 
         private void DgvCases_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -428,6 +431,7 @@ namespace UI.Forms.ClientPage
         {
             //test på postal input
             txtPostal.ForeColor = pValidator.ValidPostalCode(txtPostal.Text) ? validFormat : invalidFormat;
+            lblCity.Text = GetCityFromPostalCode.SetCityFromPostalCode(txtPostal.Text);
             btnUpdateEnabled();
         }
 

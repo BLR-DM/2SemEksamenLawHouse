@@ -1,5 +1,4 @@
-﻿
-using BusinessLogic;
+﻿using BusinessLogic;
 using BusinessLogic.HelpServices;
 using System.Data;
 using UI.Forms.FrontPage;

@@ -56,6 +56,11 @@ namespace BusinessLogic.Validation
                 && vUnit.IsMatch(estimatedHours);
         }
 
+        public bool ValidEndDate(DateTime date)
+        {
+            return date > DateTime.Now;
+        }
+
         public bool ValidAddress(string address)
         {
             return !string.IsNullOrWhiteSpace(address)

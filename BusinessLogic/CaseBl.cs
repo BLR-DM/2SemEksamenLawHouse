@@ -69,7 +69,7 @@ namespace BusinessLogic
             return cases;
         }
 
-        public async Task<bool> UpdateCaseSync(CaseUI caseUI)
+        public async Task<bool> UpdateCaseAsync(CaseUI caseUI)
         {
             if(!cValidator.ValidateCase(caseUI))
                 return false;

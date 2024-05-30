@@ -128,7 +128,7 @@ namespace UI.Forms.CasePage
                 //Opdaterer status og enddate på casen
                 selectedCase.Status = "Closed";
                 selectedCase.EndDate = DateTime.Now;
-                if (await caseBL.UpdateCaseSync(selectedCase))
+                if (await caseBL.UpdateCaseAsync(selectedCase))
                 {
                     MessageBox.Show("Case closed");
                     await SetCaseDataAsync();
@@ -187,7 +187,7 @@ namespace UI.Forms.CasePage
                 ClientID = selectedCase.ClientID,
             };
 
-            bool succes = await caseBL.UpdateCaseSync(caseUpdate);
+            bool succes = await caseBL.UpdateCaseAsync(caseUpdate);
             if (succes)
             {
                 MessageBox.Show("Case updated");

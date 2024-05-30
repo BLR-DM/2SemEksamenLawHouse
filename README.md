@@ -5,7 +5,8 @@ Guide to run the program.
      Genereate database from .Bak file
    }
 
-3. Run .sln file
+3. Open .sln file
+4. Run program
 
 Admin Login:
 Username: Biki2284@lawhouse.com

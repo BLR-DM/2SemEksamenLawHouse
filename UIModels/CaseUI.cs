@@ -26,11 +26,11 @@
 
         public async Task<bool> PrintDetailsAsync(string path)
         {
-            int casePadding = 25;
+            int casePadding = 20;
 
             List<string> caseHeader = new List<string>()
             {
-                "CaseID", "Title", "Type", "Status", "Creation Date", "End Date", "Hours", 
+                "CaseID", "Title", "Type", "Status", "Creation Date", "End Date", "Est. Hours",
                 "Total Price", "Lawyer", "Lawyer Number", "Client", "Client Number"
             };
 
@@ -44,22 +44,30 @@
             // Padding the headers and caseData to ensure alignment
             for (int i = 0; i < caseHeader.Count; i++)
             {
-                caseHeader[i] = caseHeader[i].PadRight(casePadding).ToUpper();
-                caseData[i] = caseData[i].PadRight(casePadding);
+                if (i == 0 || i == 3 || i == 7)
+                {
+                    caseHeader[i] = caseHeader[i].PadRight(15).ToUpper();
+                    caseData[i] = caseData[i].PadRight(15);
+                }
+                else if (i == 1)
+                {
+                    caseHeader[i] = caseHeader[i].PadRight(35).ToUpper();
+                    caseData[i] = caseData[i].PadRight(35);
+                }
+                else
+                {
+                    caseHeader[i] = caseHeader[i].PadRight(casePadding).ToUpper();
+                    caseData[i] = caseData[i].PadRight(casePadding);
+                }
             }
 
-            int caseServicePadding = 25;
+            int caseServicePadding = 20;
 
             List<string> caseServiceHeader = new List<string>()
             {
-                "ServiceID", "Name", "Price Type", "Status", "Start Date", "End Date", "Hours Worked", 
+                "ServiceID", "Name", "Price Type", "Status", "Start Date", "End Date", "Hours Worked",
                 "Units", "Price/Unit", "Total Price", "Lawyer", "Lawyer Number"
             };
-
-            for (int i = 0; i < caseServiceHeader.Count; i++)
-            {
-                caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToUpper().ToString();
-            }
 
             List<List<string>> caseServiceData = new List<List<string>>();
 
@@ -67,14 +75,30 @@
             {
                 List<string> caseServiceLine = new List<string>()
                 {
-                    caseService.ServiceID.ToString(), caseService.Service.Name, caseService.Service.PriceType.ToString(), caseService.Status, caseService.StartDate.ToString("d"), 
+                    caseService.ServiceID.ToString(), caseService.Service.Name, caseService.Service.PriceType.ToString(), caseService.Status, caseService.StartDate.ToString("d"),
                     caseService.EndDate?.ToString("d") ?? "null", caseService.HoursWorked.ToString(),  caseService.Units.ToString(),
                     caseService.Service.Price.ToString(), caseService.TotalPrice.ToString(), caseService.Lawyer.ToString(), caseService.LawyerID.ToString()
                 };
 
                 for (int i = 0; i < caseServiceLine.Count; i++)
                 {
-                    caseServiceLine[i] = caseServiceLine[i].PadRight(caseServicePadding).ToString();
+                    if (i == 0 || i == 3 || i == 7)
+                    {
+                        caseServiceHeader[i] = caseServiceHeader[i].PadRight(15).ToUpper().ToString();
+                        caseServiceLine[i] = caseServiceLine[i].PadRight(15).ToString();
+                    }
+
+                    else if (i == 1)
+                    {
+                        caseServiceHeader[i] = caseServiceHeader[i].PadRight(35).ToUpper().ToString();
+                        caseServiceLine[i] = caseServiceLine[i].PadRight(35).ToString();
+                    }
+
+                    else
+                    {
+                        caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToUpper().ToString();
+                        caseServiceLine[i] = caseServiceLine[i].PadRight(caseServicePadding).ToString();
+                    }
                 }
                 caseServiceData.Add(caseServiceLine);
             }

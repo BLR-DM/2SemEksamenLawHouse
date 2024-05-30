@@ -1,15 +1,9 @@
 ﻿using DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UIModels;
 using EntityModels;
 using Interfaces;
 using BusinessLogic.HelpServices;
 using BusinessLogic.Validation;
-using Microsoft.Identity.Client;
 
 namespace BusinessLogic
 {

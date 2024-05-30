@@ -79,6 +79,7 @@ namespace UI.Forms.CasePage
             }
         }
 
+        //hjælpe pdfs, forskellige for hver prisstype, da der er forskellige input
         private void LblHelp_Click(object? sender, EventArgs e)
         {
             if(selectedCaseService.PriceType == serviceHourly)
@@ -97,6 +98,7 @@ namespace UI.Forms.CasePage
 
         private void CheckStatus()
         {
+            //adfærd for hvis en caseservice er lukket
             if(selectedCaseService.Status == "Closed")
             {
                 txtHoursWorked.Enabled = false;
@@ -107,6 +109,7 @@ namespace UI.Forms.CasePage
 
         private async void BtnClose_Click(object? sender, EventArgs e)
         {
+            //sørger for at man ikke kan lukke hvis 0 entrys
             if(serviceEntryUIs.Count == 0)
             {
                 MessageBox.Show("Must add entrys to close this service");
@@ -114,14 +117,20 @@ namespace UI.Forms.CasePage
             }
             
             btnClose.Enabled = false;
+
+            //messagebox
+            
             DialogResult dialogResult = MessageBox.Show("Do you wanna close this service", "Close service", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
+                //opdaterer status til closed på caseservicen
                 selectedCaseService.Status = "Closed";
+                //sætter enddate til dagens dato
                 selectedCaseService.EndDate = DateTime.Now;
                 if (await caseServiceBL.UpdateCaseServicesAsync(selectedCaseService))
                 {
                     MessageBox.Show("Service closed");
+                    //diasbler knappen da servicen er lukket
                     txtHoursWorked.Enabled = false;
                     this.Close();
                 }
@@ -138,10 +147,12 @@ namespace UI.Forms.CasePage
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
         {
+            //validerer på txtHoursWorked og sætter farve
             txtHoursWorked.ForeColor = cValidator.ValidEntrys(txtHoursWorked.Text) ? validFormat : invalidFormat;
             BtnSubmitEnabled();
         }
 
+        //metode til at styre knappen enabled/disabled
         private void BtnSubmitEnabled()
         {
             btnSubmit.Enabled =
@@ -179,8 +190,11 @@ namespace UI.Forms.CasePage
                 selectedCaseService.TotalPrice = selectedCaseService.TotalPrice;
             }
             
+            //Viser en messagebox som brugeren skal svare på
             DialogResult dialogResult = MessageBox.Show($"Do you want to add {txtHoursWorked.Text} hours", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+
+            //hvis de svarer ja
             if (dialogResult == DialogResult.Yes)
             {
                 bool succes = await serviceEntryBL.CreateServiceEntryAsync(serviceEntryUI);
@@ -200,14 +214,15 @@ namespace UI.Forms.CasePage
             btnSubmit.Enabled = true;
         }
 
+        //sætter case infomration
         private async Task SetCaseInformationAsync()
         {
             selectedService = selectedCaseService.Service;
 
+            //samme adfærd for alle pristyper
             txtServiceName.Text = selectedService.Name;
             txtPrice.Text = selectedService.Price.ToString();
             txtTotalPrice.Text = selectedCaseService.TotalPrice.ToString();
-
             txtServiceDescription.Text = selectedCaseService.Description;
 
             //forksellig adfærd ift til pricetypen
@@ -225,6 +240,7 @@ namespace UI.Forms.CasePage
             }
         }
 
+        //adfærd for time pris
         private void SetDataHourly()
         {
             txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
@@ -237,6 +253,7 @@ namespace UI.Forms.CasePage
             lblUnites.Visible = false;
         }
 
+        //adfærd for en fastpris
         private void SetDataFixed()
         {
             txtUnits.Visible = false;
@@ -248,6 +265,7 @@ namespace UI.Forms.CasePage
             txtTotalHours.Text = serviceEntryUIs.Sum(cs => cs.HoursWorked).ToString();
         }
 
+        //adfærd for kilmoter pris
         private void SetDataKilometer()
         {
             lblUnites.Text = "Kilometer";

@@ -6,7 +6,6 @@ using UI.Forms.CasePage;
 using UI.Forms.AdminPage;
 using UI.Forms.EmployeePage;
 using UI.Forms.SubscriptionPage;
-using BusinessLogic.Validation;
 using UI.Forms.LoginPage;
 
 namespace UI.Forms.FrontPage
@@ -23,18 +22,13 @@ namespace UI.Forms.FrontPage
 
         PersonBL personBL;
         ClientBL clientBL;
-
-        OverallValidator oaValidator;
         LoginPageView loginPage;
-
-        int loginDetailsID;
 
         public FrontPageView(int loginDetailsID, LoginPageView loginPage)
         {
             personBL = new PersonBL();
             clientBL = new ClientBL();
 
-            this.loginDetailsID = loginDetailsID;
             this.loginPage = loginPage;
 
             GetPersonAsync(loginDetailsID);

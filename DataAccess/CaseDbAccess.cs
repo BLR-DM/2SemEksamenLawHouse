@@ -23,7 +23,6 @@ namespace DataAccess
             }
             catch (Exception)
             {
-
                 return false;
             }
         }
@@ -36,7 +35,6 @@ namespace DataAccess
             }
             catch (Exception)
             {
-
                 return new Case();
             }
         }
@@ -77,7 +75,6 @@ namespace DataAccess
             }
             catch (Exception)
             {
-
                 return new List<Case>();
             }
         }
@@ -90,7 +87,6 @@ namespace DataAccess
             }
             catch (Exception)
             {
-
                 return new List<Case>();
             }
         }

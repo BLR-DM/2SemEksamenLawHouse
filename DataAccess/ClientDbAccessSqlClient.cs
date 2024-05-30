@@ -93,12 +93,17 @@ namespace DataAccess
                                 });
 
                                 //execute query
-                                await createClientCMD.ExecuteNonQueryAsync();
+                                bool success = await createClientCMD.ExecuteNonQueryAsync() > 0;
+                                if (!success)
+                                {
+                                    await transaction.RollbackAsync();
+                                    return false;
+                                }
                             }
 
                             //INSERT ind i Phones tabellen
                             string insertPhonesQuery = "INSERT INTO Phones VALUES (@PN, @CID)"; //@CID = ClientID/PersonID
-
+                            
                             foreach (Phone phone in client.Phones)
                             {
                                 using DbCommand createPhonesCMD = new SqlCommand(insertPhonesQuery, dbConn, (SqlTransaction)transaction);
@@ -110,7 +115,12 @@ namespace DataAccess
                                     });
 
                                     //execute query
-                                    await createPhonesCMD.ExecuteNonQueryAsync();
+                                    bool success = await createPhonesCMD.ExecuteNonQueryAsync() > 0;
+                                    if (!success)
+                                    {
+                                        await transaction.RollbackAsync();
+                                        return false;
+                                    }
                                 }
                             }
 

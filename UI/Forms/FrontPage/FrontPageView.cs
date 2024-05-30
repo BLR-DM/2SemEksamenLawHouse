@@ -69,12 +69,12 @@ namespace UI.Forms.FrontPage
             this.Close();
         }
 
-        public async Task GetPersonAsync(int id)
+        public async Task GetPersonAsync(int loginDetailsID)
         {
 
             if (currentUser == null)
             {
-                currentUser = await personBL.GetPersonAsync(id);
+                currentUser = await personBL.GetPersonAsync(loginDetailsID);
             }
 
             if (currentUser != null)

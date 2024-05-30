@@ -63,16 +63,10 @@ namespace BusinessLogic.Validation
                 && vAddress.IsMatch(address);
         }
 
-        public bool ValidEndDate(DateTime dateTime)
-        {
-            return dateTime > DateTime.Now;
-        }
-
         public bool ValidateCase(CaseUI caseUI)
         {
             return ValidTitle(caseUI.Title) &&
                 ValidDescription(caseUI.Description) &&
-                ValidEndDate(caseUI.EndDate) &&
                 ValidEstimatedHours(caseUI.EstimatedHours.ToString());
 
         }

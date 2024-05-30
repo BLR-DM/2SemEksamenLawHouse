@@ -41,7 +41,7 @@ namespace UI.Forms.CasePage
             }
             else
             {
-                success = await selectedCase.PrintDetails(txtPath.Text);
+                success = await selectedCase.PrintDetailsAsync(txtPath.Text);
             }
 
             if(success)

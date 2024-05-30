@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UIModels
+﻿namespace UIModels
 {
     public class CaseUI
     {
@@ -30,7 +24,7 @@ namespace UIModels
 
         public virtual ICollection<CaseServiceUI> CaseServices { get; set; }
 
-        public async Task<bool> PrintDetails(string path)
+        public async Task<bool> PrintDetailsAsync(string path)
         {
             int casePadding = 25;
 
@@ -105,7 +99,6 @@ namespace UIModels
             {
                 rowsToPrint.Add(string.Join("", serviceLine));
             }
-
 
             try
             {

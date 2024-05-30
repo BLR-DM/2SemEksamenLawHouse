@@ -1,14 +1,4 @@
-using BusinessLogic;
-using EntityModels;
-using Microsoft.Identity.Client;
-using UI.Forms.AdminPage;
-using UI.Forms.CasePage;
-using UI.Forms.ClientPage;
-using UI.Forms.CreateUserPage;
-using UI.Forms.EmployeePage;
-using UI.Forms.FrontPage;
 using UI.Forms.LoginPage;
-using UIModels;
 namespace UI
 {
     internal static class Program

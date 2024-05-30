@@ -150,7 +150,7 @@ namespace UI.Forms.AdminPage
 
         private async void BtnCreate_Click(object? sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to reate this Lawyer? " +
+            DialogResult dialogResult = MessageBox.Show($"Are you sure, that you want to create this Lawyer " +
                 $"{txtFirstname.Text} {txtLastname.Text}?",
                 "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

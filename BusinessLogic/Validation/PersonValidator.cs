@@ -20,7 +20,7 @@ namespace BusinessLogic.Validation
             // Left of @
             // Right of @
             // After a period min 2 letters
-            vEmail = new Regex("^[A-Za-z0-9-_.]+@[A-Za-z0-9-.]+\\.[A-Za-z]{2,}$");
+            vEmail = new Regex("^[A-Za-z0-9ÆØÅæøåÜÖüö_.-]+@[A-Za-z0-9-.]+\\.[A-Za-z]{2,}$");
             vPassword = new Regex("^[A-Za-zÆØÅæøå0-9-!.]{4,30}$");
         }
 

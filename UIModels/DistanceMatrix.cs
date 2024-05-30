@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UIModels
+﻿namespace UIModels
 {
     public class DistanceMatrix
     {
@@ -29,13 +23,13 @@ namespace UIModels
     public class Distance
     {
         public string text { get; set; }
-        public int value { get; set; }
+        public int value { get; set; } // Value her er i meter
     }
 
     public class Duration
     {
         public string text { get; set; }
-        public int value { get; set; }
+        public int value { get; set; } // Value her er i minutter
     }
 }
 

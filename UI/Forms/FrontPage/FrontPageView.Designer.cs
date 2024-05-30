@@ -100,7 +100,7 @@
             btnEmployees.FlatStyle = FlatStyle.Flat;
             btnEmployees.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEmployees.ForeColor = Color.Black;
-            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.Users;
+            btnEmployees.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
             btnEmployees.IconColor = Color.Black;
             btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmployees.IconSize = 40;
@@ -278,7 +278,7 @@
             btnClients.FlatStyle = FlatStyle.Flat;
             btnClients.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClients.ForeColor = Color.Black;
-            btnClients.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
+            btnClients.IconChar = FontAwesome.Sharp.IconChar.Users;
             btnClients.IconColor = Color.Black;
             btnClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClients.IconSize = 40;

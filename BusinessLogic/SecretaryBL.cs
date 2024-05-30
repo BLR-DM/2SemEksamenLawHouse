@@ -50,9 +50,5 @@ namespace BusinessLogic
                 return new List<SecretaryUI>();
             }
         }
-
-
-
-
     }
 }

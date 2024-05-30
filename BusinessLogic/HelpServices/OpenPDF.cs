@@ -10,13 +10,18 @@ namespace BusinessLogic.HelpServices
 
             if (File.Exists(filePath))
             {
-                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
-                return true;
+                try
+                {
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
             else
-            {
                 return false;
-            }
         }
     }
 }

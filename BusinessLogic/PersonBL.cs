@@ -2,7 +2,6 @@
 using UIModels;
 using EntityModels;
 using Interfaces;
-using BusinessLogic.HelpServices;
 
 namespace BusinessLogic
 {
@@ -18,11 +17,10 @@ namespace BusinessLogic
         {
             if (id <= 0)
                 return new PersonUI();
+                Person person = await dbAccess.GetPersonAsync(id);
 
             try
             {
-                Person person = await dbAccess.GetPersonAsync(id);
-
                 if (person != null)
                 {
                     if (person is Client)

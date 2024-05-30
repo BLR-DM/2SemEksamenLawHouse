@@ -90,8 +90,6 @@ namespace BusinessLogic.Validation
                 ValidName(client.City) &&
                 ValidPostalCode(client.PostalCode.ToString()) &&
                 ValidEmail(client.Email);
-
         }
-
     }
 }

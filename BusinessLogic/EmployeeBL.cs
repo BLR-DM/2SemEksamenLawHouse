@@ -53,6 +53,7 @@ namespace BusinessLogic
         {
             if (!pValidator.ValidEmployee(employeeUI))
                 return false;
+
             try
             {
                 Employee employee = modelConverter.ConvertFromEmployeeUI(employeeUI);

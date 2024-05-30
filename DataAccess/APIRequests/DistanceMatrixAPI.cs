@@ -16,8 +16,6 @@ namespace DataAccess.APIRequests
 
         public async Task<string> GetDistance(string origin, string destination)
         {
-            string apiKey = "AIzaSyCXTSVjkcMqSYbvrNIv1SFBHguuzwsfHCs";
-
             string url = $"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=" +
                 $"{origin}&destinations={destination}&key={apiKey}";
 

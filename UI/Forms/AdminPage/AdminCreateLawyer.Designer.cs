@@ -54,7 +54,6 @@
             lblPassword = new Label();
             txtEmailLogin = new TextBox();
             lblEmailLogin = new Label();
-            lblInvalidDate = new Label();
             btnToday = new Button();
             btnCreate = new FontAwesome.Sharp.IconButton();
             cboxTitles = new ComboBox();
@@ -364,18 +363,6 @@
             lblEmailLogin.TabIndex = 30;
             lblEmailLogin.Text = "Email";
             // 
-            // lblInvalidDate
-            // 
-            lblInvalidDate.AutoSize = true;
-            lblInvalidDate.BackColor = SystemColors.GradientInactiveCaption;
-            lblInvalidDate.Font = new Font("Segoe UI", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblInvalidDate.ForeColor = Color.OrangeRed;
-            lblInvalidDate.Location = new Point(29, 599);
-            lblInvalidDate.Name = "lblInvalidDate";
-            lblInvalidDate.Size = new Size(111, 13);
-            lblInvalidDate.TabIndex = 22;
-            lblInvalidDate.Text = "Invalid date selection!";
-            // 
             // btnToday
             // 
             btnToday.Location = new Point(270, 573);
@@ -530,7 +517,6 @@
             Controls.Add(lblTitle);
             Controls.Add(lblName);
             Controls.Add(lblPhone);
-            Controls.Add(lblInvalidDate);
             Controls.Add(lblPhoneMain);
             Controls.Add(txtPhone);
             Controls.Add(txtCity);
@@ -578,7 +564,6 @@
         private Label lblPassword;
         private TextBox txtEmailLogin;
         private Label lblEmailLogin;
-        private Label lblInvalidDate;
         private Button btnToday;
         private FontAwesome.Sharp.IconButton btnCreate;
         private ComboBox cboxTitles;

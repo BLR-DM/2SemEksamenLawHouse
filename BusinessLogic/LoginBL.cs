@@ -26,7 +26,7 @@ namespace BusinessLogic
         public async Task<string> RetrievePasswordAsync(string username)
         {
             // Denne funktion er en simulation
-            if (pValidator.ValidEmail(username))
+            if (!pValidator.ValidEmail(username))
                 return "*Invalid Email Format*";
 
             try

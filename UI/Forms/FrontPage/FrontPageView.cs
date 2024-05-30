@@ -69,12 +69,12 @@ namespace UI.Forms.FrontPage
             this.Close();
         }
 
-        public async Task GetPersonAsync(int id)
+        public async Task GetPersonAsync(int loginDetailsID)
         {
 
             if (currentUser == null)
             {
-                currentUser = await personBL.GetPersonAsync(id);
+                currentUser = await personBL.GetPersonAsync(loginDetailsID);
             }
 
             if (currentUser != null)
@@ -159,6 +159,13 @@ namespace UI.Forms.FrontPage
             btnAdminPage.Visible = true; // sortByNameCount
 
             SetNavBtnColor(btnMyPageLawyer);
+
+            //set mypage
+            EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employeeUI.PersonID, true, employeeUI);
+            if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(EmployeeDetailsView))
+            {
+                PnlContextChange(employeeDetailsView);
+            }
         }
 
         public void PnlContextChange(Form f)
@@ -244,7 +251,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
         {
-            EmployeesView employeesView = new EmployeesView();
+            LawyersView employeesView = new LawyersView();
             PnlContextChange(employeesView);
             SetNavBtnColor(btnLawyers);
         }

@@ -14,18 +14,14 @@ namespace DataAccess.APIRequests
             apiKey = ConfigurationManager.AppSettings["GoogleApiKey"];
         }
 
-        public async Task<string> GetDistance(string origin, string destination)
+        public async Task<string> GetDistanceAsync(string origin, string destination)
         {
-            string apiKey = "AIzaSyCXTSVjkcMqSYbvrNIv1SFBHguuzwsfHCs";
-
             string url = $"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=" +
                 $"{origin}&destinations={destination}&key={apiKey}";
 
             HttpResponseMessage response = await client.GetAsync(url);
 
-            string jsonData = await response.Content.ReadAsStringAsync();
-
-            return jsonData;
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

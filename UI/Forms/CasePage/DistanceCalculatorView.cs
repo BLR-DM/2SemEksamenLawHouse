@@ -59,9 +59,7 @@ namespace UI.Forms.CasePage
 
         private async void BtnSearch_Click(object? sender, EventArgs e)
         {
-            DistanceMatrix calcResult = new DistanceMatrix();
-
-            calcResult = await distanceMatrixBL.GetDistance(txtOrigin.Text, txtDestination.Text);
+            DistanceMatrix calcResult = await distanceMatrixBL.GetDistanceAsync(txtOrigin.Text, txtDestination.Text);
 
             if (calcResult.status == "OK")
             {

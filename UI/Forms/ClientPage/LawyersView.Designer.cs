@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms.ClientPage
 {
-    partial class EmployeesView
+    partial class LawyersView
     {
         /// <summary>
         /// Required designer variable.

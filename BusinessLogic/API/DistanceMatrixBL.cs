@@ -12,9 +12,9 @@ namespace BusinessLogic.API
             db = new DistanceMatrixAPI();
         }
 
-        public async Task<DistanceMatrix> GetDistance(string origin, string destination)
+        public async Task<DistanceMatrix> GetDistanceAsync(string origin, string destination)
         {
-            string jsonData = await db.GetDistance(origin, destination);
+            string jsonData = await db.GetDistanceAsync(origin, destination);
 
             return JsonConvert.DeserializeObject<DistanceMatrix>(jsonData);
         }

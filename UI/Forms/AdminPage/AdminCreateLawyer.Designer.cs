@@ -54,7 +54,6 @@
             lblPassword = new Label();
             txtEmailLogin = new TextBox();
             lblEmailLogin = new Label();
-            lblInvalidDate = new Label();
             btnToday = new Button();
             btnCreate = new FontAwesome.Sharp.IconButton();
             cboxTitles = new ComboBox();
@@ -65,7 +64,6 @@
             lblAddedSpecialities = new Label();
             lblTitleSelect = new Label();
             label1 = new Label();
-            lblHelp = new Label();
             pnlLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -364,18 +362,6 @@
             lblEmailLogin.TabIndex = 30;
             lblEmailLogin.Text = "Email";
             // 
-            // lblInvalidDate
-            // 
-            lblInvalidDate.AutoSize = true;
-            lblInvalidDate.BackColor = SystemColors.GradientInactiveCaption;
-            lblInvalidDate.Font = new Font("Segoe UI", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblInvalidDate.ForeColor = Color.OrangeRed;
-            lblInvalidDate.Location = new Point(29, 599);
-            lblInvalidDate.Name = "lblInvalidDate";
-            lblInvalidDate.Size = new Size(111, 13);
-            lblInvalidDate.TabIndex = 22;
-            lblInvalidDate.Text = "Invalid date selection!";
-            // 
             // btnToday
             // 
             btnToday.Location = new Point(270, 573);
@@ -488,26 +474,12 @@
             label1.TabIndex = 25;
             label1.Text = "Add specialities";
             // 
-            // lblHelp
-            // 
-            lblHelp.AutoSize = true;
-            lblHelp.Cursor = Cursors.Hand;
-            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblHelp.ForeColor = Color.DarkBlue;
-            lblHelp.Location = new Point(405, 791);
-            lblHelp.Name = "lblHelp";
-            lblHelp.Size = new Size(66, 15);
-            lblHelp.TabIndex = 53;
-            lblHelp.Tag = "AdminCreateLawyerHelp";
-            lblHelp.Text = "Need help?";
-            // 
             // AdminCreateLawyer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(483, 815);
-            Controls.Add(lblHelp);
             Controls.Add(lboxSpecialities);
             Controls.Add(cboxSpecialities);
             Controls.Add(cboxTitles);
@@ -530,7 +502,6 @@
             Controls.Add(lblTitle);
             Controls.Add(lblName);
             Controls.Add(lblPhone);
-            Controls.Add(lblInvalidDate);
             Controls.Add(lblPhoneMain);
             Controls.Add(txtPhone);
             Controls.Add(txtCity);
@@ -578,7 +549,6 @@
         private Label lblPassword;
         private TextBox txtEmailLogin;
         private Label lblEmailLogin;
-        private Label lblInvalidDate;
         private Button btnToday;
         private FontAwesome.Sharp.IconButton btnCreate;
         private ComboBox cboxTitles;
@@ -589,6 +559,5 @@
         private Label lblAddedSpecialities;
         private Label lblTitleSelect;
         private Label label1;
-        private Label lblHelp;
     }
 }

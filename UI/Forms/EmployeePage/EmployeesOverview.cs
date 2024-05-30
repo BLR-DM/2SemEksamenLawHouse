@@ -364,13 +364,13 @@ namespace UI.Forms.EmployeePage
 
             if (selectedFilters.Count > 0)
             {
-                filteredLawyers = lawyers
+                filteredLawyers = filteredLawyers
                     .Where(l => selectedFilters
                     .All(filter => l.LawyerSpecialities
                     .Any(ls => ls.SpecialityName == filter))).ToList();
             }
 
-            switch (selectedShow)
+            switch (cboxSort.SelectedItem)
             {
                 case "Name":
                     sortByNameCount++;

@@ -11,14 +11,14 @@ using BusinessLogic.HelpServices;
 
 namespace UI.Forms.ClientPage
 {
-    public partial class EmployeesView : System.Windows.Forms.Form
+    public partial class LawyersView : System.Windows.Forms.Form
     {
         LawyerBL lawyerBL;
         SpecialityBL specialityBL;
         List<LawyerUI> lawyerUIs;
         List<LawyerSpecialityUI> lawyerSpecialityUIs;
         List<LawyerCardMini> OriginalLawyerControls;
-        public EmployeesView()
+        public LawyersView()
         {
             specialityBL = new SpecialityBL();
             lawyerBL = new LawyerBL();

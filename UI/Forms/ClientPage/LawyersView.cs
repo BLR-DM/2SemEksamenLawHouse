@@ -1,12 +1,6 @@
 ﻿using BusinessLogic;
-using EntityModels;
 using UI.Toolbox;
 using UIModels;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using BusinessLogic.HelpServices;
 
 namespace UI.Forms.ClientPage

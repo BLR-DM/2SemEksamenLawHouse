@@ -21,9 +21,7 @@ namespace DataAccess.APIRequests
 
             HttpResponseMessage response = await client.GetAsync(url);
 
-            string jsonData = await response.Content.ReadAsStringAsync();
-
-            return jsonData;
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

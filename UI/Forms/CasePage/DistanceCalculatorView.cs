@@ -61,7 +61,7 @@ namespace UI.Forms.CasePage
         {
             DistanceMatrix calcResult = new DistanceMatrix();
 
-            calcResult = await distanceMatrixBL.GetDistance(txtOrigin.Text, txtDestination.Text);
+            calcResult = await distanceMatrixBL.GetDistanceAsync(txtOrigin.Text, txtDestination.Text);
 
             if (calcResult.status == "OK")
             {

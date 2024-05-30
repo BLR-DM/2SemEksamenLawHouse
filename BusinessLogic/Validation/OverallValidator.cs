@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace BusinessLogic.Validation
 {
@@ -14,7 +9,6 @@ namespace BusinessLogic.Validation
         {
             // Allows digits
             vDouble = new Regex("^[0-9]+(\\,[0-9]+)?$");
-
         }
 
         public bool ValidDigit(string digit)                    
@@ -22,9 +16,5 @@ namespace BusinessLogic.Validation
             return !string.IsNullOrEmpty(digit)                    // Length
                 && vDouble.IsMatch(digit);                       // Pattern
         }
-
-
-
-
     }
 }

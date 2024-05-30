@@ -40,15 +40,12 @@ namespace UIModels
                 "Total Price", "Lawyer", "Lawyer Number", "Client", "Client Number"
             };
 
-
-
             List<string> caseData = new List<string>()
             {
                 CaseID.ToString(), Title, CaseType.Title, Status.ToString(), CreationDate.ToString("d"), EndDate.ToString("d"),
                 EstimatedHours.ToString(), TotalPrice.ToString(), Lawyer.ToString(), Lawyer.PersonID.ToString(),
                 Client.ToString(), Client.PersonID.ToString()
             };
-
 
             // Padding the headers and caseData to ensure alignment
             for (int i = 0; i < caseHeader.Count; i++)
@@ -57,9 +54,7 @@ namespace UIModels
                 caseData[i] = caseData[i].PadRight(casePadding);
             }
 
-
             int caseServicePadding = 25;
-
 
             List<string> caseServiceHeader = new List<string>()
             {
@@ -71,7 +66,6 @@ namespace UIModels
             {
                 caseServiceHeader[i] = caseServiceHeader[i].PadRight(caseServicePadding).ToUpper().ToString();
             }
-
 
             List<List<string>> caseServiceData = new List<List<string>>();
 
@@ -88,18 +82,14 @@ namespace UIModels
                 {
                     caseServiceLine[i] = caseServiceLine[i].PadRight(caseServicePadding).ToString();
                 }
-
                 caseServiceData.Add(caseServiceLine);
             }
-
 
 
             // Combine headers and caseData into lines
             string caseHeaderRow = string.Join("", caseHeader);
             string caseDataRow = string.Join("", caseData);
             string caseServiceHeaderRow = string.Join("", caseServiceHeader);
-            
-
 
             // Write to the file
             List<string> rowsToPrint = new List<string>();
@@ -123,12 +113,9 @@ namespace UIModels
             }
             catch (Exception)
             {
-
                 return false;
             }
-
             return true;
-
         }
 
 
@@ -157,7 +144,6 @@ namespace UIModels
                 }
             }
 
-
             try
             {
                 await File.WriteAllLinesAsync(path, textToWrite);
@@ -168,8 +154,6 @@ namespace UIModels
             }
 
             return true;
-
-
         }
 
         private List<string> BuildHeader(List<string> textToWrite)
@@ -291,8 +275,6 @@ namespace UIModels
             }
 
             return textToWrite;
-
-
         }
 
         private List<string> BuildFixedServiceTextAsync(CaseServiceUI caseService, List<string> textToWrite)
@@ -346,7 +328,5 @@ namespace UIModels
 
             return textToWrite;
         }
-
-
     }
 }

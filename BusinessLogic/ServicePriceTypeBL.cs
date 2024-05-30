@@ -2,11 +2,6 @@
 using DataAccess;
 using EntityModels;
 using Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UIModels;
 
 namespace BusinessLogic
@@ -30,10 +25,7 @@ namespace BusinessLogic
             {
                 servicePriceTypeUIs.Add(modelConverter.ConvertFromServicePriceTypeEntity(servicePriceType));
             }
-
             return servicePriceTypeUIs;
         }
-
-
     }
 }

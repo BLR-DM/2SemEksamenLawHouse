@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.HelpServices;
+using BusinessLogic.Validation;
 using DataAccess;
 using EntityModels;
 using Interfaces;
@@ -10,14 +11,19 @@ namespace BusinessLogic
     {
         ModelConverter modelConverter;
         IServiceEntryDbAccess dbAccess;
+        CaseValidator cValidator;
         public ServiceEntryBL()
         {
             modelConverter = new ModelConverter();
             dbAccess = new ServiceEntryDbAccess();
+            cValidator = new CaseValidator();
         }
 
         public async Task<bool> CreateServiceEntryAsync(ServiceEntryUI serviceEntryUI)
         {
+            if (!cValidator.ValidateServiceEntries(serviceEntryUI))
+                return false;
+
             return await dbAccess.CreateServiceEntryAsync(modelConverter.ConvertFromServiceEntryUI(serviceEntryUI));
         }
 

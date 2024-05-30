@@ -49,7 +49,11 @@ namespace UI.Forms.ClientPage
 
         private void LblHelp_Click(object? sender, EventArgs e)
         {
-            OpenPDF.ShowPDF("ClientViewHelp");
+            if (!OpenPDF.ShowPDF("ClientViewHelp"))
+            {
+                MessageBox.Show("Couldnt open file, PDF was not found!");
+            }
+            
         }
 
         private void DgvClients_DataSourceChanged(object? sender, EventArgs e)

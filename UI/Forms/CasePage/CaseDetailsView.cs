@@ -197,7 +197,6 @@ namespace UI.Forms.CasePage
                 MessageBox.Show("Update failed");
             }
             btnUpdateCase.Enabled = true;
-
         }
 
         private bool BtnUpdateEnabled()
@@ -206,7 +205,6 @@ namespace UI.Forms.CasePage
                 txtTitle.ForeColor == validFormat &&
                 txtEstimatedHours.ForeColor == validFormat &&
                 isEstimatedEndDateValid;
-
         }
 
         private void BtnAddService_Click(object? sender, EventArgs e)
@@ -236,7 +234,6 @@ namespace UI.Forms.CasePage
                     }
                     serviceDetailsView.ShowDialog();
                 }
-
             }
         }
 

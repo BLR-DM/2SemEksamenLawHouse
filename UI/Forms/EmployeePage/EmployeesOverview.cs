@@ -29,7 +29,7 @@ namespace UI.Forms.EmployeePage
         List<SecretaryUI> filteredSecretaries;
 
         // Const string på "Show" comboBox elementer, da der hyppigt bliver testet på den valgte item
-        const string showEmployees = "Employee";
+        const string showEmployees = "Employees";
         const string showLawyers = "  Lawyers";
         const string showSecretaries = "  Secretaries";
         string selectedShow; // Den valgte "Show" item

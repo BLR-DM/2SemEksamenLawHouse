@@ -138,7 +138,7 @@ namespace UI.Forms.CasePage
 
         private void TxtHoursWorked_TextChanged(object? sender, EventArgs e)
         {
-            txtHoursWorked.ForeColor = cValidator.ValidEstimatedHours(txtHoursWorked.Text) ? validFormat : invalidFormat;
+            txtHoursWorked.ForeColor = cValidator.ValidEntrys(txtHoursWorked.Text) ? validFormat : invalidFormat;
             BtnSubmitEnabled();
         }
 

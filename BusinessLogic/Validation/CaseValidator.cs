@@ -25,6 +25,14 @@ namespace BusinessLogic.Validation
                 && vUnit.IsMatch(units);
         }
 
+        public bool ValidEntrys(string entrys)
+        {
+            return !string.IsNullOrEmpty(entrys)
+                && float.TryParse(entrys, out float entry)
+                && entry > 0
+                && vUnit.IsMatch(entrys);
+        }
+
         public bool ValidDescription(string description)
         {
             return !string.IsNullOrEmpty(description)
@@ -75,6 +83,11 @@ namespace BusinessLogic.Validation
                 ValidEstimatedHours(caseServiceUI.HoursWorked.ToString()) &&
                 ValidUnits(caseServiceUI.HoursWorked.ToString()) &&
                 ValidUnits(caseServiceUI.TotalPrice.ToString());
+        }
+
+        public bool ValidateServiceEntries(ServiceEntryUI serviceEntryUI)
+        {
+            return ValidEntrys(serviceEntryUI.HoursWorked.ToString());
         }
     }
 }

@@ -64,7 +64,6 @@
             lblAddedSpecialities = new Label();
             lblTitleSelect = new Label();
             label1 = new Label();
-            lblHelp = new Label();
             pnlLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -475,26 +474,12 @@
             label1.TabIndex = 25;
             label1.Text = "Add specialities";
             // 
-            // lblHelp
-            // 
-            lblHelp.AutoSize = true;
-            lblHelp.Cursor = Cursors.Hand;
-            lblHelp.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblHelp.ForeColor = Color.DarkBlue;
-            lblHelp.Location = new Point(405, 791);
-            lblHelp.Name = "lblHelp";
-            lblHelp.Size = new Size(66, 15);
-            lblHelp.TabIndex = 53;
-            lblHelp.Tag = "AdminCreateLawyerHelp";
-            lblHelp.Text = "Need help?";
-            // 
             // AdminCreateLawyer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(483, 815);
-            Controls.Add(lblHelp);
             Controls.Add(lboxSpecialities);
             Controls.Add(cboxSpecialities);
             Controls.Add(cboxTitles);
@@ -574,6 +559,5 @@
         private Label lblAddedSpecialities;
         private Label lblTitleSelect;
         private Label label1;
-        private Label lblHelp;
     }
 }

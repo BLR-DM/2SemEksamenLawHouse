@@ -159,6 +159,13 @@ namespace UI.Forms.FrontPage
             btnAdminPage.Visible = true; // sortByNameCount
 
             SetNavBtnColor(btnMyPageLawyer);
+
+            //set mypage
+            EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employeeUI.PersonID, true, employeeUI);
+            if (pnlContext.Controls.Count == 0 || pnlContext.Controls[0].GetType() != typeof(EmployeeDetailsView))
+            {
+                PnlContextChange(employeeDetailsView);
+            }
         }
 
         public void PnlContextChange(Form f)

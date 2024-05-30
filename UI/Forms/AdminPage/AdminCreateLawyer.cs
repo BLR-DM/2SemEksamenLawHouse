@@ -50,13 +50,6 @@ namespace UI.Forms.AdminPage
             lboxSpecialities.SelectedIndexChanged += LboxSpecialities_SelectedIndexChanged;
             btnAddSpeciality.Click += BtnAddSpeciality_Click;
             btnRemoveSpeciality.Click += BtnRemoveSpeciality_Click;
-            lblHelp.Click += LblHelp_Click;
-        }
-
-        private void LblHelp_Click(object? sender, EventArgs e)
-        {
-            MessageBox.Show("Not ready");
-            //OpenPDF.ShowPDF(lblHelp.Tag.ToString());
         }
 
         private void BtnRemoveSpeciality_Click(object? sender, EventArgs e)

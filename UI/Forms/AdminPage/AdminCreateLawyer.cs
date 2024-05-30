@@ -265,7 +265,7 @@ namespace UI.Forms.AdminPage
                 txtPhone.ForeColor == validFormat &&
                 txtCity.ForeColor == validFormat &&
                 lboxSpecialities.Items.Count > 0 &&
-                cboxTitles.SelectedItem != null == false;
+                cboxTitles.SelectedItem != null;
         }
     }
 }

@@ -251,7 +251,7 @@ namespace UI.Forms.FrontPage
 
         private void BtnLawyers_Click(object? sender, EventArgs e)
         {
-            EmployeesView employeesView = new EmployeesView();
+            LawyersView employeesView = new LawyersView();
             PnlContextChange(employeesView);
             SetNavBtnColor(btnLawyers);
         }

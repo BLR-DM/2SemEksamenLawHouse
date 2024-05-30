@@ -17,7 +17,6 @@ namespace UI.Forms.ClientPage
         ClientUI client;
         ClientBL clientBL;
         CaseBL caseBL;
-        PersonBL personBL;
         FormDocumentBL formBL;
         SubscriptionBL subscriptionBL;
         PersonValidator pValidator;
@@ -43,7 +42,6 @@ namespace UI.Forms.ClientPage
             subscriptionBL = new SubscriptionBL();
             pValidator = new PersonValidator();
             caseBL = new CaseBL();
-            personBL = new PersonBL();
 
             deletedNumbers = new List<PhoneUI>();
             subscriptions = new List<ClientSubscriptionUI>();

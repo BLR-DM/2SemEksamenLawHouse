@@ -13,6 +13,7 @@ namespace UI.Toolbox
             InitializePropertiesAndControls();
         }
 
+        public string FirstName { get; set; }
         public int LawyerID { get; set; }
         public string City { get; set; }
 
@@ -21,6 +22,7 @@ namespace UI.Toolbox
             // Set attributter
             LawyerID = lawyer.PersonID;
             City = lawyer.City;
+            FirstName = lawyer.Firstname;
 
             // Tilføj værdi til UI controls
             lblName.Text = lawyer.ToString();

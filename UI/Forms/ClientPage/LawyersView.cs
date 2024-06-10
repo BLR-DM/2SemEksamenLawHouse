@@ -71,7 +71,7 @@ namespace UI.Forms.ClientPage
 
                 // Sorter efter valgte soteringsmulighed
                 case "Name":
-                    visibleControls = visibleControls.OrderBy(c => c.Name).ToList();
+                    visibleControls = visibleControls.OrderBy(c => c.FirstName).ToList();
                     break;
                 case "City":
                     visibleControls = visibleControls.OrderBy(c => c.City).ToList();

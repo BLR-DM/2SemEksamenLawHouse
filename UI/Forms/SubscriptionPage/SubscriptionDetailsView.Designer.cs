@@ -92,6 +92,7 @@
             Controls.Add(label6);
             Controls.Add(dgvSubscriptions);
             Name = "SubscriptionDetailsView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "SubscriptionDetailsView";
             ((System.ComponentModel.ISupportInitialize)dgvSubscriptions).EndInit();
             ResumeLayout(false);

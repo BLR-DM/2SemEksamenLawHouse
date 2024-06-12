@@ -41,6 +41,7 @@ namespace UI.Forms.CasePage
         private void BtnSave_Click(object? sender, EventArgs e)
         {
             string saveDistance = txtResult.Text.Split(' ')[0];
+            saveDistance = saveDistance.Replace('.', ',');
             saveResult?.Invoke(this, saveDistance);
             this.Close();
         }
